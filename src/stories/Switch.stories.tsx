@@ -12,7 +12,9 @@ const meta: Meta<typeof UISwitch> = {
 type Story = StoryObj<typeof UISwitch>;
 
 export const Default: Story = {
-  render: () => <UISwitch />,
+  args: {
+    showLabel:true
+  },
 };
 export const NoLabel: Story = {
   render: () => <UISwitch showLabel={false} />,

@@ -4,12 +4,23 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import {
   default as UIBreadcrumb,
-  UIBreadcrumbProps,
+  type UIBreadcrumbProps,
 } from "../components/Breadcrumb";
 
 const meta: Meta<typeof UIBreadcrumb> = {
   component: UIBreadcrumb,
   title: "Components/UIBreadcrumb",
+
+  argTypes: {
+    activeKey: {
+      control: "text",
+      type: "string",
+      description: "Currently active item (matches key in item in the array)",
+      defaultValue: { summary: "-" },
+    },
+
+
+  },
 };
 
 type Story = StoryObj<typeof UIBreadcrumb>;
@@ -36,14 +47,25 @@ const items: UIBreadcrumbProps["items"] = [
   },
 ];
 export const DefaultWithActive: Story = {
-  render: () => <UIBreadcrumb items={items} activeKey="activeItem" />,
+  args: {
+    items: items,
+    activeKey: "activeItem",
+  },
 };
 
 export const PrependedSeparator: Story = {
-  render: () => <UIBreadcrumb items={items} prependSeparator="/" />,
+  args: {
+    items: items,
+    activeKey: "activeItem",
+    prependSeparator: "/",
+  },
 };
 
 export const PrependedWithAnything: Story = {
-  render: () => <UIBreadcrumb items={items} prependSeparator="(ง •̀_•́)ง" />,
+  args: {
+    items: items,
+    activeKey: "activeItem",
+    prependSeparator: "(ง •̀_•́)ง",
+  },
 };
 export default meta;

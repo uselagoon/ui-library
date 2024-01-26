@@ -9,6 +9,9 @@ export interface UITheme {
     backgrounds: {
       primary: string;
       secondary: string;
+      input:string;
+      modal: string;
+      dataCard;
     };
     texts: {
       primary: string;
@@ -18,7 +21,10 @@ export interface UITheme {
     highlights: {
       selection: string;
     };
-    borders: {};
+    borders: {
+      box: string;
+    };
+    notification:string;
   };
 }
 

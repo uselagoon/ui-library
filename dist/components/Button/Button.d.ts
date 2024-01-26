@@ -13,7 +13,7 @@ export type InternalButtonProps = Omit<ButtonProps, "href" | "danger" | "ghost" 
     children?: React.ReactNode;
     styles?: React.CSSProperties;
 };
-declare const Button: React.ForwardRefExoticComponent<Omit<ButtonProps, "type" | "href" | "icon" | "ghost" | "danger"> & ButtonSizeType & {
+declare const Button: React.ForwardRefExoticComponent<Omit<ButtonProps, "icon" | "type" | "href" | "ghost" | "danger"> & ButtonSizeType & {
     iconBefore?: React.ReactNode;
     iconAfter?: React.ReactNode;
     disabled?: boolean | undefined;

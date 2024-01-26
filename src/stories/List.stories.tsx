@@ -10,6 +10,22 @@ const { Item } = UIList;
 const meta: Meta<typeof UIList> = {
   component: UIList,
   title: "Components/UI List",
+  argTypes: {
+    header:{
+      description:"`ReactNode`"
+    },
+    footer:{
+      description:"`ReactNode`"
+    },
+    dataSource:{
+      description:"Array of `ReactNode` elements"
+    },
+    renderItem:{
+      type:"function",
+      description: "Render callback: `(item) => <Item>{item}</Item>`"
+    }
+
+  },
 };
 
 const data = [
@@ -22,15 +38,13 @@ const data = [
 type Story = StoryObj<typeof UIList>;
 
 export const Default: Story = {
-  render: () => (
-    <UIList
-      header={<div>List Header</div>}
-      footer={<div>List Footer</div>}
-      bordered
-      dataSource={data}
-      renderItem={(item) => <Item>{item}</Item>}
-    />
-  ),
+  args:{
+    header:<div>List Header</div>,
+    footer:<div>List Footer</div>,
+    bordered:true,
+    dataSource:data,
+    renderItem:(item) => <Item>{item}</Item>
+  },
 };
 
 export const NoHeaderFooter: Story = {

@@ -2,16 +2,39 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { default as UICollase } from "../components/Collapse";
+import UICollapse from "../components/Collapse/index";
 import UIHead3 from "../components/Heading/H3";
 import { UICollapseProps } from "../components/Collapse/Collapse";
 
-const meta: Meta<typeof UICollase> = {
-  component: UICollase,
+const meta: Meta<typeof UICollapse> = {
+  component: UICollapse,
   title: "Components/UI Collapse",
+  argTypes: {
+    defaultActiveKey: {
+      description: "Default open collapse item",
+    },
+    items: {
+      description: "key - unique id, label - header, children - `ReactNode`",
+    },
+    accordion:{
+      type:"boolean",
+      description:"If true, one active expended item at a time"
+    },
+    collapsible:{
+      controls:{
+        type:"radio",
+        options:["icon","header","disabled"]
+      },
+
+      description:"Collapsible trigger"
+    },
+    expandIcon:{
+      description:"Any ReactNode",
+    }
+  },
 };
 
-type Story = StoryObj<typeof UICollase>;
+type Story = StoryObj<typeof UICollapse>;
 
 const text = "Collapse content";
 
@@ -34,7 +57,9 @@ const items: UICollapseProps["items"] = [
 ];
 
 export const Default: Story = {
-  render: () => <UICollase defaultActiveKey={[1]} items={items} />,
+  args: {
+    defaultActiveKey: [1],
+    items: items,
+  },
 };
-
 export default meta;

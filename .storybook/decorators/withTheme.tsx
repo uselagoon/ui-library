@@ -15,7 +15,6 @@ const ThemeBlock = styled.div<{ left?: boolean; fill?: boolean }>(
     border-right: ${left ? "1px solid #202020" : "none"};
     right: ${left ? "50vw" : 0};
     width: ${fill ? "100vw" : "50vw"};
-    height: 100vh;
     bottom: 0;
     overflow: auto;
     padding: 1rem;

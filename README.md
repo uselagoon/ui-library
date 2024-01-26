@@ -5,11 +5,11 @@ Component library for all things lagoon related:
 Install with a single npm/yarn command:
 
 ```bash
-npm install github:uselagoon/ui-library#main antd styled-components @ant-design/icons
+npm install github:DaveDarsa/librarytest#main antd styled-components @ant-design/icons
 ```
 
 ```bash
-yarn add github:uselagoon/ui-library#main antd styled-components @ant-design/icons
+yarn add github:DaveDarsa/librarytest#main antd styled-components @ant-design/icons
 ```
 
 Alternatively, add the following to your `package.json` and run `npm i`:
