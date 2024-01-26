@@ -5,9 +5,19 @@ const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
+      controls: { expanded: true },
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
+      },
+    },
+    docs: {
+      source: {
+        language: "tsx",
+        type: "code",
+      },
+      story: {
+        height: "300px",
       },
     },
   },

@@ -7,6 +7,11 @@ import { default as UITabs, UITabsProps } from "../components/Tabs";
 const meta: Meta<typeof UITabs> = {
   component: UITabs,
   title: "Components/UITabs",
+  argTypes: {
+    items: {
+      description: "<b>unique</b> key | label | children - `ReactNode`",
+    },
+  },
 };
 
 type Story = StoryObj<typeof UITabs>;
@@ -29,7 +34,9 @@ const items: UITabsProps["items"] = [
   },
 ];
 export const Default: Story = {
-  render: () => <UITabs items={items} />,
+  args: {
+    items,
+  },
 };
 
 export default meta;

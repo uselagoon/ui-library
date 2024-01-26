@@ -12,6 +12,12 @@ const colors = {
       active: "#093C3B",
     },
   },
+  backgrounds:{
+    primary:{
+      light:"#F8F8F2",
+      dark: "#272822",
+    }
+  },
   texts: {
     primary: {
       light: "#222222",
@@ -34,6 +40,7 @@ const colors = {
   yellow: "#E6DB74",
   pink: "#F92672",
   green: "#A6E22E",
+  black:"#000",
 } as const;
 
 Object.freeze(colors);

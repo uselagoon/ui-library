@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 import ArabicProBold from "../fonts/ArabicPro-Bold.woff2";
 import ArabicProMedium from "../fonts/ArabicPro-Medium.woff2";
 import ArabicProRegular from "../fonts/ArabicPro-Regular.woff2";
@@ -14,6 +14,7 @@ html {
 
 body {
   font-size: 16px;
+  box-sizing: border-box;
 }
 
 @font-face {
@@ -59,6 +60,27 @@ body {
     background-color: transparent;
     padding: 0;
     border-radius: 0;
+  }
+  .ui-notification{
+
+    ${(props) =>
+      props.theme.colorScheme === "dark" &&
+      css`
+        box-shadow:
+          0px 9px 28px 8px #ffffff0d,
+          0px 6px 16px 0px #ffffff14,
+          0px 3px 6px -4px #ffffff1f;
+      `}
+    .ant-notification-notice-content {
+  
+    ~.ant-notification-notice-close, ~.ant-notification-notice-close:hover,  .ant-notification-notice-with-icon div{
+      color: ${(props) => props.theme.UI.texts.primary};
+    }
+
+  }
+    background-color: ${(props) => props.theme.UI.notification};
+
+
   }
 `;
 

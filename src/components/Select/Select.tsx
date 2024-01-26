@@ -12,7 +12,7 @@ const UISelect = forwardRef<RefSelectProps, SelectProps>((props, ref) => {
   return (
     <StyledSelect
       ref={ref}
-      defaultOpen
+      defaultOpen={props.defaultOpen || true}
       style={style}
       dropdownRender={(menu) => {
         return <StyledDropDown>{menu}</StyledDropDown>;
