@@ -9,22 +9,29 @@ export interface UITheme {
     backgrounds: {
       primary: string;
       secondary: string;
-      input:string;
+      input: string;
       modal: string;
-      dataCard;
+      dataCard: string;
+      selection: string;
+      lagoonCard: string;
+      footer: string;
+      header:string;
+      
     };
     texts: {
       primary: string;
       label: string;
-      secondary:string;
+      secondary: string;
+      timeline: string;
     };
     highlights: {
       selection: string;
     };
     borders: {
       box: string;
+      card: string;
     };
-    notification:string;
+    notification: string;
   };
 }
 

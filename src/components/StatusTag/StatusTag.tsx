@@ -8,6 +8,7 @@ import {
   SyncOutlined,
   WarningOutlined,
 } from "@ant-design/icons";
+import styled from "styled-components";
 
 const capitalizeFirstLetter = (str: string) =>
   str.charAt(0).toUpperCase() + str.slice(1);
@@ -61,11 +62,25 @@ const InternalTag: React.ForwardRefRenderFunction<
 
   const currentTag = tagColorMap[type];
   return (
-    <Tag ref={ref} className={className} color={currentTag.color} {...props}>
+    <StyledTag
+      ref={ref}
+      className={className}
+      color={currentTag.color}
+      {...props}
+    >
       {currentTag.icon} {capitalizeFirstLetter(type)}
-    </Tag>
+    </StyledTag>
   );
 };
+
+const StyledTag = styled(Tag)`
+  &.ant-tag {
+    color: #272822;
+    span[role="img"] {
+      color: #272822;
+    }
+  }
+`;
 
 const StatusTag = forwardRef<HTMLSpanElement, UITagProps>(InternalTag);
 

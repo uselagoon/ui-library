@@ -60,6 +60,7 @@ const StyledDetails = styled(Descriptions)`
               &:not(:last-of-type) {
                 border: 1px solid #fff;
               }
+              border: 1px solid #fff;
             }
           }
         }

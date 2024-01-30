@@ -68,4 +68,5 @@ export declare const IconTags: (props: Partial<CustomIconComponentProps>) => imp
 export declare const IconWifi: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
 export declare const IconZoomIn: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
 export declare const IconZoomOut: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
+export declare const LagoonIcon: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
 export {};

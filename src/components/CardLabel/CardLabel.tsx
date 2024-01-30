@@ -57,6 +57,7 @@ const StyledLabel = styled.div<{
   line-height: 30px;
   font-size: 20px;
   color: #222;
+  user-select: none;
   ${(props) =>
     props.currentColor === "#000" &&
     css`

@@ -6,7 +6,7 @@ import { default as LagoonCardLabel } from "../components/CardLabel";
 
 const meta: Meta<typeof LagoonCardLabel> = {
   component: LagoonCardLabel,
-  title: "Components/Lagoon specific/Cardlabel",
+  title: "Lagoon specific/Cardlabel",
 };
 
 type Story = StoryObj<typeof LagoonCardLabel>;

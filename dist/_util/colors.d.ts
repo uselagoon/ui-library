@@ -27,6 +27,10 @@ declare const colors: {
             readonly light: "#00000073";
             readonly dark: "#75715E";
         };
+        readonly timeline: {
+            readonly light: "#F8F8F2";
+            readonly dark: "#272822";
+        };
     };
     readonly darkGray: "#272822";
     readonly cellGray: "#868686";
@@ -40,6 +44,7 @@ declare const colors: {
     readonly yellow: "#E6DB74";
     readonly pink: "#F92672";
     readonly green: "#A6E22E";
+    readonly green2: "#A6E22D";
     readonly black: "#000";
 };
 export default colors;

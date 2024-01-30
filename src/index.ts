@@ -74,13 +74,41 @@ export type { UICardProps } from "./components/DataCard";
 export { default as UITaskTreeSelector } from "./components/TaskTreeSelector";
 export type { UITaskTreeSelectorProps } from "./components/TaskTreeSelector";
 
+export { default as UITree } from "./components/Tree";
+export type { UITreeProps } from "./components/Tree";
+
 export { default as LagoonCardLabel } from "./components/CardLabel";
 export type { LagoonCardLabelProps } from "./components/CardLabel";
 
 export { default as LagoonFilter } from "./components/Filter";
 export type { LagoonFilterProps } from "./components/Filter";
 
+export { default as LagoonCard } from "./components/Card";
+export type { LagoonCardProps } from "./components/Card";
+
+export { default as LagoonProblemsOverview } from "./components/ProblemsOverview";
+export type { LagoonProblemsOverviewProps } from "./components/ProblemsOverview";
+
+export { default as LagoonEnvironmentDetails } from "./components/EnvironmentDetails";
+export type { EnvironmentDetailsType } from "./components/EnvironmentDetails";
+
+export { default as LagoonProjectDetails } from "./components/ProjectDetails";
+export type { ProjectDetailsType } from "./components/ProjectDetails";
+
+export { default as LagoonHeader } from "./components/Header";
+export type { HeaderProps } from "./components/Header";
+
+export { default as LagoonFooter } from "./components/Footer";
+export type { FooterProps } from "./components/Footer";
+
+export { default as LagoonTimeline } from "./components/Timeline";
+export type { LagoonTimelineProps } from "./components/Timeline";
+
+export { default as CopyToClipboard } from "./components/CopyToClipboard";
+export type { ClipboardProps } from "./components/CopyToClipboard";
+
 export {
+  LagoonIcon,
   IconAim,
   IconAlert,
   IconAlignCenter,

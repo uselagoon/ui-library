@@ -5,11 +5,9 @@ const config: StorybookConfig = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
     "@storybook/addon-controls",
     "@storybook/addon-a11y",
-    "@storybook/jest",
   ],
 
   framework: {
@@ -26,15 +24,25 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true,
   },
+  swc: () => ({
+    jsc: {
+      transform: {
+        react: {
+          runtime: "automatic",
+        },
+      },
+    },
+  }),
   typescript: {
-	// HACK to make external lib props work with storybook
-	reactDocgenTypescriptOptions: {
-		shouldExtractLiteralValuesFromEnum: true,
-		propFilter: (prop) => ( prop.parent ? !/node_modules\/(?!ant).*/.test(prop.parent.fileName) : true),
-    savePropValueAsString: true,
-	  },
-
-  }
-
+    // HACK to make external lib props work with storybook
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop) =>
+        prop.parent
+          ? !/node_modules\/(?!ant).*/.test(prop.parent.fileName)
+          : true,
+      savePropValueAsString: true,
+    },
+  },
 };
 export default config;

@@ -3,9 +3,9 @@ import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 
 import { default as UIDetails } from "../components/Details";
-import UIHead3 from "../components/Heading/H3";
 import { UIDetailsType } from "../components/Details";
 import { Badge } from "antd";
+import CopyToClipboard from "../components/CopyToClipboard";
 
 const meta: Meta<typeof UIDetails> = {
   component: UIDetails,
@@ -93,10 +93,26 @@ const detailedItems: UIDetailsType["items"] = [
       </>
     ),
   },
+  {
+    key: "11",
+    label: "Git Url",
+    span: 1,
+    children: (
+      <CopyToClipboard
+        type="hidden"
+        text={"https://github.com/uselagoon/lagoon-ui"}
+      />
+    ),
+  },
 ];
 
 export const Default: Story = {
   render: () => <UIDetails title="Details component" items={items} />,
+};
+export const DetailedBordered: Story = {
+  render: () => (
+    <UIDetails title="Detailed component" bordered items={detailedItems} />
+  ),
 };
 export const Bordered: Story = {
   render: () => <UIDetails bordered title="Details component" items={items} />,

@@ -62,7 +62,6 @@ const InternalFilter: React.ForwardRefRenderFunction<
           />
         </div>
       </div>
-
       <div className="searchBar">
         <Search
           placeholder="Search"

@@ -14,7 +14,6 @@ const preview: Preview = {
     docs: {
       source: {
         language: "tsx",
-        type: "code",
       },
       story: {
         height: "300px",

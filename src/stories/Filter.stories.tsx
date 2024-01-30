@@ -6,7 +6,7 @@ import { default as LagoonFilter } from "../components/Filter";
 
 const meta: Meta<typeof LagoonFilter> = {
   component: LagoonFilter,
-  title: "Components/Lagoon specific/Filter",
+  title: "Lagoon specific/Filter",
 };
 
 type Story = StoryObj<typeof LagoonFilter>;
