@@ -1,8 +1,9 @@
 import React from "react";
-export type CardProps = {
+type DefaultProps = {
     text: string;
     count: string | number;
-} & ({
+};
+type ConditionProps = {
     critical: true;
     high?: never;
     medium?: never;
@@ -22,7 +23,8 @@ export type CardProps = {
     critical?: never;
     high?: never;
     medium?: never;
-});
+};
+export type CardProps = (DefaultProps & ConditionProps) | DefaultProps;
 declare const UIDataCard: React.ForwardRefExoticComponent<CardProps & React.RefAttributes<HTMLDivElement>>;
 export default UIDataCard;
 export type { CardProps as UICardProps };

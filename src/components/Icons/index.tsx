@@ -70,6 +70,7 @@ import { Tags } from "./vectors/Tags";
 import { Wifi } from "./vectors/Wifi";
 import { ZoomIn } from "./vectors/ZoomIn";
 import { ZoomOut } from "./vectors/ZoomOut";
+import { Lagoon } from "./vectors/Lagoon";
 
 type CustomIconComponentProps = GetProps<typeof Icon>;
 
@@ -315,4 +316,7 @@ export const IconZoomIn = (props: Partial<CustomIconComponentProps>) => (
 );
 export const IconZoomOut = (props: Partial<CustomIconComponentProps>) => (
   <Icon component={ZoomOut} {...props} />
+);
+export const LagoonIcon = (props: Partial<CustomIconComponentProps>) => (
+  <Icon component={Lagoon} {...props} />
 );

@@ -25,13 +25,13 @@ export const StyledTextElement = styled(TextElement)`
 
 export const StyledLinkElement = styled(LinkElement)`
   &.ant-typography {
-    color: #fff;
+    color: ${props => props.theme.UI.texts.primary};
     ${sharedStyles};
     text-decoration: underline;
     &:link,
     &:hover,
     &:visited {
-      color: #fff;
+      color: ${props => props.theme.UI.texts.primary};
     }
   }
 `;

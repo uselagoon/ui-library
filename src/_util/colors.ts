@@ -12,25 +12,29 @@ const colors = {
       active: "#093C3B",
     },
   },
-  backgrounds:{
-    primary:{
-      light:"#F8F8F2",
+  backgrounds: {
+    primary: {
+      light: "#F8F8F2",
       dark: "#272822",
-    }
+    },
   },
   texts: {
     primary: {
       light: "#222222",
       dark: "#fff",
     },
-    secondary:{
-      light:"#00000073",
-      dark:"#75715E"
-    }
+    secondary: {
+      light: "#00000073",
+      dark: "#75715E",
+    },
+    timeline: {
+      light: "#F8F8F2",
+      dark: "#272822",
+    },
   },
   darkGray: "#272822",
   cellGray: "#868686",
-  lighterGray:"#282828",
+  lighterGray: "#282828",
   orange: "#FD971F",
   lightOrange: "#E69F66",
   blue: "#66D9EF",
@@ -40,7 +44,8 @@ const colors = {
   yellow: "#E6DB74",
   pink: "#F92672",
   green: "#A6E22E",
-  black:"#000",
+  green2: "#A6E22D",
+  black: "#000",
 } as const;
 
 Object.freeze(colors);

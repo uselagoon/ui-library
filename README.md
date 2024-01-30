@@ -26,6 +26,9 @@ Alternatively, add the following to your `package.json` and run `npm i`:
 
 ```
 
+#### Viewing storybook:
+* clone this repo
+* run `npm run storybook`
 
 Using a component from the library:
 

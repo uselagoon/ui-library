@@ -2,17 +2,20 @@ import React, { forwardRef } from "react";
 import styled from "styled-components";
 import colors from "../../_util/colors";
 
-export type CardProps = {
+type DefaultProps = {
   text: string;
   count: string | number;
-} & (
+};
+
+type ConditionProps =
   | { critical: true; high?: never; medium?: never; low?: never }
   | { high: true; critical?: never; medium?: never; low?: never }
   | { medium: true; critical?: never; high?: never; low?: never }
-  | { low: true; critical?: never; high?: never; medium?: never }
-);
+  | { low: true; critical?: never; high?: never; medium?: never };
 
-const getColor = (props: CardProps) => {
+export type CardProps = (DefaultProps & ConditionProps) | DefaultProps;
+
+const getColor = (props: ConditionProps) => {
   if (props.critical) {
     return colors.pink;
   }
@@ -34,7 +37,11 @@ const InternalDataCard: React.ForwardRefRenderFunction<
 > = (props, ref) => {
   const { text, count } = props;
 
-  const severityColor = getColor(props);
+  const keysToCheck = ["critical", "high", "medium", "low"];
+
+  const severityColor = keysToCheck.every((key) => !(key in props))
+    ? "#fff"
+    : getColor(props as ConditionProps);
 
   return (
     <StyledCard className="ui-datacard" ref={ref} severityColor={severityColor}>

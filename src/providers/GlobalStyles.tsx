@@ -5,8 +5,17 @@ import ArabicProRegular from "../fonts/ArabicPro-Regular.woff2";
 import AmericaMonoRegular from "../fonts/AmericaMono-Regular.woff2";
 import HelveticaRegular from "../fonts/HelveticaExtended-Regular.woff2";
 import RobotoRegular from "../fonts/roboto-regular.woff2";
+import OpenSansRegular from "../fonts/opensans-regular.woff2";
+import OpenSansBold from "../fonts/opensans-bold.woff2";
+import OpenSansSemibold from "../fonts/opensans-semibold.woff2";
 
 const GlobalStyles = createGlobalStyle`
+
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+}
 
 html {
   font-size: 100%; /* 1rem = 100% = 16px */
@@ -55,7 +64,31 @@ body {
     font-style: normal;
     font-display: block;
   }
-  
+
+@font-face {
+  font-family: 'Open Sans';
+  src:  url('${OpenSansRegular}')  format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src:  url('${OpenSansBold}')  format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src:  url('${OpenSansSemibold}')  format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+}
+
   .ant-select-dropdown {
     background-color: transparent;
     padding: 0;

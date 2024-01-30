@@ -7,7 +7,7 @@ import { CarryOutOutlined } from "@ant-design/icons";
 
 const meta: Meta<typeof UITaskTreeSelector> = {
   component: UITaskTreeSelector,
-  title: "Components/Lagoon specific/UITaskTreeSelector",
+  title: "Lagoon specific/UITaskTreeSelector",
 };
 
 type Story = StoryObj<typeof UITaskTreeSelector>;
