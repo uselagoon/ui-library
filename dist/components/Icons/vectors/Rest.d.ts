@@ -1,1 +1,1 @@
-export declare const Rest: () => import("react/jsx-runtime").JSX.Element;
+export declare const Rest: (props: any) => import("react/jsx-runtime").JSX.Element;

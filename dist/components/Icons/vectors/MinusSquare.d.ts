@@ -1,1 +1,1 @@
-export declare const MinusSquare: () => import("react/jsx-runtime").JSX.Element;
+export declare const MinusSquare: (props: any) => import("react/jsx-runtime").JSX.Element;

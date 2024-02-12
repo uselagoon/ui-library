@@ -1,1 +1,1 @@
-export declare const Bug: () => import("react/jsx-runtime").JSX.Element;
+export declare const Bug: (props: any) => import("react/jsx-runtime").JSX.Element;

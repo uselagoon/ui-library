@@ -1,1 +1,1 @@
-export declare const Settings: () => import("react/jsx-runtime").JSX.Element;
+export declare const Settings: (props: any) => import("react/jsx-runtime").JSX.Element;

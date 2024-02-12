@@ -1,1 +1,1 @@
-export declare const Check: () => import("react/jsx-runtime").JSX.Element;
+export declare const Check: (props: any) => import("react/jsx-runtime").JSX.Element;

@@ -1,1 +1,1 @@
-export declare const Search: () => import("react/jsx-runtime").JSX.Element;
+export declare const Search: (props: any) => import("react/jsx-runtime").JSX.Element;

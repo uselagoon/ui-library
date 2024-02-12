@@ -47,7 +47,7 @@ export type { CheckboxProps } from './components/Checkbox';
 export { default as Select } from './components/Select';
 export type { SelectProps } from './components/Select';
 
-export { default as tabs } from './components/Tabs';
+export { default as Tabs } from './components/Tabs';
 export type { TabsProps } from './components/Tabs';
 
 export { default as BreadCrumb } from './components/Breadcrumb';

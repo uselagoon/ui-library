@@ -1,1 +1,1 @@
-export declare const Branches: () => import("react/jsx-runtime").JSX.Element;
+export declare const Branches: (props: any) => import("react/jsx-runtime").JSX.Element;

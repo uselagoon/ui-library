@@ -1,1 +1,1 @@
-export declare const Highlight: () => import("react/jsx-runtime").JSX.Element;
+export declare const Highlight: (props: any) => import("react/jsx-runtime").JSX.Element;

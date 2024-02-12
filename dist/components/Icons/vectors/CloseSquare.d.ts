@@ -1,1 +1,1 @@
-export declare const CloseSquare: () => import("react/jsx-runtime").JSX.Element;
+export declare const CloseSquare: (props: any) => import("react/jsx-runtime").JSX.Element;

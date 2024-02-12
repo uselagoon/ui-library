@@ -1,1 +1,1 @@
-export declare const PaperClip: () => import("react/jsx-runtime").JSX.Element;
+export declare const PaperClip: (props: any) => import("react/jsx-runtime").JSX.Element;

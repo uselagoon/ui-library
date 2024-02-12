@@ -1,1 +1,1 @@
-export declare const Hdd: () => import("react/jsx-runtime").JSX.Element;
+export declare const Hdd: (props: any) => import("react/jsx-runtime").JSX.Element;

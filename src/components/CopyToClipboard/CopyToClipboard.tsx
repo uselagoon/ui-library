@@ -32,7 +32,7 @@ const CopyToClipboard: FC<ClipboardProps> = ({
 
   return (
     <StyledText style={{ ...computedStyles }}>
-      <CopyableText className="copyable" maxWidth={width} type={type}>
+      <CopyableText className="copyable" $maxWidth={width} type={type}>
         {text}
       </CopyableText>
 
@@ -49,14 +49,14 @@ const CopyToClipboard: FC<ClipboardProps> = ({
 
 const CopyableText = styled.span<{
   type: ClipboardProps["type"];
-  maxWidth?: number;
+  $maxWidth?: number;
 }>`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   color: ${(props) => props.theme.UI.texts.primary};
   max-width: ${(props) =>
-    props.maxWidth ? `${props.maxWidth}px` : "18.75rem"};
+    props.$maxWidth ? `${props.$maxWidth}px` : "18.75rem"};
   ${(props) =>
     props.type === "hidden" &&
     css`

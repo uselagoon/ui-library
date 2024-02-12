@@ -1,1 +1,1 @@
-export declare const ArrowDown: () => import("react/jsx-runtime").JSX.Element;
+export declare const ArrowDown: (props: any) => import("react/jsx-runtime").JSX.Element;

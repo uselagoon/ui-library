@@ -1,1 +1,1 @@
-export declare const CheckSquare: () => import("react/jsx-runtime").JSX.Element;
+export declare const CheckSquare: (props: any) => import("react/jsx-runtime").JSX.Element;

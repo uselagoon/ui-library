@@ -1,1 +1,1 @@
-export declare const Smile: () => import("react/jsx-runtime").JSX.Element;
+export declare const Smile: (props: any) => import("react/jsx-runtime").JSX.Element;

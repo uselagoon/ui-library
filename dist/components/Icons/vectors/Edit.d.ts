@@ -1,1 +1,1 @@
-export declare const Edit: () => import("react/jsx-runtime").JSX.Element;
+export declare const Edit: (props: any) => import("react/jsx-runtime").JSX.Element;

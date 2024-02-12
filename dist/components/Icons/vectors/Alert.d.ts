@@ -1,1 +1,1 @@
-export declare const Alert: () => import("react/jsx-runtime").JSX.Element;
+export declare const Alert: (props: any) => import("react/jsx-runtime").JSX.Element;

@@ -1,1 +1,1 @@
-export declare const Tags: () => import("react/jsx-runtime").JSX.Element;
+export declare const Tags: (props: any) => import("react/jsx-runtime").JSX.Element;

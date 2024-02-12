@@ -1,1 +1,1 @@
-export declare const Heart: () => import("react/jsx-runtime").JSX.Element;
+export declare const Heart: (props: any) => import("react/jsx-runtime").JSX.Element;

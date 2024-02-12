@@ -1,1 +1,1 @@
-export declare const Save: () => import("react/jsx-runtime").JSX.Element;
+export declare const Save: (props: any) => import("react/jsx-runtime").JSX.Element;

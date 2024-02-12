@@ -1,1 +1,1 @@
-export declare const Delete: () => import("react/jsx-runtime").JSX.Element;
+export declare const Delete: (props: any) => import("react/jsx-runtime").JSX.Element;

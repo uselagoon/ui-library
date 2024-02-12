@@ -1,1 +1,1 @@
-export declare const Bulb: () => import("react/jsx-runtime").JSX.Element;
+export declare const Bulb: (props: any) => import("react/jsx-runtime").JSX.Element;

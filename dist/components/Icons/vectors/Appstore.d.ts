@@ -1,1 +1,1 @@
-export declare const Appstore: () => import("react/jsx-runtime").JSX.Element;
+export declare const Appstore: (props: any) => import("react/jsx-runtime").JSX.Element;

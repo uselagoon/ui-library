@@ -1,1 +1,1 @@
-export declare const PushpinOutlined: () => import("react/jsx-runtime").JSX.Element;
+export declare const PushpinOutlined: (props: any) => import("react/jsx-runtime").JSX.Element;

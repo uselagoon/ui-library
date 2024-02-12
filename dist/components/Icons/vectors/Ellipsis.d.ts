@@ -1,1 +1,1 @@
-export declare const Ellipsis: () => import("react/jsx-runtime").JSX.Element;
+export declare const Ellipsis: (props: any) => import("react/jsx-runtime").JSX.Element;
