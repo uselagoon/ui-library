@@ -2,13 +2,13 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import UICollapse from "../components/Collapse/index";
-import UIHead3 from "../components/Heading/H3";
-import { UICollapseProps } from "../components/Collapse/Collapse";
+import Collapse from "../components/Collapse/index";
+import Head3 from "../components/Heading/H3";
+import { UICollapseProps as CollapseProps } from "../components/Collapse/Collapse";
 
-const meta: Meta<typeof UICollapse> = {
-  component: UICollapse,
-  title: "Components/UI Collapse",
+const meta: Meta<typeof Collapse> = {
+  component: Collapse,
+  title: "Components/Collapse",
   argTypes: {
     defaultActiveKey: {
       description: "Default open collapse item",
@@ -34,15 +34,15 @@ const meta: Meta<typeof UICollapse> = {
   },
 };
 
-type Story = StoryObj<typeof UICollapse>;
+type Story = StoryObj<typeof Collapse>;
 
 const text = "Collapse content";
 
-const items: UICollapseProps["items"] = [
+const items: CollapseProps["items"] = [
   {
     key: "1",
     label: "This is panel header 1",
-    children: <UIHead3>{text}</UIHead3>,
+    children: <Head3>{text}</Head3>,
   },
   {
     key: "2",

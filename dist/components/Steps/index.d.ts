@@ -1,3 +1,3 @@
-import { default as UISteps, UIStepsProps } from "./Steps";
-export type { UIStepsProps };
-export default UISteps;
+import { default as Steps, UIStepsProps as StepsProps } from "./Steps";
+export type { StepsProps };
+export default Steps;

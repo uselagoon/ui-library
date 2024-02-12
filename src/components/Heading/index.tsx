@@ -1,8 +1,8 @@
 import {
-  default as UIHeading,
-  InternalHeadingProps as UIHeadingProps,
+  default as Heading,
+  InternalHeadingProps as HeadingProps,
 } from "./Heading";
 
-export type { UIHeadingProps };
+export type { HeadingProps };
 
-export default UIHeading;
+export default Heading;

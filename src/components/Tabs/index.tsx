@@ -1,5 +1,5 @@
-import { default as UITabs, UITabsProps } from "./Tabs";
+import { default as Tabs, UITabsProps as TabsProps } from "./Tabs";
 
-export type { UITabsProps };
+export type { TabsProps };
 
-export default UITabs;
+export default Tabs;

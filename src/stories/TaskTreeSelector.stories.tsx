@@ -2,15 +2,15 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { default as UITaskTreeSelector } from "../components/TaskTreeSelector";
+import { default as TaskTreeSelector } from "../components/TaskTreeSelector";
 import { CarryOutOutlined } from "@ant-design/icons";
 
-const meta: Meta<typeof UITaskTreeSelector> = {
-  component: UITaskTreeSelector,
-  title: "Lagoon specific/UITaskTreeSelector",
+const meta: Meta<typeof TaskTreeSelector> = {
+  component: TaskTreeSelector,
+  title: "Lagoon specific/TaskTreeSelector",
 };
 
-type Story = StoryObj<typeof UITaskTreeSelector>;
+type Story = StoryObj<typeof TaskTreeSelector>;
 
 const treeData = [
   {
@@ -84,13 +84,13 @@ const treeData = [
 
 export const Default: Story = {
   render: () => (
-    <UITaskTreeSelector placeholder="Select an action" treeData={treeData} />
+    <TaskTreeSelector placeholder="Select an action" treeData={treeData} />
   ),
 };
 
 export const SelectableSections: Story = {
   render: () => (
-    <UITaskTreeSelector
+    <TaskTreeSelector
       placeholder="Select an action or the whole section"
       sectionsCheckable
       treeData={treeData}

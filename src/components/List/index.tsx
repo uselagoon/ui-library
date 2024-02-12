@@ -1,5 +1,5 @@
-import { default as UIList, UIListProps as UIListType } from "./List";
+import { default as List, UIListProps as ListType } from "./List";
 
-export type { UIListType };
+export type { ListType };
 
-export default UIList;
+export default List;

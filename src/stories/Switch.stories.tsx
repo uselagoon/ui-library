@@ -2,14 +2,14 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { default as UISwitch } from "../components/Switch";
+import { default as Switch } from "../components/Switch";
 
-const meta: Meta<typeof UISwitch> = {
-  component: UISwitch,
-  title: "Components/UISwitch",
+const meta: Meta<typeof Switch> = {
+  component: Switch,
+  title: "Components/Switch",
 };
 
-type Story = StoryObj<typeof UISwitch>;
+type Story = StoryObj<typeof Switch>;
 
 export const Default: Story = {
   args: {
@@ -17,7 +17,7 @@ export const Default: Story = {
   },
 };
 export const NoLabel: Story = {
-  render: () => <UISwitch showLabel={false} />,
+  render: () => <Switch showLabel={false} />,
 };
 
 export default meta;

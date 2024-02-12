@@ -1,8 +1,8 @@
 import {
-  default as UITextLabel,
-  InternalTextLabelType as UITextLabelType,
+  default as TextLabel,
+  InternalTextLabelType as TextLabelType,
 } from "./TextLabel";
 
-export type { UITextLabelType };
+export type { TextLabelType };
 
-export default UITextLabel;
+export default TextLabel;

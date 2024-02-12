@@ -2,7 +2,7 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { default as UISteps } from "../components/Steps";
+import { default as Steps } from "../components/Steps";
 import {
   CheckSquareOutlined,
   LoadingOutlined,
@@ -10,9 +10,9 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 
-const meta: Meta<typeof UISteps> = {
-  component: UISteps,
-  title: "Components/UISteps",
+const meta: Meta<typeof Steps> = {
+  component: Steps,
+  title: "Components/Steps",
 
   argTypes: {
     items: {
@@ -44,7 +44,7 @@ const items = [
   },
 ];
 
-type Story = StoryObj<typeof UISteps>;
+type Story = StoryObj<typeof Steps>;
 
 export const Default: Story = {
   args: {

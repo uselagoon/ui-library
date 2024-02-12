@@ -2,11 +2,11 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { default as UITabs, UITabsProps } from "../components/Tabs";
+import { default as Tabs, TabsProps } from "../components/Tabs";
 
-const meta: Meta<typeof UITabs> = {
-  component: UITabs,
-  title: "Components/UITabs",
+const meta: Meta<typeof Tabs> = {
+  component: Tabs,
+  title: "Components/Tabs",
   argTypes: {
     items: {
       description: "<b>unique</b> key | label | children - `ReactNode`",
@@ -14,9 +14,9 @@ const meta: Meta<typeof UITabs> = {
   },
 };
 
-type Story = StoryObj<typeof UITabs>;
+type Story = StoryObj<typeof Tabs>;
 
-const items: UITabsProps["items"] = [
+const items: TabsProps["items"] = [
   {
     key: "1",
     label: "Tab 1",

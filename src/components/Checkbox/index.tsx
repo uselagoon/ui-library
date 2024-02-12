@@ -1,5 +1,5 @@
-import { default as UICheckbox, UICheckboxProps } from "./Checkbox";
+import { default as Checkbox, UICheckboxProps as CheckboxProps } from "./Checkbox";
 
-export type { UICheckboxProps };
+export type { CheckboxProps };
 
-export default UICheckbox;
+export default Checkbox;
