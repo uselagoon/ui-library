@@ -98,28 +98,8 @@ export default function StyledComponentsRegistry({ children }: { children: React
   return <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>{children}</StyleSheetManager>;
 }
 ```
-### Usage in the root layout:
-```tsx
-import StyledComponentsRegistry from './lib/StyledComponentsRegistry';
-import AntdRegistry from './lib/AntdRegistry';
+# Theming + Usage in the root layout:
 
-{ ... }
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <body>
-        <StyledComponentsRegistry>
-          <AntdRegistry>{children}</AntdRegistry>
-        </StyledComponentsRegistry>
-      </body>
-    </html>
-  );
-}
-
-```
-
-# Theming
 Theming is supported out of the box with default `UI` specific color schemes that work with the components, which can be extended from your own Provider, example below uses UI library provided global styles and users the `UIThemeProvider` to enable light/dark mode theming;
 
 The default theme can be extended by providing a `darkThemeProp` or a `lightThemeProp` of type   `Record<string, string> `
