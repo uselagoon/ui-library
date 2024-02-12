@@ -1,1 +1,1 @@
-export declare const Meh: () => import("react/jsx-runtime").JSX.Element;
+export declare const Meh: (props: any) => import("react/jsx-runtime").JSX.Element;

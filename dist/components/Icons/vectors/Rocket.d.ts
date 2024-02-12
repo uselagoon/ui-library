@@ -1,1 +1,1 @@
-export declare const Rocket: () => import("react/jsx-runtime").JSX.Element;
+export declare const Rocket: (props: any) => import("react/jsx-runtime").JSX.Element;

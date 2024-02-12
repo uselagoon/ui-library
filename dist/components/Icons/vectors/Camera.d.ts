@@ -1,1 +1,1 @@
-export declare const Camera: () => import("react/jsx-runtime").JSX.Element;
+export declare const Camera: (props: any) => import("react/jsx-runtime").JSX.Element;

@@ -30,7 +30,7 @@ const InternalLabel: React.ForwardRefRenderFunction<
   const currentColor = colorMap[type];
 
   return (
-    <StyledLabel className="lagoon-label" currentColor={currentColor} ref={ref}>
+    <StyledLabel className="lagoon-label" $currentColor={currentColor} ref={ref}>
       <span>{type}</span>
     </StyledLabel>
   );
@@ -41,7 +41,7 @@ const UICardLabel = forwardRef<HTMLDivElement, LagoonCardLabelProps>(
 );
 
 const StyledLabel = styled.div<{
-  currentColor: (typeof colorMap)[keyof typeof colorMap];
+  $currentColor: (typeof colorMap)[keyof typeof colorMap];
 }>`
   transform: rotate(90deg);
   text-transform: uppercase;
@@ -59,12 +59,12 @@ const StyledLabel = styled.div<{
   color: #222;
   user-select: none;
   ${(props) =>
-    props.currentColor === "#000" &&
+    props.$currentColor === "#000" &&
     css`
       color: ${colors.white};
     `}
   max-height: 30px;
-  background-color: ${(props) => props.currentColor};
+  background-color: ${(props) => props.$currentColor};
   span {
     display: inline-block;
     transform: rotate(-180deg);

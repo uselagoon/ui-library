@@ -1,1 +1,1 @@
-export declare const FullscreenExit: () => import("react/jsx-runtime").JSX.Element;
+export declare const FullscreenExit: (props: any) => import("react/jsx-runtime").JSX.Element;

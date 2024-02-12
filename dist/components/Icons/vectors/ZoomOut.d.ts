@@ -1,1 +1,1 @@
-export declare const ZoomOut: () => import("react/jsx-runtime").JSX.Element;
+export declare const ZoomOut: (props: any) => import("react/jsx-runtime").JSX.Element;

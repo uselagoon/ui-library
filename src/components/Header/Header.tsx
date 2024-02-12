@@ -49,7 +49,7 @@ const InternalHeader: React.ForwardRefRenderFunction<
       <div className="user-details">
         <StyledAvatar
           className="avatar"
-          bgcolor={imagePresent ? null : avatarBg}
+          $bgcolor={imagePresent ? null : avatarBg}
         >
           {!imagePresent ? (
             <span> {`${firstName.charAt(0)} ${lastName.charAt(0)}`}</span>

@@ -1,1 +1,1 @@
-export declare const PushpinFilled: () => import("react/jsx-runtime").JSX.Element;
+export declare const PushpinFilled: (props: any) => import("react/jsx-runtime").JSX.Element;

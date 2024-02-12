@@ -1,1 +1,1 @@
-export declare const Lock: () => import("react/jsx-runtime").JSX.Element;
+export declare const Lock: (props: any) => import("react/jsx-runtime").JSX.Element;

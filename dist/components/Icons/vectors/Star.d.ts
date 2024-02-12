@@ -1,1 +1,1 @@
-export declare const Star: () => import("react/jsx-runtime").JSX.Element;
+export declare const Star: (props: any) => import("react/jsx-runtime").JSX.Element;

@@ -1,1 +1,1 @@
-export declare const FilePdf: () => import("react/jsx-runtime").JSX.Element;
+export declare const FilePdf: (props: any) => import("react/jsx-runtime").JSX.Element;

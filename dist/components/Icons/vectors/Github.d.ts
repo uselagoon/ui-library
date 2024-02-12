@@ -1,1 +1,1 @@
-export declare const Github: () => import("react/jsx-runtime").JSX.Element;
+export declare const Github: (props: any) => import("react/jsx-runtime").JSX.Element;

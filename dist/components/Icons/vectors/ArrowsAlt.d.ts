@@ -1,1 +1,1 @@
-export declare const ArrowsAlt: () => import("react/jsx-runtime").JSX.Element;
+export declare const ArrowsAlt: (props: any) => import("react/jsx-runtime").JSX.Element;

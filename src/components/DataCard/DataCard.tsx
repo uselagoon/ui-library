@@ -44,7 +44,7 @@ const InternalDataCard: React.ForwardRefRenderFunction<
     : getColor(props as ConditionProps);
 
   return (
-    <StyledCard className="ui-datacard" ref={ref} severityColor={severityColor}>
+    <StyledCard className="ui-datacard" ref={ref} $severityColor={severityColor}>
       <span className="ui-datacard__text">{text}</span>
       <span className="ui-datacard__count">{count}</span>
     </StyledCard>
@@ -52,13 +52,13 @@ const InternalDataCard: React.ForwardRefRenderFunction<
 };
 
 const StyledCard = styled.div<{
-  severityColor: string;
+  $severityColor: string;
 }>`
   font-family: "AmericaMono-Regular", sans-serif;
   text-transform: uppercase;
   width: 100px;
   height: 62px;
-  color: ${(props) => props.severityColor};
+  color: ${(props) => props.$severityColor};
   border: 1px solid ${(props) => props.theme.UI.borders.box};
   border-radius: 5px;
   padding: 5px 4px;

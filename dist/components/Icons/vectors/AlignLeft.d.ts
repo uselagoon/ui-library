@@ -1,1 +1,1 @@
-export declare const AlignLeft: () => import("react/jsx-runtime").JSX.Element;
+export declare const AlignLeft: (props: any) => import("react/jsx-runtime").JSX.Element;

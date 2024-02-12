@@ -1,1 +1,1 @@
-export declare const Frown: () => import("react/jsx-runtime").JSX.Element;
+export declare const Frown: (props: any) => import("react/jsx-runtime").JSX.Element;

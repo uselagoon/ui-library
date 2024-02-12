@@ -1,1 +1,1 @@
-export declare const FileImage: () => import("react/jsx-runtime").JSX.Element;
+export declare const FileImage: (props: any) => import("react/jsx-runtime").JSX.Element;

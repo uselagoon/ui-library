@@ -1,1 +1,1 @@
-export declare const FileJpg: () => import("react/jsx-runtime").JSX.Element;
+export declare const FileJpg: (props: any) => import("react/jsx-runtime").JSX.Element;

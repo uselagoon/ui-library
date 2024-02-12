@@ -1,1 +1,1 @@
-export declare const Plus: () => import("react/jsx-runtime").JSX.Element;
+export declare const Plus: (props: any) => import("react/jsx-runtime").JSX.Element;

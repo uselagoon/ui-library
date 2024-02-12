@@ -1,1 +1,1 @@
-export declare const ExclamationCircle: () => import("react/jsx-runtime").JSX.Element;
+export declare const ExclamationCircle: (props: any) => import("react/jsx-runtime").JSX.Element;
