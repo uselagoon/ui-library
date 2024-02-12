@@ -1,8 +1,7 @@
-export const Loading = () => {
+export const Loading = (props: any) => {
   return (
     <svg
-      width="172"
-      height="172"
+      {...props}
       viewBox="0 0 172 172"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
