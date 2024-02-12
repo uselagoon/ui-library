@@ -2,14 +2,14 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { default as UIList } from "../components/List";
-import UIHead3 from "../components/Heading/H3";
+import { default as List } from "../components/List";
+import Head3 from "../components/Heading/H3";
 
-const { Item } = UIList;
+const { Item } = List;
 
-const meta: Meta<typeof UIList> = {
-  component: UIList,
-  title: "Components/UI List",
+const meta: Meta<typeof List> = {
+  component: List,
+  title: "Components/List",
   argTypes: {
     header:{
       description:"`ReactNode`"
@@ -22,7 +22,7 @@ const meta: Meta<typeof UIList> = {
     },
     renderItem:{
       type:"function",
-      description: "Render callback: `(item) => <Item>{item}</Item>`"
+      description: "Render callback: `(item) => <List.Item>{item}</List.Item>`"
     }
 
   },
@@ -35,7 +35,7 @@ const data = [
   "Action: Dump MariaDB to home directory.",
 ];
 
-type Story = StoryObj<typeof UIList>;
+type Story = StoryObj<typeof List>;
 
 export const Default: Story = {
   args:{
@@ -49,7 +49,7 @@ export const Default: Story = {
 
 export const NoHeaderFooter: Story = {
   render: () => (
-    <UIList
+    <List
       bordered
       dataSource={data}
       renderItem={(item) => <Item>{item}</Item>}
@@ -59,14 +59,14 @@ export const NoHeaderFooter: Story = {
 
 export const WithHeadings: Story = {
   render: () => (
-    <UIList
+    <List
       header={<div>List Header</div>}
       footer={<div>List Footer</div>}
       bordered
       dataSource={data}
       renderItem={(item) => (
         <Item>
-          <UIHead3>{item}</UIHead3>
+          <Head3>{item}</Head3>
         </Item>
       )}
     />

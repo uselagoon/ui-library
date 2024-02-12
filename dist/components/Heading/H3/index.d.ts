@@ -1,2 +1,2 @@
-import { default as UIHead3 } from "./H3";
-export default UIHead3;
+import { default as Head3 } from "./H3";
+export default Head3;

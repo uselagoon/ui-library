@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { default as UIModal } from "../components/Modal";
-import UIButton from "../components/Button";
+import { default as Modal } from "../components/Modal";
+import Button from "../components/Button";
 
 function AllNotificationsComponent() {
   const [loading, setLoading] = useState(false);
@@ -27,9 +27,9 @@ function AllNotificationsComponent() {
 
   return (
     <>
-      <UIButton onClick={showModal}>Show Modal</UIButton>
+      <Button onClick={showModal}>Show Modal</Button>
 
-      <UIModal
+      <Modal
         title={<h2>Modal title</h2>}
         subTitle="subtitle"
         open={open}
@@ -37,17 +37,17 @@ function AllNotificationsComponent() {
         onOk={handleCancel}
       >
         <div style={{ height: "300px" }}>Modal content</div>
-      </UIModal>
+      </Modal>
     </>
   );
 }
 
-const meta: Meta<typeof UIModal> = {
+const meta: Meta<typeof Modal> = {
   component: AllNotificationsComponent,
-  title: "Components/UIModal",
+  title: "Components/Modal",
 };
 
-type Story = StoryObj<typeof UIModal>;
+type Story = StoryObj<typeof Modal>;
 
 export const Default: Story = {
   args: {},

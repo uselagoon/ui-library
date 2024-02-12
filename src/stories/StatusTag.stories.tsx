@@ -2,12 +2,12 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { default as UIStatusTag } from "../components/StatusTag";
+import { default as StatusTag } from "../components/StatusTag";
 import { SmileOutlined } from "@ant-design/icons";
 
-const meta: Meta<typeof UIStatusTag> = {
-  component: UIStatusTag,
-  title: "Components/UIStatusTag",
+const meta: Meta<typeof StatusTag> = {
+  component: StatusTag,
+  title: "Components/StatusTag",
   argTypes: {
     type: {
       description: "Select from preconfigured tags, or use the `custom` object",
@@ -28,7 +28,7 @@ const meta: Meta<typeof UIStatusTag> = {
   },
 };
 
-type Story = StoryObj<typeof UIStatusTag>;
+type Story = StoryObj<typeof StatusTag>;
 
 export const Complete: Story = {
   args: {

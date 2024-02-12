@@ -3,33 +3,33 @@ import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 
 import {
-  default as useUINotification,
+  default as useNotification,
   NotificationType,
 } from "../components/Notification";
-import UIButton from "../components/Button";
+import Button from "../components/Button";
 import { Space } from "antd";
 
 function AllNotificationsComponent() {
-  const notif = useUINotification({
+  const notif = useNotification({
     type: "info",
     title: "Info",
     content: "Yup, here's some info",
     showBtn: true,
     btnLabel: "Close me!",
   });
-  const error = useUINotification({
+  const error = useNotification({
     type: "error",
     title: "There was an error",
     content: "Some sort of error",
   });
 
-  const success = useUINotification({
+  const success = useNotification({
     type: "success",
     title: "Success",
     content: "Wow success",
   });
 
-  const warning = useUINotification({
+  const warning = useNotification({
     type: "warning",
     title: "Warning",
     content: "You've been warned! ",
@@ -42,10 +42,10 @@ function AllNotificationsComponent() {
       {success.contextHolder}
       {warning.contextHolder}
       <Space>
-        <UIButton onClick={() => notif.trigger()}>Info </UIButton>
-        <UIButton onClick={() => error.trigger()}>Error </UIButton>
-        <UIButton onClick={() => success.trigger()}>Success </UIButton>
-        <UIButton onClick={() => warning.trigger()}>Warning </UIButton>
+        <Button onClick={() => notif.trigger()}>Info </Button>
+        <Button onClick={() => error.trigger()}>Error </Button>
+        <Button onClick={() => success.trigger()}>Success </Button>
+        <Button onClick={() => warning.trigger()}>Warning </Button>
       </Space>
     </>
   );
@@ -57,7 +57,7 @@ function ErrorNotification({
   content,
   requiresManualClose,
 }: NotificationType) {
-  const error = useUINotification({
+  const error = useNotification({
     type,
     title,
     content,
@@ -67,7 +67,7 @@ function ErrorNotification({
   return (
     <>
       {error.contextHolder}
-      <UIButton onClick={() => error.trigger()}>Error </UIButton>
+      <Button onClick={() => error.trigger()}>Error </Button>
     </>
   );
 }
@@ -78,7 +78,7 @@ function WarningNotification({
   content,
   requiresManualClose,
 }: NotificationType) {
-  const warning = useUINotification({
+  const warning = useNotification({
     type,
     title,
     content,
@@ -88,14 +88,14 @@ function WarningNotification({
   return (
     <>
       {warning.contextHolder}
-      <UIButton onClick={() => warning.trigger()}>Warning </UIButton>
+      <Button onClick={() => warning.trigger()}>Warning </Button>
     </>
   );
 }
 
-const meta: Meta<typeof useUINotification> = {
+const meta: Meta<typeof useNotification> = {
   component: AllNotificationsComponent,
-  title: "Components/useUINotification",
+  title: "Components/useNotification",
   argTypes: {
     type: {
       description: "`info` | `error` | `warning` | `success`",
@@ -127,7 +127,7 @@ const meta: Meta<typeof useUINotification> = {
   },
 };
 
-type Story = StoryObj<typeof useUINotification>;
+type Story = StoryObj<typeof useNotification>;
 
 export const Default: Story = {
   args: {},

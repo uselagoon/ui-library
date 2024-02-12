@@ -1,8 +1,8 @@
 import {
-  default as UITaskTreeSelector,
+  default as TaskTreeSelector,
   UITreeSelectProps,
 } from "./TaskTreeSelector";
 
-export type { UITreeSelectProps as UITaskTreeSelectorProps };
+export type { UITreeSelectProps as TaskTreeSelectorProps };
 
-export default UITaskTreeSelector;
+export default TaskTreeSelector;

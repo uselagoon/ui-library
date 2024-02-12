@@ -1,3 +1,3 @@
-import { default as UIText, InternalTextType as UITextType } from "./Text";
-export type { UITextType };
-export default UIText;
+import { default as Text, InternalTextType as TextType } from "./Text";
+export type { TextType };
+export default Text;

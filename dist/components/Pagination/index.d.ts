@@ -1,3 +1,3 @@
-import { default as UIPagination, UIPaginationProps } from "./Pagination";
-export type { UIPaginationProps };
-export default UIPagination;
+import { default as Pagination, UIPaginationProps as PaginationProps } from "./Pagination";
+export type { PaginationProps };
+export default Pagination;

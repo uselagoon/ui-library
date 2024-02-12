@@ -2,11 +2,11 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { default as UICheckbox } from "../components/Checkbox";
+import { default as Checkbox } from "../components/Checkbox";
 
-const meta: Meta<typeof UICheckbox> = {
-  component: UICheckbox,
-  title: "Components/UICheckbox",
+const meta: Meta<typeof Checkbox> = {
+  component: Checkbox,
+  title: "Components/Checkbox",
   argTypes: {
     checked: {
       control: "boolean",
@@ -27,7 +27,7 @@ const meta: Meta<typeof UICheckbox> = {
   },
 };
 
-type Story = StoryObj<typeof UICheckbox>;
+type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = {
   args: {

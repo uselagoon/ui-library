@@ -2,19 +2,19 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { default as UIDetails } from "../components/Details";
-import { UIDetailsType } from "../components/Details";
+import { default as Details } from "../components/Details";
+import { DetailsType } from "../components/Details";
 import { Badge } from "antd";
 import CopyToClipboard from "../components/CopyToClipboard";
 
-const meta: Meta<typeof UIDetails> = {
-  component: UIDetails,
-  title: "Components/UI Details",
+const meta: Meta<typeof Details> = {
+  component: Details,
+  title: "Components/Details",
 };
 
-type Story = StoryObj<typeof UIDetails>;
+type Story = StoryObj<typeof Details>;
 
-const items: UIDetailsType["items"] = [
+const items: DetailsType["items"] = [
   {
     label: "Created",
     children: "22 Jul 2021, 12:52:10 (+09:30)",
@@ -25,7 +25,7 @@ const items: UIDetailsType["items"] = [
   },
 ];
 
-const detailedItems: UIDetailsType["items"] = [
+const detailedItems: DetailsType["items"] = [
   {
     key: "1",
     label: "Product",
@@ -107,23 +107,23 @@ const detailedItems: UIDetailsType["items"] = [
 ];
 
 export const Default: Story = {
-  render: () => <UIDetails title="Details component" items={items} />,
+  render: () => <Details title="Details component" items={items} />,
 };
 export const DetailedBordered: Story = {
   render: () => (
-    <UIDetails title="Detailed component" bordered items={detailedItems} />
+    <Details title="Detailed component" bordered items={detailedItems} />
   ),
 };
 export const Bordered: Story = {
-  render: () => <UIDetails bordered title="Details component" items={items} />,
+  render: () => <Details bordered title="Details component" items={items} />,
 };
 
 export const NoTitle: Story = {
-  render: () => <UIDetails bordered items={items} />,
+  render: () => <Details bordered items={items} />,
 };
 
 export const VerticalLayout: Story = {
-  render: () => <UIDetails layout="vertical" bordered items={detailedItems} />,
+  render: () => <Details layout="vertical" bordered items={detailedItems} />,
 };
 
 export default meta;

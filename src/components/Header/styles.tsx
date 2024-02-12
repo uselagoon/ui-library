@@ -53,7 +53,7 @@ export const StyledHeader = styled.header`
     }
   }
 `;
-export const StyledAvatar = styled.div<{ bgColor: string | null }>`
+export const StyledAvatar = styled.div<{ bgcolor: string | null }>`
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   height: 5rem;
@@ -63,7 +63,7 @@ export const StyledAvatar = styled.div<{ bgColor: string | null }>`
   place-items: center;
   overflow: hidden;
   background-color: ${(props) =>
-    props.bgColor ? props.bgColor : "transparent"};
+    props.bgcolor ? props.bgcolor : "transparent"};
 
   img {
     object-fit: contain;

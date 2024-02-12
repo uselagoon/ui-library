@@ -1,5 +1,5 @@
-import { default as UIDetails, UIDetailsType } from "./Details";
+import { default as Details, DetailsType } from "./Details";
 
-export type { UIDetailsType };
+export type { DetailsType };
 
-export default UIDetails;
+export default Details;

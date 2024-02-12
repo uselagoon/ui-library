@@ -1,3 +1,3 @@
-import { default as UISelect, UISelectProps } from "./Select";
-export type { UISelectProps };
-export default UISelect;
+import { default as Select, UISelectProps as SelectProps } from "./Select";
+export type { SelectProps };
+export default Select;

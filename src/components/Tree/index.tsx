@@ -1,5 +1,5 @@
-import { default as UITree, UITreeProps } from "./Tree";
+import { default as Tree, UITreeProps as TreeProps } from "./Tree";
 
-export type { UITreeProps };
+export type { TreeProps };
 
-export default UITree;
+export default Tree;

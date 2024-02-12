@@ -2,14 +2,14 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { default as UIDataCard } from "../components/DataCard";
+import { default as DataCard } from "../components/DataCard";
 
-const meta: Meta<typeof UIDataCard> = {
-  component: UIDataCard,
-  title: "Components/UI DataCard",
+const meta: Meta<typeof DataCard> = {
+  component: DataCard,
+  title: "Components/DataCard",
 };
 
-type Story = StoryObj<typeof UIDataCard>;
+type Story = StoryObj<typeof DataCard>;
 
 export const Default: Story = {
   args: {
@@ -17,7 +17,7 @@ export const Default: Story = {
     count: "99",
     critical: true,
   },
-  render: (args) => <UIDataCard {...args} />,
+  render: (args) => <DataCard {...args} />,
 };
 
 export const High: Story = {
@@ -26,7 +26,7 @@ export const High: Story = {
     count: "60",
     high: true,
   },
-  render: (args) => <UIDataCard {...args} />,
+  render: (args) => <DataCard {...args} />,
 };
 
 export const Medium: Story = {
@@ -35,7 +35,7 @@ export const Medium: Story = {
     count: "39",
     medium: true,
   },
-  render: (args) => <UIDataCard {...args} />,
+  render: (args) => <DataCard {...args} />,
 };
 
 export const Low: Story = {
@@ -44,7 +44,7 @@ export const Low: Story = {
     count: "39",
     low: true,
   },
-  render: (args) => <UIDataCard {...args} />,
+  render: (args) => <DataCard {...args} />,
 };
 
 export const Total: Story = {
@@ -52,7 +52,7 @@ export const Total: Story = {
     text: "Problems",
     count: "100",
   },
-  render: (args) => <UIDataCard {...args} />,
+  render: (args) => <DataCard {...args} />,
 };
 
 export default meta;

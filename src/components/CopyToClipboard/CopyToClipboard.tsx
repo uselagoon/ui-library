@@ -10,7 +10,7 @@ export interface ClipboardProps {
   type?: "visible" | "hidden";
   width?: number;
 }
-const CopyToClipBoard: FC<ClipboardProps> = ({
+const CopyToClipboard: FC<ClipboardProps> = ({
   text,
   width,
   type = "visible",
@@ -108,4 +108,4 @@ const StyledText = styled.div`
   }
 `;
 
-export default CopyToClipBoard;
+export default CopyToClipboard;
