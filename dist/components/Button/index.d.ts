@@ -1,3 +1,3 @@
-import { default as UIButton, InternalButtonProps as UIButtonProps } from "./Button";
-export type { UIButtonProps };
-export default UIButton;
+import { default as Button, InternalButtonProps as ButtonProps } from "./Button";
+export type { ButtonProps };
+export default Button;

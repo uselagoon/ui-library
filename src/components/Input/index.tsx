@@ -1,5 +1,5 @@
-import { default as UIInput, UIInputProps } from "./Input";
+import { default as Input, UIInputProps as InputProps } from "./Input";
 
-export type { UIInputProps };
+export type { InputProps };
 
-export default UIInput;
+export default Input;

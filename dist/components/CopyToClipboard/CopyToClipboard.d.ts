@@ -4,5 +4,5 @@ export interface ClipboardProps {
     type?: "visible" | "hidden";
     width?: number;
 }
-declare const CopyToClipBoard: FC<ClipboardProps>;
-export default CopyToClipBoard;
+declare const CopyToClipboard: FC<ClipboardProps>;
+export default CopyToClipboard;

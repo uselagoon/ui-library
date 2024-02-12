@@ -1,5 +1,5 @@
-import { default as UIFormItem, UIFormItemProps } from "./FormItem";
+import { default as FormItem, UIFormItemProps as FormItemProps } from "./FormItem";
 
-export type { UIFormItemProps };
+export type { FormItemProps };
 
-export default UIFormItem;
+export default FormItem;

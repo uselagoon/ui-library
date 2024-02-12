@@ -2,30 +2,30 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { default as UIPagination } from "../components/Pagination";
+import { default as Pagination } from "../components/Pagination";
 
-const meta: Meta<typeof UIPagination> = {
-  component: UIPagination,
-  title: "Components/UIPagination",
+const meta: Meta<typeof Pagination> = {
+  component: Pagination,
+  title: "Components/Pagination",
 };
 
-type Story = StoryObj<typeof UIPagination>;
+type Story = StoryObj<typeof Pagination>;
 
 export const Default: Story = {
   render: () => {
-    return <UIPagination total={100}  />;
+    return <Pagination total={100}  />;
   },
 };
 
 export const Disabled: Story = {
   render: () => {
-    return <UIPagination disabled/>;
+    return <Pagination disabled/>;
   },
 };
 
 export const Show: Story = {
     render: () => {
-      return <UIPagination showSizeChanger/>;
+      return <Pagination showSizeChanger/>;
     },
   };
 

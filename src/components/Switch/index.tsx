@@ -1,5 +1,5 @@
-import { default as UISwitch, UISwitchProps } from "./Switch";
+import { default as Switch, UISwitchProps as SwitchProps } from './Switch';
 
-export type { UISwitchProps };
+export type { SwitchProps };
 
-export default UISwitch;
+export default Switch;

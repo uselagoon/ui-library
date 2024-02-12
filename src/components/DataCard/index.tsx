@@ -1,5 +1,5 @@
-import { default as UIDataCard, UICardProps } from "./DataCard";
+import { default as DataCard, UICardProps as CardProps} from "./DataCard";
 
-export type { UICardProps };
+export type { CardProps };
 
-export default UIDataCard;
+export default DataCard;

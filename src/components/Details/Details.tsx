@@ -4,7 +4,7 @@ import React, { FC } from "react";
 import styled, { css } from "styled-components";
 import colors from "../../_util/colors";
 
-export type UIDetailsType = DescriptionsProps;
+export type DetailsType = DescriptionsProps;
 
 const UIDetails: FC<DescriptionsProps> = (props) => {
   const { className, items, style, ...rest } = props;

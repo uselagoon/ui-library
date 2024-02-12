@@ -1,5 +1,5 @@
-import { default as UICollapse, UICollapseProps as UICollapseType } from "./Collapse";
+import { default as Collapse, UICollapseProps as CollapseType } from "./Collapse";
 
-export type { UICollapseType };
+export type { CollapseType };
 
-export default UICollapse;
+export default Collapse;

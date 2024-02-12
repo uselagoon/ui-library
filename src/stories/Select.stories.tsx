@@ -2,18 +2,18 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { default as UISelect } from "../components/Select";
+import { default as Select } from "../components/Select";
 
-const meta: Meta<typeof UISelect> = {
-  component: UISelect,
-  title: "Components/UISelect",
+const meta: Meta<typeof Select> = {
+  component: Select,
+  title: "Components/Select",
 };
 
-type Story = StoryObj<typeof UISelect>;
+type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {
   render: () => (
-    <UISelect
+    <Select
       placeholder="Select something"
       options={[
         { value: "1", label: "Select option #1" },
@@ -25,7 +25,7 @@ export const Default: Story = {
 };
 
 export const Disabled: Story = {
-  render: () => <UISelect disabled placeholder="Cannot select anything" />,
+  render: () => <Select disabled placeholder="Cannot select anything" />,
 };
 
 export default meta;

@@ -1,2 +1,2 @@
-import { default as UIHead1 } from "./H1";
-export default UIHead1;
+import { default as Head1 } from "./H1";
+export default Head1;
