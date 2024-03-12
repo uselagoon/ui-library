@@ -1,41 +1,49 @@
-import React from "react";
+import React from 'react';
 
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from '@storybook/react';
 
-import { default as UITextLabel } from "../components/TextLabel";
+import { default as Textlabel } from '../components/TextLabel';
 
-const meta: Meta<typeof UITextLabel> = {
-  component: UITextLabel,
-  title: "Components/TextLabel",
-  argTypes: {
-    children: {
-      description: "`ReactNode`",
-    },
-    type: {
-      description: "`danger` | `warning` | `success` | `secondary`",
-    },
-    link: {
-      type: "boolean",
-      description: "Act as a link element",
-    },
-    href: {
-      type: "string",
-      description: "href if link is set to `true`",
-    },
-  },
+const meta: Meta<typeof Textlabel> = {
+	component: Textlabel,
+	title: 'Components/TextLabel',
+	argTypes: {
+		children: {
+			description: '`ReactNode`',
+		},
+		type: {
+			description: '`danger` | `warning` | `success` | `secondary`',
+		},
+		link: {
+			type: 'boolean',
+			description: 'Act as a link element',
+		},
+		href: {
+			type: 'string',
+			description: 'href if link is set to `true`',
+		},
+	},
 };
 
-type Story = StoryObj<typeof UITextLabel>;
+type Story = StoryObj<typeof Textlabel>;
 
 export const Text: Story = {
-  render: () => <UITextLabel>Some random normal text label</UITextLabel>,
+	args: {
+		children: 'Some random normal text label',
+	},
 };
 
 export const DangerText: Story = {
-  render: () => <UITextLabel type="danger">Danger text label</UITextLabel>,
+	args: {
+		children: 'Danger text label',
+		type: 'danger',
+	},
 };
 
 export const Link: Story = {
-  render: () => <UITextLabel link>Link text label</UITextLabel>,
+	args: {
+		children: 'Danger text label',
+		link: true,
+	},
 };
 export default meta;

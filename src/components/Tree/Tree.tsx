@@ -66,7 +66,7 @@ const UITree = forwardRef<React.ElementRef<typeof Tree>, UITreeProps>(
   InternalTree
 );
 
-UITree.displayName = "UITree";
+UITree.displayName = "Tree";
 
 export type { UITreeProps };
 

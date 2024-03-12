@@ -151,6 +151,6 @@ const InternalCard: React.ForwardRefRenderFunction<
 
 const LagoonCard = forwardRef<HTMLDivElement, InternalCardProps>(InternalCard);
 
-LagoonCard.displayName = "UILagoonCard";
+LagoonCard.displayName = "LagoonCard";
 
 export default LagoonCard;

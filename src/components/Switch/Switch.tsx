@@ -16,6 +16,6 @@ const UISwitch = forwardRef<HTMLButtonElement, UISwitchProps>((props, ref) => {
   return <Switch ref={ref} style={style} {...labelProps} {...rest} />;
 });
 
-UISwitch.displayName = "UISwitch";
+UISwitch.displayName = "Switch";
 
 export default UISwitch;

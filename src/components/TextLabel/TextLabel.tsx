@@ -78,6 +78,6 @@ const InternalTextLabel: React.ForwardRefRenderFunction<
   );
 };
 
-InternalTextLabel.displayName = "UITextLabel";
+InternalTextLabel.displayName = "TextLabel";
 
 export default InternalTextLabel;

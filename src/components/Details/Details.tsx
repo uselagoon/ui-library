@@ -10,7 +10,7 @@ const UIDetails: FC<DescriptionsProps> = (props) => {
   const { className, items, style, ...rest } = props;
   return <StyledDetails items={items} {...rest} />;
 };
-UIDetails.displayName = "UIDetails";
+UIDetails.displayName = "Details";
 
 const StyledDetails = styled(Descriptions)`
   &.ant-descriptions {

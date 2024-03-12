@@ -71,7 +71,7 @@ const StyledLabel = styled.div<{
   }
 `;
 
-UICardLabel.displayName = "UICardLabel";
+UICardLabel.displayName = "CardLabel";
 
 export default UICardLabel;
 

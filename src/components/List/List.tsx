@@ -79,7 +79,7 @@ const StyledListItem = styled(AntdListItem)`
   }
 `;
 
-UIList.displayName = "UIList";
+UIList.displayName = "List";
 
 UIList.Item = StyledListItem;
 

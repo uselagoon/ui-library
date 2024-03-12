@@ -1,72 +1,87 @@
-import React from "react";
+import React from 'react';
 
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from '@storybook/react';
 
-import { default as StatusTag } from "../components/StatusTag";
-import { SmileOutlined } from "@ant-design/icons";
+import { default as StatusTag } from '../components/StatusTag';
+import { SmileOutlined } from '@ant-design/icons';
+import { Controls, Primary, Stories, Title } from '@storybook/blocks';
 
 const meta: Meta<typeof StatusTag> = {
-  component: StatusTag,
-  title: "Components/StatusTag",
-  argTypes: {
-    type: {
-      description: "Select from preconfigured tags, or use the `custom` object",
-      control: "radio",
-      options: ["complete", "error", "failed", "queued", "running", "custom"],
-    },
-    children: {
-      description: "Works with `custom` (select custom in type to see)",
-      control: "text",
-    },
-    color: {
-      description: "Works with `custom` (select custom in type to see)",
-      control: "color",
-    },
-    icon: {
-      description: "Works with `custom` - any valid `JSX.Element`",
-    },
-  },
+	component: StatusTag,
+	title: 'Components/StatusTag',
+	parameters: {
+		docs: {
+			page: () => (
+				<>
+					<Title />
+					<p>Used for deployment / task status</p>
+					<Primary />
+					<Controls />
+					<Stories />
+				</>
+			),
+		},
+	},
+
+	argTypes: {
+		type: {
+			description: 'Select from preconfigured tags, or use the `custom` object',
+			control: 'radio',
+			options: ['complete', 'error', 'failed', 'queued', 'running', 'custom'],
+		},
+		children: {
+			description: 'Works with `custom` (select custom in type to see)',
+			control: 'text',
+		},
+		color: {
+			description: 'Works with `custom` (select custom in type to see)',
+			control: 'color',
+		},
+		icon: {
+			description: 'Works with `custom` - any valid `JSX.Element`',
+		},
+	},
 };
 
 type Story = StoryObj<typeof StatusTag>;
 
 export const Complete: Story = {
-  args: {
-    type: "complete",
-  },
+	args: {
+		type: 'complete',
+	},
 };
 
 export const Error: Story = {
-  args: {
-    type: "error",
-  },
+	args: {
+		type: 'error',
+	},
 };
 
 export const Failed: Story = {
-  args: {
-    type: "failed",
-  },
+	args: {
+		type: 'failed',
+	},
 };
 
 export const Queued: Story = {
-  args: {
-    type: "queued",
-  },
+	args: {
+		type: 'queued',
+	},
 };
 
 export const Running: Story = {
-  args: {
-    type: "running",
-  },
+	args: {
+		type: 'running',
+	},
 };
 
 export const Custom: Story = {
-  args: {
-    type: "custom",
-    color: "hotpink",
-    icon: <SmileOutlined />,
-    children: "Custom icon",
-  },
+	args: {
+		type: 'custom',
+		color: 'hotpink',
+		icon: <SmileOutlined />,
+		children: 'Custom icon',
+	},
 };
 
 export default meta;

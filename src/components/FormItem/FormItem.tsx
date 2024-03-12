@@ -51,7 +51,7 @@ const StyledItem = styled(Item)`
   }
 `;
 
-UIFormItem.displayName = "UIFormItem";
+UIFormItem.displayName = "FormItem";
 
 export default UIFormItem;
 

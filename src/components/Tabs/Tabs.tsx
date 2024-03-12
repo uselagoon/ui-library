@@ -73,7 +73,7 @@ const StyledTabs = styled(Tabs)`
   }
 `;
 
-UITab.displayName = "UITabs";
+UITab.displayName = "Tabs";
 
 export type { UITabsProps };
 export default UITab;

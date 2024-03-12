@@ -83,6 +83,6 @@ const InternalText: React.ForwardRefRenderFunction<
   );
 };
 
-InternalText.displayName = "UIText";
+InternalText.displayName = "Text";
 
 export default InternalText;

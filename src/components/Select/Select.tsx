@@ -69,7 +69,7 @@ const StyledDropDown = styled.section`
     `}
 `;
 
-UISelect.displayName = "UISelect";
+UISelect.displayName = "Select";
 
 export type { SelectProps as UISelectProps };
 

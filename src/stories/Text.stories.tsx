@@ -2,10 +2,10 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { default as UIText } from "../components/Text";
+import { default as Text } from "../components/Text";
 
-const meta: Meta<typeof UIText> = {
-  component: UIText,
+const meta: Meta<typeof Text> = {
+  component: Text,
   title: "Components/Text and Link",
   argTypes: {
     children: {
@@ -25,9 +25,9 @@ const meta: Meta<typeof UIText> = {
   },
 };
 
-type Story = StoryObj<typeof UIText>;
+type Story = StoryObj<typeof Text>;
 
-export const Text: Story = {
+export const Default: Story = {
   args: {
     children: "Some random normal text",
   },
