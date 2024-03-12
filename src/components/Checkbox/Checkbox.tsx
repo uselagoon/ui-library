@@ -17,5 +17,5 @@ const StyledCheckbox = styled(Checkbox)`
 `;
 export type { CheckboxProps as UICheckboxProps };
 
-UICheckbox.displayName = "UICheckbox";
+UICheckbox.displayName = "Checkbox";
 export default UICheckbox;

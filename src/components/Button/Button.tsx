@@ -9,7 +9,7 @@ export type ButtonSizeType = {
 
 export type InternalButtonProps = Omit<
   ButtonProps,
-  "href" | "danger" | "ghost" | "type" | "icon"
+ "danger" | "ghost" | "type" | "icon"
 > &
   ButtonSizeType & {
     iconBefore?: React.ReactNode;
@@ -73,6 +73,6 @@ const Button = forwardRef<HTMLButtonElement, InternalButtonProps>(
   InternalButton
 );
 
-Button.displayName = "UIButton";
+Button.displayName = "Button";
 
 export default Button;

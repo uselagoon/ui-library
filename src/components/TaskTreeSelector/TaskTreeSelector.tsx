@@ -68,7 +68,7 @@ const UITreeSelect = forwardRef<HTMLElement, UITreeSelectProps>(
   InternalTreeSelector
 );
 
-UITreeSelect.displayName = "UITreeSelect";
+UITreeSelect.displayName = "TreeSelect";
 
 export type { UITreeSelectProps };
 export default UITreeSelect;

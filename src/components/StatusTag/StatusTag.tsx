@@ -84,6 +84,6 @@ const StyledTag = styled(Tag)`
 
 const StatusTag = forwardRef<HTMLSpanElement, UITagProps>(InternalTag);
 
-StatusTag.displayName = "UIStatusTag";
+StatusTag.displayName = "StatusTag";
 
 export default StatusTag;

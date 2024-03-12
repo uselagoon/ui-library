@@ -8,6 +8,7 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
     "@storybook/addon-controls",
     "@storybook/addon-a11y",
+    "@storybook/addon-designs",
   ],
 
   framework: {
@@ -33,16 +34,5 @@ const config: StorybookConfig = {
       },
     },
   }),
-  typescript: {
-    // HACK to make external lib props work with storybook
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) =>
-        prop.parent
-          ? !/node_modules\/(?!ant).*/.test(prop.parent.fileName)
-          : true,
-      savePropValueAsString: true,
-    },
-  },
 };
 export default config;

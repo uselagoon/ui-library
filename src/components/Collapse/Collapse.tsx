@@ -10,7 +10,7 @@ const UICollapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
   const { className, items, style, ...rest } = props;
   return <StyledCollapse ref={ref} items={items} {...rest} />;
 });
-UICollapse.displayName = "UICollapse";
+UICollapse.displayName = "Collapse";
 
 const StyledCollapse = styled(Collapse)`
   &.ant-collapse {

@@ -11,7 +11,7 @@ const InternalInput: React.ForwardRefRenderFunction<InputRef, InputProps> = (
 
 const UIInput = forwardRef<InputRef, InputProps>(InternalInput);
 
-UIInput.displayName = "UIInput";
+UIInput.displayName = "Input";
 
 export default UIInput;
 
