@@ -9,6 +9,7 @@ interface Props {
 	darkThemeProp: ThemeObject | undefined;
 	lightThemeProp: ThemeObject | undefined;
 }
+
 const InternalThemeProvider = ({ children, darkThemeProp, lightThemeProp }: Props) => {
 	const { theme } = useTheme();
 

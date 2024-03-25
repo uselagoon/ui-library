@@ -102,7 +102,7 @@ body {
 
 
   }
-`,de=C(null),he=()=>{const e=i(de);if(!e)throw new Error("useTheme must be used within a ThemeProvider");return e},fe=({children:e})=>{const[t,n]=s(null);c((()=>{const e=localStorage.getItem("theme");e&&["light","dark"].includes(e)?n(e):window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?(n("dark"),localStorage.setItem("theme","dark")):(n("light"),localStorage.setItem("theme","light"))}),[]);return l(de.Provider,{value:{theme:t,toggleTheme:()=>{const e="light"===t?"dark":"light";n(e),localStorage.setItem("theme",e),window.dispatchEvent(new Event("storage"))}},children:e})},Ve={colorScheme:"dark",UI:{backgrounds:{primary:"#0E1117",secondary:"#151922",input:pe.backgrounds.primary.dark,modal:pe.backgrounds.primary.dark,dataCard:pe.darkGray,selection:pe.gray,lagoonCard:pe.backgrounds.primary.dark,footer:pe.backgrounds.primary.light,header:"#222"},texts:{primary:pe.texts.primary.dark,label:"#dee2e5",secondary:pe.texts.secondary.dark,timeline:pe.texts.timeline.light},borders:{box:"#D9D9D9",card:"#fff"},highlights:{selection:"#f6f9ff"},notification:pe.backgrounds.primary.dark}},Ze={colorScheme:"light",UI:{backgrounds:{primary:"#101010",secondary:"#fff",input:pe.backgrounds.primary.light,modal:pe.backgrounds.primary.light,dataCard:pe.gray,selection:"#e6f4ff",lagoonCard:pe.backgrounds.primary.light,footer:pe.backgrounds.primary.dark,header:"#fff"},texts:{primary:pe.texts.primary.light,label:"#555",secondary:pe.texts.secondary.dark,timeline:pe.texts.timeline.dark},borders:{box:"#75715E",card:pe.darkGray},highlights:{selection:"#497ffa4d"},notification:pe.backgrounds.primary.light}},be=({children:e,darkThemeProp:t,lightThemeProp:n})=>{const{theme:a}=he(),o=p((()=>"light"===a?Object.assign({},Ze,n):Object.assign({},Ve,t)),[a]);return a?l(A,{theme:o,children:e},a):null},we=({children:e,darkThemeProp:t,lightThemeProp:n})=>l(fe,{children:l(be,{darkThemeProp:t||void 0,lightThemeProp:n||void 0,children:e})}),ye=n`
+`,de=C(null),he=()=>{const e=i(de);if(!e)throw new Error("useTheme must be used within a ThemeProvider");return e},fe=({defaultScheme:e,children:t})=>{const[n,A]=s(null);c((()=>{if(e)return void A(e);const t=localStorage.getItem("theme");t&&["light","dark"].includes(t)?A(t):window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?(A("dark"),localStorage.setItem("theme","dark")):(A("light"),localStorage.setItem("theme","light"))}),[]);return l(de.Provider,{value:{theme:n,toggleTheme:()=>{const e="light"===n?"dark":"light";A(e),localStorage.setItem("theme",e),window.dispatchEvent(new Event("storage"))}},children:t})},Ve={colorScheme:"dark",UI:{backgrounds:{primary:"#0E1117",secondary:"#151922",input:pe.backgrounds.primary.dark,modal:pe.backgrounds.primary.dark,dataCard:pe.darkGray,selection:pe.gray,lagoonCard:pe.backgrounds.primary.dark,footer:pe.backgrounds.primary.light,header:"#222"},texts:{primary:pe.texts.primary.dark,label:"#dee2e5",secondary:pe.texts.secondary.dark,timeline:pe.texts.timeline.light},borders:{box:"#D9D9D9",card:"#fff"},highlights:{selection:"#f6f9ff"},notification:pe.backgrounds.primary.dark}},Ze={colorScheme:"light",UI:{backgrounds:{primary:"#101010",secondary:"#fff",input:pe.backgrounds.primary.light,modal:pe.backgrounds.primary.light,dataCard:pe.gray,selection:"#e6f4ff",lagoonCard:pe.backgrounds.primary.light,footer:pe.backgrounds.primary.dark,header:"#fff"},texts:{primary:pe.texts.primary.light,label:"#555",secondary:pe.texts.secondary.dark,timeline:pe.texts.timeline.dark},borders:{box:"#75715E",card:pe.darkGray},highlights:{selection:"#497ffa4d"},notification:pe.backgrounds.primary.light}},be=({children:e,darkThemeProp:t,lightThemeProp:n})=>{const{theme:a}=he(),o=p((()=>"light"===a?Object.assign({},Ze,n):Object.assign({},Ve,t)),[a]);return a?l(A,{theme:o,children:e},a):null},we=({children:e,darkThemeProp:t,lightThemeProp:n,defaultScheme:A})=>l(fe,{defaultScheme:A||void 0,children:l(be,{darkThemeProp:t||void 0,lightThemeProp:n||void 0,children:e})}),ye=n`
   background-color: ${pe.lagoonBlue};
 
   &:not(:disabled):not(.ant-btn-disabled) {
@@ -141,35 +141,35 @@ body {
     ${e=>"primary"===e.type?ye:ue}
   }
 `,ke=m((({size:e="large",type:t="primary",iconBefore:n,iconAfter:A,disabled:r,loading:C,className:i,children:s,styles:c,...p},m)=>{let d=s;return n&&(d=a(o,{children:[l(ve,{children:n}),d]})),A&&(d=a(o,{children:[d," ",l(Le,{children:A})]})),l(xe,{ref:m,type:t,size:e,styles:c,disabled:r,loading:C,className:i,...p,children:d})}));ke.displayName="Button";const Ie=f.Text,Me=f.Link,Ee=n`
-  font-family: "ArabicPro-Regular", sans-serif;
-  font-size: 16px;
-  line-height: 18px;
+	font-family: 'ArabicPro-Regular', sans-serif;
+	font-size: 16px;
+	line-height: 18px;
 `,We=e(Ie)`
-  &.ant-typography {
-    &.ant-typography:not(.ant-typography-warning):not(
-        .ant-typography-danger
-      ):not(.ant-typography-secondary):not(.ant-typography-success) {
-      color: ${e=>e.theme.UI.texts.primary};
-    }
+	&.ant-typography {
+		&.ant-typography:not(.ant-typography-warning):not(.ant-typography-danger):not(.ant-typography-secondary):not(
+				.ant-typography-success
+			) {
+			color: ${e=>e.theme.UI.texts.primary};
+		}
 
-    ${Ee};
-  }
+		${Ee};
+	}
 `,He=e(Me)`
-  &.ant-typography {
-    ${Ee};
-    text-decoration: underline;
-    &:link {
-      color: ${pe.blue};
-    }
-    &:hover {
-      color: ${pe.purple};
-    }
-    &:visited {
-      color: ${pe.lagoonBlue};
-      text-decoration: none;
-    }
-  }
-`,Se=({className:e,children:t,...n},A)=>{if("link"in n&&n.link){const a=n.href??null,o=n.target??"__blank";return l(He,{ref:A,className:e,href:a,target:o,children:t})}return l(We,{ref:A,className:e,...n,children:t})};Se.displayName="Text";const Ke=f.Text,Ue=f.Link,ze=n`
+	&.ant-typography {
+		${Ee};
+		text-decoration: underline;
+		&:link {
+			color: ${pe.blue};
+		}
+		&:hover {
+			color: ${pe.purple};
+		}
+		&:visited {
+			color: ${pe.lagoonBlue};
+			text-decoration: none;
+		}
+	}
+`,Se=({className:e,children:t,...n},A)=>{if("href"in n){const a=n.href??null,o=n.target??"__blank";return l(He,{ref:A,className:e,href:a,target:o,children:t})}return l(We,{ref:A,className:e,...n,children:t})};Se.displayName="Text";const Ke=f.Text,Ue=f.Link,ze=n`
   font-family: "AmericaMono-Regular", sans-serif;
   font-size: 14px;
   line-height: 18px;

@@ -1,0 +1,334 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Table } from 'antd';
+
+import { CopyToClipboard, UIThemeProvider, GlobalStyles, Head1, Head2, Head3, Head4, Head5, Text } from '../../index';
+
+<Meta title="Guide/Typography" />
+
+<style>
+	{`
+
+    .headings, .texts{
+        display:flex;
+        flex-direction:column;
+       &.dark .ant-typography{
+            padding:0.1rem;
+            background:#8888;
+       }
+    }
+    .dark-table{
+     .copyable{
+
+        color:black;
+
+        }
+        .copyable ~span {
+        color:black;
+        }
+    }
+
+`}
+</style>
+
+# Typography
+
+<p style={{fontSize:"1.25rem"}}>The library comes with prestyled, themed text elements</p>
+
+## Headings in light mode
+
+<UIThemeProvider defaultScheme="light">
+<GlobalStyles/>
+<Table
+columns={[
+{
+title: 'Heading',
+dataIndex: 'heading',
+key: 'heading',
+width:"50%",
+},
+{
+title: 'Size',
+dataIndex: 'size',
+key: 'size',
+width:"20%",
+},
+{
+title: 'Usage',
+dataIndex: 'usage',
+key: 'usage',
+
+}]
+}
+dataSource={[
+{
+key:1,
+heading:(
+
+<div className="headings">
+<Head1>Heading 1</Head1>
+<span>Font: Helvetica regular</span>
+<span>Weight: 500</span>
+<span>Color: #222222</span>
+<span>Line height: 48px</span>
+</div>
+),
+size:"42px",
+usage:<CopyToClipboard text="<Head1>Heading 1</Head1>" width={250}/>
+},
+{
+key:2,
+heading:(
+<div className="headings">
+<Head2> Heading 2</Head2>
+<span>Font: Helvetica regular</span>
+<span>Weight: 500</span>
+<span>Color: #222222</span>
+<span>Line height: 32px</span>
+</div>
+),
+size:"28px",
+usage:<CopyToClipboard text="<Head2>Heading 2</Head2>" width={250}/>
+},
+{
+key:3,
+heading:(
+<div className="headings">
+<Head3> Heading 3</Head3>
+<span>Font: Helvetica regular</span>
+<span>Weight: 500</span>
+<span>Color: #222222</span>
+<span>Line height: 22px</span>
+</div>
+),
+size:"20px",
+usage:<CopyToClipboard text="<Head3>Heading 3</Head3>" width={250}/>
+},
+{
+key:4,
+heading:(
+<div className="headings">
+<Head4> Heading 4</Head4>
+<span>Font: Helvetica regular</span>
+<span>Weight: 500</span>
+<span>Color: #222222</span>
+<span>Line height: 22px</span>
+</div>
+),
+size:"16px",
+usage:<CopyToClipboard text="<Head4>Heading 4</Head4>" width={250}/>
+},
+{
+key:5,
+heading:(
+<div className="headings">
+<Head5> Heading 5</Head5>
+<span>Font: Helvetica regular</span>
+<span>Weight: 500</span>
+<span>Color: #222222</span>
+<span>Line height: 22px</span>
+</div>
+),
+size:"15px",
+usage:<CopyToClipboard text="<Head5>Heading 5</Head5>" width={250}/>
+},
+]}
+pagination={false}
+
+/>
+
+</UIThemeProvider>
+
+## Headings in dark mode
+
+<UIThemeProvider defaultScheme="dark">
+<GlobalStyles/>
+<Table
+className="dark-table"
+columns={[
+{
+title: 'Heading',
+dataIndex: 'heading',
+key: 'heading',
+width:"50%",
+},
+{
+title: 'Size',
+dataIndex: 'size',
+key: 'size',
+width:"20%",
+},
+{
+title: 'Usage',
+dataIndex: 'usage',
+key: 'usage',
+
+}]
+}
+dataSource={[
+{
+key:1,
+heading:(
+
+<div className="headings dark">
+<Head1>Heading 1</Head1>
+<span>Font: Helvetica regular</span>
+<span>Weight: 500</span>
+<span>Color: #222222</span>
+<span>Line height: 48px</span>
+</div>
+),
+size:"42px",
+usage:<CopyToClipboard text="<Head1>Heading 1</Head1>" width={250}/>
+},
+{
+key:2,
+heading:(
+<div className="headings dark">
+<Head2> Heading 2</Head2>
+<span>Font: Helvetica regular</span>
+<span>Weight: 500</span>
+<span>Color: #222222</span>
+<span>Line height: 32px</span>
+</div>
+),
+size:"28px",
+usage:<CopyToClipboard text="<Head2>Heading 2</Head2>" width={250}/>
+},
+{
+key:3,
+heading:(
+<div className="headings dark">
+<Head3> Heading 3</Head3>
+<span>Font: Helvetica regular</span>
+<span>Weight: 500</span>
+<span>Color: #222222</span>
+<span>Line height: 22px</span>
+</div>
+),
+size:"20px",
+usage:<CopyToClipboard text="<Head3>Heading 3</Head3>" width={250}/>
+},
+{
+key:4,
+heading:(
+<div className="headings dark">
+<Head4> Heading 4</Head4>
+<span>Font: Helvetica regular</span>
+<span>Weight: 500</span>
+<span>Color: #222222</span>
+<span>Line height: 22px</span>
+</div>
+),
+size:"16px",
+usage:<CopyToClipboard text="<Head4>Heading 4</Head4>" width={250}/>
+},
+{
+key:5,
+heading:(
+<div className="headings dark">
+<Head5> Heading 5</Head5>
+<span>Font: Helvetica regular</span>
+<span>Weight: 500</span>
+<span>Color: #222222</span>
+<span>Line height: 22px</span>
+</div>
+),
+size:"15px",
+usage:<CopyToClipboard className="copydark" text="<Head5>Heading 5</Head5>" width={250}/>
+},
+]}
+pagination={false}
+
+/>
+
+</UIThemeProvider>
+
+## Text/link
+
+<UIThemeProvider defaultScheme="light">
+<GlobalStyles/>
+<Table
+columns={[
+{
+title: 'Element',
+dataIndex: 'element',
+key: 'element',
+width:"35%",
+},
+{
+title: 'Size',
+dataIndex: 'size',
+key: 'size',
+width:"10%",
+},
+{
+title: 'Usage',
+dataIndex: 'usage',
+key: 'usage',
+
+}]
+}
+
+dataSource={[
+{
+key:1,
+size:"16px",
+element:(
+
+<div className="texts">
+<Text>Default text</Text>
+<span>Font: Basis Grotesque Arabic Pro Regular</span>
+<span>Color: #222222</span>
+<span>Line height: 18px</span>
+</div>
+),
+usage:<CopyToClipboard width={350} className="copydark" text="<Text>Some text</Text>"/>
+},
+{
+key:2,
+size:"16px",
+element:(
+<div className="texts">
+<Text type="danger">Danger text</Text>
+<span>Font: Basis Grotesque Arabic Pro Regular</span>
+<span>Color: #222222</span>
+<span>Line height: 18px</span>
+</div>
+),
+usage:<CopyToClipboard width={350} className="copydark" text={`<Text type="danger" >Some text</Text>`}/>
+},
+{
+key:3,
+size:"16px",
+element:(
+<div className="texts">
+<Text type="warning">Warning text</Text>
+<span>Font: Basis Grotesque Arabic Pro Regular</span>
+<span>Color: #222222</span>
+<span>Line height: 18px</span>
+</div>
+),
+usage:<CopyToClipboard width={350} className="copydark" text={`<Text type="warning" >Some text</Text>`}/>
+},
+{
+key:4,
+size:"16px",
+element:(
+<div className="texts">
+<Text href="https://www.lagoon.sh/" target="_blank" >Link text</Text>
+<span>Font: Basis Grotesque Arabic Pro Regular</span>
+<span>Color: #222222</span>
+<span>Line height: 18px</span>
+</div>
+),
+usage:<CopyToClipboard width={350} className="copydark" text={`<Text href="https://www.lagoon.sh/" >Some text</Text>`}/>
+}
+
+]}
+/>
+
+</UIThemeProvider>
+
+### What's next
+
+Continue to the <a href="/?path=/docs/guide-theming-and-globals--docs"> Global Styles Guide </a>
