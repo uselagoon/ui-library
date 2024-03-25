@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guide/Theming And Globals" />
+
+# Theming and Global styles
+
+<p style={{ fontSize: '1.05rem' }}>The library has its own themes for dark and light modes - every component has it's own color configuration depending on the selected theme. </p>
+<p style={{ fontSize: '1.05rem' }}>Themes can be extended</p>
+<p style={{ fontSize: '1.05rem' }}>Global styles set basic style resets and sets 1rem = 16px</p>
+<p style={{ fontSize: '1.05rem' }}>By using `<GlobalStyles />` in the app, you automatically get access to the following bundled font families:</p>
+<ul>
+	<li>Basis Grotesque Arabic Pro (regular and bold) </li>
+	<li>GT America regular</li>
+	<li>Helvetica regular </li>
+	<li>Roboto regular</li>
+	<li> Open Sans (regular, bold, bolder) </li>
+</ul>
+
+## Extending themes
+The existing `ThemeObject` has the following structure:
+
+```ts
+interface UITheme {
+  colorScheme: "dark" | "light";
+  UI: {
+    backgrounds: {
+      primary: string;
+      secondary: string;
+      input: string;
+      modal: string;
+      dataCard: string;
+      selection: string;
+      lagoonCard: string;
+      footer: string;
+      header:string;
+      
+    };
+    texts: {
+      primary: string;
+      label: string;
+      secondary: string;
+      timeline: string;
+    };
+    highlights: {
+      selection: string;
+    };
+    borders: {
+      box: string;
+      card: string;
+    };
+    notification: string;
+  };
+}
+
+```
+It can be extended by passing `darkThemeProp` and `lightThemeProp` with custom properties to the `<UIThemeProvider />`, which get merged into the existing theme, and then used inside a styled component. 
+
+
+### What's next
+
+Continue to the <a href="/?path=/docs/guide-figma--docs"> Figma Guide </a>

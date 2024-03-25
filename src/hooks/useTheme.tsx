@@ -12,13 +12,19 @@ const useTheme = () => {
 };
 
 export const AppThemeProvider = ({
+  defaultScheme,
   children,
 }: {
+  defaultScheme?: "dark" | "light",
   children: React.ReactNode;
 }) => {
   const [theme, setTheme] = useState<"dark" | "light" | null>(null);
 
   useEffect(() => {
+    if (defaultScheme) {
+      setTheme(defaultScheme);
+      return;
+    }
     const storageTheme = localStorage.getItem("theme");
     // already previously set in browser store.
     if (storageTheme && ["light", "dark"].includes(storageTheme)) {
