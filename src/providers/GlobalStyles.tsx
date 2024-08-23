@@ -1,13 +1,13 @@
-import { createGlobalStyle, css } from "styled-components";
-import ArabicProBold from "../fonts/ArabicPro-Bold.woff2";
-import ArabicProMedium from "../fonts/ArabicPro-Medium.woff2";
-import ArabicProRegular from "../fonts/ArabicPro-Regular.woff2";
-import AmericaMonoRegular from "../fonts/AmericaMono-Regular.woff2";
-import HelveticaRegular from "../fonts/HelveticaExtended-Regular.woff2";
-import RobotoRegular from "../fonts/roboto-regular.woff2";
-import OpenSansRegular from "../fonts/opensans-regular.woff2";
-import OpenSansBold from "../fonts/opensans-bold.woff2";
-import OpenSansSemibold from "../fonts/opensans-semibold.woff2";
+import { createGlobalStyle, css } from 'styled-components';
+import ArabicProBold from '../fonts/ArabicPro-Bold.woff2';
+import ArabicProMedium from '../fonts/ArabicPro-Medium.woff2';
+import ArabicProRegular from '../fonts/ArabicPro-Regular.woff2';
+import AmericaMonoRegular from '../fonts/AmericaMono-Regular.woff2';
+import HelveticaRegular from '../fonts/HelveticaExtended-Regular.woff2';
+import RobotoRegular from '../fonts/roboto-regular.woff2';
+import OpenSansRegular from '../fonts/opensans-regular.woff2';
+import OpenSansBold from '../fonts/opensans-bold.woff2';
+import OpenSansSemibold from '../fonts/opensans-semibold.woff2';
 
 const GlobalStyles = createGlobalStyle`
 
@@ -97,22 +97,31 @@ body {
   .ui-notification{
 
     ${(props) =>
-      props.theme.colorScheme === "dark" &&
-      css`
-        box-shadow:
-          0px 9px 28px 8px #ffffff0d,
-          0px 6px 16px 0px #ffffff14,
-          0px 3px 6px -4px #ffffff1f;
-      `}
+			props.theme.colorScheme === 'dark' &&
+			css`
+				box-shadow:
+					0px 9px 28px 8px #ffffff0d,
+					0px 6px 16px 0px #ffffff14,
+					0px 3px 6px -4px #ffffff1f;
+			`}
     .ant-notification-notice-content {
   
     ~.ant-notification-notice-close, ~.ant-notification-notice-close:hover,  .ant-notification-notice-with-icon div{
       color: ${(props) => props.theme.UI.texts.primary};
     }
 
+  
+
   }
     background-color: ${(props) => props.theme.UI.notification};
+    &.no-icon{
+      .ant-notification-notice-message, .ant-notification-notice-description{
+        margin-inline-start:24px;
+  }
+      padding:20px 0 !important;
 
+      
+    }
 
   }
 `;

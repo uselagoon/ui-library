@@ -1,5 +1,6 @@
 import colors from "../_util/colors";
 import { DefaultTheme } from "styled-components";
+import { lagoonColors } from "../_util/lagoonColors";
 
 export const darkTheme: DefaultTheme = {
   colorScheme: "dark",
@@ -13,13 +14,14 @@ export const darkTheme: DefaultTheme = {
       selection: colors.gray,
       lagoonCard: colors.backgrounds.primary.dark,
       footer: colors.backgrounds.primary.light,
-      header: "#222",
+      header: colors.header.dark,
     },
     texts: {
       primary: colors.texts.primary.dark,
       label: "#dee2e5",
       secondary: colors.texts.secondary.dark,
-      timeline:colors.texts.timeline.light
+      timeline:colors.texts.timeline.light,
+      nav:lagoonColors.monoWhite.dark,
     },
     borders: {
       box: "#D9D9D9",
@@ -44,13 +46,14 @@ export const lightTheme: DefaultTheme = {
       selection: "#e6f4ff",
       lagoonCard: colors.backgrounds.primary.light,
       footer: colors.backgrounds.primary.dark,
-      header: "#fff",
+      header: colors.header.light
     },
     texts: {
       primary: colors.texts.primary.light,
       label: "#555",
       secondary: colors.texts.secondary.dark,
-      timeline:colors.texts.timeline.dark
+      timeline:colors.texts.timeline.dark,
+      nav:lagoonColors.monoWhite.light,
     },
     borders: {
       box: "#75715E",

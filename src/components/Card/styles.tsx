@@ -21,6 +21,17 @@ export const StyledCard = styled(Card)`
       color: ${(props) => props.theme.UI.texts.primary};
     }
 
+    .ant-card-actions{
+      border: 1px solid hotpink;
+   
+      li{
+        width: max-content !important;
+        border-inline-end: none;
+        &:first-child{
+          margin-left: auto;
+        }
+      }
+    }
     .ant-card-actions > li > span > span[role="img"]:hover {
       color: ${colors.lagoonBlue};
     }

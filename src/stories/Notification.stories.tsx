@@ -15,12 +15,13 @@ function AllNotificationsComponent() {
     title: "Info",
     content: "Yup, here's some info",
     showBtn: true,
-    btnLabel: "Close me!",
+    btnLabel: "confirm",
   });
   const error = useNotification({
     type: "error",
     title: "There was an error",
     content: "Some sort of error",
+    showIcon:false,
   });
 
   const success = useNotification({
@@ -43,7 +44,7 @@ function AllNotificationsComponent() {
       {warning.contextHolder}
       <Space>
         <Button onClick={() => notif.trigger()}>Info </Button>
-        <Button onClick={() => error.trigger()}>Error </Button>
+        <Button onClick={() => error.trigger()}>Error without icon </Button>
         <Button onClick={() => success.trigger()}>Success </Button>
         <Button onClick={() => warning.trigger()}>Warning </Button>
       </Space>

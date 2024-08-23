@@ -1,8 +1,8 @@
 declare const colors: {
-    readonly lagoonBlue: "#4578E6";
+    readonly lagoonBlue: string;
     readonly buttons: {
         readonly primary: {
-            readonly default: "#4578E6";
+            readonly default: string;
             readonly hover: "#4578e6bf";
             readonly active: "#184CBC";
         };
@@ -14,37 +14,41 @@ declare const colors: {
     };
     readonly backgrounds: {
         readonly primary: {
-            readonly light: "#F8F8F2";
-            readonly dark: "#272822";
+            readonly light: string;
+            readonly dark: string;
         };
     };
     readonly texts: {
         readonly primary: {
-            readonly light: "#222222";
-            readonly dark: "#fff";
+            readonly light: string;
+            readonly dark: string;
         };
         readonly secondary: {
-            readonly light: "#00000073";
-            readonly dark: "#75715E";
+            readonly light: string;
+            readonly dark: string;
         };
         readonly timeline: {
-            readonly light: "#F8F8F2";
-            readonly dark: "#272822";
+            readonly light: string;
+            readonly dark: string;
         };
     };
-    readonly darkGray: "#272822";
-    readonly cellGray: "#868686";
+    readonly darkGray: string;
+    readonly cellGray: string;
     readonly lighterGray: "#282828";
-    readonly orange: "#FD971F";
-    readonly lightOrange: "#E69F66";
-    readonly blue: "#66D9EF";
-    readonly white: "#F8F8F2";
-    readonly purple: "#AE81FF";
-    readonly gray: "#75715E";
-    readonly yellow: "#E6DB74";
-    readonly pink: "#F92672";
+    readonly orange: string;
+    readonly lightOrange: string;
+    readonly blue: string;
+    readonly white: string;
+    readonly purple: string;
+    readonly gray: string;
+    readonly yellow: string;
+    readonly pink: string;
     readonly green: "#A6E22E";
     readonly green2: "#A6E22D";
     readonly black: "#000";
+    readonly header: {
+        readonly light: "#f2f2f2";
+        readonly dark: "#0c0c0c";
+    };
 };
 export default colors;

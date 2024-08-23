@@ -23,6 +23,7 @@ export interface UITheme {
       label: string;
       secondary: string;
       timeline: string;
+      nav: string;
     };
     highlights: {
       selection: string;

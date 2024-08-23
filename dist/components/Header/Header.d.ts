@@ -1,16 +1,14 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 export type HeaderProps = {
+    icon?: React.ReactNode;
+    toggleTheme: () => void;
     userInfo: {
-        image?: React.ImgHTMLAttributes<HTMLImageElement>["src"];
-        firstName: string;
-        lastName: string;
         email: string;
-        organization: string;
+        image?: React.ImgHTMLAttributes<HTMLImageElement>['src'];
+        firstName?: string;
+        lastName?: string;
     };
-    navLinks: {
-        label: string;
-        element: ReactNode;
-    }[];
+    navLinks: ReactNode[];
 };
 declare const LagoonHeader: React.ForwardRefExoticComponent<HeaderProps & React.RefAttributes<HTMLElement>>;
 export default LagoonHeader;

@@ -113,6 +113,9 @@ export type { FormItemProps } from './components/FormItem';
 export { default as CopyToClipboard } from './components/CopyToClipboard';
 export type { ClipboardProps } from './components/CopyToClipboard';
 
+export { default as PageContainer } from './components/PageContainer';
+export type { PageContainerProps } from './components/PageContainer';
+
 export {
 	LagoonIcon,
 	IconAim,
@@ -182,4 +185,5 @@ export {
 	IconWifi,
 	IconZoomIn,
 	IconZoomOut,
+	IconSun
 } from './components/Icons/index';

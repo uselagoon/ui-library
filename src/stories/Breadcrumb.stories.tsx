@@ -53,15 +53,6 @@ const meta: Meta<typeof BreadCrumb> = {
 				category: 'Props',
 			},
 		},
-		prependSeparator: {
-			type: 'string',
-			control: 'text',
-			defaultValue: { summary: '-' },
-			description: 'A separator to render before the nav `ReactNode`',
-			table: {
-				category: 'Props',
-			},
-		},
 		//@ts-ignore
 		title: {
 			control: 'none',
@@ -113,7 +104,48 @@ const items: BreadCrumbProps['items'] = [
 		},
 	},
 ];
-export const DefaultWithActive: Story = {
+
+const LinkItems: BreadCrumbProps['items'] = [
+	{
+		title: <a href="#">Projects</a>,
+	},
+	{
+		title: <a href="#">as-demo</a>,
+	},
+	{
+		title: <a href="#">Environment</a>,
+		key: 'activeItem',
+	},
+];
+
+const OrgLinkitems: BreadCrumbProps['items'] = [
+	{
+		title: <a href="#">Organizations</a>,
+	},
+	{
+		title: <a href="#">Some org</a>,
+	},
+	{
+		title: <a href="#">as-demo</a>,
+		key: 'activeItem',
+	},
+];
+
+export const DefaultEnvsWithActiveLinks: Story = {
+	args: {
+		items: LinkItems,
+		activeKey: 'activeItem',
+		type: 'default',
+	},
+};
+export const DefaultOrgsWithActiveLinks: Story = {
+	args: {
+		items: OrgLinkitems,
+		activeKey: 'activeItem',
+		type: 'orgs',
+	},
+};
+export const ItemsWithClickHandlers: Story = {
 	args: {
 		items: items,
 		activeKey: 'activeItem',
@@ -124,15 +156,7 @@ export const PrependedSeparator: Story = {
 	args: {
 		items: items,
 		activeKey: 'activeItem',
-		prependSeparator: '/',
 	},
 };
 
-export const PrependedWithAnything: Story = {
-	args: {
-		items: items,
-		activeKey: 'activeItem',
-		prependSeparator: '(ง •̀_•́)ง',
-	},
-};
 export default meta;

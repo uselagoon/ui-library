@@ -2,9 +2,10 @@ import styled, { css } from "styled-components";
 import { Button as AntButton } from "antd";
 import { ButtonSizeType } from "./Button";
 import colors from "../../_util/colors";
+import { lagoonColors } from "../../_util/lagoonColors";
 
 const primaryBtnStyles = css`
-  background-color: ${colors.lagoonBlue};
+  background-color: ${lagoonColors.lagoonBlue.light};
 
   &:not(:disabled):not(.ant-btn-disabled) {
     &:hover {

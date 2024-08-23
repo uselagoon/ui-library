@@ -1,5 +1,5 @@
-import Icon from "@ant-design/icons";
-import type { GetProps } from "antd";
+import Icon from '@ant-design/icons';
+import type { GetProps } from 'antd';
 type CustomIconComponentProps = GetProps<typeof Icon>;
 export declare const IconAim: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
 export declare const IconAlert: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
@@ -69,4 +69,5 @@ export declare const IconWifi: (props: Partial<CustomIconComponentProps>) => imp
 export declare const IconZoomIn: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
 export declare const IconZoomOut: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
 export declare const LagoonIcon: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
+export declare const IconSun: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
 export {};

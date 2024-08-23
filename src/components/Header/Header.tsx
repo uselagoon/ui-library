@@ -1,90 +1,52 @@
-import React, { ReactNode, forwardRef, useEffect, useState } from "react";
-import { StyledAvatar, StyledHeader, StyledNav } from "./styles";
-import genAvatarBackground from "./helpers/genAvatarBackground";
-import { GlobalOutlined, MailOutlined } from "@ant-design/icons";
+import React, { ReactNode, forwardRef } from 'react';
+import { StyledHeader, StyledLink, StyledNav, ThemeSwitcher } from './styles';
+import genAvatarBackground from './helpers/genAvatarBackground';
+import { IconSun, LagoonIcon } from '../Icons';
 
 export type HeaderProps = {
-  userInfo: {
-    image?: React.ImgHTMLAttributes<HTMLImageElement>["src"];
-    firstName: string;
-    lastName: string;
-    email: string;
-    organization: string;
-  };
-  navLinks: {
-    label: string;
-    element: ReactNode;
-  }[];
+	icon?: React.ReactNode;
+	toggleTheme: () => void;
+	userInfo: {
+		email: string;
+		image?: React.ImgHTMLAttributes<HTMLImageElement>['src'];
+		firstName?: string;
+		lastName?: string;
+	};
+	navLinks: ReactNode[];
 };
 
-const InternalHeader: React.ForwardRefRenderFunction<
-  HTMLElement,
-  HeaderProps
-> = ({ userInfo, navLinks }, ref) => {
-  const { firstName, lastName, image, email, organization } = userInfo;
+const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> = (
+	{ userInfo, navLinks, icon, toggleTheme },
+	ref,
+) => {
+	const { firstName, lastName, image, email } = userInfo;
 
-  const [active, setActive] = useState<string>("");
+	const userImageExists = !!image;
 
-  const imagePresent = !!image;
+	const avatarBg = firstName && lastName ? genAvatarBackground(firstName.charAt(0), lastName.charAt(0)) : null;
 
-  const avatarBg = genAvatarBackground(firstName.charAt(0), lastName.charAt(0));
+	// show img + firstname lastname
+	// or avatarbg + firstname lastname
+	// or genericImage + user email
 
-  useEffect(() => {
-    const currentPath = location.pathname;
+	return (
+		<StyledHeader ref={ref}>
+			<section className="icon-container">{icon ? icon : <LagoonIcon className="icon" />}</section>
+			<StyledNav className="navigation">
+				{navLinks.map((item) => (
+					<StyledLink key={item?.toString()}>{item}</StyledLink>
+				))}
+			</StyledNav>
 
-    const foundItem = navLinks.find((item) => {
-      if (typeof item.element === "string") {
-        return item.element === currentPath;
-      } else if (React.isValidElement(item.element)) {
-        return item.element.props.to === currentPath;
-      }
-      return false;
-    });
-
-    foundItem && setActive(foundItem.label);
-  }, [location.pathname, navLinks]);
-
-  return (
-    <StyledHeader ref={ref}>
-      <div className="user-details">
-        <StyledAvatar
-          className="avatar"
-          $bgcolor={imagePresent ? null : avatarBg}
-        >
-          {!imagePresent ? (
-            <span> {`${firstName.charAt(0)} ${lastName.charAt(0)}`}</span>
-          ) : (
-            <img src={image} alt="profile image" />
-          )}
-        </StyledAvatar>
-        <div className="info">
-          <span className="fullname">
-            {firstName} {lastName}
-          </span>
-          <span className="email">
-            <MailOutlined /> {email}
-          </span>
-          <span className="org">
-            <GlobalOutlined /> {organization}
-          </span>
-        </div>
-      </div>
-      <StyledNav className="navigation">
-        {navLinks.map((item) => (
-          <li
-            key={item.label}
-            className={item.label === active ? "active" : ""}
-          >
-            {item.element}
-          </li>
-        ))}
-      </StyledNav>
-    </StyledHeader>
-  );
+			<ThemeSwitcher onClick={toggleTheme}>
+				<IconSun className="theme-icon" />
+			</ThemeSwitcher>
+		</StyledHeader>
+	);
 };
 
 const LagoonHeader = forwardRef<HTMLElement, HeaderProps>(InternalHeader);
 
-LagoonHeader.displayName = "LagoonHeader";
+LagoonHeader.displayName = 'LagoonHeader';
 
 export default LagoonHeader;

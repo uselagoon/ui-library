@@ -8,6 +8,6 @@ type UITreeProps = {
 declare const UITree: React.ForwardRefExoticComponent<{
     items: TreeDataNode[];
     onClick?: TreeProps<DataNode>["onClick"];
-} & Omit<TreeProps<TreeDataNode>, "multiple" | "switcherIcon" | "showLine" | "showIcon" | "checkable" | "defaultExpandAll"> & React.RefAttributes<import("rc-tree/lib/Tree").default<TreeDataNode>>>;
+} & Omit<TreeProps<TreeDataNode>, "multiple" | "showIcon" | "switcherIcon" | "showLine" | "checkable" | "defaultExpandAll"> & React.RefAttributes<import("rc-tree/lib/Tree").default<TreeDataNode>>>;
 export type { UITreeProps };
 export default UITree;

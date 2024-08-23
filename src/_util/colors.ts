@@ -1,51 +1,57 @@
+import { lagoonColors } from './lagoonColors';
+
 const colors = {
-  lagoonBlue: "#4578E6",
-  buttons: {
-    primary: {
-      default: "#4578E6",
-      hover: "#4578e6bf",
-      active: "#184CBC",
-    },
-    secondary: {
-      default: "#1B8784",
-      hover: "#1b8784bf",
-      active: "#093C3B",
-    },
-  },
-  backgrounds: {
-    primary: {
-      light: "#F8F8F2",
-      dark: "#272822",
-    },
-  },
-  texts: {
-    primary: {
-      light: "#222222",
-      dark: "#fff",
-    },
-    secondary: {
-      light: "#00000073",
-      dark: "#75715E",
-    },
-    timeline: {
-      light: "#F8F8F2",
-      dark: "#272822",
-    },
-  },
-  darkGray: "#272822",
-  cellGray: "#868686",
-  lighterGray: "#282828",
-  orange: "#FD971F",
-  lightOrange: "#E69F66",
-  blue: "#66D9EF",
-  white: "#F8F8F2",
-  purple: "#AE81FF",
-  gray: "#75715E",
-  yellow: "#E6DB74",
-  pink: "#F92672",
-  green: "#A6E22E",
-  green2: "#A6E22D",
-  black: "#000",
+	lagoonBlue: lagoonColors.lagoonBlue.light,
+	buttons: {
+		primary: {
+			default: lagoonColors.devBlue.light,
+			hover: '#4578e6bf',
+			active: '#184CBC',
+		},
+		secondary: {
+			default: '#1B8784',
+			hover: '#1b8784bf',
+			active: '#093C3B',
+		},
+	},
+	backgrounds: {
+		primary: {
+			light: lagoonColors.monoWhite.dark,
+			dark: lagoonColors.monoBackground.dark,
+		},
+	},
+	texts: {
+		primary: {
+			light: lagoonColors.darkGrey.light,
+			dark: lagoonColors.white.dark,
+		},
+		secondary: {
+			light: lagoonColors.disabled.light,
+			dark: lagoonColors.monoComment.dark,
+		},
+		timeline: {
+			light: lagoonColors.monoWhite.dark,
+			dark: lagoonColors.monoBackground.dark,
+		},
+	},
+	darkGray: lagoonColors.monoBackground.dark,
+	cellGray: lagoonColors.cellGrey.dark,
+	lighterGray: '#282828',
+	orange: lagoonColors.monoOrange.dark,
+	lightOrange: lagoonColors.monoLightOrange.dark,
+	blue: lagoonColors.monoBlue.dark,
+	white: lagoonColors.monoWhite.dark,
+	purple: lagoonColors.monoPurple.dark,
+	gray: lagoonColors.monoComment.dark,
+	yellow: lagoonColors.monoYellow.dark,
+	pink: lagoonColors.monoPink.dark,
+	green: '#A6E22E',
+	green2: '#A6E22D',
+	black: '#000',
+  header:{
+    light: "#f2f2f2",
+    dark: '#0c0c0c'
+  }
 } as const;
 
 Object.freeze(colors);

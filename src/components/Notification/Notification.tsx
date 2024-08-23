@@ -1,62 +1,62 @@
-import React, { ReactNode, useCallback } from "react";
-import { NotificationArgsProps, notification } from "antd";
-import { NotificationPlacement } from "antd/es/notification/interface";
-import UIButton from "../Button";
+import React, { ReactNode, useCallback } from 'react';
+import { NotificationArgsProps, notification } from 'antd';
+import { NotificationPlacement } from 'antd/es/notification/interface';
+import UIButton from '../Button';
 
 export type NotificationType = {
-  type?: "error" | "warning" | "info" | "success";
-  requiresManualClose?: boolean;
-  title: string;
-  content: ReactNode;
-  placement?: NotificationPlacement;
-} & Omit<
-  NotificationArgsProps,
-  "placement" | "message" | "description" | "btn"
-> & {
-    showBtn?: boolean;
-    btnLabel?: string;
-  };
+	type?: 'error' | 'warning' | 'info' | 'success';
+	requiresManualClose?: boolean;
+	title: string;
+	content: ReactNode;
+	placement?: NotificationPlacement;
+} & Omit<NotificationArgsProps, 'placement' | 'message' | 'description' | 'btn'> & {
+		showBtn?: boolean;
+		btnLabel?: string;
+		showIcon?: boolean;
+	};
 
 const useUINotification = ({
-  type = "info",
-  title,
-  content,
-  placement = "top",
-  requiresManualClose = false,
-  showBtn = false,
-  btnLabel,
-  ...props
+	type = 'info',
+	title,
+	content,
+	placement = 'top',
+	requiresManualClose = false,
+	showBtn = false,
+	showIcon = true,
+	btnLabel,
+	...props
 }: NotificationType) => {
-  // basic config
-  const [api, contextHolder] = notification.useNotification({
-    top: 24,
-    maxCount: 1,
-  });
+	// basic config
+	const [api, contextHolder] = notification.useNotification({
+		top: 24,
+		maxCount: 1,
+	});
 
-  const NotificationMemo = useCallback(() => {
-    const notifConfig: NotificationArgsProps = {
-      message: title,
-      description: content,
-      placement,
-      duration: requiresManualClose ? 0 : 3,
-      btn: showBtn ? (
-        <UIButton type="primary" size="small" onClick={() => api.destroy()}>
-          {btnLabel ?? "Confirm"}
-        </UIButton>
-      ) : null,
-      style: {
-        fontFamily: "Roboto",
-      },
-      className: "ui-notification",
-      ...props,
-    };
+	const NotificationMemo = useCallback(() => {
+		const notifConfig: NotificationArgsProps = {
+			message: title,
+			description: content,
+			placement,
+			duration: requiresManualClose ? 0 : 3,
+			btn: showBtn ? (
+				<UIButton type="primary" size="small" onClick={() => api.destroy()}>
+					{btnLabel ?? 'Confirm'}
+				</UIButton>
+			) : null,
+			style: {
+				fontFamily: 'Roboto',
+			},
+			className: `ui-notification ${!showIcon && "no-icon"}`,
+			...(showIcon ? {} : { icon: <></> }),
+			...props,
+		};
 
-    return api[type](notifConfig);
-  }, []);
+		return api[type](notifConfig);
+	}, []);
 
-  const trigger = NotificationMemo;
+	const trigger = NotificationMemo;
 
-  return { trigger, contextHolder };
+	return { trigger, contextHolder };
 };
 
 export default useUINotification;
