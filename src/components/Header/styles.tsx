@@ -54,12 +54,6 @@ export const StyledLine = styled.span`
 
 export const StyledLink = styled.div`
 	cursor: pointer;
-	font-weight: 400;
-	line-height: 22px;
-	font-family: 'Roboto';
-	padding: 20px;
-	font-size: 14px;
-
 	transition: all 0.25s ease;
 	&.active {
 		a {
@@ -74,6 +68,17 @@ export const StyledLink = styled.div`
 	& > a {
 		transition: all 0.25s ease;
 	}
+	& > * {
+		text-decoration: none;
+		display: inline-block;
+		border: 1px solid hotpink;
+		font-weight: 400;
+		line-height: 22px;
+		font-family: 'Roboto';
+		padding: 20px;
+		font-size: 14px;
+	}
+
 	& > a,
 	& > a:link,
 	& > a:visited {
