@@ -57,7 +57,7 @@ export const StyledLink = styled.div`
 	transition: all 0.25s ease;
 	&.active {
 		a {
-			color: ${colors.lagoonBlue};
+			color: ${colors.lagoonBlue} !important;
 		}
 	}
 	&:hover {

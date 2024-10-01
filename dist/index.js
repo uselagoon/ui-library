@@ -981,7 +981,7 @@ body {
 	transition: all 0.25s ease;
 	&.active {
 		a {
-			color: ${B.lagoonBlue};
+			color: ${B.lagoonBlue} !important;
 		}
 	}
 	&:hover {
