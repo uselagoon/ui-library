@@ -73,7 +73,13 @@ const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> =
 		left: 'initial',
 	});
 
-	const [activeIdx, setActiveIdx] = useState(getCurrentPathIndex(navLinks, currentPath || ''));
+	const updateActiveIndex = (current?: string) => getCurrentPathIndex(navLinks, current || '');
+
+	const [activeIdx, setActiveIdx] = useState(updateActiveIndex(currentPath));
+
+	useEffect(() => {
+		setActiveIdx(updateActiveIndex(currentPath));
+	}, [currentPath]);
 
 	useEffect(() => {
 		setTimeout(() => {
