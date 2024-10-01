@@ -14,6 +14,7 @@ import {
 import genAvatarBackground from './helpers/genAvatarBackground';
 import { IconSun, LagoonIcon } from '../Icons';
 import { MenuProps } from 'antd';
+import { getCurrentPathIndex } from './helpers/getCurrentPathIndex';
 
 export type HeaderProps = {
 	icon?: React.ReactNode;
@@ -28,11 +29,11 @@ export type HeaderProps = {
 	navLinks: ReactNode[];
 	// navigation callback on logo click
 	logoNav?: () => void;
-	currentPageIndex?: number;
+	currentPath?: string;
 };
 
 const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> = (
-	{ userInfo, navLinks, icon, toggleTheme, userDropdownMenu, logoNav, currentPageIndex },
+	{ userInfo, navLinks, icon, toggleTheme, userDropdownMenu, logoNav, currentPath },
 	ref,
 ) => {
 	const { firstName, lastName, image, email } = userInfo;
@@ -72,7 +73,7 @@ const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> =
 		left: 'initial',
 	});
 
-	const [activeIdx, setActiveIdx] = useState(currentPageIndex);
+	const [activeIdx, setActiveIdx] = useState(getCurrentPathIndex(navLinks, currentPath || ''));
 
 	useEffect(() => {
 		setTimeout(() => {

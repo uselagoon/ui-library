@@ -11,7 +11,7 @@ const meta: Meta<typeof LagoonHeader> = {
 
 type Story = StoryObj<typeof LagoonHeader>;
 
-const fakeNavLinks = [<a>Projects</a>, <a>Organizations</a>, <a>Knowledge</a>];
+const fakeNavLinks = [<a href="/projects">Projects</a>, <a>Organizations</a>, <a>Knowledge</a>];
 const menuItems = [
 	{
 		label: <a>Settings</a>,
@@ -50,7 +50,7 @@ export const OnlyEmail: Story = {
 		},
 		navLinks: fakeNavLinks,
 		userDropdownMenu: menuItems,
-		currentPageIndex: 2,
+		currentPath: "/projects",
 	},
 };
 

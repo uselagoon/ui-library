@@ -12,7 +12,7 @@ export type HeaderProps = {
     userDropdownMenu: MenuProps['items'];
     navLinks: ReactNode[];
     logoNav?: () => void;
-    currentPageIndex?: number;
+    currentPath?: string;
 };
 declare const LagoonHeader: React.ForwardRefExoticComponent<HeaderProps & React.RefAttributes<HTMLElement>>;
 export default LagoonHeader;
