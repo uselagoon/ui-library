@@ -995,7 +995,6 @@ body {
 	& > * {
 		text-decoration: none;
 		display: inline-block;
-		border: 1px solid hotpink;
 		font-weight: 400;
 		line-height: 22px;
 		font-family: 'Roboto';
