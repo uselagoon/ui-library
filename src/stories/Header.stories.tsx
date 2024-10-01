@@ -3,7 +3,6 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { default as LagoonHeader } from '../components/Header';
-import { UserOutlined } from '@ant-design/icons';
 
 const meta: Meta<typeof LagoonHeader> = {
 	component: LagoonHeader,
@@ -12,16 +11,26 @@ const meta: Meta<typeof LagoonHeader> = {
 
 type Story = StoryObj<typeof LagoonHeader>;
 
-const fakeNavLinks = [
-	'Projects',
-	'Organizations',
-	'Knowledge',
-	<>
-		<div>
-			<UserOutlined /> Lagoon_User
-		</div>
-	</>,
+const fakeNavLinks = [<a>Projects</a>, <a>Organizations</a>, <a>Knowledge</a>];
+const menuItems = [
+	{
+		label: <a>Settings</a>,
+		key: 'settings',
+	},
+	{
+		label: <a>Account</a>,
+		key: 'account',
+	},
+	{
+		type: 'divider',
+		key: 'divider',
+	},
+	{
+		label: <span>Sign Out</span>,
+		key: 'sign_out',
+	},
 ];
+
 export const Default: Story = {
 	args: {
 		userInfo: {
@@ -30,6 +39,18 @@ export const Default: Story = {
 			email: 'testuser@amazee.io',
 		},
 		navLinks: fakeNavLinks,
+		userDropdownMenu: menuItems,
+	},
+};
+
+export const OnlyEmail: Story = {
+	args: {
+		userInfo: {
+			email: 'platformowner@amazee.io',
+		},
+		navLinks: fakeNavLinks,
+		userDropdownMenu: menuItems,
+		currentPageIndex: 2,
 	},
 };
 
