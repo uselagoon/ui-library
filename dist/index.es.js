@@ -470,7 +470,11 @@ html,body{
 			background-color: ${A=>"light"===A.theme.colorScheme?"#0000000f":JA.lighterGray};
 		}
 		li.ant-breadcrumb-separator {
-			margin-inline: 14px;
+			margin-inline-start: 14px;
+
+			&:first-of-type{
+				margin-inline-start: 0px;
+			}
 		}
 		li.ant-breadcrumb-separator:nth-last-child(2) {
 			color: ${A=>"light"===A.theme.colorScheme?JA.texts.primary.light:JA.white};

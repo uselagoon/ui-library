@@ -129,7 +129,11 @@ const StyledBreadcrumb = styled(Breadcrumb)`
 			background-color: ${(props) => (props.theme.colorScheme === 'light' ? '#0000000f' : colors.lighterGray)};
 		}
 		li.ant-breadcrumb-separator {
-			margin-inline: 14px;
+			margin-inline-start: 14px;
+
+			&:first-of-type{
+				margin-inline-start: 0px;
+			}
 		}
 		li.ant-breadcrumb-separator:nth-last-child(2) {
 			color: ${(props) => (props.theme.colorScheme === 'light' ? colors.texts.primary.light : colors.white)};
