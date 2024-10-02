@@ -88,12 +88,15 @@ const UIBreadcrumb: FC<UIBreadcrumbProps> = (props) => {
 			return item;
 		}
 	});
+	// always prepend with " / "
+	modifiedItems.unshift({ type: 'separator', separator: '/' });
 
 	return <StyledBreadcrumb items={modifiedItems} {...rest} />;
 };
 
 const StyledBreadcrumb = styled(Breadcrumb)`
 	padding: 0.5rem;
+	margin-block: 2rem 2.625rem;
 	&.ant-breadcrumb {
 		font-family: 'ArabicPro-Regular', sans-serif;
 		font-size: 28px;
@@ -116,14 +119,17 @@ const StyledBreadcrumb = styled(Breadcrumb)`
 		li,
 		span,
 		a {
+			transition: all 0.25s ease;
 			color: ${(props) => props.theme.UI.texts.secondary};
-
 			&[data-active='active'] {
 				color: ${(props) => (props.theme.colorScheme === 'light' ? colors.texts.primary.light : colors.white)};
 			}
 		}
 		& a:hover {
 			background-color: ${(props) => (props.theme.colorScheme === 'light' ? '#0000000f' : colors.lighterGray)};
+		}
+		li.ant-breadcrumb-separator {
+			margin-inline: 14px;
 		}
 		li.ant-breadcrumb-separator:nth-last-child(2) {
 			color: ${(props) => (props.theme.colorScheme === 'light' ? colors.texts.primary.light : colors.white)};
@@ -140,12 +146,13 @@ const Wrapper = styled.div`
 
 	&[data-active='active'] > *:last-child {
 		color: ${(props) => (props.theme.colorScheme === 'light' ? colors.texts.primary.light : colors.white)};
+		text-decoration: none !important;
 	}
 
 	span {
 		left: 0;
 		font-size: 13px;
-		font-weight: 500;
+		font-weight: bolder;
 		color: ${colors.lagoonBlue} !important;
 		top: -100%;
 		position: absolute;

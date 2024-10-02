@@ -11,6 +11,10 @@ import OpenSansSemibold from '../fonts/opensans-semibold.woff2';
 
 const GlobalStyles = createGlobalStyle`
 
+:root {
+  color-scheme: ${(props) => props.theme.colorScheme};
+}
+
 *,
 *::before,
 *::after{
@@ -24,6 +28,11 @@ html {
 body {
   font-size: 16px;
   box-sizing: border-box;
+  background-color:${(props) => (props.theme.colorScheme === 'dark' ? '#0c0c0c' : '#f2f2f2')};
+}
+
+html,body{
+  scroll-behavior: smooth;
 }
 
 @font-face {
