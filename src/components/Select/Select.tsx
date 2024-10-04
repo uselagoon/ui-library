@@ -4,7 +4,7 @@ import { DownOutlined, UpOutlined } from '@ant-design/icons';
 import styled, { css } from 'styled-components';
 import colors from '../../_util/colors';
 
-type SelectedState = unknown;
+type SelectedState = any;
 
 type UISelectProps = SelectProps & {
 	selectedState?: SelectedState;
