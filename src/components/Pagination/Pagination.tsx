@@ -7,11 +7,24 @@ import colors from '../../_util/colors';
 const UIPagination: FC<
 	Omit<
 		PaginationProps,
-		'defaultCurrent' | 'size' | 'simple' | 'showLessItems' | 'responsive' | 'pageSize' | 'pageSizeOptions'
-	>
-> = (props) => {
+		| 'defaultCurrent'
+		| 'size'
+		| 'simple'
+		| 'showLessItems'
+		| 'responsive'
+		| 'pageSizeOptions'
+		| 'showSizeChanger'
+	> & {
+		showSizeSelector?: boolean;
+	}
+> = ({ showSizeSelector = false, ...props }) => {
 	return (
-		<StyledPagination showSizeChanger defaultCurrent={1} locale={{ items_per_page: 'results / page' }} {...props} />
+		<StyledPagination
+			showSizeChanger={showSizeSelector}
+			defaultCurrent={1}
+			locale={{ items_per_page: 'results / page' }}
+			{...props}
+		/>
 	);
 };
 

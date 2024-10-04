@@ -62,15 +62,22 @@ export const Default: Story = {
 	},
 };
 
-export const Disabled: Story = {
+export const NoSizeSelector: Story = {
 	args: {
-		disabled: true,
+		total: 100,
+		showSizeSelector: false,
 	},
 };
 
-export const ShowSizeChanger: Story = {
+export const ShowSizeSelector: Story = {
 	args: {
-		showSizeChanger: true,
+		showSizeSelector: true,
+	},
+};
+
+export const Disabled: Story = {
+	args: {
+		disabled: true,
 	},
 };
 

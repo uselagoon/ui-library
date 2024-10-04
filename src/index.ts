@@ -116,6 +116,10 @@ export type { ClipboardProps } from './components/CopyToClipboard';
 export { default as PageContainer } from './components/PageContainer';
 export type { PageContainerProps } from './components/PageContainer';
 
+export { default as ProjectsTable } from './components/ProjectsTable';
+export type { ProjectsTableProps } from './components/ProjectsTable';
+
+
 export {
 	LagoonIcon,
 	IconAim,

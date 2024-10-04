@@ -72,4 +72,6 @@ export { default as CopyToClipboard } from './components/CopyToClipboard';
 export type { ClipboardProps } from './components/CopyToClipboard';
 export { default as PageContainer } from './components/PageContainer';
 export type { PageContainerProps } from './components/PageContainer';
+export { default as ProjectsTable } from './components/ProjectsTable';
+export type { ProjectsTableProps } from './components/ProjectsTable';
 export { LagoonIcon, IconAim, IconAlert, IconAlignCenter, IconAlignLeft, IconAlignRight, IconApartment, IconApi, IconAppstore, IconArrowDown, IconArrowsAlt, IconAudio, IconBell, IconBranches, IconBug, IconBulb, IconCamera, IconCaretDown, IconCheck, IconCheckSquare, IconClose, IconCloseSquare, IconCloudDownload, IconCloudUpload, IconDelete, IconDisconnect, IconEdit, IconEllipsis, IconExclamation, IconExclamationCircle, IconExport, IconEye, IconFileImage, IconFileJpg, IconFilePdf, IconFrown, IconFullscreen, IconFullscreenExit, IconGithub, IconHdd, IconHeart, IconHighlight, IconHome, IconIdcard, IconInfoCircle, IconLink, IconLoading, IconLock, IconMeh, IconMessage, IconMinusCircle, IconMinusSquare, IconPaperclip, IconPlus, IconPushpinFIlled, IconPushpinOutlined, IconRest, IconRocket, IconSave, IconSearch, IconSettings, IconSmile, IconStar, IconTag, IconTags, IconWifi, IconZoomIn, IconZoomOut, IconSun } from './components/Icons/index';

@@ -7,6 +7,7 @@ import { terser } from 'rollup-plugin-terser';
 import json from '@rollup/plugin-json';
 import url from '@rollup/plugin-url';
 import image from '@rollup/plugin-image';
+import commonjs from '@rollup/plugin-commonjs';
 
 import { defineConfig } from 'rollup';
 
@@ -40,6 +41,7 @@ const rollupConfig = defineConfig({
 			exclude: 'node_modules/**',
 			presets: ['@babel/preset-react'],
 		}),
+		commonjs(),
 		external(),
 		resolve(),
 		json(),
