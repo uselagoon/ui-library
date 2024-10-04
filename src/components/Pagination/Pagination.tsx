@@ -7,13 +7,7 @@ import colors from '../../_util/colors';
 const UIPagination: FC<
 	Omit<
 		PaginationProps,
-		| 'defaultCurrent'
-		| 'size'
-		| 'simple'
-		| 'showLessItems'
-		| 'responsive'
-		| 'pageSizeOptions'
-		| 'showSizeChanger'
+		'defaultCurrent' | 'size' | 'simple' | 'showLessItems' | 'responsive' | 'pageSizeOptions' | 'showSizeChanger'
 	> & {
 		showSizeSelector?: boolean;
 	}
@@ -33,6 +27,12 @@ const StyledPagination = styled(AntPagination)`
 		max-width: 99%;
 		display: flex;
 		background-color: transparent;
+		.ant-pagination-item {
+			background-color: transparent;
+			&.ant-pagination-item-active {
+				background-color: #f8f8fa;
+			}
+		}
 
 		li[tabIndex]:not(.ant-pagination-item-active) > a:not(.ant-pagination-item-link),
 		.ant-pagination-item-link a,

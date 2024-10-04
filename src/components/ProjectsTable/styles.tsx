@@ -2,10 +2,11 @@ import { Table } from 'antd';
 import styled from 'styled-components';
 
 export const StyledTable = styled(Table)`
-	border: 1px solid #000000;
+	border: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#000' : '#fff')};
 	border-radius: 0;
 	font-family: 'Open Sans', sans-serif !important;
 	box-shadow: 2px 2px 8px 0px #ffffff40;
+	margin-bottom: 2rem;
 	.ant-table-thead {
 		tr {
 			th {

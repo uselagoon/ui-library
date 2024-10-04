@@ -96,7 +96,7 @@ const UIBreadcrumb: FC<UIBreadcrumbProps> = (props) => {
 
 const StyledBreadcrumb = styled(Breadcrumb)`
 	padding: 0.5rem;
-	margin-block: 2rem 2.625rem;
+	margin-block: 2rem 1.375rem;
 	&.ant-breadcrumb {
 		font-family: 'ArabicPro-Regular', sans-serif;
 		font-size: 28px;

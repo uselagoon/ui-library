@@ -6,7 +6,7 @@ type SortType<T> = {
 type FilterProps = {
     sortOptions?: SortType<string | number>[];
     selectOptions?: {
-        options: SortType<string>[];
+        options: SortType<string | number>[];
         state: {
             selectedState: unknown;
             setSelectedState: React.Dispatch<React.SetStateAction<unknown>>;

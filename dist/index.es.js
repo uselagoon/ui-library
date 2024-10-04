@@ -439,7 +439,7 @@ html,body{
   }
 `;We.displayName="Tabs";const he={default:["","project","environment"],orgs:["","organization","project"]},Be=A=>{const{activeKey:e,items:a,type:t,...r}=A,l=t&&["default","orgs"].includes(t)?he[t]:null,p=a.map(((A,a)=>{const t=l?l[a]:null;if(!("separator"in A)&&"navOnClick"in A){const{title:a,navOnClick:r,key:l}=A;let p=!1;e&&e===l&&(p=!0);const i=p?{"data-active":"active"}:{};return{...A,title:n(r?"a":"span",{...i,children:o(ue,{children:[o("span",{children:[" ",t]}),a]})}),onClick:r||void 0}}if("separator"in A||"navOnClick"in A)return A;{const{title:a,key:r}=A;let l=!1;e&&e===r&&(l=!0);const p=l?{"data-active":"active"}:{};return{...A,title:n(d,{children:o(ue,{...p,children:[o("span",{children:[" ",t]}),a]})},r)}}}));return p.unshift({type:"separator",separator:"/"}),n(Qe,{items:p,...r})},Qe=A(B)`
 	padding: 0.5rem;
-	margin-block: 2rem 2.625rem;
+	margin-block: 2rem 1.375rem;
 	&.ant-breadcrumb {
 		font-family: 'ArabicPro-Regular', sans-serif;
 		font-size: 28px;
@@ -544,6 +544,12 @@ html,body{
 		max-width: 99%;
 		display: flex;
 		background-color: transparent;
+		.ant-pagination-item {
+			background-color: transparent;
+			&.ant-pagination-item-active {
+				background-color: #f8f8fa;
+			}
+		}
 
 		li[tabIndex]:not(.ant-pagination-item-active) > a:not(.ant-pagination-item-link),
 		.ant-pagination-item-link a,
@@ -802,7 +808,7 @@ html,body{
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
-
+	margin-bottom: 26px;
 	.select-container {
 		display: flex;
 		gap: 5px;
@@ -843,7 +849,7 @@ html,body{
 			}
 		}
 	}
-`,Aa=c((({selectOptions:A,searchOptions:e,sortOptions:a,showDateRange:t=!1},r)=>o($e,{ref:r,children:[o("div",{className:"select-container",children:[n("div",{className:"results",children:n(Ue,{defaultOpen:!1,placeholder:"Results per page",options:A?.options,selectedState:A?.state.selectedState,setSelectedState:e=>{A?.state&&A.state.setSelectedState(e)}})}),n("div",{className:"sortBy",children:n(Ue,{defaultOpen:!1,placeholder:"Sort by",options:a})}),t?n("div",{className:"dateRange",children:n(Ue,{defaultOpen:!1,placeholder:"View by date range",options:[{value:"1",label:"Select option #1"},{value:"2",label:"Select option #2"},{value:"3",label:"Select option #3"}]})}):null]}),n("div",{className:"searchBar",children:n(_e,{placeholder:"Search",size:"small",onSearch:A=>{e?.state&&e.state.setSearchText(A)},addonAfter:null,variant:"borderless"})})]})));Aa.displayName="LagoonFilter";const ea=a`
+`,Aa=c((({selectOptions:A,searchOptions:e,sortOptions:a,showDateRange:t=!1},r)=>o($e,{ref:r,children:[o("div",{className:"select-container",children:[n("div",{className:"results",children:n(Ue,{defaultOpen:!1,placeholder:"Results per page",options:A?.options,selectedState:A?.state.selectedState,setSelectedState:e=>{A?.state&&A.state.setSelectedState(e)}})}),n("div",{className:"sortBy",children:n(Ue,{defaultOpen:!1,placeholder:"Sort by",options:a})}),t?n("div",{className:"dateRange",children:n(Ue,{defaultOpen:!1,placeholder:"View by date range",options:[{value:"1",label:"Select option #1"},{value:"2",label:"Select option #2"},{value:"3",label:"Select option #3"}]})}):null]}),n("div",{className:"searchBar",children:n(_e,{placeholder:"Search",size:"small",onChange:A=>{e?.state&&e.state.setSearchText(A.target.value)},addonAfter:null,variant:"borderless"})})]})));Aa.displayName="LagoonFilter";const ea=a`
   max-width: 23.75rem;
   height: 15.25rem;
   background-color: ${A=>A.theme.UI.backgrounds.lagoonCard};
@@ -1374,10 +1380,11 @@ html,body{
         padding-inline: 8.888vw;
     }
 `,Ko=c((({children:A,showHeader:e,headerProps:a,className:t},r)=>o(Uo,{ref:r,className:t,children:[e?n(ro,{...a}):null,n("main",{className:"content",children:A})]})));Ko.displayName="PageContainer";const ko=A(M)`
-	border: 1px solid #000000;
+	border: 1px solid ${A=>"dark"===A.theme.colorScheme?"#000":"#fff"};
 	border-radius: 0;
 	font-family: 'Open Sans', sans-serif !important;
 	box-shadow: 2px 2px 8px 0px #ffffff40;
+	margin-bottom: 2rem;
 	.ant-table-thead {
 		tr {
 			th {

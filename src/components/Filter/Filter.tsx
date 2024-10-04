@@ -14,7 +14,7 @@ type SortType<T> = {
 type FilterProps = {
 	sortOptions?: SortType<string | number>[];
 	selectOptions?: {
-		options: SortType<string>[];
+		options: SortType<string | number>[];
 		state: {
 			selectedState: unknown;
 			setSelectedState: React.Dispatch<React.SetStateAction<unknown>>;
@@ -28,7 +28,6 @@ type FilterProps = {
 	};
 	showDateRange?: boolean;
 };
-
 
 const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps> = (
 	{ selectOptions, searchOptions, sortOptions, showDateRange = false },
@@ -73,9 +72,9 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 				<StyledSearch
 					placeholder="Search"
 					size="small"
-					onSearch={(text: string) => {
+					onChange={(e) => {
 						if (searchOptions?.state) {
-							searchOptions.state.setSearchText(text);
+							searchOptions.state.setSearchText(e.target.value);
 						}
 					}}
 					addonAfter={null}
@@ -90,7 +89,7 @@ const StyledFilter = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
-
+	margin-bottom: 26px;
 	.select-container {
 		display: flex;
 		gap: 5px;
