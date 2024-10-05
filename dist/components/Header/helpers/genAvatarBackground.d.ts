@@ -1,5 +1,5 @@
 declare const genAvatarBackground: (firstLetter: string, secondLetter: string) => {
-    color: string;
-    luminance: number;
+    bgColor: string;
+    textColor: string;
 };
 export default genAvatarBackground;

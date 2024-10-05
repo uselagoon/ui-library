@@ -47,8 +47,7 @@ export const StyledTable = styled(Table)`
 		}
 	}
 	.highlighted {
-		padding: 0.15rem;
 		color: ${(props) => props.theme.UI.texts.primary};
-		background-color: ${(props) => props.theme.UI.backgrounds.selection};
+		background-color: ${(props) => props.theme.UI.highlights.selection};
 	}
 `;

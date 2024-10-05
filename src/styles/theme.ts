@@ -28,7 +28,7 @@ export const darkTheme: DefaultTheme = {
       card:"#fff",
     },
     highlights: {
-      selection: "#f6f9ff",
+      selection: "#497ffa",
     },
     notification: colors.backgrounds.primary.dark,
   },

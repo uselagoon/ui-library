@@ -1,4 +1,4 @@
-const genAvatarBackground = (firstLetter: string, secondLetter: string): { color: string; luminance: number } => {
+const genAvatarBackground = (firstLetter: string, secondLetter: string): { bgColor: string; textColor: string } => {
 	const alphaPosition = (letter: string): number => letter.charCodeAt(0) - 64;
 	const getColorIndex = (letter: string): number => Math.round(alphaPosition(letter) * 11);
 
@@ -7,8 +7,8 @@ const genAvatarBackground = (firstLetter: string, secondLetter: string): { color
 	let blue = Math.round(((alphaPosition(firstLetter) + alphaPosition(secondLetter)) / 2) * 11) % 256;
 
 	return {
-		color: `rgb(${red}, ${green}, ${blue})`,
-		luminance: getLuminance(red, green, blue),
+		bgColor: `rgb(${red}, ${green}, ${blue})`,
+		textColor: getLuminance(red, green, blue) > 0.5 ? '#000000' : '#FFFFFF',
 	};
 };
 
