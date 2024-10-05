@@ -57,7 +57,9 @@ const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> =
 	const avatarToUse = userImageExists ? (
 		<StyledAvatarImage src={image} alt="user_avatar" />
 	) : (
-		<StyledAvatarBubble $bgColor={avatarBg}>{avatarInitials}</StyledAvatarBubble>
+		<StyledAvatarBubble $bgColor={avatarBg.color} $textColor={avatarBg.luminance > 0.5 ? '#000000' : '#FFFFFF'}>
+			{avatarInitials}
+		</StyledAvatarBubble>
 	);
 
 	const userDisplayName = firstLastProvided ? (

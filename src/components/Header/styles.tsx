@@ -92,7 +92,7 @@ export const StyledLink = styled.div`
 	}
 `;
 
-export const StyledAvatarBubble = styled.div<{ $bgColor: string }>`
+export const StyledAvatarBubble = styled.div<{ $bgColor: string; $textColor: string }>`
 	background-color: ${(props) => props.$bgColor};
 	border-radius: 50%;
 	height: 24px;
@@ -103,6 +103,7 @@ export const StyledAvatarBubble = styled.div<{ $bgColor: string }>`
 	align-items: center;
 	margin-right: 0.5rem;
 	font-size: 0.75rem;
+	color:${(props) => props.$textColor};
 `;
 export const StyledAvatarImage = styled.img`
 	border-radius: 50%;

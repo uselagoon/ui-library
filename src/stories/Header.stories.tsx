@@ -50,7 +50,7 @@ export const OnlyEmail: Story = {
 		},
 		navLinks: fakeNavLinks,
 		userDropdownMenu: menuItems,
-		currentPath: "/projects",
+		currentPath: '/projects',
 	},
 };
 
