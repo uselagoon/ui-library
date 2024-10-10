@@ -46,9 +46,17 @@ const meta: Meta<typeof LagoonCard> = {
 			options: ['low', 'medium', 'high'],
 			description: 'Health `low` | `medium` | `high` ',
 		},
-		projects: {
+		projectName: {
 			control: 'none',
-			description: ' project Array if type is set to `environment`',
+			description: ' project name',
+		},
+		deployType: {
+			control: 'none',
+			description: 'deploy type',
+		},
+		region: {
+			control: 'none',
+			description: 'region',
 		},
 		environments: {
 			control: 'none',
@@ -70,17 +78,12 @@ export const DevEnvironment: Story = {
 		title: '8.x-test6',
 		envType: 'development',
 		status: 'low',
-		projects: [
-			{
-				name: 'test6-drupal-example-simple-8-x-test6',
-			},
-			{
-				name: 'test6-drupal-example-simple-8-x-test6-and-is-very-long-to-type',
-			},
-			{
-				name: 'test6-lagoon',
-			},
-		],
+		projectName: 'as-demo',
+		deployType: 'branch',
+		region: 'EUROPE-WEST6',
+		navigateTo: () => {
+			console.log('navigation function');
+		},
 	},
 };
 export const ActiveProd: Story = {
@@ -89,17 +92,9 @@ export const ActiveProd: Story = {
 		title: '8.x-test6',
 		envType: 'active production',
 		status: 'low',
-		projects: [
-			{
-				name: 'test6-drupal-example-simple-8-x-test6',
-			},
-			{
-				name: 'test6-drupal-example-simple-8-x-test6-and-is-very-long-to-type',
-			},
-			{
-				name: 'test6-lagoon',
-			},
-		],
+		projectName: 'as-demo',
+		deployType: 'branch',
+		region: 'us3',
 	},
 };
 
@@ -109,17 +104,9 @@ export const Prod: Story = {
 		title: '8.x-test6',
 		envType: 'production',
 		status: 'low',
-		projects: [
-			{
-				name: 'test6-drupal-example-simple-8-x-test6',
-			},
-			{
-				name: 'test6-drupal-example-simple-8-x-test6-and-is-very-long-to-type',
-			},
-			{
-				name: 'test6-lagoon',
-			},
-		],
+		projectName: 'as-demo',
+		deployType: 'branch',
+		region: 'us3',
 	},
 };
 
@@ -129,17 +116,9 @@ export const StandbyProd: Story = {
 		title: '8.x-test6',
 		envType: 'standby production',
 		status: 'low',
-		projects: [
-			{
-				name: 'test6-drupal-example-simple-8-x-test6',
-			},
-			{
-				name: 'test6-drupal-example-simple-8-x-test6-and-is-very-long-to-type',
-			},
-			{
-				name: 'test6-lagoon',
-			},
-		],
+		projectName: 'as-demo',
+		deployType: 'branch',
+		region: 'us3',
 	},
 };
 
@@ -160,7 +139,7 @@ export const New: Story = {
 
 export const Loading: Story = {
 	args: {
-		loading: true,
+		type: 'loaderOnly',
 	},
 };
 
@@ -170,17 +149,9 @@ export const Error: Story = {
 		title: '8.x-test6',
 		envType: 'error',
 		status: 'low',
-		projects: [
-			{
-				name: 'test6-drupal-example-simple-8-x-test6',
-			},
-			{
-				name: 'test6-drupal-example-simple-8-x-test6-and-is-very-long-to-type',
-			},
-			{
-				name: 'test6-lagoon',
-			},
-		],
+		projectName: 'as-demo',
+		deployType: 'branch',
+		region: 'us3',
 	},
 };
 

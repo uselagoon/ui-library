@@ -1,6 +1,6 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, ReactNode, useState } from 'react';
 import { CardProps as AntCardProps, Skeleton } from 'antd';
-import { StyledCard } from './styles';
+import { LoadingCard, StyledCard } from './styles';
 import { NewCard } from './partials/NewCard';
 import LagoonCardLabel, { LagoonCardLabelProps } from '../CardLabel';
 import {
@@ -10,8 +10,6 @@ import {
 	FrownOutlined,
 	LinkOutlined,
 	MehOutlined,
-	PushpinFilled,
-	PushpinOutlined,
 	SettingOutlined,
 	SmileOutlined,
 } from '@ant-design/icons';
@@ -25,12 +23,12 @@ type DefaultProps = {
 	status: 'low' | 'medium' | 'high';
 	styles?: React.CSSProperties;
 	cardClassName?: string;
+	navigateTo?: () => void;
 };
 
 // TODO: proper env type
 type ProjectCard = {
 	type: 'project';
-
 	environments: string[];
 };
 
@@ -38,16 +36,20 @@ type ProjectCard = {
 type EnvCard = {
 	type: 'environment';
 	envType: LagoonCardLabelProps['type'];
-	projects: {
-		name: string;
-	}[];
+	projectName: string | ReactNode;
+	deployType: string;
+	region?: string;
 };
 
 type NewCard = {
 	type: 'new';
 };
 
-export type CardProps = (ProjectCard & DefaultProps) | (EnvCard & DefaultProps) | NewCard;
+type LoaderCard = {
+	type: 'loaderOnly';
+};
+
+export type CardProps = (ProjectCard & DefaultProps) | (EnvCard & DefaultProps) | NewCard | LoaderCard;
 
 export type InternalCardProps = Pick<AntCardProps, 'bodyStyle' | 'headStyle' | 'bordered' | 'size'> & CardProps;
 
@@ -55,13 +57,14 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 	props: InternalCardProps,
 	ref,
 ) => {
-	const [isPinned, setIsPinned] = useState(false);
-
+	const [isSelecting, setIsSelecting] = useState(false);
 	const { type: cardType } = props;
 
 	if (cardType === 'new') return <NewCard ref={ref} />;
 
-	const { type, loading, title, cardClassName, styles, status = 'low', ...rest } = props;
+	if (cardType === 'loaderOnly') return <LoadingCard loading={true} />;
+
+	const { type, loading, title, cardClassName, styles, status = 'low', navigateTo, ...rest } = props;
 
 	const getStatusIcon = (status: DefaultProps['status']) => {
 		switch (status) {
@@ -81,21 +84,26 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 
 	const cardLabelType = type === 'project' ? 'project' : props.envType;
 
-	// TODO: actual pin behavior
-	const handlePin = () => {
-		setIsPinned(!isPinned);
-	};
+	const navigatorFn = navigateTo ? navigateTo : () => {};
 
 	// TODO: click handlers
 	const actions = {
-		project: [<SettingOutlined key="setting" />, <EditOutlined key="edit" />, <EllipsisOutlined key="ellipsis" />],
-		environment: [<EyeOutlined key="view" />, <SettingOutlined key="setting" />, <EllipsisOutlined key="ellipsis" />],
+		project: [
+			<SettingOutlined key="setting" />,
+			<EditOutlined key="edit" onClick={navigatorFn} />,
+			<EllipsisOutlined key="ellipsis" />,
+		],
+		environment: [
+			<SettingOutlined key="setting" />,
+			<EyeOutlined key="view" onClick={navigatorFn} />,
+			<EllipsisOutlined key="ellipsis" />,
+		],
 	};
 
 	// TODO: associated actions
 	const extraIcons = [
-		getStatusIcon(status),
 		<LinkOutlined key="link" />,
+		getStatusIcon(status),
 		// isPinned ? (
 		//   <PushpinFilled key="pushpinfilled" onClick={handlePin} />
 		// ) : (
@@ -103,8 +111,43 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 		// ),
 	];
 
+	const computedCardType = (
+		<Skeleton loading={loading} active>
+			<LagoonCardLabel type={cardLabelType} />
+			{type === 'environment' ? (
+				<EnvironmentPartial projectName={props.projectName} deployType={props.deployType} region={props.region} />
+			) : (
+				<ProjectPartial environments={props.environments} />
+			)}
+		</Skeleton>
+	);
+
+	// for better UX lets only register nav click if the user is not selecting a text or using action buttons
+	const handleMouseDown = () => {
+		setIsSelecting(false);
+	};
+
+	const handleMouseUp = () => {
+		const selectedText = window.getSelection()?.toString();
+		if (selectedText) {
+			setIsSelecting(true);
+		}
+	};
+
+	const handleCardClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+		const clickedElement = e.target as HTMLElement;
+
+		// check if the clicked element or its ancestors have the class 'ant-card-actions'
+		if (!isSelecting && !clickedElement.closest('.ant-card-actions')) {
+			navigatorFn();
+		}
+	};
+
 	return (
 		<StyledCard
+			onClick={handleCardClick}
+			onMouseDown={handleMouseDown}
+			onMouseUp={handleMouseUp}
 			hoverable
 			ref={ref}
 			style={styles}
@@ -114,14 +157,7 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 			actions={actions[type]}
 			{...rest}
 		>
-			<Skeleton loading={loading} active>
-				<LagoonCardLabel type={cardLabelType} />
-				{type === 'environment' ? (
-					<EnvironmentPartial projects={props.projects} />
-				) : (
-					<ProjectPartial environments={props.environments} />
-				)}
-			</Skeleton>
+			{computedCardType}
 		</StyledCard>
 	);
 };

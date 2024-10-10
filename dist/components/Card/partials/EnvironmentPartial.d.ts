@@ -1,6 +1,6 @@
-import { FC } from "react";
+import { FC, ReactNode } from 'react';
 export declare const EnvironmentPartial: FC<{
-    projects: {
-        name: string;
-    }[];
+    projectName: string | ReactNode;
+    deployType: string;
+    region?: string;
 }>;

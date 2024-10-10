@@ -24,7 +24,7 @@ export const NewCard = forwardRef<HTMLDivElement, {}>((_, ref) => {
   return (
     <StyledNewCard ref={ref}>
       <PinSection onClick={() => setOpen(true)}>
-        <PlusOutlined /> Pin new
+        <PlusOutlined /> New environment
       </PinSection>
 
       <UIModal
@@ -43,8 +43,7 @@ export const NewCard = forwardRef<HTMLDivElement, {}>((_, ref) => {
             alignItems: "center",
           }}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-          pariatur doloribus asperiores amet, repellendus assumenda!
+          Project creation steps.
         </div>
       </UIModal>
     </StyledNewCard>

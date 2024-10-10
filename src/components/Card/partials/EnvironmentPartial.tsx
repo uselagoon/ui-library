@@ -1,16 +1,27 @@
-import React, { FC } from "react";
-import { StyledEnvPartial } from "../styles";
+import React, { FC, ReactNode } from 'react';
+import { StyledEnvPartial } from '../styles';
 
-export const EnvironmentPartial: FC<{ projects: { name: string }[] }> = ({
-  projects,
+export const EnvironmentPartial: FC<{ projectName: string | ReactNode; deployType: string; region?: string }> = ({
+	projectName,
+	deployType,
+	region,
 }) => {
-  const mappedProjects = projects.map((project,idx) => {
-    return (
-      <div className="lagooncard-project" key={`project-${idx}-${project.name}`}>
-        <span>Project</span>
-        <span>{project.name}</span>
-      </div>
-    );
-  });
-  return <StyledEnvPartial>{mappedProjects}</StyledEnvPartial>;
+	const projectDisplay = (
+		<div className="lagooncard-project" key={`project-${projectName}`}>
+			<span>PROJECT</span>
+			<span>{projectName}</span>
+
+			<span>TYPE</span>
+			<span className="type">{deployType}</span>
+
+			{region ? (
+				<>
+					<span>REGION</span>
+					<span className="region">{region}</span>
+				</>
+			) : null}
+		</div>
+	);
+
+	return <StyledEnvPartial>{projectDisplay}</StyledEnvPartial>;
 };
