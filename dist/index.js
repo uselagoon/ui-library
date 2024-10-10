@@ -889,7 +889,7 @@ html,body{
 	}
 `,$A=r.default(a.Card)`
 	&.ant-card {
-		cursor: unset;
+    cursor: pointer;
 		${YA}
 		overflow: hidden;
 		.ant-card-head,

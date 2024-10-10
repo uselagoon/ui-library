@@ -889,7 +889,7 @@ html,body{
 	}
 `,ta=A(I)`
 	&.ant-card {
-		cursor: unset;
+    cursor: pointer;
 		${ea}
 		overflow: hidden;
 		.ant-card-head,

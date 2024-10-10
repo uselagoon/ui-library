@@ -45,7 +45,7 @@ export const LoadingCard = styled(Card)`
 `;
 export const StyledCard = styled(Card)`
 	&.ant-card {
-		cursor: unset;
+    cursor: pointer;
 		${sharedCardStyles}
 		overflow: hidden;
 		.ant-card-head,
