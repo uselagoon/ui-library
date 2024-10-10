@@ -9,6 +9,7 @@ type DefaultProps = {
     styles?: React.CSSProperties;
     cardClassName?: string;
     navigateTo?: () => void;
+    isProd?: boolean;
 };
 type ProjectCard = {
     type: 'project';

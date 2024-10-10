@@ -13,11 +13,13 @@ export const darkTheme: DefaultTheme = {
       dataCard: colors.darkGray,
       selection: colors.gray,
       lagoonCard: colors.backgrounds.primary.dark,
+      lagoonCardInverted: colors.backgrounds.primary.light,
       footer: colors.backgrounds.primary.light,
       header: colors.header.dark,
     },
     texts: {
       primary: colors.texts.primary.dark,
+      primaryInverted: colors.texts.primary.light,
       label: "#dee2e5",
       secondary: colors.texts.secondary.dark,
       timeline:colors.texts.timeline.light,
@@ -45,11 +47,13 @@ export const lightTheme: DefaultTheme = {
       dataCard: colors.gray,
       selection: "#e6f4ff",
       lagoonCard: colors.backgrounds.primary.light,
+      lagoonCardInverted: colors.backgrounds.primary.dark,
       footer: colors.backgrounds.primary.dark,
       header: colors.header.light
     },
     texts: {
       primary: colors.texts.primary.light,
+      primaryInverted: colors.texts.primary.dark,
       label: "#555",
       secondary: colors.texts.secondary.dark,
       timeline:colors.texts.timeline.dark,

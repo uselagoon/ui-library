@@ -14,12 +14,14 @@ export interface UITheme {
       dataCard: string;
       selection: string;
       lagoonCard: string;
+      lagoonCardInverted: string;
       footer: string;
       header:string;
       
     };
     texts: {
       primary: string;
+      primaryInverted: string;
       label: string;
       secondary: string;
       timeline: string;

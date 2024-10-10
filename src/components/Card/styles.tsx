@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import colors from '../../_util/colors';
 
 const sharedCardStyles = css`
-	max-width: 23.75rem;
+	width: 23.75rem;
 	height: 15.25rem;
 	background-color: ${(props) => props.theme.UI.backgrounds.lagoonCard};
 	color: ${(props) => props.theme.UI.texts.primary};
@@ -43,15 +43,22 @@ export const LoadingCard = styled(Card)`
 		}
 	}
 `;
-export const StyledCard = styled(Card)`
+
+export const StyledCard = styled(Card)<{ $isMain?: boolean }>`
+	${sharedCardStyles}
+
+	background-color: ${(props) =>
+		props.$isMain ? props.theme.UI.backgrounds.lagoonCardInverted : props.theme.UI.backgrounds.lagoonCard};
+	color: ${(props) => (props.$isMain ? props.theme.UI.texts.primaryInverted : props.theme.UI.texts.primary)};
+
 	&.ant-card {
-    cursor: pointer;
-		${sharedCardStyles}
+		cursor: pointer;
 		overflow: hidden;
+
 		.ant-card-head,
 		.ant-card-body,
 		.ant-card-actions > li > span > span[role='img'] {
-			color: ${(props) => props.theme.UI.texts.primary};
+			color: ${(props) => (props.$isMain ? props.theme.UI.texts.primaryInverted : props.theme.UI.texts.primary)};
 		}
 
 		.ant-card-actions {
@@ -63,9 +70,11 @@ export const StyledCard = styled(Card)`
 				}
 			}
 		}
+
 		.ant-card-actions > li > span > span[role='img']:hover {
-			color: ${colors.lagoonBlue};
+			color: ${(props) => (props.$isMain ? '#004d40' : '#00796b')};
 		}
+
 		.ant-card-head {
 			padding-left: 3.1875rem;
 			font-family: 'Roboto', sans-serif;
@@ -73,9 +82,10 @@ export const StyledCard = styled(Card)`
 			font-size: 1rem;
 			line-height: 1.5rem;
 			.ant-card-extra {
-				color: ${(props) => props.theme.UI.texts.primary};
+				color: ${(props) => (props.$isMain ? props.theme.UI.texts.primaryInverted : props.theme.UI.texts.primary)};
 			}
 		}
+
 		.ant-card-extra {
 			display: flex;
 			gap: 10px;
@@ -83,6 +93,7 @@ export const StyledCard = styled(Card)`
 				cursor: pointer;
 			}
 		}
+
 		.ant-card-body {
 			padding: 0;
 			min-height: 9.375rem;
@@ -96,6 +107,7 @@ export const StyledCard = styled(Card)`
 				padding-left: 3.1875rem;
 			}
 		}
+
 		.ant-card-actions {
 			background-color: transparent;
 			height: 2.5rem;

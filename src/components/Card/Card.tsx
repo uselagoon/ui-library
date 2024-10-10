@@ -24,6 +24,7 @@ type DefaultProps = {
 	styles?: React.CSSProperties;
 	cardClassName?: string;
 	navigateTo?: () => void;
+	isProd?: boolean;
 };
 
 // TODO: proper env type
@@ -64,7 +65,7 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 
 	if (cardType === 'loaderOnly') return <LoadingCard loading={true} />;
 
-	const { type, loading, title, cardClassName, styles, status = 'low', navigateTo, ...rest } = props;
+	const { type, loading, title, cardClassName, styles, status = 'low', navigateTo,isProd, ...rest } = props;
 
 	const getStatusIcon = (status: DefaultProps['status']) => {
 		switch (status) {
@@ -104,11 +105,6 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 	const extraIcons = [
 		<LinkOutlined key="link" />,
 		getStatusIcon(status),
-		// isPinned ? (
-		//   <PushpinFilled key="pushpinfilled" onClick={handlePin} />
-		// ) : (
-		//   <PushpinOutlined key="pushpin" onClick={handlePin} />
-		// ),
 	];
 
 	const computedCardType = (
@@ -145,6 +141,7 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 
 	return (
 		<StyledCard
+			$isMain={isProd}
 			onClick={handleCardClick}
 			onMouseDown={handleMouseDown}
 			onMouseUp={handleMouseUp}
