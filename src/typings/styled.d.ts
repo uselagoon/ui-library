@@ -33,6 +33,7 @@ export interface UITheme {
     borders: {
       box: string;
       card: string;
+      cardInverted: string;
     };
     notification: string;
   };

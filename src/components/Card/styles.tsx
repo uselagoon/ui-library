@@ -8,7 +8,8 @@ const sharedCardStyles = css`
 	background-color: ${(props) => props.theme.UI.backgrounds.lagoonCard};
 	color: ${(props) => props.theme.UI.texts.primary};
 	box-shadow: 2px 2px 4px 0px #69696933;
-	border-color: transparent;
+  border: 1px solid ${(props) => props.theme.UI.borders.card};
+  border-left: none;
 `;
 
 export const LoadingCard = styled(Card)`
@@ -97,8 +98,10 @@ export const StyledCard = styled(Card)<{ $isMain?: boolean }>`
 		.ant-card-body {
 			padding: 0;
 			min-height: 9.375rem;
-			border-top: 1px solid ${(props) => props.theme.UI.borders.card};
-			border-bottom: 1px solid ${(props) => props.theme.UI.borders.card};
+			border-top: 1px solid
+				${(props) => (props.$isMain ? props.theme.UI.borders.cardInverted : props.theme.UI.borders.card)};
+			border-bottom: 1px solid
+				${(props) => (props.$isMain ? props.theme.UI.borders.cardInverted : props.theme.UI.borders.card)};
 			border-radius: 0;
 			& > .lagoon-label {
 				translate: 0 -3.5rem;

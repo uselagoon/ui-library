@@ -120,7 +120,7 @@ html,body{
     }
 
   }
-`,EA=p(null),TA=()=>{const A=i(EA);if(!A)throw new Error("useTheme must be used within a ThemeProvider");return A},JA=({defaultScheme:A,children:e})=>{const[a,t]=s(null);C((()=>{if(A)return void t(A);const e=localStorage.getItem("theme");e&&["light","dark"].includes(e)?t(e):window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?(t("dark"),localStorage.setItem("theme","dark")):(t("light"),localStorage.setItem("theme","light"))}),[]);return n(EA.Provider,{value:{theme:a,toggleTheme:()=>{const A="light"===a?"dark":"light";t(A),localStorage.setItem("theme",A),window.dispatchEvent(new Event("storage"))}},children:e})},zA={colorScheme:"dark",UI:{backgrounds:{primary:"#0E1117",secondary:"#151922",input:BA.backgrounds.primary.dark,modal:BA.backgrounds.primary.dark,dataCard:BA.darkGray,selection:BA.gray,lagoonCard:BA.backgrounds.primary.dark,lagoonCardInverted:BA.backgrounds.primary.light,footer:BA.backgrounds.primary.light,header:BA.header.dark},texts:{primary:BA.texts.primary.dark,primaryInverted:BA.texts.primary.light,label:"#dee2e5",secondary:BA.texts.secondary.dark,timeline:BA.texts.timeline.light,nav:VA.dark},borders:{box:"#D9D9D9",card:"#fff"},highlights:{selection:"#497ffa"},notification:BA.backgrounds.primary.dark}},NA={colorScheme:"light",UI:{backgrounds:{primary:"#101010",secondary:"#fff",input:BA.backgrounds.primary.light,modal:BA.backgrounds.primary.light,dataCard:BA.gray,selection:"#e6f4ff",lagoonCard:BA.backgrounds.primary.light,lagoonCardInverted:BA.backgrounds.primary.dark,footer:BA.backgrounds.primary.dark,header:BA.header.light},texts:{primary:BA.texts.primary.light,primaryInverted:BA.texts.primary.dark,label:"#555",secondary:BA.texts.secondary.dark,timeline:BA.texts.timeline.dark,nav:VA.light},borders:{box:"#75715E",card:BA.darkGray},highlights:{selection:"#497ffa4d"},notification:BA.backgrounds.primary.light}},fA=({children:A,darkThemeProp:e,lightThemeProp:a})=>{const{theme:o}=TA(),r=m((()=>"light"===o?Object.assign({},NA,a):Object.assign({},zA,e)),[o]);return o?n(t,{theme:r,children:A},o):null},IA=({children:A,darkThemeProp:e,lightThemeProp:a,defaultScheme:t})=>n(JA,{defaultScheme:t||void 0,children:n(fA,{darkThemeProp:e||void 0,lightThemeProp:a||void 0,children:A})}),LA=a`
+`,EA=p(null),TA=()=>{const A=i(EA);if(!A)throw new Error("useTheme must be used within a ThemeProvider");return A},JA=({defaultScheme:A,children:e})=>{const[a,t]=s(null);C((()=>{if(A)return void t(A);const e=localStorage.getItem("theme");e&&["light","dark"].includes(e)?t(e):window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?(t("dark"),localStorage.setItem("theme","dark")):(t("light"),localStorage.setItem("theme","light"))}),[]);return n(EA.Provider,{value:{theme:a,toggleTheme:()=>{const A="light"===a?"dark":"light";t(A),localStorage.setItem("theme",A),window.dispatchEvent(new Event("storage"))}},children:e})},zA={colorScheme:"dark",UI:{backgrounds:{primary:"#0E1117",secondary:"#151922",input:BA.backgrounds.primary.dark,modal:BA.backgrounds.primary.dark,dataCard:BA.darkGray,selection:BA.gray,lagoonCard:BA.backgrounds.primary.dark,lagoonCardInverted:BA.backgrounds.primary.light,footer:BA.backgrounds.primary.light,header:BA.header.dark},texts:{primary:BA.texts.primary.dark,primaryInverted:BA.texts.primary.light,label:"#dee2e5",secondary:BA.texts.secondary.dark,timeline:BA.texts.timeline.light,nav:VA.dark},borders:{box:"#D9D9D9",card:"#fff",cardInverted:BA.darkGray},highlights:{selection:"#497ffa"},notification:BA.backgrounds.primary.dark}},NA={colorScheme:"light",UI:{backgrounds:{primary:"#101010",secondary:"#fff",input:BA.backgrounds.primary.light,modal:BA.backgrounds.primary.light,dataCard:BA.gray,selection:"#e6f4ff",lagoonCard:BA.backgrounds.primary.light,lagoonCardInverted:BA.backgrounds.primary.dark,footer:BA.backgrounds.primary.dark,header:BA.header.light},texts:{primary:BA.texts.primary.light,primaryInverted:BA.texts.primary.dark,label:"#555",secondary:BA.texts.secondary.dark,timeline:BA.texts.timeline.dark,nav:VA.light},borders:{box:"#75715E",card:BA.darkGray,cardInverted:"#fff"},highlights:{selection:"#497ffa4d"},notification:BA.backgrounds.primary.light}},fA=({children:A,darkThemeProp:e,lightThemeProp:a})=>{const{theme:o}=TA(),r=m((()=>"light"===o?Object.assign({},NA,a):Object.assign({},zA,e)),[o]);return o?n(t,{theme:r,children:A},o):null},IA=({children:A,darkThemeProp:e,lightThemeProp:a,defaultScheme:t})=>n(JA,{defaultScheme:t||void 0,children:n(fA,{darkThemeProp:e||void 0,lightThemeProp:a||void 0,children:A})}),LA=a`
   background-color: ${uA.light};
 
   &:not(:disabled):not(.ant-btn-disabled) {
@@ -855,7 +855,8 @@ html,body{
 	background-color: ${A=>A.theme.UI.backgrounds.lagoonCard};
 	color: ${A=>A.theme.UI.texts.primary};
 	box-shadow: 2px 2px 4px 0px #69696933;
-	border-color: transparent;
+  border: 1px solid ${A=>A.theme.UI.borders.card};
+  border-left: none;
 `,aa=A(I)`
 	&.ant-card {
 		cursor: unset;
@@ -939,8 +940,10 @@ html,body{
 		.ant-card-body {
 			padding: 0;
 			min-height: 9.375rem;
-			border-top: 1px solid ${A=>A.theme.UI.borders.card};
-			border-bottom: 1px solid ${A=>A.theme.UI.borders.card};
+			border-top: 1px solid
+				${A=>A.$isMain?A.theme.UI.borders.cardInverted:A.theme.UI.borders.card};
+			border-bottom: 1px solid
+				${A=>A.$isMain?A.theme.UI.borders.cardInverted:A.theme.UI.borders.card};
 			border-radius: 0;
 			& > .lagoon-label {
 				translate: 0 -3.5rem;
