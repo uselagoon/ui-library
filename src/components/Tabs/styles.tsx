@@ -113,4 +113,5 @@ export const StyledTabChildren = styled.section`
 	padding-inline: 1rem;
 	min-height: 27.1875rem;
 	max-height: max-content;
+	padding-bottom: 2.5rem;
 `;

@@ -482,6 +482,7 @@ html,body{
 	padding-inline: 1rem;
 	min-height: 27.1875rem;
 	max-height: max-content;
+	padding-bottom: 2.5rem;
 `,he=({type:A="default",children:e,...a})=>{if(!A)throw new Error("Type required");if("default"===A)return n(ye,{$type:A,...a});const{pathname:t,items:l}=a;return o(r,{children:[n(ye,{activeKey:(()=>{for(const A of l)if(t?.endsWith(A.key))return A.key;return l[0]?.key||""})(),$type:A,...a}),n(We,{children:e})]})};he.displayName="Tabs";const ue={default:["","project","environment"],orgs:["","organization","project"]},Be=A=>{const{activeKey:e,items:a,type:t,...r}=A,l=t&&["default","orgs"].includes(t)?ue[t]:null,i=a.map(((A,a)=>{const t=l?l[a]:null;if(!("separator"in A)&&"navOnClick"in A){const{title:a,navOnClick:r,key:l}=A;let i=!1;e&&e===l&&(i=!0);const p=i?{"data-active":"active"}:{};return{...A,title:n(r?"a":"span",{...p,children:o(Ee,{children:[o("span",{children:[" ",t]}),a]})}),onClick:r||void 0}}if("separator"in A||"navOnClick"in A)return A;{const{title:a,key:r}=A;let l=!1;e&&e===r&&(l=!0);const i=l?{"data-active":"active"}:{};return{...A,title:n(d,{children:o(Ee,{...i,children:[o("span",{children:[" ",t]}),a]})},r)}}}));return i.unshift({type:"separator",separator:"/"}),n(Qe,{items:i,...r})},Qe=A(u)`
 	padding: 0.5rem;
 	margin-block: 2rem 1.375rem;
