@@ -1,5 +1,5 @@
-import React from "react";
-type Status = "complete" | "error" | "failed" | "queued" | "running";
+import React from 'react';
+type Status = 'complete' | 'error' | 'failed' | 'queued' | 'running';
 type DeploymentItems = {
     environment: string;
     deployName: string;
@@ -13,10 +13,10 @@ type TaskItems = {
     navigationFunction: () => void;
 };
 export type LagoonTimelineProps = {
-    type: "deployment";
+    type: 'deployment';
     items: DeploymentItems[];
 } | {
-    type: "task";
+    type: 'task';
     items: TaskItems[];
 };
 declare const LagoonTimeline: React.ForwardRefExoticComponent<LagoonTimelineProps & React.RefAttributes<HTMLElement>>;

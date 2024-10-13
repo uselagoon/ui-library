@@ -1,4 +1,4 @@
-import { default as Modal, UIModalProps as ModalProps } from "./Modal";
+import { default as Modal, UIModalProps as ModalProps } from './Modal';
 
 export type { ModalProps };
 

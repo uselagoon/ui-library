@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 type LagoonProblemsOverviewProps = {
     problems: number;
     critical: number;

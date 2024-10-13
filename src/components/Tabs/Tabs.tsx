@@ -1,79 +1,63 @@
-import React, { FC } from "react";
-import { Tabs, TabsProps } from "antd";
-import styled, { css } from "styled-components";
-import colors from "../../_util/colors";
+import React, { FC, ReactNode } from 'react';
+import { StyledTabChildren, StyledTabs } from './styles';
 
-type UITabsProps = {
-  items: TabsProps["items"];
-} & Omit<TabsProps, "items">;
+type BaseItem = {
+	key: string;
+	label: React.ReactNode;
+};
+type DefaultItemType = BaseItem & { children?: ReactNode };
 
-const UITab: FC<UITabsProps> = (props) => {
-  return <StyledTabs {...props} />;
+type NavItemType = BaseItem;
+
+type DefaultTabType = {
+	items: DefaultItemType[];
+	type?: 'default';
 };
 
-const StyledTabs = styled(Tabs)`
-  &.ant-tabs {
-    background-color: transparent;
-    .ant-tabs-tab {
-      margin-left: 0;
-    }
-    div[role="tabpanel"] {
-      padding-top: 1.5rem;
-      padding-inline: 1rem;
-      min-height: 100vmax;
-    }
-    div[role="tab"] {
-      font-family: "Roboto", sans-serif;
-      font-size: 1rem;
-      line-height: 1.5rem;
-    }
-    div[role="tablist"] {
-      margin-bottom: 0;
-      &::before {
-        display: none;
-      }
-      .ant-tabs-nav-list {
-        display: flex;
-        gap: 0.5rem;
+type NavTabType = {
+	items: NavItemType[];
+	type: 'navigation';
+	pathname: string;
+};
 
-        > div {
-          min-width: 7.5rem;
-          display: flex;
-          justify-content: center;
-        }
-        .ant-tabs-ink-bar {
-          background-color: ${colors.lagoonBlue};
-        }
-      }
-    }
+type UITabsProps = { children?: ReactNode } & (DefaultTabType | NavTabType);
 
-    & .ant-tabs-nav-wrap {
-      border: none;
-    }
-    ${(props) =>
-      props.theme.colorScheme === "dark" &&
-      css`
-        & .ant-tabs-nav-wrap {
-          background-color: transparent;
-        }
-        & .ant-tabs-nav-list {
-          background-color: transparent;
-          > div {
-            background-color: ${colors.darkGray};
-          }
-        }
-        div[role="tabpanel"] {
-          background-color: ${colors.darkGray};
-          color: #fff;
-        }
-        div[role="tab"] {
-          color: #fff;
-        }
-      `}
-  }
-`;
+/**
+ * @param {"navigation" | "default"} type -
+ * - `"navigation"`: Creates dynamic routing using Next.js Links. The `children` prop
+ *   will be ignored in the `"items"` array.
+ * - `"default"`: Does not navigate and renders the `children` of each tab.
+ */
 
-UITab.displayName = "Tabs";
+const UITab: FC<UITabsProps> = ({ type = 'default', children, ...rest }) => {
+	if (!type) throw new Error('Type required');
+
+	if (type === 'default') {
+		return <StyledTabs $type={type} {...rest} />;
+	}
+
+	const { pathname, items } = rest as NavTabType;
+
+	// manually get active key for navigation and refresh.
+	const getActiveKey = () => {
+		for (const item of items) {
+			if (pathname?.endsWith(item.key)) {
+				return item.key;
+			}
+		}
+
+		return items[0]?.key || '';
+	};
+
+	return (
+		<>
+			<StyledTabs activeKey={getActiveKey()} $type={type} {...rest} />
+			<StyledTabChildren>{children}</StyledTabChildren>
+		</>
+	);
+};
+
+UITab.displayName = 'Tabs';
 
 export type { UITabsProps };
 export default UITab;

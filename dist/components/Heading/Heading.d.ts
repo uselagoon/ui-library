@@ -1,7 +1,7 @@
-import React from "react";
-import { TitleProps } from "antd/es/typography/Title";
+import React from 'react';
+import { TitleProps } from 'antd/es/typography/Title';
 export type Heading = 1 | 2 | 3 | 4 | 5;
-export type InternalHeadingProps = Omit<TitleProps, "level"> & {
+export type InternalHeadingProps = Omit<TitleProps, 'level'> & {
     level?: Heading;
     className?: string;
     children?: React.ReactNode;

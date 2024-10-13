@@ -48,10 +48,10 @@ const colors = {
 	green: '#A6E22E',
 	green2: '#A6E22D',
 	black: '#000',
-  header:{
-    light: "#f2f2f2",
-    dark: '#0c0c0c'
-  }
+	header: {
+		light: '#f2f2f2',
+		dark: '#0c0c0c',
+	},
 } as const;
 
 Object.freeze(colors);

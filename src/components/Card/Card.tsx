@@ -65,7 +65,7 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 
 	if (cardType === 'loaderOnly') return <LoadingCard loading={true} />;
 
-	const { type, loading, title, cardClassName, styles, status = 'low', navigateTo,isProd, ...rest } = props;
+	const { type, loading, title, cardClassName, styles, status = 'low', navigateTo, isProd, ...rest } = props;
 
 	const getStatusIcon = (status: DefaultProps['status']) => {
 		switch (status) {
@@ -102,10 +102,7 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 	};
 
 	// TODO: associated actions
-	const extraIcons = [
-		<LinkOutlined key="link" />,
-		getStatusIcon(status),
-	];
+	const extraIcons = [<LinkOutlined key="link" />, getStatusIcon(status)];
 
 	const computedCardType = (
 		<Skeleton loading={loading} active>

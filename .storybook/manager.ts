@@ -1,10 +1,10 @@
-import { addons } from "@storybook/manager-api";
+import { addons } from '@storybook/manager-api';
 
-import LagoonTheme from "./theme";
+import LagoonTheme from './theme';
 
 addons.setConfig({
-  theme: LagoonTheme,
-  sidebar: {
-    showRoots: false,
-  },
+	theme: LagoonTheme,
+	sidebar: {
+		showRoots: false,
+	},
 });

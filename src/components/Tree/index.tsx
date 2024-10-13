@@ -1,4 +1,4 @@
-import { default as Tree, UITreeProps as TreeProps } from "./Tree";
+import { default as Tree, UITreeProps as TreeProps } from './Tree';
 
 export type { TreeProps };
 

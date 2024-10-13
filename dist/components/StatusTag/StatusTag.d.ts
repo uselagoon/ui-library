@@ -1,9 +1,9 @@
-import React from "react";
-import { TagProps } from "antd";
-export type UITagProps = Omit<TagProps, "color" | "icon"> & ({
-    type: "running" | "complete" | "failed" | "error" | "queued";
+import React from 'react';
+import { TagProps } from 'antd';
+export type UITagProps = Omit<TagProps, 'color' | 'icon'> & ({
+    type: 'running' | 'complete' | 'failed' | 'error' | 'queued';
 } | {
-    type: "custom";
+    type: 'custom';
     color: string;
     icon: JSX.Element;
 });

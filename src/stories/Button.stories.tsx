@@ -152,7 +152,7 @@ export const WithIconBefore: Story = {
 
 export const WithIconAfter: Story = {
 	args: {
-		size: "middle",
+		size: 'middle',
 		type: 'primary',
 		iconAfter: <CaretDownFilled />,
 		children: 'Retrieve',

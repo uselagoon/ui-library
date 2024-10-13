@@ -10,7 +10,7 @@ export const StyledPageContainer = styled.div`
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	.content{
-        padding-inline: 8.888vw;
-    }
+	.content {
+		padding-inline: 8.888vw;
+	}
 `;

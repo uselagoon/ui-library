@@ -1,3 +1,3 @@
-import { default as LagoonTimeline, LagoonTimelineProps } from "./Timeline";
+import { default as LagoonTimeline, LagoonTimelineProps } from './Timeline';
 export type { LagoonTimelineProps };
 export default LagoonTimeline;

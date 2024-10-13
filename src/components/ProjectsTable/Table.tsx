@@ -2,7 +2,7 @@ import { TableProps } from 'antd';
 import Pagination from '../Pagination';
 import { StyledTable } from './styles';
 import React, { forwardRef, ReactNode, useEffect, useState } from 'react';
-import Highlighter from "react-highlight-words";
+import Highlighter from 'react-highlight-words';
 import type { RenderedCell } from 'rc-table/lib/interface';
 
 type ProjectsTableProps = Omit<TableProps, 'pagination' | 'filteredValue'> & {

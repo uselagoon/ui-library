@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 export interface ProjectDetailsType {
     created: React.ReactNode;
     origin: React.ReactNode;

@@ -8,8 +8,8 @@ const sharedCardStyles = css`
 	background-color: ${(props) => props.theme.UI.backgrounds.lagoonCard};
 	color: ${(props) => props.theme.UI.texts.primary};
 	box-shadow: 2px 2px 4px 0px #69696933;
-  border: 1px solid ${(props) => props.theme.UI.borders.card};
-  border-left: none;
+	border: 1px solid ${(props) => props.theme.UI.borders.card};
+	border-left: none;
 `;
 
 export const LoadingCard = styled(Card)`

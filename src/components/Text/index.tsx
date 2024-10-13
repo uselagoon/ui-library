@@ -1,4 +1,4 @@
-import { default as Text, InternalTextType as TextType } from "./Text";
+import { default as Text, InternalTextType as TextType } from './Text';
 
 export type { TextType };
 

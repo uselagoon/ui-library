@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 type DefaultProps = {
     text: string;
     count: string | number;

@@ -1,4 +1,4 @@
-import { default as LagoonCard, CardProps as LagoonCardProps } from "./Card";
+import { default as LagoonCard, CardProps as LagoonCardProps } from './Card';
 
 export type { LagoonCardProps };
 

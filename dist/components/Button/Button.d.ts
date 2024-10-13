@@ -1,10 +1,10 @@
-import React from "react";
-import { ButtonProps } from "antd";
+import React from 'react';
+import { ButtonProps } from 'antd';
 export type ButtonSizeType = {
-    size?: "large" | "middle" | "small";
-    type?: "primary" | "secondary";
+    size?: 'large' | 'middle' | 'small';
+    type?: 'primary' | 'secondary';
 };
-export type InternalButtonProps = Omit<ButtonProps, "danger" | "ghost" | "type" | "icon"> & ButtonSizeType & {
+export type InternalButtonProps = Omit<ButtonProps, 'danger' | 'ghost' | 'type' | 'icon'> & ButtonSizeType & {
     iconBefore?: React.ReactNode;
     iconAfter?: React.ReactNode;
     disabled?: boolean;

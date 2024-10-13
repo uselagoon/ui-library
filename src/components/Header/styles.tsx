@@ -103,7 +103,7 @@ export const StyledAvatarBubble = styled.div<{ $bgColor: string; $textColor: str
 	align-items: center;
 	margin-right: 0.5rem;
 	font-size: 0.75rem;
-	color:${(props) => props.$textColor};
+	color: ${(props) => props.$textColor};
 `;
 export const StyledAvatarImage = styled.img`
 	border-radius: 50%;

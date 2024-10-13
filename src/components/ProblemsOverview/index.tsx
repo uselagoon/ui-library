@@ -1,7 +1,4 @@
-import {
-  default as LagoonProblemsOverview,
-  LagoonProblemsOverviewProps,
-} from "./ProblemsOverview";
+import { default as LagoonProblemsOverview, LagoonProblemsOverviewProps } from './ProblemsOverview';
 
 export type { LagoonProblemsOverviewProps };
 

@@ -1,5 +1,5 @@
-import { default as StatusTag, UITagProps as TagProps } from "./StatusTag";
+import { default as StatusTag, UITagProps as TagProps } from './StatusTag';
 
-export type { TagProps};
+export type { TagProps };
 
 export default StatusTag;

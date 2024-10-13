@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { FC } from 'react';
 export interface ClipboardProps {
     text: string | number;
-    type?: "visible" | "hidden";
+    type?: 'visible' | 'hidden';
     width?: number;
 }
 declare const CopyToClipboard: FC<ClipboardProps>;

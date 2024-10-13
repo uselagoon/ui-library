@@ -1,21 +1,21 @@
-import React, { forwardRef } from "react";
-import { Switch, SwitchProps } from "antd";
+import React, { forwardRef } from 'react';
+import { Switch, SwitchProps } from 'antd';
 
 export interface UISwitchProps extends SwitchProps {
-  showLabel?: boolean;
+	showLabel?: boolean;
 }
 
 const UISwitch = forwardRef<HTMLButtonElement, UISwitchProps>((props, ref) => {
-  const { showLabel = true, className, style, ...rest } = props;
+	const { showLabel = true, className, style, ...rest } = props;
 
-  const labels = {
-    checkedChildren: "ON",
-    unCheckedChildren: "OFF",
-  };
-  const labelProps = showLabel ? labels : {};
-  return <Switch ref={ref} style={style} {...labelProps} {...rest} />;
+	const labels = {
+		checkedChildren: 'ON',
+		unCheckedChildren: 'OFF',
+	};
+	const labelProps = showLabel ? labels : {};
+	return <Switch ref={ref} style={style} {...labelProps} {...rest} />;
 });
 
-UISwitch.displayName = "Switch";
+UISwitch.displayName = 'Switch';
 
 export default UISwitch;

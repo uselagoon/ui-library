@@ -1,5 +1,5 @@
-import { ListProps } from "antd";
-import React, { ReactNode, RefAttributes } from "react";
+import { ListProps } from 'antd';
+import React, { ReactNode, RefAttributes } from 'react';
 declare const AntdListItem: import("antd/es/list/Item").ListItemTypeProps;
 export interface UIListProps<T> extends ListProps<T>, RefAttributes<HTMLElement> {
     children?: ReactNode;

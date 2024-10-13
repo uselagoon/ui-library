@@ -131,7 +131,7 @@ const StyledBreadcrumb = styled(Breadcrumb)`
 		li.ant-breadcrumb-separator {
 			margin-inline-start: 14px;
 
-			&:first-of-type{
+			&:first-of-type {
 				margin-inline-start: 0px;
 			}
 		}

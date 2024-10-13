@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 declare const useTheme: () => any;
 export declare const AppThemeProvider: ({ defaultScheme, children, }: {
     defaultScheme?: "dark" | "light" | undefined;

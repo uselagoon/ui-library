@@ -1,4 +1,4 @@
-import { default as LagoonFooter, FooterProps } from "./Footer";
+import { default as LagoonFooter, FooterProps } from './Footer';
 
 export type { FooterProps };
 

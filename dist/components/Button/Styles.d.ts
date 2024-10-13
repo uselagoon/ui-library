@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { ButtonSizeType } from "./Button";
+import { ButtonSizeType } from './Button';
 export declare const IconBeforeWrapper: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, never>>;
 export declare const IconAfterWrapper: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, never>>;
 export declare const UIButton: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").Substitute<import("antd").ButtonProps & import("react").RefAttributes<HTMLElement>, ButtonSizeType>> & Omit<import("react").ForwardRefExoticComponent<import("antd").ButtonProps & import("react").RefAttributes<HTMLElement>> & {

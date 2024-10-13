@@ -119,7 +119,6 @@ export type { PageContainerProps } from './components/PageContainer';
 export { default as ProjectsTable } from './components/ProjectsTable';
 export type { ProjectsTableProps } from './components/ProjectsTable';
 
-
 export {
 	LagoonIcon,
 	IconAim,
@@ -189,5 +188,5 @@ export {
 	IconWifi,
 	IconZoomIn,
 	IconZoomOut,
-	IconSun
+	IconSun,
 } from './components/Icons/index';

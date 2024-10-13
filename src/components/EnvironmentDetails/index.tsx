@@ -1,7 +1,4 @@
-import {
-  default as LagoonEnvironmentDetails,
-  EnvironmentDetailsType,
-} from "./EnvironmentDetails";
+import { default as LagoonEnvironmentDetails, EnvironmentDetailsType } from './EnvironmentDetails';
 
 export type { EnvironmentDetailsType };
 

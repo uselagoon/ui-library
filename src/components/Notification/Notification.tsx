@@ -46,7 +46,7 @@ const useUINotification = ({
 			style: {
 				fontFamily: 'Roboto',
 			},
-			className: `ui-notification ${!showIcon && "no-icon"}`,
+			className: `ui-notification ${!showIcon && 'no-icon'}`,
 			...(showIcon ? {} : { icon: <></> }),
 			...props,
 		};
