@@ -869,16 +869,7 @@ html,body{
 		display: inline-block;
 		transform: rotate(-180deg);
 	}
-`;HA.displayName="CardLabel";const{Search:XA}=a.Input,DA=n.default.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-	margin-bottom: 26px;
-	.select-container {
-		display: flex;
-		gap: 5px;
-	}
-`,GA=n.default(XA)`
+`;HA.displayName="CardLabel";const{Search:XA}=a.Input,DA=n.default(XA)`
 	&,
 	& > * {
 		background-color: transparent;
@@ -914,7 +905,16 @@ html,body{
 			}
 		}
 	}
-`,YA=t.forwardRef((({selectOptions:A,searchOptions:a,sortOptions:o,showDateRange:r=!1},n)=>{const l=t.useRef();return t.useEffect((()=>{a?.state.searchText&&l.current&&l.current.focus()}),[]),e.jsxs(DA,{ref:n,children:[e.jsxs("div",{className:"select-container",children:[e.jsx("div",{className:"results",children:e.jsx(SA,{defaultOpen:!1,placeholder:"Results per page",options:A?.options,selectedState:A?.state.selectedState,setSelectedState:e=>{A?.state&&A.state.setSelectedState(e)}})}),e.jsx("div",{className:"sortBy",children:e.jsx(SA,{defaultOpen:!1,placeholder:"Sort by",options:o})}),r?e.jsx("div",{className:"dateRange",children:e.jsx(SA,{defaultOpen:!1,placeholder:"View by date range",options:[{value:"1",label:"Select option #1"},{value:"2",label:"Select option #2"},{value:"3",label:"Select option #3"}]})}):null]}),e.jsx("div",{className:"searchBar",children:e.jsx(GA,{ref:l,placeholder:"Search",size:"small",onChange:A=>{a?.state&&a.state.setSearchText(A.target.value)},value:a?.state.searchText,addonAfter:null,variant:"borderless"})})]})}));YA.displayName="LagoonFilter";const PA=A.css`
+`,GA=n.default.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin-bottom: 26px;
+	.select-container {
+		display: flex;
+		gap: 5px;
+	}
+`,YA=t.forwardRef((({selectOptions:A,searchOptions:a,sortOptions:o,loadingSkeleton:r=!1,showDateRange:n=!1},l)=>{const s=t.useRef();return t.useEffect((()=>{a?.searchText&&s.current&&s.current.focus()}),[]),e.jsxs(GA,{ref:l,children:[e.jsxs("div",{className:"select-container",children:[e.jsx("div",{className:"results",children:e.jsx(SA,{disabled:r,defaultOpen:!1,placeholder:"Results per page",options:A?.options,selectedState:A?.selectedState,setSelectedState:e=>{A?.selectedState&&A.setSelectedState(e)}})}),e.jsx("div",{className:"sortBy",children:e.jsx(SA,{defaultOpen:!1,placeholder:"Sort by",options:o})}),n?e.jsx("div",{className:"dateRange",children:e.jsx(SA,{disabled:r,defaultOpen:!1,placeholder:"View by date range",options:[{value:"1",label:"Select option #1"},{value:"2",label:"Select option #2"},{value:"3",label:"Select option #3"}]})}):null]}),e.jsx("div",{className:"searchBar",children:e.jsx(DA,{ref:s,placeholder:"Search",size:"small",onChange:A=>{a&&a.setSearchText(A.target.value)},value:a?.searchText,addonAfter:null,variant:"borderless"})})]})}));YA.displayName="LagoonFilter";const PA=A.css`
 	width: 23.75rem;
 	height: 15.25rem;
 	background-color: ${A=>A.theme.UI.backgrounds.lagoonCard};

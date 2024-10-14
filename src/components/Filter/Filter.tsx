@@ -1,10 +1,7 @@
 import React, { forwardRef, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import UISelect from '../Select';
-
-import { Input } from 'antd';
-
-const { Search } = Input;
+import { StyledFilter, StyledSearch } from './styles';
 
 type SortType<T> = {
 	value: T;
@@ -15,29 +12,26 @@ type FilterProps = {
 	sortOptions?: SortType<string | number>[];
 	selectOptions?: {
 		options: SortType<string | number>[];
-		state: {
-			selectedState: unknown;
-			setSelectedState: React.Dispatch<React.SetStateAction<unknown>>;
-		};
+		selectedState: unknown;
+		setSelectedState: React.Dispatch<React.SetStateAction<unknown>>;
 	};
 	searchOptions?: {
-		state: {
-			searchText: string;
-			setSearchText: React.Dispatch<React.SetStateAction<string>>;
-		};
+		searchText: string;
+		setSearchText: React.Dispatch<React.SetStateAction<string>>;
 	};
 	showDateRange?: boolean;
+	loadingSkeleton?: boolean;
 };
 
 const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps> = (
-	{ selectOptions, searchOptions, sortOptions, showDateRange = false },
+	{ selectOptions, searchOptions, sortOptions, loadingSkeleton = false, showDateRange = false },
 	ref,
 ) => {
 	const inputRef = useRef<any>();
 
 	useEffect(() => {
 		// Focus only if searchText is truthy on initial mount
-		if (searchOptions?.state.searchText) {
+		if (searchOptions?.searchText) {
 			if (inputRef.current) {
 				inputRef.current.focus();
 			}
@@ -49,13 +43,14 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 			<div className="select-container">
 				<div className="results">
 					<UISelect
+						disabled={loadingSkeleton}
 						defaultOpen={false}
 						placeholder="Results per page"
 						options={selectOptions?.options}
-						selectedState={selectOptions?.state.selectedState}
+						selectedState={selectOptions?.selectedState}
 						setSelectedState={(val) => {
-							if (selectOptions?.state) {
-								selectOptions.state.setSelectedState(val);
+							if (selectOptions?.selectedState) {
+								selectOptions.setSelectedState(val);
 							}
 						}}
 					/>
@@ -68,6 +63,7 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 				{showDateRange ? (
 					<div className="dateRange">
 						<UISelect
+							disabled={loadingSkeleton}
 							defaultOpen={false}
 							placeholder="View by date range"
 							options={[
@@ -85,11 +81,11 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 					placeholder="Search"
 					size="small"
 					onChange={(e) => {
-						if (searchOptions?.state) {
-							searchOptions.state.setSearchText(e.target.value);
+						if (searchOptions) {
+							searchOptions.setSearchText(e.target.value);
 						}
 					}}
-					value={searchOptions?.state.searchText}
+					value={searchOptions?.searchText}
 					addonAfter={null}
 					variant="borderless"
 				/>
@@ -98,54 +94,42 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 	);
 };
 
-const StyledFilter = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-	margin-bottom: 26px;
-	.select-container {
-		display: flex;
-		gap: 5px;
-	}
-`;
-
-const StyledSearch = styled(Search)`
-	&,
-	& > * {
-		background-color: transparent;
-	}
-	.ant-input-wrapper {
-		border-bottom: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#6b6b6e' : '#0c0c0c')};
-		background-color: transparent;
-		& > * {
-			background-color: transparent;
-		}
-		.ant-input-affix-wrapper {
-			padding-inline: 0;
-		}
-		.ant-input-group-addon {
-			button {
-				user-select: none;
-				pointer-events: none;
-				background: transparent;
-				border: none;
-				color: ${(props) => (props.theme.colorScheme === 'dark' ? '#6b6b6e' : '#0c0c0c')} !important;
-				.ant-btn-icon {
-					span[role='img'] {
-						font-size: 22px;
-					}
-				}
-			}
-		}
-		input {
-			padding-left: 0;
-			color: ${(props) => (props.theme.colorScheme === 'dark' ? '#fafafa' : '#0c0c0c')};
-			&::placeholder {
-				color: ${(props) => (props.theme.colorScheme === 'dark' ? '#6b6b6e' : '#0c0c0c')};
-			}
-		}
-	}
-`;
+// 	&,
+// 	& > * {
+// 		background-color: transparent;
+// 	}
+// 	.ant-input-wrapper {
+// 		border-bottom: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#6b6b6e' : '#0c0c0c')};
+// 		background-color: transparent;
+// 		& > * {
+// 			background-color: transparent;
+// 		}
+// 		.ant-input-affix-wrapper {
+// 			padding-inline: 0;
+// 		}
+// 		.ant-input-group-addon {
+// 			button {
+// 				user-select: none;
+// 				pointer-events: none;
+// 				background: transparent;
+// 				border: none;
+// 				color: ${(props) => (props.theme.colorScheme === 'dark' ? '#6b6b6e' : '#0c0c0c')} !important;
+// 				.ant-btn-icon {
+// 					span[role='img'] {
+// 						font-size: 22px;
+// 					}
+// 				}
+// 			}
+// 		}
+// 		input {
+// 			padding-left: 0;
+// 			color: ${(props) => (props.theme.colorScheme === 'dark' ? '#fafafa' : '#0c0c0c')};
+// 			&::placeholder {
+// 				color: ${(props) => (props.theme.colorScheme === 'dark' ? '#6b6b6e' : '#0c0c0c')};
+// 			}
+// 		}
+// 	}
+// `;
 const LagoonFilter = forwardRef<HTMLDivElement, FilterProps>(InternalFilter);
 
 LagoonFilter.displayName = 'LagoonFilter';

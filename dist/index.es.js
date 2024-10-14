@@ -869,16 +869,7 @@ html,body{
 		display: inline-block;
 		transform: rotate(-180deg);
 	}
-`;Pe.displayName="CardLabel";const{Search:$e}=E,_e=A.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-	margin-bottom: 26px;
-	.select-container {
-		display: flex;
-		gap: 5px;
-	}
-`,Aa=A($e)`
+`;Pe.displayName="CardLabel";const{Search:$e}=E,_e=A($e)`
 	&,
 	& > * {
 		background-color: transparent;
@@ -914,7 +905,16 @@ html,body{
 			}
 		}
 	}
-`,ea=c((({selectOptions:A,searchOptions:e,sortOptions:a,showDateRange:t=!1},r)=>{const l=S();return C((()=>{e?.state.searchText&&l.current&&l.current.focus()}),[]),o(_e,{ref:r,children:[o("div",{className:"select-container",children:[n("div",{className:"results",children:n(Ue,{defaultOpen:!1,placeholder:"Results per page",options:A?.options,selectedState:A?.state.selectedState,setSelectedState:e=>{A?.state&&A.state.setSelectedState(e)}})}),n("div",{className:"sortBy",children:n(Ue,{defaultOpen:!1,placeholder:"Sort by",options:a})}),t?n("div",{className:"dateRange",children:n(Ue,{defaultOpen:!1,placeholder:"View by date range",options:[{value:"1",label:"Select option #1"},{value:"2",label:"Select option #2"},{value:"3",label:"Select option #3"}]})}):null]}),n("div",{className:"searchBar",children:n(Aa,{ref:l,placeholder:"Search",size:"small",onChange:A=>{e?.state&&e.state.setSearchText(A.target.value)},value:e?.state.searchText,addonAfter:null,variant:"borderless"})})]})}));ea.displayName="LagoonFilter";const aa=a`
+`,Aa=A.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin-bottom: 26px;
+	.select-container {
+		display: flex;
+		gap: 5px;
+	}
+`,ea=c((({selectOptions:A,searchOptions:e,sortOptions:a,loadingSkeleton:t=!1,showDateRange:r=!1},l)=>{const p=S();return C((()=>{e?.searchText&&p.current&&p.current.focus()}),[]),o(Aa,{ref:l,children:[o("div",{className:"select-container",children:[n("div",{className:"results",children:n(Ue,{disabled:t,defaultOpen:!1,placeholder:"Results per page",options:A?.options,selectedState:A?.selectedState,setSelectedState:e=>{A?.selectedState&&A.setSelectedState(e)}})}),n("div",{className:"sortBy",children:n(Ue,{defaultOpen:!1,placeholder:"Sort by",options:a})}),r?n("div",{className:"dateRange",children:n(Ue,{disabled:t,defaultOpen:!1,placeholder:"View by date range",options:[{value:"1",label:"Select option #1"},{value:"2",label:"Select option #2"},{value:"3",label:"Select option #3"}]})}):null]}),n("div",{className:"searchBar",children:n(_e,{ref:p,placeholder:"Search",size:"small",onChange:A=>{e&&e.setSearchText(A.target.value)},value:e?.searchText,addonAfter:null,variant:"borderless"})})]})}));ea.displayName="LagoonFilter";const aa=a`
 	width: 23.75rem;
 	height: 15.25rem;
 	background-color: ${A=>A.theme.UI.backgrounds.lagoonCard};

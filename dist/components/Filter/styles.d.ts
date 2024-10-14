@@ -1,0 +1,3 @@
+/// <reference types="react" />
+export declare const StyledSearch: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("antd/es/input").SearchProps & import("react").RefAttributes<import("antd").InputRef>, never>> & Omit<import("react").ForwardRefExoticComponent<import("antd/es/input").SearchProps & import("react").RefAttributes<import("antd").InputRef>>, keyof import("react").Component<any, {}, any>>;
+export declare const StyledFilter: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, never>>;
