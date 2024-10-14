@@ -70,6 +70,7 @@ const detailedItems: DetailsType['items'] = [
 		key: '1',
 		label: 'Environment type',
 		children: 'production (standby)',
+		span: 24,
 	},
 	{
 		key: '2',
@@ -117,11 +118,12 @@ const detailedItems: DetailsType['items'] = [
 	},
 ];
 
-export const Default: Story = {
+export const Environments: Story = {
 	args: {
 		title: 'Environment details',
 		bordered: true,
 		items: detailedItems,
+		type: 'topToBottom',
 	},
 };
 export const Basic: Story = {
@@ -147,6 +149,9 @@ export const NoTitle: Story = {
 
 export const VerticalLayout: Story = {
 	render: () => <Details layout="vertical" bordered items={detailedItems} />,
+};
+export const HorizontalLayout: Story = {
+	render: () => <Details layout="horizontal" bordered items={detailedItems} />,
 };
 
 export default meta;

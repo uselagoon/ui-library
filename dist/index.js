@@ -279,8 +279,28 @@ html,body{
 				}
 			`}
 	}
-`,CA=A=>{const{className:t,items:a,style:o,...n}=A;return e.jsx(mA,{items:a,...n})};CA.displayName="Details";const mA=r.default(a.Descriptions)`
+`,CA=A=>{const{className:t,items:a,type:o="default",style:n,...r}=A;if("topToBottom"===o){const A=a?.map((A=>({...A,span:24})));return e.jsx(mA,{$type:o,items:A,...r})}return e.jsx(mA,{items:a,...r})};CA.displayName="Details";const mA=r.default(a.Descriptions)`
 	&.ant-descriptions {
+		${e=>"topToBottom"===e.$type&&A.css`
+				table {
+					padding-top: 1px;
+					display: grid;
+					border-collapse: collapse !important;
+					tbody {
+						display: grid;
+					}
+				}
+				tr,
+				td {
+					margin-top: -1px;
+				}
+				table {
+				}
+				.ant-descriptions-view {
+					border: none !important;
+				}
+			`}
+
 		font-family: 'ArabicPro-Regular', sans-serif;
 		font-size: 14px;
 		line-height: 22px;
@@ -321,7 +341,7 @@ html,body{
 						}
 						.ant-descriptions-item-content {
 							color: ${y.white};
-							background-color: #75715e00;
+							background-color: #272822;
 							&:not(:last-of-type) {
 								border: 1px solid #fff;
 							}
