@@ -77,6 +77,7 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 							searchOptions.state.setSearchText(e.target.value);
 						}
 					}}
+					value={searchOptions?.state.searchText}
 					addonAfter={null}
 					variant="borderless"
 				/>

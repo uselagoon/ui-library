@@ -3,10 +3,9 @@ import React, { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import colors from '../../_util/colors';
 
-export type UICollapseProps = CollapseProps['items'] &
-	CollapseProps & {
-		type: 'highlightPanels' | 'default';
-	};
+export type UICollapseProps = CollapseProps & {
+	type: 'highlightPanels' | 'default';
+};
 
 const UICollapse = forwardRef<HTMLDivElement, UICollapseProps>((props, ref) => {
 	const { className, items, style, type = 'default', ...rest } = props;
