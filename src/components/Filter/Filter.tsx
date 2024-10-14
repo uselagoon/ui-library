@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import UISelect from '../Select';
 
@@ -33,6 +33,17 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 	{ selectOptions, searchOptions, sortOptions, showDateRange = false },
 	ref,
 ) => {
+	const inputRef = useRef<any>();
+
+	useEffect(() => {
+		// Focus only if searchText is truthy on initial mount
+		if (searchOptions?.state.searchText) {
+			if (inputRef.current) {
+				inputRef.current.focus();
+			}
+		}
+	}, []);
+
 	return (
 		<StyledFilter ref={ref}>
 			<div className="select-container">
@@ -70,6 +81,7 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 			</div>
 			<div className="searchBar">
 				<StyledSearch
+					ref={inputRef}
 					placeholder="Search"
 					size="small"
 					onChange={(e) => {
