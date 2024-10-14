@@ -27,7 +27,7 @@ export const darkTheme: DefaultTheme = {
 		},
 		borders: {
 			box: '#D9D9D9',
-			card: '#fff',
+			card: '#868686',
 			cardInverted: colors.darkGray,
 		},
 		highlights: {
@@ -63,7 +63,7 @@ export const lightTheme: DefaultTheme = {
 		borders: {
 			box: '#75715E',
 			card: colors.darkGray,
-			cardInverted: '#fff',
+			cardInverted: '#868686',
 		},
 		highlights: {
 			selection: '#497ffa4d',

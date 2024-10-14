@@ -3,15 +3,18 @@ import React, { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import colors from '../../_util/colors';
 
-export type UICollapseProps = CollapseProps['items'] & CollapseProps;
+export type UICollapseProps = CollapseProps['items'] &
+	CollapseProps & {
+		type: 'highlightPanels' | 'default';
+	};
 
-const UICollapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
-	const { className, items, style, ...rest } = props;
-	return <StyledCollapse ref={ref} items={items} {...rest} />;
+const UICollapse = forwardRef<HTMLDivElement, UICollapseProps>((props, ref) => {
+	const { className, items, style, type = 'default', ...rest } = props;
+	return <StyledCollapse $type={type} ref={ref} items={items} {...rest} />;
 });
 UICollapse.displayName = 'Collapse';
 
-const StyledCollapse = styled(Collapse)`
+const StyledCollapse = styled(Collapse)<{ $type?: UICollapseProps['type'] }>`
 	&.ant-collapse {
 		font-family: 'ArabicPro-Regular', sans-serif;
 		font-size: 14px;
@@ -26,6 +29,10 @@ const StyledCollapse = styled(Collapse)`
 				}
 				.ant-collapse-content-box {
 					background-color: ${colors.gray};
+					${props.$type === 'default' &&
+					css`
+						background-color: ${colors.darkGray};
+					`}
 				}
 			`}
 	}

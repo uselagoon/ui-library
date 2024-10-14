@@ -106,6 +106,13 @@ const items: CollapseProps['items'] = [
 	},
 ];
 
+export const HighLightCollapse: Story = {
+	args: {
+		defaultActiveKey: [1, 2],
+		items: items,
+		type: 'highlightPanels',
+	},
+};
 export const Default: Story = {
 	args: {
 		defaultActiveKey: [1, 2],

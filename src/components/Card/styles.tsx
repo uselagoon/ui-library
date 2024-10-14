@@ -16,6 +16,7 @@ export const LoadingCard = styled(Card)`
 	&.ant-card {
 		cursor: unset;
 		${sharedCardStyles}
+		border: 1px solid ${(props) => props.theme.UI.borders.card};
 		overflow: hidden;
 		.ant-card-head,
 		.ant-card-body,
@@ -141,6 +142,8 @@ export const StyledNewCard = styled(Card)`
 	place-content: center;
 	place-items: center;
 	${sharedCardStyles}
+	border-left: inherit;
+	border: 1px solid ${(props) => props.theme.UI.borders.card};
 `;
 
 export const PinSection = styled.div`
