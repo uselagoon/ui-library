@@ -7,6 +7,8 @@ export { default as useTheme } from './hooks/useTheme';
 
 export { default as UIThemeProvider } from './providers/__ContextWrapper';
 
+export { LinkProvider as NextLinkProvider, useLinkComponent as useNextLink } from './providers/NextLinkProvider';
+
 // components
 export { default as Button } from './components/Button';
 export type { ButtonProps } from './components/Button';
