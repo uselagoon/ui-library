@@ -121,6 +121,9 @@ export type { PageContainerProps } from './components/PageContainer';
 export { default as ProjectsTable } from './components/ProjectsTable';
 export type { ProjectsTableProps } from './components/ProjectsTable';
 
+export { default as Table } from './components/Table';
+export type { BaseTableProps } from './components/Table';
+
 export {
 	LagoonIcon,
 	IconAim,
