@@ -1,11 +1,10 @@
 import React, { createContext, useContext } from 'react';
+import { NextLinkType } from '../typings/nextLink';
 
-const LinkContext = createContext<React.ComponentType<{ href: string; children: React.ReactNode }> | undefined>(
-	undefined,
-);
+const LinkContext = createContext<NextLinkType | undefined>(undefined);
 
 export const LinkProvider: React.FC<{
-	linkComponent: React.ComponentType<{ href: string; children: React.ReactNode }>;
+	linkComponent: NextLinkType;
 	children: React.ReactNode;
 }> = ({ linkComponent, children }) => {
 	return <LinkContext.Provider value={linkComponent}>{children}</LinkContext.Provider>;
