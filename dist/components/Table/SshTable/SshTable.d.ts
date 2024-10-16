@@ -21,7 +21,7 @@ type sshKey = {
         error?: Error;
     };
 };
-type SshTableProps = {
+export type SshTableProps = {
     sshKeys: sshKey[];
     deleteMutation: (variables: {
         input: {

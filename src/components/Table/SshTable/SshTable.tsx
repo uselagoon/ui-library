@@ -32,30 +32,7 @@ type sshKey = {
 	};
 };
 
-//name, publicKey addkey
-// id - delete.
-
-// deleteUserSSHPublicKey({
-//     variables: {
-//       input: {
-//         id: key.id,
-//       },
-//     },
-//   })
-
-// updateUserSSHPublicKey({
-//     variables: {
-//       input: {
-//         id: key.id,
-//         patch: {
-//           name: editState.name,
-//           publicKey: editState.publicKey,
-//         },
-//       },
-//     },
-//   })
-
-type SshTableProps = {
+export type SshTableProps = {
 	sshKeys: sshKey[];
 	deleteMutation: (variables: {
 		input: {

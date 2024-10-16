@@ -2,10 +2,11 @@ import { ConfigProvider, TableProps } from 'antd';
 import { forwardRef } from 'react';
 import { StyledBaseTable } from './styles';
 import { EmptyDisplay } from './Empty';
+import { SshTableProps } from './SshTable/SshTable';
 
 export interface BaseTableWithComponents
 	extends React.ForwardRefExoticComponent<BaseTableProps & React.RefAttributes<HTMLDivElement>> {
-	SshTable: React.FC<any>;
+	SshTable: React.FC<SshTableProps>;
 }
 
 type BaseTableProps = Omit<TableProps, 'locale'>;
