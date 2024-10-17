@@ -129,7 +129,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 		editForm
 			.validateFields()
 			.then(() => {
-				const { keyName, keyValue } = addForm.getFieldsValue();
+				const { keyName, keyValue } = editForm.getFieldsValue();
 
 				updateKey.update(keyName, keyValue).then(() => {
 					refetch();
