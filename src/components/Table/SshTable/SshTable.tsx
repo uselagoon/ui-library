@@ -103,6 +103,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 	const handleEditModalClose = () => {
 		setEditModalOpen(false);
 		editForm.resetFields();
+		setSelectedKey(undefined);
 	};
 
 	const handleDeleteModalClose = () => {
@@ -117,7 +118,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 			.then(() => {
 				const { keyName, keyValue } = addForm.getFieldsValue();
 
-				add(keyName, keyValue).then(() => {
+				add(keyName, keyValue).finally(() => {
 					refetch();
 					handleAddModalClose();
 				});
@@ -131,7 +132,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 			.then(() => {
 				const { keyName, keyValue } = editForm.getFieldsValue();
 
-				updateKey.update(keyName, keyValue).then(() => {
+				updateKey.update(selectedKey?.id, keyName, keyValue).finally(() => {
 					refetch();
 					handleEditModalClose();
 				});
@@ -140,7 +141,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 	};
 
 	const handleDeleteKey = () => {
-		deleteKey.delete(selectedKey?.id).then(() => {
+		deleteKey.delete(selectedKey?.id).finally(() => {
 			refetch();
 			handleDeleteModalClose();
 		});
