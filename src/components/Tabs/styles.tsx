@@ -35,7 +35,7 @@ export const StyledTabs = styled(Tabs)<{ $type: 'navigation' | 'default' }>`
 			a {
 				color: unset;
 				display: inline-block;
-				padding: 12px 0;
+				padding: 12px;
 				width: 100%;
 				text-align: center;
 				transition: all 0.25s ease;

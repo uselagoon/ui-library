@@ -158,12 +158,24 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 				confirmLoading={updateKey?.loading}
 			>
 				<ModalForm form={editForm}>
-					<FormItem required rules={[{ required: true, message: '' }]} label="Key Name" name="keyName">
-						<Input placeholder="Enter a name for the variable" defaultValue={selectedKey?.name} />
+					<FormItem
+						required
+						rules={[{ required: true, message: '' }]}
+						initialValue={selectedKey?.name}
+						label="Key Name"
+						name="keyName"
+					>
+						<Input placeholder="Enter a name for the variable" />
 					</FormItem>
 
-					<FormItem required rules={[{ required: true, message: '' }]} label="Fingerprint Value" name="keyValue">
-						<Input placeholder="Enter the variable value" defaultValue={selectedKey?.keyValue} />
+					<FormItem
+						required
+						rules={[{ required: true, message: '' }]}
+						initialValue={selectedKey?.keyValue}
+						label="Fingerprint Value"
+						name="keyValue"
+					>
+						<Input placeholder="Enter the variable value" />
 					</FormItem>
 				</ModalForm>
 			</Modal>
