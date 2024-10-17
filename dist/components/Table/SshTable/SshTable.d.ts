@@ -14,21 +14,22 @@ export type SshTableProps = {
     sshKeys: sshKey[];
     refetch: BasicFn;
     deleteOptions?: {
-        deleteFunction: BasicFn;
-        deleteData?: any;
-        deleteLoading: boolean;
-        deleteErr?: Error;
+        delete: BasicFn;
+        data?: any;
+        loading: boolean;
+        err?: Error;
     };
     updateOptions?: {
-        updateFunction: BasicFn;
-        updateData?: any;
-        updateLoading: boolean;
-        updateErr?: Error;
+        update: BasicFn;
+        data?: any;
+        loading: boolean;
+        err?: Error;
     };
     addNewKey: {
-        addMutation: (keyName: string, keyValue: string) => Promise<any>;
-        addLoading: boolean;
+        add: (keyName: string, keyValue: string) => Promise<any>;
+        loading: boolean;
+        err?: Error;
     };
 };
-declare const SshTable: ({ sshKeys, addNewKey: { addMutation, addLoading }, refetch }: SshTableProps) => import("react/jsx-runtime").JSX.Element;
+declare const SshTable: ({ sshKeys, addNewKey: { add, loading }, refetch }: SshTableProps) => import("react/jsx-runtime").JSX.Element;
 export default SshTable;

@@ -32,20 +32,21 @@ export type SshTableProps = {
 	sshKeys: sshKey[];
 	refetch: BasicFn;
 	deleteOptions?: {
-		deleteFunction: BasicFn;
-		deleteData?: any;
-		deleteLoading: boolean;
-		deleteErr?: Error;
+		delete: BasicFn;
+		data?: any;
+		loading: boolean;
+		err?: Error;
 	};
 	updateOptions?: {
-		updateFunction: BasicFn;
-		updateData?: any;
-		updateLoading: boolean;
-		updateErr?: Error;
+		update: BasicFn;
+		data?: any;
+		loading: boolean;
+		err?: Error;
 	};
 	addNewKey: {
-		addMutation: (keyName: string, keyValue: string) => Promise<any>;
-		addLoading: boolean;
+		add: (keyName: string, keyValue: string) => Promise<any>;
+		loading: boolean;
+		err?: Error;
 	};
 };
 
@@ -81,11 +82,14 @@ const sshColumns = [
 	},
 ];
 
-const SshTable = ({ sshKeys, addNewKey: { addMutation, addLoading }, refetch }: SshTableProps) => {
-	console.log(sshKeys);
-
+const SshTable = ({ sshKeys, addNewKey: { add, loading }, refetch }: SshTableProps) => {
 	const [newModalOpen, setNewModalOpen] = useState(false);
 	const [addForm] = useForm();
+
+	const handleAddModalClose = () => {
+		setNewModalOpen(false);
+		addForm.resetFields();
+	};
 
 	const handleAddKey = () => {
 		addForm
@@ -93,17 +97,14 @@ const SshTable = ({ sshKeys, addNewKey: { addMutation, addLoading }, refetch }: 
 			.then(() => {
 				const { keyName, keyValue } = addForm.getFieldsValue();
 
-				addMutation(keyName, keyValue).then(() => {
+				add(keyName, keyValue).then(() => {
 					refetch();
+					handleAddModalClose();
 				});
 			})
 			.catch(() => {});
 	};
 
-	const handleAddModalClose = () => {
-		setNewModalOpen(false);
-		addForm.resetFields();
-	};
 	// add new key modal
 	const lastRow = {
 		name: (
@@ -124,7 +125,7 @@ const SshTable = ({ sshKeys, addNewKey: { addMutation, addLoading }, refetch }: 
 					onCancel={handleAddModalClose}
 					minHeight="350px"
 					onOk={handleAddKey}
-					confirmLoading={addLoading}
+					confirmLoading={loading}
 				>
 					<ModalForm form={addForm}>
 						<FormItem required rules={[{ required: true, message: '' }]} label="Key Name" name="keyName">
