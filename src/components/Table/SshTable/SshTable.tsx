@@ -92,7 +92,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 	const [editModalOpen, setEditModalOpen] = useState(false);
 	const [editForm] = useForm();
 
-	const [idToDelete, setIdToDelete] = useState<number>();
+	const [selectedKey, setSelectedKey] = useState<sshKey>();
 	const [deleteDisabled, setDeleteDisabled] = useState(true);
 
 	const handleAddModalClose = () => {
@@ -107,7 +107,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 
 	const handleDeleteModalClose = () => {
 		setDeleteModalOpen(false);
-		setIdToDelete(-1);
+		setSelectedKey(undefined);
 		deleteForm.resetFields();
 	};
 
@@ -140,13 +140,13 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 	};
 
 	const handleDeleteKey = () => {
-		deleteKey.delete(idToDelete).then(() => {
+		deleteKey.delete(selectedKey?.id).then(() => {
 			refetch();
 			handleDeleteModalClose();
 		});
 	};
 
-	const renderEditModal = (keyName: string, keyValue: string) => {
+	const renderEditModal = () => {
 		return (
 			<Modal
 				confirmText="Edit"
@@ -159,18 +159,18 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 			>
 				<ModalForm form={editForm}>
 					<FormItem required rules={[{ required: true, message: '' }]} label="Key Name" name="keyName">
-						<Input placeholder="Enter a name for the variable" defaultValue={keyName} />
+						<Input placeholder="Enter a name for the variable" defaultValue={selectedKey?.name} />
 					</FormItem>
 
 					<FormItem required rules={[{ required: true, message: '' }]} label="Fingerprint Value" name="keyValue">
-						<Input placeholder="Enter the variable value" defaultValue={keyValue} />
+						<Input placeholder="Enter the variable value" defaultValue={selectedKey?.keyValue} />
 					</FormItem>
 				</ModalForm>
 			</Modal>
 		);
 	};
 
-	const renderDeleteModal = (keyName: string) => {
+	const renderDeleteModal = () => {
 		return (
 			<Modal
 				confirmText="Delete"
@@ -184,7 +184,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 				confirmDisabled={deleteDisabled}
 			>
 				<>
-					This action will delete the SSH key <Highlighted>{keyName}</Highlighted> and cannot be undone.
+					This action will delete the SSH key <Highlighted>{selectedKey?.name}</Highlighted> and cannot be undone.
 					<ModalForm form={deleteForm}>
 						<FormItem
 							required
@@ -194,9 +194,9 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 						>
 							<Input
 								placeholder="Variable name"
-								value={keyName}
+								value={selectedKey?.name}
 								onChange={(e) => {
-									setDeleteDisabled(e.target.value !== keyName);
+									setDeleteDisabled(e.target.value !== selectedKey?.name);
 								}}
 							/>
 						</FormItem>
@@ -238,6 +238,8 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 						</FormItem>
 					</ModalForm>
 				</Modal>
+				{renderEditModal()}
+				{renderDeleteModal()}
 			</>
 		),
 	};
@@ -252,18 +254,17 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 					<ActionWrap>
 						<EditOutlined
 							onClick={() => {
+								setSelectedKey(key);
 								setEditModalOpen(true);
 							}}
 						/>
-						{renderEditModal(key.name, key.keyValue)}
 
 						<DeleteOutlined
 							onClick={() => {
-								setIdToDelete(key.id);
+								setSelectedKey(key);
 								setDeleteModalOpen(true);
 							}}
 						/>
-						{renderDeleteModal(key.name)}
 					</ActionWrap>
 				),
 			};
