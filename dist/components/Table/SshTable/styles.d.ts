@@ -40,3 +40,4 @@ export declare const ModalForm: import("styled-components").IStyledComponent<"we
     Provider: import("react").FC<import("antd/es/form/context").FormProviderProps>;
     create: () => void;
 }, keyof import("react").Component<any, {}, any>>;
+export declare const Highlighted: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, never>>;

@@ -6,7 +6,7 @@ import utc from 'dayjs/plugin/utc';
 import { ActionWrap } from '../styles';
 import Modal from '../../Modal';
 import { useState } from 'react';
-import { ModalButton, ModalForm, ModalHeader, ModalText } from './styles';
+import { Highlighted, ModalButton, ModalForm, ModalHeader, ModalText } from './styles';
 import FormItem from '../../FormItem';
 import Input from '../../Input';
 import { useForm } from 'antd/es/form/Form';
@@ -31,13 +31,13 @@ type sshKey = {
 export type SshTableProps = {
 	sshKeys: sshKey[];
 	refetch: BasicFn;
-	deleteOptions?: {
+	deleteKey: {
 		delete: BasicFn;
 		data?: any;
 		loading: boolean;
 		err?: Error;
 	};
-	updateOptions?: {
+	updateKey: {
 		update: BasicFn;
 		data?: any;
 		loading: boolean;
@@ -82,13 +82,33 @@ const sshColumns = [
 	},
 ];
 
-const SshTable = ({ sshKeys, addNewKey: { add, loading }, refetch }: SshTableProps) => {
+const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, refetch }: SshTableProps) => {
 	const [newModalOpen, setNewModalOpen] = useState(false);
 	const [addForm] = useForm();
+
+	const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+	const [deleteForm] = useForm();
+
+	const [editModalOpen, setEditModalOpen] = useState(false);
+	const [editForm] = useForm();
+
+	const [idToDelete, setIdToDelete] = useState<number>();
+	const [deleteDisabled, setDeleteDisabled] = useState(true);
 
 	const handleAddModalClose = () => {
 		setNewModalOpen(false);
 		addForm.resetFields();
+	};
+
+	const handleEditModalClose = () => {
+		setEditModalOpen(false);
+		editForm.resetFields();
+	};
+
+	const handleDeleteModalClose = () => {
+		setDeleteModalOpen(false);
+		setIdToDelete(-1);
+		deleteForm.resetFields();
 	};
 
 	const handleAddKey = () => {
@@ -103,6 +123,87 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, refetch }: SshTablePro
 				});
 			})
 			.catch(() => {});
+	};
+
+	const handleEditKey = () => {
+		editForm
+			.validateFields()
+			.then(() => {
+				const { keyName, keyValue } = addForm.getFieldsValue();
+
+				updateKey.update(keyName, keyValue).then(() => {
+					refetch();
+					handleEditModalClose();
+				});
+			})
+			.catch(() => {});
+	};
+
+	const handleDeleteKey = () => {
+		deleteKey.delete(idToDelete).then(() => {
+			refetch();
+			handleDeleteModalClose();
+		});
+	};
+
+	const renderEditModal = (keyName: string, keyValue: string) => {
+		return (
+			<Modal
+				confirmText="Edit"
+				title={<ModalHeader>Edit SSH Key</ModalHeader>}
+				open={editModalOpen}
+				onCancel={handleEditModalClose}
+				minHeight="350px"
+				onOk={handleEditKey}
+				confirmLoading={updateKey?.loading}
+			>
+				<ModalForm form={editForm}>
+					<FormItem required rules={[{ required: true, message: '' }]} label="Key Name" name="keyName">
+						<Input placeholder="Enter a name for the variable" defaultValue={keyName} />
+					</FormItem>
+
+					<FormItem required rules={[{ required: true, message: '' }]} label="Fingerprint Value" name="keyValue">
+						<Input placeholder="Enter the variable value" defaultValue={keyValue} />
+					</FormItem>
+				</ModalForm>
+			</Modal>
+		);
+	};
+
+	const renderDeleteModal = (keyName: string) => {
+		return (
+			<Modal
+				confirmText="Delete"
+				title={<ModalHeader>Delete SSH Key</ModalHeader>}
+				open={deleteModalOpen}
+				onCancel={handleDeleteModalClose}
+				minHeight="200px"
+				onOk={handleDeleteKey}
+				confirmLoading={deleteKey?.loading}
+				dangerConfirm
+				confirmDisabled={deleteDisabled}
+			>
+				<>
+					This action will delete the SSH key <Highlighted>{keyName}</Highlighted> and cannot be undone.
+					<ModalForm form={deleteForm}>
+						<FormItem
+							required
+							rules={[{ required: true, message: '' }]}
+							label="Type the name of the SSH Key to confirm"
+							name="keyName"
+						>
+							<Input
+								placeholder="Variable name"
+								value={keyName}
+								onChange={(e) => {
+									setDeleteDisabled(e.target.value !== keyName);
+								}}
+							/>
+						</FormItem>
+					</ModalForm>
+				</>
+			</Modal>
+		);
 	};
 
 	// add new key modal
@@ -149,8 +250,20 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, refetch }: SshTablePro
 				created: dayjs.utc(key.created).local().fromNow(),
 				actions: (
 					<ActionWrap>
-						<EditOutlined />
-						<DeleteOutlined />
+						<EditOutlined
+							onClick={() => {
+								setEditModalOpen(true);
+							}}
+						/>
+						{renderEditModal(key.name, key.keyValue)}
+
+						<DeleteOutlined
+							onClick={() => {
+								setIdToDelete(key.id);
+								setDeleteModalOpen(true);
+							}}
+						/>
+						{renderDeleteModal(key.name)}
 					</ActionWrap>
 				),
 			};

@@ -3,10 +3,13 @@ import React, { FC, ReactNode } from 'react';
 import { ModalProps } from 'antd';
 import { ModalChildren, ModalFooterButton, StyledModal } from './styles';
 
-type UIModalProps = { subTitle?: ReactNode; confirmText?: string; minHeight?: string } & Omit<
-	ModalProps,
-	'destroyonClose' | 'modalRender'
->;
+type UIModalProps = {
+	subTitle?: ReactNode;
+	confirmText?: string;
+	minHeight?: string;
+	dangerConfirm?: boolean;
+	confirmDisabled?: boolean;
+} & Omit<ModalProps, 'destroyonClose' | 'modalRender'>;
 
 const UIModal: FC<UIModalProps> = ({
 	children,
@@ -17,6 +20,8 @@ const UIModal: FC<UIModalProps> = ({
 	confirmText,
 	confirmLoading,
 	minHeight,
+	dangerConfirm,
+	confirmDisabled,
 	...props
 }) => {
 	let modalTitle = title;
@@ -43,7 +48,14 @@ const UIModal: FC<UIModalProps> = ({
 				<ModalFooterButton key="back" onClick={onCancel}>
 					Cancel
 				</ModalFooterButton>,
-				<ModalFooterButton key="submit" type="primary" loading={confirmLoading} onClick={onOk}>
+				<ModalFooterButton
+					disabled={confirmDisabled}
+					danger={dangerConfirm}
+					key="submit"
+					type="primary"
+					loading={confirmLoading}
+					onClick={onOk}
+				>
 					{confirmText ? confirmText : 'OK'}
 				</ModalFooterButton>,
 			]}

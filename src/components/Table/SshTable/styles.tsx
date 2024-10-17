@@ -3,6 +3,7 @@ import Button from '../../Button';
 import Head2 from '../../Heading/H2';
 import Text from '../../Text';
 import { Form } from 'antd';
+import colors from '../../../_util/colors';
 
 export const ModalButton = styled(Button)`
 	background: transparent !important;
@@ -32,4 +33,9 @@ export const ModalForm = styled(Form)`
 	.ant-col {
 		text-align: justify !important;
 	}
+`;
+
+export const Highlighted = styled.span`
+	font-weight: 600;
+	color: ${colors.lagoonBlue};
 `;

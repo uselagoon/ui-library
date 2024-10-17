@@ -13,13 +13,13 @@ type sshKey = {
 export type SshTableProps = {
     sshKeys: sshKey[];
     refetch: BasicFn;
-    deleteOptions?: {
+    deleteKey: {
         delete: BasicFn;
         data?: any;
         loading: boolean;
         err?: Error;
     };
-    updateOptions?: {
+    updateKey: {
         update: BasicFn;
         data?: any;
         loading: boolean;
@@ -31,5 +31,5 @@ export type SshTableProps = {
         err?: Error;
     };
 };
-declare const SshTable: ({ sshKeys, addNewKey: { add, loading }, refetch }: SshTableProps) => import("react/jsx-runtime").JSX.Element;
+declare const SshTable: ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, refetch }: SshTableProps) => import("react/jsx-runtime").JSX.Element;
 export default SshTable;
