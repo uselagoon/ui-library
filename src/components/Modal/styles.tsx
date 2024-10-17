@@ -1,8 +1,16 @@
 import { Button, Modal } from 'antd';
 import styled, { css } from 'styled-components';
+import colors from '../../_util/colors';
 
 export const ModalFooterButton = styled(Button)`
 	border-radius: 0 !important;
+	&.ant-btn:disabled {
+		${(props) =>
+			props.theme.colorScheme === 'dark' &&
+			css`
+				background-color: ${colors.gray};
+			`}
+	}
 `;
 
 export const ModalChildren = styled.section<{ $minHeight?: string }>`

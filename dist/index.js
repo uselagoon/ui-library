@@ -731,6 +731,11 @@ html,body{
 	}
 `,IA=t.forwardRef((({className:A,children:t,type:n,...o},l)=>{if("custom"===n)return e.jsx(a.Tag,{ref:l,className:A,...o,children:t});const s={running:{color:y.blue,icon:e.jsx(r.SyncOutlined,{spin:!0})},complete:{color:y.green,icon:e.jsx(r.CheckCircleOutlined,{})},failed:{color:y.orange,icon:e.jsx(r.WarningOutlined,{})},error:{color:y.pink,icon:e.jsx(r.StopOutlined,{})},queued:{color:y.yellow,icon:e.jsx(r.SyncOutlined,{spin:!0})}}[n];return e.jsxs(zA,{ref:l,className:A,color:s.color,...o,children:[s.icon," ",(i=n,i.charAt(0).toUpperCase()+i.slice(1))]});var i}));IA.displayName="StatusTag";const bA=l.default(a.Button)`
 	border-radius: 0 !important;
+	&.ant-btn:disabled {
+		${e=>"dark"===e.theme.colorScheme&&A.css`
+				background-color: ${y.gray};
+			`}
+	}
 `,xA=l.default.section`
 	overflow: hidden;
 	border-radius: 0;
