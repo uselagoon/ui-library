@@ -1,5 +1,8 @@
 import React from 'react';
 import { FormItemProps } from 'antd';
-declare const UIFormItem: React.FC<FormItemProps>;
+type ItemProps = FormItemProps & {
+    wrap?: boolean;
+};
+declare const UIFormItem: React.FC<ItemProps>;
 export default UIFormItem;
 export type { FormItemProps as UIFormItemProps };

@@ -118,6 +118,11 @@ export const SshTable: Story = {
 					keyFingerprint: 'SHA256:zzjbga1eKP2w4b++1VADPHTQD98aJIvkJNzLTm1X/zg',
 				},
 			]}
+			addNewKey={{
+				addLoading: true,
+				// @ts-ignore
+				addMutation: () => {},
+			}}
 		/>
 	),
 };

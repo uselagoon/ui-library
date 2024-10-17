@@ -66,6 +66,9 @@ export const StyledBaseTable = styled(Table)`
 			}
 		}
 	}
+	.ant-table-footer {
+		background-color: transparent;
+	}
 	tbody {
 		color: ${(props) => (props.theme.colorScheme === 'dark' ? '#F8F8F2' : '#222222')};
 

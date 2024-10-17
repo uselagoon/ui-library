@@ -1,11 +1,24 @@
 import React, { FC, ReactNode } from 'react';
 
-import { Modal, ModalProps } from 'antd';
-import styled from 'styled-components';
+import { ModalProps } from 'antd';
+import { ModalChildren, ModalFooterButton, StyledModal } from './styles';
 
-type UIModalProps = { subTitle?: ReactNode } & Omit<ModalProps, 'destroyonClose' | 'modalRender'>;
+type UIModalProps = { subTitle?: ReactNode; confirmText?: string; minHeight?: string } & Omit<
+	ModalProps,
+	'destroyonClose' | 'modalRender'
+>;
 
-const UIModal: FC<UIModalProps> = ({ children, subTitle, title, ...props }) => {
+const UIModal: FC<UIModalProps> = ({
+	children,
+	subTitle,
+	title,
+	onCancel,
+	onOk,
+	confirmText,
+	confirmLoading,
+	minHeight,
+	...props
+}) => {
 	let modalTitle = title;
 
 	if (subTitle) {
@@ -20,64 +33,25 @@ const UIModal: FC<UIModalProps> = ({ children, subTitle, title, ...props }) => {
 		<StyledModal
 			title={modalTitle}
 			destroyOnClose
+			maskClosable
+			onCancel={onCancel}
 			{...props}
 			modalRender={(node: ReactNode) => {
-				return <ModalChildren>{node}</ModalChildren>;
+				return <ModalChildren $minHeight={minHeight}>{node}</ModalChildren>;
 			}}
+			footer={[
+				<ModalFooterButton key="back" onClick={onCancel}>
+					Cancel
+				</ModalFooterButton>,
+				<ModalFooterButton key="submit" type="primary" loading={confirmLoading} onClick={onOk}>
+					{confirmText ? confirmText : 'OK'}
+				</ModalFooterButton>,
+			]}
 		>
 			{children}
 		</StyledModal>
 	);
 };
-
-const StyledModal = styled(Modal)`
-	min-width: 900px;
-	@media (max-width: 1200px) {
-		min-width: initial;
-	}
-`;
-
-const ModalChildren = styled.section`
-	.ant-modal-content {
-		padding: 0;
-		background-color: ${(props) => props.theme.UI.backgrounds.modal};
-
-		.ant-modal-footer {
-			padding: 20px 24px;
-		}
-		.ant-modal-header {
-			padding: 20px 24px;
-			background-color: inherit;
-
-			.ant-modal-title {
-				color: ${(props) => props.theme.UI.texts.primary};
-			}
-		}
-		.ant-modal-body {
-			border-top: 1px solid ${(props) => props.theme.UI.borders.box};
-			border-bottom: 1px solid ${(props) => props.theme.UI.borders.box};
-			padding: 20px 24px;
-			color: ${(props) => props.theme.UI.texts.primary};
-		}
-		.ant-modal-close {
-			width: 22px;
-			height: 22px;
-			font-size: 22px;
-			transform: translate(1rem, -1rem);
-			& span {
-				width: 100%;
-				height: 100%;
-				display: inline-block;
-
-				svg {
-					color: ${(props) => props.theme.UI.texts.primary};
-					width: 100%;
-					height: 100%;
-				}
-			}
-		}
-	}
-`;
 
 UIModal.displayName = 'Modal';
 export type { UIModalProps };

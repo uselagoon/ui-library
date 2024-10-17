@@ -5,16 +5,29 @@ import colors from '../../_util/colors';
 
 const { Item } = Form;
 
-const UIFormItem: React.FC<FormItemProps> = (props) => {
-	return <StyledItem {...props} />;
+type ItemProps = FormItemProps & {
+	wrap?: boolean;
 };
 
-const StyledItem = styled(Item)`
+const UIFormItem: React.FC<ItemProps> = ({ wrap, ...props }) => {
+	return <StyledItem {...props} $wrap={wrap} />;
+};
+
+const StyledItem = styled(Item)<{ $wrap?: boolean }>`
 	&.ant-form-item {
 		label {
-			font-size: 1rem;
+			font-size: 0.8rem;
 			line-height: 1.5rem;
+			font-weight: light;
 			color: ${(props) => (props.theme.colorScheme === 'dark' ? colors.white : '#00000099')};
+		}
+		input {
+			width: 55%;
+			&::placeholder {
+				color: hotpink;
+				font-size: 0.85rem;
+				color: #7b7b75;
+			}
 		}
 	}
 	&.ant-form-item .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional) {
