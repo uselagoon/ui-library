@@ -6,7 +6,7 @@ import { ActionWrap, EmptyAction } from '../styles';
 import { useState } from 'react';
 import duration from 'dayjs/plugin/duration';
 import StatusTag from '../../StatusTag';
-import { BuildStepTooltip, StatusContainer } from './styles';
+import { BuildStepTooltip, LinkContainer, StatusContainer } from './styles';
 import { useLinkComponent } from '../../../providers/NextLinkProvider';
 
 dayjs.extend(duration);
@@ -38,47 +38,6 @@ export type DeploymentsTableProps = {
 	basePath: string;
 };
 
-const DeploymentColumns = [
-	{
-		title: 'Status',
-		dataIndex: 'status',
-		key: 'status',
-		width: '11.845%',
-		render: (statusTag: ReturnType<typeof StatusTag>) => {
-			return <StatusContainer>{statusTag}</StatusContainer>;
-		},
-	},
-	{
-		title: 'Name/ID',
-		dataIndex: 'name',
-		key: 'name',
-		width: '26.266%',
-	},
-	{
-		title: 'Timestamp',
-		dataIndex: 'created',
-		key: 'created',
-		width: '18.369%',
-	},
-	{
-		title: 'Trigger',
-		dataIndex: 'sourceType',
-		key: 'sourceType',
-		width: '14.506%',
-	},
-	{
-		title: 'Duration',
-		dataIndex: 'duration',
-		key: 'duration',
-		width: '14.506%',
-	},
-	{
-		title: 'Actions',
-		dataIndex: 'actions',
-		key: 'actions',
-	},
-];
-
 export const getDeploymentDuration = (deployment: Deployment) => {
 	const deploymentStart = deployment.started || deployment.created;
 	const durationStart = deploymentStart ? dayjs.utc(deploymentStart) : dayjs.utc();
@@ -107,6 +66,54 @@ const DeploymentsaTable = ({ deployments, basePath }: DeploymentsTableProps) => 
 		// 	handleDeleteModalClose();
 		// });
 	};
+
+	const DeploymentColumns = [
+		{
+			title: 'Status',
+			dataIndex: 'status',
+			key: 'status',
+			width: '11.845%',
+			render: (statusTag: ReturnType<typeof StatusTag>) => {
+				return <StatusContainer>{statusTag}</StatusContainer>;
+			},
+		},
+		{
+			title: 'Name/ID',
+			dataIndex: 'name',
+			key: 'name',
+			width: '26.266%',
+			render: (name: string) => {
+				return (
+					<LinkContainer>
+						<Link href={`${basePath}/${name}`}>{name}</Link>
+					</LinkContainer>
+				);
+			},
+		},
+		{
+			title: 'Timestamp',
+			dataIndex: 'created',
+			key: 'created',
+			width: '18.369%',
+		},
+		{
+			title: 'Trigger',
+			dataIndex: 'sourceType',
+			key: 'sourceType',
+			width: '14.506%',
+		},
+		{
+			title: 'Duration',
+			dataIndex: 'duration',
+			key: 'duration',
+			width: '14.506%',
+		},
+		{
+			title: 'Actions',
+			dataIndex: 'actions',
+			key: 'actions',
+		},
+	];
 
 	const remappedDeployments =
 		deployments &&
@@ -137,14 +144,15 @@ const DeploymentsaTable = ({ deployments, basePath }: DeploymentsTableProps) => 
 				duration: getDeploymentDuration(deployment),
 				actions: (
 					<ActionWrap>
-						<Link href={`${basePath}/${deployment.name}`}>
-							<EyeOutlined
-								onClick={() => {
-									setSelectedKey(deployment);
-								}}
-							/>
-						</Link>
-
+						<LinkContainer>
+							<Link href={`${basePath}/${deployment.name}`}>
+								<EyeOutlined
+									onClick={() => {
+										setSelectedKey(deployment);
+									}}
+								/>
+							</Link>
+						</LinkContainer>
 						{['new', 'pending', 'queued', 'running'].includes(deployment.status) ? (
 							<StopOutlined
 								onClick={() => {
