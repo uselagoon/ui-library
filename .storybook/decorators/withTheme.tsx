@@ -3,6 +3,9 @@ import { ThemeProvider } from 'styled-components';
 import { Decorator } from '@storybook/react';
 
 import GlobalStyles from '../../src/providers/GlobalStyles';
+
+import { LinkProvider } from '../../src/providers/NextLinkProvider';
+
 import { lightTheme, darkTheme } from '../../src/styles/theme';
 
 import styled, { css } from 'styled-components';
@@ -26,21 +29,29 @@ const withTheme: Decorator = (StoryFn, context) => {
 	const { theme } = context.globals;
 	const themeToUse = theme === 'light' ? lightTheme : darkTheme;
 
+	// consumers of the library pass in actual React/Next.js links
+	const FakeLink = function ({ children }) {
+		return <a>{children}</a>;
+	};
 	switch (theme) {
 		case 'side-by-side': {
 			return (
 				<>
 					<ThemeProvider theme={lightTheme}>
 						<GlobalStyles />
-						<ThemeBlock left>
-							<StoryFn />
-						</ThemeBlock>
+						<LinkProvider linkComponent={FakeLink as any}>
+							<ThemeBlock left>
+								<StoryFn />
+							</ThemeBlock>
+						</LinkProvider>
 					</ThemeProvider>
 					<ThemeProvider theme={darkTheme}>
 						<GlobalStyles />
-						<ThemeBlock>
-							<StoryFn />
-						</ThemeBlock>
+						<LinkProvider linkComponent={FakeLink as any}>
+							<ThemeBlock>
+								<StoryFn />
+							</ThemeBlock>
+						</LinkProvider>
 					</ThemeProvider>
 				</>
 			);
@@ -49,9 +60,11 @@ const withTheme: Decorator = (StoryFn, context) => {
 			return (
 				<ThemeProvider theme={themeToUse}>
 					<GlobalStyles />
-					<ThemeBlock fill theme={themeToUse}>
-						<StoryFn />
-					</ThemeBlock>
+					<LinkProvider linkComponent={FakeLink as any}>
+						<ThemeBlock fill theme={themeToUse}>
+							<StoryFn />
+						</ThemeBlock>
+					</LinkProvider>
 				</ThemeProvider>
 			);
 		}

@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from 'react';
 import { NextLinkType } from '../typings/nextLink';
 
-const LinkContext = createContext<NextLinkType | undefined>(undefined);
+export const LinkContext = createContext<NextLinkType | undefined>(undefined);
 
 export const LinkProvider: React.FC<{
 	linkComponent: NextLinkType;

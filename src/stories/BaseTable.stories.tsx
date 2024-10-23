@@ -95,6 +95,52 @@ export const Default: Story = {
 	),
 };
 
+export const DeploymentsTable: Story = {
+	render: () => (
+		<BaseTable.DeploymentsTable
+			basePath="/"
+			deployments={[
+				{
+					id: 3134,
+					name: 'lagoon-build-8u9hye',
+					status: 'running',
+					created: '2023-10-18 03:06:54',
+					buildStep: 'runningPostRolloutTasks',
+					started: '2023-10-18 03:11:06',
+					completed: '2023-10-18 03:12:26',
+					bulkId: null,
+					sourceType: 'API',
+					priority: null,
+				},
+				{
+					id: 3133,
+					name: 'lagoon-build-svu3kd',
+					status: 'failed',
+					created: '2023-10-18 03:04:53',
+					buildStep: 'runningPostRolloutTasks',
+					started: '2023-10-18 03:05:24',
+					completed: '2023-10-18 03:10:30',
+					bulkId: null,
+					sourceType: 'WEBHOOK',
+					priority: null,
+				},
+				{
+					id: 2878,
+					name: 'lagoon-build-anakk',
+					status: 'complete',
+					created: '2023-09-19 07:10:54',
+					buildStep: 'deployCompletedWithWarnings',
+					started: '2023-09-19 07:11:24',
+					completed: '2023-09-19 07:17:22',
+					bulkId: null,
+					sourceType: 'API',
+					priority: null,
+				},
+			]}
+		/>
+	),
+};
+
 export const SshTable: Story = {
 	render: () => (
 		<BaseTable.SshTable
@@ -119,7 +165,7 @@ export const SshTable: Story = {
 				},
 			]}
 			addNewKey={{
-				addLoading: true,
+				loading: true,
 				// @ts-ignore
 				addMutation: () => {},
 			}}
