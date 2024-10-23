@@ -2,7 +2,7 @@ import { EyeOutlined, StopOutlined } from '@ant-design/icons';
 import BaseTable from '../Base';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
-import { ActionWrap } from '../styles';
+import { ActionWrap, EmptyAction } from '../styles';
 import { useState } from 'react';
 import duration from 'dayjs/plugin/duration';
 import StatusTag from '../../StatusTag';
@@ -137,7 +137,7 @@ const DeploymentsaTable = ({ deployments, basePath }: DeploymentsTableProps) => 
 				duration: getDeploymentDuration(deployment),
 				actions: (
 					<ActionWrap>
-						<Link href={`${basePath}/${deployment.id}`}>
+						<Link href={`${basePath}/${deployment.name}`}>
 							<EyeOutlined
 								onClick={() => {
 									setSelectedKey(deployment);
@@ -145,12 +145,14 @@ const DeploymentsaTable = ({ deployments, basePath }: DeploymentsTableProps) => 
 							/>
 						</Link>
 
-						{['new', 'pending', 'queued', 'running'].includes(deployment.status) && (
+						{['new', 'pending', 'queued', 'running'].includes(deployment.status) ? (
 							<StopOutlined
 								onClick={() => {
 									setSelectedKey(deployment);
 								}}
 							/>
+						) : (
+							<EmptyAction></EmptyAction>
 						)}
 					</ActionWrap>
 				),

@@ -1,5 +1,5 @@
 import { Table } from 'antd';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StyledBaseTable = styled(Table)`
 	border: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#000' : '#fff')};
@@ -102,9 +102,12 @@ export const ActionWrap = styled.section`
 	gap: 1rem;
 	justify-content: center;
 	align-items: center;
-
 	> * {
 		cursor: pointer;
 		font-size: 1.1875rem;
 	}
+`;
+
+export const EmptyAction = styled.span`
+	width: 1.1875rem;
 `;
