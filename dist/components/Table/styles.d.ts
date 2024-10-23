@@ -13,3 +13,4 @@ export declare const StyledBaseTable: import("styled-components").IStyledCompone
     Summary: typeof import("rc-table/lib/Footer/Summary").default;
 }, keyof import("react").Component<any, {}, any>>;
 export declare const ActionWrap: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>, never>>;
+export declare const EmptyAction: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, never>>;
