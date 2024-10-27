@@ -88,7 +88,11 @@ const DeploymentsaTable = ({
 		: [];
 
 	// paginated data based on filtered results
-	const paginatedData = filteredDeployments.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+	const paginatedData =
+		pageSize > 0
+			? filteredDeployments.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+			: filteredDeployments;
+
 	const totalFilteredCount = filteredDeployments.length;
 
 	const handlePageChange = (page: number) => {
