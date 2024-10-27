@@ -99,11 +99,25 @@ export const DeploymentsTable: Story = {
 	render: () => (
 		<BaseTable.DeploymentsTable
 			basePath="/"
+			// resultsPerPage={2}
+			// filterDateRange={["2023-09-19", "2023-10-11"]}
 			deployments={[
 				{
 					id: 3134,
 					name: 'lagoon-build-8u9hye',
 					status: 'running',
+					created: '2023-10-18 03:06:54',
+					buildStep: 'runningPostRolloutTasks',
+					started: '2023-10-18 03:11:06',
+					completed: '2023-10-18 03:12:26',
+					bulkId: null,
+					sourceType: 'API',
+					priority: null,
+				},
+				{
+					id: 1234,
+					name: 'lagoon-build-new',
+					status: 'new',
 					created: '2023-10-18 03:06:54',
 					buildStep: 'runningPostRolloutTasks',
 					started: '2023-10-18 03:11:06',

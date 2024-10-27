@@ -1,5 +1,6 @@
 import { Tooltip } from 'antd';
 import styled from 'styled-components';
+import colors from '../../../_util/colors';
 
 export const StatusContainer = styled.section`
 	display: flex;
@@ -17,7 +18,14 @@ export const BuildStepTooltip = styled(Tooltip)`
 `;
 
 export const LinkContainer = styled.div`
+	display: flex;
+	align-items: center;
 	a {
 		color: initial;
+	}
+	.bulk-link {
+		margin-left: auto;
+		padding-inline: 0.25rem;
+		background-color: ${colors.lagoonBlue};
 	}
 `;

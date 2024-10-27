@@ -2,7 +2,13 @@ import React, { forwardRef } from 'react';
 
 import { Tag, TagProps } from 'antd';
 import colors from '../../_util/colors';
-import { CheckCircleOutlined, StopOutlined, SyncOutlined, WarningOutlined } from '@ant-design/icons';
+import {
+	CheckCircleOutlined,
+	PauseCircleOutlined,
+	StopOutlined,
+	SyncOutlined,
+	WarningOutlined,
+} from '@ant-design/icons';
 import styled from 'styled-components';
 
 const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
@@ -10,7 +16,7 @@ const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str
 export type UITagProps = Omit<TagProps, 'color' | 'icon'> &
 	(
 		| {
-				type: 'running' | 'complete' | 'failed' | 'error' | 'queued';
+				type: 'running' | 'complete' | 'failed' | 'error' | 'queued' | 'new';
 		  }
 		| {
 				type: 'custom';
@@ -32,6 +38,10 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, UITagProps> =
 	}
 
 	const tagColorMap = {
+		new: {
+			color: colors.purple,
+			icon: <PauseCircleOutlined />,
+		},
 		running: {
 			color: colors.blue,
 			icon: <SyncOutlined spin />,

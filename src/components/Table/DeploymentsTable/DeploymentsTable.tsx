@@ -3,11 +3,12 @@ import BaseTable from '../Base';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { ActionWrap, EmptyAction } from '../styles';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import duration from 'dayjs/plugin/duration';
 import StatusTag from '../../StatusTag';
 import { BuildStepTooltip, LinkContainer, StatusContainer } from './styles';
 import { useLinkComponent } from '../../../providers/NextLinkProvider';
+import Pagination from '../../Pagination';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -16,7 +17,7 @@ type BasicFn = (...args: any[]) => any;
 type Deployment = {
 	id: number;
 	name: string;
-	status: 'running' | 'complete' | 'failed' | 'error' | 'queued';
+	status: 'running' | 'complete' | 'failed' | 'error' | 'queued' | 'new';
 	created: string;
 	started: string;
 	completed: string;
@@ -36,6 +37,9 @@ export type DeploymentsTableProps = {
 	 * This is used to construct URLs for specific deployments.
 	 */
 	basePath: string;
+	resultsPerPage?: number;
+	filterStatus?: Deployment['status'];
+	filterDateRange?: [string, string];
 };
 
 export const getDeploymentDuration = (deployment: Deployment) => {
@@ -55,17 +59,49 @@ export const getDeploymentDuration = (deployment: Deployment) => {
 	return result.trim();
 };
 
-const DeploymentsaTable = ({ deployments, basePath }: DeploymentsTableProps) => {
-	const [selectedKey, setSelectedKey] = useState<Deployment>();
+const DeploymentsaTable = ({
+	deployments,
+	basePath,
+	resultsPerPage,
+	filterStatus,
+	filterDateRange,
+}: DeploymentsTableProps) => {
+	// pagination
+	const [currentPage, setCurrentPage] = useState(1);
+	const [pageSize, setResultsPerPage] = useState(resultsPerPage || 10);
+
+	// paginate based on the current filtered data ( status and date range )
+	const filteredDeployments = deployments
+		? deployments.filter((item) => {
+				// status
+				const statusMatches = filterStatus ? item.status === filterStatus : true;
+
+				// date range
+				const dateMatches = filterDateRange
+					? new Date(item.created) >= new Date(filterDateRange[0]) &&
+						new Date(item.created) <= new Date(filterDateRange[1])
+					: true;
+
+				// Return true if both conditions are true, or if the relevant filter is not provided
+				return statusMatches && dateMatches;
+			})
+		: [];
+
+	// paginated data based on filtered results
+	const paginatedData = filteredDeployments.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+	const totalFilteredCount = filteredDeployments.length;
+
+	const handlePageChange = (page: number) => {
+		setCurrentPage(page);
+	};
+
+	useEffect(() => {
+		if (resultsPerPage) {
+			setResultsPerPage(resultsPerPage);
+		}
+	}, [resultsPerPage]);
 
 	const Link = useLinkComponent();
-
-	const handleCancelDeployment = () => {
-		// deleteKey.delete(selectedKey?.id).finally(() => {
-		// 	refetch();
-		// 	handleDeleteModalClose();
-		// });
-	};
 
 	const DeploymentColumns = [
 		{
@@ -82,10 +118,15 @@ const DeploymentsaTable = ({ deployments, basePath }: DeploymentsTableProps) => 
 			dataIndex: 'name',
 			key: 'name',
 			width: '26.266%',
-			render: (name: string) => {
+			render: (name: string, deployment: Deployment) => {
 				return (
 					<LinkContainer>
 						<Link href={`${basePath}/${name}`}>{name}</Link>
+						{!deployment.bulkId ? (
+							<span className="bulk-link">
+								<Link href={`bulkdeployments/${deployment.bulkId}`}>BULK</Link>
+							</span>
+						) : null}
 					</LinkContainer>
 				);
 			},
@@ -116,8 +157,8 @@ const DeploymentsaTable = ({ deployments, basePath }: DeploymentsTableProps) => 
 	];
 
 	const remappedDeployments =
-		deployments &&
-		deployments.map((deployment) => {
+		paginatedData &&
+		paginatedData.map((deployment) => {
 			return {
 				...deployment,
 				status: (
@@ -146,18 +187,12 @@ const DeploymentsaTable = ({ deployments, basePath }: DeploymentsTableProps) => 
 					<ActionWrap>
 						<LinkContainer>
 							<Link href={`${basePath}/${deployment.name}`}>
-								<EyeOutlined
-									onClick={() => {
-										setSelectedKey(deployment);
-									}}
-								/>
+								<EyeOutlined />
 							</Link>
 						</LinkContainer>
 						{['new', 'pending', 'queued', 'running'].includes(deployment.status) ? (
 							<StopOutlined
-								onClick={() => {
-									setSelectedKey(deployment);
-								}}
+							// TODO: cancel mutation render prop
 							/>
 						) : (
 							<EmptyAction></EmptyAction>
@@ -167,7 +202,12 @@ const DeploymentsaTable = ({ deployments, basePath }: DeploymentsTableProps) => 
 			};
 		});
 
-	return <BaseTable dataSource={remappedDeployments} columns={DeploymentColumns} />;
+	return (
+		<>
+			<BaseTable dataSource={remappedDeployments} columns={DeploymentColumns} />
+			<Pagination total={totalFilteredCount} pageSize={pageSize} current={currentPage} onChange={handlePageChange} />
+		</>
+	);
 };
 
 export default DeploymentsaTable;

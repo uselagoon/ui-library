@@ -1,7 +1,7 @@
 type Deployment = {
     id: number;
     name: string;
-    status: 'running' | 'complete' | 'failed' | 'error' | 'queued';
+    status: 'running' | 'complete' | 'failed' | 'error' | 'queued' | 'new';
     created: string;
     started: string;
     completed: string;
@@ -20,7 +20,10 @@ export type DeploymentsTableProps = {
      * This is used to construct URLs for specific deployments.
      */
     basePath: string;
+    resultsPerPage?: number;
+    filterStatus?: Deployment['status'];
+    filterDateRange?: [string, string];
 };
 export declare const getDeploymentDuration: (deployment: Deployment) => string;
-declare const DeploymentsaTable: ({ deployments, basePath }: DeploymentsTableProps) => import("react/jsx-runtime").JSX.Element;
+declare const DeploymentsaTable: ({ deployments, basePath, resultsPerPage, filterStatus, filterDateRange, }: DeploymentsTableProps) => import("react/jsx-runtime").JSX.Element;
 export default DeploymentsaTable;
