@@ -205,7 +205,12 @@ const DeploymentsaTable = ({
 	return (
 		<>
 			<BaseTable dataSource={remappedDeployments} columns={DeploymentColumns} />
-			<Pagination total={totalFilteredCount} pageSize={pageSize} current={currentPage} onChange={handlePageChange} />
+			<Pagination
+				total={totalFilteredCount}
+				pageSize={pageSize === -1 ? totalFilteredCount : pageSize}
+				current={currentPage}
+				onChange={handlePageChange}
+			/>
 		</>
 	);
 };

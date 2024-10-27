@@ -99,7 +99,7 @@ export const DeploymentsTable: Story = {
 	render: () => (
 		<BaseTable.DeploymentsTable
 			basePath="/"
-			// resultsPerPage={2}
+			// resultsPerPage={-1}
 			// filterDateRange={["2023-09-19", "2023-10-11"]}
 			deployments={[
 				{
