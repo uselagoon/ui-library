@@ -77,10 +77,11 @@ const DeploymentsaTable = ({
 				const statusMatches = filterStatus ? item.status === filterStatus : true;
 
 				// date range
-				const dateMatches = filterDateRange
-					? new Date(item.created) >= new Date(filterDateRange[0]) &&
-						new Date(item.created) <= new Date(filterDateRange[1])
-					: true;
+				const dateMatches =
+					filterDateRange && filterDateRange.every(Boolean)
+						? new Date(item.created) >= new Date(filterDateRange[0]) &&
+							new Date(item.created) <= new Date(filterDateRange[1])
+						: true;
 
 				// Return true if both conditions are true, or if the relevant filter is not provided
 				return statusMatches && dateMatches;
