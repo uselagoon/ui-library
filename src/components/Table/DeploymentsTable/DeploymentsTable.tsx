@@ -207,7 +207,7 @@ const DeploymentsaTable = ({
 			<BaseTable dataSource={remappedDeployments} columns={DeploymentColumns} />
 			<Pagination
 				total={totalFilteredCount}
-				pageSize={pageSize === -1 ? totalFilteredCount : pageSize}
+				pageSize={pageSize === -1 ? Infinity : pageSize}
 				current={currentPage}
 				onChange={handlePageChange}
 			/>
