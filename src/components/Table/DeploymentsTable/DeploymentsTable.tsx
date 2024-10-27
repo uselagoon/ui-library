@@ -122,7 +122,7 @@ const DeploymentsaTable = ({
 				return (
 					<LinkContainer>
 						<Link href={`${basePath}/${name}`}>{name}</Link>
-						{!deployment.bulkId ? (
+						{deployment.bulkId ? (
 							<span className="bulk-link">
 								<Link href={`bulkdeployments/${deployment.bulkId}`}>BULK</Link>
 							</span>
