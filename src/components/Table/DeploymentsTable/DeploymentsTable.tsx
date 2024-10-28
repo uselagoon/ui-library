@@ -9,7 +9,6 @@ import StatusTag from '../../StatusTag';
 import { BuildStepTooltip, LinkContainer, StatusContainer } from './styles';
 import { useLinkComponent } from '../../../providers/NextLinkProvider';
 import Pagination from '../../Pagination';
-import Skeleton from 'react-loading-skeleton';
 import DeploymentsTableSkeleton from './DeploymentsTableSkeleton';
 
 dayjs.extend(duration);
