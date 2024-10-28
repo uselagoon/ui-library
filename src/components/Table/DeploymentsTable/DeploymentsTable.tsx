@@ -217,7 +217,7 @@ const DeploymentsaTable = (props: DeploymentsTableProps) => {
 
 	return (
 		<>
-			<BaseTable dataSource={remappedDeployments} columns={DeploymentColumns} />
+			<BaseTable dataSource={remappedDeployments} columns={DeploymentColumns} rowKey={(record) => record.id} />
 			<Pagination
 				total={totalFilteredCount}
 				pageSize={pageSize === -1 ? Infinity : pageSize}
