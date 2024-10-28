@@ -3,7 +3,7 @@ import BaseTable from '../Base';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { ActionWrap, EmptyAction } from '../styles';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import duration from 'dayjs/plugin/duration';
 import StatusTag from '../../StatusTag';
 import { BuildStepTooltip, LinkContainer, StatusContainer } from './styles';
@@ -91,22 +91,20 @@ const DeploymentsaTable = (props: DeploymentsTableProps) => {
 	const { deployments, basePath, cancelDeployment } = props as DeploymentProps;
 
 	// paginate based on the current filtered data ( status and date range )
-	const filteredDeployments = deployments
-		? deployments.filter((item) => {
-				// status
-				const statusMatches = filterStatus ? item.status === filterStatus : true;
+	const filteredDeployments = useMemo(() => {
+		return deployments
+			? deployments.filter((item) => {
+					const statusMatches = filterStatus ? item.status === filterStatus : true;
+					const dateMatches =
+						filterDateRange && filterDateRange.every(Boolean)
+							? new Date(item.created) >= new Date(filterDateRange[0]) &&
+								new Date(item.created) <= new Date(filterDateRange[1])
+							: true;
 
-				// date range
-				const dateMatches =
-					filterDateRange && filterDateRange.every(Boolean)
-						? new Date(item.created) >= new Date(filterDateRange[0]) &&
-							new Date(item.created) <= new Date(filterDateRange[1])
-						: true;
-
-				// Return true if both conditions are true, or if the relevant filter is not provided
-				return statusMatches && dateMatches;
-			})
-		: [];
+					return statusMatches && dateMatches;
+				})
+			: [];
+	}, [deployments, filterStatus, filterDateRange]);
 
 	// paginated data based on filtered results
 	const paginatedData =
