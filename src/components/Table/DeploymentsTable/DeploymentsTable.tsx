@@ -9,6 +9,8 @@ import StatusTag from '../../StatusTag';
 import { BuildStepTooltip, LinkContainer, StatusContainer } from './styles';
 import { useLinkComponent } from '../../../providers/NextLinkProvider';
 import Pagination from '../../Pagination';
+import Skeleton from 'react-loading-skeleton';
+import DeploymentsTableSkeleton from './DeploymentsTableSkeleton';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -30,17 +32,25 @@ type Deployment = {
 	priority: string | null;
 };
 
-export type DeploymentsTableProps = {
+export type DeploymentProps = {
 	deployments: Deployment[];
 	/**
 	 * The base path for the deployments.
 	 * This is used to construct URLs for specific deployments.
 	 */
 	basePath: string;
+	skeleton?: false;
+};
+
+export type DeploymentsTableSkeleton = {
+	skeleton: true;
+};
+
+export type DeploymentsTableProps = {
 	resultsPerPage?: number;
 	filterStatus?: Deployment['status'];
 	filterDateRange?: [string, string];
-};
+} & (DeploymentsTableSkeleton | DeploymentProps);
 
 export const getDeploymentDuration = (deployment: Deployment) => {
 	const deploymentStart = deployment.started || deployment.created;
@@ -59,16 +69,26 @@ export const getDeploymentDuration = (deployment: Deployment) => {
 	return result.trim();
 };
 
-const DeploymentsaTable = ({
-	deployments,
-	basePath,
-	resultsPerPage,
-	filterStatus,
-	filterDateRange,
-}: DeploymentsTableProps) => {
+const DeploymentsaTable = (props: DeploymentsTableProps) => {
+	const { resultsPerPage, filterStatus, filterDateRange } = props;
+
 	// pagination
 	const [currentPage, setCurrentPage] = useState(1);
 	const [pageSize, setResultsPerPage] = useState(resultsPerPage || 10);
+
+	useEffect(() => {
+		if (resultsPerPage) {
+			setResultsPerPage(resultsPerPage);
+		}
+	}, [resultsPerPage]);
+
+	const Link = useLinkComponent();
+
+	if ('skeleton' in props && props.skeleton) {
+		return <DeploymentsTableSkeleton />;
+	}
+
+	const { deployments, basePath } = props as DeploymentProps;
 
 	// paginate based on the current filtered data ( status and date range )
 	const filteredDeployments = deployments
@@ -99,14 +119,6 @@ const DeploymentsaTable = ({
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
 	};
-
-	useEffect(() => {
-		if (resultsPerPage) {
-			setResultsPerPage(resultsPerPage);
-		}
-	}, [resultsPerPage]);
-
-	const Link = useLinkComponent();
 
 	const DeploymentColumns = [
 		{

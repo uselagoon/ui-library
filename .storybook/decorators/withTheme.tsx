@@ -5,10 +5,10 @@ import { Decorator } from '@storybook/react';
 import GlobalStyles from '../../src/providers/GlobalStyles';
 
 import { LinkProvider } from '../../src/providers/NextLinkProvider';
-
 import { lightTheme, darkTheme } from '../../src/styles/theme';
 
 import styled, { css } from 'styled-components';
+import SkeletonConfigProvider from './SkeletonTheme';
 
 const ThemeBlock = styled.div<{ left?: boolean; fill?: boolean }>(
 	({ left, fill, theme }) => css`
@@ -38,20 +38,24 @@ const withTheme: Decorator = (StoryFn, context) => {
 			return (
 				<>
 					<ThemeProvider theme={lightTheme}>
-						<GlobalStyles />
-						<LinkProvider linkComponent={FakeLink as any}>
-							<ThemeBlock left>
-								<StoryFn />
-							</ThemeBlock>
-						</LinkProvider>
+						<SkeletonConfigProvider theme="light">
+							<GlobalStyles />
+							<LinkProvider linkComponent={FakeLink as any}>
+								<ThemeBlock left>
+									<StoryFn />
+								</ThemeBlock>
+							</LinkProvider>
+						</SkeletonConfigProvider>
 					</ThemeProvider>
 					<ThemeProvider theme={darkTheme}>
-						<GlobalStyles />
-						<LinkProvider linkComponent={FakeLink as any}>
-							<ThemeBlock>
-								<StoryFn />
-							</ThemeBlock>
-						</LinkProvider>
+						<SkeletonConfigProvider theme="dark">
+							<GlobalStyles />
+							<LinkProvider linkComponent={FakeLink as any}>
+								<ThemeBlock>
+									<StoryFn />
+								</ThemeBlock>
+							</LinkProvider>
+						</SkeletonConfigProvider>
 					</ThemeProvider>
 				</>
 			);
@@ -59,12 +63,14 @@ const withTheme: Decorator = (StoryFn, context) => {
 		default: {
 			return (
 				<ThemeProvider theme={themeToUse}>
-					<GlobalStyles />
-					<LinkProvider linkComponent={FakeLink as any}>
-						<ThemeBlock fill theme={themeToUse}>
-							<StoryFn />
-						</ThemeBlock>
-					</LinkProvider>
+					<SkeletonConfigProvider theme={theme}>
+						<GlobalStyles />
+						<LinkProvider linkComponent={FakeLink as any}>
+							<ThemeBlock fill theme={themeToUse}>
+								<StoryFn />
+							</ThemeBlock>
+						</LinkProvider>
+					</SkeletonConfigProvider>
 				</ThemeProvider>
 			);
 		}

@@ -155,6 +155,10 @@ export const DeploymentsTable: Story = {
 	),
 };
 
+export const DeploymentsTableSkeleton: Story = {
+	render: () => <BaseTable.DeploymentsTable skeleton />,
+};
+
 export const SshTable: Story = {
 	render: () => (
 		<BaseTable.SshTable

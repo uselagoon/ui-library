@@ -34,6 +34,10 @@ export const darkTheme: DefaultTheme = {
 			selection: '#497ffa',
 		},
 		notification: colors.backgrounds.primary.dark,
+		skeleton: {
+			base: '#606060',
+			highlight: '#444',
+		},
 	},
 };
 
@@ -69,5 +73,9 @@ export const lightTheme: DefaultTheme = {
 			selection: '#497ffa4d',
 		},
 		notification: colors.backgrounds.primary.light,
+		skeleton: {
+			base: '#d6d6d6',
+			highlight: '#f5f5f5',
+		},
 	},
 };

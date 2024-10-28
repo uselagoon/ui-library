@@ -124,6 +124,9 @@ export type { ProjectsTableProps } from './components/ProjectsTable';
 export { default as Table } from './components/Table';
 export type { BaseTableProps } from './components/Table';
 
+export { default as LoadingSkeleton } from './components/Skeleton';
+export type { SkeletonProps as LoadingSkeletonProps } from './components/Skeleton';
+
 export {
 	LagoonIcon,
 	IconAim,

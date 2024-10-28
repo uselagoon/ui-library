@@ -35,6 +35,10 @@ export interface UITheme {
 			cardInverted: string;
 		};
 		notification: string;
+		skeleton: {
+			base: string;
+			highlight: string;
+		};
 	};
 }
 

@@ -5,6 +5,7 @@ import React from 'react';
 import { ThemeObject } from '../typings/styled';
 
 import InternalThemeProvider from './ThemeProvider';
+import SkeletonConfigProvider from './SkeletonConfigProvider';
 
 interface Props {
 	children: React.ReactNode;
@@ -16,7 +17,7 @@ const UIThemeProvider = ({ children, darkThemeProp, lightThemeProp, defaultSchem
 	return (
 		<AppThemeProvider defaultScheme={defaultScheme || undefined}>
 			<InternalThemeProvider darkThemeProp={darkThemeProp || undefined} lightThemeProp={lightThemeProp || undefined}>
-				{children}
+				<SkeletonConfigProvider>{children}</SkeletonConfigProvider>
 			</InternalThemeProvider>
 		</AppThemeProvider>
 	);

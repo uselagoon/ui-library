@@ -13,17 +13,23 @@ type Deployment = {
     bulkId: number | null;
     priority: string | null;
 };
-export type DeploymentsTableProps = {
+export type DeploymentProps = {
     deployments: Deployment[];
     /**
      * The base path for the deployments.
      * This is used to construct URLs for specific deployments.
      */
     basePath: string;
+    skeleton?: false;
+};
+export type DeploymentsTableSkeleton = {
+    skeleton: true;
+};
+export type DeploymentsTableProps = {
     resultsPerPage?: number;
     filterStatus?: Deployment['status'];
     filterDateRange?: [string, string];
-};
+} & (DeploymentsTableSkeleton | DeploymentProps);
 export declare const getDeploymentDuration: (deployment: Deployment) => string;
-declare const DeploymentsaTable: ({ deployments, basePath, resultsPerPage, filterStatus, filterDateRange, }: DeploymentsTableProps) => import("react/jsx-runtime").JSX.Element;
+declare const DeploymentsaTable: (props: DeploymentsTableProps) => import("react/jsx-runtime").JSX.Element;
 export default DeploymentsaTable;
