@@ -101,6 +101,7 @@ export const DeploymentsTable: Story = {
 			basePath="/"
 			// resultsPerPage={-1}
 			// filterDateRange={["2023-09-19", "2023-10-11"]}
+			cancelDeployment={() => <></>}
 			deployments={[
 				{
 					id: 3134,

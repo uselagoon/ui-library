@@ -15,6 +15,7 @@ type Deployment = {
 };
 export type DeploymentProps = {
     deployments: Deployment[];
+    cancelDeployment: (deployment: Deployment) => JSX.Element;
     /**
      * The base path for the deployments.
      * This is used to construct URLs for specific deployments.

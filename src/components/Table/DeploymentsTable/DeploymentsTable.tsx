@@ -33,6 +33,7 @@ type Deployment = {
 
 export type DeploymentProps = {
 	deployments: Deployment[];
+	cancelDeployment: (deployment: Deployment) => JSX.Element;
 	/**
 	 * The base path for the deployments.
 	 * This is used to construct URLs for specific deployments.
@@ -87,7 +88,7 @@ const DeploymentsaTable = (props: DeploymentsTableProps) => {
 		return <DeploymentsTableSkeleton />;
 	}
 
-	const { deployments, basePath } = props as DeploymentProps;
+	const { deployments, basePath, cancelDeployment } = props as DeploymentProps;
 
 	// paginate based on the current filtered data ( status and date range )
 	const filteredDeployments = deployments
@@ -207,9 +208,7 @@ const DeploymentsaTable = (props: DeploymentsTableProps) => {
 							</Link>
 						</LinkContainer>
 						{['new', 'pending', 'queued', 'running'].includes(deployment.status) ? (
-							<StopOutlined
-							// TODO: cancel mutation render prop
-							/>
+							cancelDeployment(deployment)
 						) : (
 							<EmptyAction></EmptyAction>
 						)}
