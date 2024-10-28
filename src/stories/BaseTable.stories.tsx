@@ -160,6 +160,57 @@ export const DeploymentsTableSkeleton: Story = {
 	render: () => <BaseTable.DeploymentsTable skeleton />,
 };
 
+export const BackupsTable: Story = {
+	render: () => (
+		<BaseTable.BackupsTable
+			backups={[
+				{
+					id: 2,
+					source: 'files',
+					backupId: 'e2e1d31b4a7dfc1687f469b6673f6bf2c0aabee0cc6b3f1bdbde710a9bc6280f',
+					created: '2023-10-14 00:33:16',
+					restore: null,
+				},
+				{
+					id: 1,
+					source: 'mariadb',
+					backupId: 'e2e1d31b4a7dfc1687f469b6673f6bf2c0aabee0cc6b3f1bdbde710a9bc6280d',
+					created: '2023-10-14 00:33:16',
+					restore: {
+						id: 1,
+						status: 'pending',
+						restoreLocation: null,
+						restoreSize: null,
+					},
+				},
+				{
+					id: 4,
+					source: 'files',
+					backupId: 'bf072a09e17726da54adc79936ec8745521993599d41211dfc9466dfd5bc32a5',
+					created: '2023-10-13 00:33:16',
+					restore: null,
+				},
+				{
+					id: 3,
+					source: 'mariadb',
+					backupId: 'e260f07c374e4a3319c5d46e688dab6f1eb23c3e61c166a37609d55762d2ee0b',
+					created: '2023-10-13 00:33:16',
+					restore: {
+						id: 3,
+						status: 'failed',
+						restoreLocation: null,
+						restoreSize: null,
+					},
+				},
+			]}
+		/>
+	),
+};
+
+export const BackupsTableSkeleton: Story = {
+	render: () => <BaseTable.BackupsTable skeleton />,
+};
+
 export const SshTable: Story = {
 	render: () => (
 		<BaseTable.SshTable

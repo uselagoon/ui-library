@@ -32,5 +32,5 @@ export type DeploymentsTableProps = {
     filterDateRange?: [string, string];
 } & (DeploymentsTableSkeleton | DeploymentProps);
 export declare const getDeploymentDuration: (deployment: Deployment) => string;
-declare const DeploymentsaTable: (props: DeploymentsTableProps) => import("react/jsx-runtime").JSX.Element;
-export default DeploymentsaTable;
+declare const DeploymentsTable: (props: DeploymentsTableProps) => import("react/jsx-runtime").JSX.Element;
+export default DeploymentsTable;

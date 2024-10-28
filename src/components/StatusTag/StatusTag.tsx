@@ -16,7 +16,7 @@ const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str
 export type UITagProps = Omit<TagProps, 'color' | 'icon'> &
 	(
 		| {
-				type: 'running' | 'complete' | 'failed' | 'error' | 'queued' | 'new';
+				type: 'running' | 'complete' | 'failed' | 'error' | 'queued' | 'new' | 'pending';
 		  }
 		| {
 				type: 'custom';
@@ -40,6 +40,10 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, UITagProps> =
 	const tagColorMap = {
 		new: {
 			color: colors.purple,
+			icon: <PauseCircleOutlined />,
+		},
+		pending: {
+			color: colors.gray,
 			icon: <PauseCircleOutlined />,
 		},
 		running: {

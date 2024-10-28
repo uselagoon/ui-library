@@ -1,4 +1,4 @@
-import { EyeOutlined, StopOutlined } from '@ant-design/icons';
+import { EyeOutlined } from '@ant-design/icons';
 import BaseTable from '../Base';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -69,7 +69,7 @@ export const getDeploymentDuration = (deployment: Deployment) => {
 	return result.trim();
 };
 
-const DeploymentsaTable = (props: DeploymentsTableProps) => {
+const DeploymentsTable = (props: DeploymentsTableProps) => {
 	const { resultsPerPage, filterStatus, filterDateRange } = props;
 
 	// pagination
@@ -228,4 +228,4 @@ const DeploymentsaTable = (props: DeploymentsTableProps) => {
 	);
 };
 
-export default DeploymentsaTable;
+export default DeploymentsTable;
