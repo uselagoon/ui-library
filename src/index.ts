@@ -127,7 +127,7 @@ export type { BaseTableProps } from './components/Table';
 export { default as LoadingSkeleton } from './components/Skeleton';
 export type { SkeletonProps as LoadingSkeletonProps } from './components/Skeleton';
 
-export { default as Conform } from './components/Confirm';
+export { default as Confirm } from './components/Confirm';
 export type { ConfirmProps } from './components/Confirm';
 
 export {
