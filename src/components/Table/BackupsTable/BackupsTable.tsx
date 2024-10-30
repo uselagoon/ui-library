@@ -1,8 +1,8 @@
-import { CloudDownloadOutlined, DownloadOutlined, EyeOutlined, LoadingOutlined, RedoOutlined } from '@ant-design/icons';
+import { CloudDownloadOutlined, LoadingOutlined, RedoOutlined } from '@ant-design/icons';
 import BaseTable from '../Base';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
-import { ActionWrap, EmptyAction } from '../styles';
+import { ActionWrap } from '../styles';
 import { useEffect, useMemo, useState } from 'react';
 import StatusTag from '../../StatusTag';
 import { StatusContainer } from '../DeploymentsTable/styles';
@@ -114,7 +114,7 @@ const BackupsTable = (props: BackupsTableProps) => {
 			dataIndex: 'source',
 			key: 'source',
 			width: '11.76%',
-			render: (source: string, backup: Backup) => {
+			render: (source: string) => {
 				return <span>{source}</span>;
 			},
 		},
@@ -123,7 +123,7 @@ const BackupsTable = (props: BackupsTableProps) => {
 			dataIndex: 'backupId',
 			key: 'backupId',
 			width: '44.81%',
-			render: (source: string, backup: Backup) => {
+			render: (source: string) => {
 				return <CopyToClipboard text={source} type="hiddenWithIcon" width={'100%'} />;
 			},
 		},
@@ -154,7 +154,7 @@ const BackupsTable = (props: BackupsTableProps) => {
 				);
 			case 'successful':
 				return (
-					<Text style={{ border: '5px solid hotpink' }} href={restoreLocation} target="_blank">
+					<Text href={restoreLocation} target="_blank">
 						<Tooltip placement="bottom" title={`Download (${humanFileSize(size)})`}>
 							<StyledDownloadButton />
 						</Tooltip>
