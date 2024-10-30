@@ -5,6 +5,7 @@ import colors from '../../_util/colors';
 import {
 	CheckCircleOutlined,
 	PauseCircleOutlined,
+	QuestionCircleOutlined,
 	StopOutlined,
 	SyncOutlined,
 	WarningOutlined,
@@ -16,7 +17,7 @@ const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str
 export type UITagProps = Omit<TagProps, 'color' | 'icon'> &
 	(
 		| {
-				type: 'running' | 'complete' | 'failed' | 'error' | 'queued' | 'new' | 'pending';
+				type: 'running' | 'complete' | 'successful' | 'failed' | 'error' | 'queued' | 'new' | 'pending' | 'unavailable';
 		  }
 		| {
 				type: 'custom';
@@ -54,6 +55,10 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, UITagProps> =
 			color: colors.green,
 			icon: <CheckCircleOutlined />,
 		},
+		successful: {
+			color: colors.green,
+			icon: <CheckCircleOutlined />,
+		},
 		failed: {
 			color: colors.orange,
 			icon: <WarningOutlined />,
@@ -65,6 +70,10 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, UITagProps> =
 		queued: {
 			color: colors.yellow,
 			icon: <SyncOutlined spin />,
+		},
+		unavailable: {
+			color: colors.lightOrange,
+			icon: <QuestionCircleOutlined />,
 		},
 	};
 

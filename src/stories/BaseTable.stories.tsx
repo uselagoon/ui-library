@@ -188,7 +188,12 @@ export const BackupsTable: Story = {
 					source: 'files',
 					backupId: 'bf072a09e17726da54adc79936ec8745521993599d41211dfc9466dfd5bc32a5',
 					created: '2023-10-13 00:33:16',
-					restore: null,
+					restore: {
+						id: 3,
+						status: 'successful',
+						restoreLocation: null,
+						restoreSize: null,
+					},
 				},
 				{
 					id: 3,
@@ -203,6 +208,8 @@ export const BackupsTable: Story = {
 					},
 				},
 			]}
+			//@ts-ignore
+			retrieveBackup={null}
 		/>
 	),
 };

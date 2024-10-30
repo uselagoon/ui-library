@@ -1,4 +1,4 @@
-import { EyeOutlined } from '@ant-design/icons';
+import { CloudDownloadOutlined, DownloadOutlined, EyeOutlined, LoadingOutlined, RedoOutlined } from '@ant-design/icons';
 import BaseTable from '../Base';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -10,6 +10,11 @@ import Pagination from '../../Pagination';
 import BackupsTableSkeleton from './BackupsTableSkeleton';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
+import CopyToClipboard from '../../CopyToClipboard';
+import { Tooltip } from 'antd';
+import Text from '../../Text';
+import { StyledDownloadButton } from './styles';
+
 dayjs.extend(utc);
 dayjs.extend(relativeTime);
 
@@ -20,14 +25,15 @@ type Backup = {
 	created: string;
 	restore: {
 		id: number;
-		status: 'pending' | 'failed' | 'complete';
+		status: 'pending' | 'failed' | 'successful';
 		restoreLocation?: string | null;
-		restoreSize?: string | null;
+		restoreSize?: number | null;
 	} | null;
 };
 
 export type BackupsProps = {
 	backups: Backup[];
+	retrieveBackup: (backup: Backup, type: 'failed' | 'unavailable') => JSX.Element;
 	skeleton?: false;
 };
 
@@ -37,9 +43,16 @@ export type BackupsTableSkeleton = {
 
 export type BackupsTableProps = {
 	resultsPerPage?: number;
-	filterStatus?: 'pending' | 'failed' | 'complete';
+	filterStatus?: 'pending' | 'failed' | 'successful';
 	filterDateRange?: [string, string];
 } & (BackupsTableSkeleton | BackupsProps);
+
+function humanFileSize(size: number): string {
+	const i = size === 0 ? 0 : Math.floor(Math.log(size) / Math.log(1024));
+	const formatted = (size / Math.pow(1024, i)).toFixed(2) + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
+
+	return formatted;
+}
 
 const BackupsTable = (props: BackupsTableProps) => {
 	const { resultsPerPage, filterStatus, filterDateRange } = props;
@@ -58,7 +71,7 @@ const BackupsTable = (props: BackupsTableProps) => {
 		return <BackupsTableSkeleton />;
 	}
 
-	const { backups } = props as BackupsProps;
+	const { backups, retrieveBackup } = props as BackupsProps;
 
 	// paginate based on the current filtered data ( status and date range )
 	const filteredBackups = useMemo(() => {
@@ -110,6 +123,9 @@ const BackupsTable = (props: BackupsTableProps) => {
 			dataIndex: 'backupId',
 			key: 'backupId',
 			width: '44.81%',
+			render: (source: string, backup: Backup) => {
+				return <CopyToClipboard text={source} type="hiddenWithIcon" width={'100%'} />;
+			},
 		},
 		{
 			title: 'Timestamp',
@@ -124,20 +140,54 @@ const BackupsTable = (props: BackupsTableProps) => {
 		},
 	];
 
+	const getButtonWithAction = (backup: Backup) => {
+		const status = backup.restore?.status;
+		const size = backup.restore?.restoreSize || 0;
+		const restoreLocation = backup.restore?.restoreLocation || '';
+
+		switch (status) {
+			case 'pending':
+				return (
+					<Tooltip placement="bottom" title="Retrieving...">
+						<LoadingOutlined />
+					</Tooltip>
+				);
+			case 'successful':
+				return (
+					<Text style={{ border: '5px solid hotpink' }} href={restoreLocation} target="_blank">
+						<Tooltip placement="bottom" title={`Download (${humanFileSize(size)})`}>
+							<StyledDownloadButton />
+						</Tooltip>
+					</Text>
+				);
+			case 'failed':
+				return (
+					<Tooltip placement="bottom" title="Retry">
+						{retrieveBackup ? retrieveBackup(backup, 'failed') : <RedoOutlined />}
+					</Tooltip>
+				);
+			// if there is no restore
+			default:
+				return (
+					<Tooltip placement="bottom" title="Retrieve">
+						{retrieveBackup ? retrieveBackup(backup, 'unavailable') : <CloudDownloadOutlined />}
+					</Tooltip>
+				);
+		}
+	};
 	const remappedBackups =
 		paginatedData &&
 		paginatedData.map((backup) => {
 			return {
 				...backup,
-				created: dayjs.utc(backup.created).local().fromNow(),
-				status: <>{backup.restore?.status ? <StatusTag type={backup.restore?.status} /> : null}</>,
-				actions: (
-					<ActionWrap>
-						{/**TODO: TRIGGER/DOWNLOAD BACKUP*/}
-
-						<EmptyAction></EmptyAction>
-					</ActionWrap>
+				created: (
+					<Tooltip placement="top" title={backup.created}>
+						{dayjs.utc(backup.created).local().fromNow()}
+					</Tooltip>
 				),
+
+				status: <StatusTag type={backup.restore?.status ?? 'unavailable'} />,
+				actions: <ActionWrap>{getButtonWithAction(backup)}</ActionWrap>,
 			};
 		});
 

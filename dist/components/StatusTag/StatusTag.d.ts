@@ -1,7 +1,7 @@
 import React from 'react';
 import { TagProps } from 'antd';
 export type UITagProps = Omit<TagProps, 'color' | 'icon'> & ({
-    type: 'running' | 'complete' | 'failed' | 'error' | 'queued' | 'new' | 'pending';
+    type: 'running' | 'complete' | 'successful' | 'failed' | 'error' | 'queued' | 'new' | 'pending' | 'unavailable';
 } | {
     type: 'custom';
     color: string;

@@ -8,7 +8,7 @@ import { Tooltip } from 'antd';
 export interface ClipboardProps {
 	text: string | number;
 	type?: 'visible' | 'hidden' | 'hiddenWithIcon';
-	width?: number;
+	width?: number | string;
 }
 const CopyToClipboard: FC<ClipboardProps> = ({ text, width, type = 'visible' }) => {
 	const copyFn = () => navigator.clipboard.writeText(text as string);
@@ -60,13 +60,14 @@ const CopyToClipboard: FC<ClipboardProps> = ({ text, width, type = 'visible' }) 
 const CopyableText = styled.span<{
 	type: ClipboardProps['type'];
 	manualUnblur: boolean;
-	$maxWidth?: number;
+	$maxWidth?: number | string;
 }>`
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	color: ${(props) => props.theme.UI.texts.primary};
-	max-width: ${(props) => (props.$maxWidth ? `${props.$maxWidth}px` : '18.75rem')};
+	max-width: ${(props) =>
+		props.$maxWidth ? `${typeof props.$maxWidth === 'number' ? `${props.$maxWidth}px` : props.$maxWidth}` : '18.75rem'};
 	${(props) =>
 		(props.type === 'hidden' || (props.type === 'hiddenWithIcon' && !props.manualUnblur)) &&
 		css`

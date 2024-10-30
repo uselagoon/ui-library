@@ -10,6 +10,7 @@ import { BuildStepTooltip, LinkContainer, StatusContainer } from './styles';
 import { useLinkComponent } from '../../../providers/NextLinkProvider';
 import Pagination from '../../Pagination';
 import DeploymentsTableSkeleton from './DeploymentsTableSkeleton';
+import { Tooltip } from 'antd';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -176,6 +177,11 @@ const DeploymentsTable = (props: DeploymentsTableProps) => {
 		paginatedData.map((deployment) => {
 			return {
 				...deployment,
+				created: (
+					<Tooltip placement="top" title={deployment.created}>
+						{dayjs.utc(deployment.created).local().fromNow()}
+					</Tooltip>
+				),
 				status: (
 					<>
 						<StatusTag type={deployment.status} />
