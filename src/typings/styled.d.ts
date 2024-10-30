@@ -26,6 +26,10 @@ export interface UITheme {
 			timeline: string;
 			nav: string;
 		};
+		confirm: {
+			text: string;
+			background: string;
+		};
 		highlights: {
 			selection: string;
 		};

@@ -25,6 +25,10 @@ export const darkTheme: DefaultTheme = {
 			timeline: colors.texts.timeline.light,
 			nav: lagoonColors.monoWhite.dark,
 		},
+		confirm: {
+			text: '#fff',
+			background: '#74715E',
+		},
 		borders: {
 			box: '#D9D9D9',
 			card: '#868686',
@@ -55,6 +59,10 @@ export const lightTheme: DefaultTheme = {
 			lagoonCardInverted: colors.backgrounds.primary.dark,
 			footer: colors.backgrounds.primary.dark,
 			header: colors.header.light,
+		},
+		confirm: {
+			text: '#000',
+			background: lagoonColors.monoBackground.light,
 		},
 		texts: {
 			primary: colors.texts.primary.light,
