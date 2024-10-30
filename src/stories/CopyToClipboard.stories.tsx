@@ -64,4 +64,12 @@ export const HiddenLarge: Story = {
 		text: 'https://github.com/uselagoon/lagoon-ui',
 	},
 };
+
+export const HiddenWithIcon: Story = {
+	args: {
+		width: 250,
+		type: 'hiddenWithIcon',
+		text: 'https://github.com/uselagoon/lagoon-ui',
+	},
+};
 export default meta;

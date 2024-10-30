@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckOutlined, CopyOutlined } from '@ant-design/icons';
+import { CheckOutlined, CopyOutlined, EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { FC } from 'react';
 import styled, { css } from 'styled-components';
 import colors from '../../_util/colors';
@@ -7,13 +7,14 @@ import { Tooltip } from 'antd';
 
 export interface ClipboardProps {
 	text: string | number;
-	type?: 'visible' | 'hidden';
+	type?: 'visible' | 'hidden' | 'hiddenWithIcon';
 	width?: number;
 }
 const CopyToClipboard: FC<ClipboardProps> = ({ text, width, type = 'visible' }) => {
 	const copyFn = () => navigator.clipboard.writeText(text as string);
 
 	const [copied, setCopied] = useState(false);
+	const [manualUnblur, setManualUnblur] = useState(false);
 
 	const handleCopy = () => {
 		copyFn();
@@ -26,25 +27,39 @@ const CopyToClipboard: FC<ClipboardProps> = ({ text, width, type = 'visible' }) 
 
 	const computedStyles = width ? { maxWidth: `${width}px` } : {};
 
+	const handleBlurToggle = () => void setManualUnblur(!manualUnblur);
+
+	const unblurIcon = !manualUnblur ? (
+		<EyeOutlined className="eye-icon" onClick={handleBlurToggle} />
+	) : (
+		<EyeInvisibleOutlined className="eye-icon" onClick={handleBlurToggle} />
+	);
 	return (
 		<StyledText style={{ ...computedStyles }}>
-			<CopyableText className="copyable" $maxWidth={width} type={type}>
+			<CopyableText className="copyable" $maxWidth={width} type={type} manualUnblur={manualUnblur}>
 				{text}
 			</CopyableText>
 
-			{!copied ? (
-				<CopyOutlined onClick={handleCopy} className="copy-icon" />
-			) : (
-				<Tooltip placement="right" title={'Copied!'}>
-					<CheckOutlined className="check-icon" />
-				</Tooltip>
-			)}
+			<div className="icons">
+				{!copied ? (
+					<>
+						<CopyOutlined onClick={handleCopy} className="copy-icon" />
+						{type === 'hiddenWithIcon' && unblurIcon}
+					</>
+				) : (
+					<Tooltip placement="right" title="Copied!">
+						<CheckOutlined className="check-icon" />
+						{type === 'hiddenWithIcon' && unblurIcon}
+					</Tooltip>
+				)}
+			</div>
 		</StyledText>
 	);
 };
 
 const CopyableText = styled.span<{
 	type: ClipboardProps['type'];
+	manualUnblur: boolean;
 	$maxWidth?: number;
 }>`
 	overflow: hidden;
@@ -53,11 +68,16 @@ const CopyableText = styled.span<{
 	color: ${(props) => props.theme.UI.texts.primary};
 	max-width: ${(props) => (props.$maxWidth ? `${props.$maxWidth}px` : '18.75rem')};
 	${(props) =>
-		props.type === 'hidden' &&
+		(props.type === 'hidden' || (props.type === 'hiddenWithIcon' && !props.manualUnblur)) &&
 		css`
 			filter: blur(0.15rem);
 			user-select: none;
 			transition: all 0.3s ease;
+		`};
+
+	${(props) =>
+		props.type === 'hidden' &&
+		css`
 			&:hover {
 				filter: none;
 				user-select: initial;
@@ -87,7 +107,11 @@ const StyledText = styled.div`
 		transition: all 0.25s ease;
 		color: ${colors.green} !important;
 	}
-	.copy-icon {
+	.icons {
+		display: flex;
+	}
+	.copy-icon,
+	.eye-icon {
 		font-size: 16px;
 		position: relative;
 		z-index: 1;
@@ -100,6 +124,10 @@ const StyledText = styled.div`
 		&:active {
 			background-color: #1616162c;
 		}
+	}
+	.eye-icon {
+		margin-left: 12px;
+		cursor: pointer;
 	}
 `;
 
