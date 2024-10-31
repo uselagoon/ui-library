@@ -263,7 +263,7 @@ html,body{
 		line-height: 22px;
 		color: ${A=>A.theme.UI.texts.primary};
 	}
-`;Te.displayName="List",Te.Item=Je;const Ne=m(((A,e)=>{const{className:t,items:n,style:a,customBorder:o,borderless:l=!1,type:i="default",...s}=A;return r(be,{$customBorder:o,$borderless:l,expandIconPosition:"end",expandIcon:A=>A.isActive?r(ze,{children:"Collapse Section"}):r(ze,{children:"Expand Section"}),$type:i,ref:e,items:n,...s})}));Ne.displayName="Collapse";const ze=A.span`
+`;Te.displayName="List",Te.Item=Je;const Ne=m(((A,e)=>{const{className:t,items:n,style:a,customBorder:o,borderless:l=!1,useArrowIcons:i=!1,type:s="default",...p}=A,d=i?{}:{expandIconPosition:"end",expandIcon:A=>A.isActive?r(ze,{children:"Collapse Section"}):r(ze,{children:"Expand Section"})};return r(be,{$customBorder:o,$borderless:l,$type:s,ref:e,items:n,...d,...p})}));Ne.displayName="Collapse";const ze=A.span`
 	text-decoration: underline;
 	font-family: 'ArabicPro-Regular', sans-serif;
 	font-size: 14px;

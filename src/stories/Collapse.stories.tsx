@@ -104,6 +104,13 @@ export const HighLightCollapse: Story = {
 		type: 'highlightPanels',
 	},
 };
+export const WithArrowIcons: Story = {
+	args: {
+		defaultActiveKey: [1, 2],
+		items: items,
+		useArrowIcons: true,
+	},
+};
 export const CustomBorder: Story = {
 	args: {
 		defaultActiveKey: [1, 2],

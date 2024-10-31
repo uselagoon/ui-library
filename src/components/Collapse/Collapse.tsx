@@ -1,31 +1,49 @@
-import { Collapse, CollapseProps } from 'antd';
+import { Collapse, CollapsePanelProps, CollapseProps } from 'antd';
 import React, { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import colors from '../../_util/colors';
+import { ExpandIconPosition } from 'antd/es/collapse/Collapse';
 
 export type UICollapseProps = Omit<CollapseProps, 'expandIconPosition' | 'expandIcon'> & {
 	type: 'highlightPanels' | 'default';
 	customBorder?: string;
 	borderless?: boolean;
+	useArrowIcons?: boolean;
 };
 
 const UICollapse = forwardRef<HTMLDivElement, UICollapseProps>((props, ref) => {
-	const { className, items, style, customBorder, borderless = false, type = 'default', ...rest } = props;
+	const {
+		className,
+		items,
+		style,
+		customBorder,
+		borderless = false,
+		useArrowIcons = false,
+		type = 'default',
+		...rest
+	} = props;
+
+	const openWithArrowProps = !useArrowIcons
+		? {
+				expandIconPosition: 'end' as ExpandIconPosition,
+				expandIcon: (panelProps: any) => {
+					return panelProps.isActive ? (
+						<CollapseButton>Collapse Section</CollapseButton>
+					) : (
+						<CollapseButton>Expand Section</CollapseButton>
+					);
+				},
+			}
+		: {};
+
 	return (
 		<StyledCollapse
 			$customBorder={customBorder}
 			$borderless={borderless}
-			expandIconPosition="end"
-			expandIcon={(panelProps) => {
-				return panelProps.isActive ? (
-					<CollapseButton>Collapse Section</CollapseButton>
-				) : (
-					<CollapseButton>Expand Section</CollapseButton>
-				);
-			}}
 			$type={type}
 			ref={ref}
 			items={items}
+			{...openWithArrowProps}
 			{...rest}
 		/>
 	);

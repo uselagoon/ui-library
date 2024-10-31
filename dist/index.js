@@ -263,7 +263,7 @@ html,body{
 		line-height: 22px;
 		color: ${A=>A.theme.UI.texts.primary};
 	}
-`;uA.displayName="List",uA.Item=SA;const VA=t.forwardRef(((A,t)=>{const{className:n,items:r,style:a,customBorder:o,borderless:l=!1,type:s="default",...i}=A;return e.jsx(ZA,{$customBorder:o,$borderless:l,expandIconPosition:"end",expandIcon:A=>A.isActive?e.jsx(hA,{children:"Collapse Section"}):e.jsx(hA,{children:"Expand Section"}),$type:s,ref:t,items:r,...i})}));VA.displayName="Collapse";const hA=l.default.span`
+`;uA.displayName="List",uA.Item=SA;const VA=t.forwardRef(((A,t)=>{const{className:n,items:r,style:a,customBorder:o,borderless:l=!1,useArrowIcons:s=!1,type:i="default",...p}=A,d=s?{}:{expandIconPosition:"end",expandIcon:A=>A.isActive?e.jsx(hA,{children:"Collapse Section"}):e.jsx(hA,{children:"Expand Section"})};return e.jsx(ZA,{$customBorder:o,$borderless:l,$type:i,ref:t,items:r,...d,...p})}));VA.displayName="Collapse";const hA=l.default.span`
 	text-decoration: underline;
 	font-family: 'ArabicPro-Regular', sans-serif;
 	font-size: 14px;
