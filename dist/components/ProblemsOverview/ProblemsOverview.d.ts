@@ -5,7 +5,11 @@ type LagoonProblemsOverviewProps = {
     high: number;
     medium: number;
     low: number;
+    skeleton?: false;
 };
-declare const LagoonProblemsOverview: React.FC<LagoonProblemsOverviewProps>;
+type Props = LagoonProblemsOverviewProps | {
+    skeleton: true;
+};
+declare const LagoonProblemsOverview: React.FC<Props>;
 export default LagoonProblemsOverview;
 export type { LagoonProblemsOverviewProps };

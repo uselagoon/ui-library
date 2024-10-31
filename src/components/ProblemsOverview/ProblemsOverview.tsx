@@ -4,6 +4,7 @@ import { StyledOverview, StyledProblemsList } from './styles';
 import UIHead2 from '../Heading/H2';
 import { FrownOutlined, MehOutlined, QuestionCircleOutlined, SmileOutlined } from '@ant-design/icons';
 import { Popover } from 'antd';
+import ProblemsOverviewSkeleton from './ProblemsOverviewSkeleton';
 
 type LagoonProblemsOverviewProps = {
 	problems: number;
@@ -11,9 +12,20 @@ type LagoonProblemsOverviewProps = {
 	high: number;
 	medium: number;
 	low: number;
+	skeleton?: false;
 };
+type Props =
+	| LagoonProblemsOverviewProps
+	| {
+			skeleton: true;
+	  };
 
-const LagoonProblemsOverview: React.FC<LagoonProblemsOverviewProps> = ({ problems, critical, high, medium, low }) => {
+const LagoonProblemsOverview: React.FC<Props> = (props) => {
+	if (props.skeleton) {
+		return <ProblemsOverviewSkeleton />;
+	}
+
+	const { problems, critical, high, medium, low } = props;
 	const problemsList = (
 		<StyledProblemsList>
 			<UIDataCard text="Problems" count={problems} />
@@ -24,13 +36,10 @@ const LagoonProblemsOverview: React.FC<LagoonProblemsOverviewProps> = ({ problem
 		</StyledProblemsList>
 	);
 
-	// TODO: plan how we actually decide status
 	const getStatusIcon = () => {
-		if (critical > 30) return <FrownOutlined className="icon-status pink" />;
-
-		if (critical > 20 && critical < 30) {
-			return <MehOutlined className="icon-status orange" />;
-		}
+		if (critical >= 1) return <FrownOutlined className="icon-status pink" />;
+		if (high >= 1) return <MehOutlined className="icon-status orange" />;
+		if (medium >= 1 || low >= 1) return <SmileOutlined className="icon-status green" />;
 
 		return <SmileOutlined className="icon-status green" />;
 	};
@@ -43,8 +52,8 @@ const LagoonProblemsOverview: React.FC<LagoonProblemsOverviewProps> = ({ problem
 					<Popover
 						className="explainer"
 						placement="right"
-						title={'Whats this?'}
-						content={'All the problems shown here'}
+						title="Whats this?"
+						content="The summary of all the problems is shown here"
 					>
 						<QuestionCircleOutlined />
 					</Popover>

@@ -3,7 +3,7 @@ import colors from '../../_util/colors';
 
 export const StyledOverview = styled.div`
 	width: 100%;
-	min-height: 25.5rem;
+	margin-bottom: 24px;
 	padding: 1.25rem;
 	display: flex;
 	flex-direction: column;
@@ -12,6 +12,7 @@ export const StyledOverview = styled.div`
 	.icon {
 		.icon-status {
 			font-size: 50px;
+			margin-bottom: 9px;
 			&.green {
 				color: ${colors.green};
 			}

@@ -69,8 +69,8 @@ export const Good: Story = {
 export const Medium: Story = {
 	args: {
 		problems: 68,
-		critical: 25,
-		high: 10,
+		critical: 0,
+		high: 35,
 		medium: 10,
 		low: 23,
 	},
@@ -79,10 +79,15 @@ export const Medium: Story = {
 export const Bad: Story = {
 	args: {
 		problems: 99,
-		critical: 50,
-		high: 20,
+		critical: 1,
+		high: 69,
 		medium: 20,
 		low: 9,
+	},
+};
+export const Skeleton: Story = {
+	args: {
+		skeleton: true,
 	},
 };
 export default meta;
