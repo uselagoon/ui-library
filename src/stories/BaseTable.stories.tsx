@@ -218,6 +218,144 @@ export const BackupsTableSkeleton: Story = {
 	render: () => <BaseTable.BackupsTable skeleton />,
 };
 
+export const ProblemsTable: Story = {
+	render: () => (
+		<BaseTable.ProblemsTable
+			problems={[
+				{
+					id: 53512,
+					identifier: 'CVE-2023-39325',
+					environment: {
+						id: null,
+						name: null,
+					},
+					data: '{}',
+					severity: 'HIGH',
+					source: 'insights-handler-trivy',
+					service: 'php',
+					created: '2024-10-01 06:49:35',
+					deleted: '0000-00-00 00:00:00',
+					severityScore: 0,
+					associatedPackage: 'stdlib',
+					description:
+						'A malicious HTTP/2 client which rapidly creates requests and immediately resets them can cause excessive server resource consumption. While the total number of requests is bounded by the http2.Server.MaxConcurrentStreams setting, resetting an in-progress request allows the attacker to create a new request while the existing one is still executing. With the fix applied, HTTP/2 servers now bound the number of simultaneously executing handler goroutines to the stream concurrency limit (MaxConcurrentStreams). New requests arriving when at the limit (which can only happen after the client has reset an existing, in-flight request) will be queued until a handler exits. If the request queue grows too large, the server will terminate the connection. This issue is also fixed in golang.org/x/net/http2 for users manually configuring HTTP/2. The default stream concurrency limit is 250 streams (requests) per HTTP/2 connection. This value may be adjusted using the golang.org/x/net/http2 package; see the Server.MaxConcurrentStreams setting and the ConfigureServer function.',
+					version: '1.21.1',
+					fixedVersion: '1.20.10, 1.21.3',
+					links: '',
+				},
+				{
+					id: 53512,
+					identifier: 'CVE-2023-39325',
+					environment: {
+						id: null,
+						name: null,
+					},
+					data: '{}',
+					severity: 'HIGH',
+					source: 'insights-handler-trivy',
+					service: 'php',
+					created: '2024-10-01 06:49:35',
+					deleted: '0000-00-00 00:00:00',
+					severityScore: 0,
+					associatedPackage: 'stdlib',
+					description:
+						'A malicious HTTP/2 client which rapidly creates requests and immediately resets them can cause excessive server resource consumption. While the total number of requests is bounded by the http2.Server.MaxConcurrentStreams setting, resetting an in-progress request allows the attacker to create a new request while the existing one is still executing. With the fix applied, HTTP/2 servers now bound the number of simultaneously executing handler goroutines to the stream concurrency limit (MaxConcurrentStreams). New requests arriving when at the limit (which can only happen after the client has reset an existing, in-flight request) will be queued until a handler exits. If the request queue grows too large, the server will terminate the connection. This issue is also fixed in golang.org/x/net/http2 for users manually configuring HTTP/2. The default stream concurrency limit is 250 streams (requests) per HTTP/2 connection. This value may be adjusted using the golang.org/x/net/http2 package; see the Server.MaxConcurrentStreams setting and the ConfigureServer function.',
+					version: '1.21.1',
+					fixedVersion: '1.20.10, 1.21.3',
+					links: '',
+				},
+				{
+					id: 53512,
+					identifier: 'CVE-2023-39325',
+					environment: {
+						id: null,
+						name: null,
+					},
+					data: '{}',
+					severity: 'HIGH',
+					source: 'insights-handler-trivy',
+					service: 'php',
+					created: '2024-10-01 06:49:35',
+					deleted: '0000-00-00 00:00:00',
+					severityScore: 0,
+					associatedPackage: 'stdlib',
+					description:
+						'A malicious HTTP/2 client which rapidly creates requests and immediately resets them can cause excessive server resource consumption. While the total number of requests is bounded by the http2.Server.MaxConcurrentStreams setting, resetting an in-progress request allows the attacker to create a new request while the existing one is still executing. With the fix applied, HTTP/2 servers now bound the number of simultaneously executing handler goroutines to the stream concurrency limit (MaxConcurrentStreams). New requests arriving when at the limit (which can only happen after the client has reset an existing, in-flight request) will be queued until a handler exits. If the request queue grows too large, the server will terminate the connection. This issue is also fixed in golang.org/x/net/http2 for users manually configuring HTTP/2. The default stream concurrency limit is 250 streams (requests) per HTTP/2 connection. This value may be adjusted using the golang.org/x/net/http2 package; see the Server.MaxConcurrentStreams setting and the ConfigureServer function.',
+					version: '1.21.1',
+					fixedVersion: '1.20.10, 1.21.3',
+					links: '',
+				},
+			]}
+		/>
+	),
+};
+
+export const ProblemsTableSkeleton: Story = {
+	render: () => <BaseTable.ProblemsTable skeleton />,
+};
+
+export const FactsTable: Story = {
+	render: () => (
+		<BaseTable.FactsTable
+			facts={[
+				{
+					id: 15686,
+					name: 'PHP',
+					value: '8.0.30',
+					source: 'insights:image:cli',
+					description: 'The currently installed PHP version',
+				},
+				{
+					id: 15695,
+					name: 'Drush',
+					value: '11.0.6',
+					source: 'insights:sbom:nginx',
+					description: 'pkg:composer/drush/drush@11.0.6',
+				},
+			]}
+		/>
+	),
+};
+
+export const FactsTableSkeleton: Story = {
+	render: () => <BaseTable.FactsTable skeleton />,
+};
+
+export const InsightsTable: Story = {
+	render: () => (
+		<BaseTable.InsightsTable
+			insights={[
+				{
+					id: 1,
+					file: 'image-drupal9-base-gitlab-main-cli.json',
+					fileId: null,
+					service: 'cli',
+					type: 'image',
+					size: '15.6 KB',
+					downloadUrl:
+						'https://storage.googleapis.com/amazeeio-test6-lagoon-files/insights/drupal9-base-gitlab/main/image-drupal9-base-gitlab-main-cli.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EXLRRRVFU2BASVJRBGYKJOHHXXIH7M2P7C37BWC42MSOQRJ52HUW5OUQ%2F20241031%2FEUROPE-WEST6%2Fs3%2Faws4_request&X-Amz-Date=20241031T025537Z&X-Amz-Expires=600&X-Amz-Signature=25291e376a062d57216c0240a98112f2d6fd0c2fb787a9fceff875da981652d7&X-Amz-SignedHeaders=host',
+					created: '2024-10-01T06:48:40.272Z',
+				},
+				{
+					id: 3,
+					file: 'image-drupal9-base-gitlab-main-php.json',
+					fileId: null,
+					service: 'php',
+					type: 'image',
+					size: '9.7 KB',
+					downloadUrl:
+						'https://storage.googleapis.com/amazeeio-test6-lagoon-files/insights/drupal9-base-gitlab/main/image-drupal9-base-gitlab-main-php.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GOOG1EXLRRRVFU2BASVJRBGYKJOHHXXIH7M2P7C37BWC42MSOQRJ52HUW5OUQ%2F20241031%2FEUROPE-WEST6%2Fs3%2Faws4_request&X-Amz-Date=20241031T025537Z&X-Amz-Expires=600&X-Amz-Signature=235f3106a6c8b18c6b3363032cb0948c8f2e9f6115fde95d76c77434f737c098&X-Amz-SignedHeaders=host',
+					created: '2024-10-01T06:49:20.005Z',
+				},
+			]}
+		/>
+	),
+};
+
+export const InsightsTableSkeleton: Story = {
+	render: () => <BaseTable.InsightsTable skeleton />,
+};
+
 export const SshTable: Story = {
 	render: () => (
 		<BaseTable.SshTable

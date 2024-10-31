@@ -1,6 +1,9 @@
 import { default as Table, BaseTableProps } from './Base';
 import DeploymentsTable from './DeploymentsTable/DeploymentsTable';
 import BackupsTable from './BackupsTable/BackupsTable';
+import ProblemsTable from './ProblemsTable/ProblemsTable';
+import FactsTable from './FactsTable/FactsTable';
+import InsightsTable from './InsightsTable/InsightsTable';
 import { default as SshTable } from './SshTable/SshTable';
 
 export type { BaseTableProps };
@@ -9,5 +12,7 @@ export type { BaseTableProps };
 Table.SshTable = SshTable;
 Table.DeploymentsTable = DeploymentsTable;
 Table.BackupsTable = BackupsTable;
-
+Table.ProblemsTable = ProblemsTable;
+Table.FactsTable = FactsTable;
+Table.InsightsTable = InsightsTable;
 export default Table;
