@@ -4,6 +4,7 @@ import BackupsTable from './BackupsTable/BackupsTable';
 import ProblemsTable from './ProblemsTable/ProblemsTable';
 import FactsTable from './FactsTable/FactsTable';
 import InsightsTable from './InsightsTable/InsightsTable';
+import TasksTable from './TasksTable/TasksTable';
 import { default as SshTable } from './SshTable/SshTable';
 
 export type { BaseTableProps };
@@ -15,4 +16,5 @@ Table.BackupsTable = BackupsTable;
 Table.ProblemsTable = ProblemsTable;
 Table.FactsTable = FactsTable;
 Table.InsightsTable = InsightsTable;
+Table.TasksTable = TasksTable;
 export default Table;

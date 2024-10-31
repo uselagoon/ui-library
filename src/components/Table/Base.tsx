@@ -8,6 +8,7 @@ import { BackupsTableProps } from './BackupsTable/BackupsTable';
 import { ProblemsTableProps } from './ProblemsTable/ProblemsTable';
 import { FactsTableProps } from './FactsTable/FactsTable';
 import { InsightsTableProps } from './InsightsTable/InsightsTable';
+import { TasksTableProps } from './TasksTable/TasksTable';
 
 export interface BaseTableWithComponents
 	extends React.ForwardRefExoticComponent<BaseTableProps & React.RefAttributes<HTMLDivElement>> {
@@ -17,6 +18,7 @@ export interface BaseTableWithComponents
 	ProblemsTable: React.FC<ProblemsTableProps>;
 	FactsTable: React.FC<FactsTableProps>;
 	InsightsTable: React.FC<InsightsTableProps>;
+	TasksTable: React.FC<TasksTableProps>;
 }
 
 type BaseTableProps = Omit<TableProps, 'locale'>;
