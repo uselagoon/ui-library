@@ -72,15 +72,6 @@ const meta: Meta<typeof Collapse> = {
 			description:
 				'Specify whether the panels of children be collapsible or the trigger area of collapsible `icon` | `header` | `disabled`',
 		},
-		expandIcon: {
-			control: 'none',
-			description: 'Custom collapse icon `ReactNode`',
-		},
-		expandIconPosition: {
-			control: 'radio',
-			options: ['start', 'end'],
-			description: 'Expand icon position `start` | `end`',
-		},
 	},
 };
 
@@ -113,6 +104,22 @@ export const HighLightCollapse: Story = {
 		type: 'highlightPanels',
 	},
 };
+export const CustomBorder: Story = {
+	args: {
+		defaultActiveKey: [1, 2],
+		items: items,
+		customBorder: 'blue',
+	},
+};
+export const CustomBorderBorderlessChildren: Story = {
+	args: {
+		defaultActiveKey: [1, 2],
+		items: items,
+		customBorder: 'blue',
+		borderless: true,
+	},
+};
+
 export const Default: Story = {
 	args: {
 		defaultActiveKey: [1, 2],
