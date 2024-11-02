@@ -221,71 +221,72 @@ export const BackupsTableSkeleton: Story = {
 export const ProblemsTable: Story = {
 	render: () => (
 		<BaseTable.ProblemsTable
-			problems={[
-				{
-					id: 53512,
-					identifier: 'CVE-2023-39325',
-					environment: {
-						id: null,
-						name: null,
-					},
-					data: '{}',
-					severity: 'HIGH',
-					source: 'insights-handler-trivy',
-					service: 'php',
-					created: '2024-10-01 06:49:35',
-					deleted: '0000-00-00 00:00:00',
-					severityScore: 0,
-					associatedPackage: 'stdlib',
-					description:
-						'A malicious HTTP/2 client which rapidly creates requests and immediately resets them can cause excessive server resource consumption. While the total number of requests is bounded by the http2.Server.MaxConcurrentStreams setting, resetting an in-progress request allows the attacker to create a new request while the existing one is still executing. With the fix applied, HTTP/2 servers now bound the number of simultaneously executing handler goroutines to the stream concurrency limit (MaxConcurrentStreams). New requests arriving when at the limit (which can only happen after the client has reset an existing, in-flight request) will be queued until a handler exits. If the request queue grows too large, the server will terminate the connection. This issue is also fixed in golang.org/x/net/http2 for users manually configuring HTTP/2. The default stream concurrency limit is 250 streams (requests) per HTTP/2 connection. This value may be adjusted using the golang.org/x/net/http2 package; see the Server.MaxConcurrentStreams setting and the ConfigureServer function.',
-					version: '1.21.1',
-					fixedVersion: '1.20.10, 1.21.3',
-					links: '',
-				},
-				{
-					id: 53512,
-					identifier: 'CVE-2023-39325',
-					environment: {
-						id: null,
-						name: null,
-					},
-					data: '{}',
-					severity: 'HIGH',
-					source: 'insights-handler-trivy',
-					service: 'php',
-					created: '2024-10-01 06:49:35',
-					deleted: '0000-00-00 00:00:00',
-					severityScore: 0,
-					associatedPackage: 'stdlib',
-					description:
-						'A malicious HTTP/2 client which rapidly creates requests and immediately resets them can cause excessive server resource consumption. While the total number of requests is bounded by the http2.Server.MaxConcurrentStreams setting, resetting an in-progress request allows the attacker to create a new request while the existing one is still executing. With the fix applied, HTTP/2 servers now bound the number of simultaneously executing handler goroutines to the stream concurrency limit (MaxConcurrentStreams). New requests arriving when at the limit (which can only happen after the client has reset an existing, in-flight request) will be queued until a handler exits. If the request queue grows too large, the server will terminate the connection. This issue is also fixed in golang.org/x/net/http2 for users manually configuring HTTP/2. The default stream concurrency limit is 250 streams (requests) per HTTP/2 connection. This value may be adjusted using the golang.org/x/net/http2 package; see the Server.MaxConcurrentStreams setting and the ConfigureServer function.',
-					version: '1.21.1',
-					fixedVersion: '1.20.10, 1.21.3',
-					links: '',
-				},
-				{
-					id: 53512,
-					identifier: 'CVE-2023-39325',
-					environment: {
-						id: null,
-						name: null,
-					},
-					data: '{}',
-					severity: 'HIGH',
-					source: 'insights-handler-trivy',
-					service: 'php',
-					created: '2024-10-01 06:49:35',
-					deleted: '0000-00-00 00:00:00',
-					severityScore: 0,
-					associatedPackage: 'stdlib',
-					description:
-						'A malicious HTTP/2 client which rapidly creates requests and immediately resets them can cause excessive server resource consumption. While the total number of requests is bounded by the http2.Server.MaxConcurrentStreams setting, resetting an in-progress request allows the attacker to create a new request while the existing one is still executing. With the fix applied, HTTP/2 servers now bound the number of simultaneously executing handler goroutines to the stream concurrency limit (MaxConcurrentStreams). New requests arriving when at the limit (which can only happen after the client has reset an existing, in-flight request) will be queued until a handler exits. If the request queue grows too large, the server will terminate the connection. This issue is also fixed in golang.org/x/net/http2 for users manually configuring HTTP/2. The default stream concurrency limit is 250 streams (requests) per HTTP/2 connection. This value may be adjusted using the golang.org/x/net/http2 package; see the Server.MaxConcurrentStreams setting and the ConfigureServer function.',
-					version: '1.21.1',
-					fixedVersion: '1.20.10, 1.21.3',
-					links: '',
-				},
-			]}
+			// problems={[
+			// 	{
+			// 		id: 53512,
+			// 		identifier: 'CVE-2023-39325',
+			// 		environment: {
+			// 			id: null,
+			// 			name: null,
+			// 		},
+			// 		data: '{}',
+			// 		severity: 'HIGH',
+			// 		source: 'insights-handler-trivy',
+			// 		service: 'php',
+			// 		created: '2024-10-01 06:49:35',
+			// 		deleted: '0000-00-00 00:00:00',
+			// 		severityScore: 0,
+			// 		associatedPackage: 'stdlib',
+			// 		description:
+			// 			'A malicious HTTP/2 client which rapidly creates requests and immediately resets them can cause excessive server resource consumption. While the total number of requests is bounded by the http2.Server.MaxConcurrentStreams setting, resetting an in-progress request allows the attacker to create a new request while the existing one is still executing. With the fix applied, HTTP/2 servers now bound the number of simultaneously executing handler goroutines to the stream concurrency limit (MaxConcurrentStreams). New requests arriving when at the limit (which can only happen after the client has reset an existing, in-flight request) will be queued until a handler exits. If the request queue grows too large, the server will terminate the connection. This issue is also fixed in golang.org/x/net/http2 for users manually configuring HTTP/2. The default stream concurrency limit is 250 streams (requests) per HTTP/2 connection. This value may be adjusted using the golang.org/x/net/http2 package; see the Server.MaxConcurrentStreams setting and the ConfigureServer function.',
+			// 		version: '1.21.1',
+			// 		fixedVersion: '1.20.10, 1.21.3',
+			// 		links: '',
+			// 	},
+			// 	{
+			// 		id: 53512,
+			// 		identifier: 'CVE-2023-39325',
+			// 		environment: {
+			// 			id: null,
+			// 			name: null,
+			// 		},
+			// 		data: '{}',
+			// 		severity: 'HIGH',
+			// 		source: 'insights-handler-trivy',
+			// 		service: 'php',
+			// 		created: '2024-10-01 06:49:35',
+			// 		deleted: '0000-00-00 00:00:00',
+			// 		severityScore: 0,
+			// 		associatedPackage: 'stdlib',
+			// 		description:
+			// 			'A malicious HTTP/2 client which rapidly creates requests and immediately resets them can cause excessive server resource consumption. While the total number of requests is bounded by the http2.Server.MaxConcurrentStreams setting, resetting an in-progress request allows the attacker to create a new request while the existing one is still executing. With the fix applied, HTTP/2 servers now bound the number of simultaneously executing handler goroutines to the stream concurrency limit (MaxConcurrentStreams). New requests arriving when at the limit (which can only happen after the client has reset an existing, in-flight request) will be queued until a handler exits. If the request queue grows too large, the server will terminate the connection. This issue is also fixed in golang.org/x/net/http2 for users manually configuring HTTP/2. The default stream concurrency limit is 250 streams (requests) per HTTP/2 connection. This value may be adjusted using the golang.org/x/net/http2 package; see the Server.MaxConcurrentStreams setting and the ConfigureServer function.',
+			// 		version: '1.21.1',
+			// 		fixedVersion: '1.20.10, 1.21.3',
+			// 		links: '',
+			// 	},
+			// 	{
+			// 		id: 53512,
+			// 		identifier: 'CVE-2023-39325',
+			// 		environment: {
+			// 			id: null,
+			// 			name: null,
+			// 		},
+			// 		data: '{}',
+			// 		severity: 'HIGH',
+			// 		source: 'insights-handler-trivy',
+			// 		service: 'php',
+			// 		created: '2024-10-01 06:49:35',
+			// 		deleted: '0000-00-00 00:00:00',
+			// 		severityScore: 0,
+			// 		associatedPackage: 'stdlib',
+			// 		description:
+			// 			'A malicious HTTP/2 client which rapidly creates requests and immediately resets them can cause excessive server resource consumption. While the total number of requests is bounded by the http2.Server.MaxConcurrentStreams setting, resetting an in-progress request allows the attacker to create a new request while the existing one is still executing. With the fix applied, HTTP/2 servers now bound the number of simultaneously executing handler goroutines to the stream concurrency limit (MaxConcurrentStreams). New requests arriving when at the limit (which can only happen after the client has reset an existing, in-flight request) will be queued until a handler exits. If the request queue grows too large, the server will terminate the connection. This issue is also fixed in golang.org/x/net/http2 for users manually configuring HTTP/2. The default stream concurrency limit is 250 streams (requests) per HTTP/2 connection. This value may be adjusted using the golang.org/x/net/http2 package; see the Server.MaxConcurrentStreams setting and the ConfigureServer function.',
+			// 		version: '1.21.1',
+			// 		fixedVersion: '1.20.10, 1.21.3',
+			// 		links: '',
+			// 	},
+			// ]}
+			problems={[]}
 		/>
 	),
 };

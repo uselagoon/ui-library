@@ -1,6 +1,9 @@
-import { Empty } from 'antd';
 import { IconInfoCircle } from '../Icons';
+import { StyledEmptyTableDescription } from './styles';
 
 export const EmptyDisplay = (
-	<Empty image={<IconInfoCircle size={60} />} description={<span>Nothing to display</span>}></Empty>
+	<StyledEmptyTableDescription
+		image={<IconInfoCircle size={60} />}
+		description={<span>Nothing to display</span>}
+	></StyledEmptyTableDescription>
 );

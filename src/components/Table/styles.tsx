@@ -1,11 +1,10 @@
-import { Table } from 'antd';
+import { Empty, Table } from 'antd';
 import styled, { css } from 'styled-components';
 
 export const StyledBaseTable = styled(Table)`
 	border: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#000' : '#fff')};
 	border-radius: 0;
 	font-family: 'Open Sans', sans-serif !important;
-	/* box-shadow: 2px 2px 8px 0px #ffffff40; */
 	box-shadow: ${(props) =>
 		props.theme.colorScheme === 'dark' ? '2px 2px 8px 0px #ffffff40' : '2px 2px 8px 0px #00000040'};
 
@@ -15,13 +14,8 @@ export const StyledBaseTable = styled(Table)`
 		background-color: transparent;
 
 		&.ant-table-empty {
-			.ant-table-thead {
-				display: none;
-			}
-			.ant-table-cell {
-				background-color: transparent !important;
-			}
-			.ant-table-placeholder {
+			.ant-table-placeholder,
+			.ant-table-placeholder > *:hover {
 				background-color: transparent !important;
 			}
 			.ant-empty-image {
@@ -73,16 +67,11 @@ export const StyledBaseTable = styled(Table)`
 		color: ${(props) => (props.theme.colorScheme === 'dark' ? '#F8F8F2' : '#222222')};
 
 		tr > td {
-			/* border-bottom: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#868686' : '#F8F8F2')} !important;
-			border-right: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#868686' : '#F8F8F2')} !important; */
-
 			border-bottom: 1px solid #75715e !important;
 			border-right: 1px solid #75715e;
 
 			padding-left: 0.5rem !important;
 			&:first-child {
-				/* border-left: 1px solid ${(props) =>
-					props.theme.colorScheme === 'dark' ? '#868686' : '#F8F8F2'} !important; */
 				border-left: 1px solid #75715e;
 			}
 			&.ant-table-cell-row-hover {
@@ -110,4 +99,8 @@ export const ActionWrap = styled.section`
 
 export const EmptyAction = styled.span`
 	width: 1.1875rem;
+`;
+
+export const StyledEmptyTableDescription = styled(Empty)`
+	padding-block: 2.5rem;
 `;

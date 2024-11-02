@@ -129,7 +129,7 @@ const ProblemsTable = (props: ProblemsTableProps) => {
 				),
 				actions: (
 					<ActionWrap>
-						{/**TODO: DISMISS PROBLEMS render prop */}
+						{/**TODO: DISMISS PROBLEMS render prop once we decide how dismissal is handled*/}
 						{problem.deleted !== '0000-00-00 00:00:00' && (
 							<Tooltip placement="top" title="Dismiss">
 								<CloseCircleOutlined />

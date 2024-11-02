@@ -14,3 +14,7 @@ export declare const StyledBaseTable: import("styled-components").IStyledCompone
 }, keyof import("react").Component<any, {}, any>>;
 export declare const ActionWrap: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>, never>>;
 export declare const EmptyAction: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, never>>;
+export declare const StyledEmptyTableDescription: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("antd").EmptyProps, never>> & Omit<import("react").FC<import("antd").EmptyProps> & {
+    PRESENTED_IMAGE_DEFAULT: import("react").ReactNode;
+    PRESENTED_IMAGE_SIMPLE: import("react").ReactNode;
+}, keyof import("react").Component<any, {}, any>>;
