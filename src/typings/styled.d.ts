@@ -17,6 +17,7 @@ export interface UITheme {
 			lagoonCardInverted: string;
 			footer: string;
 			header: string;
+			navTabs: string;
 		};
 		texts: {
 			primary: string;

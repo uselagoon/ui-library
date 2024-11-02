@@ -5,6 +5,8 @@ import ArabicProRegular from '../fonts/ArabicPro-Regular.woff2';
 import AmericaMonoRegular from '../fonts/AmericaMono-Regular.woff2';
 import HelveticaRegular from '../fonts/HelveticaExtended-Regular.woff2';
 import RobotoRegular from '../fonts/roboto-regular.woff2';
+import RobotoMedium from '../fonts/Roboto-Medium.woff2';
+import RobotoBold from '../fonts/Roboto-Bold.woff2';
 import OpenSansRegular from '../fonts/opensans-regular.woff2';
 import OpenSansBold from '../fonts/opensans-bold.woff2';
 import OpenSansSemibold from '../fonts/opensans-semibold.woff2';
@@ -71,9 +73,25 @@ html,body{
     font-family: 'Roboto';
     src: url('${RobotoRegular}') format('woff2');
     font-style: normal;
+    font-weight: 400;
+    font-display: block;
+  }
+  @font-face {
+    font-family: 'Roboto-medium';
+    src: url('${RobotoMedium}') format('woff2');
+    font-style: normal;
+    font-weight: 500;
+    font-display: block;
+  }
+  @font-face {
+    font-family: 'Roboto-bold';
+    src: url('${RobotoBold}') format('woff2');
+    font-style: normal;
+    font-weight: 700;
     font-display: block;
   }
 
+  
 @font-face {
   font-family: 'Open Sans';
   src:  url('${OpenSansRegular}')  format("woff2");

@@ -1,15 +1,21 @@
 import { Card } from 'antd';
 import styled, { css } from 'styled-components';
 import colors from '../../_util/colors';
+import { Colors } from '../..';
 
 const sharedCardStyles = css`
 	width: 23.75rem;
 	height: 15.25rem;
 	background-color: ${(props) => props.theme.UI.backgrounds.lagoonCard};
 	color: ${(props) => props.theme.UI.texts.primary};
-	box-shadow: 2px 2px 4px 0px #69696933;
-	border: 1px solid ${(props) => props.theme.UI.borders.card};
-	border-left: none;
+
+	box-shadow: ${(props) =>
+		props.theme.colorScheme === 'dark' ? '3px 3px 6px 1px #8686864D;' : '2px 2px 4px 0px #69696933'};
+	${(props) =>
+		props.theme.colorScheme === 'dark' &&
+		css`
+			border: 1px solid ${(props) => props.theme.UI.borders.card};
+		`}
 `;
 
 export const LoadingCard = styled(Card)`
@@ -46,21 +52,19 @@ export const LoadingCard = styled(Card)`
 	}
 `;
 
-export const StyledCard = styled(Card)<{ $isMain?: boolean }>`
+export const StyledCard = styled(Card)`
 	${sharedCardStyles}
-
-	background-color: ${(props) =>
-		props.$isMain ? props.theme.UI.backgrounds.lagoonCardInverted : props.theme.UI.backgrounds.lagoonCard};
-	color: ${(props) => (props.$isMain ? props.theme.UI.texts.primaryInverted : props.theme.UI.texts.primary)};
+	background-color: ${(props) => props.theme.UI.backgrounds.lagoonCard};
+	color: ${(props) => props.theme.UI.texts.primary};
 
 	&.ant-card {
 		cursor: pointer;
 		overflow: hidden;
-
+		border-radius: 5px;
 		.ant-card-head,
 		.ant-card-body,
 		.ant-card-actions > li > span > span[role='img'] {
-			color: ${(props) => (props.$isMain ? props.theme.UI.texts.primaryInverted : props.theme.UI.texts.primary)};
+			color: ${(props) => props.theme.UI.texts.primary};
 		}
 
 		.ant-card-actions {
@@ -74,7 +78,7 @@ export const StyledCard = styled(Card)<{ $isMain?: boolean }>`
 		}
 
 		.ant-card-actions > li > span > span[role='img']:hover {
-			color: ${(props) => (props.$isMain ? '#004d40' : '#00796b')};
+			color: ${Colors.lagoonBlue};
 		}
 
 		.ant-card-head {
@@ -84,7 +88,7 @@ export const StyledCard = styled(Card)<{ $isMain?: boolean }>`
 			font-size: 1rem;
 			line-height: 1.5rem;
 			.ant-card-extra {
-				color: ${(props) => (props.$isMain ? props.theme.UI.texts.primaryInverted : props.theme.UI.texts.primary)};
+				color: ${(props) => props.theme.UI.texts.primary};
 			}
 		}
 
@@ -99,10 +103,8 @@ export const StyledCard = styled(Card)<{ $isMain?: boolean }>`
 		.ant-card-body {
 			padding: 0;
 			min-height: 9.375rem;
-			border-top: 1px solid
-				${(props) => (props.$isMain ? props.theme.UI.borders.cardInverted : props.theme.UI.borders.card)};
-			border-bottom: 1px solid
-				${(props) => (props.$isMain ? props.theme.UI.borders.cardInverted : props.theme.UI.borders.card)};
+			border-top: 1px solid ${(props) => props.theme.UI.borders.card};
+			border-bottom: 1px solid ${(props) => props.theme.UI.borders.card};
 			border-radius: 0;
 			& > .lagoon-label {
 				translate: 0 -3.5rem;
@@ -125,7 +127,7 @@ export const StyledCard = styled(Card)<{ $isMain?: boolean }>`
 					margin-left: 30px !important;
 				}
 				&:not(:last-child) {
-					border-right: 1px solid ${(props) => props.theme.UI.borders.card};
+					border-right: 1px solid ${(props) => props.theme.UI.borders.box};
 				}
 				[role='img'] {
 					svg {
@@ -170,6 +172,9 @@ export const StyledEnvPartial = styled.div`
 		display: flex;
 		max-height: 2.5rem;
 		flex-direction: column;
+		.project-name {
+			text-decoration: underline;
+		}
 		span:nth-child(odd) {
 			font-size: 0.625rem;
 			line-height: 0.625rem;

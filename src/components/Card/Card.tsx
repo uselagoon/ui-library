@@ -1,5 +1,5 @@
 import React, { forwardRef, ReactNode, useState } from 'react';
-import { CardProps as AntCardProps, Skeleton } from 'antd';
+import { CardProps as AntCardProps, Skeleton, Tooltip } from 'antd';
 import { LoadingCard, StyledCard } from './styles';
 import { NewCard } from './partials/NewCard';
 import LagoonCardLabel, { LagoonCardLabelProps } from '../CardLabel';
@@ -10,7 +10,6 @@ import {
 	FrownOutlined,
 	LinkOutlined,
 	MehOutlined,
-	SettingOutlined,
 	SmileOutlined,
 } from '@ant-design/icons';
 import colors from '../../_util/colors';
@@ -20,11 +19,10 @@ import { ProjectPartial } from './partials/ProjectPartial';
 type DefaultProps = {
 	loading?: boolean;
 	title: string;
-	status: 'low' | 'medium' | 'high';
+	status: 'low' | 'medium' | 'high' | 'critical';
 	styles?: React.CSSProperties;
 	cardClassName?: string;
 	navigateTo?: () => void;
-	isProd?: boolean;
 };
 
 // TODO: proper env type
@@ -37,7 +35,8 @@ type ProjectCard = {
 type EnvCard = {
 	type: 'environment';
 	envType: LagoonCardLabelProps['type'];
-	projectName: string | ReactNode;
+	projectName: string;
+	environmentName: string;
 	deployType: string;
 	region?: string;
 };
@@ -59,27 +58,38 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 	ref,
 ) => {
 	const [isSelecting, setIsSelecting] = useState(false);
+
+	const [copied, setCopied] = useState(false);
+	const toggleCopied = () => {
+		setCopied(true);
+
+		setTimeout(() => {
+			setCopied(false);
+		}, 1500);
+	};
+
 	const { type: cardType } = props;
 
 	if (cardType === 'new') return <NewCard ref={ref} />;
 
 	if (cardType === 'loaderOnly') return <LoadingCard loading={true} />;
 
-	const { type, loading, title, cardClassName, styles, status = 'low', navigateTo, isProd, ...rest } = props;
+	const { type, loading, title, cardClassName, styles, status = 'low', navigateTo, ...rest } = props;
 
 	const getStatusIcon = (status: DefaultProps['status']) => {
 		switch (status) {
-			case 'high':
+			case 'critical':
 				return <FrownOutlined style={{ color: colors.pink }} />;
 
-			case 'medium':
+			case 'high':
 				return <MehOutlined style={{ color: colors.orange }} />;
 
-			case 'low':
+			case 'medium':
 				return <SmileOutlined style={{ color: colors.green2 }} />;
 
+			case 'low':
 			default:
-				return <></>;
+				return <SmileOutlined style={{ color: colors.green2 }} />;
 		}
 	};
 
@@ -87,22 +97,27 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 
 	const navigatorFn = navigateTo ? navigateTo : () => {};
 
-	// TODO: click handlers
 	const actions = {
-		project: [
-			<SettingOutlined key="setting" />,
-			<EditOutlined key="edit" onClick={navigatorFn} />,
-			<EllipsisOutlined key="ellipsis" />,
-		],
-		environment: [
-			<SettingOutlined key="setting" />,
-			<EyeOutlined key="view" onClick={navigatorFn} />,
-			<EllipsisOutlined key="ellipsis" />,
-		],
+		project: [<EditOutlined key="edit" onClick={navigatorFn} />, <EllipsisOutlined key="ellipsis" />],
+		environment: [<EyeOutlined key="view" onClick={navigatorFn} />, <EllipsisOutlined key="ellipsis" />],
 	};
 
-	// TODO: associated actions
-	const extraIcons = [<LinkOutlined key="link" />, getStatusIcon(status)];
+	const extraIcons = [
+		getStatusIcon(status),
+
+		<Tooltip placement="right" title={copied ? 'Copied!' : 'Copy'}>
+			<LinkOutlined
+				key="link"
+				onClick={() => {
+					if (copied) return;
+					const currentUrl = window.location.href;
+					const environmentUrl = type === 'environment' ? `${currentUrl}/${props.environmentName}` : '';
+					navigator.clipboard.writeText(environmentUrl as string);
+					toggleCopied();
+				}}
+			/>
+		</Tooltip>,
+	];
 
 	const computedCardType = (
 		<Skeleton loading={loading} active>
@@ -131,14 +146,13 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 		const clickedElement = e.target as HTMLElement;
 
 		// check if the clicked element or its ancestors have the class 'ant-card-actions'
-		if (!isSelecting && !clickedElement.closest('.ant-card-actions')) {
+		if (!isSelecting && !clickedElement.closest('.ant-card-actions') && !clickedElement.closest('.ant-card-extra')) {
 			navigatorFn();
 		}
 	};
 
 	return (
 		<StyledCard
-			$isMain={isProd}
 			onClick={handleCardClick}
 			onMouseDown={handleMouseDown}
 			onMouseUp={handleMouseUp}

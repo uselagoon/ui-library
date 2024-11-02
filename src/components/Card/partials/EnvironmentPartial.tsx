@@ -9,7 +9,7 @@ export const EnvironmentPartial: FC<{ projectName: string | ReactNode; deployTyp
 	const projectDisplay = (
 		<div className="lagooncard-project" key={`project-${projectName}`}>
 			<span>PROJECT</span>
-			<span>{projectName}</span>
+			<span className="project-name">{projectName}</span>
 
 			<span>TYPE</span>
 			<span className="type">{deployType}</span>

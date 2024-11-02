@@ -1,15 +1,14 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { CardProps as AntCardProps } from 'antd';
 import { NewCard } from './partials/NewCard';
 import { LagoonCardLabelProps } from '../CardLabel';
 type DefaultProps = {
     loading?: boolean;
     title: string;
-    status: 'low' | 'medium' | 'high';
+    status: 'low' | 'medium' | 'high' | 'critical';
     styles?: React.CSSProperties;
     cardClassName?: string;
     navigateTo?: () => void;
-    isProd?: boolean;
 };
 type ProjectCard = {
     type: 'project';
@@ -18,7 +17,8 @@ type ProjectCard = {
 type EnvCard = {
     type: 'environment';
     envType: LagoonCardLabelProps['type'];
-    projectName: string | ReactNode;
+    projectName: string;
+    environmentName: string;
     deployType: string;
     region?: string;
 };

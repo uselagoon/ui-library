@@ -30,7 +30,10 @@ const StyledPagination = styled(AntPagination)`
 		.ant-pagination-item {
 			background-color: transparent;
 			&.ant-pagination-item-active {
-				background-color: #f8f8fa;
+				background-color: transparent;
+				border-radius: initial;
+				transform: translateY(1px);
+				font-weight: initial;
 			}
 		}
 

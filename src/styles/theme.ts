@@ -16,6 +16,7 @@ export const darkTheme: DefaultTheme = {
 			lagoonCardInverted: colors.backgrounds.primary.light,
 			footer: colors.backgrounds.primary.light,
 			header: colors.header.dark,
+			navTabs: lagoonColors.monoBackground.dark,
 		},
 		texts: {
 			primary: colors.texts.primary.dark,
@@ -59,6 +60,7 @@ export const lightTheme: DefaultTheme = {
 			lagoonCardInverted: colors.backgrounds.primary.dark,
 			footer: colors.backgrounds.primary.dark,
 			header: colors.header.light,
+			navTabs: lagoonColors.monoBackground.light,
 		},
 		confirm: {
 			text: '#000',

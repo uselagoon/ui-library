@@ -31,7 +31,7 @@ export const StyledTabs = styled(Tabs)<{ $type: 'navigation' | 'default' }>`
 			font-size: 1rem;
 			line-height: 1.5rem;
 			transition: all 0.25s ease !important;
-			background-color: ${(props) => props.theme.UI.backgrounds.modal};
+			background-color: ${(props) => props.theme.UI.backgrounds.navTabs};
 			a {
 				color: unset;
 				display: inline-block;
@@ -63,15 +63,27 @@ export const StyledTabs = styled(Tabs)<{ $type: 'navigation' | 'default' }>`
 					background-color: ${colors.lagoonBlue};
 				}
 			}
+			& > div {
+				> .ant-tabs-nav-list {
+					> .ant-tabs-tab {
+						padding: 0;
+						> div[role='tab'] {
+							width: 100%;
+						}
+					}
+				}
+			}
 			${(props) =>
-				props.$type === 'navigation' &&
+				props.$type !== 'navigation' &&
 				css`
 					& > div {
 						> .ant-tabs-nav-list {
 							> .ant-tabs-tab {
-								padding: 0;
+								display: inline-block;
 								> div[role='tab'] {
+									text-align: center;
 									width: 100%;
+									padding: 12px 0;
 								}
 							}
 						}
@@ -82,6 +94,10 @@ export const StyledTabs = styled(Tabs)<{ $type: 'navigation' | 'default' }>`
 		& .ant-tabs-nav-wrap {
 			border: none;
 		}
+		div[role='tabpanel'] {
+			background-color: ${(props) => props.theme.UI.backgrounds.navTabs} !important;
+		}
+
 		${(props) =>
 			props.theme.colorScheme === 'dark' &&
 			css`
@@ -95,7 +111,6 @@ export const StyledTabs = styled(Tabs)<{ $type: 'navigation' | 'default' }>`
 					}
 				}
 				div[role='tabpanel'] {
-					background-color: ${(props) => props.theme.UI.backgrounds.modal};
 					color: #fff;
 				}
 				div[role='tab'] {
@@ -107,7 +122,7 @@ export const StyledTabs = styled(Tabs)<{ $type: 'navigation' | 'default' }>`
 
 export const StyledTabChildren = styled.section`
 	box-shadow: 2px 2px 4px 0px #69696933;
-	background-color: ${(props) => props.theme.UI.backgrounds.modal};
+	background-color: ${(props) => props.theme.UI.backgrounds.navTabs};
 	color: ${(props) => props.theme.UI.texts.primary};
 	padding-top: 1.5rem;
 	padding-inline: 1rem;

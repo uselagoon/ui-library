@@ -36,11 +36,11 @@ const StyledLabel = styled.div<{
 	min-width: 100px;
 	max-width: 300px;
 	width: 100%;
-	transform-origin: calc(30px + 0%) 0;
+	transform-origin: calc(23px + 0%) 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto-medium', sans-serif;
 	font-weight: 500;
 	line-height: 30px;
 	font-size: 20px;
@@ -51,7 +51,7 @@ const StyledLabel = styled.div<{
 		css`
 			color: ${colors.white};
 		`}
-	max-height: 30px;
+	max-height: 23px;
 	background-color: ${(props) => props.$currentColor};
 	span {
 		display: inline-block;
