@@ -1,7 +1,9 @@
 /// <reference types="react" />
-export declare const StyledBaseTable: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("antd").TableProps<import("antd/es/_util/type").AnyObject> & {
+export declare const StyledBaseTable: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").Substitute<import("antd").TableProps<import("antd/es/_util/type").AnyObject> & {
     children?: import("react").ReactNode;
-} & import("react").RefAttributes<import("rc-table").Reference>, never>> & Omit<import("antd/es/table/interface").RefTable & {
+} & import("react").RefAttributes<import("rc-table").Reference>, {
+    $variant: 'default' | 'alternate';
+}>> & Omit<import("antd/es/table/interface").RefTable & {
     displayName?: string | undefined;
     SELECTION_COLUMN: {};
     EXPAND_COLUMN: {};

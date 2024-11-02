@@ -1,8 +1,9 @@
 import { Empty, Table } from 'antd';
 import styled, { css } from 'styled-components';
 
-export const StyledBaseTable = styled(Table)`
+export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate' }>`
 	border: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#000' : '#fff')};
+
 	border-radius: 0;
 	font-family: 'Open Sans', sans-serif !important;
 	box-shadow: ${(props) =>
@@ -49,6 +50,17 @@ export const StyledBaseTable = styled(Table)`
 				border-bottom: 1px solid #75715e;
 				background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#75715E' : '#FAFAFA')};
 
+				${(props) => {
+					return (
+						props.$variant === 'alternate' &&
+						css`
+							background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#868686' : '#F2F2F2')};
+							color: ${(props) => (props.theme.colorScheme === 'dark' ? '#F2F2F2' : 'initial')};
+							border-bottom: 1px solid #868686;
+						`
+					);
+				}}
+
 				&:before {
 					display: none;
 				}
@@ -66,6 +78,16 @@ export const StyledBaseTable = styled(Table)`
 	tbody {
 		color: ${(props) => (props.theme.colorScheme === 'dark' ? '#F8F8F2' : '#222222')};
 
+		${(props) => {
+			return (
+				props.$variant === 'alternate' &&
+				css`
+					background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#272822' : '#fff')};
+					color: ${(props) => (props.theme.colorScheme === 'dark' ? '#f8f8f8' : '#272822')};
+				`
+			);
+		}}
+
 		tr > td {
 			border-bottom: 1px solid #75715e !important;
 			border-right: 1px solid #75715e;
@@ -77,6 +99,23 @@ export const StyledBaseTable = styled(Table)`
 			&.ant-table-cell-row-hover {
 				background: ${(props) => (props.theme.colorScheme === 'dark' ? '#32332c' : '#F8F8F2')} !important;
 			}
+
+			${(props) => {
+				return (
+					props.$variant === 'alternate' &&
+					css`
+						border-bottom: 2px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#868686' : '#F8F8F2')} !important;
+						border-right: 2px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#868686' : '#F8F8F2')} !important;
+						padding-left: 0.5rem !important;
+						&:first-child {
+							border-left: 2px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#868686' : '#F8F8F2')} !important;
+						}
+						&.ant-table-cell-row-hover {
+							background: ${(props) => (props.theme.colorScheme === 'dark' ? '#32332c' : '#F8F8F2')} !important;
+						}
+					`
+				);
+			}}
 		}
 	}
 

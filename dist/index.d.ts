@@ -73,8 +73,6 @@ export { default as CopyToClipboard } from './components/CopyToClipboard';
 export type { ClipboardProps } from './components/CopyToClipboard';
 export { default as PageContainer } from './components/PageContainer';
 export type { PageContainerProps } from './components/PageContainer';
-export { default as ProjectsTable } from './components/ProjectsTable';
-export type { ProjectsTableProps } from './components/ProjectsTable';
 export { default as Table } from './components/Table';
 export type { BaseTableProps } from './components/Table';
 export { default as LoadingSkeleton } from './components/Skeleton';

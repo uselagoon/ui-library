@@ -5,11 +5,13 @@ import ProblemsTable from './ProblemsTable/ProblemsTable';
 import FactsTable from './FactsTable/FactsTable';
 import InsightsTable from './InsightsTable/InsightsTable';
 import TasksTable from './TasksTable/TasksTable';
+import ProjectsTable from './ProjectsTable/ProjectsTable';
 import { default as SshTable } from './SshTable/SshTable';
 
 export type { BaseTableProps };
 
 // Different types of tables
+Table.ProjectsTable = ProjectsTable;
 Table.SshTable = SshTable;
 Table.DeploymentsTable = DeploymentsTable;
 Table.BackupsTable = BackupsTable;

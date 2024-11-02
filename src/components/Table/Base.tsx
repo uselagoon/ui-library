@@ -9,6 +9,7 @@ import { ProblemsTableProps } from './ProblemsTable/ProblemsTable';
 import { FactsTableProps } from './FactsTable/FactsTable';
 import { InsightsTableProps } from './InsightsTable/InsightsTable';
 import { TasksTableProps } from './TasksTable/TasksTable';
+import { ProjectsTableProps } from './ProjectsTable/ProjectsTable';
 
 export interface BaseTableWithComponents
 	extends React.ForwardRefExoticComponent<BaseTableProps & React.RefAttributes<HTMLDivElement>> {
@@ -19,18 +20,26 @@ export interface BaseTableWithComponents
 	FactsTable: React.FC<FactsTableProps>;
 	InsightsTable: React.FC<InsightsTableProps>;
 	TasksTable: React.FC<TasksTableProps>;
+	ProjectsTable: React.FC<ProjectsTableProps>;
 }
 
-type BaseTableProps = Omit<TableProps, 'locale'>;
+type BaseTableProps = Omit<TableProps, 'locale'> & { variant?: 'alternate' | 'default' };
 
 const InternalTable: React.ForwardRefRenderFunction<HTMLDivElement, BaseTableProps> = (
-	{ columns, dataSource, children, ...props }: BaseTableProps,
+	{ columns, dataSource, children, variant = 'default', ...props }: BaseTableProps,
 	_,
 ) => {
 	return (
 		<>
 			<ConfigProvider renderEmpty={() => EmptyDisplay}>
-				<StyledBaseTable dataSource={dataSource} columns={columns} ref={null} pagination={false} {...props} />
+				<StyledBaseTable
+					$variant={variant}
+					dataSource={dataSource}
+					columns={columns}
+					ref={null}
+					pagination={false}
+					{...props}
+				/>
 			</ConfigProvider>
 		</>
 	);

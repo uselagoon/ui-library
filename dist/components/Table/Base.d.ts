@@ -7,6 +7,7 @@ import { ProblemsTableProps } from './ProblemsTable/ProblemsTable';
 import { FactsTableProps } from './FactsTable/FactsTable';
 import { InsightsTableProps } from './InsightsTable/InsightsTable';
 import { TasksTableProps } from './TasksTable/TasksTable';
+import { ProjectsTableProps } from './ProjectsTable/ProjectsTable';
 export interface BaseTableWithComponents extends React.ForwardRefExoticComponent<BaseTableProps & React.RefAttributes<HTMLDivElement>> {
     SshTable: React.FC<SshTableProps>;
     DeploymentsTable: React.FC<DeploymentsTableProps>;
@@ -15,8 +16,11 @@ export interface BaseTableWithComponents extends React.ForwardRefExoticComponent
     FactsTable: React.FC<FactsTableProps>;
     InsightsTable: React.FC<InsightsTableProps>;
     TasksTable: React.FC<TasksTableProps>;
+    ProjectsTable: React.FC<ProjectsTableProps>;
 }
-type BaseTableProps = Omit<TableProps, 'locale'>;
+type BaseTableProps = Omit<TableProps, 'locale'> & {
+    variant?: 'alternate' | 'default';
+};
 declare const BaseTable: BaseTableWithComponents;
 export default BaseTable;
 export type { BaseTableProps };
