@@ -1,6 +1,7 @@
 import { Tooltip } from 'antd';
 import styled from 'styled-components';
 import colors from '../../../_util/colors';
+import { Colors } from '../../..';
 
 export const StatusContainer = styled.section`
 	display: flex;
@@ -22,6 +23,9 @@ export const LinkContainer = styled.div`
 	align-items: center;
 	a {
 		color: initial;
+		&:hover {
+			color: ${Colors.lagoonBlue};
+		}
 	}
 	.bulk-link {
 		margin-left: auto;

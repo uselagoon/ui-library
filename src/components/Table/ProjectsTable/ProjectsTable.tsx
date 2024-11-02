@@ -142,7 +142,6 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			title: 'Cluster',
 			dataIndex: 'cluster',
 			key: 'cluster',
-			render: (text: string) => <div style={{ textAlign: 'center' }}>{text}</div>,
 			width: '10.32%',
 		},
 		{
