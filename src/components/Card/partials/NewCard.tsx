@@ -58,6 +58,12 @@ export const NewCard: FC<NewEnvironmentType> = ({
 		return requiredValues;
 	};
 
+	const closeModal = () => {
+		setCurrentStep(1);
+		setOpen(false);
+		newEnvForm.resetFields();
+	};
+
 	const handleStepChange = () => {
 		const fields = getRequiredFieldsValues();
 		if (!fields) return;
@@ -73,13 +79,11 @@ export const NewCard: FC<NewEnvironmentType> = ({
 	const handleCancel = (e: any) => {
 		// outside click, back or cancel buttons
 		if (e.target.id !== 'cancel-btn' && e.target.parentElement.id !== 'cancel-btn') {
-			setCurrentStep(1);
-			setOpen(false);
+			closeModal();
 			return;
 		}
 		if (currentStep <= 1) {
-			setCurrentStep(1);
-			setOpen(false);
+			closeModal();
 			return;
 		}
 		setCurrentStep(currentStep - 1);
@@ -109,7 +113,6 @@ export const NewCard: FC<NewEnvironmentType> = ({
 			>
 				<StyledStep>
 					<Form
-						preserve={false}
 						form={newEnvForm}
 						onFieldsChange={() => {
 							const fields = getRequiredFieldsValues();
@@ -126,7 +129,8 @@ export const NewCard: FC<NewEnvironmentType> = ({
 
 const StyledStep = styled.div`
 	min-height: 300px;
-	padding-block: 5.5rem;
+	padding-top: 5.5rem;
+	padding-bottom: 6.8125rem;
 `;
 
 const EnvironmentTitle = styled(Head2)`
