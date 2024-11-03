@@ -73,10 +73,12 @@ export const NewCard: FC<NewEnvironmentType> = ({
 	const handleCancel = (e: any) => {
 		// outside click, back or cancel buttons
 		if (e.target.id !== 'cancel-btn' && e.target.parentElement.id !== 'cancel-btn') {
+			setCurrentStep(1);
 			setOpen(false);
 			return;
 		}
 		if (currentStep <= 1) {
+			setCurrentStep(1);
 			setOpen(false);
 			return;
 		}
@@ -107,6 +109,7 @@ export const NewCard: FC<NewEnvironmentType> = ({
 			>
 				<StyledStep>
 					<Form
+						preserve={false}
 						form={newEnvForm}
 						onFieldsChange={() => {
 							const fields = getRequiredFieldsValues();
