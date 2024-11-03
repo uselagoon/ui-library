@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import colors from '../../_util/colors';
 import { Colors } from '../..';
 import { EllipsisOutlined } from '@ant-design/icons';
+import { NewEnvironmentType } from './partials/NewCard';
 
 const sharedCardStyles = css`
 	width: 23.75rem;
@@ -145,7 +146,7 @@ export const StyledCard = styled(Card)`
 	}
 `;
 
-export const StyledNewCard = styled(Card)`
+export const StyledNewCard = styled(Card)<{ $type: NewEnvironmentType['renderType'] }>`
 	display: flex;
 	place-content: center;
 	place-items: center;
@@ -157,9 +158,23 @@ export const StyledNewCard = styled(Card)`
 		
 		1px solid ${(props) => props.theme.UI.borders.card};
 	`};
+	${(props) =>
+		props.$type === 'listItem' &&
+		css`
+			width: 10.75rem;
+			height: max-content;
+			&.ant-card {
+				border: none;
+				box-shadow: unset;
+				width: max-content;
+			}
+			.ant-card-body {
+				padding: 0;
+			}
+		`}
 `;
 
-export const PinSection = styled.div`
+export const NewEnvTrigger = styled.div`
 	font-size: 0.875rem;
 	line-height: 1.375rem;
 	font-family: 'ArabicPro-Regular', sans-serif;

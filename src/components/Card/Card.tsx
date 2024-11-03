@@ -1,13 +1,14 @@
 import React, { forwardRef, ReactNode, useState } from 'react';
 import { CardProps as AntCardProps, Skeleton, Tooltip } from 'antd';
 import { LoadingCard, StyledCard, StyledMoreActionsIcon } from './styles';
-import { NewCard } from './partials/NewCard';
+import { NewCard, NewEnvironmentType } from './partials/NewCard';
 import LagoonCardLabel, { LagoonCardLabelProps } from '../CardLabel';
 import { EditOutlined, EyeOutlined, FrownOutlined, LinkOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
 import colors from '../../_util/colors';
 import { EnvironmentPartial } from './partials/EnvironmentPartial';
 import { ProjectPartial } from './partials/ProjectPartial';
 import TreeList from '../TreeList';
+import { EnvironmentDetailsType } from '../EnvironmentDetails';
 
 type DefaultProps = {
 	loading?: boolean;
@@ -40,7 +41,7 @@ type EnvCard = {
 
 type NewCard = {
 	type: 'new';
-};
+} & NewEnvironmentType;
 
 type LoaderCard = {
 	type: 'loaderOnly';
@@ -67,7 +68,16 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 
 	const { type: cardType } = props;
 
-	if (cardType === 'new') return <NewCard ref={ref} />;
+	if (cardType === 'new')
+		return (
+			<NewCard
+				requiredFormItems={props.requiredFormItems}
+				loading={props.loading}
+				renderType={props.renderType}
+				steps={props.steps}
+				onCreateEnvironment={props.onCreateEnvironment}
+			/>
+		);
 
 	if (cardType === 'loaderOnly') return <LoadingCard loading={true} />;
 

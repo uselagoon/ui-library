@@ -20,12 +20,13 @@ const InternalTreeList: React.ForwardRefRenderFunction<any, TreeListProps> = ({ 
 			title: item.sectionTitle,
 			selectable: false,
 			value: null,
-			children: item.sectionChildren.map((child) => {
+			children: item.sectionChildren.map((child, idx) => {
 				return {
 					title: child,
 					selectable: false,
 					icon: null,
 					value: null,
+					key: `${item.sectionTitle}-child${idx}`,
 				};
 			}),
 

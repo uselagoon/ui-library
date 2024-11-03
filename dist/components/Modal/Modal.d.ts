@@ -3,6 +3,7 @@ import { ModalProps } from 'antd';
 type UIModalProps = {
     subTitle?: ReactNode;
     confirmText?: string;
+    cancelText?: string;
     minHeight?: string;
     dangerConfirm?: boolean;
     confirmDisabled?: boolean;

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { CardProps as AntCardProps } from 'antd';
-import { NewCard } from './partials/NewCard';
+import { NewCard, NewEnvironmentType } from './partials/NewCard';
 import { LagoonCardLabelProps } from '../CardLabel';
 type DefaultProps = {
     loading?: boolean;
@@ -28,7 +28,7 @@ type EnvCard = {
 };
 type NewCard = {
     type: 'new';
-};
+} & NewEnvironmentType;
 type LoaderCard = {
     type: 'loaderOnly';
 };

@@ -6,6 +6,7 @@ import { ModalChildren, ModalFooterButton, StyledModal } from './styles';
 type UIModalProps = {
 	subTitle?: ReactNode;
 	confirmText?: string;
+	cancelText?: string;
 	minHeight?: string;
 	dangerConfirm?: boolean;
 	confirmDisabled?: boolean;
@@ -18,6 +19,7 @@ const UIModal: FC<UIModalProps> = ({
 	onCancel,
 	onOk,
 	confirmText,
+	cancelText,
 	confirmLoading,
 	minHeight,
 	dangerConfirm,
@@ -45,8 +47,8 @@ const UIModal: FC<UIModalProps> = ({
 				return <ModalChildren $minHeight={minHeight}>{node}</ModalChildren>;
 			}}
 			footer={[
-				<ModalFooterButton key="back" onClick={onCancel}>
-					Cancel
+				<ModalFooterButton key="back" id="cancel-btn" onClick={onCancel}>
+					{cancelText ? cancelText : 'Cancel'}
 				</ModalFooterButton>,
 				<ModalFooterButton
 					disabled={confirmDisabled}

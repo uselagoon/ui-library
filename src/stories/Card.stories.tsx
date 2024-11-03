@@ -180,9 +180,21 @@ export const Project: Story = {
 	},
 };
 
-export const New: Story = {
+const cardSteps = [<>Step 1</>, <>Step 2</>, <>Step 3</>];
+
+export const NewEnvironmentCard: Story = {
 	args: {
 		type: 'new',
+		steps: cardSteps,
+		loading: false,
+	},
+};
+export const NewEnvironmentList: Story = {
+	args: {
+		type: 'new',
+		renderType: 'listItem',
+		loading: false,
+		steps: cardSteps,
 	},
 };
 
