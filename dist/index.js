@@ -1240,7 +1240,7 @@ html,body{
 	display: inline-block;
 `,fe=l.default(n.Tree)`
 	background-color: transparent;
-
+	padding-right: 1.5rem;
 	.ant-tree-indent {
 		display: none;
 	}

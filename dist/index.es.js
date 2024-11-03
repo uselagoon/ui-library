@@ -1240,7 +1240,7 @@ html,body{
 	display: inline-block;
 `,It=A(J)`
 	background-color: transparent;
-
+	padding-right: 1.5rem;
 	.ant-tree-indent {
 		display: none;
 	}
