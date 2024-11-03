@@ -61,6 +61,7 @@ export const NewCard: FC<NewEnvironmentType> = ({
 	const closeModal = () => {
 		setCurrentStep(1);
 		setOpen(false);
+		setNextStepDisabled(true);
 		newEnvForm.resetFields();
 	};
 
