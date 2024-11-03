@@ -5,7 +5,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import Head2 from '../../Heading/H2';
 import { useForm } from 'antd/es/form/Form';
-import { Form, Input } from 'antd';
+import { Form } from 'antd';
 
 export type NewEnvironmentType = {
 	/**
@@ -20,7 +20,6 @@ export type NewEnvironmentType = {
 	loading: boolean;
 	/**
 	 * required form fields to validate and allow step change
-	 * defaults to [`branch_name`]
 	 */
 	requiredFormItems?: string[];
 	/**
@@ -31,7 +30,7 @@ export type NewEnvironmentType = {
 export const NewCard: FC<NewEnvironmentType> = ({
 	steps,
 	onCreateEnvironment,
-	requiredFormItems = ['branch_name'],
+	requiredFormItems,
 	loading,
 	renderType = 'card',
 }) => {
@@ -44,17 +43,18 @@ export const NewCard: FC<NewEnvironmentType> = ({
 	const [nextStepDisabled, setNextStepDisabled] = useState(true);
 
 	const getRequiredFieldsValues = () => {
-		const values = newEnvForm.getFieldsValue();
+		const values = newEnvForm.getFieldsValue(true);
 		const requiredValues = {};
 
-		for (const key of requiredFormItems) {
-			if (!values[key]) {
-				return false; // return false if any required field is falsy
+		if (Array.isArray(requiredFormItems)) {
+			for (const key of requiredFormItems) {
+				if (!values[key]) {
+					return false; // return false if any required field is falsy
+				}
+				//@ts-ignore
+				requiredValues[key] = values[key];
 			}
-			//@ts-ignore
-			requiredValues[key] = values[key];
 		}
-
 		return requiredValues;
 	};
 
@@ -130,6 +130,7 @@ const EnvironmentTitle = styled(Head2)`
 	font-size: 28px !important;
 	line-height: 32px !important;
 	margin-bottom: 0 !important;
+	margin-top: 1.5rem !important;
 `;
 
 const EnvironmentSteps = styled.span`

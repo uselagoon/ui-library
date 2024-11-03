@@ -11,7 +11,6 @@ export type NewEnvironmentType = {
     loading: boolean;
     /**
      * required form fields to validate and allow step change
-     * defaults to [`branch_name`]
      */
     requiredFormItems?: string[];
     /**

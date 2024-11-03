@@ -1248,13 +1248,14 @@ html,body{
 	&:hover {
 		color: ${LA.lagoonBlue};
 	}
-`,Nt=({steps:A,onCreateEnvironment:e,requiredFormItems:t=["branch_name"],loading:n,renderType:o="card"})=>{const[l,i]=p(!1),[s]=yA(),[d,c]=p(1),m=A?.length??0,[C,V]=p(!0),h=()=>{const A=s.getFieldsValue(),e={};for(const n of t){if(!A[n])return!1;e[n]=A[n]}return e};return a(Wt,{$type:o,children:[a(Tt,{onClick:()=>i(!0),children:[r(tA,{})," New environment"]}),r(st,{title:r(Jt,{children:"Create an Environment"}),subTitle:a(Qt,{children:["Step ",d," of ",m]}),open:l,destroyOnClose:!0,cancelText:1===d?"Cancel":"Back",onCancel:A=>{"cancel-btn"===A.target.id||"cancel-btn"===A.target.parentElement.id?d<=1?i(!1):c(d-1):i(!1)},onOk:()=>{const A=h();A&&(d<m?c(d+1):e(A).then((()=>i(!1))))},confirmText:d<m?"Next":"Create",confirmLoading:n,confirmDisabled:C,children:r(bt,{children:r(I,{form:s,onFieldsChange:()=>{const A=h();V(!A)},children:A[d-1]})})})]})},bt=A.div`
+`,Nt=({steps:A,onCreateEnvironment:e,requiredFormItems:t,loading:n,renderType:o="card"})=>{const[l,i]=p(!1),[s]=yA(),[d,c]=p(1),m=A?.length??0,[C,V]=p(!0),h=()=>{const A=s.getFieldsValue(!0),e={};if(Array.isArray(t))for(const n of t){if(!A[n])return!1;e[n]=A[n]}return e};return a(Wt,{$type:o,children:[a(Tt,{onClick:()=>i(!0),children:[r(tA,{})," New environment"]}),r(st,{title:r(Jt,{children:"Create an Environment"}),subTitle:a(Qt,{children:["Step ",d," of ",m]}),open:l,destroyOnClose:!0,cancelText:1===d?"Cancel":"Back",onCancel:A=>{"cancel-btn"===A.target.id||"cancel-btn"===A.target.parentElement.id?d<=1?i(!1):c(d-1):i(!1)},onOk:()=>{const A=h();A&&(d<m?c(d+1):e(A).then((()=>i(!1))))},confirmText:d<m?"Next":"Create",confirmLoading:n,confirmDisabled:C,children:r(bt,{children:r(I,{form:s,onFieldsChange:()=>{const A=h();V(!A)},children:A[d-1]})})})]})},bt=A.div`
 	min-height: 300px;
 	padding-block: 5.5rem;
 `,Jt=A(fe)`
 	font-size: 28px !important;
 	line-height: 32px !important;
 	margin-bottom: 0 !important;
+	margin-top: 1.5rem !important;
 `,Qt=A.span`
 	font-size: 10px;
 	line-height: 22px;

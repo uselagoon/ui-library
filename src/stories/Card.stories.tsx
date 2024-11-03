@@ -6,6 +6,8 @@ import { default as LagoonCard } from '../components/Card';
 import { Controls, Primary, Stories, Title } from '@storybook/blocks';
 import { CarryOutOutlined, EyeOutlined } from '@ant-design/icons';
 import TreeList from '../components/TreeList';
+import FormItem from '../components/FormItem';
+import Input from '../components/Input';
 
 const meta: Meta<typeof LagoonCard> = {
 	component: LagoonCard,
@@ -180,13 +182,26 @@ export const Project: Story = {
 	},
 };
 
-const cardSteps = [<>Step 1</>, <>Step 2</>, <>Step 3</>];
+const cardSteps = [
+	<>
+		<FormItem name="branch_name">
+			<Input placeholder="Enter a branch name" />
+		</FormItem>
+	</>,
+	<>Step 2</>,
+	<>Step 3</>,
+];
+const onCreateEnv = (fields) => {
+	console.log('fields', fields);
+	return Promise.resolve();
+};
 
 export const NewEnvironmentCard: Story = {
 	args: {
 		type: 'new',
 		steps: cardSteps,
 		loading: false,
+		onCreateEnvironment: onCreateEnv,
 	},
 };
 export const NewEnvironmentList: Story = {
@@ -195,6 +210,7 @@ export const NewEnvironmentList: Story = {
 		renderType: 'listItem',
 		loading: false,
 		steps: cardSteps,
+		onCreateEnvironment: onCreateEnv,
 	},
 };
 
