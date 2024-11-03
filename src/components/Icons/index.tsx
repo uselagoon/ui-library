@@ -72,6 +72,7 @@ import { ZoomIn } from './vectors/ZoomIn';
 import { ZoomOut } from './vectors/ZoomOut';
 import { Lagoon } from './vectors/Lagoon';
 import { Sun } from './vectors/Sun';
+import { LagoonIconOnly } from './vectors/LagoonIconOnly';
 
 type CustomIconComponentProps = GetProps<typeof Icon>;
 
@@ -211,3 +212,7 @@ export const IconZoomOut = (props: Partial<CustomIconComponentProps>) => <Icon c
 export const LagoonIcon = (props: Partial<CustomIconComponentProps>) => <Icon component={Lagoon} {...props} />;
 
 export const IconSun = (props: Partial<CustomIconComponentProps>) => <Icon component={Sun} {...props} />;
+
+export const IconLagoonOnly = (props: Partial<CustomIconComponentProps>) => (
+	<Icon component={LagoonIconOnly} {...props} />
+);

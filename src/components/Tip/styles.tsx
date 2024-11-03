@@ -1,0 +1,27 @@
+import styled from 'styled-components';
+
+export const StyledTip = styled.section`
+	border: 1px solid ${(props) => props.theme.UI.borders.box};
+	max-width: 30.6875rem;
+	border-radius: 4px;
+	padding: 8px 14px;
+	background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#3c3d37' : '#c6c7c1')};
+`;
+export const TipIcon = styled.section`
+	float: left;
+	margin-right: 8px;
+
+	span[role='icon'] {
+		svg {
+		}
+	}
+	&::after {
+		clear: both;
+	}
+`;
+export const TipContent = styled.section`
+	font-family: 'ArabicPro-Regular', sans-serif;
+	line-height: 21px;
+	font-size: 16px;
+	color: ${(props) => props.theme.UI.texts.primary};
+`;

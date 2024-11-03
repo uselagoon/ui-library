@@ -130,6 +130,9 @@ export type { ConfirmProps } from './components/Confirm';
 export { default as TreeList } from './components/TreeList';
 export type { TreeListProps } from './components/TreeList';
 
+export { default as Tip } from './components/Tip';
+export type { TipProps } from './components/Tip';
+
 export {
 	LagoonIcon,
 	IconAim,
@@ -200,4 +203,5 @@ export {
 	IconZoomIn,
 	IconZoomOut,
 	IconSun,
+	IconLagoonOnly,
 } from './components/Icons/index';
