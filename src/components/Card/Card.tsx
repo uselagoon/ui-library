@@ -149,7 +149,12 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 		const clickedElement = e.target as HTMLElement;
 
 		// check if the clicked element or its ancestors have the class 'ant-card-actions'
-		if (!isSelecting && !clickedElement.closest('.ant-card-actions') && !clickedElement.closest('.ant-card-extra')) {
+		if (
+			!isSelecting &&
+			!clickedElement.closest('.ant-card-actions') &&
+			!clickedElement.closest('.ant-card-extra') &&
+			!clickedElement.closest('.ui-treelink-overlay')
+		) {
 			navigatorFn();
 		}
 	};
