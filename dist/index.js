@@ -1647,19 +1647,19 @@ html,body{
 			}
 		}
 	}
-`;Zn.displayName="FormItem";const yn=({text:A,width:a,type:o="visible"})=>{const[l,s]=t.useState(!1),[i,p]=t.useState(!1),d=a?{maxWidth:`${a}px`}:{},c=()=>{p(!i)},m=i?e.jsx(r.EyeInvisibleOutlined,{className:"eye-icon",onClick:c}):e.jsx(r.EyeOutlined,{className:"eye-icon",onClick:c});return e.jsxs(Un,{style:{...d},children:[e.jsx(kn,{className:"copyable",$maxWidth:a,type:o,manualUnblur:i,children:A}),e.jsx("div",{className:"icons",children:l?e.jsxs(n.Tooltip,{placement:"right",title:"Copied!",children:[e.jsx(r.CheckOutlined,{className:"check-icon"}),"hiddenWithIcon"===o&&m]}):e.jsxs(e.Fragment,{children:[e.jsx(r.CopyOutlined,{onClick:()=>{navigator.clipboard.writeText(A),s(!0),setTimeout((()=>{s(!1)}),3500)},className:"copy-icon"}),"hiddenWithIcon"===o&&m]})})]})},kn=l.default.span`
+`;Zn.displayName="FormItem";const yn=({text:A,width:a,type:o="visible"})=>{const[l,s]=t.useState(!1),[i,p]=t.useState(!1),d=a?{maxWidth:`${a}px`}:{},c=()=>{p(!i)},m=i?e.jsx(r.EyeInvisibleOutlined,{className:"eye-icon",onClick:c}):e.jsx(r.EyeOutlined,{className:"eye-icon",onClick:c});return e.jsxs(Un,{style:{...d},children:[e.jsx(kn,{className:"copyable",$maxWidth:a,$type:o,$manualUnblur:i,children:A}),e.jsx("div",{className:"icons",children:l?e.jsxs(n.Tooltip,{placement:"right",title:"Copied!",children:[e.jsx(r.CheckOutlined,{className:"check-icon"}),"hiddenWithIcon"===o&&m]}):e.jsxs(e.Fragment,{children:[e.jsx(r.CopyOutlined,{onClick:()=>{navigator.clipboard.writeText(A),s(!0),setTimeout((()=>{s(!1)}),3500)},className:"copy-icon"}),"hiddenWithIcon"===o&&m]})})]})},kn=l.default.span`
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	color: ${A=>A.theme.UI.texts.primary};
 	max-width: ${A=>A.$maxWidth?`${"number"==typeof A.$maxWidth?`${A.$maxWidth}px`:A.$maxWidth}`:"18.75rem"};
-	${e=>("hidden"===e.type||"hiddenWithIcon"===e.type&&!e.manualUnblur)&&A.css`
+	${e=>("hidden"===e.$type||"hiddenWithIcon"===e.$type&&!e.$manualUnblur)&&A.css`
 			filter: blur(0.15rem);
 			user-select: none;
 			transition: all 0.3s ease;
 		`};
 
-	${e=>"hidden"===e.type&&A.css`
+	${e=>"hidden"===e.$type&&A.css`
 			&:hover {
 				filter: none;
 				user-select: initial;

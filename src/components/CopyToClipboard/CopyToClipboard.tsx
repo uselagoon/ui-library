@@ -36,7 +36,7 @@ const CopyToClipboard: FC<ClipboardProps> = ({ text, width, type = 'visible' }) 
 	);
 	return (
 		<StyledText style={{ ...computedStyles }}>
-			<CopyableText className="copyable" $maxWidth={width} type={type} manualUnblur={manualUnblur}>
+			<CopyableText className="copyable" $maxWidth={width} $type={type} $manualUnblur={manualUnblur}>
 				{text}
 			</CopyableText>
 
@@ -58,8 +58,8 @@ const CopyToClipboard: FC<ClipboardProps> = ({ text, width, type = 'visible' }) 
 };
 
 const CopyableText = styled.span<{
-	type: ClipboardProps['type'];
-	manualUnblur: boolean;
+	$type: ClipboardProps['type'];
+	$manualUnblur: boolean;
 	$maxWidth?: number | string;
 }>`
 	overflow: hidden;
@@ -69,7 +69,7 @@ const CopyableText = styled.span<{
 	max-width: ${(props) =>
 		props.$maxWidth ? `${typeof props.$maxWidth === 'number' ? `${props.$maxWidth}px` : props.$maxWidth}` : '18.75rem'};
 	${(props) =>
-		(props.type === 'hidden' || (props.type === 'hiddenWithIcon' && !props.manualUnblur)) &&
+		(props.$type === 'hidden' || (props.$type === 'hiddenWithIcon' && !props.$manualUnblur)) &&
 		css`
 			filter: blur(0.15rem);
 			user-select: none;
@@ -77,7 +77,7 @@ const CopyableText = styled.span<{
 		`};
 
 	${(props) =>
-		props.type === 'hidden' &&
+		props.$type === 'hidden' &&
 		css`
 			&:hover {
 				filter: none;

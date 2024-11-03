@@ -1647,19 +1647,19 @@ html,body{
 			}
 		}
 	}
-`;Ya.displayName="FormItem";const ja=({text:A,width:e,type:t="visible"})=>{const[n,l]=p(!1),[i,s]=p(!1),d=e?{maxWidth:`${e}px`}:{},c=()=>{s(!i)},m=r(i?mA:rA,{className:"eye-icon",onClick:c});return a(_a,{style:{...d},children:[r($a,{className:"copyable",$maxWidth:e,type:t,manualUnblur:i,children:A}),r("div",{className:"icons",children:n?a(L,{placement:"right",title:"Copied!",children:[r(VA,{className:"check-icon"}),"hiddenWithIcon"===t&&m]}):a(o,{children:[r(CA,{onClick:()=>{navigator.clipboard.writeText(A),l(!0),setTimeout((()=>{l(!1)}),3500)},className:"copy-icon"}),"hiddenWithIcon"===t&&m]})})]})},$a=A.span`
+`;Ya.displayName="FormItem";const ja=({text:A,width:e,type:t="visible"})=>{const[n,l]=p(!1),[i,s]=p(!1),d=e?{maxWidth:`${e}px`}:{},c=()=>{s(!i)},m=r(i?mA:rA,{className:"eye-icon",onClick:c});return a(_a,{style:{...d},children:[r($a,{className:"copyable",$maxWidth:e,$type:t,$manualUnblur:i,children:A}),r("div",{className:"icons",children:n?a(L,{placement:"right",title:"Copied!",children:[r(VA,{className:"check-icon"}),"hiddenWithIcon"===t&&m]}):a(o,{children:[r(CA,{onClick:()=>{navigator.clipboard.writeText(A),l(!0),setTimeout((()=>{l(!1)}),3500)},className:"copy-icon"}),"hiddenWithIcon"===t&&m]})})]})},$a=A.span`
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	color: ${A=>A.theme.UI.texts.primary};
 	max-width: ${A=>A.$maxWidth?`${"number"==typeof A.$maxWidth?`${A.$maxWidth}px`:A.$maxWidth}`:"18.75rem"};
-	${A=>("hidden"===A.type||"hiddenWithIcon"===A.type&&!A.manualUnblur)&&t`
+	${A=>("hidden"===A.$type||"hiddenWithIcon"===A.$type&&!A.$manualUnblur)&&t`
 			filter: blur(0.15rem);
 			user-select: none;
 			transition: all 0.3s ease;
 		`};
 
-	${A=>"hidden"===A.type&&t`
+	${A=>"hidden"===A.$type&&t`
 			&:hover {
 				filter: none;
 				user-select: initial;
