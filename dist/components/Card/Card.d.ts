@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { CardProps as AntCardProps } from 'antd';
 import { NewCard } from './partials/NewCard';
 import { LagoonCardLabelProps } from '../CardLabel';
@@ -9,6 +9,10 @@ type DefaultProps = {
     styles?: React.CSSProperties;
     cardClassName?: string;
     navigateTo?: () => void;
+    quickActions?: {
+        sectionTitle: string;
+        sectionChildren: ReactNode[];
+    }[];
 };
 type ProjectCard = {
     type: 'project';

@@ -10,6 +10,7 @@ import RobotoBold from '../fonts/Roboto-Bold.woff2';
 import OpenSansRegular from '../fonts/opensans-regular.woff2';
 import OpenSansBold from '../fonts/opensans-bold.woff2';
 import OpenSansSemibold from '../fonts/opensans-semibold.woff2';
+import colors from '../_util/colors';
 
 const GlobalStyles = createGlobalStyle`
 
@@ -150,6 +151,40 @@ html,body{
       
     }
 
+  }
+  .ui-treelink-overlay{
+    &.ant-popover {
+		> .ant-popover-arrow {
+			&::before {
+				background: ${(props) => (props.theme.colorScheme === 'dark' ? `${colors.cellGray}` : '#fff')};
+			}
+			${(props) =>
+				props.theme.colorScheme === 'dark' &&
+				css`
+					box-shadow:
+						2px 2px 3px 0px #3333331a,
+						-2px -2px 3px 0px #3333331a;
+				`};
+		}
+		> .ant-popover-content {
+			border-radius: 5px;
+			.ant-popover-inner {
+				background-color: transparent;
+				padding: 0;
+				padding: 0.5rem;
+			}
+			background-color: ${(props) => (props.theme.colorScheme === 'dark' ? `${colors.cellGray}` : 'initial')};
+
+			${(props) =>
+				props.theme.colorScheme === 'dark' &&
+				css`
+					box-shadow:
+						2px 2px 3px 0px #3333331a,
+						-2px -2px 3px 0px #3333331a;
+					background-color: ${colors.cellGray};
+				`};
+		}
+	}
   }
 `;
 

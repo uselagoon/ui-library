@@ -4,6 +4,8 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { default as LagoonCard } from '../components/Card';
 import { Controls, Primary, Stories, Title } from '@storybook/blocks';
+import { CarryOutOutlined, EyeOutlined } from '@ant-design/icons';
+import TreeList from '../components/TreeList';
 
 const meta: Meta<typeof LagoonCard> = {
 	component: LagoonCard,
@@ -72,6 +74,44 @@ const meta: Meta<typeof LagoonCard> = {
 
 type Story = StoryObj<typeof LagoonCard>;
 
+const quickActionItems = [
+	{
+		sectionTitle: 'Run a Task',
+		sectionChildren: [
+			<>
+				<EyeOutlined /> Clear Drupal caches
+			</>,
+			<>
+				<EyeOutlined /> Run Drupal cron [drush cron]
+			</>,
+			<>
+				<EyeOutlined /> Copy database between environments [drush sql-sync]
+			</>,
+			<>
+				<EyeOutlined /> Copy files between backup [drush sql-dump]
+			</>,
+		],
+	},
+	{
+		sectionTitle: 'Backup',
+		sectionChildren: [
+			<>
+				<CarryOutOutlined /> Trigger environment backup
+			</>,
+		],
+	},
+	{
+		sectionTitle: 'Deploy',
+		sectionChildren: [
+			<>
+				<CarryOutOutlined /> Trigger a deployment
+			</>,
+		],
+	},
+];
+
+const quickActions = <TreeList data={quickActionItems}>{123}</TreeList>;
+
 export const DevEnvironment: Story = {
 	args: {
 		type: 'environment',
@@ -82,6 +122,7 @@ export const DevEnvironment: Story = {
 		environmentName: 'main',
 		deployType: 'branch',
 		region: 'EUROPE-WEST6',
+		quickActions: quickActionItems,
 		navigateTo: () => {
 			console.log('navigation function');
 		},
@@ -97,6 +138,7 @@ export const ActiveProd: Story = {
 		environmentName: 'main',
 		deployType: 'branch',
 		region: 'us3',
+		quickActions: quickActionItems,
 	},
 };
 
@@ -110,6 +152,7 @@ export const Prod: Story = {
 		environmentName: 'main',
 		deployType: 'branch',
 		region: 'us3',
+		quickActions: quickActionItems,
 	},
 };
 
@@ -123,6 +166,7 @@ export const StandbyProd: Story = {
 		environmentName: 'main',
 		deployType: 'branch',
 		region: 'us3',
+		quickActions: quickActionItems,
 	},
 };
 
@@ -132,6 +176,7 @@ export const Project: Story = {
 		title: 'as-demo',
 		status: 'high',
 		environments: ['master (active production)', 'master-alt (standby production)', 'master-broken'],
+		quickActions: quickActionItems,
 	},
 };
 
@@ -157,6 +202,7 @@ export const Error: Story = {
 		environmentName: 'main',
 		deployType: 'branch',
 		region: 'us3',
+		quickActions: quickActionItems,
 	},
 };
 

@@ -14,6 +14,7 @@ export const lagoonColors = {
 	monoBackground: {
 		light: '#F2F2F2',
 		dark: '#272822',
+		alternateLight: '#f8f8f2',
 	},
 	monoWhite: {
 		light: '#222222',

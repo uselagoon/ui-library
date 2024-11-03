@@ -60,7 +60,7 @@ export const lightTheme: DefaultTheme = {
 			lagoonCardInverted: colors.backgrounds.primary.dark,
 			footer: colors.backgrounds.primary.dark,
 			header: colors.header.light,
-			navTabs: lagoonColors.monoBackground.light,
+			navTabs: lagoonColors.monoBackground.alternateLight,
 		},
 		confirm: {
 			text: '#000',

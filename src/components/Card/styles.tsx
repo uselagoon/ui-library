@@ -2,6 +2,7 @@ import { Card } from 'antd';
 import styled, { css } from 'styled-components';
 import colors from '../../_util/colors';
 import { Colors } from '../..';
+import { EllipsisOutlined } from '@ant-design/icons';
 
 const sharedCardStyles = css`
 	width: 23.75rem;
@@ -22,7 +23,12 @@ export const LoadingCard = styled(Card)`
 	&.ant-card {
 		cursor: unset;
 		${sharedCardStyles}
-		border: 1px solid ${(props) => props.theme.UI.borders.card};
+		border: ${(props) =>
+			props.theme.colorScheme === 'dark' &&
+			css`
+		
+		1px solid ${(props) => props.theme.UI.borders.card};
+	`};
 		overflow: hidden;
 		.ant-card-head,
 		.ant-card-body,
@@ -145,7 +151,12 @@ export const StyledNewCard = styled(Card)`
 	place-items: center;
 	${sharedCardStyles}
 	border-left: inherit;
-	border: 1px solid ${(props) => props.theme.UI.borders.card};
+	border: ${(props) =>
+		props.theme.colorScheme === 'dark' &&
+		css`
+		
+		1px solid ${(props) => props.theme.UI.borders.card};
+	`};
 `;
 
 export const PinSection = styled.div`
@@ -199,4 +210,12 @@ export const StyledEnvPartial = styled.div`
 `;
 export const StyledProjectPartial = styled.div`
 	padding-left: 3.1875rem;
+`;
+
+export const StyledMoreActionsIcon = styled(EllipsisOutlined)`
+	color: initial;
+	transition: color 0.3s ease;
+	&:hover {
+		color: ${colors.lagoonBlue};
+	}
 `;

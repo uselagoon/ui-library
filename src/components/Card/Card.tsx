@@ -1,20 +1,13 @@
 import React, { forwardRef, ReactNode, useState } from 'react';
 import { CardProps as AntCardProps, Skeleton, Tooltip } from 'antd';
-import { LoadingCard, StyledCard } from './styles';
+import { LoadingCard, StyledCard, StyledMoreActionsIcon } from './styles';
 import { NewCard } from './partials/NewCard';
 import LagoonCardLabel, { LagoonCardLabelProps } from '../CardLabel';
-import {
-	EditOutlined,
-	EllipsisOutlined,
-	EyeOutlined,
-	FrownOutlined,
-	LinkOutlined,
-	MehOutlined,
-	SmileOutlined,
-} from '@ant-design/icons';
+import { EditOutlined, EyeOutlined, FrownOutlined, LinkOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
 import colors from '../../_util/colors';
 import { EnvironmentPartial } from './partials/EnvironmentPartial';
 import { ProjectPartial } from './partials/ProjectPartial';
+import TreeList from '../TreeList';
 
 type DefaultProps = {
 	loading?: boolean;
@@ -23,6 +16,10 @@ type DefaultProps = {
 	styles?: React.CSSProperties;
 	cardClassName?: string;
 	navigateTo?: () => void;
+	quickActions?: {
+		sectionTitle: string;
+		sectionChildren: ReactNode[];
+	}[];
 };
 
 // TODO: proper env type
@@ -74,7 +71,7 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 
 	if (cardType === 'loaderOnly') return <LoadingCard loading={true} />;
 
-	const { type, loading, title, cardClassName, styles, status = 'low', navigateTo, ...rest } = props;
+	const { type, loading, title, cardClassName, styles, quickActions, status = 'low', navigateTo, ...rest } = props;
 
 	const getStatusIcon = (status: DefaultProps['status']) => {
 		switch (status) {
@@ -97,9 +94,15 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 
 	const navigatorFn = navigateTo ? navigateTo : () => {};
 
+	// card actions and icons
+	const CardActions = quickActions && (
+		<TreeList data={quickActions}>
+			<StyledMoreActionsIcon key="ellipsis" />
+		</TreeList>
+	);
 	const actions = {
-		project: [<EditOutlined key="edit" onClick={navigatorFn} />, <EllipsisOutlined key="ellipsis" />],
-		environment: [<EyeOutlined key="view" onClick={navigatorFn} />, <EllipsisOutlined key="ellipsis" />],
+		project: [<EditOutlined key="edit" onClick={navigatorFn} />, CardActions],
+		environment: [<EyeOutlined key="view" onClick={navigatorFn} />, CardActions],
 	};
 
 	const extraIcons = [

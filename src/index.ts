@@ -127,6 +127,9 @@ export type { SkeletonProps as LoadingSkeletonProps } from './components/Skeleto
 export { default as Confirm } from './components/Confirm';
 export type { ConfirmProps } from './components/Confirm';
 
+export { default as TreeList } from './components/TreeList';
+export type { TreeListProps } from './components/TreeList';
+
 export {
 	LagoonIcon,
 	IconAim,

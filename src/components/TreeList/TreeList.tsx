@@ -1,0 +1,63 @@
+import React, { forwardRef, ReactNode } from 'react';
+
+import { Popover } from 'antd';
+import { PopoverContainer, StyledTree } from './styles';
+
+type TreeData = {
+	sectionTitle: ReactNode;
+	sectionChildren: ReactNode[];
+};
+type TreeListProps = {
+	children: ReactNode;
+	data: TreeData[];
+};
+
+const InternalTreeList: React.ForwardRefRenderFunction<any, TreeListProps> = ({ data, children }, ref) => {
+	// convert TreeData[] to type (BasicDataNode | DataNode)[];
+	const internalTreeData = data.map((item, idx) => {
+		return {
+			key: `${item.sectionTitle}-item-${idx}`,
+			title: item.sectionTitle,
+			selectable: false,
+			value: null,
+			children: item.sectionChildren.map((child) => {
+				return {
+					title: child,
+					selectable: false,
+					icon: null,
+					value: null,
+				};
+			}),
+
+			icon: null,
+		};
+	});
+	return (
+		<Popover
+			ref={ref}
+			trigger="hover"
+			placement="bottomRight"
+			overlayClassName="ui-treelink-overlay"
+			content={
+				<StyledTree
+					ref={ref}
+					defaultExpandAll
+					treeData={internalTreeData}
+					showLine={false}
+					multiple={false}
+					showIcon={true}
+					rootClassName="ui-treelink"
+				/>
+			}
+		>
+			<PopoverContainer> {children} </PopoverContainer>
+		</Popover>
+	);
+};
+
+const TreeList = forwardRef<HTMLElement, TreeListProps>(InternalTreeList);
+
+TreeList.displayName = 'TreeList';
+
+export type { TreeListProps };
+export default TreeList;

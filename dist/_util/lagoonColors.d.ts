@@ -14,6 +14,7 @@ export declare const lagoonColors: {
     monoBackground: {
         light: string;
         dark: string;
+        alternateLight: string;
     };
     monoWhite: {
         light: string;
