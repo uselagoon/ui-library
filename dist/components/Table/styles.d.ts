@@ -3,6 +3,7 @@ export declare const StyledBaseTable: import("styled-components").IStyledCompone
     children?: import("react").ReactNode;
 } & import("react").RefAttributes<import("rc-table").Reference>, {
     $variant: 'default' | 'alternate';
+    $lastRowBordered: boolean;
 }>> & Omit<import("antd/es/table/interface").RefTable & {
     displayName?: string | undefined;
     SELECTION_COLUMN: {};

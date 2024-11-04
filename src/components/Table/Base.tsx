@@ -23,10 +23,10 @@ export interface BaseTableWithComponents
 	ProjectsTable: React.FC<ProjectsTableProps>;
 }
 
-type BaseTableProps = Omit<TableProps, 'locale'> & { variant?: 'alternate' | 'default' };
+type BaseTableProps = Omit<TableProps, 'locale'> & { variant?: 'alternate' | 'default'; lastRowBordered?: boolean };
 
 const InternalTable: React.ForwardRefRenderFunction<HTMLDivElement, BaseTableProps> = (
-	{ columns, dataSource, children, variant = 'default', ...props }: BaseTableProps,
+	{ columns, dataSource, children, lastRowBordered = false, variant = 'default', ...props }: BaseTableProps,
 	_,
 ) => {
 	return (
@@ -34,6 +34,7 @@ const InternalTable: React.ForwardRefRenderFunction<HTMLDivElement, BaseTablePro
 			<ConfigProvider renderEmpty={() => EmptyDisplay}>
 				<StyledBaseTable
 					$variant={variant}
+					$lastRowBordered={lastRowBordered}
 					dataSource={dataSource}
 					columns={columns}
 					ref={null}

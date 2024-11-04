@@ -32,6 +32,11 @@ const meta: Meta<typeof LagoonCardLabel> = {
 			description:
 				'Type of the card label <br/> `development` | `production` | `active production` | `standby production` | `project` | `uat` | `error`',
 		},
+		variant: {
+			control: 'select',
+			options: ['horizontal', 'vertical'],
+			description: 'Card label direction',
+		},
 	},
 };
 
@@ -44,9 +49,24 @@ export const Development: Story = {
 	render: (args) => <LagoonCardLabel {...args} />,
 };
 
+export const DevelopmentHorizontal: Story = {
+	args: {
+		type: 'development',
+		variant: 'horizontal',
+	},
+	render: (args) => <LagoonCardLabel {...args} />,
+};
 export const Prod: Story = {
 	args: {
 		type: 'production',
+	},
+	render: (args) => <LagoonCardLabel {...args} />,
+};
+
+export const ProdHorizontal: Story = {
+	args: {
+		type: 'production',
+		variant: 'horizontal',
 	},
 	render: (args) => <LagoonCardLabel {...args} />,
 };
@@ -57,10 +77,24 @@ export const ActiveProd: Story = {
 	},
 	render: (args) => <LagoonCardLabel {...args} />,
 };
+export const ActiveProdHorizontal: Story = {
+	args: {
+		type: 'active production',
+		variant: 'horizontal',
+	},
+	render: (args) => <LagoonCardLabel {...args} />,
+};
 
 export const StandByProd: Story = {
 	args: {
 		type: 'standby production',
+	},
+	render: (args) => <LagoonCardLabel {...args} />,
+};
+export const StandByProdHorizontal: Story = {
+	args: {
+		type: 'standby production',
+		variant: 'horizontal',
 	},
 	render: (args) => <LagoonCardLabel {...args} />,
 };
@@ -72,9 +106,23 @@ export const Project: Story = {
 	render: (args) => <LagoonCardLabel {...args} />,
 };
 
+export const ProjectHorizontal: Story = {
+	args: {
+		type: 'project',
+		variant: 'horizontal',
+	},
+	render: (args) => <LagoonCardLabel {...args} />,
+};
 export const UAT: Story = {
 	args: {
 		type: 'uat',
+	},
+	render: (args) => <LagoonCardLabel {...args} />,
+};
+export const UATHorizontal: Story = {
+	args: {
+		type: 'uat',
+		variant: 'horizontal',
 	},
 	render: (args) => <LagoonCardLabel {...args} />,
 };
@@ -85,4 +133,12 @@ export const Error: Story = {
 	},
 	render: (args) => <LagoonCardLabel {...args} />,
 };
+export const ErrorHorizontal: Story = {
+	args: {
+		type: 'error',
+		variant: 'horizontal',
+	},
+	render: (args) => <LagoonCardLabel {...args} />,
+};
+
 export default meta;

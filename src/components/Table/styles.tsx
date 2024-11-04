@@ -1,7 +1,7 @@
 import { Empty, Table } from 'antd';
 import styled, { css } from 'styled-components';
 
-export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate' }>`
+export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate'; $lastRowBordered: boolean }>`
 	border: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#000' : '#fff')};
 
 	border-radius: 0;
@@ -117,6 +117,17 @@ export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate'
 				);
 			}}
 		}
+
+		${(props) =>
+			props.$lastRowBordered &&
+			css`
+				tr:last-of-type > td:not(:first-child):not(:last-child) {
+					border: unset;
+				}
+				tr:last-of-type > td:first-child {
+					border-right: unset;
+				}
+			`}
 	}
 
 	.highlighted {

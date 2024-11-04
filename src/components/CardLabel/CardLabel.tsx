@@ -1,11 +1,13 @@
 import React, { forwardRef } from 'react';
-import styled, { css } from 'styled-components';
 import colors from '../../_util/colors';
+import { SplitLabels, StyledHorizontalLabel, StyledLabel } from './styles';
 
-const colorMap = {
+export const colorMap = {
 	development: colors.blue,
 	project: colors.black,
 	production: colors.green,
+	active: colors.purple,
+	standby: colors.purple,
 	['active production']: colors.green,
 	['standby production']: colors.yellow,
 	uat: colors.orange,
@@ -13,12 +15,49 @@ const colorMap = {
 } as const;
 
 type LagoonCardLabelProps = {
-	type: 'development' | 'project' | 'production' | 'active production' | 'standby production' | 'uat' | 'error';
+	type:
+		| 'active'
+		| 'standby'
+		| 'development'
+		| 'project'
+		| 'production'
+		| 'active production'
+		| 'standby production'
+		| 'uat'
+		| 'error';
+	variant?: 'vertical' | 'horizontal';
 };
 
-const InternalLabel: React.ForwardRefRenderFunction<HTMLDivElement, LagoonCardLabelProps> = ({ type }, ref) => {
+const InternalLabel: React.ForwardRefRenderFunction<HTMLDivElement, LagoonCardLabelProps> = (
+	{ type, variant = 'vertical' },
+	ref,
+) => {
 	const currentColor = colorMap[type];
 
+	if (variant === 'horizontal') {
+		if (type === 'active production' || type === 'standby production') {
+			type ColorKey = keyof typeof colorMap;
+			type SingleWordKey = Exclude<ColorKey, 'active production' | 'standby production'>;
+
+			const splitTypes = type.split(' ') as SingleWordKey[];
+
+			return (
+				<SplitLabels>
+					<StyledHorizontalLabel className="lagoon-label" $currentColor={colorMap[splitTypes[1]]} ref={ref}>
+						<span>{splitTypes[1]}</span>
+					</StyledHorizontalLabel>
+					<StyledHorizontalLabel className="lagoon-label" $currentColor={colorMap[splitTypes[0]]} ref={ref}>
+						<span>{splitTypes[0]}</span>
+					</StyledHorizontalLabel>
+				</SplitLabels>
+			);
+		}
+		return (
+			<StyledHorizontalLabel className="lagoon-label" $currentColor={currentColor} ref={ref}>
+				<span>{type}</span>
+			</StyledHorizontalLabel>
+		);
+	}
 	return (
 		<StyledLabel className="lagoon-label" $currentColor={currentColor} ref={ref}>
 			<span>{type}</span>
@@ -27,37 +66,6 @@ const InternalLabel: React.ForwardRefRenderFunction<HTMLDivElement, LagoonCardLa
 };
 
 const UICardLabel = forwardRef<HTMLDivElement, LagoonCardLabelProps>(InternalLabel);
-
-const StyledLabel = styled.div<{
-	$currentColor: (typeof colorMap)[keyof typeof colorMap];
-}>`
-	transform: rotate(90deg);
-	text-transform: uppercase;
-	min-width: 100px;
-	max-width: 300px;
-	width: 100%;
-	transform-origin: calc(23px + 0%) 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-family: 'Roboto-medium', sans-serif;
-	font-weight: 500;
-	line-height: 30px;
-	font-size: 20px;
-	color: #222;
-	user-select: none;
-	${(props) =>
-		props.$currentColor === '#000' &&
-		css`
-			color: ${colors.white};
-		`}
-	max-height: 23px;
-	background-color: ${(props) => props.$currentColor};
-	span {
-		display: inline-block;
-		transform: rotate(-180deg);
-	}
-`;
 
 UICardLabel.displayName = 'CardLabel';
 
