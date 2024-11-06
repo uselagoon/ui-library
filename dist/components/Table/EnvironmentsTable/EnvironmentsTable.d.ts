@@ -4,6 +4,7 @@ import { LagoonCardLabelProps } from '../../CardLabel';
 import { DefaultCardProps } from '../../Card/Card';
 export type Environment = {
     id?: number;
+    name: string;
     title: string;
     deployType: string;
     envType: LagoonCardLabelProps['type'];

@@ -24,6 +24,7 @@ dayjs.extend(utc);
 
 export type Environment = {
 	id?: number;
+	name: string;
 	title: string;
 	deployType: string;
 	envType: LagoonCardLabelProps['type'];
@@ -104,9 +105,9 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			title: 'Env Name',
 			dataIndex: 'title',
 			key: 'title',
-			render: (name: string) => (
+			render: (title: string, record: Environment) => (
 				<LinkContainer>
-					<Link href={`${basePath}/${name}`}>{name}</Link>
+					<Link href={`${basePath}/${record.name}`}>{title}</Link>
 				</LinkContainer>
 			),
 			width: '17.31%',
@@ -191,7 +192,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 				actions: (
 					<ActionWrap>
 						<LinkContainer>
-							<Link href={`${basePath}/${environment.title}`}>
+							<Link href={`${basePath}/${environment.name}`}>
 								<EyeOutlined />
 							</Link>
 						</LinkContainer>

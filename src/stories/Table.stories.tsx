@@ -179,6 +179,7 @@ export const EnvironmentsTable: Story = {
 				{
 					id: 3,
 					title: 'main',
+					name: 'main',
 					deployType: 'branch',
 					envType: 'production',
 					region: 'US3',
@@ -188,6 +189,7 @@ export const EnvironmentsTable: Story = {
 				{
 					id: 4,
 					title: 'staging',
+					name: 'staging-env',
 					deployType: 'branch',
 					envType: 'standby production',
 					region: 'US3',
@@ -196,6 +198,7 @@ export const EnvironmentsTable: Story = {
 				{
 					id: 6,
 					title: 'pr-175',
+					name: 'pr-some-name',
 					deployType: 'pullrequest',
 					envType: 'active production',
 					region: 'US3',
@@ -203,20 +206,13 @@ export const EnvironmentsTable: Story = {
 				},
 				{
 					id: 181,
-					title: 'as-demo-hmm-this-is-a-really-long-branch-name-designed-0d7b',
+					title: 'Env name',
+					name: 'as-demo-hmm-this-is-a-really-long-branch-name-designed-0d7b',
 					deployType: 'branch',
 					envType: 'development',
 					region: 'US3',
 					last_deployment: '28/12/2022',
 					activeRoutes: fakeActiveRoutes,
-					quickActions: envQuickActions,
-				},
-				{
-					id: 182,
-					title: 'testing_again',
-					deployType: 'branch',
-					envType: 'development',
-					region: null,
 					quickActions: envQuickActions,
 				},
 			]}
