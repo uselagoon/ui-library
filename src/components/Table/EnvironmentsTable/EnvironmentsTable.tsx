@@ -22,7 +22,7 @@ dayjs.extend(duration);
 dayjs.extend(utc);
 
 export type Environment = {
-	id: number;
+	id?: number;
 	title: string;
 	deployType: string;
 	envType: LagoonCardLabelProps['type'];

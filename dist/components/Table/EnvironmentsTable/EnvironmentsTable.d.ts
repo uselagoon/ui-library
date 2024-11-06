@@ -3,7 +3,7 @@ import { TableProps } from 'antd';
 import { LagoonCardLabelProps } from '../../CardLabel';
 import { DefaultCardProps } from '../../Card/Card';
 export type Environment = {
-    id: number;
+    id?: number;
     title: string;
     deployType: string;
     envType: LagoonCardLabelProps['type'];
