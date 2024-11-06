@@ -204,4 +204,6 @@ export {
 	IconZoomOut,
 	IconSun,
 	IconLagoonOnly,
+	IconGrid,
+	IconList,
 } from './components/Icons/index';

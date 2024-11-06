@@ -71,4 +71,6 @@ export declare const IconZoomOut: (props: Partial<CustomIconComponentProps>) => 
 export declare const LagoonIcon: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
 export declare const IconSun: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
 export declare const IconLagoonOnly: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
+export declare const IconGrid: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
+export declare const IconList: (props: Partial<CustomIconComponentProps>) => import("react/jsx-runtime").JSX.Element;
 export {};
