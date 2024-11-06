@@ -201,7 +201,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			};
 		});
 
-	const summary = () => newEnvironmentModal;
+	const summary = () => <section className="summary">{newEnvironmentModal}</section>;
 
 	return (
 		<>

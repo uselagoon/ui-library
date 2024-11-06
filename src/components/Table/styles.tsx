@@ -78,6 +78,10 @@ export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate'
 
 	tfoot.ant-table-summary {
 		background-color: transparent;
+
+		section.summary {
+			padding: 17px 13px;
+		}
 	}
 
 	tbody {
