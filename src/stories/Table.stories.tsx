@@ -4,7 +4,8 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { default as BaseTable } from '../components/Table';
 import { Controls, Primary, Stories, Title } from '@storybook/blocks';
-import { EyeOutlined, SmileOutlined } from '@ant-design/icons';
+import { CarryOutOutlined, EyeOutlined, SmileOutlined } from '@ant-design/icons';
+import { LinkContainer } from '../components/Table/DeploymentsTable/styles';
 
 const meta: Meta<typeof BaseTable> = {
 	component: BaseTable,
@@ -145,6 +146,90 @@ export const ProjectsTable: Story = {
 };
 export const ProjectsTableSkeleton: Story = {
 	render: () => <BaseTable.ProjectsTable skeleton />,
+};
+
+const envQuickActions = [
+	{
+		sectionTitle: 'Jump to an Environment',
+		sectionChildren: [<></>],
+	},
+	{
+		sectionTitle: 'Variables',
+		sectionChildren: [
+			<LinkContainer>
+				<CarryOutOutlined />
+				<span>View and create project variables</span>
+			</LinkContainer>,
+		],
+	},
+	{
+		sectionTitle: 'Deploy',
+		sectionChildren: [<></>],
+	},
+];
+
+const fakeActiveRoutes = [<a target="_blank">{'some-route'}</a>, <a target="_blank">{'some-other-route'}</a>];
+
+export const EnvironmentsTable: Story = {
+	render: () => (
+		<BaseTable.EnvironmentsTable
+			newEnvironmentModal={<></>}
+			environments={[
+				{
+					id: 3,
+					title: 'main',
+					deployType: 'branch',
+					envType: 'production',
+					navigateTo: () => {},
+					region: 'US3',
+					last_deployment: '28/12/2022',
+					quickActions: envQuickActions,
+				},
+				{
+					id: 4,
+					title: 'staging',
+					deployType: 'branch',
+					envType: 'standby production',
+					navigateTo: () => {},
+					region: 'US3',
+					quickActions: envQuickActions,
+				},
+				{
+					id: 6,
+					title: 'pr-175',
+					deployType: 'pullrequest',
+					envType: 'active production',
+					navigateTo: () => {},
+					region: 'US3',
+					quickActions: envQuickActions,
+				},
+				{
+					id: 181,
+					title: 'as-demo-hmm-this-is-a-really-long-branch-name-designed-0d7b',
+					deployType: 'branch',
+					envType: 'development',
+					navigateTo: () => {},
+					region: 'US3',
+					last_deployment: '28/12/2022',
+					activeRoutes: fakeActiveRoutes,
+					quickActions: envQuickActions,
+				},
+				{
+					id: 182,
+					title: 'testing_again',
+					deployType: 'branch',
+					envType: 'development',
+					navigateTo: () => {},
+					region: null,
+					quickActions: envQuickActions,
+				},
+			]}
+		/>
+	),
+};
+
+export const EnvironmentsTableSkeleton: Story = {
+	render: () => <BaseTable.EnvironmentsTable skeleton />,
 };
 
 export const DeploymentsTable: Story = {

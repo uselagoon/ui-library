@@ -8,9 +8,8 @@ import colors from '../../_util/colors';
 import { EnvironmentPartial } from './partials/EnvironmentPartial';
 import { ProjectPartial } from './partials/ProjectPartial';
 import TreeList from '../TreeList';
-import { EnvironmentDetailsType } from '../EnvironmentDetails';
 
-type DefaultProps = {
+export type DefaultCardProps = {
 	loading?: boolean;
 	title: string;
 	status: 'low' | 'medium' | 'high' | 'critical';
@@ -23,13 +22,12 @@ type DefaultProps = {
 	}[];
 };
 
-// TODO: proper env type
+// TODO: proper env type (currently unused)
 type ProjectCard = {
 	type: 'project';
 	environments: string[];
 };
 
-// TODO: proper project type
 type EnvCard = {
 	type: 'environment';
 	envType: LagoonCardLabelProps['type'];
@@ -47,7 +45,7 @@ type LoaderCard = {
 	type: 'loaderOnly';
 };
 
-export type CardProps = (ProjectCard & DefaultProps) | (EnvCard & DefaultProps) | NewCard | LoaderCard;
+export type CardProps = (ProjectCard & DefaultCardProps) | (EnvCard & DefaultCardProps) | NewCard | LoaderCard;
 
 export type InternalCardProps = Pick<AntCardProps, 'bodyStyle' | 'headStyle' | 'bordered' | 'size'> & CardProps;
 
@@ -83,7 +81,7 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 
 	const { type, loading, title, cardClassName, styles, quickActions, status = 'low', navigateTo, ...rest } = props;
 
-	const getStatusIcon = (status: DefaultProps['status']) => {
+	const getStatusIcon = (status: DefaultCardProps['status']) => {
 		switch (status) {
 			case 'critical':
 				return <FrownOutlined style={{ color: colors.pink }} />;

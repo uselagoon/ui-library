@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { CardProps as AntCardProps } from 'antd';
 import { NewCard, NewEnvironmentType } from './partials/NewCard';
 import { LagoonCardLabelProps } from '../CardLabel';
-type DefaultProps = {
+export type DefaultCardProps = {
     loading?: boolean;
     title: string;
     status: 'low' | 'medium' | 'high' | 'critical';
@@ -32,7 +32,7 @@ type NewCard = {
 type LoaderCard = {
     type: 'loaderOnly';
 };
-export type CardProps = (ProjectCard & DefaultProps) | (EnvCard & DefaultProps) | NewCard | LoaderCard;
+export type CardProps = (ProjectCard & DefaultCardProps) | (EnvCard & DefaultCardProps) | NewCard | LoaderCard;
 export type InternalCardProps = Pick<AntCardProps, 'bodyStyle' | 'headStyle' | 'bordered' | 'size'> & CardProps;
 declare const LagoonCard: React.ForwardRefExoticComponent<InternalCardProps & React.RefAttributes<HTMLDivElement>>;
 export default LagoonCard;

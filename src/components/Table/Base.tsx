@@ -10,6 +10,7 @@ import { FactsTableProps } from './FactsTable/FactsTable';
 import { InsightsTableProps } from './InsightsTable/InsightsTable';
 import { TasksTableProps } from './TasksTable/TasksTable';
 import { ProjectsTableProps } from './ProjectsTable/ProjectsTable';
+import { EnvironmentsTableProps } from './EnvironmentsTable/EnvironmentsTable';
 
 export interface BaseTableWithComponents
 	extends React.ForwardRefExoticComponent<BaseTableProps & React.RefAttributes<HTMLDivElement>> {
@@ -21,6 +22,7 @@ export interface BaseTableWithComponents
 	InsightsTable: React.FC<InsightsTableProps>;
 	TasksTable: React.FC<TasksTableProps>;
 	ProjectsTable: React.FC<ProjectsTableProps>;
+	EnvironmentsTable: React.FC<EnvironmentsTableProps>;
 }
 
 type BaseTableProps = Omit<TableProps, 'locale'> & { variant?: 'alternate' | 'default'; lastRowBordered?: boolean };

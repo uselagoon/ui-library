@@ -1,6 +1,5 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLinkComponent } from '../../../providers/NextLinkProvider';
-import Highlighter from 'react-highlight-words';
 import { TableProps, Tooltip } from 'antd';
 import { ActionWrap } from '../styles';
 import { LinkContainer } from '../DeploymentsTable/styles';
@@ -13,6 +12,7 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import duration from 'dayjs/plugin/duration';
 import ProjectsTableSkeleton from './ProjectsTableSkeleton';
+import { highlightTextInElement } from '../../../_util/helpers';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -51,27 +51,6 @@ export type ProjectsTableSkeleton = {
 
 export type ProjectsTableProps = Omit<TableProps, 'pagination' | 'filteredValue'> &
 	(ProjectsTableSkeleton | ProjectsProps);
-
-const highlightTextInElement = (element: ReactNode, searchString: string, key: string | number): any => {
-	// recursively apply highlighting to all text nodes
-	if (typeof element === 'string') {
-		return (
-			<Highlighter highlightClassName="highlighted" searchWords={[searchString]} autoEscape textToHighlight={element} />
-		);
-	}
-
-	if (React.isValidElement(element)) {
-		return React.cloneElement(
-			element,
-			{ ...element.props, key: `item-${key}` },
-			React.Children.map(element.props.children, (child, index) =>
-				highlightTextInElement(child, searchString, `${index}-${key}`),
-			),
-		);
-	}
-
-	return element;
-};
 
 const getLatestDate = (environments: Project['environments']) => {
 	return environments
