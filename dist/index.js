@@ -478,7 +478,7 @@ html,body{
 			`}
 	}
 `,xA=l.default.section`
-	background-color: initial;
+	background-color: #fff;
 	${e=>"dark"===e.theme.colorScheme&&A.css`
 			background-color: ${U.cellGray};
 

@@ -64,7 +64,7 @@ const StyledSelect = styled(Select)<SelectProps>`
 `;
 
 const StyledDropDown = styled.section`
-	background-color: initial;
+	background-color: #fff;
 	${(props) =>
 		props.theme.colorScheme === 'dark' &&
 		css`

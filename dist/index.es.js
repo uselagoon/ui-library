@@ -478,7 +478,7 @@ html,body{
 			`}
 	}
 `,Fe=A.section`
-	background-color: initial;
+	background-color: #fff;
 	${A=>"dark"===A.theme.colorScheme&&t`
 			background-color: ${LA.cellGray};
 
