@@ -21,7 +21,7 @@ export type BackupsTableSkeleton = {
 export type BackupsTableProps = {
     resultsPerPage?: number;
     filterStatus?: 'pending' | 'failed' | 'successful';
-    filterDateRange?: [string, string] | null;
+    filterDateRange?: string[] | null;
 } & (BackupsTableSkeleton | BackupsProps);
 declare const BackupsTable: (props: BackupsTableProps) => import("react/jsx-runtime").JSX.Element;
 export default BackupsTable;

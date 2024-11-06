@@ -44,7 +44,7 @@ export type BackupsTableSkeleton = {
 export type BackupsTableProps = {
 	resultsPerPage?: number;
 	filterStatus?: 'pending' | 'failed' | 'successful';
-	filterDateRange?: [string, string] | null;
+	filterDateRange?: string[] | null;
 } & (BackupsTableSkeleton | BackupsProps);
 
 function humanFileSize(size: number): string {

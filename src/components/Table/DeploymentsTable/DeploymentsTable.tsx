@@ -50,7 +50,7 @@ export type DeploymentsTableSkeleton = {
 export type DeploymentsTableProps = {
 	resultsPerPage?: number;
 	filterStatus?: Deployment['status'];
-	filterDateRange?: [string, string] | null;
+	filterDateRange?: string[] | null;
 } & (DeploymentsTableSkeleton | DeploymentProps);
 
 export const getDeploymentDuration = (deployment: Deployment) => {

@@ -29,7 +29,7 @@ export type DeploymentsTableSkeleton = {
 export type DeploymentsTableProps = {
     resultsPerPage?: number;
     filterStatus?: Deployment['status'];
-    filterDateRange?: [string, string] | null;
+    filterDateRange?: string[] | null;
 } & (DeploymentsTableSkeleton | DeploymentProps);
 export declare const getDeploymentDuration: (deployment: Deployment) => string;
 declare const DeploymentsTable: (props: DeploymentsTableProps) => import("react/jsx-runtime").JSX.Element;
