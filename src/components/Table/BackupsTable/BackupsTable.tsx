@@ -14,7 +14,9 @@ import CopyToClipboard from '../../CopyToClipboard';
 import { Tooltip } from 'antd';
 import Text from '../../Text';
 import { StyledDownloadButton } from './styles';
+import isBetween from 'dayjs/plugin/isBetween';
 
+dayjs.extend(isBetween);
 dayjs.extend(utc);
 dayjs.extend(relativeTime);
 
@@ -80,9 +82,12 @@ const BackupsTable = (props: BackupsTableProps) => {
 					const statusMatches = filterStatus ? item?.restore?.status === filterStatus : true;
 					const dateMatches =
 						filterDateRange && filterDateRange.every(Boolean)
-							? // both start and end dates are inclusive, including "today"
-								new Date(item.created) >= new Date(filterDateRange[0]) &&
-								new Date(item.created) <= new Date(`${filterDateRange[1]}T23:59:59.999Z`) // inclusive of the full end date
+							? dayjs(item.created).isBetween(
+									dayjs(filterDateRange[0]).startOf('day'),
+									dayjs(filterDateRange[1]).endOf('day'),
+									null,
+									'[)',
+								)
 							: true;
 
 					return statusMatches && dateMatches;

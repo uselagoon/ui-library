@@ -288,14 +288,15 @@ export const DeploymentsTable: Story = {
 					id: 2878,
 					name: 'lagoon-build-anakk',
 					status: 'cancelled',
-					created: '2023-09-19 07:10:54',
-					started: '2023-09-19 07:11:24',
-					completed: '2023-09-19 07:17:22',
+					created: '2024-11-07 01:10:54',
+					started: '2024-11-07 01:11:24',
+					completed: '2024-11-07 01:17:22',
 					bulkId: null,
 					sourceType: 'API',
 					priority: null,
 				},
 			]}
+			filterDateRange={['2024-11-07', '2024-11-07']}
 		/>
 	),
 };
