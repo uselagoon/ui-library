@@ -284,7 +284,7 @@ export const DeploymentsTable: Story = {
 					id: 2878,
 					name: 'lagoon-build-anakk',
 					status: 'cancelled',
-					created: '2024-11-07 01:10:54',
+					created: '2024-11-06 21:15:02',
 					started: '2024-11-07 01:11:24',
 					completed: '2024-11-07 01:17:22',
 					bulkId: null,
