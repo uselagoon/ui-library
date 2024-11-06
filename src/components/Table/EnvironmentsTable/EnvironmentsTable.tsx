@@ -29,7 +29,7 @@ export type Environment = {
 	envType: LagoonCardLabelProps['type'];
 	region: null | string;
 	quickActions?: DefaultCardProps['quickActions'];
-	activeRoutes?: JSX.Element[];
+	activeRoutes?: ReactNode;
 	last_deployment?: string;
 };
 
