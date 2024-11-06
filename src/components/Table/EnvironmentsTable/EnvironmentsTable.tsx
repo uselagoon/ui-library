@@ -17,6 +17,7 @@ import TreeList from '../../TreeList';
 import { StyledMoreActionsIcon } from '../../Card/styles';
 import { formatEnvType } from '../_utils';
 import EnvironmentsTableSkeleton from './EnvironmentsTableSkeleton';
+import { useLinkComponent } from '../../../providers/NextLinkProvider';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -27,7 +28,6 @@ export type Environment = {
 	deployType: string;
 	envType: LagoonCardLabelProps['type'];
 	region: null | string;
-	navigateTo: () => void;
 	quickActions?: DefaultCardProps['quickActions'];
 	activeRoutes?: JSX.Element[];
 	last_deployment?: string;
@@ -36,6 +36,7 @@ export type Environment = {
 export type EnvironmentsProps = {
 	environments: Environment[];
 	newEnvironmentModal: ReactNode;
+	basePath: string;
 	resultsPerPage?: number;
 	filterString?: string;
 	skeleton?: false;
@@ -45,8 +46,6 @@ export type EnvironmentsTableSkeleton = {
 	skeleton: true;
 };
 
-type RowType = Environment & { lastRow?: boolean };
-
 export type EnvironmentsTableProps = Omit<TableProps, 'pagination' | 'filteredValue'> &
 	(EnvironmentsTableSkeleton | EnvironmentsProps);
 
@@ -55,7 +54,9 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 		return <EnvironmentsTableSkeleton />;
 	}
 
-	const { resultsPerPage, filterString = '', environments, newEnvironmentModal } = props;
+	const { resultsPerPage, basePath, filterString = '', environments, newEnvironmentModal } = props;
+
+	const Link = useLinkComponent();
 
 	// pagination
 	const [currentPage, setCurrentPage] = useState(1);
@@ -92,7 +93,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			title: 'Usage',
 			dataIndex: 'envType',
 			key: 'envType',
-			render: (_: string, record: RowType) => (
+			render: (_: string, record: Environment) => (
 				<div style={{ display: 'flex', placeContent: 'center' }}>
 					<LagoonCardLabel type={record.envType} variant="horizontal" />
 				</div>
@@ -103,9 +104,9 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			title: 'Env Name',
 			dataIndex: 'title',
 			key: 'title',
-			render: (name: string, record: RowType) => (
+			render: (name: string) => (
 				<LinkContainer>
-					<span onClick={() => record.navigateTo()}>{name}</span>
+					<Link href={`${basePath}/${name}`}>{name}</Link>
 				</LinkContainer>
 			),
 			width: '17.31%',
@@ -114,9 +115,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			title: 'Region',
 			dataIndex: 'region',
 			key: 'region',
-			render: (region: string, record: RowType) => {
-				if (record.lastRow) return <></>;
-
+			render: (region: string) => {
 				return <div>{region ? region : '-'}</div>;
 			},
 			width: '10.64%',
@@ -126,8 +125,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			dataIndex: 'deployType',
 			key: 'deployType',
 			width: '10.64%',
-			render: (deployType: string, record: RowType) => {
-				if (record.lastRow) return <></>;
+			render: (deployType: string) => {
 				return <div>{deployType ? formatEnvType(deployType) : '-'}</div>;
 			},
 		},
@@ -193,7 +191,9 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 				actions: (
 					<ActionWrap>
 						<LinkContainer>
-							<EyeOutlined onClick={() => environment.navigateTo()} />
+							<Link href={`${basePath}/${environment.title}`}>
+								<EyeOutlined />
+							</Link>
 						</LinkContainer>
 						{actions}
 					</ActionWrap>
@@ -201,18 +201,15 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			};
 		});
 
-	const lastRow = {
-		envType: newEnvironmentModal,
-		lastRow: true,
-	};
+	const summary = () => newEnvironmentModal;
 
 	return (
 		<>
 			<BaseTable
-				dataSource={[...remappedEnvs, lastRow]}
+				dataSource={remappedEnvs}
 				columns={wrappedColumns}
 				rowKey={(record) => record.name}
-				lastRowBordered={true}
+				summary={summary}
 			/>
 			<Pagination
 				total={totalFilteredCount}

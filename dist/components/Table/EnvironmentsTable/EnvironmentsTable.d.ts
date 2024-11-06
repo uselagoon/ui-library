@@ -8,7 +8,6 @@ export type Environment = {
     deployType: string;
     envType: LagoonCardLabelProps['type'];
     region: null | string;
-    navigateTo: () => void;
     quickActions?: DefaultCardProps['quickActions'];
     activeRoutes?: JSX.Element[];
     last_deployment?: string;
@@ -16,6 +15,7 @@ export type Environment = {
 export type EnvironmentsProps = {
     environments: Environment[];
     newEnvironmentModal: ReactNode;
+    basePath: string;
     resultsPerPage?: number;
     filterString?: string;
     skeleton?: false;

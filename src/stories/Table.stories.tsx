@@ -173,14 +173,14 @@ const fakeActiveRoutes = [<a target="_blank">{'some-route'}</a>, <a target="_bla
 export const EnvironmentsTable: Story = {
 	render: () => (
 		<BaseTable.EnvironmentsTable
-			newEnvironmentModal={<></>}
+			basePath="/"
+			newEnvironmentModal={<button>Add Env</button>}
 			environments={[
 				{
 					id: 3,
 					title: 'main',
 					deployType: 'branch',
 					envType: 'production',
-					navigateTo: () => {},
 					region: 'US3',
 					last_deployment: '28/12/2022',
 					quickActions: envQuickActions,
@@ -190,7 +190,6 @@ export const EnvironmentsTable: Story = {
 					title: 'staging',
 					deployType: 'branch',
 					envType: 'standby production',
-					navigateTo: () => {},
 					region: 'US3',
 					quickActions: envQuickActions,
 				},
@@ -199,7 +198,6 @@ export const EnvironmentsTable: Story = {
 					title: 'pr-175',
 					deployType: 'pullrequest',
 					envType: 'active production',
-					navigateTo: () => {},
 					region: 'US3',
 					quickActions: envQuickActions,
 				},
@@ -208,7 +206,6 @@ export const EnvironmentsTable: Story = {
 					title: 'as-demo-hmm-this-is-a-really-long-branch-name-designed-0d7b',
 					deployType: 'branch',
 					envType: 'development',
-					navigateTo: () => {},
 					region: 'US3',
 					last_deployment: '28/12/2022',
 					activeRoutes: fakeActiveRoutes,
@@ -219,7 +216,6 @@ export const EnvironmentsTable: Story = {
 					title: 'testing_again',
 					deployType: 'branch',
 					envType: 'development',
-					navigateTo: () => {},
 					region: null,
 					quickActions: envQuickActions,
 				},
