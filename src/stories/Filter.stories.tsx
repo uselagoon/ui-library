@@ -27,7 +27,7 @@ const meta: Meta<typeof LagoonFilter> = {
 type Story = StoryObj<typeof LagoonFilter>;
 
 export const Default: Story = {
-	render: () => <LagoonFilter />,
+	render: () => <LagoonFilter></LagoonFilter>,
 };
 
 export default meta;

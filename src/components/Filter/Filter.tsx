@@ -21,10 +21,11 @@ type FilterProps = {
 	};
 	showDateRange?: boolean;
 	loadingSkeleton?: boolean;
+	children?: React.ReactNode;
 };
 
 const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps> = (
-	{ selectOptions, searchOptions, sortOptions, loadingSkeleton = false, showDateRange = false },
+	{ children, selectOptions, searchOptions, sortOptions, loadingSkeleton = false, showDateRange = false },
 	ref,
 ) => {
 	const inputRef = useRef<any>();
@@ -74,6 +75,8 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 						/>
 					</div>
 				) : null}
+
+				{children ? children : null}
 			</div>
 			<div className="searchBar">
 				<StyledSearch
@@ -94,42 +97,6 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 	);
 };
 
-// 	&,
-// 	& > * {
-// 		background-color: transparent;
-// 	}
-// 	.ant-input-wrapper {
-// 		border-bottom: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#6b6b6e' : '#0c0c0c')};
-// 		background-color: transparent;
-// 		& > * {
-// 			background-color: transparent;
-// 		}
-// 		.ant-input-affix-wrapper {
-// 			padding-inline: 0;
-// 		}
-// 		.ant-input-group-addon {
-// 			button {
-// 				user-select: none;
-// 				pointer-events: none;
-// 				background: transparent;
-// 				border: none;
-// 				color: ${(props) => (props.theme.colorScheme === 'dark' ? '#6b6b6e' : '#0c0c0c')} !important;
-// 				.ant-btn-icon {
-// 					span[role='img'] {
-// 						font-size: 22px;
-// 					}
-// 				}
-// 			}
-// 		}
-// 		input {
-// 			padding-left: 0;
-// 			color: ${(props) => (props.theme.colorScheme === 'dark' ? '#fafafa' : '#0c0c0c')};
-// 			&::placeholder {
-// 				color: ${(props) => (props.theme.colorScheme === 'dark' ? '#6b6b6e' : '#0c0c0c')};
-// 			}
-// 		}
-// 	}
-// `;
 const LagoonFilter = forwardRef<HTMLDivElement, FilterProps>(InternalFilter);
 
 LagoonFilter.displayName = 'LagoonFilter';

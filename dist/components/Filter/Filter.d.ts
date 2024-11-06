@@ -16,6 +16,7 @@ type FilterProps = {
     };
     showDateRange?: boolean;
     loadingSkeleton?: boolean;
+    children?: React.ReactNode;
 };
 declare const LagoonFilter: React.ForwardRefExoticComponent<FilterProps & React.RefAttributes<HTMLDivElement>>;
 export default LagoonFilter;
