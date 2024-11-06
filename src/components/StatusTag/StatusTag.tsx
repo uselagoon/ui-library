@@ -4,6 +4,7 @@ import { Tag, TagProps } from 'antd';
 import colors from '../../_util/colors';
 import {
 	CheckCircleOutlined,
+	CloseOutlined,
 	PauseCircleOutlined,
 	QuestionCircleOutlined,
 	StopOutlined,
@@ -17,7 +18,17 @@ const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str
 export type UITagProps = Omit<TagProps, 'color' | 'icon'> &
 	(
 		| {
-				type: 'running' | 'complete' | 'successful' | 'failed' | 'error' | 'queued' | 'new' | 'pending' | 'unavailable';
+				type:
+					| 'running'
+					| 'complete'
+					| 'successful'
+					| 'failed'
+					| 'error'
+					| 'queued'
+					| 'new'
+					| 'pending'
+					| 'cancelled'
+					| 'unavailable';
 		  }
 		| {
 				type: 'custom';
@@ -74,6 +85,10 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, UITagProps> =
 		unavailable: {
 			color: colors.lightOrange,
 			icon: <QuestionCircleOutlined />,
+		},
+		cancelled: {
+			color: colors.pink,
+			icon: <CloseOutlined />,
 		},
 	};
 

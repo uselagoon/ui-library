@@ -19,7 +19,7 @@ type BasicFn = (...args: any[]) => any;
 type Deployment = {
 	id: number;
 	name: string;
-	status: 'running' | 'complete' | 'failed' | 'error' | 'queued' | 'new';
+	status: 'running' | 'complete' | 'failed' | 'error' | 'queued' | 'new' | 'cancelled';
 	created: string;
 	started: string;
 	completed: string;
@@ -50,7 +50,7 @@ export type DeploymentsTableSkeleton = {
 export type DeploymentsTableProps = {
 	resultsPerPage?: number;
 	filterStatus?: Deployment['status'];
-	filterDateRange?: [string, string];
+	filterDateRange?: [string, string] | null;
 } & (DeploymentsTableSkeleton | DeploymentProps);
 
 export const getDeploymentDuration = (deployment: Deployment) => {
@@ -96,10 +96,12 @@ const DeploymentsTable = (props: DeploymentsTableProps) => {
 		return deployments
 			? deployments.filter((item) => {
 					const statusMatches = filterStatus ? item.status === filterStatus : true;
+
 					const dateMatches =
 						filterDateRange && filterDateRange.every(Boolean)
-							? new Date(item.created) >= new Date(filterDateRange[0]) &&
-								new Date(item.created) <= new Date(filterDateRange[1])
+							? // both start and end dates are inclusive, including "today"
+								new Date(item.created) >= new Date(filterDateRange[0]) &&
+								new Date(item.created) <= new Date(`${filterDateRange[1]}T23:59:59.999Z`) // inclusive of the full end date
 							: true;
 
 					return statusMatches && dateMatches;

@@ -1,7 +1,7 @@
 type Deployment = {
     id: number;
     name: string;
-    status: 'running' | 'complete' | 'failed' | 'error' | 'queued' | 'new';
+    status: 'running' | 'complete' | 'failed' | 'error' | 'queued' | 'new' | 'cancelled';
     created: string;
     started: string;
     completed: string;
@@ -29,7 +29,7 @@ export type DeploymentsTableSkeleton = {
 export type DeploymentsTableProps = {
     resultsPerPage?: number;
     filterStatus?: Deployment['status'];
-    filterDateRange?: [string, string];
+    filterDateRange?: [string, string] | null;
 } & (DeploymentsTableSkeleton | DeploymentProps);
 export declare const getDeploymentDuration: (deployment: Deployment) => string;
 declare const DeploymentsTable: (props: DeploymentsTableProps) => import("react/jsx-runtime").JSX.Element;

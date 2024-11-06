@@ -44,7 +44,7 @@ export type BackupsTableSkeleton = {
 export type BackupsTableProps = {
 	resultsPerPage?: number;
 	filterStatus?: 'pending' | 'failed' | 'successful';
-	filterDateRange?: [string, string];
+	filterDateRange?: [string, string] | null;
 } & (BackupsTableSkeleton | BackupsProps);
 
 function humanFileSize(size: number): string {
@@ -80,8 +80,9 @@ const BackupsTable = (props: BackupsTableProps) => {
 					const statusMatches = filterStatus ? item?.restore?.status === filterStatus : true;
 					const dateMatches =
 						filterDateRange && filterDateRange.every(Boolean)
-							? new Date(item.created) >= new Date(filterDateRange[0]) &&
-								new Date(item.created) <= new Date(filterDateRange[1])
+							? // both start and end dates are inclusive, including "today"
+								new Date(item.created) >= new Date(filterDateRange[0]) &&
+								new Date(item.created) <= new Date(`${filterDateRange[1]}T23:59:59.999Z`) // inclusive of the full end date
 							: true;
 
 					return statusMatches && dateMatches;
