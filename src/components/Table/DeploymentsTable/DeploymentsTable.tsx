@@ -36,9 +36,9 @@ export type Deployment = {
 		};
 	};
 
-	bulkId?: number | null;
+	bulkId?: string | null;
 	priority: number | null;
-	sourceType?: 'API' | 'WEBHOOK';
+	sourceType: 'API' | 'WEBHOOK';
 	buildStep?: string | null;
 };
 

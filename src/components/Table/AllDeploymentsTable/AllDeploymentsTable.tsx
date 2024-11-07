@@ -12,12 +12,29 @@ import Pagination from '../../Pagination';
 
 import { Tooltip } from 'antd';
 
-import { Deployment, getDeploymentDuration } from '../DeploymentsTable/DeploymentsTable';
+import { Deployment } from '../DeploymentsTable/DeploymentsTable';
 import { BuildStepTooltip, LinkContainer, StatusContainer } from '../DeploymentsTable/styles';
 import AllDeploymentsSkeleton from './AllDeploymentsSkeleton';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
+
+const getDeploymentDuration = (deployment: SingleDeployment) => {
+	const deploymentStart = deployment.started || deployment.created;
+	const durationStart = deploymentStart ? dayjs.utc(deploymentStart) : dayjs.utc();
+	const durationEnd = deployment.completed ? dayjs.utc(deployment.completed) : dayjs.utc();
+	const duration = dayjs.duration(durationEnd.diff(durationStart));
+
+	const hours = String(Math.floor(duration.asHours())).padStart(2, '0');
+	const minutes = String(duration.minutes()).padStart(2, '0');
+	const seconds = String(duration.seconds()).padStart(2, '0');
+
+	let result = '';
+	if (hours !== '00') result += `${hours}hr `;
+	result += `${minutes}m ${seconds}sec`;
+
+	return result.trim();
+};
 
 type SingleDeployment = Omit<Deployment, 'sourceType' | 'bulkId'>;
 

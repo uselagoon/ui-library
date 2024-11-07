@@ -17,9 +17,9 @@ export type Deployment = {
             name: string;
         };
     };
-    bulkId?: number | null;
+    bulkId?: string | null;
     priority: number | null;
-    sourceType?: 'API' | 'WEBHOOK';
+    sourceType: 'API' | 'WEBHOOK';
     buildStep?: string | null;
 };
 export type DeploymentProps = {
