@@ -57,9 +57,11 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 					/>
 				</div>
 
-				<div className="sortBy">
-					<UISelect defaultOpen={false} placeholder="Sort by" options={sortOptions} />
-				</div>
+				{sortOptions ? (
+					<div className="sortBy">
+						<UISelect defaultOpen={false} placeholder="Sort by" options={sortOptions} />
+					</div>
+				) : null}
 
 				{showDateRange ? (
 					<div className="dateRange">

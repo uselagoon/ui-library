@@ -6,7 +6,7 @@ import { ActionWrap, EmptyAction } from '../styles';
 import { useEffect, useState } from 'react';
 import duration from 'dayjs/plugin/duration';
 import StatusTag from '../../StatusTag';
-
+import type { RenderedCell } from 'rc-table/lib/interface';
 import { useLinkComponent } from '../../../providers/NextLinkProvider';
 import Pagination from '../../Pagination';
 
@@ -15,6 +15,7 @@ import { Tooltip } from 'antd';
 import { Deployment } from '../DeploymentsTable/DeploymentsTable';
 import { BuildStepTooltip, LinkContainer, StatusContainer } from '../DeploymentsTable/styles';
 import AllDeploymentsSkeleton from './AllDeploymentsSkeleton';
+import { highlightTextInElement } from '../../../_util/helpers';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -142,7 +143,7 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 			render: (deployment_name: string, deployment: Deployment) => {
 				return (
 					<LinkContainer>
-						<Link href={`/projects/${deployment.environment?.project.name}/deployments${deployment_name}`}>
+						<Link href={`/projects/${deployment.environment?.project.name}/deployments/${deployment_name}`}>
 							{deployment_name}
 						</Link>
 					</LinkContainer>
@@ -217,6 +218,26 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 		},
 	];
 
+	// highlight found text
+	const wrappedColumns =
+		allDeploymentColumns &&
+		allDeploymentColumns.map((col) => ({
+			...col,
+			render: (renderElement: any, record: any, index: number): React.ReactNode | RenderedCell<any> => {
+				const renderedContent = col.render ? col.render(renderElement, record) : renderElement;
+
+				// RenderedCell or ReactNode
+				if (typeof renderedContent === 'object' && 'children' in renderedContent) {
+					return {
+						...renderedContent,
+						children: highlightTextInElement(renderedContent.children, filterString, index),
+					};
+				}
+
+				return highlightTextInElement(renderedContent, filterString, index);
+			},
+		}));
+
 	const remappedDeployments =
 		paginatedData &&
 		paginatedData.map((deployment) => {
@@ -252,7 +273,7 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 			<BaseTable
 				variant="alternate"
 				dataSource={remappedDeployments}
-				columns={allDeploymentColumns}
+				columns={wrappedColumns}
 				rowKey={(record) => record.id}
 			/>
 			<Pagination

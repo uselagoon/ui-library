@@ -115,7 +115,7 @@ const BulkDeploymentsTable = (props: BulkDeploymentsTableProps) => {
 			render: (deployment_name: string, deployment: Deployment) => {
 				return (
 					<LinkContainer>
-						<Link href={`/projects/${deployment.environment?.project.name}/deployments${deployment_name}`}>
+						<Link href={`/projects/${deployment.environment?.project.name}/deployments/${deployment_name}`}>
 							{deployment_name}
 						</Link>
 					</LinkContainer>
