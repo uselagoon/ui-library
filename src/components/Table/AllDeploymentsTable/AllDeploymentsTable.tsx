@@ -74,11 +74,17 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 
 	const { deployments, cancelDeployment } = props as AllDeploymentsProps;
 
-	// paginate based on the current filtered data ( status and date range )
-
+	// paginate based on the current filtered data
 	const filteredDeployments = deployments
 		? deployments.filter((item) => {
-				return Object.values(item).some((fieldValue) =>
+				const fieldsToCheck = [
+					item.name,
+					item.environment?.openshift.name,
+					item.environment?.project.name,
+					item.environment?.name,
+				];
+
+				return fieldsToCheck.some((fieldValue) =>
 					String(fieldValue).toLowerCase().includes(filterString.toLowerCase()),
 				);
 			})
@@ -218,25 +224,32 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 		},
 	];
 
-	// highlight found text
+	// highlight found text (only certain fields)
+	const fieldsToCheck = ['project_name', 'environment_name', 'openshift_name', 'deployment_name'];
 	const wrappedColumns =
 		allDeploymentColumns &&
-		allDeploymentColumns.map((col) => ({
-			...col,
-			render: (renderElement: any, record: any, index: number): React.ReactNode | RenderedCell<any> => {
-				const renderedContent = col.render ? col.render(renderElement, record) : renderElement;
+		allDeploymentColumns.map((col) => {
+			return {
+				...col,
+				render: (renderElement: any, record: any, index: number): React.ReactNode | RenderedCell<any> => {
+					const renderedContent = col.render ? col.render(renderElement, record) : renderElement;
 
-				// RenderedCell or ReactNode
-				if (typeof renderedContent === 'object' && 'children' in renderedContent) {
-					return {
-						...renderedContent,
-						children: highlightTextInElement(renderedContent.children, filterString, index),
-					};
-				}
+					const shouldHighlight = fieldsToCheck.includes(col.dataIndex);
+					if (shouldHighlight) {
+						// RenderedCell or ReactNode
+						if (typeof renderedContent === 'object' && 'children' in renderedContent) {
+							return {
+								...renderedContent,
+								children: highlightTextInElement(renderedContent.children, filterString, index),
+							};
+						}
 
-				return highlightTextInElement(renderedContent, filterString, index);
-			},
-		}));
+						return highlightTextInElement(renderedContent, filterString, index);
+					}
+					return renderedContent;
+				},
+			};
+		});
 
 	const remappedDeployments =
 		paginatedData &&

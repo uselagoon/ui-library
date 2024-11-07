@@ -140,7 +140,7 @@ export const ProjectsTable: Story = {
 				},
 			]}
 			basePath="/"
-			filterString=""
+			filterString="demo"
 		/>
 	),
 };
@@ -174,6 +174,7 @@ export const EnvironmentsTable: Story = {
 	render: () => (
 		<BaseTable.EnvironmentsTable
 			basePath="/"
+			filterString=""
 			newEnvironmentModal={<button>Add Env</button>}
 			environments={[
 				{

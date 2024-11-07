@@ -80,8 +80,10 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 
 	// paginate based on the current filtered data
 	const filteredData = projects
-		? projects.filter((item) => {
-				return Object.values(item).some((fieldValue) =>
+		? projects.filter((project) => {
+				const fieldsToCheck = [project.name, project.kubernetes.name, project.origin];
+
+				return fieldsToCheck.some((fieldValue) =>
 					String(fieldValue).toLowerCase().includes(filterString.toLowerCase()),
 				);
 			})
@@ -143,25 +145,32 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 		},
 	];
 
-	// highlight found text
+	// highlight found text (only certain fields)
+	const fieldsToCheck = ['name', 'cluster', 'origin'];
 	const wrappedColumns =
 		projectsColumns &&
-		projectsColumns.map((col) => ({
-			...col,
-			render: (renderElement: any, record: any, index: number): React.ReactNode | RenderedCell<any> => {
-				const renderedContent = col.render ? col.render(renderElement, record) : renderElement;
+		projectsColumns.map((col) => {
+			return {
+				...col,
+				render: (renderElement: any, record: any, index: number): React.ReactNode | RenderedCell<any> => {
+					const renderedContent = col.render ? col.render(renderElement, record) : renderElement;
 
-				// RenderedCell or ReactNode
-				if (typeof renderedContent === 'object' && 'children' in renderedContent) {
-					return {
-						...renderedContent,
-						children: highlightTextInElement(renderedContent.children, filterString, index),
-					};
-				}
+					const shouldHighlight = fieldsToCheck.includes(col.dataIndex);
+					if (shouldHighlight) {
+						// RenderedCell or ReactNode
+						if (typeof renderedContent === 'object' && 'children' in renderedContent) {
+							return {
+								...renderedContent,
+								children: highlightTextInElement(renderedContent.children, filterString, index),
+							};
+						}
 
-				return highlightTextInElement(renderedContent, filterString, index);
-			},
-		}));
+						return highlightTextInElement(renderedContent, filterString, index);
+					}
+					return renderedContent;
+				},
+			};
+		});
 
 	const remappedProjects =
 		paginatedData &&

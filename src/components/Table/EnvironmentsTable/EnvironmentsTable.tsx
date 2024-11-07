@@ -72,7 +72,10 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 	// paginate based on the current filtered data
 	const filteredData = environments
 		? environments.filter((item) => {
-				return Object.values(item).some((fieldValue) =>
+				console.warn(item);
+				const fieldsToCheck = [item.title, item.region, item.deployType, item.envType];
+
+				return fieldsToCheck.some((fieldValue) =>
 					String(fieldValue).toLowerCase().includes(filterString.toLowerCase()),
 				);
 			})
@@ -150,25 +153,32 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 		},
 	];
 
-	// highlight found text
+	// highlight found text (only certain fields)
+	const fieldsToCheck = ['envType', 'title', 'region', 'deployType'];
 	const wrappedColumns =
 		envColumns &&
-		envColumns.map((col) => ({
-			...col,
-			render: (renderElement: any, record: any, index: number): React.ReactNode | RenderedCell<any> => {
-				const renderedContent = col.render ? col.render(renderElement, record) : renderElement;
+		envColumns.map((col) => {
+			return {
+				...col,
+				render: (renderElement: any, record: any, index: number): React.ReactNode | RenderedCell<any> => {
+					const renderedContent = col.render ? col.render(renderElement, record) : renderElement;
 
-				// RenderedCell or ReactNode
-				if (typeof renderedContent === 'object' && 'children' in renderedContent) {
-					return {
-						...renderedContent,
-						children: highlightTextInElement(renderedContent.children, filterString, index),
-					};
-				}
+					const shouldHighlight = fieldsToCheck.includes(col.dataIndex);
+					if (shouldHighlight) {
+						// RenderedCell or ReactNode
+						if (typeof renderedContent === 'object' && 'children' in renderedContent) {
+							return {
+								...renderedContent,
+								children: highlightTextInElement(renderedContent.children, filterString, index),
+							};
+						}
 
-				return highlightTextInElement(renderedContent, filterString, index);
-			},
-		}));
+						return highlightTextInElement(renderedContent, filterString, index);
+					}
+					return renderedContent;
+				},
+			};
+		});
 
 	const remappedEnvs =
 		paginatedData &&

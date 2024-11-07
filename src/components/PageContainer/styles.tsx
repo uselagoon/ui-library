@@ -12,5 +12,6 @@ export const StyledPageContainer = styled.div`
 	background-attachment: fixed;
 	.content {
 		padding-inline: 8.888vw;
+		padding-block-end: 5rem;
 	}
 `;
