@@ -292,13 +292,104 @@ export const DeploymentsTable: Story = {
 					priority: null,
 				},
 			]}
-			filterDateRange={['2024-11-07', '2024-11-07']}
 		/>
 	),
 };
 
 export const DeploymentsTableSkeleton: Story = {
 	render: () => <BaseTable.DeploymentsTable skeleton />,
+};
+
+export const AllDeploymentsTable: Story = {
+	render: () => (
+		<BaseTable.AllDeploymentsTable
+			filterString=""
+			cancelDeployment={() => <>cancel</>}
+			deployments={[
+				{
+					id: 4830,
+					name: 'lagoon-build-s9f37h',
+					status: 'new',
+					created: '2024-11-07 00:36:56',
+					buildStep: null,
+					priority: null,
+					started: null,
+					completed: null,
+					environment: {
+						name: 'davits-env-test',
+						openshiftProjectName: 'davits-project-davits-env-test',
+						openshift: {
+							id: 1,
+							name: 'test6.amazee.io',
+						},
+						project: {
+							id: 693,
+							name: 'davits-project',
+						},
+					},
+				},
+				{
+					id: 4831,
+					name: 'lagoon-build-asdfg',
+					status: 'running',
+					created: '2024-11-07 00:46:56',
+					buildStep: null,
+					priority: null,
+					started: null,
+					completed: null,
+					environment: {
+						name: 'davits-env-test-2',
+						openshiftProjectName: 'davits-project-davits-env-test-another',
+						openshift: {
+							id: 1,
+							name: 'test6.amazee.io',
+						},
+						project: {
+							id: 693,
+							name: 'davits-project',
+						},
+					},
+				},
+			]}
+		/>
+	),
+};
+
+export const AllDeploymentsTableSkeleton: Story = {
+	render: () => <BaseTable.AllDeploymentsTable skeleton />,
+};
+
+export const BulkDeploymentsTable: Story = {
+	render: () => (
+		<BaseTable.BulkDeploymentsTable
+			cancelDeployment={() => <>cancel</>}
+			deployments={[
+				{
+					id: 2610,
+					name: 'lagoon-build-jcox7g',
+					status: 'failed',
+					created: '2023-08-07 01:19:42',
+					buildStep: 'routeConfigurationComplete',
+					started: '2023-08-07 01:19:43',
+					completed: '2023-08-07 01:21:00',
+					bulkId: '23c6deb6-c248-4466-811d-f14bb709a7d9',
+					bulkName: 'testing qos',
+					priority: 3,
+					environment: {
+						name: 'master-alt-test1',
+						openshiftProjectName: 'as-demo-test1-master-alt-test1',
+						project: {
+							name: 'as-demo-test1',
+						},
+					},
+				},
+			]}
+		/>
+	),
+};
+
+export const BulkDeploymentsSkeleton: Story = {
+	render: () => <BaseTable.BulkDeploymentsTable skeleton />,
 };
 
 export const BackupsTable: Story = {

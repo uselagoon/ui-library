@@ -16,21 +16,30 @@ dayjs.extend(isBetween);
 dayjs.extend(duration);
 dayjs.extend(utc);
 
-type BasicFn = (...args: any[]) => any;
-type Deployment = {
+export type Deployment = {
 	id: number;
 	name: string;
 	status: 'running' | 'complete' | 'failed' | 'error' | 'queued' | 'new' | 'cancelled';
 	created: string;
-	started: string;
-	completed: string;
-	sourceType: 'API' | 'WEBHOOK';
-	environment?: string;
-	remoteId?: string;
-	buildLog?: string;
-	buildStep?: string;
-	bulkId: number | null;
-	priority: string | null;
+	started: string | null;
+	completed: string | null;
+	environment?: {
+		name: string;
+		openshiftProjectName: string;
+		openshift: {
+			id: number;
+			name: string;
+		};
+		project: {
+			id: number;
+			name: string;
+		};
+	};
+
+	bulkId?: number | null;
+	priority: number | null;
+	sourceType?: 'API' | 'WEBHOOK';
+	buildStep?: string | null;
 };
 
 export type DeploymentProps = {

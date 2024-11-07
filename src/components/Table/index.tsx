@@ -7,6 +7,8 @@ import InsightsTable from './InsightsTable/InsightsTable';
 import TasksTable from './TasksTable/TasksTable';
 import ProjectsTable from './ProjectsTable/ProjectsTable';
 import EnvironmentsTable from './EnvironmentsTable/EnvironmentsTable';
+import AllDeploymentsTable from './AllDeploymentsTable/AllDeploymentsTable';
+import BulkDeploymentsTable from './BulkDeployments/BulkDeploymentsTable';
 import { default as SshTable } from './SshTable/SshTable';
 
 export type { BaseTableProps };
@@ -21,4 +23,6 @@ Table.FactsTable = FactsTable;
 Table.InsightsTable = InsightsTable;
 Table.TasksTable = TasksTable;
 Table.EnvironmentsTable = EnvironmentsTable;
+Table.AllDeploymentsTable = AllDeploymentsTable;
+Table.BulkDeploymentsTable = BulkDeploymentsTable;
 export default Table;

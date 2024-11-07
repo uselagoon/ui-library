@@ -1,5 +1,6 @@
 import { Empty, Table } from 'antd';
 import styled, { css } from 'styled-components';
+import colors from '../../_util/colors';
 
 export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate'; $lastRowBordered: boolean }>`
 	border: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#000' : '#fff')};
@@ -50,6 +51,13 @@ export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate'
 				border-bottom: 1px solid #75715e;
 				background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#75715E' : '#FAFAFA')};
 
+				&.ant-table-column-has-sorters:hover {
+					background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#717171' : '#d9dbdf')};
+				}
+				&.ant-table-column-sort,
+				&.ant-table-column-sort:hover {
+					background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#717171' : '#d9dbdf')};
+				}
 				${(props) => {
 					return (
 						props.$variant === 'alternate' &&
@@ -79,7 +87,8 @@ export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate'
 	tfoot.ant-table-summary {
 		background-color: transparent;
 
-		section.summary {
+		.summary {
+			display: block;
 			padding: 17px 13px;
 		}
 	}
@@ -109,6 +118,12 @@ export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate'
 				background: ${(props) => (props.theme.colorScheme === 'dark' ? '#32332c' : '#F8F8F2')} !important;
 			}
 
+			&.ant-table-column-sort {
+				background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#717171' : '#d9dbdf')};
+				&.ant-table-cell-row-hover {
+					background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#717171' : '#d9dbdf')} !important;
+				}
+			}
 			${(props) => {
 				return (
 					props.$variant === 'alternate' &&

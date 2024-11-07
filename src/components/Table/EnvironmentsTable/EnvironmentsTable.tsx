@@ -202,7 +202,8 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			};
 		});
 
-	const summary = () => <section className="summary">{newEnvironmentModal}</section>;
+	// only possible child is a `tr` element
+	const summary = () => <tr className="summary">{newEnvironmentModal}</tr>;
 
 	return (
 		<>
