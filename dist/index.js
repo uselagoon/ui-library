@@ -1911,7 +1911,7 @@ html,body{
 		color: #000;
 	}
 `,Ar=l.default(n.Tooltip)`
-	max-width: 160px;
+	max-width: 200px;
 `,er=l.default.div`
 	display: flex;
 	align-items: center;

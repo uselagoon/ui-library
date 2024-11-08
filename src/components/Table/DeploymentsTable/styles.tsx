@@ -15,7 +15,7 @@ export const StatusContainer = styled.section`
 `;
 
 export const BuildStepTooltip = styled(Tooltip)`
-	max-width: 160px;
+	max-width: 200px;
 `;
 
 export const LinkContainer = styled.div`

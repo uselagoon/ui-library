@@ -1911,7 +1911,7 @@ html,body{
 		color: #000;
 	}
 `,No=A(v)`
-	max-width: 160px;
+	max-width: 200px;
 `,bo=A.div`
 	display: flex;
 	align-items: center;
