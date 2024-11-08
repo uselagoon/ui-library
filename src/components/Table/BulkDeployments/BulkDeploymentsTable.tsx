@@ -205,7 +205,7 @@ const BulkDeploymentsTable = (props: BulkDeploymentsTableProps) => {
 				actions: (
 					<ActionWrap>
 						<LinkContainer>
-							<Link href={`/projects/${deployment.environment?.project.name}/deployments${deployment.name}`}>
+							<Link href={`/projects/${deployment.environment?.project.name}/deployments/${deployment.name}`}>
 								<EyeOutlined />
 							</Link>
 						</LinkContainer>
