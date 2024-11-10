@@ -97,7 +97,7 @@ const ProblemsTable = (props: InsightsTableProps) => {
 			const aValue = a[sortColumn as keyof Insight];
 			const bValue = b[sortColumn as keyof Insight];
 
-			// Determine the sort direction (1 for asc, -1 for desc)
+			// determine the sort direction (1 for asc, -1 for desc)
 			const direction = sortOrder === 'asc' ? 1 : -1;
 
 			// possible null checks.
