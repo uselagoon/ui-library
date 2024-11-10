@@ -7,7 +7,6 @@ import Pagination from '../../Pagination';
 import { ReactNode, useEffect, useState } from 'react';
 import { highlightTextInElement } from '../../../_util/helpers';
 import type { RenderedCell } from 'rc-table/lib/interface';
-import { TableProps } from 'antd';
 import styled from 'styled-components';
 
 dayjs.extend(duration);
@@ -187,7 +186,7 @@ const ProblemsTable = (props: FactsTableProps) => {
 	);
 };
 
-const PaginationWithSelector = styled.section`
+export const PaginationWithSelector = styled.section`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

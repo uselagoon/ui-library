@@ -20,4 +20,5 @@ export type FactsTableProps = {
     resultDropdown?: ReactNode;
 } & (FactsTableSkeleton | FactsProps);
 declare const ProblemsTable: (props: FactsTableProps) => import("react/jsx-runtime").JSX.Element;
+export declare const PaginationWithSelector: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>, never>>;
 export default ProblemsTable;

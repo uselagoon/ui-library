@@ -647,6 +647,8 @@ export const TasksTableSkeleton: Story = {
 export const InsightsTable: Story = {
 	render: () => (
 		<BaseTable.InsightsTable
+			sortBy="name_desc"
+			resultDropdown={<UISelect placeholder="Number of results" />}
 			insights={[
 				{
 					id: 1,
