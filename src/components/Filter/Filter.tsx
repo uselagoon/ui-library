@@ -45,20 +45,22 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 	return (
 		<StyledFilter ref={ref}>
 			<div className="select-container">
-				<div className="results">
-					<UISelect
-						disabled={loadingSkeleton}
-						defaultOpen={false}
-						placeholder="Results per page"
-						options={selectOptions?.options}
-						selectedState={selectOptions?.selectedState}
-						setSelectedState={(val) => {
-							if (selectOptions?.selectedState) {
-								selectOptions.setSelectedState(val);
-							}
-						}}
-					/>
-				</div>
+				{selectOptions ? (
+					<div className="results">
+						<UISelect
+							disabled={loadingSkeleton}
+							defaultOpen={false}
+							placeholder="Results per page"
+							options={selectOptions?.options}
+							selectedState={selectOptions?.selectedState}
+							setSelectedState={(val) => {
+								if (selectOptions?.selectedState) {
+									selectOptions.setSelectedState(val);
+								}
+							}}
+						/>
+					</div>
+				) : null}
 
 				{sortOptions ? (
 					<div className="sortBy">
