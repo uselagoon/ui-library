@@ -5,12 +5,12 @@ type SortType<T> = {
 };
 type FilterProps = {
     sortOptions?: {
-        options: SortType<string | number>[];
+        options: SortType<string | number | null | undefined>[];
         selectedState: unknown;
         setSelectedState: React.Dispatch<React.SetStateAction<unknown>>;
     };
     selectOptions?: {
-        options: SortType<string | number>[];
+        options: SortType<string | number | null | undefined>[];
         selectedState: unknown;
         setSelectedState: React.Dispatch<React.SetStateAction<unknown>>;
     };

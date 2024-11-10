@@ -9,12 +9,12 @@ type SortType<T> = {
 
 type FilterProps = {
 	sortOptions?: {
-		options: SortType<string | number>[];
+		options: SortType<string | number | null | undefined>[];
 		selectedState: unknown;
 		setSelectedState: React.Dispatch<React.SetStateAction<unknown>>;
 	};
 	selectOptions?: {
-		options: SortType<string | number>[];
+		options: SortType<string | number | null | undefined>[];
 		selectedState: unknown;
 		setSelectedState: React.Dispatch<React.SetStateAction<unknown>>;
 	};
@@ -28,7 +28,7 @@ type FilterProps = {
 };
 
 const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps> = (
-	{ children, selectOptions, searchOptions, sortOptions, loadingSkeleton = false, showDateRange = false },
+	{ children, selectOptions, searchOptions, sortOptions, loadingSkeleton = false },
 	ref,
 ) => {
 	const inputRef = useRef<any>();
@@ -52,11 +52,9 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 							defaultOpen={false}
 							placeholder="Results per page"
 							options={selectOptions?.options}
-							selectedState={selectOptions?.selectedState}
+							selectedState={selectOptions?.selectedState ?? undefined}
 							setSelectedState={(val) => {
-								if (selectOptions?.selectedState) {
-									selectOptions.setSelectedState(val);
-								}
+								selectOptions.setSelectedState(val);
 							}}
 						/>
 					</div>
@@ -68,28 +66,11 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 							disabled={loadingSkeleton}
 							defaultOpen={false}
 							placeholder="Sort by"
-							selectedState={sortOptions?.selectedState}
-							setSelectedState={(val) => {
-								if (sortOptions?.selectedState) {
-									sortOptions.setSelectedState(val);
-								}
-							}}
+							selectedState={sortOptions?.selectedState ?? undefined}
 							options={sortOptions.options}
-						/>
-					</div>
-				) : null}
-
-				{showDateRange ? (
-					<div className="dateRange">
-						<UISelect
-							disabled={loadingSkeleton}
-							defaultOpen={false}
-							placeholder="View by date range"
-							options={[
-								{ value: '1', label: 'Select option #1' },
-								{ value: '2', label: 'Select option #2' },
-								{ value: '3', label: 'Select option #3' },
-							]}
+							setSelectedState={(val) => {
+								sortOptions.setSelectedState(val);
+							}}
 						/>
 					</div>
 				) : null}
