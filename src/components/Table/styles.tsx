@@ -51,13 +51,25 @@ export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate'
 				border-bottom: 1px solid #75715e;
 				background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#75715E' : '#FAFAFA')};
 
+				&.ant-table-column-has-sorters {
+					.ant-table-column-sorters > .ant-table-column-sorter > .ant-table-column-sorter-inner {
+						color: ${(props) => (props.theme.colorScheme === 'dark' ? '#fff' : '#000')};
+					}
+				}
+
 				&.ant-table-column-has-sorters:hover {
 					background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#717171' : '#d9dbdf')};
 				}
+
 				&.ant-table-column-sort,
 				&.ant-table-column-sort:hover {
 					background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#717171' : '#d9dbdf')};
 				}
+
+				&.custom-sorted {
+					background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#717171' : '#d9dbdf')};
+				}
+
 				${(props) => {
 					return (
 						props.$variant === 'alternate' &&
@@ -123,6 +135,9 @@ export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate'
 				&.ant-table-cell-row-hover {
 					background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#717171' : '#d9dbdf')} !important;
 				}
+			}
+			&.custom-sorted {
+				background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#717171' : '#d9dbdf')};
 			}
 			${(props) => {
 				return (

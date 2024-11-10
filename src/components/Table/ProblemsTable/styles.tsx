@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const ProblemIdentifier = styled.span`
 	text-decoration: underline;
+	cursor: pointer;
 `;
 
 export const WrappedText = styled.div`

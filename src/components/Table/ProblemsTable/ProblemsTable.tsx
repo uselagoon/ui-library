@@ -7,6 +7,8 @@ import duration from 'dayjs/plugin/duration';
 import { ProblemIdentifier, WrappedText } from './styles';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import ProblemsTableSkeleton from './ProblemsTableSkeleton';
+import { useState } from 'react';
+import Head4 from '../../Heading/H4';
 dayjs.extend(duration);
 dayjs.extend(utc);
 
@@ -56,6 +58,12 @@ const ProblemsTable = (props: ProblemsTableProps) => {
 		return <ProblemsTableSkeleton />;
 	}
 
+	const [expandedRowIds, setExpandedRowIds] = useState<number[]>([]);
+
+	// manually handle row expansion
+	const handleExpand = (expanded: boolean, record: Problem) => {
+		setExpandedRowIds(expanded ? [...expandedRowIds, record.id] : expandedRowIds.filter((id) => id !== record.id));
+	};
 	const { problems } = props as ProblemProps;
 
 	const ProblemsColumns = [
@@ -64,8 +72,13 @@ const ProblemsTable = (props: ProblemsTableProps) => {
 			dataIndex: 'identifier',
 			key: 'identifier',
 			width: '12.25%',
-			render: (identifier: string) => {
-				return <ProblemIdentifier>{identifier}</ProblemIdentifier>;
+			sorter: (a: Problem, b: Problem) => a.identifier.localeCompare(b.identifier),
+			render: (identifier: string, problem: Problem) => {
+				return (
+					<ProblemIdentifier onClick={() => handleExpand(!expandedRowIds.includes(problem.id), problem)}>
+						{identifier}
+					</ProblemIdentifier>
+				);
 			},
 		},
 		{
@@ -73,33 +86,52 @@ const ProblemsTable = (props: ProblemsTableProps) => {
 			dataIndex: 'created',
 			key: 'created',
 			width: '11.25%',
+			sorter: (a: Problem, b: Problem) => new Date(a.created).getTime() - new Date(b.created).getTime(),
+			render: (created: string) => {
+				return (
+					<Tooltip placement="top" title={created}>
+						{dayjs.utc(created).local().fromNow()}
+					</Tooltip>
+				);
+			},
 		},
 		{
 			title: 'Source',
 			dataIndex: 'source',
 			key: 'source',
 			width: '13.6%',
+			sorter: (a: Problem, b: Problem) => a.source.localeCompare(b.source),
 		},
 		{
 			title: 'Service',
 			dataIndex: 'service',
 			key: 'service',
 			width: '9.89%',
+			sorter: (a: Problem, b: Problem) => a.service.localeCompare(b.service),
 		},
 		{
 			title: 'Package',
-			dataIndex: 'packageWithVersion',
-			key: 'packageWithVersion',
+			dataIndex: 'associatedPackage',
+			key: 'associatedPackage',
 			width: '20.87%',
+			sorter: (a: Problem, b: Problem) => a.associatedPackage.localeCompare(b.associatedPackage),
+			render: (_: string, record: Problem) => {
+				return (
+					<>
+						{record.associatedPackage}:{record.version}{' '}
+					</>
+				);
+			},
 		},
 		{
 			title: 'Description',
 			dataIndex: 'description',
 			key: 'description',
 			width: '21.77%',
+			sorter: (a: Problem, b: Problem) => a.description.localeCompare(b.description),
 			render: (description: string) => {
 				return (
-					<Tooltip title={description} placement="left" overlayInnerStyle={{ width: '400px' }}>
+					<Tooltip title={description} placement="bottomRight" overlayInnerStyle={{ width: '400px' }}>
 						<WrappedText>{description}</WrappedText>
 					</Tooltip>
 				);
@@ -112,21 +144,11 @@ const ProblemsTable = (props: ProblemsTableProps) => {
 		},
 	];
 
-	const remappedProblems =
+	const problemsWithActions =
 		problems &&
 		problems.map((problem) => {
 			return {
 				...problem,
-				created: (
-					<Tooltip placement="top" title={problem.created}>
-						{dayjs.utc(problem.created).local().fromNow()}
-					</Tooltip>
-				),
-				packageWithVersion: (
-					<>
-						{problem.associatedPackage}:{problem.version}
-					</>
-				),
 				actions: (
 					<ActionWrap>
 						{/**TODO: DISMISS PROBLEMS render prop once we decide how dismissal is handled*/}
@@ -142,7 +164,23 @@ const ProblemsTable = (props: ProblemsTableProps) => {
 
 	return (
 		<>
-			<BaseTable dataSource={remappedProblems} columns={ProblemsColumns} rowKey={(record) => record.id} />
+			<BaseTable
+				expandable={{
+					expandedRowKeys: expandedRowIds,
+					expandRowByClick: true,
+					showExpandColumn: false,
+					expandedRowRender: (record) => (
+						<p style={{ margin: 0 }}>
+							<Head4>Detailed problem description:</Head4>
+							<br />
+							{record.description}
+						</p>
+					),
+				}}
+				dataSource={problemsWithActions}
+				columns={ProblemsColumns}
+				rowKey={(record) => record.id}
+			/>
 		</>
 	);
 };
