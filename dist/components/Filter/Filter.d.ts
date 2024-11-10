@@ -4,7 +4,11 @@ type SortType<T> = {
     label: string;
 };
 type FilterProps = {
-    sortOptions?: SortType<string | number>[];
+    sortOptions?: {
+        options: SortType<string | number>[];
+        selectedState: unknown;
+        setSelectedState: React.Dispatch<React.SetStateAction<unknown>>;
+    };
     selectOptions?: {
         options: SortType<string | number>[];
         selectedState: unknown;

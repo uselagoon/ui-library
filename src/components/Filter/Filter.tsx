@@ -1,5 +1,4 @@
 import React, { forwardRef, useEffect, useRef } from 'react';
-import styled from 'styled-components';
 import UISelect from '../Select';
 import { StyledFilter, StyledSearch } from './styles';
 
@@ -9,7 +8,11 @@ type SortType<T> = {
 };
 
 type FilterProps = {
-	sortOptions?: SortType<string | number>[];
+	sortOptions?: {
+		options: SortType<string | number>[];
+		selectedState: unknown;
+		setSelectedState: React.Dispatch<React.SetStateAction<unknown>>;
+	};
 	selectOptions?: {
 		options: SortType<string | number>[];
 		selectedState: unknown;
@@ -59,7 +62,18 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 
 				{sortOptions ? (
 					<div className="sortBy">
-						<UISelect defaultOpen={false} placeholder="Sort by" options={sortOptions} />
+						<UISelect
+							disabled={loadingSkeleton}
+							defaultOpen={false}
+							placeholder="Sort by"
+							selectedState={sortOptions?.selectedState}
+							setSelectedState={(val) => {
+								if (sortOptions?.selectedState) {
+									sortOptions.setSelectedState(val);
+								}
+							}}
+							options={sortOptions.options}
+						/>
 					</div>
 				) : null}
 
