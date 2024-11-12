@@ -116,7 +116,7 @@ const ProjectVariablesTable = (props: ProjectVariablesTableProps) => {
 					<ActionWrap>
 						<LinkContainer>
 							{variable.value ? (
-								<Tooltip title={isVariableHidden ? 'show' : 'hide'}>{blurIcon}</Tooltip>
+								<Tooltip title={!isVariableHidden ? 'show' : 'hide'}>{blurIcon}</Tooltip>
 							) : (
 								<EmptyAction></EmptyAction>
 							)}
