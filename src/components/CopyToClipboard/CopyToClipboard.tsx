@@ -9,8 +9,9 @@ export interface ClipboardProps {
 	text: string | number;
 	type?: 'visible' | 'hidden' | 'hiddenWithIcon';
 	width?: number | string;
+	withToolTip?: boolean;
 }
-const CopyToClipboard: FC<ClipboardProps> = ({ text, width, type = 'visible' }) => {
+const CopyToClipboard: FC<ClipboardProps> = ({ text, width, type = 'visible', withToolTip = false }) => {
 	const copyFn = () => navigator.clipboard.writeText(text as string);
 
 	const [copied, setCopied] = useState(false);
@@ -37,7 +38,13 @@ const CopyToClipboard: FC<ClipboardProps> = ({ text, width, type = 'visible' }) 
 	return (
 		<StyledText style={{ ...computedStyles }}>
 			<CopyableText className="copyable" $maxWidth={width} $type={type} $manualUnblur={manualUnblur}>
-				{text}
+				{!withToolTip ? (
+					text
+				) : (
+					<Tooltip overlayInnerStyle={{ width: '300px' }} title={text} placement="bottom">
+						<TooltipTextLabel>{text}</TooltipTextLabel>
+					</Tooltip>
+				)}
 			</CopyableText>
 
 			<div className="icons">
@@ -56,6 +63,12 @@ const CopyToClipboard: FC<ClipboardProps> = ({ text, width, type = 'visible' }) 
 		</StyledText>
 	);
 };
+
+const TooltipTextLabel = styled.div`
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+`;
 
 const CopyableText = styled.span<{
 	$type: ClipboardProps['type'];

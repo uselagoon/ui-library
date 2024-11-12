@@ -72,7 +72,6 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 	// paginate based on the current filtered data
 	const filteredData = environments
 		? environments.filter((item) => {
-				console.warn(item);
 				const fieldsToCheck = [item.title, item.region, item.deployType, item.envType];
 
 				return fieldsToCheck.some((fieldValue) =>

@@ -9,6 +9,7 @@ import ProjectsTable from './ProjectsTable/ProjectsTable';
 import EnvironmentsTable from './EnvironmentsTable/EnvironmentsTable';
 import AllDeploymentsTable from './AllDeploymentsTable/AllDeploymentsTable';
 import BulkDeploymentsTable from './BulkDeployments/BulkDeploymentsTable';
+import ProjectVariablesTable from './ProjectVariablesTable/ProjectVariablesTable';
 import { default as SshTable } from './SshTable/SshTable';
 
 export type { BaseTableProps };
@@ -25,4 +26,5 @@ Table.TasksTable = TasksTable;
 Table.EnvironmentsTable = EnvironmentsTable;
 Table.AllDeploymentsTable = AllDeploymentsTable;
 Table.BulkDeploymentsTable = BulkDeploymentsTable;
+Table.ProjectVariablesTable = ProjectVariablesTable;
 export default Table;

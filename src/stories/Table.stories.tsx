@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { default as BaseTable } from '../components/Table';
 import { Controls, Primary, Stories, Title } from '@storybook/blocks';
-import { CarryOutOutlined, EyeOutlined, SmileOutlined } from '@ant-design/icons';
+import { CarryOutOutlined, DeleteOutlined, EditOutlined, EyeOutlined, SmileOutlined } from '@ant-design/icons';
 import { LinkContainer } from '../components/Table/DeploymentsTable/styles';
 import UISelect from '../components/Select/Select';
 
@@ -681,6 +681,79 @@ export const InsightsTableSkeleton: Story = {
 	render: () => <BaseTable.InsightsTable skeleton />,
 };
 
+export const ProjectVariablesTable: Story = {
+	render: () => {
+		return (
+			<BaseTable.ProjectVariablesTable
+				newVariableModal={<>+ ADD NEW</>}
+				deleteVariableModal={(current) => (
+					<>
+						<DeleteOutlined />
+					</>
+				)}
+				editVariableModal={(current) => (
+					<>
+						<EditOutlined />
+					</>
+				)}
+				variables={[
+					{
+						id: 3268,
+						name: 'fsdfsd',
+						scope: 'build',
+						value:
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/HnogzlzwBtvhlwUcXK4DylUnMxYP6ANGpQJbggA38IOnCUBpaK1Mq70X6omHFvtgcckxSi8JlLznk1sj2xnFC5HlX514ql5eCWVmDMWxqjM8mF7iIdVXfmh/RV0E/NndzRGmDrNKos186cD0JOimdurZwt0KQqrTWOkUTfjb5J15lRI1ZZ8TLRTvqu9CcrxlsOGdGf2GKzOimQA+Hia9ajGkbWMTzE7qagqdP0ECgYEA6joyGeFP353Mz8TKCxqd2Yp2IqQ+367jzRoKaiOZgFU4w8ERJ9XaVrFkogGAo0j2KmBueLye3zdj88s2W22BkCUuooLPzJAITnPpu9BNjMHrU++2/lZdVai75AequK4TT6L9hje5Cm5R9gg02iqUofEFdpRkVVTwuGUyADHwLDUCgYEApYLW',
+					},
+					{
+						id: 154,
+						name: 'INTERNAL_REGISTRY_PASSWORD',
+						scope: 'internal_container_registry',
+						value:
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/HnogzlzwBtvhlwUcXK4DylUnMxYP6ANGpQJbggA38IOnCUBpaK1Mq70X6omHFvtgcckxSi8JlLznk1sj2xnFC5HlX514ql5eCWVmDMWxqjM8mF7iIdVXfmh/RV0E/NndzRGmDrNKos186cD0JOimdurZwt0KQqrTWOkUTfjb5J15lRI1ZZ8TLRTvqu9CcrxlsOGdGf2GKzOimQA+Hia9ajGkbWMTzE7qagqdP0ECgYEA6joyGeFP353Mz8TKCxqd2Yp2IqQ+367jzRoKaiOZgFU4w8ERJ9XaVrFkogGAo0j2KmBueLye3zdj88s2W22BkCUuooLPzJAITnPpu9BNjMHrU++2/lZdVai75AequK4TT6L9hje5Cm5R9gg02iqUofEFdpRkVVTwuGUyADHwLDUCgYEApYLW',
+					},
+					{
+						id: 152,
+						name: 'INTERNAL_REGISTRY_URL',
+						scope: 'internal_container_registry',
+						value:
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/HnogzlzwBtvhlwUcXK4DylUnMxYP6ANGpQJbggA38IOnCUBpaK1Mq70X6omHFvtgcckxSi8JlLznk1sj2xnFC5HlX514ql5eCWVmDMWxqjM8mF7iIdVXfmh/RV0E/NndzRGmDrNKos186cD0JOimdurZwt0KQqrTWOkUTfjb5J15lRI1ZZ8TLRTvqu9CcrxlsOGdGf2GKzOimQA+Hia9ajGkbWMTzE7qagqdP0ECgYEA6joyGeFP353Mz8TKCxqd2Yp2IqQ+367jzRoKaiOZgFU4w8ERJ9XaVrFkogGAo0j2KmBueLye3zdj88s2W22BkCUuooLPzJAITnPpu9BNjMHrU++2/lZdVai75AequK4TT6L9hje5Cm5R9gg02iqUofEFdpRkVVTwuGUyADHwLDUCgYEApYLW',
+					},
+					{
+						id: 153,
+						name: 'INTERNAL_REGISTRY_USERNAME',
+						scope: 'internal_container_registry',
+						value:
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/HnogzlzwBtvhlwUcXK4DylUnMxYP6ANGpQJbggA38IOnCUBpaK1Mq70X6omHFvtgcckxSi8JlLznk1sj2xnFC5HlX514ql5eCWVmDMWxqjM8mF7iIdVXfmh/RV0E/NndzRGmDrNKos186cD0JOimdurZwt0KQqrTWOkUTfjb5J15lRI1ZZ8TLRTvqu9CcrxlsOGdGf2GKzOimQA+Hia9ajGkbWMTzE7qagqdP0ECgYEA6joyGeFP353Mz8TKCxqd2Yp2IqQ+367jzRoKaiOZgFU4w8ERJ9XaVrFkogGAo0j2KmBueLye3zdj88s2W22BkCUuooLPzJAITnPpu9BNjMHrU++2/lZdVai75AequK4TT6L9hje5Cm5R9gg02iqUofEFdpRkVVTwuGUyADHwLDUCgYEApYLW',
+					},
+					{
+						id: 235,
+						name: 'LAGOON_BAAS_BUCKET_NAME',
+						scope: 'global',
+						value:
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/HnogzlzwBtvhlwUcXK4DylUnMxYP6ANGpQJbggA38IOnCUBpaK1Mq70X6omHFvtgcckxSi8JlLznk1sj2xnFC5HlX514ql5eCWVmDMWxqjM8mF7iIdVXfmh/RV0E/NndzRGmDrNKos186cD0JOimdurZwt0KQqrTWOkUTfjb5J15lRI1ZZ8TLRTvqu9CcrxlsOGdGf2GKzOimQA+Hia9ajGkbWMTzE7qagqdP0ECgYEA6joyGeFP353Mz8TKCxqd2Yp2IqQ+367jzRoKaiOZgFU4w8ERJ9XaVrFkogGAo0j2KmBueLye3zdj88s2W22BkCUuooLPzJAITnPpu9BNjMHrU++2/lZdVai75AequK4TT6L9hje5Cm5R9gg02iqUofEFdpRkVVTwuGUyADHwLDUCgYEApYLW',
+					},
+					{
+						id: 229,
+						name: 'LAGOON_FEATURE_FLAG_ROOTLESS_WORKLOAD',
+						value: 'some random value that is not too long',
+						scope: 'global',
+					},
+					{
+						id: 3269,
+						name: 'sdfsdg',
+						scope: 'runtime',
+					},
+				]}
+			/>
+		);
+	},
+};
+
+export const ProjectVariablesTableSkeleton: Story = {
+	render: () => {
+		return <BaseTable.ProjectVariablesTable skeleton />;
+	},
+};
 export const SshTable: Story = {
 	render: () => (
 		<BaseTable.SshTable

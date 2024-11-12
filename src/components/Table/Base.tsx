@@ -13,6 +13,7 @@ import { ProjectsTableProps } from './ProjectsTable/ProjectsTable';
 import { EnvironmentsTableProps } from './EnvironmentsTable/EnvironmentsTable';
 import { AllDeploymentsTableProps } from './AllDeploymentsTable/AllDeploymentsTable';
 import { BulkDeploymentsTableProps } from './BulkDeployments/BulkDeploymentsTable';
+import { ProjectVariablesTableProps } from './ProjectVariablesTable/ProjectVariablesTable';
 
 export interface BaseTableWithComponents
 	extends React.ForwardRefExoticComponent<BaseTableProps & React.RefAttributes<HTMLDivElement>> {
@@ -27,6 +28,7 @@ export interface BaseTableWithComponents
 	EnvironmentsTable: React.FC<EnvironmentsTableProps>;
 	AllDeploymentsTable: React.FC<AllDeploymentsTableProps>;
 	BulkDeploymentsTable: React.FC<BulkDeploymentsTableProps>;
+	ProjectVariablesTable: React.FC<ProjectVariablesTableProps>;
 }
 
 type BaseTableProps = Omit<TableProps, 'locale'> & { variant?: 'alternate' | 'default'; lastRowBordered?: boolean };
