@@ -1,7 +1,7 @@
 import Skeleton from '../../Skeleton';
 import BaseTable from '../Base';
 
-const ProjectVariablesSkeleton = () => {
+const VariablesSkeleton = () => {
 	const projectVariablesCols = [
 		{
 			title: 'Variable Name',
@@ -39,4 +39,4 @@ const ProjectVariablesSkeleton = () => {
 	);
 };
 
-export default ProjectVariablesSkeleton;
+export default VariablesSkeleton;

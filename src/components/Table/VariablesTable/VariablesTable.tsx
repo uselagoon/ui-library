@@ -9,7 +9,7 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import duration from 'dayjs/plugin/duration';
 import CopyToClipboard from '../../CopyToClipboard';
-import ProjectVariablesSkeleton from './ProjectVariablesSkeleton';
+import VariablesSkeleton from './VariablesSkeleton';
 import { PaginationWithSelector } from '../FactsTable/FactsTable';
 import Pagination from '../../Pagination';
 
@@ -58,7 +58,7 @@ export type VariablesTableProps = Omit<TableProps, 'pagination' | 'filteredValue
 
 const VariablesTable = (props: VariablesTableProps) => {
 	if ('skeleton' in props && props.skeleton) {
-		return <ProjectVariablesSkeleton />;
+		return <VariablesSkeleton />;
 	}
 
 	const { variables, editVariableModal, deleteVariableModal, newVariableModal, type } = props;
@@ -71,7 +71,7 @@ const VariablesTable = (props: VariablesTableProps) => {
 
 	const initialResults = props.type === 'environment' ? props.resultsPerPage : 10;
 
-	const [pageSize, setResultsPerPage] = useState(initialResults || 1);
+	const [pageSize, setResultsPerPage] = useState(initialResults || 10);
 
 	useEffect(() => {
 		if (initialResults) {
@@ -106,7 +106,6 @@ const VariablesTable = (props: VariablesTableProps) => {
 	// sorting based on sortBy
 	const sortColumn = sort ? sort.split('_')[0] : null;
 	const sortOrder = sort ? sort.split('_')[1] : null;
-
 	const sortedVariables = isEnvTable
 		? [...stringFilteredVariables].sort((a, b) => {
 				if (sortColumn) {
@@ -237,7 +236,7 @@ const VariablesTable = (props: VariablesTableProps) => {
 	return (
 		<>
 			<BaseTable
-				dataSource={variablesWithActions}
+				dataSource={paginatedVariables}
 				columns={projectVariablesCols}
 				rowKey={(record) => record.id}
 				summary={summary}
