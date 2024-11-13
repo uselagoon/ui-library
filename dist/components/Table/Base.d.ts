@@ -11,7 +11,7 @@ import { ProjectsTableProps } from './ProjectsTable/ProjectsTable';
 import { EnvironmentsTableProps } from './EnvironmentsTable/EnvironmentsTable';
 import { AllDeploymentsTableProps } from './AllDeploymentsTable/AllDeploymentsTable';
 import { BulkDeploymentsTableProps } from './BulkDeployments/BulkDeploymentsTable';
-import { ProjectVariablesTableProps } from './ProjectVariablesTable/ProjectVariablesTable';
+import { VariablesTableProps } from './VariablesTable/VariablesTable';
 export interface BaseTableWithComponents extends React.ForwardRefExoticComponent<BaseTableProps & React.RefAttributes<HTMLDivElement>> {
     SshTable: React.FC<SshTableProps>;
     DeploymentsTable: React.FC<DeploymentsTableProps>;
@@ -24,7 +24,7 @@ export interface BaseTableWithComponents extends React.ForwardRefExoticComponent
     EnvironmentsTable: React.FC<EnvironmentsTableProps>;
     AllDeploymentsTable: React.FC<AllDeploymentsTableProps>;
     BulkDeploymentsTable: React.FC<BulkDeploymentsTableProps>;
-    ProjectVariablesTable: React.FC<ProjectVariablesTableProps>;
+    VariablesTable: React.FC<VariablesTableProps>;
 }
 type BaseTableProps = Omit<TableProps, 'locale'> & {
     variant?: 'alternate' | 'default';

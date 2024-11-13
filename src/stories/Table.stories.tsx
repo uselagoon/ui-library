@@ -684,7 +684,8 @@ export const InsightsTableSkeleton: Story = {
 export const ProjectVariablesTable: Story = {
 	render: () => {
 		return (
-			<BaseTable.ProjectVariablesTable
+			<BaseTable.VariablesTable
+				type="project"
 				newVariableModal={<>+ ADD NEW</>}
 				deleteVariableModal={(current) => (
 					<>
@@ -702,35 +703,35 @@ export const ProjectVariablesTable: Story = {
 						name: 'fsdfsd',
 						scope: 'build',
 						value:
-							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/HnogzlzwBtvhlwUcXK4DylUnMxYP6ANGpQJbggA38IOnCUBpaK1Mq70X6omHFvtgcckxSi8JlLznk1sj2xnFC5HlX514ql5eCWVmDMWxqjM8mF7iIdVXfmh/RV0E/NndzRGmDrNKos186cD0JOimdurZwt0KQqrTWOkUTfjb5J15lRI1ZZ8TLRTvqu9CcrxlsOGdGf2GKzOimQA+Hia9ajGkbWMTzE7qagqdP0ECgYEA6joyGeFP353Mz8TKCxqd2Yp2IqQ+367jzRoKaiOZgFU4w8ERJ9XaVrFkogGAo0j2KmBueLye3zdj88s2W22BkCUuooLPzJAITnPpu9BNjMHrU++2/lZdVai75AequK4TT6L9hje5Cm5R9gg02iqUofEFdpRkVVTwuGUyADHwLDUCgYEApYLW',
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/abcdefabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc',
 					},
 					{
 						id: 154,
 						name: 'INTERNAL_REGISTRY_PASSWORD',
 						scope: 'internal_container_registry',
 						value:
-							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/HnogzlzwBtvhlwUcXK4DylUnMxYP6ANGpQJbggA38IOnCUBpaK1Mq70X6omHFvtgcckxSi8JlLznk1sj2xnFC5HlX514ql5eCWVmDMWxqjM8mF7iIdVXfmh/RV0E/NndzRGmDrNKos186cD0JOimdurZwt0KQqrTWOkUTfjb5J15lRI1ZZ8TLRTvqu9CcrxlsOGdGf2GKzOimQA+Hia9ajGkbWMTzE7qagqdP0ECgYEA6joyGeFP353Mz8TKCxqd2Yp2IqQ+367jzRoKaiOZgFU4w8ERJ9XaVrFkogGAo0j2KmBueLye3zdj88s2W22BkCUuooLPzJAITnPpu9BNjMHrU++2/lZdVai75AequK4TT6L9hje5Cm5R9gg02iqUofEFdpRkVVTwuGUyADHwLDUCgYEApYLW',
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/abcdefabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc',
 					},
 					{
 						id: 152,
 						name: 'INTERNAL_REGISTRY_URL',
 						scope: 'internal_container_registry',
 						value:
-							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/HnogzlzwBtvhlwUcXK4DylUnMxYP6ANGpQJbggA38IOnCUBpaK1Mq70X6omHFvtgcckxSi8JlLznk1sj2xnFC5HlX514ql5eCWVmDMWxqjM8mF7iIdVXfmh/RV0E/NndzRGmDrNKos186cD0JOimdurZwt0KQqrTWOkUTfjb5J15lRI1ZZ8TLRTvqu9CcrxlsOGdGf2GKzOimQA+Hia9ajGkbWMTzE7qagqdP0ECgYEA6joyGeFP353Mz8TKCxqd2Yp2IqQ+367jzRoKaiOZgFU4w8ERJ9XaVrFkogGAo0j2KmBueLye3zdj88s2W22BkCUuooLPzJAITnPpu9BNjMHrU++2/lZdVai75AequK4TT6L9hje5Cm5R9gg02iqUofEFdpRkVVTwuGUyADHwLDUCgYEApYLW',
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/abcdefabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc',
 					},
 					{
 						id: 153,
 						name: 'INTERNAL_REGISTRY_USERNAME',
 						scope: 'internal_container_registry',
 						value:
-							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/HnogzlzwBtvhlwUcXK4DylUnMxYP6ANGpQJbggA38IOnCUBpaK1Mq70X6omHFvtgcckxSi8JlLznk1sj2xnFC5HlX514ql5eCWVmDMWxqjM8mF7iIdVXfmh/RV0E/NndzRGmDrNKos186cD0JOimdurZwt0KQqrTWOkUTfjb5J15lRI1ZZ8TLRTvqu9CcrxlsOGdGf2GKzOimQA+Hia9ajGkbWMTzE7qagqdP0ECgYEA6joyGeFP353Mz8TKCxqd2Yp2IqQ+367jzRoKaiOZgFU4w8ERJ9XaVrFkogGAo0j2KmBueLye3zdj88s2W22BkCUuooLPzJAITnPpu9BNjMHrU++2/lZdVai75AequK4TT6L9hje5Cm5R9gg02iqUofEFdpRkVVTwuGUyADHwLDUCgYEApYLW',
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/abcdefabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc',
 					},
 					{
 						id: 235,
 						name: 'LAGOON_BAAS_BUCKET_NAME',
 						scope: 'global',
 						value:
-							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/HnogzlzwBtvhlwUcXK4DylUnMxYP6ANGpQJbggA38IOnCUBpaK1Mq70X6omHFvtgcckxSi8JlLznk1sj2xnFC5HlX514ql5eCWVmDMWxqjM8mF7iIdVXfmh/RV0E/NndzRGmDrNKos186cD0JOimdurZwt0KQqrTWOkUTfjb5J15lRI1ZZ8TLRTvqu9CcrxlsOGdGf2GKzOimQA+Hia9ajGkbWMTzE7qagqdP0ECgYEA6joyGeFP353Mz8TKCxqd2Yp2IqQ+367jzRoKaiOZgFU4w8ERJ9XaVrFkogGAo0j2KmBueLye3zdj88s2W22BkCUuooLPzJAITnPpu9BNjMHrU++2/lZdVai75AequK4TT6L9hje5Cm5R9gg02iqUofEFdpRkVVTwuGUyADHwLDUCgYEApYLW',
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/abcdefabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc',
 					},
 					{
 						id: 229,
@@ -751,9 +752,85 @@ export const ProjectVariablesTable: Story = {
 
 export const ProjectVariablesTableSkeleton: Story = {
 	render: () => {
-		return <BaseTable.ProjectVariablesTable skeleton />;
+		return <BaseTable.VariablesTable skeleton />;
 	},
 };
+export const EnvVariablesTable: Story = {
+	render: () => {
+		return (
+			<BaseTable.VariablesTable
+				type="environment"
+				resultDropdown={<UISelect />}
+				newVariableModal={<>+ ADD NEW</>}
+				deleteVariableModal={(current) => (
+					<>
+						<DeleteOutlined />
+					</>
+				)}
+				editVariableModal={(current) => (
+					<>
+						<EditOutlined />
+					</>
+				)}
+				variables={[
+					{
+						id: 3268,
+						name: 'fsdfsd',
+						scope: 'build',
+						value:
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/abcdefabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc',
+					},
+					{
+						id: 154,
+						name: 'INTERNAL_REGISTRY_PASSWORD',
+						scope: 'internal_container_registry',
+						value:
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/abcdefabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc',
+					},
+					{
+						id: 152,
+						name: 'INTERNAL_REGISTRY_URL',
+						scope: 'internal_container_registry',
+						value:
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/abcdefabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc',
+					},
+					{
+						id: 153,
+						name: 'INTERNAL_REGISTRY_USERNAME',
+						scope: 'internal_container_registry',
+						value:
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/abcdefabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc',
+					},
+					{
+						id: 235,
+						name: 'LAGOON_BAAS_BUCKET_NAME',
+						scope: 'global',
+						value:
+							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/abcdefabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc',
+					},
+					{
+						id: 229,
+						name: 'LAGOON_FEATURE_FLAG_ROOTLESS_WORKLOAD',
+						value: 'some random value that is not too long',
+						scope: 'global',
+					},
+					{
+						id: 3269,
+						name: 'sdfsdg',
+						scope: 'runtime',
+					},
+				]}
+			/>
+		);
+	},
+};
+
+export const EnvVariablesTableSkeleton: Story = {
+	render: () => {
+		return <BaseTable.VariablesTable skeleton />;
+	},
+};
+
 export const SshTable: Story = {
 	render: () => (
 		<BaseTable.SshTable
