@@ -12,6 +12,8 @@ import CopyToClipboard from '../../CopyToClipboard';
 import VariablesSkeleton from './VariablesSkeleton';
 import { PaginationWithSelector } from '../FactsTable/FactsTable';
 import Pagination from '../../Pagination';
+import type { RenderedCell } from 'rc-table/lib/interface';
+import { highlightTextInElement } from '../../../_util/helpers';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -150,18 +152,27 @@ const VariablesTable = (props: VariablesTableProps) => {
 		setCurrentPage(page);
 	};
 
+	const getSortedClass = (columnKey: string) => {
+		return sortColumn === columnKey ? 'custom-sorted' : '';
+	};
+
 	const projectVariablesCols = [
 		{
 			title: 'Variable Name',
 			dataIndex: 'name',
 			key: 'name',
 			width: '44%',
+			render: (name: string, _: Variable) => {
+				return <>{name}</>;
+			},
+			className: getSortedClass('name'),
 		},
 		{
 			title: 'Scope',
 			dataIndex: 'scope',
 			key: 'scope',
 			width: '11.32%',
+			className: getSortedClass('scope'),
 		},
 		{
 			title: 'Value',
@@ -191,10 +202,37 @@ const VariablesTable = (props: VariablesTableProps) => {
 			render: (item: string) => <div style={{ textAlign: 'center', fontSize: '1.25rem' }}>{item}</div>,
 		},
 	];
+	// highlight manually sorted columns
+	const fieldsToCheck = ['name', 'scope'];
+
+	const highlightedColumns =
+		projectVariablesCols &&
+		projectVariablesCols.map((col) => {
+			return {
+				...col,
+				render: (renderElement: any, record: any, index: number): React.ReactNode | RenderedCell<any> => {
+					const renderedContent = col.render ? col.render(renderElement, record) : renderElement;
+
+					const shouldHighlight = fieldsToCheck.includes(col.dataIndex);
+					if (shouldHighlight) {
+						// RenderedCell or ReactNode
+						if (typeof renderedContent === 'object' && 'children' in renderedContent) {
+							return {
+								...renderedContent,
+								children: highlightTextInElement(renderedContent.children, filterStr || '', index),
+							};
+						}
+
+						return highlightTextInElement(renderedContent, filterStr || '', index);
+					}
+					return renderedContent;
+				},
+			};
+		});
 
 	const variablesWithActions =
-		variables &&
-		variables.map((variable) => {
+		paginatedVariables &&
+		paginatedVariables.map((variable) => {
 			const id = variable.id;
 			const isVariableHidden = hiddenVars.includes(id);
 
@@ -236,8 +274,8 @@ const VariablesTable = (props: VariablesTableProps) => {
 	return (
 		<>
 			<BaseTable
-				dataSource={paginatedVariables}
-				columns={projectVariablesCols}
+				dataSource={variablesWithActions}
+				columns={highlightedColumns}
 				rowKey={(record) => record.id}
 				summary={summary}
 			/>
