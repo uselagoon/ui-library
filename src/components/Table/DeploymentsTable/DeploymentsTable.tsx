@@ -155,7 +155,7 @@ const DeploymentsTable = (props: DeploymentsTableProps) => {
 						<Link href={`${basePath}/${name}`}>{name}</Link>
 						{deployment.bulkId ? (
 							<span className="bulk-link">
-								<Link href={`/bulkdeployments/${deployment.bulkId}`}>BULK</Link>
+								<Link href={`/bulkdeployment/${deployment.bulkId}`}>BULK</Link>
 							</span>
 						) : null}
 					</LinkContainer>
