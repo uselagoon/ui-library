@@ -6,6 +6,7 @@ import Collapse from '../components/Collapse/index';
 import Head3 from '../components/Heading/H3';
 import { UICollapseProps as CollapseProps } from '../components/Collapse/Collapse';
 import { Controls, Primary, Stories, Title } from '@storybook/blocks';
+import { CheckCircleFilled } from '@ant-design/icons';
 
 const meta: Meta<typeof Collapse> = {
 	component: Collapse,
@@ -102,6 +103,7 @@ export const HighLightCollapse: Story = {
 		defaultActiveKey: [1, 2],
 		items: items,
 		type: 'highlightPanels',
+		icon: <CheckCircleFilled />,
 	},
 };
 export const WithArrowIcons: Story = {
@@ -111,6 +113,16 @@ export const WithArrowIcons: Story = {
 		useArrowIcons: true,
 	},
 };
+
+export const WithArrowIconsAndCustomExtraIcon: Story = {
+	args: {
+		defaultActiveKey: [1, 2],
+		items: items,
+		useArrowIcons: true,
+		icon: <CheckCircleFilled />,
+	},
+};
+
 export const CustomBorder: Story = {
 	args: {
 		defaultActiveKey: [1, 2],

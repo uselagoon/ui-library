@@ -309,7 +309,7 @@ html,body{
 		line-height: 22px;
 		color: ${A=>A.theme.UI.texts.primary};
 	}
-`;be.displayName="List",be.Item=Ee;const we=m(((A,e)=>{const{className:t,items:n,style:a,customBorder:o,borderless:l=!1,useArrowIcons:i=!1,type:s="default",...p}=A,d=i?{}:{expandIconPosition:"end",expandIcon:A=>A.isActive?r(Ie,{children:"Collapse Section"}):r(Ie,{children:"Expand Section"})};return r(Je,{$customBorder:o,$borderless:l,$type:s,ref:e,items:n,...d,...p})}));we.displayName="Collapse";const Ie=A.span`
+`;be.displayName="List",be.Item=Ee;const we=m(((A,e)=>{const{className:t,items:n,style:a,customBorder:o,borderless:l=!1,useArrowIcons:i=!1,type:s="default",icon:p,...d}=A,c=i?{}:{expandIconPosition:"end",expandIcon:A=>A.isActive?r(Ie,{children:"Collapse Section"}):r(Ie,{children:"Expand Section"})},m=p&&i?n?.map((A=>({...A,extra:p}))):n;return r(Je,{$customBorder:o,$borderless:l,$type:s,ref:e,items:m,...c,...d})}));we.displayName="Collapse";const Ie=A.span`
 	text-decoration: underline;
 	font-family: 'ArabicPro-Regular', sans-serif;
 	font-size: 14px;

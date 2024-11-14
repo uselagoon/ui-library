@@ -309,7 +309,7 @@ html,body{
 		line-height: 22px;
 		color: ${A=>A.theme.UI.texts.primary};
 	}
-`;uA.displayName="List",uA.Item=gA;const VA=t.forwardRef(((A,t)=>{const{className:n,items:r,style:a,customBorder:o,borderless:l=!1,useArrowIcons:s=!1,type:i="default",...d}=A,p=s?{}:{expandIconPosition:"end",expandIcon:A=>A.isActive?e.jsx(SA,{children:"Collapse Section"}):e.jsx(SA,{children:"Expand Section"})};return e.jsx(fA,{$customBorder:o,$borderless:l,$type:i,ref:t,items:r,...p,...d})}));VA.displayName="Collapse";const SA=l.default.span`
+`;uA.displayName="List",uA.Item=gA;const VA=t.forwardRef(((A,t)=>{const{className:n,items:r,style:a,customBorder:o,borderless:l=!1,useArrowIcons:s=!1,type:i="default",icon:d,...p}=A,c=s?{}:{expandIconPosition:"end",expandIcon:A=>A.isActive?e.jsx(SA,{children:"Collapse Section"}):e.jsx(SA,{children:"Expand Section"})},m=d&&s?r?.map((A=>({...A,extra:d}))):r;return e.jsx(fA,{$customBorder:o,$borderless:l,$type:i,ref:t,items:m,...c,...p})}));VA.displayName="Collapse";const SA=l.default.span`
 	text-decoration: underline;
 	font-family: 'ArabicPro-Regular', sans-serif;
 	font-size: 14px;

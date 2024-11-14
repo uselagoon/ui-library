@@ -1,5 +1,5 @@
-import { Collapse, CollapsePanelProps, CollapseProps } from 'antd';
-import React, { forwardRef } from 'react';
+import { Collapse, CollapseProps } from 'antd';
+import React, { forwardRef, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import colors from '../../_util/colors';
 import { ExpandIconPosition } from 'antd/es/collapse/Collapse';
@@ -9,6 +9,7 @@ export type UICollapseProps = Omit<CollapseProps, 'expandIconPosition' | 'expand
 	customBorder?: string;
 	borderless?: boolean;
 	useArrowIcons?: boolean;
+	icon?: ReactNode;
 };
 
 const UICollapse = forwardRef<HTMLDivElement, UICollapseProps>((props, ref) => {
@@ -20,6 +21,7 @@ const UICollapse = forwardRef<HTMLDivElement, UICollapseProps>((props, ref) => {
 		borderless = false,
 		useArrowIcons = false,
 		type = 'default',
+		icon,
 		...rest
 	} = props;
 
@@ -36,13 +38,23 @@ const UICollapse = forwardRef<HTMLDivElement, UICollapseProps>((props, ref) => {
 			}
 		: {};
 
+	const withExtraIcon =
+		icon && useArrowIcons
+			? items?.map((item) => {
+					return {
+						...item,
+						extra: icon,
+					};
+				})
+			: items;
+
 	return (
 		<StyledCollapse
 			$customBorder={customBorder}
 			$borderless={borderless}
 			$type={type}
 			ref={ref}
-			items={items}
+			items={withExtraIcon}
 			{...openWithArrowProps}
 			{...rest}
 		/>
