@@ -15,13 +15,13 @@ export type Deployment = {
 export type DeploymentTableSkeleton = {
     skeleton: true;
 };
-export type DeploymensTableProps = {
+export type DeploymenTableProps = {
     deployment: Deployment;
     cancelDeployment: (deployment: Deployment) => JSX.Element;
     skeleton?: false;
     children?: ReactNode;
 };
 export declare const getDeploymentDuration: (deployment: Deployment) => string;
-declare const DeploymentTable: (props: DeploymensTableProps) => import("react/jsx-runtime").JSX.Element;
+declare const DeploymentTable: (props: DeploymenTableProps) => import("react/jsx-runtime").JSX.Element;
 export default DeploymentTable;
 export declare const ExpandName: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, never>>;

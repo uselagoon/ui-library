@@ -32,7 +32,7 @@ export type DeploymentTableSkeleton = {
 	skeleton: true;
 };
 
-export type DeploymensTableProps = {
+export type DeploymenTableProps = {
 	deployment: Deployment;
 	cancelDeployment: (deployment: Deployment) => JSX.Element;
 	skeleton?: false;
@@ -56,7 +56,7 @@ export const getDeploymentDuration = (deployment: Deployment) => {
 	return result.trim();
 };
 
-const DeploymentTable = (props: DeploymensTableProps) => {
+const DeploymentTable = (props: DeploymenTableProps) => {
 	const [expandedRowIds, setExpandedRowIds] = useState<number[]>([]);
 
 	// manually handle row expansion
