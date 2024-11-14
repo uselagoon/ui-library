@@ -32,12 +32,14 @@ export type DeploymentTableSkeleton = {
 	skeleton: true;
 };
 
-export type DeploymenTableProps = {
-	deployment: Deployment;
-	cancelDeployment: (deployment: Deployment) => JSX.Element;
-	skeleton?: false;
-	children?: ReactNode;
-};
+export type DeploymenTableProps =
+	| {
+			deployment: Deployment;
+			cancelDeployment: (deployment: Deployment) => JSX.Element;
+			skeleton?: false;
+			children?: ReactNode;
+	  }
+	| DeploymentTableSkeleton;
 
 export const getDeploymentDuration = (deployment: Deployment) => {
 	const deploymentStart = deployment.started || deployment.created;

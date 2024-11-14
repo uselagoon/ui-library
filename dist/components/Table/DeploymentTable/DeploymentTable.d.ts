@@ -20,7 +20,7 @@ export type DeploymenTableProps = {
     cancelDeployment: (deployment: Deployment) => JSX.Element;
     skeleton?: false;
     children?: ReactNode;
-};
+} | DeploymentTableSkeleton;
 export declare const getDeploymentDuration: (deployment: Deployment) => string;
 declare const DeploymentTable: (props: DeploymenTableProps) => import("react/jsx-runtime").JSX.Element;
 export default DeploymentTable;
