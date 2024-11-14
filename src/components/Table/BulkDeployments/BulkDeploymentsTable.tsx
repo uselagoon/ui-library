@@ -115,7 +115,9 @@ const BulkDeploymentsTable = (props: BulkDeploymentsTableProps) => {
 			render: (deployment_name: string, deployment: Deployment) => {
 				return (
 					<LinkContainer>
-						<Link href={`/projects/${deployment.environment?.project.name}/deployments/${deployment_name}`}>
+						<Link
+							href={`/projects/${deployment.environment?.project.name}/${deployment.environment?.openshiftProjectName}/deployments/${deployment_name}`}
+						>
 							{deployment_name}
 						</Link>
 					</LinkContainer>
@@ -205,7 +207,9 @@ const BulkDeploymentsTable = (props: BulkDeploymentsTableProps) => {
 				actions: (
 					<ActionWrap>
 						<LinkContainer>
-							<Link href={`/projects/${deployment.environment?.project.name}/deployments/${deployment.name}`}>
+							<Link
+								href={`/projects/${deployment.environment?.project.name}/${deployment.environment?.openshiftProjectName}/deployments/${deployment.name}`}
+							>
 								<EyeOutlined />
 							</Link>
 						</LinkContainer>

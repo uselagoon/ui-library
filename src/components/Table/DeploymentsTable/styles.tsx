@@ -2,6 +2,7 @@ import { Tooltip } from 'antd';
 import styled from 'styled-components';
 import colors from '../../../_util/colors';
 import { Colors } from '../../..';
+import { lagoonColors } from '../../../_util/lagoonColors';
 
 export const StatusContainer = styled.section`
 	display: flex;
@@ -31,5 +32,12 @@ export const LinkContainer = styled.div`
 		margin-left: auto;
 		padding-inline: 0.25rem;
 		background-color: ${colors.lagoonBlue};
+		transition: all 0.25s ease;
+		&:hover {
+			background-color: ${lagoonColors.lagoonSecondary.light};
+		}
+		a {
+			color: #fff;
+		}
 	}
 `;

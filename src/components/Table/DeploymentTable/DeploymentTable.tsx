@@ -57,18 +57,18 @@ export const getDeploymentDuration = (deployment: Deployment) => {
 };
 
 const DeploymentTable = (props: DeploymenTableProps) => {
-	const [expandedRowIds, setExpandedRowIds] = useState<number[]>([]);
-
-	// manually handle row expansion
-	const handleExpand = (expanded: boolean, record: Deployment) => {
-		setExpandedRowIds(expanded ? [...expandedRowIds, record.id] : expandedRowIds.filter((id) => id !== record.id));
-	};
-
 	if ('skeleton' in props && props.skeleton) {
 		return <DeploymentTableSkeleton />;
 	}
 
 	const { deployment, cancelDeployment, children } = props;
+
+	const [expandedRowIds, setExpandedRowIds] = useState<number[]>([deployment.id]);
+
+	// manually handle row expansion
+	const handleExpand = (expanded: boolean, record: Deployment) => {
+		setExpandedRowIds(expanded ? [...expandedRowIds, record.id] : expandedRowIds.filter((id) => id !== record.id));
+	};
 
 	const DeploymentColumns = [
 		{

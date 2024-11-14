@@ -266,7 +266,7 @@ export const DeploymentsTable: Story = {
 					buildStep: 'runningPostRolloutTasks',
 					started: '2023-10-18 03:05:24',
 					completed: '2023-10-18 03:10:30',
-					bulkId: null,
+					bulkId: 'someid',
 					sourceType: 'WEBHOOK',
 					priority: null,
 				},
