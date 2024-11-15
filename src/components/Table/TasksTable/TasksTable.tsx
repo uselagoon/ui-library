@@ -23,6 +23,8 @@ type Task = {
 	service: string;
 	status: string;
 	taskName: string;
+	started: string | null;
+	completed: string | null;
 };
 
 export type TasksProps = {
@@ -38,6 +40,23 @@ export type TasksTableSkeleton = {
 export type TasksTableProps = {
 	resultsPerPage?: number;
 } & (TasksTableSkeleton | TasksProps);
+
+export const getTaskDuration = (task: Task) => {
+	const taskStart = task.started || task.created;
+	const durationStart = taskStart ? dayjs.utc(taskStart) : dayjs.utc();
+	const durationEnd = task.completed ? dayjs.utc(task.completed) : dayjs.utc();
+	const duration = dayjs.duration(durationEnd.diff(durationStart));
+
+	const hours = String(Math.floor(duration.asHours())).padStart(2, '0');
+	const minutes = String(duration.minutes()).padStart(2, '0');
+	const seconds = String(duration.seconds()).padStart(2, '0');
+
+	let result = '';
+	if (hours !== '00') result += `${hours}hr `;
+	result += `${minutes}m ${seconds}sec`;
+
+	return result.trim();
+};
 
 const TasksTable = (props: TasksTableProps) => {
 	const { resultsPerPage } = props;
@@ -129,7 +148,7 @@ const TasksTable = (props: TasksTableProps) => {
 				),
 				//@ts-ignore
 				status: <StatusTag type={task.status === 'succeeded' ? 'complete' : task.status} />,
-
+				duration: getTaskDuration(task),
 				actions: (
 					<ActionWrap>
 						<LinkContainer>
