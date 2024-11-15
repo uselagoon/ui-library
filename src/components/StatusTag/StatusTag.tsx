@@ -92,7 +92,8 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, UITagProps> =
 		},
 	};
 
-	const currentTag = tagColorMap[type];
+	// unsupported types render the basic tag
+	const currentTag = tagColorMap[type] || {};
 	return (
 		<StyledTag ref={ref} className={className} color={currentTag.color} {...props}>
 			{currentTag.icon} {capitalizeFirstLetter(type)}
