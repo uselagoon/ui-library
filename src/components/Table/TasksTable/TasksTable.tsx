@@ -127,7 +127,8 @@ const TasksTable = (props: TasksTableProps) => {
 						{dayjs.utc(task.created).local().fromNow()}
 					</Tooltip>
 				),
-				status: <StatusTag type={task.status as any} />,
+				//@ts-ignore
+				status: <StatusTag type={task.status === 'succeeded' ? 'complete' : task.status} />,
 
 				actions: (
 					<ActionWrap>
