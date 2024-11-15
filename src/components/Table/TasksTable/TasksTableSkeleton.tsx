@@ -48,7 +48,11 @@ const TasksTableSkeleton = () => {
 
 	const skeletonCount = Math.floor((window.innerHeight * 8) / 10 / 80);
 
-	return <BaseTable dataSource={[...Array<undefined>(skeletonCount)]} columns={TasksColumns} />;
+	const skeletons = [...Array(skeletonCount)].map((_, index) => ({
+		key: `tasks-skeleton-${index}`,
+	}));
+
+	return <BaseTable dataSource={skeletons} columns={TasksColumns} />;
 };
 
 export default TasksTableSkeleton;

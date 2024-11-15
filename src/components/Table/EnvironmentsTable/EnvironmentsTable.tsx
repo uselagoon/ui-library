@@ -219,7 +219,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			<BaseTable
 				dataSource={remappedEnvs}
 				columns={wrappedColumns}
-				rowKey={(record) => record.name}
+				rowKey={(record) => record.title}
 				summary={summary}
 			/>
 			<Pagination

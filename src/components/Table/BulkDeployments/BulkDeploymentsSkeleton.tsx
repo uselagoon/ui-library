@@ -64,9 +64,11 @@ const BulkDeploymentsSkeleton = () => {
 
 	const skeletonCount = Math.floor((window.innerHeight * 8) / 10 / 80);
 
-	return (
-		<BaseTable variant="alternate" dataSource={[...Array<undefined>(skeletonCount)]} columns={bulkDeploymentsColumns} />
-	);
+	const skeletons = [...Array(skeletonCount)].map((_, index) => ({
+		key: `bulk-skeleton-${index}`,
+	}));
+
+	return <BaseTable variant="alternate" dataSource={skeletons} columns={bulkDeploymentsColumns} />;
 };
 
 export default BulkDeploymentsSkeleton;

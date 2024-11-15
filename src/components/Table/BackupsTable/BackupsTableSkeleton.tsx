@@ -41,7 +41,11 @@ const BackupsTableSkeleton = () => {
 
 	const skeletonCount = Math.floor((window.innerHeight * 8) / 10 / 80);
 
-	return <BaseTable dataSource={[...Array<undefined>(skeletonCount)]} columns={backupsColumns} />;
+	const skeletons = [...Array(skeletonCount)].map((_, index) => ({
+		key: `backups-skeleton-${index}`,
+	}));
+
+	return <BaseTable dataSource={skeletons} columns={backupsColumns} />;
 };
 
 export default BackupsTableSkeleton;

@@ -33,10 +33,11 @@ const VariablesSkeleton = () => {
 	];
 
 	const skeletonCount = Math.floor((window.innerHeight * 8) / 10 / 80);
+	const skeletons = [...Array(skeletonCount)].map((_, index) => ({
+		key: `variables-skeleton-${index}`,
+	}));
 
-	return (
-		<BaseTable variant="default" dataSource={[...Array<undefined>(skeletonCount)]} columns={projectVariablesCols} />
-	);
+	return <BaseTable variant="default" dataSource={skeletons} columns={projectVariablesCols} />;
 };
 
 export default VariablesSkeleton;

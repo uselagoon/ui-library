@@ -48,7 +48,11 @@ const DeploymentsTableSkeleton = () => {
 
 	const skeletonCount = Math.floor((window.innerHeight * 8) / 10 / 80);
 
-	return <BaseTable dataSource={[...Array<undefined>(skeletonCount)]} columns={DeploymentColumns} />;
+	const skeletons = [...Array(skeletonCount)].map((_, index) => ({
+		key: `deployments-skeleton-${index}`,
+	}));
+
+	return <BaseTable dataSource={skeletons} columns={DeploymentColumns} />;
 };
 
 export default DeploymentsTableSkeleton;

@@ -47,7 +47,11 @@ const ProjectsTableSkeleton = () => {
 	];
 	const skeletonCount = Math.floor((window.innerHeight * 8) / 10 / 80);
 
-	return <BaseTable variant="alternate" dataSource={[...Array<undefined>(skeletonCount)]} columns={projectsColumns} />;
+	const skeletons = [...Array(skeletonCount)].map((_, index) => ({
+		key: `project-skeleton-${index}`,
+	}));
+
+	return <BaseTable variant="alternate" dataSource={skeletons} columns={projectsColumns} />;
 };
 
 export default ProjectsTableSkeleton;

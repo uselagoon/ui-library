@@ -283,7 +283,13 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 			};
 		});
 
-	return <BaseTable dataSource={[...relativelyTimedKeysWithActions, lastRow]} columns={sshColumns} />;
+	return (
+		<BaseTable
+			rowKey={(record) => record.id || record.name}
+			dataSource={[...relativelyTimedKeysWithActions, lastRow]}
+			columns={sshColumns}
+		/>
+	);
 };
 
 export default SshTable;

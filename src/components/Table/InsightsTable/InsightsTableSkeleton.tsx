@@ -48,7 +48,11 @@ const InsightsTableSkeleton = () => {
 
 	const skeletonCount = Math.floor((window.innerHeight * 8) / 10 / 80);
 
-	return <BaseTable dataSource={[...Array<undefined>(skeletonCount)]} columns={insightsColumns} />;
+	const skeletons = [...Array(skeletonCount)].map((_, index) => ({
+		key: `insights-skeleton-${index}`,
+	}));
+
+	return <BaseTable dataSource={skeletons} columns={insightsColumns} />;
 };
 
 export default InsightsTableSkeleton;

@@ -35,7 +35,11 @@ const FactsTableSkeleton = () => {
 
 	const skeletonCount = Math.floor((window.innerHeight * 8) / 10 / 80);
 
-	return <BaseTable dataSource={[...Array<undefined>(skeletonCount)]} columns={factsColumns} />;
+	const skeletons = [...Array(skeletonCount)].map((_, index) => ({
+		key: `facts-skeleton-${index}`,
+	}));
+
+	return <BaseTable dataSource={skeletons} columns={factsColumns} />;
 };
 
 export default FactsTableSkeleton;

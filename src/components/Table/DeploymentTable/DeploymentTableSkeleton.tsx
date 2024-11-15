@@ -47,8 +47,11 @@ const DeploymentTableSkeleton = () => {
 	];
 
 	const skeletonCount = 1;
+	const skeletons = [...Array(skeletonCount)].map((_, index) => ({
+		key: `deployment-skeleton-${index}`,
+	}));
 
-	return <BaseTable dataSource={[...Array<undefined>(skeletonCount)]} columns={DeploymentColumns} />;
+	return <BaseTable dataSource={skeletons} columns={DeploymentColumns} />;
 };
 
 export default DeploymentTableSkeleton;
