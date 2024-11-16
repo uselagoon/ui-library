@@ -3,7 +3,7 @@ import BaseTable from '../Base';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { ActionWrap } from '../styles';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import duration from 'dayjs/plugin/duration';
 import StatusTag from '../../StatusTag';
 import { useLinkComponent } from '../../../providers/NextLinkProvider';
@@ -11,6 +11,7 @@ import Pagination from '../../Pagination';
 import { Tooltip } from 'antd';
 import { LinkContainer, StatusContainer } from '../DeploymentsTable/styles';
 import TasksTableSkeleton from './TasksTableSkeleton';
+import { PaginationWithSelector } from '../FactsTable/FactsTable';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -31,6 +32,7 @@ export type TasksProps = {
 	tasks: Task[];
 	basePath: string;
 	skeleton?: false;
+	resultDropdown?: ReactNode;
 };
 
 export type TasksTableSkeleton = {
@@ -77,7 +79,7 @@ const TasksTable = (props: TasksTableProps) => {
 		return <TasksTableSkeleton />;
 	}
 
-	const { tasks, basePath } = props as TasksProps;
+	const { tasks, basePath, resultDropdown } = props as TasksProps;
 
 	// paginated data based on filtered results
 	const paginatedData = pageSize > 0 ? tasks.slice((currentPage - 1) * pageSize, currentPage * pageSize) : tasks;
@@ -164,12 +166,17 @@ const TasksTable = (props: TasksTableProps) => {
 	return (
 		<>
 			<BaseTable dataSource={remappedTasks} columns={TasksColumns} rowKey={(record) => record.id} />
-			<Pagination
-				total={totalFilteredCount}
-				pageSize={pageSize === -1 ? Infinity : pageSize}
-				current={currentPage}
-				onChange={handlePageChange}
-			/>
+
+			<PaginationWithSelector>
+				<section className="selector">{resultDropdown}</section>
+
+				<Pagination
+					total={totalFilteredCount}
+					pageSize={pageSize === -1 ? Infinity : pageSize}
+					current={currentPage}
+					onChange={handlePageChange}
+				/>
+			</PaginationWithSelector>
 		</>
 	);
 };

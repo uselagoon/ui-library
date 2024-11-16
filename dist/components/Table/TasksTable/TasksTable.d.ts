@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 type Task = {
     adminOnlyView: boolean;
     created: string;
@@ -13,6 +14,7 @@ export type TasksProps = {
     tasks: Task[];
     basePath: string;
     skeleton?: false;
+    resultDropdown?: ReactNode;
 };
 export type TasksTableSkeleton = {
     skeleton: true;
