@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback } from 'react';
+import React, { ReactNode } from 'react';
 import { NotificationArgsProps, notification } from 'antd';
 import { NotificationPlacement } from 'antd/es/notification/interface';
 import UIButton from '../Button';
@@ -32,7 +32,7 @@ const useUINotification = ({
 		maxCount: 1,
 	});
 
-	const NotificationMemo = useCallback(() => {
+	const notifFunction = () => {
 		const notifConfig: NotificationArgsProps = {
 			message: title,
 			description: content,
@@ -52,9 +52,9 @@ const useUINotification = ({
 		};
 
 		return api[type](notifConfig);
-	}, [content, title]);
+	};
 
-	const trigger = NotificationMemo;
+	const trigger = notifFunction;
 
 	return { trigger, contextHolder };
 };
