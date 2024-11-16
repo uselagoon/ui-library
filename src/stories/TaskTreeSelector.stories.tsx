@@ -117,6 +117,7 @@ export const Default: Story = {
 	args: {
 		treeData,
 		placeholder: 'Select an action',
+		onChange: (e) => console.log(e),
 	},
 };
 

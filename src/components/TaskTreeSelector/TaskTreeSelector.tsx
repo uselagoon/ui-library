@@ -10,7 +10,7 @@ type UITreeSelectProps = { sectionsCheckable?: boolean } & Omit<
 >;
 
 const InternalTreeSelector: React.ForwardRefRenderFunction<any, UITreeSelectProps> = (
-	{ treeData, placeholder, sectionsCheckable = false },
+	{ treeData, placeholder, sectionsCheckable = false, ...rest },
 	ref,
 ) => {
 	return (
@@ -25,19 +25,36 @@ const InternalTreeSelector: React.ForwardRefRenderFunction<any, UITreeSelectProp
 			treeCheckable={sectionsCheckable}
 			popupClassName="ui-tree"
 			dropdownRender={(menu) => <StyledDropdown>{menu}</StyledDropdown>}
+			dropdownStyle={{ width: 'max-content', minWidth: '550px' }}
+			{...rest}
 		/>
 	);
 };
 
 const StyledTree = styled(TreeSelect)`
+	min-width: 250px;
+	width: max-content;
 	&.ant-select {
-		min-width: 530px;
+		width: max-content !important;
+
+		${(props) =>
+			props.theme.colorScheme === 'dark' &&
+			css`
+				& .ant-select-selector {
+					background-color: ${colors.darkGray};
+					span {
+						color: #fff;
+					}
+				}
+				& .ant-select-arrow {
+					color: #fff;
+				}
+			`}
 	}
 `;
 const StyledDropdown = styled.section`
 	.ant-select-tree {
-		background-color: ${(props) => (props.theme.colorScheme === 'dark' ? 'blue' : 'initial')};
-
+		background-color: #fff;
 		${(props) =>
 			props.theme.colorScheme === 'dark' &&
 			css`
@@ -51,6 +68,7 @@ const StyledDropdown = styled.section`
 
 				.ant-select-tree-node-content-wrapper.ant-select-tree-node-selected {
 					background-color: ${colors.lighterGray};
+					color: ${colors.lagoonBlue} !important;
 				}
 			`};
 		span[aria-hidden='true'] {

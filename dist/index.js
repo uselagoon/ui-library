@@ -930,13 +930,26 @@ html,body{
 		}
 	}
 `,YA=t.forwardRef(((A,t)=>{const{text:n,count:r}=A,a=["critical","high","medium","low"].every((e=>!(e in A)))?"#fff":(A=>A.critical?x.pink:A.high?x.orange:A.medium?x.yellow:A.low?x.blue:"#fff")(A);return e.jsxs(XA,{className:"ui-datacard",ref:t,$severityColor:a,children:[e.jsx("span",{className:"ui-datacard__text",children:n}),e.jsx("span",{className:"ui-datacard__count",children:r})]})}));YA.displayName="UIDataCard";const GA=l.default(n.TreeSelect)`
+	min-width: 250px;
+	width: max-content;
 	&.ant-select {
-		min-width: 530px;
+		width: max-content !important;
+
+		${e=>"dark"===e.theme.colorScheme&&A.css`
+				& .ant-select-selector {
+					background-color: ${x.darkGray};
+					span {
+						color: #fff;
+					}
+				}
+				& .ant-select-arrow {
+					color: #fff;
+				}
+			`}
 	}
 `,$A=l.default.section`
 	.ant-select-tree {
-		background-color: ${A=>"dark"===A.theme.colorScheme?"blue":"initial"};
-
+		background-color: #fff;
 		${e=>"dark"===e.theme.colorScheme&&A.css`
 				box-shadow:
 					2px 2px 3px 0px #3333331a,
@@ -948,13 +961,14 @@ html,body{
 
 				.ant-select-tree-node-content-wrapper.ant-select-tree-node-selected {
 					background-color: ${x.lighterGray};
+					color: ${x.lagoonBlue} !important;
 				}
 			`};
 		span[aria-hidden='true'] {
 			display: none;
 		}
 	}
-`,_A=t.forwardRef((({treeData:A,placeholder:t,sectionsCheckable:n=!1},r)=>e.jsx(GA,{ref:r,placeholder:t||"Select an action",treeDefaultExpandAll:!0,treeData:A,treeLine:!1,multiple:!1,treeIcon:!0,treeCheckable:n,popupClassName:"ui-tree",dropdownRender:A=>e.jsx($A,{children:A})})));_A.displayName="TreeSelect";const Ae=l.default(n.Tree)`
+`,_A=t.forwardRef((({treeData:A,placeholder:t,sectionsCheckable:n=!1,...r},a)=>e.jsx(GA,{ref:a,placeholder:t||"Select an action",treeDefaultExpandAll:!0,treeData:A,treeLine:!1,multiple:!1,treeIcon:!0,treeCheckable:n,popupClassName:"ui-tree",dropdownRender:A=>e.jsx($A,{children:A}),dropdownStyle:{width:"max-content",minWidth:"550px"},...r})));_A.displayName="TreeSelect";const Ae=l.default(n.Tree)`
 	&.ant-tree {
 		background-color: transparent;
 		max-width: max-content;
