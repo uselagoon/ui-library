@@ -52,7 +52,7 @@ const useUINotification = ({
 		};
 
 		return api[type](notifConfig);
-	}, []);
+	}, [content, title]);
 
 	const trigger = NotificationMemo;
 

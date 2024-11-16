@@ -830,7 +830,7 @@ html,body{
 				color: ${OA.white};
 			`}
 	}
-`,rt=m(((A,e)=>r(nt,{...A,ref:e})));rt.displayName="Input";const at=({type:A="info",title:e,content:t,placement:n="top",requiresManualClose:a=!1,showBtn:l=!1,showIcon:i=!0,btnLabel:s,...d})=>{const[p,c]=B.useNotification({top:24,maxCount:1});return{trigger:h((()=>{const c={message:e,description:t,placement:n,duration:a?0:3,btn:l?r(de,{type:"primary",size:"small",onClick:()=>p.destroy(),children:s??"Confirm"}):null,style:{fontFamily:"Roboto"},className:`ui-notification ${!i&&"no-icon"}`,...i?{}:{icon:r(o,{})},...d};return p[A](c)}),[]),contextHolder:c}},ot=A(b)`
+`,rt=m(((A,e)=>r(nt,{...A,ref:e})));rt.displayName="Input";const at=({type:A="info",title:e,content:t,placement:n="top",requiresManualClose:a=!1,showBtn:l=!1,showIcon:i=!0,btnLabel:s,...d})=>{const[p,c]=B.useNotification({top:24,maxCount:1});return{trigger:h((()=>{const c={message:e,description:t,placement:n,duration:a?0:3,btn:l?r(de,{type:"primary",size:"small",onClick:()=>p.destroy(),children:s??"Confirm"}):null,style:{fontFamily:"Roboto"},className:`ui-notification ${!i&&"no-icon"}`,...i?{}:{icon:r(o,{})},...d};return p[A](c)}),[t,e]),contextHolder:c}},ot=A(b)`
 	&.ant-tag {
 		color: #272822;
 		span[role='img'] {
