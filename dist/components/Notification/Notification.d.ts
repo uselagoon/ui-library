@@ -13,7 +13,10 @@ export type NotificationType = {
     showIcon?: boolean;
 };
 declare const useUINotification: ({ type, title, content, placement, requiresManualClose, showBtn, showIcon, btnLabel, ...props }: NotificationType) => {
-    trigger: () => void;
+    trigger: (args?: {
+        title?: string | undefined;
+        content?: string | undefined;
+    } | undefined) => void;
     contextHolder: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
 };
 export default useUINotification;

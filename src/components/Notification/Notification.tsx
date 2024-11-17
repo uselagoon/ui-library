@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode } from 'react';
 import { NotificationArgsProps, notification } from 'antd';
 import { NotificationPlacement } from 'antd/es/notification/interface';
 import UIButton from '../Button';
@@ -32,18 +32,10 @@ const useUINotification = ({
 		maxCount: 1,
 	});
 
-	const [notificationContent, setNotificationContent] = useState({
-		title,
-		content,
-	});
-	useEffect(() => {
-		setNotificationContent({ ...notificationContent, title, content });
-	}, [title, content]);
-
-	const notifFunction = () => {
+	const trigger = (args?: { title?: string; content?: string }) => {
 		const notifConfig: NotificationArgsProps = {
-			message: notificationContent.title,
-			description: notificationContent.content,
+			message: args?.title || title,
+			description: args?.content || content,
 			placement,
 			duration: requiresManualClose ? 0 : 3,
 			btn: showBtn ? (
@@ -51,18 +43,13 @@ const useUINotification = ({
 					{btnLabel ?? 'Confirm'}
 				</UIButton>
 			) : null,
-			style: {
-				fontFamily: 'Roboto',
-			},
+			style: { fontFamily: 'Roboto' },
 			className: `ui-notification ${!showIcon && 'no-icon'}`,
 			...(showIcon ? {} : { icon: <></> }),
 			...props,
 		};
-
-		return api[type](notifConfig);
+		api[type](notifConfig);
 	};
-
-	const trigger = notifFunction;
 
 	return { trigger, contextHolder };
 };
