@@ -155,7 +155,7 @@ const TasksTable = (props: TasksTableProps) => {
 				actions: (
 					<ActionWrap>
 						<LinkContainer>
-							<Link href={`${basePath}/${task.name}`}>
+							<Link href={`${basePath}/${task.taskName}`}>
 								<EyeOutlined />
 							</Link>
 						</LinkContainer>
