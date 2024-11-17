@@ -13,6 +13,7 @@ type Task = {
 export type TasksProps = {
     tasks: Task[];
     basePath: string;
+    cancelTask: (task: Task) => JSX.Element;
     skeleton?: false;
     resultDropdown?: ReactNode;
 };

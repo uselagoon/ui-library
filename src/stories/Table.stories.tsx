@@ -579,6 +579,7 @@ export const FactsTableSkeleton: Story = {
 export const TasksTable: Story = {
 	render: () => (
 		<BaseTable.TasksTable
+			cancelTask={() => <></>}
 			basePath="/"
 			tasks={[
 				{
