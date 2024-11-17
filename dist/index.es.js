@@ -830,7 +830,7 @@ html,body{
 				color: ${LA.white};
 			`}
 	}
-`,nt=m(((A,e)=>r(tt,{...A,ref:e})));nt.displayName="Input";const rt=({type:A="info",title:e,content:t,placement:n="top",requiresManualClose:a=!1,showBtn:l=!1,showIcon:i=!0,btnLabel:s,...d})=>{const[p,c]=z.useNotification({top:24,maxCount:1});return{trigger:()=>{const c={message:e,description:t,placement:n,duration:a?0:3,btn:l?r(se,{type:"primary",size:"small",onClick:()=>p.destroy(),children:s??"Confirm"}):null,style:{fontFamily:"Roboto"},className:`ui-notification ${!i&&"no-icon"}`,...i?{}:{icon:r(o,{})},...d};return p[A](c)},contextHolder:c}},at=A(B)`
+`,nt=m(((A,e)=>r(tt,{...A,ref:e})));nt.displayName="Input";const rt=({type:A="info",title:e,content:t,placement:n="top",requiresManualClose:a=!1,showBtn:l=!1,showIcon:i=!0,btnLabel:s,...c})=>{const[m,C]=z.useNotification({top:24,maxCount:1}),[h,u]=d({title:e,content:t});p((()=>{u({...h,title:e,content:t})}),[e,t]);return{trigger:()=>{const e={message:h.title,description:h.content,placement:n,duration:a?0:3,btn:l?r(se,{type:"primary",size:"small",onClick:()=>m.destroy(),children:s??"Confirm"}):null,style:{fontFamily:"Roboto"},className:`ui-notification ${!i&&"no-icon"}`,...i?{}:{icon:r(o,{})},...c};return m[A](e)},contextHolder:C}},at=A(B)`
 	&.ant-tag {
 		color: #272822;
 		span[role='img'] {

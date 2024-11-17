@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { NotificationArgsProps, notification } from 'antd';
 import { NotificationPlacement } from 'antd/es/notification/interface';
 import UIButton from '../Button';
@@ -32,10 +32,18 @@ const useUINotification = ({
 		maxCount: 1,
 	});
 
+	const [notificationContent, setNotificationContent] = useState({
+		title,
+		content,
+	});
+	useEffect(() => {
+		setNotificationContent({ ...notificationContent, title, content });
+	}, [title, content]);
+
 	const notifFunction = () => {
 		const notifConfig: NotificationArgsProps = {
-			message: title,
-			description: content,
+			message: notificationContent.title,
+			description: notificationContent.content,
 			placement,
 			duration: requiresManualClose ? 0 : 3,
 			btn: showBtn ? (
