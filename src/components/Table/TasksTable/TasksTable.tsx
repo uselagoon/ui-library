@@ -106,10 +106,10 @@ const TasksTable = (props: TasksTableProps) => {
 			dataIndex: 'name',
 			key: 'name',
 			width: '26.266%',
-			render: (name: string) => {
+			render: (name: string, record: Task) => {
 				return (
 					<LinkContainer>
-						<Link href={`${basePath}/${name}`}>{name}</Link>
+						<Link href={`${basePath}/${record.taskName}`}>{name}</Link>
 					</LinkContainer>
 				);
 			},
