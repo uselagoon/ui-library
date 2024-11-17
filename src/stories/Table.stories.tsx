@@ -302,6 +302,30 @@ export const DeploymentsTableSkeleton: Story = {
 	render: () => <BaseTable.DeploymentsTable skeleton />,
 };
 
+export const DeploymentTable: Story = {
+	render: () => (
+		<BaseTable.DeploymentTable
+			cancelDeployment={() => <></>}
+			children={<>Extra children elements ( usually logViewer )</>}
+			deployment={{
+				id: 3134,
+				name: 'lagoon-build-8u9hye',
+				status: 'running',
+				created: '2023-10-18 03:06:54',
+				buildStep: 'runningPostRolloutTasks',
+				started: '2023-10-18 03:11:06',
+				completed: '2023-10-18 03:12:26',
+				bulkId: null,
+				sourceType: 'API',
+				priority: null,
+			}}
+		/>
+	),
+};
+
+export const DeploymentTableSkeleton: Story = {
+	render: () => <BaseTable.DeploymentTable skeleton />,
+};
 export const AllDeploymentsTable: Story = {
 	render: () => (
 		<BaseTable.AllDeploymentsTable
@@ -655,6 +679,32 @@ export const TasksTable: Story = {
 
 export const TasksTableSkeleton: Story = {
 	render: () => <BaseTable.TasksTable skeleton />,
+};
+
+export const TaskTable: Story = {
+	render: () => (
+		<BaseTable.TaskTable
+			cancelTask={() => <></>}
+			children={<>Extra children elements ( usually logViewer )</>}
+			task={{
+				id: 756,
+				name: 'Drush cache-clear',
+				taskName: 'lagoon-task-aiycwi',
+				status: 'complete',
+				service: 'cli',
+				adminOnlyView: false,
+				created: '2023-10-18 03:06:54',
+				started: '2023-10-18 03:11:06',
+				logs: null,
+				files: [],
+				completed: '2023-10-18 03:12:26',
+			}}
+		/>
+	),
+};
+
+export const TaskTableSkeleton: Story = {
+	render: () => <BaseTable.TaskTable skeleton />,
 };
 
 export const InsightsTable: Story = {

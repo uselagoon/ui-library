@@ -15,6 +15,7 @@ import { AllDeploymentsTableProps } from './AllDeploymentsTable/AllDeploymentsTa
 import { BulkDeploymentsTableProps } from './BulkDeployments/BulkDeploymentsTable';
 import { VariablesTableProps } from './VariablesTable/VariablesTable';
 import { DeploymenTableProps } from './DeploymentTable/DeploymentTable';
+import { TaskTableProps } from './TaskTable/TaskTable';
 
 export interface BaseTableWithComponents
 	extends React.ForwardRefExoticComponent<BaseTableProps & React.RefAttributes<HTMLDivElement>> {
@@ -25,6 +26,7 @@ export interface BaseTableWithComponents
 	FactsTable: React.FC<FactsTableProps>;
 	InsightsTable: React.FC<InsightsTableProps>;
 	TasksTable: React.FC<TasksTableProps>;
+	TaskTable: React.FC<TaskTableProps>;
 	ProjectsTable: React.FC<ProjectsTableProps>;
 	EnvironmentsTable: React.FC<EnvironmentsTableProps>;
 	AllDeploymentsTable: React.FC<AllDeploymentsTableProps>;
