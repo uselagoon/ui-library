@@ -204,7 +204,10 @@ html,body{
 
 		${A=>"primary"===A.type?R:M}
 	}
-`,P=t.forwardRef((({size:A="large",type:t="primary",iconBefore:n,iconAfter:r,disabled:a,loading:o,className:l,children:s,styles:i,...d},p)=>{let c=s;return n&&(c=e.jsxs(e.Fragment,{children:[e.jsx(F,{children:n}),c]})),r&&(c=e.jsxs(e.Fragment,{children:[c," ",e.jsx(H,{children:r})]})),e.jsx(D,{ref:p,type:t,size:A,styles:i,disabled:a,loading:o,className:l,...d,children:c})}));P.displayName="Button";const X=n.Typography.Text,Y=n.Typography.Link,G=A.css`
+	&.ant-btn-dangerous {
+		background-color: #ff4d4f;
+	}
+`,P=t.forwardRef((({size:A="large",type:t="primary",danger:n=!1,iconBefore:r,iconAfter:a,disabled:o,loading:l,className:s,children:i,styles:d,...p},c)=>{let m=i;return r&&(m=e.jsxs(e.Fragment,{children:[e.jsx(F,{children:r}),m]})),a&&(m=e.jsxs(e.Fragment,{children:[m," ",e.jsx(H,{children:a})]})),e.jsx(D,{ref:c,type:t,size:A,styles:d,disabled:o,loading:l,className:s,danger:n,...p,children:m})}));P.displayName="Button";const X=n.Typography.Text,Y=n.Typography.Link,G=A.css`
 	font-family: 'ArabicPro-Regular', sans-serif;
 	font-size: 16px;
 	line-height: 18px;

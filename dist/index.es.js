@@ -204,7 +204,10 @@ html,body{
 
 		${A=>"primary"===A.type?ne:re}
 	}
-`,se=m((({size:A="large",type:e="primary",iconBefore:t,iconAfter:n,disabled:i,loading:l,className:s,children:d,styles:p,...c},m)=>{let C=d;return t&&(C=a(o,{children:[r(oe,{children:t}),C]})),n&&(C=a(o,{children:[C," ",r(ie,{children:n})]})),r(le,{ref:m,type:e,size:A,styles:p,disabled:i,loading:l,className:s,...c,children:C})}));se.displayName="Button";const de=g.Text,pe=g.Link,ce=t`
+	&.ant-btn-dangerous {
+		background-color: #ff4d4f;
+	}
+`,se=m((({size:A="large",type:e="primary",danger:t=!1,iconBefore:n,iconAfter:i,disabled:l,loading:s,className:d,children:p,styles:c,...m},C)=>{let h=p;return n&&(h=a(o,{children:[r(oe,{children:n}),h]})),i&&(h=a(o,{children:[h," ",r(ie,{children:i})]})),r(le,{ref:C,type:e,size:A,styles:c,disabled:l,loading:s,className:d,danger:t,...m,children:h})}));se.displayName="Button";const de=g.Text,pe=g.Link,ce=t`
 	font-family: 'ArabicPro-Regular', sans-serif;
 	font-size: 16px;
 	line-height: 18px;

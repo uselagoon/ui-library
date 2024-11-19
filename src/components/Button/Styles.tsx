@@ -60,4 +60,7 @@ export const UIButton = styled(AntButton)<ButtonSizeType>`
 
 		${(props) => (props.type === 'primary' ? primaryBtnStyles : secondaryBtnStyles)}
 	}
+	&.ant-btn-dangerous {
+		background-color: #ff4d4f;
+	}
 `;

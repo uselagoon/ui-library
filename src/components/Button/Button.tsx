@@ -7,7 +7,7 @@ export type ButtonSizeType = {
 	type?: 'primary' | 'secondary';
 };
 
-export type InternalButtonProps = Omit<ButtonProps, 'danger' | 'ghost' | 'type' | 'icon'> &
+export type InternalButtonProps = Omit<ButtonProps, 'ghost' | 'type' | 'icon'> &
 	ButtonSizeType & {
 		iconBefore?: React.ReactNode;
 		iconAfter?: React.ReactNode;
@@ -16,12 +16,14 @@ export type InternalButtonProps = Omit<ButtonProps, 'danger' | 'ghost' | 'type' 
 		className?: string;
 		children?: React.ReactNode;
 		styles?: React.CSSProperties;
+		danger?: boolean;
 	};
 
 const InternalButton: React.ForwardRefRenderFunction<HTMLButtonElement, InternalButtonProps> = (
 	{
 		size = 'large',
 		type = 'primary',
+		danger = false,
 		iconBefore,
 		iconAfter,
 		disabled,
@@ -59,6 +61,7 @@ const InternalButton: React.ForwardRefRenderFunction<HTMLButtonElement, Internal
 			disabled={disabled}
 			loading={loading}
 			className={className}
+			danger={danger}
 			{...props}
 		>
 			{renderNode}
