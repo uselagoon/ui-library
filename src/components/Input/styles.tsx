@@ -25,7 +25,6 @@ export const StyledInput = styled(Input)`
 		border-radius: 2px;
 		border: 1px solid ${(props) => props.theme.UI.borders.box};
 		background-color: ${(props) => props.theme.UI.backgrounds.input};
-
 		&.ant-input-outlined.ant-input-status-error:not(.ant-input-disabled) {
 			background-color: ${(props) => props.theme.UI.backgrounds.input};
 		}

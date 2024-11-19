@@ -39,8 +39,7 @@ export const ModalChildren = styled.section<{ $minHeight?: string }>`
 			}
 		}
 		.ant-modal-body {
-			border-top: 1px solid #75715e;
-			border-bottom: 1px solid #75715e;
+			border-block: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#75715e' : '#dadad2')};
 			padding: 20px 24px;
 			color: ${(props) => props.theme.UI.texts.primary};
 			min-height: 200px;

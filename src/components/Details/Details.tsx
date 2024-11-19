@@ -76,6 +76,21 @@ const StyledDetails = styled(Descriptions)<{ $type?: 'topToBottom' }>`
 			text-transform: uppercase;
 		}
 
+		&.ant-descriptions-bordered .ant-descriptions-view {
+			.ant-descriptions-row {
+				border-bottom: 1px solid transparent;
+				.ant-descriptions-item-label {
+					background-color: rgba(0, 0, 0, 0.15);
+					border-right: 1px solid rgba(0, 0, 0, 0.25);
+					border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+				}
+				.ant-descriptions-item-content {
+					background: rgba(0, 0, 0, 0.05);
+					border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+				}
+			}
+		}
+
 		${(props) =>
 			props.theme.colorScheme === 'dark' &&
 			css`

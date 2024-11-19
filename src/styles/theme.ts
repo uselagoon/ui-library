@@ -52,15 +52,15 @@ export const lightTheme: DefaultTheme = {
 		backgrounds: {
 			primary: '#101010',
 			secondary: '#fff',
-			input: colors.backgrounds.primary.light,
-			modal: colors.backgrounds.primary.light,
+			input: '#fff',
+			modal: '#f2f2f2',
 			dataCard: colors.gray,
 			selection: '#e6f4ff',
 			lagoonCard: colors.backgrounds.primary.light,
 			lagoonCardInverted: colors.backgrounds.primary.dark,
 			footer: colors.backgrounds.primary.dark,
 			header: colors.header.light,
-			navTabs: lagoonColors.monoBackground.alternateLight,
+			navTabs: lagoonColors.monoBackground.light,
 		},
 		confirm: {
 			text: '#000',
@@ -76,7 +76,7 @@ export const lightTheme: DefaultTheme = {
 		},
 		borders: {
 			box: '#75715E',
-			card: colors.darkGray,
+			card: '#dadad2',
 			cardInverted: '#868686',
 		},
 		highlights: {
