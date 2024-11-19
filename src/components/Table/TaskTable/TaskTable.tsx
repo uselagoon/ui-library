@@ -164,10 +164,10 @@ const TaskTable = (props: TaskTableProps) => {
 					expandRowByClick: true,
 					showExpandColumn: false,
 					expandedRowRender: () => (
-						<p style={{ margin: 0 }}>
+						<ExpandedRow>
 							<br />
 							{children}
-						</p>
+						</ExpandedRow>
 					),
 				}}
 				columns={TaskColumns}
@@ -182,4 +182,9 @@ export default TaskTable;
 export const ExpandName = styled.span`
 	text-decoration: underline;
 	cursor: pointer;
+`;
+
+export const ExpandedRow = styled.div`
+	margin: 0;
+	background-color: ${(props) => (props.theme.colorScheme === 'light' ? '#fff' : 'transparent')};
 `;

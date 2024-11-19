@@ -30,3 +30,4 @@ export declare const getTaskDuration: (task: Task) => string;
 declare const TaskTable: (props: TaskTableProps) => import("react/jsx-runtime").JSX.Element;
 export default TaskTable;
 export declare const ExpandName: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, never>>;
+export declare const ExpandedRow: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, never>>;

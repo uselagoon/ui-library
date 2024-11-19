@@ -25,3 +25,4 @@ export declare const getDeploymentDuration: (deployment: Deployment) => string;
 declare const DeploymentTable: (props: DeploymenTableProps) => import("react/jsx-runtime").JSX.Element;
 export default DeploymentTable;
 export declare const ExpandName: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, never>>;
+export declare const ExpandedRow: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, never>>;
