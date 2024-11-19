@@ -135,6 +135,24 @@ export const Default: Story = {
 	},
 };
 
+export const Danger: Story = {
+	args: {
+		size: 'large',
+		type: 'primary',
+		danger: true,
+		children: 'Danger',
+		onClick: () => {
+			alert('clicked');
+		},
+	},
+	parameters: {
+		design: {
+			type: 'figspec',
+			url: 'https://www.figma.com/file/iRRQQSnRmqdcoiysogtjO7/Dashboard?type=design&node-id=66-6597&mode=design&t=P00gx6yjJRZgHUuj-4',
+		},
+	},
+};
+
 export const WithIconBefore: Story = {
 	args: {
 		size: 'large',

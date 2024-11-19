@@ -202,7 +202,9 @@ html,body{
 		}
 		padding: ${A=>A.size?ae[A.size].padding:"initial"};
 
-		${A=>"primary"===A.type?ne:re}
+		&:not(.ant-btn-dangerous) {
+			${A=>"primary"===A.type?ne:re}
+		}
 	}
 	&.ant-btn-dangerous {
 		background-color: #ff4d4f;

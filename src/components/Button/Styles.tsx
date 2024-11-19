@@ -58,7 +58,9 @@ export const UIButton = styled(AntButton)<ButtonSizeType>`
 		}
 		padding: ${(props) => (props.size ? sizeMap[props.size].padding : 'initial')};
 
-		${(props) => (props.type === 'primary' ? primaryBtnStyles : secondaryBtnStyles)}
+		&:not(.ant-btn-dangerous) {
+			${(props) => (props.type === 'primary' ? primaryBtnStyles : secondaryBtnStyles)}
+		}
 	}
 	&.ant-btn-dangerous {
 		background-color: #ff4d4f;
