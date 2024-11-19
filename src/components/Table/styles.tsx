@@ -48,7 +48,7 @@ export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate'
 				font-size: 15px;
 				line-height: 14px;
 				font-weight: 600;
-				border-bottom: 1px solid #75715e;
+				border-bottom: 2px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#75715e' : '#dadad2')} !important;
 				background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#75715E' : '#FAFAFA')};
 
 				&.ant-table-column-has-sorters {
@@ -139,16 +139,16 @@ export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate'
 			&.custom-sorted {
 				background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#717171' : '#d9dbdf')};
 			}
+			border-bottom: 2px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#868686' : '#dadad2')} !important;
+			border-right: 2px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#868686' : '#dadad2')} !important;
+			padding-left: 0.5rem !important;
+			&:first-child {
+				border-left: 2px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#868686' : '#dadad2')} !important;
+			}
 			${(props) => {
 				return (
 					props.$variant === 'alternate' &&
 					css`
-						border-bottom: 2px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#868686' : '#F8F8F2')} !important;
-						border-right: 2px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#868686' : '#F8F8F2')} !important;
-						padding-left: 0.5rem !important;
-						&:first-child {
-							border-left: 2px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#868686' : '#F8F8F2')} !important;
-						}
 						&.ant-table-cell-row-hover {
 							background: ${(props) => (props.theme.colorScheme === 'dark' ? '#32332c' : '#F8F8F2')} !important;
 						}
