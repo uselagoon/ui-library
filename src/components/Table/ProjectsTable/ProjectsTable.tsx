@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useLinkComponent } from '../../../providers/NextLinkProvider';
 import { TableProps, Tooltip } from 'antd';
 import { ActionWrap } from '../styles';
 import { LinkContainer } from '../DeploymentsTable/styles';
-import { EyeOutlined } from '@ant-design/icons';
+import { EyeOutlined, LoadingOutlined } from '@ant-design/icons';
 import BaseTable from '../Base';
 import Pagination from '../../Pagination';
 
@@ -13,6 +13,7 @@ import utc from 'dayjs/plugin/utc';
 import duration from 'dayjs/plugin/duration';
 import ProjectsTableSkeleton from './ProjectsTableSkeleton';
 import { highlightTextInElement } from '../../../_util/helpers';
+import { debounce } from '../_utils';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -70,6 +71,10 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [pageSize, setResultsPerPage] = useState(resultsPerPage || 10);
 
+	// used for debounced filtering
+	const [loading, setLoading] = useState(false);
+	const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects || []);
+
 	useEffect(() => {
 		if (resultsPerPage) {
 			setResultsPerPage(resultsPerPage);
@@ -78,23 +83,36 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 
 	const Link = useLinkComponent();
 
-	// paginate based on the current filtered data
-	const filteredData = projects
-		? projects.filter((project) => {
-				const fieldsToCheck = [project.name, project.kubernetes.name, project.origin];
+	const timerLengthPercentage = useMemo(
+		() => Math.min(1000, Math.max(40, Math.floor(projects.length * 0.0725))),
+		[projects.length],
+	);
 
-				return fieldsToCheck.some((fieldValue) =>
-					String(fieldValue).toLowerCase().includes(filterString.toLowerCase()),
-				);
-			})
-		: [];
+	const debouncedFilter = useCallback(
+		debounce((filterString: string) => {
+			const filteredData =
+				projects?.filter((project) => {
+					const fieldsToCheck = [project.name, project.kubernetes.name, project.origin];
+					return fieldsToCheck.some((fieldValue) =>
+						String(fieldValue).toLowerCase().includes(filterString.toLowerCase()),
+					);
+				}) || [];
+
+			setFilteredProjects(filteredData);
+			setLoading(false);
+		}, timerLengthPercentage),
+		[],
+	);
+	useEffect(() => {
+		setLoading(true);
+		debouncedFilter(filterString);
+	}, [filterString, debouncedFilter]);
 
 	// paginated data based on filtered results
-
 	const paginatedData =
-		pageSize > 0 ? filteredData.slice((currentPage - 1) * pageSize, currentPage * pageSize) : filteredData;
+		pageSize > 0 ? filteredProjects.slice((currentPage - 1) * pageSize, currentPage * pageSize) : filteredProjects;
 
-	const totalFilteredCount = filteredData.length;
+	const totalFilteredCount = filteredProjects.length;
 
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
@@ -210,6 +228,10 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 				dataSource={remappedProjects}
 				columns={wrappedColumns}
 				rowKey={(record) => record.id}
+				loading={{
+					spinning: loading,
+					indicator: <LoadingOutlined />,
+				}}
 			/>
 			<Pagination
 				total={totalFilteredCount}
