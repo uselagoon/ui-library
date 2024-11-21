@@ -1,9 +1,12 @@
 {
 	"name": "@uselagoon/ui-library",
+	"author": "Amazeeio",
+	"license": "Apache-2.0",
 	"version": "1.1.1",
 	"description": "Lagoon component library using Ant design/Styled-components",
 	"main": "dist/index.js",
 	"module": "dist/index.es.js",
+	"types": "dist/index.d.ts",
 	"scripts": {
 		"prepare": "npm run build",
 		"build": "npm run bundle && npm run copy",
@@ -21,8 +24,6 @@
 		"type": "git",
 		"url": "git+https://github.com/uselagoon/ui-library.git"
 	},
-	"author": "Amazeeio",
-	"license": "Apache-2.0",
 	"bugs": {
 		"url": "https://github.com/uselagoon/ui-library/issues"
 	},
