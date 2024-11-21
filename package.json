@@ -2,7 +2,7 @@
 	"name": "@uselagoon/ui-library",
 	"author": "Amazeeio",
 	"license": "Apache-2.0",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "Lagoon component library using Ant design/Styled-components",
 	"main": "dist/index.js",
 	"module": "dist/index.es.js",
