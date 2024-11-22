@@ -1,5 +1,3 @@
-import 'styled-components';
-
 export interface UITheme {
 	colorScheme: 'dark' | 'light';
 	UI: {

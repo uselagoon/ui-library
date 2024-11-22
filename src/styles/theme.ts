@@ -1,8 +1,8 @@
 import colors from '../_util/colors';
-import { DefaultTheme } from 'styled-components';
 import { lagoonColors } from '../_util/lagoonColors';
+import { UITheme } from '../typings/styled';
 
-export const darkTheme: DefaultTheme = {
+export const darkTheme: UITheme = {
 	colorScheme: 'dark',
 	UI: {
 		backgrounds: {
@@ -46,7 +46,7 @@ export const darkTheme: DefaultTheme = {
 	},
 };
 
-export const lightTheme: DefaultTheme = {
+export const lightTheme: UITheme = {
 	colorScheme: 'light',
 	UI: {
 		backgrounds: {
