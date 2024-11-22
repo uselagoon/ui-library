@@ -10,6 +10,7 @@ import { Highlighted, ModalButton, ModalForm, ModalHeader, ModalText } from './s
 import FormItem from '../../FormItem';
 import Input from '../../Input';
 import { useForm } from 'antd/es/form/Form';
+import { Tooltip } from 'antd';
 
 dayjs.extend(utc);
 dayjs.extend(relativeTime);
@@ -26,6 +27,7 @@ type sshKey = {
 	keyType: string;
 	keyValue: string;
 	keyFingerprint: string;
+	lastUsed?: string | null;
 };
 
 export type SshTableProps = {
@@ -52,7 +54,7 @@ export type SshTableProps = {
 
 const sshColumns = [
 	{
-		title: 'Key Name',
+		title: 'Key ID - Name',
 		dataIndex: 'name',
 		key: 'name',
 		width: '17.4%',
@@ -67,12 +69,18 @@ const sshColumns = [
 		title: 'Fingerprint',
 		dataIndex: 'keyFingerprint',
 		key: 'keyFingerprint',
-		width: '41.3%',
+		width: '24%',
 	},
 	{
-		title: 'Timestamp',
+		title: 'Created',
 		dataIndex: 'created',
 		key: 'created',
+		width: '17.4%',
+	},
+	{
+		title: 'Last Used',
+		dataIndex: 'lastUsed',
+		key: 'lastUsed',
 		width: '17.4%',
 	},
 	{
@@ -132,7 +140,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 			.then(() => {
 				const { keyName, keyValue } = editForm.getFieldsValue();
 
-				updateKey.update(selectedKey?.id, keyName, keyValue).finally(() => {
+				updateKey.update(selectedKey?.id, keyName, selectedKey?.keyType, keyValue).finally(() => {
 					refetch();
 					handleEditModalClose();
 				});
@@ -150,7 +158,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 	const renderEditModal = () => {
 		return (
 			<Modal
-				confirmText="Edit"
+				confirmText="Update"
 				title={<ModalHeader>Edit SSH Key</ModalHeader>}
 				open={editModalOpen}
 				onCancel={handleEditModalClose}
@@ -262,7 +270,22 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 		sshKeys.map((key) => {
 			return {
 				...key,
-				created: dayjs.utc(key.created).local().fromNow(),
+				name: (
+					<>
+						{key.id} - {key.name}
+					</>
+				),
+				created: (
+					<Tooltip placement="top" title={key.created}>
+						{dayjs.utc(key.created).local().fromNow()}
+					</Tooltip>
+				),
+				lastUsed: (
+					<Tooltip placement="top" title={key.lastUsed ?? 'This key has not been used yet.'}>
+						{key.lastUsed ? dayjs.utc(key.lastUsed).local().fromNow() : 'Never'}
+					</Tooltip>
+				),
+
 				actions: (
 					<ActionWrap>
 						<EditOutlined

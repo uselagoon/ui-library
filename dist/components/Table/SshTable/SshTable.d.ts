@@ -9,6 +9,7 @@ type sshKey = {
     keyType: string;
     keyValue: string;
     keyFingerprint: string;
+    lastUsed?: string | null;
 };
 export type SshTableProps = {
     sshKeys: sshKey[];
