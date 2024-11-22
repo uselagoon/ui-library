@@ -1,8 +1,5 @@
 import 'styled-components';
 
-export interface ThemeObject {
-	[key: string]: string | ThemeObject;
-}
 export interface UITheme {
 	colorScheme: 'dark' | 'light';
 	UI: {
@@ -50,3 +47,5 @@ export interface UITheme {
 declare module 'styled-components' {
 	export interface DefaultTheme extends UITheme {}
 }
+
+export type ThemeObject = UITheme;
