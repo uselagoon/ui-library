@@ -1,10 +1,12 @@
 import { Empty, Table } from 'antd';
 import styled, { css } from 'styled-components';
-import colors from '../../_util/colors';
 
-export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate'; $lastRowBordered: boolean }>`
+export const StyledBaseTable = styled(Table)<{
+	$variant: 'default' | 'alternate';
+	$lastRowBordered: boolean;
+	$withBg?: boolean;
+}>`
 	border: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#000' : '#fff')};
-
 	border-radius: 0;
 	font-family: 'Open Sans', sans-serif !important;
 	box-shadow: ${(props) =>
@@ -110,7 +112,7 @@ export const StyledBaseTable = styled(Table)<{ $variant: 'default' | 'alternate'
 
 		${(props) => {
 			return (
-				props.$variant === 'alternate' &&
+				(props.$variant === 'alternate' || props.$withBg) &&
 				css`
 					background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#272822' : '#fff')};
 					color: ${(props) => (props.theme.colorScheme === 'dark' ? '#f8f8f8' : '#272822')};

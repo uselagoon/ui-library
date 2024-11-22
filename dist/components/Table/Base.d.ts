@@ -35,6 +35,7 @@ export interface BaseTableWithComponents extends React.ForwardRefExoticComponent
 type BaseTableProps = Omit<TableProps, 'locale'> & {
     variant?: 'alternate' | 'default';
     lastRowBordered?: boolean;
+    withBg?: boolean;
 };
 declare const BaseTable: BaseTableWithComponents;
 export default BaseTable;

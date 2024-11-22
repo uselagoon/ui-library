@@ -206,6 +206,7 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 	return (
 		<>
 			<BaseTable
+				withBg
 				dataSource={remappedOrgs}
 				columns={wrappedColumns}
 				rowKey={(record) => record.id}

@@ -37,10 +37,22 @@ export interface BaseTableWithComponents
 	OrganizationsTable: React.FC<OrganizationsTableProps>;
 }
 
-type BaseTableProps = Omit<TableProps, 'locale'> & { variant?: 'alternate' | 'default'; lastRowBordered?: boolean };
+type BaseTableProps = Omit<TableProps, 'locale'> & {
+	variant?: 'alternate' | 'default';
+	lastRowBordered?: boolean;
+	withBg?: boolean;
+};
 
 const InternalTable: React.ForwardRefRenderFunction<HTMLDivElement, BaseTableProps> = (
-	{ columns, dataSource, children, lastRowBordered = false, variant = 'default', ...props }: BaseTableProps,
+	{
+		columns,
+		dataSource,
+		children,
+		lastRowBordered = false,
+		variant = 'default',
+		withBg = false,
+		...props
+	}: BaseTableProps,
 	_,
 ) => {
 	return (
@@ -48,6 +60,7 @@ const InternalTable: React.ForwardRefRenderFunction<HTMLDivElement, BaseTablePro
 			<ConfigProvider renderEmpty={() => EmptyDisplay}>
 				<StyledBaseTable
 					$variant={variant}
+					$withBg={withBg}
 					$lastRowBordered={lastRowBordered}
 					dataSource={dataSource}
 					columns={columns}

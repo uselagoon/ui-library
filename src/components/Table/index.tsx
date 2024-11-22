@@ -14,7 +14,6 @@ import VariablesTable from './VariablesTable/VariablesTable';
 
 import DeploymentTable from './DeploymentTable/DeploymentTable';
 import { default as SshTable } from './SshTable/SshTable';
-
 import OrganizationsTable from './OrganizationsTable/OrganizationsTable';
 
 export type { BaseTableProps };
