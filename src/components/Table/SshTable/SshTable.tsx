@@ -141,8 +141,8 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 				const { keyName, keyValue } = editForm.getFieldsValue();
 
 				updateKey.update(selectedKey?.id, keyName, selectedKey?.keyType, keyValue).finally(() => {
-					refetch();
 					handleEditModalClose();
+					refetch();
 				});
 			})
 			.catch(() => {});
@@ -150,8 +150,8 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 
 	const handleDeleteKey = () => {
 		deleteKey.delete(selectedKey?.id).finally(() => {
-			refetch();
 			handleDeleteModalClose();
+			refetch();
 		});
 	};
 
