@@ -15,6 +15,8 @@ import VariablesTable from './VariablesTable/VariablesTable';
 import DeploymentTable from './DeploymentTable/DeploymentTable';
 import { default as SshTable } from './SshTable/SshTable';
 
+import OrganizationsTable from './OrganizationsTable/OrganizationsTable';
+
 export type { BaseTableProps };
 
 // Different types of tables
@@ -32,4 +34,7 @@ Table.AllDeploymentsTable = AllDeploymentsTable;
 Table.BulkDeploymentsTable = BulkDeploymentsTable;
 Table.VariablesTable = VariablesTable;
 Table.DeploymentTable = DeploymentTable;
+
+//ORGS
+Table.OrganizationsTable = OrganizationsTable;
 export default Table;

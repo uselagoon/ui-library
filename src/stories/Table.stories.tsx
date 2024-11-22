@@ -935,4 +935,63 @@ export const SshTable: Story = {
 	),
 };
 
+export const OrganizationsTable: Story = {
+	render: () => {
+		const [filterString, setFilterString] = useState('test');
+
+		return (
+			<>
+				<input type="text" placeholder="placeholder filter string" onChange={(e) => setFilterString(e.target.value)} />
+
+				<br />
+				<BaseTable.OrganizationsTable
+					filterString={filterString}
+					basePath="/organizations"
+					organizations={[
+						{
+							id: 26,
+							name: 'test-organization',
+							description: '',
+							friendlyName: 'test-organization',
+							quotaProject: 1,
+							quotaGroup: 10,
+							groups: [
+								{
+									id: 'some-id',
+								},
+							],
+							projects: [
+								{
+									id: 654,
+								},
+							],
+							deployTargets: [
+								{
+									id: 1,
+									name: 'test6.amazee.io',
+								},
+								{
+									id: 2,
+									name: 'us2.amazee.io',
+								},
+								{
+									id: 3,
+									name: 'amazeeio-test1',
+								},
+								{
+									id: 4,
+									name: 'amazeeio-test9',
+								},
+							],
+						},
+					]}
+				/>
+			</>
+		);
+	},
+};
+export const OrganizationsTableSkeleton: Story = {
+	render: () => <BaseTable.OrganizationsTable skeleton />,
+};
+
 export default meta;
