@@ -163,6 +163,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 				open={editModalOpen}
 				onCancel={handleEditModalClose}
 				minHeight="350px"
+				destroyOnClose
 				onOk={handleEditKey}
 				confirmLoading={updateKey?.loading}
 			>
