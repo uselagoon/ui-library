@@ -11,6 +11,7 @@ import type { RenderedCell } from 'rc-table/lib/interface';
 import { highlightTextInElement } from '../../../_util/helpers';
 import { debounce } from '../_utils';
 import OrganizationsTableSkeleton from './OrganizationsTableSkeleton';
+import Text from '../../Text';
 
 export type Organization = {
 	id: number;
@@ -105,7 +106,14 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 			width: '25.46%',
 			render: (_: string, org: Organization) => (
 				<LinkContainer>
-					<Link href={`${basePath}/${org.name}`}>{org.friendlyName ?? org.name}</Link>
+					<Link href={`${basePath}/${org.name}`}>
+						{org.friendlyName ?? org.name}
+						<section>
+							<Text italic style={{ fontSize: '0.75rem' }}>
+								{org.description ? org.description : null}
+							</Text>
+						</section>
+					</Link>
 				</LinkContainer>
 			),
 		},

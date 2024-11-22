@@ -951,7 +951,7 @@ export const OrganizationsTable: Story = {
 						{
 							id: 26,
 							name: 'test-organization',
-							description: '',
+							description: 'some description',
 							friendlyName: 'test-organization',
 							quotaProject: 1,
 							quotaGroup: 10,
