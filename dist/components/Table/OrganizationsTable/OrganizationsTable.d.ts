@@ -23,9 +23,9 @@ export type OrgsProps = {
     filterString: string;
     skeleton?: false;
 };
-export type OrganizationsTableSkeleton = {
+export type OrganizationsTableSkeletonProps = {
     skeleton: true;
 };
-export type OrganizationsTableProps = OrganizationsTableSkeleton | OrgsProps;
+export type OrganizationsTableProps = OrganizationsTableSkeletonProps | OrgsProps;
 declare const OrganizationsTable: (props: OrganizationsTableProps) => import("react/jsx-runtime").JSX.Element;
 export default OrganizationsTable;

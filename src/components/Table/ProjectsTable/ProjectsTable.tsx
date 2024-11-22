@@ -46,12 +46,12 @@ export type ProjectsProps = {
 	skeleton?: false;
 };
 
-export type ProjectsTableSkeleton = {
+export type ProjectsTableSkeletonProps = {
 	skeleton: true;
 };
 
 export type ProjectsTableProps = Omit<TableProps, 'pagination' | 'filteredValue'> &
-	(ProjectsTableSkeleton | ProjectsProps);
+	(ProjectsTableSkeletonProps | ProjectsProps);
 
 const getLatestDate = (environments: Project['environments']) => {
 	return environments

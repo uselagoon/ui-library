@@ -25,9 +25,9 @@ export type ProjectsProps = {
     filterString: string;
     skeleton?: false;
 };
-export type ProjectsTableSkeleton = {
+export type ProjectsTableSkeletonProps = {
     skeleton: true;
 };
-export type ProjectsTableProps = Omit<TableProps, 'pagination' | 'filteredValue'> & (ProjectsTableSkeleton | ProjectsProps);
+export type ProjectsTableProps = Omit<TableProps, 'pagination' | 'filteredValue'> & (ProjectsTableSkeletonProps | ProjectsProps);
 declare const ProjectsTable: (props: ProjectsTableProps) => import("react/jsx-runtime").JSX.Element;
 export default ProjectsTable;

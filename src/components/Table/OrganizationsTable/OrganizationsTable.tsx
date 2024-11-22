@@ -32,11 +32,11 @@ export type OrgsProps = {
 	skeleton?: false;
 };
 
-export type OrganizationsTableSkeleton = {
+export type OrganizationsTableSkeletonProps = {
 	skeleton: true;
 };
 
-export type OrganizationsTableProps = OrganizationsTableSkeleton | OrgsProps;
+export type OrganizationsTableProps = OrganizationsTableSkeletonProps | OrgsProps;
 
 const OrganizationsTable = (props: OrganizationsTableProps) => {
 	if ('skeleton' in props && props.skeleton) {
