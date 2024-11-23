@@ -66,6 +66,7 @@ const InternalTable: React.ForwardRefRenderFunction<HTMLDivElement, BaseTablePro
 					columns={columns}
 					ref={null}
 					pagination={false}
+					scroll={{ x: 'max-content' }}
 					{...props}
 				/>
 			</ConfigProvider>
