@@ -123,7 +123,7 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 			key: 'group_count',
 			render: (groupCount: number, org: Organization) => (
 				<div>
-					{groupCount} of {org.quotaGroup} groups
+					{groupCount} of {org.quotaGroup === -1 ? 'unlimited' : org.quotaGroup} groups
 				</div>
 			),
 			width: '19.1%',
@@ -134,7 +134,7 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 			key: 'project_count',
 			render: (projectCount: number, org: Organization) => (
 				<div>
-					{projectCount} of {org.quotaGroup} projects
+					{projectCount} of {org.quotaProject === -1 ? 'unlimited' : org.quotaProject} projects
 				</div>
 			),
 			width: '24.2%',
