@@ -473,7 +473,7 @@ html,body{
 			color: ${A=>A.theme.UI.texts.primary};
 		}
 	}
-`;xA.displayName="Checkbox";const KA=t.forwardRef(((A,n)=>{const{className:a,style:o,onChange:l,selectedState:s,setSelectedState:i,...d}=A,[p,c]=t.useState(!1);return e.jsx(WA,{ref:n,onChange:A=>{i&&i(A)},value:s||null,defaultOpen:A.defaultOpen||!0,style:o,dropdownRender:A=>e.jsx(TA,{children:A}),onDropdownVisibleChange:A=>c(A),...d,suffixIcon:p?e.jsx(r.UpOutlined,{}):e.jsx(r.DownOutlined,{})})})),WA=l.default(n.Select)`
+`;xA.displayName="Checkbox";const KA=t.forwardRef(((A,n)=>{const{className:a,style:o,onChange:l,value:s,selectedState:i,setSelectedState:d,...p}=A,[c,m]=t.useState(!1);return e.jsx(WA,{ref:n,onChange:l??(A=>{d&&d(A)}),value:s||i||void 0,defaultOpen:A.defaultOpen||!0,style:o,dropdownRender:A=>e.jsx(TA,{children:A}),onDropdownVisibleChange:A=>m(A),...p,suffixIcon:c?e.jsx(r.UpOutlined,{}):e.jsx(r.DownOutlined,{})})})),WA=l.default(n.Select)`
 	&.ant-select {
 		min-width: 13.125rem;
 		height: 2.5rem;

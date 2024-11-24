@@ -12,17 +12,18 @@ type UISelectProps = SelectProps & {
 };
 
 const UISelect = forwardRef<RefSelectProps, UISelectProps>((props, ref) => {
-	const { className, style, onChange, selectedState, setSelectedState, ...rest } = props;
+	const { className, style, onChange, value, selectedState, setSelectedState, ...rest } = props;
 
 	const [isOpen, setIsOpen] = useState(false);
 
+	const deferredChangeHandler = (value: any) => {
+		setSelectedState && setSelectedState(value);
+	};
 	return (
 		<StyledSelect
 			ref={ref}
-			onChange={(value) => {
-				setSelectedState && setSelectedState(value);
-			}}
-			value={selectedState || null}
+			onChange={onChange ?? deferredChangeHandler}
+			value={value || selectedState || undefined}
 			defaultOpen={props.defaultOpen || true}
 			style={style}
 			dropdownRender={(menu) => {
