@@ -15,6 +15,11 @@ import { VariablesTableProps } from './VariablesTable/VariablesTable';
 import { DeploymenTableProps } from './DeploymentTable/DeploymentTable';
 import { TaskTableProps } from './TaskTable/TaskTable';
 import { OrganizationsTableProps } from './OrganizationsTable/OrganizationsTable';
+import { GroupsTableProps } from './Organizations/OrgGroupsTable/OrgGroupsTable';
+import { UsersProps } from './Organizations/OrgUsersTable/OrgUserstable';
+import { OrgProjectsProps } from './Organizations/OrgProjectsTable/OrgProjectsTable';
+import { NotificationsTableProps } from './Organizations/OrgNotificationsTable/OrgNotificationsTable';
+import { OwnersTableProps } from './Organizations/OrgAdminsTable/OrgAdminsTable';
 export interface BaseTableWithComponents extends React.ForwardRefExoticComponent<BaseTableProps & React.RefAttributes<HTMLDivElement>> {
     SshTable: React.FC<SshTableProps>;
     DeploymentsTable: React.FC<DeploymentsTableProps>;
@@ -31,6 +36,11 @@ export interface BaseTableWithComponents extends React.ForwardRefExoticComponent
     VariablesTable: React.FC<VariablesTableProps>;
     DeploymentTable: React.FC<DeploymenTableProps>;
     OrganizationsTable: React.FC<OrganizationsTableProps>;
+    OrgGroupsTable: React.FC<GroupsTableProps>;
+    OrgUsersTable: React.FC<UsersProps>;
+    OrgProjectsTable: React.FC<OrgProjectsProps>;
+    OrgNotificationsTable: React.FC<NotificationsTableProps>;
+    OrgAdminsTable: React.FC<OwnersTableProps>;
 }
 type BaseTableProps = Omit<TableProps, 'locale'> & {
     variant?: 'alternate' | 'default';

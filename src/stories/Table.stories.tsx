@@ -4,7 +4,14 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { default as BaseTable } from '../components/Table';
 import { Controls, Primary, Stories, Title } from '@storybook/blocks';
-import { CarryOutOutlined, DeleteOutlined, EditOutlined, EyeOutlined, SmileOutlined } from '@ant-design/icons';
+import {
+	CarryOutOutlined,
+	DeleteOutlined,
+	EditOutlined,
+	EyeOutlined,
+	SmileOutlined,
+	UserAddOutlined,
+} from '@ant-design/icons';
 import { LinkContainer } from '../components/Table/DeploymentsTable/styles';
 import UISelect from '../components/Select/Select';
 
@@ -994,4 +1001,371 @@ export const OrganizationsTableSkeleton: Story = {
 	render: () => <BaseTable.OrganizationsTable skeleton />,
 };
 
+export const OrgGroupsTable: Story = {
+	render: () => {
+		const [filterString, setFilterString] = useState('');
+
+		return (
+			<>
+				<input type="text" placeholder="placeholder filter string" onChange={(e) => setFilterString(e.target.value)} />
+
+				<br />
+				<BaseTable.OrgGroupsTable
+					sortBy="memberCount_desc"
+					newGroupModal={<>+ Add group</>}
+					deleteUserModal={(current) => (
+						<>
+							<DeleteOutlined />
+						</>
+					)}
+					addUserModal={(current) => (
+						<>
+							<UserAddOutlined />
+						</>
+					)}
+					resultDropdown={<UISelect placeholder="Results per page" defaultOpen={false} />}
+					filterString={filterString}
+					basePath="/groups"
+					showDefaults
+					groups={[
+						{
+							id: 'randomstring',
+							name: 'some-group',
+							type: 'null',
+							memberCount: 1,
+						},
+						{
+							id: 'randomstring2',
+							name: 'davits-test-group',
+							type: 'null',
+							memberCount: 20,
+						},
+						{
+							id: 'randomstring3',
+							name: 'third-group',
+							type: 'null',
+							memberCount: 2,
+						},
+						{
+							id: 'randomstring4',
+							name: 'default-group',
+							type: 'project-default-group',
+							memberCount: 1,
+						},
+						{
+							id: 'randomstring5',
+							name: 'another-default',
+							type: 'project-default-group',
+							memberCount: 1,
+						},
+					]}
+				/>
+			</>
+		);
+	},
+};
+export const OrgGroupsSkeleton: Story = {
+	render: () => <BaseTable.OrgGroupsTable skeleton />,
+};
+
+export const OrgsUsersTable: Story = {
+	render: () => {
+		const [filterString, setFilterString] = useState('');
+
+		return (
+			<>
+				<input type="text" placeholder="placeholder filter string" onChange={(e) => setFilterString(e.target.value)} />
+
+				<br />
+				<BaseTable.OrgUsersTable
+					newUserModal={<>+ Add user</>}
+					deleteUserModal={(current) => (
+						<>
+							<DeleteOutlined />
+						</>
+					)}
+					resultDropdown={<UISelect placeholder="Results per page" defaultOpen={false} />}
+					filterString={filterString}
+					basePath="/users"
+					users={[
+						{
+							id: '1',
+							firstName: 'Admin',
+							lastName: 'Adminson',
+							email: 'adminuser@amazee.io',
+							groupRoles: [
+								{
+									id: 'g1',
+									role: 'MAINTAINER',
+								},
+								{
+									id: 'g2',
+									role: 'OWNER',
+								},
+								{
+									id: 'g3',
+									role: 'MAINTAINER',
+								},
+								{
+									id: 'g4',
+									role: 'MAINTAINER',
+								},
+							],
+						},
+						{
+							id: '2342e5f5-258e-4e61-b7de-3175523ae524',
+							firstName: 'Someone',
+							lastName: 'Else',
+							email: 'someone.somewhere@amazee.io',
+							groupRoles: [
+								{
+									id: '123',
+									role: 'MAINTAINER',
+								},
+								{
+									id: '321',
+									role: 'OWNER',
+								},
+							],
+						},
+						{
+							id: '1233',
+							firstName: 'Larry',
+							lastName: 'User-one',
+							email: 'someUser@example.com',
+							groupRoles: [
+								{
+									id: '3211',
+									role: 'OWNER',
+								},
+							],
+						},
+
+						{
+							id: '5',
+							firstName: null,
+							lastName: null,
+							email: 'default-user@project-testing',
+							groupRoles: [
+								{
+									id: '4',
+									role: 'MAINTAINER',
+								},
+							],
+						},
+						{
+							id: '1',
+							firstName: null,
+							lastName: null,
+							email: 'default-user@service',
+							groupRoles: [
+								{
+									id: '2',
+									role: 'MAINTAINER',
+								},
+							],
+						},
+					]}
+				/>
+			</>
+		);
+	},
+};
+export const OrgUsersTable: Story = {
+	render: () => <BaseTable.OrgUsersTable skeleton />,
+};
+
+export const OrgProjectsTable: Story = {
+	render: () => {
+		const [filterString, setFilterString] = useState('');
+
+		return (
+			<>
+				<input type="text" placeholder="placeholder filter string" onChange={(e) => setFilterString(e.target.value)} />
+
+				<br />
+				<BaseTable.OrgProjectsTable
+					newProjectModal={<>+ Add Project</>}
+					deleteProjectModal={(current) => (
+						<>
+							<DeleteOutlined />
+						</>
+					)}
+					resultDropdown={<UISelect placeholder="Results per page" defaultOpen={false} />}
+					filterString={filterString}
+					basePath="/projects"
+					projects={[
+						{
+							id: 1,
+							name: 'a-lot-of-testing',
+							groupCount: 2,
+						},
+						{
+							id: 2,
+							name: 'some-project',
+							groupCount: 0,
+						},
+						{
+							id: 3,
+							name: 'test-nginx',
+							groupCount: 1,
+						},
+						{
+							id: 4,
+							name: 'project-testing',
+							groupCount: 1,
+						},
+						{
+							id: 5,
+							name: 'test-project-example',
+							groupCount: 2,
+						},
+						{
+							id: 6,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
+					]}
+				/>
+			</>
+		);
+	},
+};
+export const OrgProjectsSkeleton: Story = {
+	render: () => <BaseTable.OrgProjectsTable skeleton />,
+};
+
+export const OrgNotificationsTable: Story = {
+	render: () => {
+		const [filterString, setFilterString] = useState('');
+
+		return (
+			<>
+				<input type="text" placeholder="placeholder filter string" onChange={(e) => setFilterString(e.target.value)} />
+
+				<br />
+				<BaseTable.OrgNotificationsTable
+					newNotificationModal={<>+ Add Notification</>}
+					editNotificationModal={(current) => (
+						<>
+							<EditOutlined />
+						</>
+					)}
+					deleteNotificationModal={(current) => (
+						<>
+							<DeleteOutlined />
+						</>
+					)}
+					filterString={filterString}
+					notifications={{
+						slacks: [
+							{
+								webhook: 'slackhook-edited-foo',
+								name: 'slack-edited-foo',
+								channel: 'channelslack-edited-foo',
+							},
+							{
+								webhook: '9999999991',
+								name: 'slack-edited1',
+								channel: 'channelslack-edited21',
+							},
+						],
+						emails: [
+							{
+								emailAddress: 'email-OG@gmail.com',
+								name: 'test-email-edited-again',
+							},
+							{
+								emailAddress: 'email2@gmail.com',
+								name: 'test-email-edited',
+							},
+						],
+						webhooks: [
+							{
+								webhook: 'webhook-edited-again-test2',
+								name: 'webhook-test-edited-again',
+							},
+						],
+					}}
+				/>
+			</>
+		);
+	},
+};
+export const OrgNotificationsSkeleton: Story = {
+	render: () => <BaseTable.OrgNotificationsTable skeleton />,
+};
+
+export const OrgAdminsTable: Story = {
+	render: () => {
+		const [filterString, setFilterString] = useState('');
+
+		return (
+			<>
+				<input type="text" placeholder="placeholder filter string" onChange={(e) => setFilterString(e.target.value)} />
+
+				<br />
+				<BaseTable.OrgAdminsTable
+					addNewOwnerModal={<>+ Add Admin</>}
+					editOwnerModal={(current) => (
+						<>
+							<EditOutlined />
+						</>
+					)}
+					deleteOwnerModal={(current) => (
+						<>
+							<DeleteOutlined />
+						</>
+					)}
+					filterString={filterString}
+					owners={[
+						{
+							id: '11111',
+							firstName: 'Saul',
+							lastName: 'Goodman',
+							email: 'email@amazee.io',
+							owner: true,
+							admin: null,
+							groupRoles: [{ id: '123', role: 'something' }],
+						},
+
+						{
+							id: '1234',
+							firstName: 'Another',
+							lastName: 'UserOwner',
+							email: 'ownerUser@amazee.io',
+							owner: true,
+							admin: null,
+							groupRoles: [
+								{ id: '123', role: 'something' },
+								{ id: '123', role: 'somethingElse' },
+							],
+						},
+						{
+							id: '321',
+							firstName: null,
+							lastName: null,
+							email: 'default-user@testing',
+							owner: null,
+							admin: true,
+							groupRoles: [{ id: '123', role: 'something' }],
+						},
+						{
+							id: '12345',
+							firstName: 'User',
+							lastName: 'lastname',
+							email: 'some.one@amazee.io',
+							owner: null,
+							admin: null,
+							groupRoles: [{ id: '123', role: 'something' }],
+						},
+					]}
+				/>
+			</>
+		);
+	},
+};
+export const OrgAdminsSkeleton: Story = {
+	render: () => <BaseTable.OrgAdminsTable skeleton />,
+};
 export default meta;

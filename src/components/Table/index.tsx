@@ -14,7 +14,13 @@ import VariablesTable from './VariablesTable/VariablesTable';
 
 import DeploymentTable from './DeploymentTable/DeploymentTable';
 import { default as SshTable } from './SshTable/SshTable';
+
 import OrganizationsTable from './OrganizationsTable/OrganizationsTable';
+import OrgGroupsTable from './Organizations/OrgGroupsTable/OrgGroupsTable';
+import OrgUsersTable from './Organizations/OrgUsersTable/OrgUserstable';
+import OrgProjectsTable from './Organizations/OrgProjectsTable/OrgProjectsTable';
+import OrgNotificationsTable from './Organizations/OrgNotificationsTable/OrgNotificationsTable';
+import OrgAdminsTable from './Organizations/OrgAdminsTable/OrgAdminsTable';
 
 export type { BaseTableProps };
 
@@ -36,4 +42,10 @@ Table.DeploymentTable = DeploymentTable;
 
 //ORGS
 Table.OrganizationsTable = OrganizationsTable;
+Table.OrgGroupsTable = OrgGroupsTable;
+Table.OrgUsersTable = OrgUsersTable;
+Table.OrgProjectsTable = OrgProjectsTable;
+Table.OrgNotificationsTable = OrgNotificationsTable;
+Table.OrgAdminsTable = OrgAdminsTable;
+
 export default Table;
