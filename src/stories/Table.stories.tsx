@@ -1556,7 +1556,7 @@ export const OrgAdminsTable: Story = {
 							email: 'email@amazee.io',
 							owner: true,
 							admin: null,
-							groupRoles: [{ id: '123', role: 'something' }],
+							groupRoles: [{ id: '123' }],
 						},
 
 						{
@@ -1566,10 +1566,7 @@ export const OrgAdminsTable: Story = {
 							email: 'ownerUser@amazee.io',
 							owner: true,
 							admin: null,
-							groupRoles: [
-								{ id: '123', role: 'something' },
-								{ id: '123', role: 'somethingElse' },
-							],
+							groupRoles: [{ id: '123' }, { id: '1234' }],
 						},
 						{
 							id: '321',
@@ -1578,7 +1575,7 @@ export const OrgAdminsTable: Story = {
 							email: 'default-user@testing',
 							owner: null,
 							admin: true,
-							groupRoles: [{ id: '123', role: 'something' }],
+							groupRoles: [{ id: '123' }],
 						},
 						{
 							id: '12345',
@@ -1587,7 +1584,7 @@ export const OrgAdminsTable: Story = {
 							email: 'some.one@amazee.io',
 							owner: null,
 							admin: null,
-							groupRoles: [{ id: '123', role: 'something' }],
+							groupRoles: [{ id: '123' }],
 						},
 					]}
 				/>

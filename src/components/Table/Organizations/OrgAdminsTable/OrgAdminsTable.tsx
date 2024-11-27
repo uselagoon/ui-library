@@ -15,7 +15,7 @@ type Owner = {
 	email: string;
 	admin: true | null;
 	owner: true | null;
-	groupRoles: { id: string; role: string }[];
+	groupRoles: { id: string }[] | null;
 };
 
 export type OwnersProps = {
@@ -158,7 +158,12 @@ const OrgAdminsTable = (props: OwnersTableProps) => {
 			dataIndex: 'groupCount',
 			key: 'groupCount',
 			width: '22.17%',
-			sorter: (a: Owner, b: Owner) => a.groupRoles.length - b.groupRoles.length,
+			sorter: (a: Owner, b: Owner) => {
+				if (a.groupRoles && b.groupRoles) {
+					return a.groupRoles.length - b.groupRoles.length;
+				}
+				return 0;
+			},
 			render: (groupCount: number) => {
 				return <>Groups: {groupCount}</>;
 			},
@@ -175,7 +180,7 @@ const OrgAdminsTable = (props: OwnersTableProps) => {
 		paginatedOwners.map((owner) => {
 			return {
 				...owner,
-				groupCount: owner.groupRoles.length,
+				groupCount: owner.groupRoles ? owner.groupRoles.length : 0,
 				actions: (
 					<ActionWrap>
 						{editOwnerModal(owner)}

@@ -8,8 +8,7 @@ type Owner = {
     owner: true | null;
     groupRoles: {
         id: string;
-        role: string;
-    }[];
+    }[] | null;
 };
 export type OwnersProps = {
     owners: Owner[];
