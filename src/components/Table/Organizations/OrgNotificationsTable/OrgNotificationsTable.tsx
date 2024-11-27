@@ -89,7 +89,7 @@ export type NotificationsSkeleton = {
 
 export type NotificationsTableProps = {
 	filterString?: string;
-	filterNotificationType?: 'slack' | 'webhook' | 'teams' | 'rocketChat' | 'webhook';
+	filterNotificationType?: 'slack' | 'webhook' | 'teams' | 'rocketChat' | 'email';
 } & (NotificationsSkeleton | NotificationsProps);
 
 /*
