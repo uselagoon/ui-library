@@ -21,6 +21,7 @@ import OrgUsersTable from './Organizations/OrgUsersTable/OrgUserstable';
 import OrgProjectsTable from './Organizations/OrgProjectsTable/OrgProjectsTable';
 import OrgNotificationsTable from './Organizations/OrgNotificationsTable/OrgNotificationsTable';
 import OrgAdminsTable from './Organizations/OrgAdminsTable/OrgAdminsTable';
+import OrgUserGroupsTable from './Organizations/OrgUserGroupsTable/OrgUserGroupsTable';
 
 export type { BaseTableProps };
 
@@ -47,5 +48,6 @@ Table.OrgUsersTable = OrgUsersTable;
 Table.OrgProjectsTable = OrgProjectsTable;
 Table.OrgNotificationsTable = OrgNotificationsTable;
 Table.OrgAdminsTable = OrgAdminsTable;
+Table.OrgUserGroupsTable = OrgUserGroupsTable;
 
 export default Table;

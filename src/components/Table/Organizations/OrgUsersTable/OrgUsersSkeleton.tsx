@@ -1,7 +1,7 @@
 import Skeleton from '../../../Skeleton';
 import BaseTable from '../../Base';
 
-const OrgUsersSkeleton = () => {
+const OrgUsersSkeleton = ({ type }: { type: 'standalone' | 'subTable' }) => {
 	const usersColumns = [
 		{
 			title: 'First Name',
@@ -27,13 +27,27 @@ const OrgUsersSkeleton = () => {
 			render: () => <Skeleton height={30} />,
 		},
 
-		{
-			title: 'Groups',
-			dataIndex: 'groupCount',
-			key: 'groupCount',
-			width: '19.56%',
-			render: () => <Skeleton height={30} />,
-		},
+		...(type === 'standalone'
+			? [
+					{
+						title: 'Groups',
+						dataIndex: 'groupCount',
+						key: 'groupCount',
+						width: '19.56%',
+						render: () => <Skeleton height={30} />,
+					},
+				]
+			: [
+					{
+						title: 'Role',
+						dataIndex: 'role',
+						key: 'role',
+						width: '19.56%',
+						render: () => <Skeleton height={30} />,
+					},
+				]),
+
+		,
 		{
 			title: 'Actions',
 			dataIndex: 'actions',
@@ -47,7 +61,7 @@ const OrgUsersSkeleton = () => {
 	const skeletons = [...Array(skeletonCount)].map((_, index) => ({
 		key: `org-user-skeleton-${index}`,
 	}));
-
+	// @ts-ignore
 	return <BaseTable dataSource={skeletons} columns={usersColumns} />;
 };
 

@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useMemo, useState } from 'react';
 import type { RenderedCell } from 'rc-table/lib/interface';
-import { SystemDefault, TotalDescription } from '../styles';
+import { RoleBadge, SystemDefault, TotalDescription } from '../styles';
 import { ActionWrap, EmptyAction } from '../../styles';
 import { LinkContainer } from '../../DeploymentsTable/styles';
 import { useLinkComponent } from '../../../../providers/NextLinkProvider';
@@ -22,16 +22,30 @@ type User = {
 	}[];
 };
 
-export type UsersTableProps = {
-	users: User[];
-	newUserModal: ReactNode;
-	deleteUserModal: (group: User) => ReactNode;
-	basePath: string;
-	skeleton?: false;
+type GroupMemberUser = {
+	role: 'GUEST' | 'DEVELOPER' | 'REPORTER' | 'MAINTAINER' | 'OWNER';
+	firstName: string | null;
+	lastName: string | null;
+	email: string;
 };
+
+export type UsersTableProps = { newUserModal: ReactNode; basePath: string; skeleton?: false } & (
+	| {
+			type?: 'standalone';
+			users: User[];
+			deleteUserModal: (user: User) => ReactNode;
+	  }
+	| {
+			type?: 'subTable';
+			users: GroupMemberUser[];
+			editUserGroupRoleModal: (user: GroupMemberUser) => ReactNode;
+			unlinkUserModal: (user: GroupMemberUser) => ReactNode;
+	  }
+);
 
 export type UsersTableSkeleton = {
 	skeleton: true;
+	type: 'subTable' | 'standalone';
 };
 
 export type UsersProps = {
@@ -54,6 +68,9 @@ export type UsersProps = {
 	resultDropdown?: ReactNode;
 } & (UsersTableSkeleton | UsersTableProps);
 
+/*
+ * Users table - used in organizations/orgName/users as type `standalone` OR organizations/orgName/groups/groupName as type `subTable`
+ */
 const OrgUsersTable = (props: UsersProps) => {
 	const { resultsPerPage, showDefaults = false, resultDropdown = null, sortBy = null, filterString = '' } = props;
 
@@ -68,10 +85,10 @@ const OrgUsersTable = (props: UsersProps) => {
 	}, [resultsPerPage]);
 
 	if ('skeleton' in props && props.skeleton) {
-		return <OrgUsersSkeleton />;
+		return <OrgUsersSkeleton type={props.type} />;
 	}
 
-	const { users, basePath, deleteUserModal, newUserModal } = props;
+	const { users, basePath, type = 'standalone', newUserModal } = props;
 
 	const Link = useLinkComponent();
 
@@ -90,10 +107,12 @@ const OrgUsersTable = (props: UsersProps) => {
 
 	const sortedUsers = [...filteredUsers].sort((a, b) => {
 		if (sortColumn) {
-			let aValue = a[sortColumn as keyof User];
-			let bValue = b[sortColumn as keyof User];
+			// @ts-ignore
+			let aValue = a[sortColumn];
+			// @ts-ignore
+			let bValue = b[sortColumn];
 
-			if (sortColumn === 'groupCount') {
+			if (sortColumn === 'groupCount' && type === 'standalone') {
 				//@ts-ignore
 				aValue = a.groupRoles.length;
 				//@ts-ignore
@@ -184,16 +203,33 @@ const OrgUsersTable = (props: UsersProps) => {
 			className: getSortedClass('email'),
 		},
 
-		{
-			title: 'Groups',
-			dataIndex: 'groupCount',
-			key: 'groupCount',
-			width: '19.56%',
-			render: (groupCount: number) => {
-				return <>Groups: {groupCount}</>;
-			},
-			className: getSortedClass('groupCount'),
-		},
+		...(type === 'standalone'
+			? [
+					{
+						title: 'Groups',
+						dataIndex: 'groupCount',
+						key: 'groupCount',
+						width: '19.56%',
+						render: (groupCount: number) => {
+							return <>Groups: {groupCount}</>;
+						},
+						className: getSortedClass('groupCount'),
+					},
+				]
+			: [
+					{
+						title: 'Role',
+						dataIndex: 'role',
+						key: 'role',
+						width: '19.56%',
+						render: (role: 'GUEST' | 'REPORTER' | 'DEVELOPER' | 'MAINTAINER' | 'OWNER') => {
+							return <RoleBadge $type={role}>{role}</RoleBadge>;
+						},
+						className: getSortedClass('role'),
+					},
+				]),
+
+		,
 		{
 			title: 'Actions',
 			dataIndex: 'actions',
@@ -201,21 +237,41 @@ const OrgUsersTable = (props: UsersProps) => {
 		},
 	];
 
+	// unlink or delete
+	const renderDeleteModal = (user: User | GroupMemberUser) => {
+		if (type === 'standalone' && 'deleteUserModal' in props) {
+			return props.deleteUserModal(user as User);
+		} else if (type === 'subTable' && 'unlinkUserModal' in props) {
+			return props.unlinkUserModal(user as GroupMemberUser);
+		}
+		return null;
+	};
+
+	const renderEditModal = (user: User | GroupMemberUser) => {
+		if (type === 'subTable' && 'editUserGroupRoleModal' in props) {
+			return props.editUserGroupRoleModal(user as GroupMemberUser);
+		}
+		return null;
+	};
+
 	const usersWithActions =
 		paginatedUsers &&
 		paginatedUsers.map((user) => {
 			return {
 				...user,
-				groupCount: user.groupRoles.length,
+				...(type === 'standalone'
+					? { groupCount: (user as User).groupRoles.length }
+					: { role: (user as GroupMemberUser).role }),
 				actions: (
 					<ActionWrap>
+						{renderEditModal(user)}
 						<LinkContainer>
 							<Link href={`${basePath}/${user.email}`}>
 								<EyeOutlined />
 							</Link>
 						</LinkContainer>
 
-						{!user.email.startsWith('default-user') ? deleteUserModal(user) : <EmptyAction></EmptyAction>}
+						{!user.email.startsWith('default-user') ? renderDeleteModal(user) : <EmptyAction></EmptyAction>}
 					</ActionWrap>
 				),
 			};
@@ -233,6 +289,7 @@ const OrgUsersTable = (props: UsersProps) => {
 					// @ts-ignore
 					const renderedContent = col.render ? col.render(renderElement, record) : renderElement;
 
+					// @ts-ignore
 					const shouldHighlight = fieldsToCheck.includes(col.dataIndex);
 					if (shouldHighlight) {
 						// RenderedCell or ReactNode

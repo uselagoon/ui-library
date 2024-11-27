@@ -20,6 +20,7 @@ import { UsersProps } from './Organizations/OrgUsersTable/OrgUserstable';
 import { OrgProjectsProps } from './Organizations/OrgProjectsTable/OrgProjectsTable';
 import { NotificationsTableProps } from './Organizations/OrgNotificationsTable/OrgNotificationsTable';
 import { OwnersTableProps } from './Organizations/OrgAdminsTable/OrgAdminsTable';
+import { OrgUserGroupsTableProps } from './Organizations/OrgUserGroupsTable/OrgUserGroupsTable';
 export interface BaseTableWithComponents extends React.ForwardRefExoticComponent<BaseTableProps & React.RefAttributes<HTMLDivElement>> {
     SshTable: React.FC<SshTableProps>;
     DeploymentsTable: React.FC<DeploymentsTableProps>;
@@ -41,6 +42,7 @@ export interface BaseTableWithComponents extends React.ForwardRefExoticComponent
     OrgProjectsTable: React.FC<OrgProjectsProps>;
     OrgNotificationsTable: React.FC<NotificationsTableProps>;
     OrgAdminsTable: React.FC<OwnersTableProps>;
+    OrgUserGroupsTable: React.FC<OrgUserGroupsTableProps>;
 }
 type BaseTableProps = Omit<TableProps, 'locale'> & {
     variant?: 'alternate' | 'default';

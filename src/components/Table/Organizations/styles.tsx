@@ -44,18 +44,18 @@ export const OwnerBadge = styled.div<{ $type: 'admin' | 'owner' | 'viewer' }>`
 	}};
 `;
 
-export const Badge = styled.div<{ $type: 'slack' | 'rocketchat' | 'email' | 'webhook' | 'teams' }>`
+export const Badge = styled.div<{ $type: 'slack' | 'rocketChat' | 'email' | 'webhook' | 'teams' }>`
 	width: max-content;
 	text-transform: uppercase;
 	border-radius: 2px;
 	padding: 2px 4px;
 	color: #fff;
-
+	margin-left: 0.5rem;
 	background-color: ${({ $type }) => {
 		switch ($type) {
 			case 'slack':
 				return '#4578E6';
-			case 'rocketchat':
+			case 'rocketChat':
 				return '#008080';
 			case 'email':
 				return '#4FDA9D';
@@ -63,6 +63,31 @@ export const Badge = styled.div<{ $type: 'slack' | 'rocketchat' | 'email' | 'web
 				return '#DC3545';
 			case 'teams':
 				return '#6FB3FF';
+			default:
+				return '#000';
+		}
+	}};
+`;
+
+export const RoleBadge = styled.div<{ $type: 'GUEST' | 'REPORTER' | 'DEVELOPER' | 'MAINTAINER' | 'OWNER' }>`
+	width: max-content;
+	text-transform: uppercase;
+	border-radius: 3px;
+	padding: 4px 6px;
+	color: #fff;
+	margin-inline: auto;
+	background-color: ${({ $type }) => {
+		switch ($type) {
+			case 'GUEST':
+				return '#4EDA9D';
+			case 'REPORTER':
+				return '#008080';
+			case 'DEVELOPER':
+				return '#008080';
+			case 'MAINTAINER':
+				return '#4B84FF';
+			case 'OWNER':
+				return '#DC3444';
 			default:
 				return '#000';
 		}

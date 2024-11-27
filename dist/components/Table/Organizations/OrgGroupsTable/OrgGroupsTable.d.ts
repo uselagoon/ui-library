@@ -8,8 +8,8 @@ type Group = {
 export type GroupsProps = {
     groups: Group[];
     newGroupModal: ReactNode;
-    deleteUserModal: (group: Group) => ReactNode;
-    addUserModal: (group: Group) => ReactNode;
+    deleteUserModal?: (group: Group) => ReactNode;
+    addUserModal?: (group: Group) => ReactNode;
     basePath: string;
     skeleton?: false;
 };

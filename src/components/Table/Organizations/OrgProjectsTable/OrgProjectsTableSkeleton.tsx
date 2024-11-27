@@ -1,22 +1,28 @@
 import Skeleton from '../../../Skeleton';
 import BaseTable from '../../Base';
 
-const OrgProjectsTableSkeleton = () => {
+const OrgProjectsTableSkeleton = ({ type }: { type: 'standalone' | 'subTable' }) => {
 	const projectsColumns = [
 		{
 			title: 'Project Name',
 			dataIndex: 'name',
 			key: 'name',
-			width: '60.17%',
+			width: type === 'standalone' ? '60.17%' : '87.57%',
 			render: () => <Skeleton height={30} />,
 		},
-		{
-			title: 'Groups',
-			dataIndex: 'groupCount',
-			key: 'groupCount',
-			width: '27.4%',
-			render: () => <Skeleton height={30} />,
-		},
+
+		...(type === 'standalone'
+			? [
+					{
+						title: 'Groups',
+						dataIndex: 'groupCount',
+						key: 'groupCount',
+						width: '27.4%',
+						render: () => <Skeleton height={30} />,
+					},
+				]
+			: []),
+
 		{
 			title: 'Actions',
 			dataIndex: 'actions',

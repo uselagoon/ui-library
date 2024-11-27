@@ -1,7 +1,7 @@
 import Skeleton from '../../../Skeleton';
 import BaseTable from '../../Base';
 
-const OrgNotificationsSkeleton = () => {
+const OrgNotificationsSkeleton = ({ type }: { type: 'standalone' | 'subTable' }) => {
 	const notifColumns = [
 		{
 			title: 'Notification Name',
@@ -14,16 +14,21 @@ const OrgNotificationsSkeleton = () => {
 			title: 'Badge',
 			dataIndex: 'type',
 			key: 'type',
-			width: '17.4%',
+			width: type === 'standalone' ? '17.4%' : '67.4%',
 			render: () => <Skeleton height={30} />,
 		},
-		{
-			title: 'Webhook or Channel Details',
-			dataIndex: 'details',
-			key: 'details',
-			width: '50%',
-			render: () => <Skeleton height={30} />,
-		},
+
+		...(type === 'standalone'
+			? [
+					{
+						title: 'Webhook or Channel Details',
+						dataIndex: 'details',
+						key: 'details',
+						width: '50%',
+						render: () => <Skeleton height={30} />,
+					},
+				]
+			: []),
 
 		{
 			title: 'Actions',

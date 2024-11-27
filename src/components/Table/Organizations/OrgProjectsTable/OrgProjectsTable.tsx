@@ -13,22 +13,31 @@ import { Tooltip } from 'antd';
 import { IconLagoonOnly } from '../../../Icons';
 import OrgProjectsTableSkeleton from './OrgProjectsTableSkeleton';
 
-type Project = {
+type ProjectBase = {
 	id: number;
 	name: string;
+};
+
+type StandaloneProject = ProjectBase & {
 	groupCount: number;
 };
 
-export type ProjectsProps = {
-	projects: Project[];
-	newProjectModal: ReactNode;
-	deleteProjectModal: (group: Project) => ReactNode;
-	basePath: string;
-	skeleton?: false;
-};
+export type ProjectsProps = { newProjectModal: ReactNode; basePath: string; skeleton?: false } & (
+	| {
+			type?: 'standalone';
+			projects: StandaloneProject[];
+			deleteProjectModal: (group: StandaloneProject) => ReactNode;
+	  }
+	| {
+			type?: 'subTable';
+			projects: ProjectBase[];
+			unlinkProjectModal: (group: ProjectBase) => ReactNode;
+	  }
+);
 
 export type ProjectsTableSkeleton = {
 	skeleton: true;
+	type: 'standalone' | 'subTable';
 };
 
 export type OrgProjectsProps = {
@@ -41,6 +50,9 @@ export type OrgProjectsProps = {
 	resultDropdown?: ReactNode;
 } & (ProjectsTableSkeleton | ProjectsProps);
 
+/*
+ * Projects table - used in organizations/orgName/projects as type `standalone` OR organizations/orgName/groups/groupName as type `subTable`
+ */
 const OrgProjectsTable = (props: OrgProjectsProps) => {
 	const { resultsPerPage, resultDropdown = null, sortBy = null, filterString = '' } = props;
 
@@ -55,16 +67,20 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 	}, [resultsPerPage]);
 
 	if ('skeleton' in props && props.skeleton) {
-		return <OrgProjectsTableSkeleton />;
+		return <OrgProjectsTableSkeleton type={props.type} />;
 	}
 
-	const { projects, basePath, deleteProjectModal, newProjectModal } = props;
+	const { projects, basePath, newProjectModal, type = 'standalone' } = props;
 
 	const Link = useLinkComponent();
 
 	const filteredProjects = projects
 		? projects.filter((project) => {
-				const fieldsToCheck = [project.name, project.groupCount];
+				const fieldsToCheck = [project.name];
+
+				if (type === 'standalone') {
+					fieldsToCheck.push(String((project as StandaloneProject).groupCount));
+				}
 
 				return fieldsToCheck.some((fieldValue) =>
 					String(fieldValue).toLowerCase().includes(filterString.toLowerCase()),
@@ -78,8 +94,8 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 
 	const sortedProjects = [...filteredProjects].sort((a, b) => {
 		if (sortColumn) {
-			const aValue = a[sortColumn as keyof Project];
-			const bValue = b[sortColumn as keyof Project];
+			const aValue = a[sortColumn as keyof ProjectBase];
+			const bValue = b[sortColumn as keyof ProjectBase];
 
 			// determine the sort direction (1 for asc, -1 for desc)
 			const direction = sortOrder === 'asc' ? 1 : -1;
@@ -114,7 +130,7 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 			title: 'Project Name',
 			dataIndex: 'name',
 			key: 'name',
-			width: '60.17%',
+			width: type === 'standalone' ? '60.17%' : '87.57%',
 			render: (name: string) => {
 				return (
 					<LinkContainer>
@@ -124,22 +140,38 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 			},
 			className: getSortedClass('name'),
 		},
-		{
-			title: 'Groups',
-			dataIndex: 'groupCount',
-			key: 'groupCount',
-			width: '27.4%',
-			render: (members: number) => {
-				return <>Groups: {members}</>;
-			},
-			className: getSortedClass('groupCount'),
-		},
+
+		...(type === 'standalone'
+			? [
+					{
+						title: 'Groups',
+						dataIndex: 'groupCount',
+						key: 'groupCount',
+						width: '27.4%',
+						render: (members: number) => {
+							return <>Groups: {members}</>;
+						},
+						className: getSortedClass('groupCount'),
+					},
+				]
+			: []),
+
 		{
 			title: 'Actions',
 			dataIndex: 'actions',
 			key: 'actions',
 		},
 	];
+
+	// unlink or delete
+	const renderDeleteModal = (project: ProjectBase) => {
+		if (type === 'standalone' && 'deleteProjectModal' in props) {
+			return props.deleteProjectModal(project as StandaloneProject);
+		} else if (type === 'subTable' && 'unlinkProjectModal' in props) {
+			return props.unlinkProjectModal(project);
+		}
+		return null;
+	};
 
 	const projectsWithActions =
 		paginatedProjects &&
@@ -162,14 +194,18 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 							</Link>
 						</LinkContainer>
 
-						{deleteProjectModal(project)}
+						{renderDeleteModal(project)}
 					</ActionWrap>
 				),
 			};
 		});
 
 	// highlight found text (only certain fields)
-	const fieldsToCheck = ['name', 'groupCount'];
+	const fieldsToCheck = ['name'];
+	if (type === 'standalone') {
+		fieldsToCheck.push('groupCount');
+	}
+
 	const highlightedColumns =
 		projectsColumns &&
 		projectsColumns.map((col) => {

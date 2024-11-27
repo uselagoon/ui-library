@@ -5,6 +5,9 @@ import { highlightTextInElement } from '../../../../_util/helpers';
 import BaseTable from '../../Base';
 import OrgNotificationsSkeleton from './OrgNotificationsSkeleton';
 import { Badge } from '../styles';
+import { LinkContainer } from '../../DeploymentsTable/styles';
+import { EyeOutlined } from '@ant-design/icons';
+import { useLinkComponent } from '../../../../providers/NextLinkProvider';
 
 type SlackNotification = {
 	id?: number;
@@ -57,18 +60,31 @@ export type Notification = {
 	webhooks?: WebhookNotification[];
 };
 
-export type NotificationsProps = {
-	notifications: Notification;
-
-	newNotificationModal: ReactNode;
-	deleteNotificationModal: (notification: NotificationType) => ReactNode;
-	editNotificationModal: (notification: NotificationType) => ReactNode;
-
-	skeleton?: false;
+export type SubTableNotification = {
+	slacks?: Partial<SlackNotification>[];
+	rocketChats?: Partial<RocketChatNotification>[];
+	teams?: Partial<TeamNotification>[];
+	emails?: Partial<EmailNotification>[];
+	webhooks?: Partial<WebhookNotification>[];
 };
+
+export type NotificationsProps = { orgName: string; newNotificationModal: ReactNode; skeleton?: false } & (
+	| {
+			type?: 'standalone';
+			notifications: Notification;
+			deleteNotificationModal: (notification: Notification) => ReactNode;
+			editNotificationModal: (notification: Notification) => ReactNode;
+	  }
+	| {
+			type?: 'subTable';
+			notifications: SubTableNotification;
+			unlinkNotificationModal: (notification: SubTableNotification) => ReactNode;
+	  }
+);
 
 export type NotificationsSkeleton = {
 	skeleton: true;
+	type: 'standalone' | 'subTable';
 };
 
 export type NotificationsTableProps = {
@@ -76,17 +92,22 @@ export type NotificationsTableProps = {
 	filterNotificationType?: 'slack' | 'webhook' | 'teams' | 'rocketChat' | 'webhook';
 } & (NotificationsSkeleton | NotificationsProps);
 
+/*
+ * Notifications table - used in organizations/orgName/notifications as type `standalone` OR organizations/orgName/projects/projectName as type `subTable`
+ */
 const OrgNotificationsTable = (props: NotificationsTableProps) => {
 	if ('skeleton' in props && props.skeleton) {
-		return <OrgNotificationsSkeleton />;
+		return <OrgNotificationsSkeleton type={props.type} />;
 	}
+
+	const Link = useLinkComponent();
 
 	const {
 		notifications: rawNotifications,
+		orgName,
 		filterNotificationType,
 		newNotificationModal,
-		editNotificationModal,
-		deleteNotificationModal,
+		type = 'standalone',
 		filterString = '',
 	} = props;
 
@@ -136,6 +157,7 @@ const OrgNotificationsTable = (props: NotificationsTableProps) => {
 			})
 		: [];
 
+	// show ones only by type
 	const sortedNotifications = useMemo(() => {
 		return filteredNotifications
 			? filteredNotifications.filter((item) => {
@@ -160,52 +182,88 @@ const OrgNotificationsTable = (props: NotificationsTableProps) => {
 			title: 'Badge',
 			dataIndex: 'type',
 			key: 'type',
-			width: '17.4%',
+			width: type === 'standalone' ? '17.4%' : '67.4%',
 			sorter: (a: any, b: any) => a.type.localeCompare(b.type),
 			render: (_: string, notification: { name: string; type: string }) => {
-				return <Badge $type={notification.type as any}>{notification.type}</Badge>;
-			},
-		},
-		{
-			title: 'Webhook or Channel Details',
-			dataIndex: 'details',
-			key: 'details',
-			width: '50%',
-			render: (_: string, notification: any) => {
-				if (notification.type === 'slack' || notification.type === 'rocketchat') {
-					return (
-						<>
-							<p>Webhook: {notification.webhook}</p>
-							<p>channel: {notification.channel}</p>
-						</>
-					);
-				}
-
-				if (notification.type === 'webhook' || notification.type === 'teams') {
-					return (
-						<>
-							<p>Webhook: {notification.webhook}</p>
-						</>
-					);
-				}
-
-				if (notification.type === 'email') {
-					return (
-						<>
-							<p>Address: {notification.emailAddress}</p>
-						</>
-					);
-				}
-				return null;
+				return (
+					<Badge $type={notification.type as 'slack' | 'webhook' | 'teams' | 'rocketChat' | 'webhook'}>
+						{notification.type}
+					</Badge>
+				);
 			},
 		},
 
+		...(type === 'standalone'
+			? [
+					{
+						title: 'Webhook or Channel Details',
+						dataIndex: 'details',
+						key: 'details',
+						width: '50%',
+						render: (_: string, notification: any) => {
+							if (notification.type === 'slack' || notification.type === 'rocketchat') {
+								return (
+									<>
+										<p>Webhook: {notification.webhook}</p>
+										<p>channel: {notification.channel}</p>
+									</>
+								);
+							}
+
+							if (notification.type === 'webhook' || notification.type === 'teams') {
+								return (
+									<>
+										<p>Webhook: {notification.webhook}</p>
+									</>
+								);
+							}
+
+							if (notification.type === 'email') {
+								return (
+									<>
+										<p>Address: {notification.emailAddress}</p>
+									</>
+								);
+							}
+							return null;
+						},
+					},
+				]
+			: []),
+
+		,
 		{
 			title: 'Actions',
 			dataIndex: 'actions',
 			key: 'actions',
 		},
 	];
+
+	const renderDeleteOrUnlink = (notification: Notification | SubTableNotification) => {
+		if (type === 'standalone' && 'deleteNotificationModal' in props) {
+			return props.deleteNotificationModal(notification as Notification);
+		} else if (type === 'subTable' && 'unlinkNotificationModal' in props) {
+			return props.unlinkNotificationModal(notification as SubTableNotification);
+		}
+		return null;
+	};
+
+	const renderEditOrLink = (notification: Notification | SubTableNotification) => {
+		if (type === 'standalone' && 'editNotificationModal' in props) {
+			return props.editNotificationModal(notification as Notification);
+		} else if (type === 'subTable') {
+			return (
+				<LinkContainer>
+					{/* @ts-ignore */}
+					<Link href={`/organizations/${orgName}/notifications?search=${notification.name}`}>
+						<EyeOutlined />
+					</Link>
+				</LinkContainer>
+			);
+		}
+
+		return null;
+	};
 
 	const notificationsWithActions =
 		sortedNotifications &&
@@ -214,8 +272,9 @@ const OrgNotificationsTable = (props: NotificationsTableProps) => {
 				...notification,
 				actions: (
 					<ActionWrap>
-						{editNotificationModal(notification)}
-						{deleteNotificationModal(notification)}
+						{renderEditOrLink(notification as SubTableNotification | Notification)}
+
+						{renderDeleteOrUnlink(notification as SubTableNotification | Notification)}
 					</ActionWrap>
 				),
 			};
@@ -233,6 +292,7 @@ const OrgNotificationsTable = (props: NotificationsTableProps) => {
 					// @ts-ignore
 					const renderedContent = col.render ? col.render(renderElement, record) : renderElement;
 
+					// @ts-ignore
 					const shouldHighlight = fieldsToCheck.includes(col.dataIndex);
 					if (shouldHighlight) {
 						// RenderedCell or ReactNode
@@ -250,6 +310,7 @@ const OrgNotificationsTable = (props: NotificationsTableProps) => {
 			};
 		});
 
+	// add new notification OR link a new notification - same type of modal
 	const summary = () => <tr className="summary">{newNotificationModal}</tr>;
 
 	return (

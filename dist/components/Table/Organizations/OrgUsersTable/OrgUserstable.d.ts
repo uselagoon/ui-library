@@ -9,15 +9,29 @@ type User = {
         role: string;
     }[];
 };
+type GroupMemberUser = {
+    role: 'GUEST' | 'DEVELOPER' | 'REPORTER' | 'MAINTAINER' | 'OWNER';
+    firstName: string | null;
+    lastName: string | null;
+    email: string;
+};
 export type UsersTableProps = {
-    users: User[];
     newUserModal: ReactNode;
-    deleteUserModal: (group: User) => ReactNode;
     basePath: string;
     skeleton?: false;
-};
+} & ({
+    type?: 'standalone';
+    users: User[];
+    deleteUserModal: (user: User) => ReactNode;
+} | {
+    type?: 'subTable';
+    users: GroupMemberUser[];
+    editUserGroupRoleModal: (user: GroupMemberUser) => ReactNode;
+    unlinkUserModal: (user: GroupMemberUser) => ReactNode;
+});
 export type UsersTableSkeleton = {
     skeleton: true;
+    type: 'subTable' | 'standalone';
 };
 export type UsersProps = {
     resultsPerPage?: number;

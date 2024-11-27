@@ -1,2 +1,4 @@
-declare const OrgUsersSkeleton: () => import("react/jsx-runtime").JSX.Element;
+declare const OrgUsersSkeleton: ({ type }: {
+    type: 'standalone' | 'subTable';
+}) => import("react/jsx-runtime").JSX.Element;
 export default OrgUsersSkeleton;

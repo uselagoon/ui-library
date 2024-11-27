@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useMemo, useState } from 'react';
 import type { RenderedCell } from 'rc-table/lib/interface';
-import { SystemDefault, TotalDescription } from '../styles';
+import { RoleBadge, SystemDefault, TotalDescription } from '../styles';
 import { ActionWrap, EmptyAction } from '../../styles';
 import { LinkContainer } from '../../DeploymentsTable/styles';
 import { useLinkComponent } from '../../../../providers/NextLinkProvider';
@@ -9,43 +9,40 @@ import { highlightTextInElement } from '../../../../_util/helpers';
 import { PaginationWithSelector } from '../../FactsTable/FactsTable';
 import BaseTable from '../../Base';
 import Pagination from '../../../Pagination';
-import OrgGroupsSkeleton from './OrgGroupsSkeleton';
+import OrgUserGroupsSkeleton from './OrgUserGroupsSkeleton';
 
-type Group = {
+type UserGroup = {
 	id: string;
-	memberCount: number;
 	name: string;
-	type: 'null' | 'project-default-group';
+	role: 'GUEST' | 'DEVELOPER' | 'REPORTER' | 'MAINTAINER' | 'OWNER';
+	groupType?: 'null' | 'project-default-group';
 };
 
-export type GroupsProps = {
-	groups: Group[];
-	newGroupModal: ReactNode;
-	deleteUserModal?: (group: Group) => ReactNode;
-	addUserModal?: (group: Group) => ReactNode;
+export type UserGroupsProps = {
+	userGroups: UserGroup[];
+	editUserRoleModal: (userGroup: UserGroup) => ReactNode;
+	unlinkGroupModal: (userGroup: UserGroup) => ReactNode;
 	basePath: string;
 	skeleton?: false;
 };
 
-export type GroupsTableSkeleton = {
+export type UserGroupsSkeleton = {
 	skeleton: true;
 };
 
-export type GroupsTableProps = {
+export type OrgUserGroupsTableProps = {
 	resultsPerPage?: number;
 	filterString?: string;
 	showDefaults?: boolean;
-	sortBy?: 'name_asc' | 'name_desc' | 'memberCount_asc' | 'memberCount_desc' | null;
+	sortBy?: 'name_asc' | 'name_desc' | null;
+	filterRoleType?: 'GUEST' | 'DEVELOPER' | 'REPORTER' | 'MAINTAINER' | 'OWNER';
 	/*
 	 * For stylistic reasons, `results per page` select component next to pagination
 	 */
 	resultDropdown?: ReactNode;
-} & (GroupsTableSkeleton | GroupsProps);
+} & (UserGroupsSkeleton | UserGroupsProps);
 
-/*
- * Groups table used on organizations/orgName/groups or organizations/orgName/projects
- */
-const OrgGroupsTable = (props: GroupsTableProps) => {
+const OrgUserGroupsTable = (props: OrgUserGroupsTableProps) => {
 	const { resultsPerPage, showDefaults = false, resultDropdown = null, sortBy = null, filterString = '' } = props;
 
 	// pagination
@@ -59,16 +56,16 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 	}, [resultsPerPage]);
 
 	if ('skeleton' in props && props.skeleton) {
-		return <OrgGroupsSkeleton />;
+		return <OrgUserGroupsSkeleton />;
 	}
 
-	const { groups, basePath, addUserModal, deleteUserModal, newGroupModal } = props;
+	const { userGroups, basePath, unlinkGroupModal, editUserRoleModal, filterRoleType } = props;
 
 	const Link = useLinkComponent();
 
-	const filteredGroups = groups
-		? groups.filter((group) => {
-				const fieldsToCheck = [group.name, group.memberCount];
+	const filteredGroups = userGroups
+		? userGroups.filter((group) => {
+				const fieldsToCheck = [group.name];
 
 				return fieldsToCheck.some((fieldValue) =>
 					String(fieldValue).toLowerCase().includes(filterString.toLowerCase()),
@@ -76,14 +73,24 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 			})
 		: [];
 
+	// show ones only by role
+	const sortedByRole = useMemo(() => {
+		return filteredGroups
+			? filteredGroups.filter((item) => {
+					const statusMatches = filterRoleType ? item.role === filterRoleType : true;
+					return statusMatches;
+				})
+			: [];
+	}, [filteredGroups, filterRoleType]);
+
 	// sorting based on sortBy
 	const sortColumn = sortBy ? sortBy.split('_')[0] : null;
 	const sortOrder = sortBy ? sortBy.split('_')[1] : null;
 
-	const sortedGroups = [...filteredGroups].sort((a, b) => {
+	const sortedGroups = [...sortedByRole].sort((a, b) => {
 		if (sortColumn) {
-			const aValue = a[sortColumn as keyof Group];
-			const bValue = b[sortColumn as keyof Group];
+			const aValue = a[sortColumn as keyof UserGroup];
+			const bValue = b[sortColumn as keyof UserGroup];
 
 			// determine the sort direction (1 for asc, -1 for desc)
 			const direction = sortOrder === 'asc' ? 1 : -1;
@@ -93,8 +100,10 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 			if (aValue === null) return direction;
 			if (bValue === null) return -direction;
 
-			if (aValue > bValue) return direction;
-			if (aValue < bValue) return -direction;
+			if (aValue && bValue) {
+				if (aValue > bValue) return direction;
+				if (aValue < bValue) return -direction;
+			}
 		}
 		return 0;
 	});
@@ -103,7 +112,7 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 		if (!sortedGroups) return [];
 
 		if (!showDefaults) {
-			return sortedGroups.filter((group) => group.type !== 'project-default-group');
+			return sortedGroups.filter((group) => group.groupType !== 'project-default-group');
 		}
 
 		return sortedGroups;
@@ -131,11 +140,11 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 			dataIndex: 'name',
 			key: 'name',
 			width: '60.17%',
-			render: (name: string, group: Group) => {
+			render: (name: string, group: UserGroup) => {
 				return (
 					<LinkContainer>
 						<Link href={`${basePath}/${group.name}`}>
-							{name} {group.type === 'project-default-group' ? <SystemDefault>SYSTEM GROUP</SystemDefault> : null}
+							{name} {group.groupType === 'project-default-group' ? <SystemDefault>SYSTEM GROUP</SystemDefault> : null}
 						</Link>
 					</LinkContainer>
 				);
@@ -143,14 +152,13 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 			className: getSortedClass('name'),
 		},
 		{
-			title: 'Members',
-			dataIndex: 'memberCount',
-			key: 'memberCount',
+			title: 'Role',
+			dataIndex: 'role',
+			key: 'role',
 			width: '27.4%',
-			render: (members: number) => {
-				return <>Active Members: {members}</>;
+			render: (role: 'GUEST' | 'REPORTER' | 'DEVELOPER' | 'MAINTAINER' | 'OWNER') => {
+				return <RoleBadge $type={role}>{role}</RoleBadge>;
 			},
-			className: getSortedClass('memberCount'),
 		},
 		{
 			title: 'Actions',
@@ -166,7 +174,7 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 				...group,
 				actions: (
 					<ActionWrap>
-						{addUserModal && addUserModal(group)}
+						{editUserRoleModal(group)}
 
 						<LinkContainer>
 							<Link href={`${basePath}/${group.name}`}>
@@ -174,20 +182,14 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 							</Link>
 						</LinkContainer>
 
-						{group.type !== 'project-default-group' ? (
-							deleteUserModal ? (
-								deleteUserModal(group)
-							) : null
-						) : (
-							<EmptyAction></EmptyAction>
-						)}
+						{group.groupType !== 'project-default-group' ? unlinkGroupModal(group) : <EmptyAction></EmptyAction>}
 					</ActionWrap>
 				),
 			};
 		});
 
 	// highlight found text (only certain fields)
-	const fieldsToCheck = ['name', 'memberCount'];
+	const fieldsToCheck = ['name'];
 	const highlightedColumns =
 		groupsColumns &&
 		groupsColumns.map((col) => {
@@ -214,15 +216,12 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 			};
 		});
 
-	const summary = () => <tr className="summary">{newGroupModal}</tr>;
-
 	return (
 		<>
 			<BaseTable
 				dataSource={groupsWithActions}
 				columns={highlightedColumns}
-				rowKey={(record) => record.id}
-				summary={summary}
+				rowKey={(record) => record.id ?? record.name}
 			/>
 
 			<PaginationWithSelector>
@@ -236,10 +235,10 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 			</PaginationWithSelector>
 
 			<TotalDescription>
-				Showing {totalFilteredCount} of {groups.length} groups
+				Showing {totalFilteredCount} of {userGroups.length} groups
 			</TotalDescription>
 		</>
 	);
 };
 
-export default OrgGroupsTable;
+export default OrgUserGroupsTable;

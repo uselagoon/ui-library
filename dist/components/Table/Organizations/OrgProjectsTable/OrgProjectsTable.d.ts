@@ -1,18 +1,27 @@
 import { ReactNode } from 'react';
-type Project = {
+type ProjectBase = {
     id: number;
     name: string;
+};
+type StandaloneProject = ProjectBase & {
     groupCount: number;
 };
 export type ProjectsProps = {
-    projects: Project[];
     newProjectModal: ReactNode;
-    deleteProjectModal: (group: Project) => ReactNode;
     basePath: string;
     skeleton?: false;
-};
+} & ({
+    type?: 'standalone';
+    projects: StandaloneProject[];
+    deleteProjectModal: (group: StandaloneProject) => ReactNode;
+} | {
+    type?: 'subTable';
+    projects: ProjectBase[];
+    unlinkProjectModal: (group: ProjectBase) => ReactNode;
+});
 export type ProjectsTableSkeleton = {
     skeleton: true;
+    type: 'standalone' | 'subTable';
 };
 export type OrgProjectsProps = {
     resultsPerPage?: number;

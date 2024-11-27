@@ -7,6 +7,7 @@ import { Controls, Primary, Stories, Title } from '@storybook/blocks';
 import {
 	CarryOutOutlined,
 	DeleteOutlined,
+	DisconnectOutlined,
 	EditOutlined,
 	EyeOutlined,
 	SmileOutlined,
@@ -1171,8 +1172,130 @@ export const OrgsUsersTable: Story = {
 		);
 	},
 };
-export const OrgUsersTable: Story = {
-	render: () => <BaseTable.OrgUsersTable skeleton />,
+export const OrgUsersTableSkeleton: Story = {
+	render: () => <BaseTable.OrgUsersTable skeleton type="standalone" />,
+};
+
+export const OrgUserGroupsTable: Story = {
+	render: () => {
+		const [filterString, setFilterString] = useState('');
+
+		return (
+			<>
+				<input type="text" placeholder="placeholder filter string" onChange={(e) => setFilterString(e.target.value)} />
+
+				<br />
+				<BaseTable.OrgUserGroupsTable
+					unlinkGroupModal={(current) => (
+						<>
+							<DisconnectOutlined />
+						</>
+					)}
+					editUserRoleModal={(current) => (
+						<>
+							<EditOutlined />
+						</>
+					)}
+					resultDropdown={<UISelect placeholder="Results per page" defaultOpen={false} />}
+					filterString={filterString}
+					basePath="/users"
+					userGroups={[
+						{
+							id: '1',
+							name: 'some-group',
+							role: 'DEVELOPER',
+							groupType: 'null',
+						},
+						{
+							id: '2',
+							name: 'some-other-group',
+							role: 'OWNER',
+							groupType: 'null',
+						},
+						{
+							id: '2',
+							name: 'default',
+							role: 'REPORTER',
+							groupType: 'project-default-group',
+						},
+					]}
+				/>
+			</>
+		);
+	},
+};
+export const OrgUserGroupsSkeleton: Story = {
+	render: () => <BaseTable.OrgUserGroupsTable skeleton />,
+};
+
+export const OrgsUsersTableSub: Story = {
+	render: () => {
+		const [filterString, setFilterString] = useState('');
+
+		return (
+			<>
+				<input type="text" placeholder="placeholder filter string" onChange={(e) => setFilterString(e.target.value)} />
+
+				<br />
+				<BaseTable.OrgUsersTable
+					type="subTable"
+					newUserModal={<>+ Add user</>}
+					unlinkUserModal={(current) => (
+						<>
+							<DisconnectOutlined />
+						</>
+					)}
+					editUserGroupRoleModal={(currentUser) => {
+						return (
+							<>
+								<EditOutlined />
+							</>
+						);
+					}}
+					resultDropdown={<UISelect placeholder="Results per page" defaultOpen={false} />}
+					filterString={filterString}
+					basePath="/users"
+					users={[
+						{
+							firstName: 'Admin',
+							lastName: 'Adminson',
+							email: 'adminuser@amazee.io',
+							role: 'MAINTAINER',
+						},
+						{
+							firstName: 'Someone',
+							lastName: 'Else',
+							email: 'someone.somewhere@amazee.io',
+							role: 'OWNER',
+						},
+						{
+							firstName: 'Larry',
+							lastName: 'User-one',
+							email: 'someUser@example.com',
+							role: 'GUEST',
+						},
+
+						{
+							firstName: null,
+							lastName: null,
+							email: 'default-user@project-testing',
+							role: 'OWNER',
+						},
+						{
+							firstName: null,
+							lastName: null,
+							email: 'default-user@service',
+							role: 'MAINTAINER',
+						},
+					]}
+				/>
+			</>
+		);
+	},
+};
+
+export const OrgUsersTableSkeletonSub: Story = {
+	render: () => <BaseTable.OrgUsersTable skeleton type="subTable" />,
 };
 
 export const OrgProjectsTable: Story = {
@@ -1232,7 +1355,62 @@ export const OrgProjectsTable: Story = {
 	},
 };
 export const OrgProjectsSkeleton: Story = {
-	render: () => <BaseTable.OrgProjectsTable skeleton />,
+	render: () => <BaseTable.OrgProjectsTable skeleton type="standalone" />,
+};
+
+export const OrgProjectsTableSub: Story = {
+	render: () => {
+		const [filterString, setFilterString] = useState('');
+
+		return (
+			<>
+				<input type="text" placeholder="placeholder filter string" onChange={(e) => setFilterString(e.target.value)} />
+
+				<br />
+				<BaseTable.OrgProjectsTable
+					type="subTable"
+					newProjectModal={<>+ Add Project</>}
+					unlinkProjectModal={(current) => (
+						<>
+							<DisconnectOutlined />
+						</>
+					)}
+					resultDropdown={<UISelect placeholder="Results per page" defaultOpen={false} />}
+					filterString={filterString}
+					basePath="/projects"
+					projects={[
+						{
+							id: 1,
+							name: 'a-lot-of-testing',
+						},
+						{
+							id: 2,
+							name: 'some-project',
+						},
+						{
+							id: 3,
+							name: 'test-nginx',
+						},
+						{
+							id: 4,
+							name: 'project-testing',
+						},
+						{
+							id: 5,
+							name: 'test-project-example',
+						},
+						{
+							id: 6,
+							name: 'teststaticpoc',
+						},
+					]}
+				/>
+			</>
+		);
+	},
+};
+export const OrgProjectsSkeletonSub: Story = {
+	render: () => <BaseTable.OrgProjectsTable skeleton type="subTable" />,
 };
 
 export const OrgNotificationsTable: Story = {
@@ -1245,6 +1423,7 @@ export const OrgNotificationsTable: Story = {
 
 				<br />
 				<BaseTable.OrgNotificationsTable
+					orgName="some-org"
 					newNotificationModal={<>+ Add Notification</>}
 					editNotificationModal={(current) => (
 						<>
@@ -1293,7 +1472,58 @@ export const OrgNotificationsTable: Story = {
 	},
 };
 export const OrgNotificationsSkeleton: Story = {
-	render: () => <BaseTable.OrgNotificationsTable skeleton />,
+	render: () => <BaseTable.OrgNotificationsTable skeleton type="standalone" />,
+};
+
+export const OrgNotificationsTableSub: Story = {
+	render: () => {
+		const [filterString, setFilterString] = useState('');
+
+		return (
+			<>
+				<input type="text" placeholder="placeholder filter string" onChange={(e) => setFilterString(e.target.value)} />
+
+				<br />
+				<BaseTable.OrgNotificationsTable
+					orgName="some-org"
+					type="subTable"
+					newNotificationModal={<>+ Link Notification</>}
+					unlinkNotificationModal={(current) => (
+						<>
+							<DisconnectOutlined />
+						</>
+					)}
+					filterString={filterString}
+					notifications={{
+						slacks: [
+							{
+								name: 'slack-edited-foo',
+							},
+							{
+								name: 'slack-edited1',
+							},
+						],
+						emails: [
+							{
+								name: 'test-email-edited-again',
+							},
+							{
+								name: 'test-email-edited',
+							},
+						],
+						webhooks: [
+							{
+								name: 'webhook-test-edited-again',
+							},
+						],
+					}}
+				/>
+			</>
+		);
+	},
+};
+export const OrgNotificationsSkeletonSub: Story = {
+	render: () => <BaseTable.OrgNotificationsTable skeleton type="subTable" />,
 };
 
 export const OrgAdminsTable: Story = {

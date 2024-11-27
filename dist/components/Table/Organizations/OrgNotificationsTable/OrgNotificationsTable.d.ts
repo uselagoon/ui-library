@@ -37,15 +37,30 @@ export type Notification = {
     emails?: EmailNotification[];
     webhooks?: WebhookNotification[];
 };
-export type NotificationsProps = {
-    notifications: Notification;
-    newNotificationModal: ReactNode;
-    deleteNotificationModal: (notification: NotificationType) => ReactNode;
-    editNotificationModal: (notification: NotificationType) => ReactNode;
-    skeleton?: false;
+export type SubTableNotification = {
+    slacks?: Partial<SlackNotification>[];
+    rocketChats?: Partial<RocketChatNotification>[];
+    teams?: Partial<TeamNotification>[];
+    emails?: Partial<EmailNotification>[];
+    webhooks?: Partial<WebhookNotification>[];
 };
+export type NotificationsProps = {
+    orgName: string;
+    newNotificationModal: ReactNode;
+    skeleton?: false;
+} & ({
+    type?: 'standalone';
+    notifications: Notification;
+    deleteNotificationModal: (notification: Notification) => ReactNode;
+    editNotificationModal: (notification: Notification) => ReactNode;
+} | {
+    type?: 'subTable';
+    notifications: SubTableNotification;
+    unlinkNotificationModal: (notification: SubTableNotification) => ReactNode;
+});
 export type NotificationsSkeleton = {
     skeleton: true;
+    type: 'standalone' | 'subTable';
 };
 export type NotificationsTableProps = {
     filterString?: string;
