@@ -7,7 +7,7 @@ type User = {
     groupRoles: {
         id: string;
         role: string;
-    }[];
+    }[] | null;
 };
 type GroupMemberUser = {
     role: 'GUEST' | 'DEVELOPER' | 'REPORTER' | 'MAINTAINER' | 'OWNER';

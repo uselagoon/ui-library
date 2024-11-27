@@ -16,10 +16,12 @@ type User = {
 	firstName: string | null;
 	lastName: string | null;
 	email: string;
-	groupRoles: {
-		id: string;
-		role: string;
-	}[];
+	groupRoles:
+		| {
+				id: string;
+				role: string;
+		  }[]
+		| null;
 };
 
 type GroupMemberUser = {
@@ -114,9 +116,9 @@ const OrgUsersTable = (props: UsersProps) => {
 
 			if (sortColumn === 'groupCount' && type === 'standalone') {
 				//@ts-ignore
-				aValue = a.groupRoles.length;
+				aValue = a.groupRoles?.length;
 				//@ts-ignore
-				bValue = b.groupRoles.length;
+				bValue = b.groupRoles?.length;
 			}
 
 			// determine the sort direction (1 for asc, -1 for desc)
@@ -260,7 +262,7 @@ const OrgUsersTable = (props: UsersProps) => {
 			return {
 				...user,
 				...(type === 'standalone'
-					? { groupCount: (user as User).groupRoles.length }
+					? { groupCount: (user as User).groupRoles ? (user as User).groupRoles?.length : 0 }
 					: { role: (user as GroupMemberUser).role }),
 				actions: (
 					<ActionWrap>
