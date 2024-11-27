@@ -15,6 +15,7 @@ export const SystemDefault = styled.span<{ $noSpace?: boolean }>`
 
 export const TotalDescription = styled.p`
 	font-family: 'ArabicPro-Regular', sans-serif;
+	margin-top: 1rem;
 `;
 
 export const OwnerField = styled.div`

@@ -2058,6 +2058,7 @@ html,body{
 	white-space: pre;
 `,ra=s.default.p`
 	font-family: 'ArabicPro-Regular', sans-serif;
+	margin-top: 1rem;
 `,aa=s.default.div`
 	display: flex;
 	justify-content: space-between;
