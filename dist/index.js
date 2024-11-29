@@ -916,11 +916,11 @@ html,body{
 		}
 	}
 `,DA=s.default(n.Modal)`
-	min-width: 900px;
+	min-width: ${({$width:A})=>A?"number"==typeof A?`${A}px`:A:"900px"};
 	@media (max-width: 1200px) {
 		min-width: initial;
 	}
-`,PA=({children:A,subTitle:t,title:n,onCancel:r,onOk:a,confirmText:o,cancelText:s,confirmLoading:l,minHeight:i,dangerConfirm:d,confirmDisabled:p,...c})=>{let m=n;return t&&(m=e.jsxs(e.Fragment,{children:[n,t]})),e.jsx(DA,{title:m,destroyOnClose:!0,maskClosable:!0,onCancel:r,...c,modalRender:A=>e.jsx(HA,{$minHeight:i,children:A}),footer:[e.jsx(FA,{id:"cancel-btn",onClick:r,children:s||"Cancel"},"back"),e.jsx(FA,{disabled:p,danger:d,type:"primary",loading:l,onClick:a,children:o||"OK"},"submit")],children:A})};PA.displayName="Modal";const XA=s.default.div`
+`,PA=({children:A,subTitle:t,title:n,onCancel:r,onOk:a,confirmText:o,cancelText:s,confirmLoading:l,minHeight:i,dangerConfirm:d,confirmDisabled:p,...c})=>{let m=n;return t&&(m=e.jsxs(e.Fragment,{children:[n,t]})),e.jsx(DA,{$width:c.width,title:m,destroyOnClose:!0,maskClosable:!0,onCancel:r,...c,modalRender:A=>e.jsx(HA,{$minHeight:i,children:A}),footer:[e.jsx(FA,{id:"cancel-btn",onClick:r,children:s||"Cancel"},"back"),e.jsx(FA,{disabled:p,danger:d,type:"primary",loading:l,onClick:a,children:o||"OK"},"submit")],children:A})};PA.displayName="Modal";const XA=s.default.div`
 	font-family: 'AmericaMono-Regular', sans-serif;
 	text-transform: uppercase;
 	width: 100px;

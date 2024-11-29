@@ -916,11 +916,11 @@ html,body{
 		}
 	}
 `,dt=A(z)`
-	min-width: 900px;
+	min-width: ${({$width:A})=>A?"number"==typeof A?`${A}px`:A:"900px"};
 	@media (max-width: 1200px) {
 		min-width: initial;
 	}
-`,pt=({children:A,subTitle:e,title:t,onCancel:n,onOk:i,confirmText:l,cancelText:s,confirmLoading:d,minHeight:p,dangerConfirm:c,confirmDisabled:m,...C})=>{let u=t;return e&&(u=a(o,{children:[t,e]})),r(dt,{title:u,destroyOnClose:!0,maskClosable:!0,onCancel:n,...C,modalRender:A=>r(st,{$minHeight:p,children:A}),footer:[r(lt,{id:"cancel-btn",onClick:n,children:s||"Cancel"},"back"),r(lt,{disabled:m,danger:c,type:"primary",loading:d,onClick:i,children:l||"OK"},"submit")],children:A})};pt.displayName="Modal";const ct=A.div`
+`,pt=({children:A,subTitle:e,title:t,onCancel:n,onOk:i,confirmText:l,cancelText:s,confirmLoading:d,minHeight:p,dangerConfirm:c,confirmDisabled:m,...C})=>{let u=t;return e&&(u=a(o,{children:[t,e]})),r(dt,{$width:C.width,title:u,destroyOnClose:!0,maskClosable:!0,onCancel:n,...C,modalRender:A=>r(st,{$minHeight:p,children:A}),footer:[r(lt,{id:"cancel-btn",onClick:n,children:s||"Cancel"},"back"),r(lt,{disabled:m,danger:c,type:"primary",loading:d,onClick:i,children:l||"OK"},"submit")],children:A})};pt.displayName="Modal";const ct=A.div`
 	font-family: 'AmericaMono-Regular', sans-serif;
 	text-transform: uppercase;
 	width: 100px;

@@ -69,8 +69,9 @@ export const ModalChildren = styled.section<{ $minHeight?: string }>`
 		}
 	}
 `;
-export const StyledModal = styled(Modal)`
-	min-width: 900px;
+
+export const StyledModal = styled(Modal)<{ $width?: number | string }>`
+	min-width: ${({ $width }) => ($width ? (typeof $width === 'number' ? `${$width}px` : $width) : '900px')};
 	@media (max-width: 1200px) {
 		min-width: initial;
 	}

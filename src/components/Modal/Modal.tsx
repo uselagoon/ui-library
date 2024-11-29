@@ -38,6 +38,7 @@ const UIModal: FC<UIModalProps> = ({
 	}
 	return (
 		<StyledModal
+			$width={props.width}
 			title={modalTitle}
 			destroyOnClose
 			maskClosable
