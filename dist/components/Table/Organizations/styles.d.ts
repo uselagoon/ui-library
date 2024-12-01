@@ -8,7 +8,7 @@ export declare const OwnerBadge: import("styled-components").IStyledComponent<"w
     $type: 'admin' | 'owner' | 'viewer';
 }>>;
 export declare const Badge: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").Substitute<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, {
-    $type: 'slack' | 'rocketChat' | 'email' | 'webhook' | 'teams';
+    $type: 'slack' | 'rocketchat' | 'email' | 'webhook' | 'teams';
 }>>;
 export declare const RoleBadge: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").Substitute<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, {
     $type: 'GUEST' | 'REPORTER' | 'DEVELOPER' | 'MAINTAINER' | 'OWNER';

@@ -1459,6 +1459,13 @@ export const OrgNotificationsTable: Story = {
 								name: 'test-email-edited',
 							},
 						],
+						rocketChats: [
+							{
+								webhook: 'rocket-edited-again-test2',
+								name: 'rocket-test-edited-again',
+								channel: 'somechannel',
+							},
+						],
 						webhooks: [
 							{
 								webhook: 'webhook-edited-again-test2',

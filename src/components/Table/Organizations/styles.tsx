@@ -45,7 +45,7 @@ export const OwnerBadge = styled.div<{ $type: 'admin' | 'owner' | 'viewer' }>`
 	}};
 `;
 
-export const Badge = styled.div<{ $type: 'slack' | 'rocketChat' | 'email' | 'webhook' | 'teams' }>`
+export const Badge = styled.div<{ $type: 'slack' | 'rocketchat' | 'email' | 'webhook' | 'teams' }>`
 	width: max-content;
 	text-transform: uppercase;
 	border-radius: 2px;
@@ -56,7 +56,7 @@ export const Badge = styled.div<{ $type: 'slack' | 'rocketChat' | 'email' | 'web
 		switch ($type) {
 			case 'slack':
 				return '#4578E6';
-			case 'rocketChat':
+			case 'rocketchat':
 				return '#008080';
 			case 'email':
 				return '#4FDA9D';

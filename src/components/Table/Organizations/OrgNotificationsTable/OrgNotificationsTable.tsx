@@ -186,7 +186,7 @@ const OrgNotificationsTable = (props: NotificationsTableProps) => {
 			sorter: (a: any, b: any) => a.type.localeCompare(b.type),
 			render: (_: string, notification: { name: string; type: string }) => {
 				return (
-					<Badge $type={notification.type as 'slack' | 'webhook' | 'teams' | 'rocketChat' | 'webhook'}>
+					<Badge $type={notification.type as 'slack' | 'webhook' | 'teams' | 'rocketchat' | 'webhook'}>
 						{notification.type}
 					</Badge>
 				);

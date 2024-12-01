@@ -2080,7 +2080,7 @@ html,body{
 	padding: 2px 4px;
 	color: #fff;
 	margin-left: 0.5rem;
-	background-color: ${({$type:A})=>{switch(A){case"slack":return"#4578E6";case"rocketChat":return"#008080";case"email":return"#4FDA9D";case"webhook":return"#DC3545";case"teams":return"#6FB3FF";default:return"#000"}}};
+	background-color: ${({$type:A})=>{switch(A){case"slack":return"#4578E6";case"rocketchat":return"#008080";case"email":return"#4FDA9D";case"webhook":return"#DC3545";case"teams":return"#6FB3FF";default:return"#000"}}};
 `,la=s.default.div`
 	width: max-content;
 	text-transform: uppercase;
