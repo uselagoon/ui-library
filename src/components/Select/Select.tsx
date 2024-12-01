@@ -12,7 +12,7 @@ type UISelectProps = SelectProps & {
 };
 
 const UISelect = forwardRef<RefSelectProps, UISelectProps>((props, ref) => {
-	const { className, style, onChange, value, selectedState, setSelectedState, ...rest } = props;
+	const { className, style, onChange, value, selectedState, setSelectedState, size, ...rest } = props;
 
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -32,6 +32,7 @@ const UISelect = forwardRef<RefSelectProps, UISelectProps>((props, ref) => {
 			onDropdownVisibleChange={(open) => setIsOpen(open)}
 			{...rest}
 			suffixIcon={isOpen ? <UpOutlined /> : <DownOutlined />}
+			size={size ?? 'middle'}
 		/>
 	);
 });
@@ -39,7 +40,6 @@ const UISelect = forwardRef<RefSelectProps, UISelectProps>((props, ref) => {
 const StyledSelect = styled(Select)<SelectProps>`
 	&.ant-select {
 		min-width: 13.125rem;
-		height: 2.5rem;
 
 		& .ant-select-selector {
 			span {

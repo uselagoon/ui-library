@@ -473,10 +473,9 @@ html,body{
 			color: ${A=>A.theme.UI.texts.primary};
 		}
 	}
-`;qA.displayName="Checkbox";const KA=t.forwardRef(((A,n)=>{const{className:a,style:o,onChange:s,value:l,selectedState:i,setSelectedState:d,...p}=A,[c,m]=t.useState(!1);return e.jsx(WA,{ref:n,onChange:s??(A=>{d&&d(A)}),value:l||i||void 0,defaultOpen:A.defaultOpen||!0,style:o,dropdownRender:A=>e.jsx(TA,{children:A}),onDropdownVisibleChange:A=>m(A),...p,suffixIcon:c?e.jsx(r.UpOutlined,{}):e.jsx(r.DownOutlined,{})})})),WA=s.default(n.Select)`
+`;qA.displayName="Checkbox";const KA=t.forwardRef(((A,n)=>{const{className:a,style:o,onChange:s,value:l,selectedState:i,setSelectedState:d,size:p,...c}=A,[m,u]=t.useState(!1);return e.jsx(WA,{ref:n,onChange:s??(A=>{d&&d(A)}),value:l||i||void 0,defaultOpen:A.defaultOpen||!0,style:o,dropdownRender:A=>e.jsx(TA,{children:A}),onDropdownVisibleChange:A=>u(A),...c,suffixIcon:m?e.jsx(r.UpOutlined,{}):e.jsx(r.DownOutlined,{}),size:p??"middle"})})),WA=s.default(n.Select)`
 	&.ant-select {
 		min-width: 13.125rem;
-		height: 2.5rem;
 
 		& .ant-select-selector {
 			span {

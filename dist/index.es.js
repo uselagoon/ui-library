@@ -473,10 +473,9 @@ html,body{
 			color: ${A=>A.theme.UI.texts.primary};
 		}
 	}
-`;Re.displayName="Checkbox";const xe=m(((A,e)=>{const{className:t,style:n,onChange:a,value:o,selectedState:i,setSelectedState:l,...s}=A,[p,c]=d(!1);return r(Fe,{ref:e,onChange:a??(A=>{l&&l(A)}),value:o||i||void 0,defaultOpen:A.defaultOpen||!0,style:n,dropdownRender:A=>r(He,{children:A}),onDropdownVisibleChange:A=>c(A),...s,suffixIcon:r(p?P:X,{})})})),Fe=A(q)`
+`;Re.displayName="Checkbox";const xe=m(((A,e)=>{const{className:t,style:n,onChange:a,value:o,selectedState:i,setSelectedState:l,size:s,...p}=A,[c,m]=d(!1);return r(Fe,{ref:e,onChange:a??(A=>{l&&l(A)}),value:o||i||void 0,defaultOpen:A.defaultOpen||!0,style:n,dropdownRender:A=>r(He,{children:A}),onDropdownVisibleChange:A=>m(A),...p,suffixIcon:r(c?P:X,{}),size:s??"middle"})})),Fe=A(q)`
 	&.ant-select {
 		min-width: 13.125rem;
-		height: 2.5rem;
 
 		& .ant-select-selector {
 			span {
