@@ -11,10 +11,7 @@ export const TipIcon = styled.section`
 	float: left;
 	margin-right: 8px;
 
-	span[role='icon'] {
-		svg {
-		}
-	}
+	color: ${(props) => (props.theme.colorScheme === 'dark' ? '#fff' : '#000')};
 	&::after {
 		clear: both;
 	}

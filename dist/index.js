@@ -2110,10 +2110,7 @@ html,body{
 	float: left;
 	margin-right: 8px;
 
-	span[role='icon'] {
-		svg {
-		}
-	}
+	color: ${A=>"dark"===A.theme.colorScheme?"#fff":"#000"};
 	&::after {
 		clear: both;
 	}
