@@ -30,7 +30,7 @@ export const StyledInput = styled(Input)`
 		}
 
 		&::placeholder {
-			color: ${(props) => (props.theme.colorScheme === 'dark' ? colors.white : '#00000099')};
+			color: ${(props) => (props.theme.colorScheme === 'dark' ? colors.white : '#00000099')} !important;
 		}
 		${(props) =>
 			props.theme.colorScheme === 'dark' &&

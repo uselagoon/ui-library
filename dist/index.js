@@ -481,6 +481,9 @@ html,body{
 			span {
 				color: #333;
 			}
+			.ant-select-selection-placeholder {
+				color: ${A=>"dark"===A.theme.colorScheme?U.white:"#00000099"};
+			}
 			border-radius: 2px;
 		}
 
@@ -498,6 +501,7 @@ html,body{
 	}
 `,TA=s.default.section`
 	background-color: #fff;
+
 	${e=>"dark"===e.theme.colorScheme&&A.css`
 			background-color: ${U.cellGray};
 
@@ -842,7 +846,7 @@ html,body{
 		}
 
 		&::placeholder {
-			color: ${A=>"dark"===A.theme.colorScheme?U.white:"#00000099"};
+			color: ${A=>"dark"===A.theme.colorScheme?U.white:"#00000099"} !important;
 		}
 		${e=>"dark"===e.theme.colorScheme&&A.css`
 				color: ${U.white};

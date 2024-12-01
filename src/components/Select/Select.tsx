@@ -45,6 +45,9 @@ const StyledSelect = styled(Select)<SelectProps>`
 			span {
 				color: #333;
 			}
+			.ant-select-selection-placeholder {
+				color: ${(props) => (props.theme.colorScheme === 'dark' ? colors.white : '#00000099')};
+			}
 			border-radius: 2px;
 		}
 
@@ -66,6 +69,7 @@ const StyledSelect = styled(Select)<SelectProps>`
 
 const StyledDropDown = styled.section`
 	background-color: #fff;
+
 	${(props) =>
 		props.theme.colorScheme === 'dark' &&
 		css`
