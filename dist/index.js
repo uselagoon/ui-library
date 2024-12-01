@@ -1691,9 +1691,8 @@ html,body{
 		input {
 			width: 55%;
 			&::placeholder {
-				color: hotpink;
 				font-size: 0.85rem;
-				color: #7b7b75;
+				color: ${A=>"dark"===A.theme.colorScheme?U.white:"#00000099"} !important;
 			}
 		}
 	}

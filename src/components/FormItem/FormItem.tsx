@@ -24,9 +24,8 @@ const StyledItem = styled(Item)<{ $wrap?: boolean }>`
 		input {
 			width: 55%;
 			&::placeholder {
-				color: hotpink;
 				font-size: 0.85rem;
-				color: #7b7b75;
+				color: ${(props) => (props.theme.colorScheme === 'dark' ? colors.white : '#00000099')} !important;
 			}
 		}
 	}
