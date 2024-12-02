@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { TableProps, Tooltip } from 'antd';
-import { ActionWrap } from '../styles';
+import { ActionWrap, TableSummary } from '../styles';
 import { LinkContainer } from '../DeploymentsTable/styles';
 import { EyeOutlined } from '@ant-design/icons';
 import BaseTable from '../Base';
@@ -211,17 +211,10 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			};
 		});
 
-	// only possible child is a `tr` element
-	const summary = () => <tr className="summary">{newEnvironmentModal}</tr>;
-
 	return (
 		<>
-			<BaseTable
-				dataSource={remappedEnvs}
-				columns={wrappedColumns}
-				rowKey={(record) => record.title}
-				summary={summary}
-			/>
+			<BaseTable dataSource={remappedEnvs} columns={wrappedColumns} rowKey={(record) => record.title} hasSummary />
+			<TableSummary>{newEnvironmentModal}</TableSummary>
 			<Pagination
 				total={totalFilteredCount}
 				pageSize={pageSize === -1 ? Infinity : pageSize}

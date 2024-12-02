@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import type { RenderedCell } from 'rc-table/lib/interface';
 import { TotalDescription } from '../styles';
-import { ActionWrap } from '../../styles';
+import { ActionWrap, TableSummary } from '../../styles';
 import { LinkContainer } from '../../DeploymentsTable/styles';
 import { useLinkComponent } from '../../../../providers/NextLinkProvider';
 import { EyeOutlined } from '@ant-design/icons';
@@ -232,17 +232,15 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 			};
 		});
 
-	const summary = () => <tr className="summary">{newProjectModal}</tr>;
-
 	return (
 		<>
 			<BaseTable
 				dataSource={projectsWithActions}
 				columns={highlightedColumns}
 				rowKey={(record) => record.id}
-				summary={summary}
+				hasSummary
 			/>
-
+			<TableSummary>{newProjectModal}</TableSummary>
 			<PaginationWithSelector>
 				<section className="selector">{resultDropdown}</section>
 				<Pagination

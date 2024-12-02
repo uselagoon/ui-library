@@ -1,10 +1,12 @@
 /// <reference types="react" />
+export declare const TableSummary: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, never>>;
 export declare const StyledBaseTable: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").Substitute<import("antd").TableProps<import("antd/es/_util/type").AnyObject> & {
     children?: import("react").ReactNode;
 } & import("react").RefAttributes<import("rc-table").Reference>, {
     $variant: 'default' | 'alternate';
     $lastRowBordered: boolean;
     $withBg?: boolean | undefined;
+    $hasSummary?: boolean | undefined;
 }>> & Omit<import("antd/es/table/interface").RefTable & {
     displayName?: string | undefined;
     SELECTION_COLUMN: {};

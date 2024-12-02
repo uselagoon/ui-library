@@ -1,10 +1,16 @@
 import { Empty, Table } from 'antd';
 import styled, { css } from 'styled-components';
 
+export const TableSummary = styled.div`
+	display: block;
+	padding-block: 17px;
+`;
+
 export const StyledBaseTable = styled(Table)<{
 	$variant: 'default' | 'alternate';
 	$lastRowBordered: boolean;
 	$withBg?: boolean;
+	$hasSummary?: boolean;
 }>`
 	border: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#000' : '#fff')};
 	border-radius: 0;
@@ -12,8 +18,7 @@ export const StyledBaseTable = styled(Table)<{
 	box-shadow: ${(props) =>
 		props.theme.colorScheme === 'dark' ? '2px 2px 8px 0px #ffffff40' : '2px 2px 8px 0px #00000040'};
 
-	margin-bottom: 2rem;
-
+	margin-bottom: ${(props) => (props.$hasSummary ? '0.5rem' : '2rem')};
 	.ant-table {
 		background-color: transparent;
 

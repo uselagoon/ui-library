@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useMemo, useState } from 'react';
 import { TableProps, Tooltip } from 'antd';
-import { ActionWrap, EmptyAction } from '../styles';
+import { ActionWrap, EmptyAction, TableSummary } from '../styles';
 import { LinkContainer } from '../DeploymentsTable/styles';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import BaseTable from '../Base';
@@ -268,17 +268,17 @@ const VariablesTable = (props: VariablesTableProps) => {
 			};
 		});
 
-	// only possible child is a `tr` element
-	const summary = () => <tr className="summary">{newVariableModal}</tr>;
-
 	return (
 		<>
 			<BaseTable
 				dataSource={variablesWithActions}
 				columns={highlightedColumns}
 				rowKey={(record) => record.id}
-				summary={summary}
+				hasSummary
 			/>
+
+			<TableSummary>{newVariableModal}</TableSummary>
+
 			{isEnvTable ? (
 				<PaginationWithSelector>
 					<section className="selector">{props.resultDropdown}</section>

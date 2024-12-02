@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useMemo, useState } from 'react';
 import type { RenderedCell } from 'rc-table/lib/interface';
 import { OwnerBadge, OwnerField, SystemDefault, TotalDescription } from '../styles';
-import { ActionWrap } from '../../styles';
+import { ActionWrap, TableSummary } from '../../styles';
 import { highlightTextInElement } from '../../../../_util/helpers';
 import { PaginationWithSelector } from '../../FactsTable/FactsTable';
 import BaseTable from '../../Base';
@@ -218,17 +218,15 @@ const OrgAdminsTable = (props: OwnersTableProps) => {
 			};
 		});
 
-	const summary = () => <tr className="summary">{addNewOwnerModal}</tr>;
-
 	return (
 		<>
 			<BaseTable
 				dataSource={ownersWithActions}
 				columns={highlightedColumns}
 				rowKey={(record) => record.id}
-				summary={summary}
+				hasSummary
 			/>
-
+			<TableSummary>{addNewOwnerModal}</TableSummary>
 			<PaginationWithSelector>
 				<section className="selector">{resultDropdown}</section>
 				<Pagination

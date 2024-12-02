@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useMemo, useState } from 'react';
 import type { RenderedCell } from 'rc-table/lib/interface';
 import { RoleBadge, SystemDefault, TotalDescription } from '../styles';
-import { ActionWrap, EmptyAction } from '../../styles';
+import { ActionWrap, EmptyAction, TableSummary } from '../../styles';
 import { LinkContainer } from '../../DeploymentsTable/styles';
 import { useLinkComponent } from '../../../../providers/NextLinkProvider';
 import { EyeOutlined } from '@ant-design/icons';
@@ -309,16 +309,10 @@ const OrgUsersTable = (props: UsersProps) => {
 			};
 		});
 
-	const summary = () => <tr className="summary">{newUserModal}</tr>;
-
 	return (
 		<>
-			<BaseTable
-				dataSource={usersWithActions}
-				columns={highlightedColumns}
-				rowKey={(record) => record.id}
-				summary={summary}
-			/>
+			<BaseTable dataSource={usersWithActions} columns={highlightedColumns} rowKey={(record) => record.id} hasSummary />
+			<TableSummary>{newUserModal}</TableSummary>
 
 			<PaginationWithSelector>
 				<section className="selector">{resultDropdown}</section>

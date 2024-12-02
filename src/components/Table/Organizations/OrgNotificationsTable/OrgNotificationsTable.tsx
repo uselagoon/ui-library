@@ -1,6 +1,6 @@
 import { ReactNode, useMemo } from 'react';
 import type { RenderedCell } from 'rc-table/lib/interface';
-import { ActionWrap } from '../../styles';
+import { ActionWrap, TableSummary } from '../../styles';
 import { highlightTextInElement } from '../../../../_util/helpers';
 import BaseTable from '../../Base';
 import OrgNotificationsSkeleton from './OrgNotificationsSkeleton';
@@ -310,17 +310,15 @@ const OrgNotificationsTable = (props: NotificationsTableProps) => {
 			};
 		});
 
-	// add new notification OR link a new notification - same type of modal
-	const summary = () => <tr className="summary">{newNotificationModal}</tr>;
-
 	return (
 		<>
 			<BaseTable
 				dataSource={notificationsWithActions}
 				columns={highlightedColumns}
 				rowKey={(record) => record.id ?? record.name}
-				summary={summary}
+				hasSummary
 			/>
+			<TableSummary>{newNotificationModal}</TableSummary>
 		</>
 	);
 };

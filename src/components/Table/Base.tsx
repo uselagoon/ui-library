@@ -54,6 +54,7 @@ type BaseTableProps = Omit<TableProps, 'locale'> & {
 	lastRowBordered?: boolean;
 	withBg?: boolean;
 	disableScrollable?: boolean;
+	hasSummary?: boolean;
 };
 
 const InternalTable: React.ForwardRefRenderFunction<HTMLDivElement, BaseTableProps> = (
@@ -65,6 +66,7 @@ const InternalTable: React.ForwardRefRenderFunction<HTMLDivElement, BaseTablePro
 		variant = 'default',
 		disableScrollable = false,
 		withBg = false,
+		hasSummary = false,
 		...props
 	}: BaseTableProps,
 	_,
@@ -77,6 +79,7 @@ const InternalTable: React.ForwardRefRenderFunction<HTMLDivElement, BaseTablePro
 					$variant={variant}
 					$withBg={withBg}
 					$lastRowBordered={lastRowBordered}
+					$hasSummary={hasSummary}
 					dataSource={dataSource}
 					columns={columns}
 					ref={null}

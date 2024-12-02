@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useMemo, useState } from 'react';
 import type { RenderedCell } from 'rc-table/lib/interface';
 import { SystemDefault, TotalDescription } from '../styles';
-import { ActionWrap, EmptyAction } from '../../styles';
+import { ActionWrap, EmptyAction, TableSummary } from '../../styles';
 import { LinkContainer } from '../../DeploymentsTable/styles';
 import { useLinkComponent } from '../../../../providers/NextLinkProvider';
 import { EyeOutlined } from '@ant-design/icons';
@@ -214,17 +214,15 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 			};
 		});
 
-	const summary = () => <tr className="summary">{newGroupModal}</tr>;
-
 	return (
 		<>
 			<BaseTable
 				dataSource={groupsWithActions}
 				columns={highlightedColumns}
 				rowKey={(record) => record.id}
-				summary={summary}
+				hasSummary
 			/>
-
+			<TableSummary>{newGroupModal}</TableSummary>
 			<PaginationWithSelector>
 				<section className="selector">{resultDropdown}</section>
 				<Pagination
