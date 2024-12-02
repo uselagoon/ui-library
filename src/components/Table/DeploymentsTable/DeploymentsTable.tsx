@@ -109,11 +109,11 @@ const DeploymentsTable = (props: DeploymentsTableProps) => {
 
 					const dateMatches =
 						filterDateRange && filterDateRange.every(Boolean)
-							? dayjs(item.created).utc().isBetween(
-									dayjs(filterDateRange[0]).utc().startOf('day'),
-									dayjs(filterDateRange[1]).utc().endOf('day'),
+							? dayjs(item.created).isBetween(
+									dayjs(filterDateRange[0]).startOf('day'),
+									dayjs(filterDateRange[1]).endOf('day'),
 									null,
-									'[)', // inclusive of start date, exclusive of end date
+									'[]', // inclusive of both start and end dates
 								)
 							: true;
 

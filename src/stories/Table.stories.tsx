@@ -252,6 +252,18 @@ export const DeploymentsTable: Story = {
 			cancelDeployment={() => <></>}
 			deployments={[
 				{
+					id: 4924,
+					name: 'lagoon-build-gkv519',
+					status: 'complete',
+					created: '2024-12-02 06:22:53',
+					buildStep: 'gatheringInsights',
+					started: '2024-12-02 06:22:54',
+					completed: '2024-12-02 06:29:28',
+					bulkId: null,
+					priority: null,
+					sourceType: 'API',
+				},
+				{
 					id: 3134,
 					name: 'lagoon-build-8u9hye',
 					status: 'running',
