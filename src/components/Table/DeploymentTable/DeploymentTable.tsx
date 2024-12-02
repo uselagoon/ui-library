@@ -179,6 +179,7 @@ const DeploymentTable = (props: DeploymenTableProps) => {
 						</ExpandedRow>
 					),
 				}}
+				disableScrollable
 				columns={DeploymentColumns}
 				rowKey={(record) => record.id}
 			/>

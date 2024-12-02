@@ -48,6 +48,7 @@ type BaseTableProps = Omit<TableProps, 'locale'> & {
     variant?: 'alternate' | 'default';
     lastRowBordered?: boolean;
     withBg?: boolean;
+    disableScrollable?: boolean;
 };
 declare const BaseTable: BaseTableWithComponents;
 export default BaseTable;

@@ -170,6 +170,7 @@ const TaskTable = (props: TaskTableProps) => {
 						</ExpandedRow>
 					),
 				}}
+				disableScrollable
 				columns={TaskColumns}
 				rowKey={(record) => record.id}
 			/>

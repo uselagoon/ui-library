@@ -53,6 +53,7 @@ type BaseTableProps = Omit<TableProps, 'locale'> & {
 	variant?: 'alternate' | 'default';
 	lastRowBordered?: boolean;
 	withBg?: boolean;
+	disableScrollable?: boolean;
 };
 
 const InternalTable: React.ForwardRefRenderFunction<HTMLDivElement, BaseTableProps> = (
@@ -62,11 +63,13 @@ const InternalTable: React.ForwardRefRenderFunction<HTMLDivElement, BaseTablePro
 		children,
 		lastRowBordered = false,
 		variant = 'default',
+		disableScrollable = false,
 		withBg = false,
 		...props
 	}: BaseTableProps,
 	_,
 ) => {
+	const scrollProp = disableScrollable !== true ? { x: 'max-content' } : {};
 	return (
 		<>
 			<ConfigProvider renderEmpty={() => EmptyDisplay}>
@@ -78,7 +81,7 @@ const InternalTable: React.ForwardRefRenderFunction<HTMLDivElement, BaseTablePro
 					columns={columns}
 					ref={null}
 					pagination={false}
-					scroll={{ x: 'max-content' }}
+					scroll={scrollProp}
 					{...props}
 				/>
 			</ConfigProvider>
