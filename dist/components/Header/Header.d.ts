@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { MenuProps } from 'antd';
 export type HeaderProps = {
-    icon?: React.ReactNode;
+    logo?: React.ReactNode;
     toggleTheme: () => void;
     userInfo: {
         email: string;

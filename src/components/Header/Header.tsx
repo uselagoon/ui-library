@@ -17,7 +17,7 @@ import { MenuProps } from 'antd';
 import { getCurrentPathIndex } from './helpers/getCurrentPathIndex';
 
 export type HeaderProps = {
-	icon?: React.ReactNode;
+	logo?: React.ReactNode;
 	toggleTheme: () => void;
 	userInfo: {
 		email: string;
@@ -33,7 +33,7 @@ export type HeaderProps = {
 };
 
 const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> = (
-	{ userInfo, navLinks, icon, toggleTheme, userDropdownMenu, logoNav, currentPath },
+	{ userInfo, navLinks, logo, toggleTheme, userDropdownMenu, logoNav, currentPath },
 	ref,
 ) => {
 	const { firstName, lastName, image, email } = userInfo;
@@ -109,8 +109,8 @@ const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> =
 	return (
 		<StyledHeader ref={ref}>
 			<section className="icon-container">
-				{icon ? (
-					icon
+				{logo ? (
+					logo
 				) : (
 					<LagoonIcon className="icon" onClick={typeof logoNav === 'function' ? () => logoNav() : () => {}} />
 				)}
