@@ -177,6 +177,7 @@ const ProblemsTable = (props: ProblemsTableProps) => {
 						</p>
 					),
 				}}
+				disableScrollable
 				dataSource={problemsWithActions}
 				columns={ProblemsColumns}
 				rowKey={(record) => record.id}

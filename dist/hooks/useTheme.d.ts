@@ -1,7 +1,8 @@
 import React from 'react';
+type Theme = 'dark' | 'light';
 declare const useTheme: () => any;
-export declare const AppThemeProvider: ({ defaultScheme, children, }: {
-    defaultScheme?: "dark" | "light" | undefined;
+export declare const AppThemeProvider: ({ defaultScheme, children }: {
+    defaultScheme?: Theme | undefined;
     children: React.ReactNode;
 }) => import("react/jsx-runtime").JSX.Element;
 export default useTheme;

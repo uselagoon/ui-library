@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
+type Theme = 'dark' | 'light';
 //@ts-ignore
 const ThemeContext = createContext<any>(null);
 
@@ -11,14 +12,8 @@ const useTheme = () => {
 	return context;
 };
 
-export const AppThemeProvider = ({
-	defaultScheme,
-	children,
-}: {
-	defaultScheme?: 'dark' | 'light';
-	children: React.ReactNode;
-}) => {
-	const [theme, setTheme] = useState<'dark' | 'light' | null>(null);
+export const AppThemeProvider = ({ defaultScheme, children }: { defaultScheme?: Theme; children: React.ReactNode }) => {
+	const [theme, setTheme] = useState<Theme | null>(null);
 
 	useEffect(() => {
 		if (defaultScheme) {
@@ -28,17 +23,11 @@ export const AppThemeProvider = ({
 		const storageTheme = localStorage.getItem('theme');
 		// already previously set in browser store.
 		if (storageTheme && ['light', 'dark'].includes(storageTheme)) {
-			setTheme(storageTheme as 'dark' | 'light');
+			setTheme(storageTheme as Theme);
 		} else {
-			// try to automatically infer dark mode theme.
-			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				setTheme('dark');
-				localStorage.setItem('theme', 'dark');
-			} else {
-				// default to light
-				setTheme('light');
-				localStorage.setItem('theme', 'light');
-			}
+			// default to dark if not overriden in provider or is a first time visitor
+			setTheme('dark');
+			localStorage.setItem('theme', 'dark');
 		}
 	}, []);
 
