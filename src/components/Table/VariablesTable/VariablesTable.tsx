@@ -246,9 +246,9 @@ const VariablesTable = (props: VariablesTableProps) => {
 			};
 
 			const blurIcon = isVariableHidden ? (
-				<EyeInvisibleOutlined onClick={toggleShowHide} />
-			) : (
 				<EyeOutlined onClick={toggleShowHide} />
+			) : (
+				<EyeInvisibleOutlined onClick={toggleShowHide} />
 			);
 			return {
 				...variable,
@@ -256,7 +256,7 @@ const VariablesTable = (props: VariablesTableProps) => {
 					<ActionWrap>
 						<LinkContainer>
 							{variable.value ? (
-								<Tooltip title={!isVariableHidden ? 'show' : 'hide'}>{blurIcon}</Tooltip>
+								<Tooltip title={!isVariableHidden ? 'hide' : 'show'}>{blurIcon}</Tooltip>
 							) : (
 								<EmptyAction></EmptyAction>
 							)}

@@ -7,6 +7,7 @@ export type Organization = {
     quotaGroup: number;
     groups: {
         id: string;
+        type?: null | 'project-default-group';
     }[];
     projects: {
         id: number;

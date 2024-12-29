@@ -11,7 +11,7 @@ const ProjectsTableSkeleton = () => {
 			render: () => <Skeleton height={30} />,
 		},
 		{
-			title: 'No. Envs',
+			title: 'Environments',
 			dataIndex: 'environment_count',
 			key: 'environment_count',
 			width: '8.39%',
@@ -32,7 +32,7 @@ const ProjectsTableSkeleton = () => {
 			render: () => <Skeleton height={30} />,
 		},
 		{
-			title: 'Origin',
+			title: 'GitUrl',
 			dataIndex: 'origin',
 			key: 'origin',
 			width: '30.89%',

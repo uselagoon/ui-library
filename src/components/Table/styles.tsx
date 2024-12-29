@@ -12,7 +12,6 @@ export const StyledBaseTable = styled(Table)<{
 	$withBg?: boolean;
 	$hasSummary?: boolean;
 }>`
-	border: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#000' : '#fff')};
 	border-radius: 0;
 	font-family: 'Open Sans', sans-serif !important;
 	box-shadow: ${(props) =>

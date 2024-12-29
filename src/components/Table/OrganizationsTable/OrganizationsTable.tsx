@@ -20,7 +20,7 @@ export type Organization = {
 	friendlyName: string | null;
 	quotaProject: number;
 	quotaGroup: number;
-	groups: { id: string }[];
+	groups: { id: string; type?: null | 'project-default-group' }[];
 	projects: { id: number }[];
 	deployTargets: { id: number; name: string }[];
 };
@@ -121,11 +121,14 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 			title: 'No. of Groups',
 			dataIndex: 'group_count',
 			key: 'group_count',
-			render: (groupCount: number, org: Organization) => (
-				<div>
-					{groupCount} of {org.quotaGroup === -1 ? 'unlimited' : org.quotaGroup} groups
-				</div>
-			),
+			render: (allGroups: number, org: Organization) => {
+				const groupCount = Object.values(org.groups).filter((group) => group.type !== 'project-default-group').length;
+				return (
+					<div>
+						{groupCount} of {org.quotaGroup === -1 ? 'unlimited' : org.quotaGroup} groups
+					</div>
+				);
+			},
 			width: '19.1%',
 		},
 		{

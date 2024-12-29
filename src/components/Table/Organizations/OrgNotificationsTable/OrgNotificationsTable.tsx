@@ -179,7 +179,7 @@ const OrgNotificationsTable = (props: NotificationsTableProps) => {
 			},
 		},
 		{
-			title: 'Badge',
+			title: 'Service',
 			dataIndex: 'type',
 			key: 'type',
 			width: type === 'standalone' ? '17.4%' : '67.4%',

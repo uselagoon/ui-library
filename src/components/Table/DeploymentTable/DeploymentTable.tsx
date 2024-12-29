@@ -10,6 +10,7 @@ import StatusTag from '../../StatusTag';
 import DeploymentTableSkeleton from './DeploymentTableSkeleton';
 import { ReactNode, useState } from 'react';
 import styled from 'styled-components';
+import { InfoCircleOutlined } from '@ant-design/icons';
 dayjs.extend(isBetween);
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -132,16 +133,14 @@ const DeploymentTable = (props: DeploymenTableProps) => {
 				),
 				status: (
 					<>
-						<StatusTag type={deployment.status} />
-
-						{!['complete', 'cancelled', 'failed'].includes(deployment.status) && deployment.buildStep && (
-							<BuildStepTooltip placement="right" title={deployment.buildStep}>
-								<StatusTag className="buildstep" type="custom" color="#118EE9" icon={<></>}>
-									{deployment.buildStep}
-								</StatusTag>
+						{!['complete', 'cancelled', 'failed'].includes(deployment.status) && deployment.buildStep ? (
+							<BuildStepTooltip placement="bottom" title={`Step: ${deployment.buildStep}`}>
+								<StatusTag style={{ cursor: 'pointer' }} type={deployment.status} />
+								<InfoCircleOutlined style={{ cursor: 'pointer' }} />
 							</BuildStepTooltip>
+						) : (
+							<StatusTag type={deployment.status} />
 						)}
-
 						{deployment.buildStep && ['deployCompletedWithWarnings'].includes(deployment.buildStep) && (
 							<BuildStepTooltip placement="right" title={deployment.buildStep}>
 								<StatusTag className="buildstep" type="custom" color="#ffbe00" icon={<></>}>

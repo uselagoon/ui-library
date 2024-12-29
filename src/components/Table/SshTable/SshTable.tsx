@@ -11,6 +11,7 @@ import FormItem from '../../FormItem';
 import Input from '../../Input';
 import { useForm } from 'antd/es/form/Form';
 import { Tooltip } from 'antd';
+import TextArea from 'antd/es/input/TextArea';
 
 dayjs.extend(utc);
 dayjs.extend(relativeTime);
@@ -256,7 +257,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 						</FormItem>
 
 						<FormItem required rules={[{ required: true, message: '' }]} label="Fingerprint Value" name="keyValue">
-							<Input placeholder="Enter the variable value" />
+							<TextArea placeholder="Begins with 'ssh-rsa', 'ssh-ed25519', 'ecdsa-sha2-nistp256', 'ecdsa-sha2-nistp384', 'ecdsa-sha2-nistp521'" />
 						</FormItem>
 					</ModalForm>
 				</Modal>

@@ -21,7 +21,8 @@ const StyledItem = styled(Item)<{ $wrap?: boolean }>`
 			font-weight: light;
 			color: ${(props) => (props.theme.colorScheme === 'dark' ? colors.white : '#00000099')};
 		}
-		input {
+		input,
+		textarea {
 			width: 55%;
 			&::placeholder {
 				font-size: 0.85rem;

@@ -131,7 +131,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			width: '24.6%',
 		},
 		{
-			title: 'No. Envs',
+			title: 'Environments',
 			dataIndex: 'environment_count',
 			key: 'environment_count',
 			render: (text: string) => <div style={{ textAlign: 'center' }}>{text}</div>,
@@ -150,7 +150,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			width: '10.32%',
 		},
 		{
-			title: 'Origin',
+			title: 'GitUrl',
 			dataIndex: 'origin',
 			key: 'origin',
 			width: '30.89%',

@@ -130,7 +130,7 @@ const BackupsTable = (props: BackupsTableProps) => {
 			key: 'backupId',
 			width: '44.81%',
 			render: (source: string) => {
-				return <CopyToClipboard text={source} type="hiddenWithIcon" width={'100%'} />;
+				return <CopyToClipboard text={source} type="visible" width={'100%'} />;
 			},
 		},
 		{

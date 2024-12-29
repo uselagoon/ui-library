@@ -1,4 +1,4 @@
-import { EyeOutlined } from '@ant-design/icons';
+import { EyeOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import BaseTable from '../Base';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -199,14 +199,13 @@ const DeploymentsTable = (props: DeploymentsTableProps) => {
 				),
 				status: (
 					<>
-						<StatusTag type={deployment.status} />
-
-						{!['complete', 'cancelled', 'failed'].includes(deployment.status) && deployment.buildStep && (
-							<BuildStepTooltip placement="right" title={deployment.buildStep}>
-								<StatusTag className="buildstep" type="custom" color="#118EE9" icon={<></>}>
-									{deployment.buildStep}
-								</StatusTag>
+						{!['complete', 'cancelled', 'failed'].includes(deployment.status) && deployment.buildStep ? (
+							<BuildStepTooltip placement="right" title={`Step: ${deployment.buildStep}`}>
+								<StatusTag style={{ cursor: 'pointer' }} type={deployment.status} />
+								<InfoCircleOutlined style={{ cursor: 'pointer' }} />
 							</BuildStepTooltip>
+						) : (
+							<StatusTag type={deployment.status} />
 						)}
 
 						{deployment.buildStep && ['deployCompletedWithWarnings'].includes(deployment.buildStep) && (

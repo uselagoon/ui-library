@@ -978,6 +978,10 @@ export const OrganizationsTable: Story = {
 							groups: [
 								{
 									id: 'some-id',
+									type: 'project-default-group',
+								},
+								{
+									id: 'some-id-2',
 								},
 							],
 							projects: [
