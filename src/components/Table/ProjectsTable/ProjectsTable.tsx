@@ -213,7 +213,9 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 					<ActionWrap>
 						<LinkContainer>
 							<Link href={`${basePath}/${project.name}`}>
-								<EyeOutlined />
+								<Tooltip placement="bottom" title="View project">
+									<EyeOutlined />
+								</Tooltip>
 							</Link>
 						</LinkContainer>
 					</ActionWrap>

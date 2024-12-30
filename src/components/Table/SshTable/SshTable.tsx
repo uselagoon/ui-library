@@ -290,19 +290,22 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 
 				actions: (
 					<ActionWrap>
-						<EditOutlined
-							onClick={() => {
-								setSelectedKey(key);
-								setEditModalOpen(true);
-							}}
-						/>
-
-						<DeleteOutlined
-							onClick={() => {
-								setSelectedKey(key);
-								setDeleteModalOpen(true);
-							}}
-						/>
+						<Tooltip placement="bottom" title="Edit key">
+							<EditOutlined
+								onClick={() => {
+									setSelectedKey(key);
+									setEditModalOpen(true);
+								}}
+							/>
+						</Tooltip>
+						<Tooltip placement="bottom" title="Delete key">
+							<DeleteOutlined
+								onClick={() => {
+									setSelectedKey(key);
+									setDeleteModalOpen(true);
+								}}
+							/>
+						</Tooltip>
 					</ActionWrap>
 				),
 			};

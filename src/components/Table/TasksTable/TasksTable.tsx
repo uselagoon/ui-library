@@ -156,7 +156,9 @@ const TasksTable = (props: TasksTableProps) => {
 					<ActionWrap>
 						<LinkContainer>
 							<Link href={`${basePath}/${task.taskName}`}>
-								<EyeOutlined />
+								<Tooltip placement="bottom" title="View task">
+									<EyeOutlined />
+								</Tooltip>
 							</Link>
 						</LinkContainer>
 						{['new', 'pending', 'queued', 'running'].includes(task.status) ? (

@@ -222,7 +222,9 @@ const DeploymentsTable = (props: DeploymentsTableProps) => {
 					<ActionWrap>
 						<LinkContainer>
 							<Link href={`${basePath}/${deployment.name}`}>
-								<EyeOutlined />
+								<Tooltip placement="bottom" title="View deployment">
+									<EyeOutlined />
+								</Tooltip>
 							</Link>
 						</LinkContainer>
 						{['new', 'pending', 'queued', 'running'].includes(deployment.status) ? (

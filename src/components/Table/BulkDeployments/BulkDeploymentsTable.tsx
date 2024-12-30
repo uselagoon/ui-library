@@ -210,7 +210,9 @@ const BulkDeploymentsTable = (props: BulkDeploymentsTableProps) => {
 							<Link
 								href={`/projects/${deployment.environment?.project.name}/${deployment.environment?.openshiftProjectName}/deployments/${deployment.name}`}
 							>
-								<EyeOutlined />
+								<Tooltip placement="bottom" title="View bulk deployment">
+									<EyeOutlined />
+								</Tooltip>
 							</Link>
 						</LinkContainer>
 						{['new', 'pending', 'queued', 'running'].includes(deployment.status) ? (

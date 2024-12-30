@@ -10,6 +10,7 @@ import { PaginationWithSelector } from '../../FactsTable/FactsTable';
 import BaseTable from '../../Base';
 import Pagination from '../../../Pagination';
 import OrgGroupsSkeleton from './OrgGroupsSkeleton';
+import { Tooltip } from 'antd';
 
 type Group = {
 	id: string;
@@ -170,7 +171,9 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 
 						<LinkContainer>
 							<Link href={`${basePath}/${group.name}`}>
-								<EyeOutlined />
+								<Tooltip placement="bottom" title="View group">
+									<EyeOutlined />
+								</Tooltip>
 							</Link>
 						</LinkContainer>
 

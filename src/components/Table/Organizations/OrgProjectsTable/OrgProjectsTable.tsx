@@ -190,7 +190,9 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 
 						<LinkContainer>
 							<Link href={`${basePath}/${project.name}`}>
-								<EyeOutlined />
+								<Tooltip placement="bottom" title="View project">
+									<EyeOutlined />
+								</Tooltip>
 							</Link>
 						</LinkContainer>
 

@@ -12,6 +12,7 @@ import { highlightTextInElement } from '../../../_util/helpers';
 import { debounce } from '../_utils';
 import OrganizationsTableSkeleton from './OrganizationsTableSkeleton';
 import Text from '../../Text';
+import { Tooltip } from 'antd';
 
 export type Organization = {
 	id: number;
@@ -206,7 +207,9 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 					<ActionWrap>
 						<LinkContainer>
 							<Link href={`${basePath}/${org.name}`}>
-								<EyeOutlined />
+								<Tooltip placement="bottom" title="View organization">
+									<EyeOutlined />
+								</Tooltip>
 							</Link>
 						</LinkContainer>
 					</ActionWrap>

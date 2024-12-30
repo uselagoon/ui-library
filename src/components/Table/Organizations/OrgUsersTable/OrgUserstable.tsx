@@ -10,6 +10,7 @@ import { PaginationWithSelector } from '../../FactsTable/FactsTable';
 import BaseTable from '../../Base';
 import Pagination from '../../../Pagination';
 import OrgUsersSkeleton from './OrgUsersSkeleton';
+import { Tooltip } from 'antd';
 
 type User = {
 	id: string;
@@ -269,7 +270,9 @@ const OrgUsersTable = (props: UsersProps) => {
 						{renderEditModal(user)}
 						<LinkContainer>
 							<Link href={`${basePath}/${user.email}`}>
-								<EyeOutlined />
+								<Tooltip placement="bottom" title="View user">
+									<EyeOutlined />
+								</Tooltip>
 							</Link>
 						</LinkContainer>
 

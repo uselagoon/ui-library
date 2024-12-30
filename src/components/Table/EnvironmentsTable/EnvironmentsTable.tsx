@@ -203,7 +203,9 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 					<ActionWrap>
 						<LinkContainer>
 							<Link href={`${basePath}/${environment.name}`}>
-								<EyeOutlined />
+								<Tooltip placement="bottom" title="View environment">
+									<EyeOutlined />
+								</Tooltip>
 							</Link>
 						</LinkContainer>
 						{actions}

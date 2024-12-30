@@ -268,7 +268,9 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 					<ActionWrap>
 						<LinkContainer>
 							<Link href={`/projects/${deployment.environment?.project.name}/deployments${deployment.name}`}>
-								<EyeOutlined />
+								<Tooltip placement="bottom" title="View deployment">
+									<EyeOutlined />
+								</Tooltip>
 							</Link>
 						</LinkContainer>
 						{['new', 'pending', 'queued', 'running'].includes(deployment.status) ? (

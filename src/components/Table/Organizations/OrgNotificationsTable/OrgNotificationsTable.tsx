@@ -8,6 +8,7 @@ import { Badge } from '../styles';
 import { LinkContainer } from '../../DeploymentsTable/styles';
 import { EyeOutlined } from '@ant-design/icons';
 import { useLinkComponent } from '../../../../providers/NextLinkProvider';
+import { Tooltip } from 'antd';
 
 type SlackNotification = {
 	id?: number;
@@ -256,7 +257,9 @@ const OrgNotificationsTable = (props: NotificationsTableProps) => {
 				<LinkContainer>
 					{/* @ts-ignore */}
 					<Link href={`/organizations/${orgName}/notifications?search=${notification.name}`}>
-						<EyeOutlined />
+						<Tooltip placement="bottom" title="View notification">
+							<EyeOutlined />
+						</Tooltip>
 					</Link>
 				</LinkContainer>
 			);
