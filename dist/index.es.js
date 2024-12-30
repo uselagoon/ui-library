@@ -2126,12 +2126,10 @@ html,body{
 	color: ${A=>A.theme.UI.texts.primary};
 `,nl=m((({content:A},e)=>a(Al,{ref:e,className:"lagoon-tip",children:[r(el,{children:r(Ga,{})}),a(tl,{children:[" ",A," "]})]})));nl.displayName="Tip";const rl=A.div`
 	border: 1px solid ${A=>"dark"===A.theme.colorScheme?"#5b5b5b":"#333"};
-
 	border-radius: 7px;
 	padding: 24px 23px;
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
 
 	${A=>A.$fullWidth?t`
 					width: 100%;
@@ -2145,7 +2143,7 @@ html,body{
 		font-family: 'ArabicPro-Regular';
 		color: #868686;
 		line-height: 22px;
-		margin-bottom: unset;
+		margin-bottom: 10px;
 	}
 
 	.ant-statistic-content,

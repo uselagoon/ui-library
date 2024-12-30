@@ -2,12 +2,10 @@ import styled, { css } from 'styled-components';
 
 export const StyledStatistic = styled.div<{ $fullWidth?: boolean }>`
 	border: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#5b5b5b' : '#333')};
-
 	border-radius: 7px;
 	padding: 24px 23px;
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
 
 	${(props) =>
 		props.$fullWidth
@@ -24,7 +22,7 @@ export const StyledStatistic = styled.div<{ $fullWidth?: boolean }>`
 		font-family: 'ArabicPro-Regular';
 		color: #868686;
 		line-height: 22px;
-		margin-bottom: unset;
+		margin-bottom: 10px;
 	}
 
 	.ant-statistic-content,
