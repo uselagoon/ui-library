@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const StyledStatistic = styled.div<{ $fullWidth?: boolean }>`
-	border: 1px solid #333;
+	border: 1px solid ${(props) => (props.theme.colorScheme === 'dark' ? '#5b5b5b' : '#333')};
 
 	border-radius: 7px;
 	padding: 24px 23px;

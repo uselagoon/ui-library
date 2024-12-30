@@ -2125,7 +2125,7 @@ html,body{
 	font-size: 16px;
 	color: ${A=>A.theme.UI.texts.primary};
 `,nl=m((({content:A},e)=>a(Al,{ref:e,className:"lagoon-tip",children:[r(el,{children:r(Ga,{})}),a(tl,{children:[" ",A," "]})]})));nl.displayName="Tip";const rl=A.div`
-	border: 1px solid #333;
+	border: 1px solid ${A=>"dark"===A.theme.colorScheme?"#5b5b5b":"#333"};
 
 	border-radius: 7px;
 	padding: 24px 23px;

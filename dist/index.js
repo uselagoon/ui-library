@@ -2125,7 +2125,7 @@ html,body{
 	font-size: 16px;
 	color: ${A=>A.theme.UI.texts.primary};
 `,xa=t.forwardRef((({content:A},t)=>e.jsxs(Va,{ref:t,className:"lagoon-tip",children:[e.jsx(ya,{children:e.jsx(fn,{})}),e.jsxs(ka,{children:[" ",A," "]})]})));xa.displayName="Tip";const Za=l.default.div`
-	border: 1px solid #333;
+	border: 1px solid ${A=>"dark"===A.theme.colorScheme?"#5b5b5b":"#333"};
 
 	border-radius: 7px;
 	padding: 24px 23px;
