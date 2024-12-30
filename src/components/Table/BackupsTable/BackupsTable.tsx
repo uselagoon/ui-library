@@ -160,9 +160,9 @@ const BackupsTable = (props: BackupsTableProps) => {
 				);
 			case 'successful':
 				return (
-					<Text href={restoreLocation} target="_blank">
+					<Text underline={false} href={restoreLocation} target="_blank">
 						<Tooltip placement="bottom" title={`Download (${humanFileSize(size)})`}>
-							<StyledDownloadButton />
+							<StyledDownloadButton /> (<span style={{ fontSize: '12px' }}>{humanFileSize(size)}</span>)
 						</Tooltip>
 					</Text>
 				);

@@ -24,10 +24,18 @@ const StyledTextElement = styled(TextElement)`
 	}
 `;
 
-const StyledLinkElement = styled(LinkElement)`
+const StyledLinkElement = styled(LinkElement)<{ $underline?: boolean }>`
 	&.ant-typography {
 		${sharedStyles};
-		text-decoration: underline;
+		${(props) =>
+			props.$underline
+				? css`
+						text-decoration: underline;
+					`
+				: css`
+						text-decoration: none;
+					`}
+
 		&:link {
 			color: ${colors.blue};
 		}
@@ -52,11 +60,12 @@ type LinkItemProps = {
 export type InternalTextType = {
 	className?: string;
 	children?: React.ReactNode;
+	underline?: boolean;
 } & (TextItemProps | LinkItemProps) &
 	TextProps;
 
 const InternalText: React.ForwardRefRenderFunction<HTMLSpanElement, InternalTextType> = (
-	{ className, children, ...rest }: InternalTextType,
+	{ className, children, underline = true, ...rest }: InternalTextType,
 	ref,
 ) => {
 	if ('href' in rest) {
@@ -64,7 +73,7 @@ const InternalText: React.ForwardRefRenderFunction<HTMLSpanElement, InternalText
 		const target = rest.target ?? '__blank';
 
 		return (
-			<StyledLinkElement ref={ref} className={className} href={destination} target={target}>
+			<StyledLinkElement $underline={underline} ref={ref} className={className} href={destination} target={target}>
 				{children}
 			</StyledLinkElement>
 		);

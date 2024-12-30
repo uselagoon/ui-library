@@ -205,9 +205,9 @@ const ProblemsTable = (props: InsightsTableProps) => {
 
 				actions: (
 					<ActionWrap>
-						<Text href={insight.downloadUrl} target="_blank">
+						<Text underline={false} href={insight.downloadUrl} target="_blank">
 							<Tooltip placement="bottom" title={`Download (${insight.size})`}>
-								<StyledDownloadButton />
+								<StyledDownloadButton /> (<span style={{ fontSize: '12px' }}>{insight.size}</span>)
 							</Tooltip>
 						</Text>
 					</ActionWrap>
