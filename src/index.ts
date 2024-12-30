@@ -133,6 +133,12 @@ export type { TreeListProps } from './components/TreeList';
 export { default as Tip } from './components/Tip';
 export type { TipProps } from './components/Tip';
 
+export { default as Stat } from './components/Stat';
+export type { StatProps } from './components/Stat';
+
+export { default as DetailedStats } from './components/DetailedStats';
+export type { DetailedStatsProps } from './components/DetailedStats';
+
 export {
 	LagoonIcon,
 	IconAim,

@@ -83,4 +83,8 @@ export { default as TreeList } from './components/TreeList';
 export type { TreeListProps } from './components/TreeList';
 export { default as Tip } from './components/Tip';
 export type { TipProps } from './components/Tip';
+export { default as Stat } from './components/Stat';
+export type { StatProps } from './components/Stat';
+export { default as DetailedStats } from './components/DetailedStats';
+export type { DetailedStatsProps } from './components/DetailedStats';
 export { LagoonIcon, IconAim, IconAlert, IconAlignCenter, IconAlignLeft, IconAlignRight, IconApartment, IconApi, IconAppstore, IconArrowDown, IconArrowsAlt, IconAudio, IconBell, IconBranches, IconBug, IconBulb, IconCamera, IconCaretDown, IconCheck, IconCheckSquare, IconClose, IconCloseSquare, IconCloudDownload, IconCloudUpload, IconDelete, IconDisconnect, IconEdit, IconEllipsis, IconExclamation, IconExclamationCircle, IconExport, IconEye, IconFileImage, IconFileJpg, IconFilePdf, IconFrown, IconFullscreen, IconFullscreenExit, IconGithub, IconHdd, IconHeart, IconHighlight, IconHome, IconIdcard, IconInfoCircle, IconLink, IconLoading, IconLock, IconMeh, IconMessage, IconMinusCircle, IconMinusSquare, IconPaperclip, IconPlus, IconPushpinFIlled, IconPushpinOutlined, IconRest, IconRocket, IconSave, IconSearch, IconSettings, IconSmile, IconStar, IconTag, IconTags, IconWifi, IconZoomIn, IconZoomOut, IconSun, IconLagoonOnly, IconGrid, IconList, } from './components/Icons/index';

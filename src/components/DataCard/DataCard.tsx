@@ -79,7 +79,7 @@ const StyledCard = styled.div<{
 
 const UIDataCard = forwardRef<HTMLDivElement, CardProps>(InternalDataCard);
 
-UIDataCard.displayName = 'UIDataCard';
+UIDataCard.displayName = 'DataCard';
 
 export default UIDataCard;
 
