@@ -18,6 +18,7 @@ import { StyledMoreActionsIcon } from '../../Card/styles';
 import { formatEnvType } from '../_utils';
 import EnvironmentsTableSkeleton from './EnvironmentsTableSkeleton';
 import { useLinkComponent } from '../../../providers/NextLinkProvider';
+import { TotalDescription } from '../Organizations/styles';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -221,6 +222,10 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 				current={currentPage}
 				onChange={handlePageChange}
 			/>
+
+			<TotalDescription>
+				Showing {totalFilteredCount} of {environments.length} Environments
+			</TotalDescription>
 		</>
 	);
 };
