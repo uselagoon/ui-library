@@ -123,17 +123,38 @@ export const ProjectsTable: Story = {
 							factsUi: 1,
 							created: '2024-09-26 17:55:36',
 							gitUrl: 'https://github.com/amazeeio-demos/some-project',
-							kubernetes: {
-								id: 4,
-								name: 'ui-kubernetes',
-								cloudRegion: null,
-							},
 							productionEnvironment: 'main',
 							environments: [
 								{
 									route: 'https://lagoondemo.example.org',
 									name: 'main',
 									updated: '2024-11-02 00:24:40',
+									kubernetes: {
+										id: 4,
+										name: 'ui-kubernetes',
+										cloudRegion: null,
+									},
+								},
+							],
+						},
+						{
+							id: 20,
+							name: 'lagoon-demo-another',
+							problemsUi: 1,
+							factsUi: 1,
+							created: '2024-09-26 17:55:36',
+							gitUrl: 'https://github.com/amazeeio-demos/some-project',
+							productionEnvironment: 'main',
+							environments: [
+								{
+									route: 'https://lagoondemo.example.org',
+									name: 'main',
+									updated: '',
+									kubernetes: {
+										id: 4,
+										name: 'ui-kubernetes',
+										cloudRegion: null,
+									},
 								},
 							],
 						},
@@ -144,17 +165,17 @@ export const ProjectsTable: Story = {
 							problemsUi: 1,
 							factsUi: 1,
 							created: '2024-09-26 17:55:41',
-							kubernetes: {
-								id: 5,
-								name: 'ui-kubernetes-2',
-								cloudRegion: null,
-							},
 							productionEnvironment: 'main',
 							environments: [
 								{
 									name: 'dev',
 									route: 'https://lagoondemoorg.example.org',
 									updated: '2024-11-01 20:39:57',
+									kubernetes: {
+										id: 5,
+										name: 'ui-kubernetes-2',
+										cloudRegion: null,
+									},
 								},
 							],
 						},
@@ -206,7 +227,7 @@ export const EnvironmentsTable: Story = {
 					deployType: 'branch',
 					envType: 'production',
 					region: 'US3',
-					last_deployment: '28/12/2022',
+					last_deployment: '2024-11-01 20:39:57',
 					quickActions: envQuickActions,
 				},
 				{
@@ -234,7 +255,7 @@ export const EnvironmentsTable: Story = {
 					deployType: 'branch',
 					envType: 'development',
 					region: 'US3',
-					last_deployment: '28/12/2022',
+					last_deployment: '2024-10-01 20:39:57',
 					activeRoutes: fakeActiveRoutes,
 					quickActions: envQuickActions,
 				},

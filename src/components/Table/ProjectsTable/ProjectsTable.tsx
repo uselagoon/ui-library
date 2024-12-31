@@ -131,6 +131,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			title: 'Project',
 			dataIndex: 'name',
 			key: 'name',
+			sorter: (a: Project, b: Project) => a.name.localeCompare(b.name),
 			render: (_: string, record: Project) => (
 				<LinkContainer>
 					<Link href={`${basePath}/${record.name}`}>{record.name}</Link>
@@ -143,6 +144,25 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			dataIndex: 'last_deployment',
 			key: 'last_deployment',
 			width: '10%',
+
+			sorter: (a: Project, b: Project) => {
+				const latestDeployment_first = getLatestDate(a.environments);
+				const latestDeployment_second = getLatestDate(b.environments);
+
+				const dateA = latestDeployment_first ? new Date(latestDeployment_first).getTime() : -Infinity;
+				const dateB = latestDeployment_second ? new Date(latestDeployment_second).getTime() : -Infinity;
+
+				return dateA - dateB;
+			},
+
+			render: (lastDeploy: string) =>
+				lastDeploy ? (
+					<Tooltip placement="top" title={lastDeploy}>
+						{dayjs.utc(lastDeploy).local().fromNow()}
+					</Tooltip>
+				) : (
+					'-'
+				),
 		},
 		{
 			title: 'Prod Route',
@@ -203,11 +223,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			return {
 				...project,
 				prod_route: prodRoute && prodRoute !== 'undefined' ? prodRoute.replace(/^https?\:\/\//i, '') : '',
-				last_deployment: (
-					<Tooltip placement="top" title={lastDeployment}>
-						{dayjs.utc(lastDeployment).local().fromNow()}
-					</Tooltip>
-				),
+				last_deployment: lastDeployment,
 				created: (
 					<Tooltip placement="top" title={project.created}>
 						{dayjs.utc(project.created).local().fromNow()}

@@ -107,6 +107,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 		{
 			title: 'Env Name',
 			dataIndex: 'title',
+			sorter: (a: Environment, b: Environment) => a.name.localeCompare(b.name),
 			key: 'title',
 			render: (title: string, record: Environment) => (
 				<LinkContainer>
@@ -138,6 +139,21 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			dataIndex: 'last_deployment',
 			key: 'last_deployment',
 			width: '10.64%',
+
+			sorter: (a: Environment, b: Environment) => {
+				const dateA = a.last_deployment ? new Date(a.last_deployment).getTime() : -Infinity;
+				const dateB = b.last_deployment ? new Date(b.last_deployment).getTime() : -Infinity;
+
+				return dateA - dateB;
+			},
+			render: (lastDeploy: string) =>
+				lastDeploy ? (
+					<Tooltip placement="top" title={lastDeploy}>
+						{dayjs.utc(lastDeploy).local().fromNow()}
+					</Tooltip>
+				) : (
+					'-'
+				),
 		},
 		{
 			title: 'Routes',
@@ -191,13 +207,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 
 			return {
 				...environment,
-				last_deployment: environment.last_deployment ? (
-					<Tooltip placement="top" title={environment.last_deployment}>
-						{dayjs.utc(environment.last_deployment).local().fromNow()}
-					</Tooltip>
-				) : (
-					'-'
-				),
+				last_deployment: environment.last_deployment,
 
 				actions: (
 					<ActionWrap>
