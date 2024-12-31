@@ -168,6 +168,9 @@ const OrgUsersTable = (props: UsersProps) => {
 			dataIndex: 'firstName',
 			key: 'firstName',
 			width: '23.65%',
+			sorter: (a: User, b: User) => {
+				return a.firstName && b.firstName ? a.firstName.localeCompare(b.firstName) : 0;
+			},
 			render: (name: string) => {
 				return <>{name}</>;
 			},
@@ -179,6 +182,9 @@ const OrgUsersTable = (props: UsersProps) => {
 			dataIndex: 'lastName',
 			key: 'lastName',
 			width: '19.56%',
+			sorter: (a: User, b: User) => {
+				return a.lastName && b.lastName ? a.lastName.localeCompare(b.lastName) : 0;
+			},
 			render: (lastName: string, user: User) => {
 				return user.email.startsWith('default-user') ? (
 					<p style={{ textAlign: 'center' }}>
@@ -196,6 +202,7 @@ const OrgUsersTable = (props: UsersProps) => {
 			dataIndex: 'email',
 			key: 'email',
 			width: '24.78%',
+			sorter: (a: User, b: User) => a.email.localeCompare(b.email),
 			render: (email: string) => {
 				return (
 					<LinkContainer>
@@ -215,6 +222,12 @@ const OrgUsersTable = (props: UsersProps) => {
 						width: '19.56%',
 						render: (groupCount: number) => {
 							return <>Groups: {groupCount}</>;
+						},
+						sorter: (a: User, b: User) => {
+							if (a.groupRoles && b.groupRoles) {
+								return a.groupRoles.length - b.groupRoles.length;
+							}
+							return 0;
 						},
 						className: getSortedClass('groupCount'),
 					},

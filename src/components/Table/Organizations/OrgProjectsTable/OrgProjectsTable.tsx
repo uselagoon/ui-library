@@ -131,6 +131,7 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 			dataIndex: 'name',
 			key: 'name',
 			width: type === 'standalone' ? '60.17%' : '87.57%',
+			sorter: (a: ProjectBase, b: ProjectBase) => a.name.localeCompare(b.name),
 			render: (name: string) => {
 				return (
 					<LinkContainer>
@@ -148,6 +149,12 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 						dataIndex: 'groupCount',
 						key: 'groupCount',
 						width: '27.4%',
+						sorter: (a: StandaloneProject, b: StandaloneProject) => {
+							if (a.groupCount != undefined && b.groupCount != undefined) {
+								return a.groupCount - b.groupCount;
+							}
+							return 0;
+						},
 						render: (members: number) => {
 							return <>Groups: {members}</>;
 						},

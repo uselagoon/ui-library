@@ -1032,7 +1032,6 @@ export const OrgGroupsTable: Story = {
 
 				<br />
 				<BaseTable.OrgGroupsTable
-					sortBy="memberCount_desc"
 					newGroupModal={<>+ Add group</>}
 					deleteUserModal={(current) => (
 						<>

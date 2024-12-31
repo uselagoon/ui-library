@@ -132,6 +132,7 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 			dataIndex: 'name',
 			key: 'name',
 			width: '60.17%',
+			sorter: (a: Group, b: Group) => a.name.localeCompare(b.name),
 			render: (name: string, group: Group) => {
 				return (
 					<LinkContainer>
@@ -148,6 +149,12 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 			dataIndex: 'memberCount',
 			key: 'memberCount',
 			width: '27.4%',
+			sorter: (a: Group, b: Group) => {
+				if (a.memberCount != undefined && b.memberCount != undefined) {
+					return a.memberCount - b.memberCount;
+				}
+				return 0;
+			},
 			render: (members: number) => {
 				return <>Active Members: {members}</>;
 			},
