@@ -24,7 +24,8 @@ export type Project = {
 	problemsUi: number | null;
 	factsUi: number | null;
 	created: string;
-	origin: string;
+	gitUrl: string;
+	productionEnvironment: string | null;
 	kubernetes: {
 		id: number;
 		name: string;
@@ -32,6 +33,7 @@ export type Project = {
 	};
 	environments: [
 		{
+			name: string;
 			route: string;
 			updated: string;
 		},
@@ -92,7 +94,13 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 		debounce((filterString: string) => {
 			const filteredData =
 				projects?.filter((project) => {
-					const fieldsToCheck = [project.name, project.kubernetes.name, project.origin];
+					const prodRoute = project.environments.find((environment) => {
+						return environment.name === project.productionEnvironment;
+					})?.route;
+					const routeToCheck = prodRoute && prodRoute !== 'undefined' ? prodRoute.replace(/^https?\:\/\//i, '') : '';
+
+					const fieldsToCheck = [project.name, project.gitUrl, routeToCheck];
+
 					return fieldsToCheck.some((fieldValue) =>
 						String(fieldValue).toLowerCase().includes(filterString.toLowerCase()),
 					);
@@ -128,32 +136,32 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 					<Link href={`${basePath}/${record.name}`}>{record.name}</Link>
 				</LinkContainer>
 			),
-			width: '24.6%',
+			width: '25%',
 		},
 		{
 			title: 'Environments',
 			dataIndex: 'environment_count',
 			key: 'environment_count',
 			render: (text: string) => <div style={{ textAlign: 'center' }}>{text}</div>,
-			width: '8.39%',
-		},
-		{
-			title: 'Cluster',
-			dataIndex: 'cluster',
-			key: 'cluster',
-			width: '10.32%',
+			width: '5%',
 		},
 		{
 			title: 'Last Deployment',
 			dataIndex: 'last_deployment',
 			key: 'last_deployment',
-			width: '10.32%',
+			width: '10%',
+		},
+		{
+			title: 'Prod Route',
+			dataIndex: 'prod_route',
+			key: 'prod_route',
+			width: '20%',
 		},
 		{
 			title: 'GitUrl',
-			dataIndex: 'origin',
-			key: 'origin',
-			width: '30.89%',
+			dataIndex: 'gitUrl',
+			key: 'gitUrl',
+			width: '31%',
 		},
 		{
 			title: 'Actions',
@@ -164,7 +172,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 	];
 
 	// highlight found text (only certain fields)
-	const fieldsToCheck = ['name', 'cluster', 'origin'];
+	const fieldsToCheck = ['name', 'prod_route', 'gitUrl'];
 	const wrappedColumns =
 		projectsColumns &&
 		projectsColumns.map((col) => {
@@ -194,10 +202,14 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 		paginatedData &&
 		paginatedData.map((project) => {
 			const lastDeployment = getLatestDate(project.environments);
+			const prodRoute = project.environments.find((environment) => {
+				return environment.name === project.productionEnvironment;
+			})?.route;
+
 			return {
 				...project,
 				environment_count: project.environments.length,
-				cluster: project.kubernetes.name,
+				prod_route: prodRoute && prodRoute !== 'undefined' ? prodRoute.replace(/^https?\:\/\//i, '') : '',
 				last_deployment: (
 					<Tooltip placement="top" title={lastDeployment}>
 						{dayjs.utc(lastDeployment).local().fromNow()}

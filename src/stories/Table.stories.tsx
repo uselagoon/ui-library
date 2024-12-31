@@ -122,21 +122,23 @@ export const ProjectsTable: Story = {
 							problemsUi: 1,
 							factsUi: 1,
 							created: '2024-09-26 17:55:36',
-							origin: 'https://github.com/amazeeio-demos/some-project',
+							gitUrl: 'https://github.com/amazeeio-demos/some-project',
 							kubernetes: {
 								id: 4,
 								name: 'ui-kubernetes',
 								cloudRegion: null,
 							},
+							productionEnvironment: 'main',
 							environments: [
 								{
 									route: 'https://lagoondemo.example.org',
+									name: 'main',
 									updated: '2024-11-02 00:24:40',
 								},
 							],
 						},
 						{
-							origin: 'https://github.com/amazeeio-demos/project',
+							gitUrl: 'https://github.com/amazeeio-demos/project',
 							id: 180,
 							name: 'lagoon-demo-org',
 							problemsUi: 1,
@@ -147,8 +149,10 @@ export const ProjectsTable: Story = {
 								name: 'ui-kubernetes-2',
 								cloudRegion: null,
 							},
+							productionEnvironment: 'main',
 							environments: [
 								{
+									name: 'dev',
 									route: 'https://lagoondemoorg.example.org',
 									updated: '2024-11-01 20:39:57',
 								},

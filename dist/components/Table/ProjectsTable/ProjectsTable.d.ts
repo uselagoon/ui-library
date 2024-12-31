@@ -5,7 +5,8 @@ export type Project = {
     problemsUi: number | null;
     factsUi: number | null;
     created: string;
-    origin: string;
+    gitUrl: string;
+    productionEnvironment: string | null;
     kubernetes: {
         id: number;
         name: string;
@@ -13,6 +14,7 @@ export type Project = {
     };
     environments: [
         {
+            name: string;
             route: string;
             updated: string;
         }
