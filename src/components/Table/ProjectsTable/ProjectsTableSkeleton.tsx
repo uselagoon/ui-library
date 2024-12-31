@@ -7,35 +7,35 @@ const ProjectsTableSkeleton = () => {
 			title: 'Project',
 			dataIndex: 'name',
 			key: 'name',
-			width: '24.6%',
 			render: () => <Skeleton height={30} />,
+			width: '25%',
 		},
 		{
 			title: 'Environments',
 			dataIndex: 'environment_count',
 			key: 'environment_count',
-			width: '8.39%',
 			render: () => <Skeleton height={30} />,
-		},
-		{
-			title: 'Cluster',
-			dataIndex: 'cluster',
-			key: 'cluster',
-			width: '10.32%',
-			render: () => <Skeleton height={30} />,
+			width: '5%',
 		},
 		{
 			title: 'Last Deployment',
 			dataIndex: 'last_deployment',
 			key: 'last_deployment',
-			width: '10.32%',
+			width: '10%',
+			render: () => <Skeleton height={30} />,
+		},
+		{
+			title: 'Prod Route',
+			dataIndex: 'prod_route',
+			key: 'prod_route',
+			width: '20%',
 			render: () => <Skeleton height={30} />,
 		},
 		{
 			title: 'GitUrl',
-			dataIndex: 'origin',
-			key: 'origin',
-			width: '30.89%',
+			dataIndex: 'gitUrl',
+			key: 'gitUrl',
+			width: '30%',
 			render: () => <Skeleton height={30} />,
 		},
 		{
@@ -43,8 +43,10 @@ const ProjectsTableSkeleton = () => {
 			dataIndex: 'actions',
 			key: 'actions',
 			render: () => <Skeleton height={30} />,
+			width: '10%',
 		},
 	];
+
 	const skeletonCount = Math.floor((window.innerHeight * 8) / 10 / 40);
 
 	const skeletons = [...Array(skeletonCount)].map((_, index) => ({

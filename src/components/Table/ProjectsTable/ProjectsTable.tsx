@@ -136,7 +136,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 					<Link href={`${basePath}/${record.name}`}>{record.name}</Link>
 				</LinkContainer>
 			),
-			width: '20%',
+			width: '25%',
 		},
 		{
 			title: 'Environments',
@@ -155,7 +155,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			title: 'Prod Route',
 			dataIndex: 'prod_route',
 			key: 'prod_route',
-			width: '15%',
+			width: '20%',
 		},
 		{
 			title: 'GitUrl',
@@ -168,6 +168,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			dataIndex: 'actions',
 			key: 'actions',
 			render: (item: string) => <div style={{ textAlign: 'center', fontSize: '1.25rem' }}>{item}</div>,
+			width: '10%',
 		},
 	];
 
