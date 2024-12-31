@@ -1955,6 +1955,10 @@ html,body{
 	> * {
 		cursor: pointer;
 		font-size: 1.1875rem;
+		height: 35px;
+		min-width: 35px;
+		display: inline-flex;
+		justify-content: center;
 	}
 `,vn=s.default.span`
 	width: 1.1875rem;
