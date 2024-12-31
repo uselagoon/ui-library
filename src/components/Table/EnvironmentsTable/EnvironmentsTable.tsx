@@ -64,6 +64,9 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [pageSize, setResultsPerPage] = useState(resultsPerPage || 10);
 
+	// custom sorter
+	const [customSort, setCustomSort] = useState<any[]>([]);
+
 	useEffect(() => {
 		if (resultsPerPage) {
 			setResultsPerPage(resultsPerPage);
@@ -81,12 +84,35 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			})
 		: [];
 
-	// paginated data based on filtered results
+	const sortedData = filteredData.sort((a, b) => {
+		const [sortField, sortDirection] = customSort;
 
+		// if sorting is cancelled, return defaults
+		if (sortDirection === undefined) {
+			return 0;
+		}
+
+		const direction = sortDirection === 'ascend' ? 1 : -1;
+
+		if (sortField === 'title') {
+			return direction * a.name.localeCompare(b.name);
+		}
+
+		if (sortField === 'last_deployment') {
+			const dateA = a.last_deployment ? new Date(a.last_deployment).getTime() : -Infinity;
+			const dateB = b.last_deployment ? new Date(b.last_deployment).getTime() : -Infinity;
+
+			return direction * (dateB - dateA);
+		}
+		// leave defaults if nothing matches above
+		return 0;
+	});
+
+	// paginated data based on filtered/sorted results
 	const paginatedData =
-		pageSize > 0 ? filteredData.slice((currentPage - 1) * pageSize, currentPage * pageSize) : filteredData;
+		pageSize > 0 ? sortedData.slice((currentPage - 1) * pageSize, currentPage * pageSize) : sortedData;
 
-	const totalFilteredCount = filteredData.length;
+	const totalFilteredCount = sortedData.length;
 
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
@@ -226,7 +252,20 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 
 	return (
 		<>
-			<BaseTable dataSource={remappedEnvs} columns={wrappedColumns} rowKey={(record) => record.title} hasSummary />
+			<BaseTable
+				onChange={(_, __, info: any) => {
+					const col = info.field;
+					const order = info.order;
+
+					if (col && ['ascend', 'descend', undefined].includes(order)) {
+						setCustomSort([col, order]);
+					}
+				}}
+				dataSource={remappedEnvs}
+				columns={wrappedColumns}
+				rowKey={(record) => record.title}
+				hasSummary
+			/>
 			<TableSummary>{newEnvironmentModal}</TableSummary>
 			<Pagination
 				total={totalFilteredCount}

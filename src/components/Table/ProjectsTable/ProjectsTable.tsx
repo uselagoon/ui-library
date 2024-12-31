@@ -77,6 +77,9 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 	const [loading, setLoading] = useState(false);
 	const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects || []);
 
+	// custom sorter
+	const [customSort, setCustomSort] = useState<any[]>([]);
+
 	useEffect(() => {
 		if (resultsPerPage) {
 			setResultsPerPage(resultsPerPage);
@@ -106,11 +109,40 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 					);
 				}) || [];
 
-			setFilteredProjects(filteredData);
+			const sortedData = filteredData.sort((a, b) => {
+				const [sortField, sortDirection] = customSort;
+
+				// if sorting is cancelled, return defaults
+				if (sortDirection === undefined) {
+					return 0;
+				}
+
+				const direction = sortDirection === 'ascend' ? 1 : -1;
+
+				if (sortField === 'name') {
+					return direction * a.name.localeCompare(b.name);
+				}
+
+				if (sortField === 'last_deployment') {
+					const latestDeployment_first = getLatestDate(a.environments);
+					const latestDeployment_second = getLatestDate(b.environments);
+
+					const dateA = latestDeployment_first ? new Date(latestDeployment_first).getTime() : -Infinity;
+					const dateB = latestDeployment_second ? new Date(latestDeployment_second).getTime() : -Infinity;
+
+					return direction * (dateB - dateA);
+				}
+				// leave defaults if nothing matches above
+				return 0;
+			});
+
+			setFilteredProjects(sortedData);
 			setLoading(false);
 		}, timerLengthPercentage),
-		[],
+
+		[customSort],
 	);
+
 	useEffect(() => {
 		setLoading(true);
 		debouncedFilter(filterString);
@@ -131,7 +163,9 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			title: 'Project',
 			dataIndex: 'name',
 			key: 'name',
-			sorter: (a: Project, b: Project) => a.name.localeCompare(b.name),
+			sorter: () => {
+				return 0;
+			},
 			render: (_: string, record: Project) => (
 				<LinkContainer>
 					<Link href={`${basePath}/${record.name}`}>{record.name}</Link>
@@ -144,15 +178,8 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			dataIndex: 'last_deployment',
 			key: 'last_deployment',
 			width: '10%',
-
-			sorter: (a: Project, b: Project) => {
-				const latestDeployment_first = getLatestDate(a.environments);
-				const latestDeployment_second = getLatestDate(b.environments);
-
-				const dateA = latestDeployment_first ? new Date(latestDeployment_first).getTime() : -Infinity;
-				const dateB = latestDeployment_second ? new Date(latestDeployment_second).getTime() : -Infinity;
-
-				return dateA - dateB;
+			sorter: () => {
+				return 0;
 			},
 
 			render: (lastDeploy: string) =>
@@ -248,6 +275,14 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 		<>
 			<BaseTable
 				disableScrollable
+				onChange={(_, __, info: any) => {
+					const col = info.field;
+					const order = info.order;
+
+					if (col && ['ascend', 'descend', undefined].includes(order)) {
+						setCustomSort([col, order]);
+					}
+				}}
 				variant="alternate"
 				dataSource={remappedProjects}
 				columns={wrappedColumns}
