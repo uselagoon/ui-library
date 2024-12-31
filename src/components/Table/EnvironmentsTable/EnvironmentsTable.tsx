@@ -84,29 +84,26 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			})
 		: [];
 
-	const sortedData = filteredData.sort((a, b) => {
-		const [sortField, sortDirection] = customSort;
+	const [sortField, sortDirection] = customSort;
+	const sortedData =
+		sortDirection === undefined
+			? filteredData
+			: filteredData.sort((a, b) => {
+					const direction = sortDirection === 'ascend' ? 1 : -1;
 
-		// if sorting is cancelled, return defaults
-		if (sortDirection === undefined) {
-			return 0;
-		}
+					if (sortField === 'name') {
+						return direction * a.name.localeCompare(b.name);
+					}
 
-		const direction = sortDirection === 'ascend' ? 1 : -1;
+					if (sortField === 'last_deployment') {
+						const dateA = a.last_deployment ? new Date(a.last_deployment).getTime() : -Infinity;
+						const dateB = b.last_deployment ? new Date(b.last_deployment).getTime() : -Infinity;
 
-		if (sortField === 'title') {
-			return direction * a.name.localeCompare(b.name);
-		}
-
-		if (sortField === 'last_deployment') {
-			const dateA = a.last_deployment ? new Date(a.last_deployment).getTime() : -Infinity;
-			const dateB = b.last_deployment ? new Date(b.last_deployment).getTime() : -Infinity;
-
-			return direction * (dateB - dateA);
-		}
-		// leave defaults if nothing matches above
-		return 0;
-	});
+						return direction * (dateB - dateA);
+					}
+					// leave defaults if nothing matches above
+					return 0;
+				});
 
 	// paginated data based on filtered/sorted results
 	const paginatedData =
