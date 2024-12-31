@@ -238,6 +238,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 	return (
 		<>
 			<BaseTable
+				disableScrollable
 				variant="alternate"
 				dataSource={remappedProjects}
 				columns={wrappedColumns}
