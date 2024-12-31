@@ -26,7 +26,6 @@ import { OrgUserGroupsTableProps } from './Organizations/OrgUserGroupsTable/OrgU
 
 export interface BaseTableWithComponents
 	extends React.ForwardRefExoticComponent<BaseTableProps & React.RefAttributes<HTMLDivElement>> {
-	DefaultTable: React.FC<BaseTableProps>;
 	SshTable: React.FC<SshTableProps>;
 	DeploymentsTable: React.FC<DeploymentsTableProps>;
 	BackupsTable: React.FC<BackupsTableProps>;
@@ -48,6 +47,7 @@ export interface BaseTableWithComponents
 	OrgNotificationsTable: React.FC<NotificationsTableProps>;
 	OrgAdminsTable: React.FC<OwnersTableProps>;
 	OrgUserGroupsTable: React.FC<OrgUserGroupsTableProps>;
+	DefaultTable: React.FC<BaseTableProps>;
 }
 
 type BaseTableProps = Omit<TableProps, 'locale'> & {
