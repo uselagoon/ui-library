@@ -88,7 +88,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 	const sortedData =
 		sortDirection === undefined
 			? filteredData
-			: filteredData.sort((a, b) => {
+			: filteredData.toSorted((a, b) => {
 					const direction = sortDirection === 'ascend' ? 1 : -1;
 
 					if (sortField === 'name') {
