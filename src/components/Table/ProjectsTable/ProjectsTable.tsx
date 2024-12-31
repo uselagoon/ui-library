@@ -26,16 +26,16 @@ export type Project = {
 	created: string;
 	gitUrl: string;
 	productionEnvironment: string | null;
-	kubernetes: {
-		id: number;
-		name: string;
-		cloudRegion: string | null;
-	};
 	environments: [
 		{
 			name: string;
 			route: string;
 			updated: string;
+			kubernetes: {
+				id: number;
+				name: string;
+				cloudRegion: string | null;
+			};
 		},
 	];
 };
@@ -139,13 +139,6 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			width: '25%',
 		},
 		{
-			title: 'Environments',
-			dataIndex: 'environment_count',
-			key: 'environment_count',
-			render: (text: string) => <div style={{ textAlign: 'center' }}>{text}</div>,
-			width: '5%',
-		},
-		{
 			title: 'Last Deployment',
 			dataIndex: 'last_deployment',
 			key: 'last_deployment',
@@ -155,7 +148,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			title: 'Prod Route',
 			dataIndex: 'prod_route',
 			key: 'prod_route',
-			width: '20%',
+			width: '25%',
 		},
 		{
 			title: 'GitUrl',
@@ -209,7 +202,6 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 
 			return {
 				...project,
-				environment_count: project.environments.length,
 				prod_route: prodRoute && prodRoute !== 'undefined' ? prodRoute.replace(/^https?\:\/\//i, '') : '',
 				last_deployment: (
 					<Tooltip placement="top" title={lastDeployment}>

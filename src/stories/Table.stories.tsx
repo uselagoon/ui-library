@@ -76,7 +76,7 @@ const cols = [
 
 export const Default: Story = {
 	render: () => (
-		<BaseTable
+		<BaseTable.DefaultTable
 			dataSource={[
 				{
 					first: <SmileOutlined />,

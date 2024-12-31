@@ -11,13 +11,6 @@ const ProjectsTableSkeleton = () => {
 			width: '25%',
 		},
 		{
-			title: 'Environments',
-			dataIndex: 'environment_count',
-			key: 'environment_count',
-			render: () => <Skeleton height={30} />,
-			width: '5%',
-		},
-		{
 			title: 'Last Deployment',
 			dataIndex: 'last_deployment',
 			key: 'last_deployment',
@@ -28,7 +21,7 @@ const ProjectsTableSkeleton = () => {
 			title: 'Prod Route',
 			dataIndex: 'prod_route',
 			key: 'prod_route',
-			width: '20%',
+			width: '25%',
 			render: () => <Skeleton height={30} />,
 		},
 		{
