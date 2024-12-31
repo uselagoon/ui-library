@@ -22,6 +22,7 @@ import { NotificationsTableProps } from './Organizations/OrgNotificationsTable/O
 import { OwnersTableProps } from './Organizations/OrgAdminsTable/OrgAdminsTable';
 import { OrgUserGroupsTableProps } from './Organizations/OrgUserGroupsTable/OrgUserGroupsTable';
 export interface BaseTableWithComponents extends React.ForwardRefExoticComponent<BaseTableProps & React.RefAttributes<HTMLDivElement>> {
+    DefaultTable: React.FC<BaseTableProps>;
     SshTable: React.FC<SshTableProps>;
     DeploymentsTable: React.FC<DeploymentsTableProps>;
     BackupsTable: React.FC<BackupsTableProps>;

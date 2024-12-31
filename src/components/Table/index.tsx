@@ -1,4 +1,4 @@
-import { default as Table, BaseTableProps } from './Base';
+import BaseTable, { default as Table, BaseTableProps } from './Base';
 import DeploymentsTable from './DeploymentsTable/DeploymentsTable';
 import BackupsTable from './BackupsTable/BackupsTable';
 import ProblemsTable from './ProblemsTable/ProblemsTable';
@@ -26,6 +26,7 @@ import OrgUserGroupsTable from './Organizations/OrgUserGroupsTable/OrgUserGroups
 export type { BaseTableProps };
 
 // Different types of tables
+Table.DefaultTable = BaseTable;
 Table.ProjectsTable = ProjectsTable;
 Table.SshTable = SshTable;
 Table.DeploymentsTable = DeploymentsTable;
