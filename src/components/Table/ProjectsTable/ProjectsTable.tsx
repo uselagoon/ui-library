@@ -109,16 +109,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 					);
 				}) || [];
 
-			setFilteredProjects(filteredData);
-			setLoading(false);
-		}, timerLengthPercentage),
-
-		[],
-	);
-
-	const debouncedSort = useCallback(
-		debounce((customSort: any[]) => {
-			let sortedData = filteredProjects.length > 0 ? filteredProjects : projects;
+			let sortedData = filteredData;
 
 			if (customSort[1] != undefined) {
 				const direction = customSort[1] === 'ascend' ? 1 : -1;
@@ -143,18 +134,13 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			setFilteredProjects(sortedData);
 			setLoading(false);
 		}, timerLengthPercentage),
-		[],
+		[customSort],
 	);
 
 	useEffect(() => {
 		setLoading(true);
 		debouncedFilter(filterString);
 	}, [filterString, debouncedFilter]);
-
-	useEffect(() => {
-		setLoading(true);
-		debouncedSort(customSort);
-	}, [debouncedSort, customSort]);
 
 	// paginated data based on filtered results
 	const paginatedData =
