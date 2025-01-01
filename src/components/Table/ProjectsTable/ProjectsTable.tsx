@@ -109,9 +109,9 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 					);
 				}) || [];
 
-			let sortedData = filteredData;
+			let sortedData = [...filteredData];
 
-			if (customSort[1] != undefined) {
+			if (customSort[1] !== undefined) {
 				const direction = customSort[1] === 'ascend' ? 1 : -1;
 
 				if (customSort[0] === 'name') {
