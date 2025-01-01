@@ -120,15 +120,15 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 		debounce((customSort: any[]) => {
 			let sortedData = filteredProjects.length > 0 ? filteredProjects : projects;
 
-			if (customSort[1] !== undefined) {
-				sortedData = sortedData.toSorted((a, b) => {
-					const direction = customSort[1] === 'ascend' ? 1 : -1;
+			if (customSort[1] != undefined) {
+				const direction = customSort[1] === 'ascend' ? 1 : -1;
 
-					if (customSort[0] === 'name') {
-						return direction * a.name.localeCompare(b.name);
-					}
+				if (customSort[0] === 'name') {
+					sortedData = sortedData.sort((a, b) => direction * a.name.localeCompare(b.name));
+				}
 
-					if (customSort[0] === 'last_deployment') {
+				if (customSort[0] === 'last_deployment') {
+					sortedData = sortedData.sort((a, b) => {
 						const latestDeployment_first = getLatestDate(a.environments);
 						const latestDeployment_second = getLatestDate(b.environments);
 
@@ -136,16 +136,13 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 						const dateB = latestDeployment_second ? new Date(latestDeployment_second).getTime() : -Infinity;
 
 						return direction * (dateB - dateA);
-					}
-
-					return 0;
-				});
+					});
+				}
 			}
 
 			setFilteredProjects(sortedData);
 			setLoading(false);
 		}, timerLengthPercentage),
-
 		[],
 	);
 
