@@ -109,19 +109,17 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 					);
 				}) || [];
 
-			const [sortField, sortDirection] = customSort;
-
 			const sortedData =
-				sortDirection === undefined
+				customSort[1] === undefined
 					? filteredData
 					: filteredData.toSorted((a, b) => {
-							const direction = sortDirection === 'ascend' ? 1 : -1;
+							const direction = customSort[1] === 'ascend' ? 1 : -1;
 
-							if (sortField === 'name') {
+							if (customSort[0] === 'name') {
 								return direction * a.name.localeCompare(b.name);
 							}
 
-							if (sortField === 'last_deployment') {
+							if (customSort[0] === 'last_deployment') {
 								const latestDeployment_first = getLatestDate(a.environments);
 								const latestDeployment_second = getLatestDate(b.environments);
 
