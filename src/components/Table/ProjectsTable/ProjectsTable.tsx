@@ -111,14 +111,12 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 
 			let sortedData = [...filteredData];
 
-			if (customSort[1] !== undefined) {
+			if (customSort[0] && customSort[1] !== undefined) {
 				const direction = customSort[1] === 'ascend' ? 1 : -1;
 
 				if (customSort[0] === 'name') {
 					sortedData = sortedData.sort((a, b) => direction * a.name.localeCompare(b.name));
-				}
-
-				if (customSort[0] === 'last_deployment') {
+				} else if (customSort[0] === 'last_deployment') {
 					sortedData = sortedData.sort((a, b) => {
 						const latestDeployment_first = getLatestDate(a.environments);
 						const latestDeployment_second = getLatestDate(b.environments);
@@ -134,7 +132,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			setFilteredProjects(sortedData);
 			setLoading(false);
 		}, timerLengthPercentage),
-		[customSort],
+		[customSort, projects],
 	);
 
 	useEffect(() => {
