@@ -132,7 +132,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 							return 0;
 						});
 
-			setFilteredProjects(sortedData);
+			setFilteredProjects(customSort[1] === undefined ? filteredData : sortedData);
 			setLoading(false);
 		}, timerLengthPercentage),
 
@@ -142,13 +142,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 	useEffect(() => {
 		setLoading(true);
 		debouncedFilter(filterString);
-	}, [filterString, debouncedFilter]);
-
-	// make sure debounced filter runs after customSort changes
-	useEffect(() => {
-		setLoading(true);
-		debouncedFilter(filterString);
-	}, [customSort, debouncedFilter]);
+	}, [filterString, debouncedFilter, customSort]);
 
 	// paginated data based on filtered results
 	const paginatedData =
