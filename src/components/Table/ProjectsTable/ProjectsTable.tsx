@@ -109,10 +109,19 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 					);
 				}) || [];
 
-			let sortedData = filteredData;
+			setFilteredProjects(filteredData);
+			setLoading(false);
+		}, timerLengthPercentage),
+
+		[],
+	);
+
+	const debouncedSort = useCallback(
+		debounce((customSort: any[]) => {
+			let sortedData = filteredProjects.length > 0 ? filteredProjects : projects;
 
 			if (customSort[1] !== undefined) {
-				sortedData = filteredData.toSorted((a, b) => {
+				sortedData = sortedData.toSorted((a, b) => {
 					const direction = customSort[1] === 'ascend' ? 1 : -1;
 
 					if (customSort[0] === 'name') {
@@ -129,7 +138,6 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 						return direction * (dateB - dateA);
 					}
 
-					// Fallback case: return 0 for no sorting
 					return 0;
 				});
 			}
@@ -144,7 +152,12 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 	useEffect(() => {
 		setLoading(true);
 		debouncedFilter(filterString);
-	}, [filterString, debouncedFilter, customSort]);
+	}, [filterString, debouncedFilter]);
+
+	useEffect(() => {
+		setLoading(true);
+		debouncedSort(customSort);
+	}, [debouncedSort, customSort]);
 
 	// paginated data based on filtered results
 	const paginatedData =
