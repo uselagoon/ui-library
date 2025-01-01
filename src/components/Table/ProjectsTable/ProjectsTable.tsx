@@ -144,6 +144,12 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 		debouncedFilter(filterString);
 	}, [filterString, debouncedFilter]);
 
+	// make sure debounced filter runs after customSort changes
+	useEffect(() => {
+		setLoading(true);
+		debouncedFilter(filterString);
+	}, [customSort, debouncedFilter]);
+
 	// paginated data based on filtered results
 	const paginatedData =
 		pageSize > 0 ? filteredProjects.slice((currentPage - 1) * pageSize, currentPage * pageSize) : filteredProjects;
