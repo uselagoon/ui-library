@@ -132,7 +132,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			setFilteredProjects(sortedData);
 			setLoading(false);
 		}, timerLengthPercentage),
-		[customSort, projects],
+		[projects, customSort],
 	);
 
 	useEffect(() => {
@@ -155,9 +155,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			title: 'Project',
 			dataIndex: 'name',
 			key: 'name',
-			sorter: () => {
-				return 0;
-			},
+			sorter: true,
 			render: (_: string, record: Project) => (
 				<LinkContainer>
 					<Link href={`${basePath}/${record.name}`}>{record.name}</Link>
@@ -170,9 +168,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			dataIndex: 'last_deployment',
 			key: 'last_deployment',
 			width: '10%',
-			sorter: () => {
-				return 0;
-			},
+			sorter: true,
 
 			render: (lastDeploy: string) =>
 				lastDeploy ? (
@@ -273,6 +269,9 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 
 					if (col && ['ascend', 'descend', undefined].includes(order)) {
 						setCustomSort([col, order]);
+						setLoading(true);
+
+						debouncedFilter(filterString);
 					}
 				}}
 				variant="alternate"
