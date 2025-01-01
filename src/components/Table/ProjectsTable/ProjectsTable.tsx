@@ -109,34 +109,36 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 					);
 				}) || [];
 
-			const sortedData =
-				customSort[1] === undefined
-					? filteredData
-					: filteredData.toSorted((a, b) => {
-							const direction = customSort[1] === 'ascend' ? 1 : -1;
+			let sortedData = filteredData;
 
-							if (customSort[0] === 'name') {
-								return direction * a.name.localeCompare(b.name);
-							}
+			if (customSort[1] !== undefined) {
+				sortedData = filteredData.toSorted((a, b) => {
+					const direction = customSort[1] === 'ascend' ? 1 : -1;
 
-							if (customSort[0] === 'last_deployment') {
-								const latestDeployment_first = getLatestDate(a.environments);
-								const latestDeployment_second = getLatestDate(b.environments);
+					if (customSort[0] === 'name') {
+						return direction * a.name.localeCompare(b.name);
+					}
 
-								const dateA = latestDeployment_first ? new Date(latestDeployment_first).getTime() : -Infinity;
-								const dateB = latestDeployment_second ? new Date(latestDeployment_second).getTime() : -Infinity;
+					if (customSort[0] === 'last_deployment') {
+						const latestDeployment_first = getLatestDate(a.environments);
+						const latestDeployment_second = getLatestDate(b.environments);
 
-								return direction * (dateB - dateA);
-							}
-							// leave defaults if nothing matches above
-							return 0;
-						});
+						const dateA = latestDeployment_first ? new Date(latestDeployment_first).getTime() : -Infinity;
+						const dateB = latestDeployment_second ? new Date(latestDeployment_second).getTime() : -Infinity;
 
-			setFilteredProjects(customSort[1] === undefined ? filteredData : sortedData);
+						return direction * (dateB - dateA);
+					}
+
+					// Fallback case: return 0 for no sorting
+					return 0;
+				});
+			}
+
+			setFilteredProjects(sortedData);
 			setLoading(false);
 		}, timerLengthPercentage),
 
-		[customSort],
+		[],
 	);
 
 	useEffect(() => {
