@@ -6,7 +6,6 @@ import { LinkContainer } from '../DeploymentsTable/styles';
 import { EyeOutlined, LoadingOutlined } from '@ant-design/icons';
 import BaseTable from '../Base';
 import Pagination from '../../Pagination';
-
 import type { RenderedCell } from 'rc-table/lib/interface';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -26,18 +25,16 @@ export type Project = {
 	created: string;
 	gitUrl: string;
 	productionEnvironment: string | null;
-	environments: [
-		{
+	environments: Array<{
+		name: string;
+		route: string;
+		updated: string;
+		kubernetes: {
+			id: number;
 			name: string;
-			route: string;
-			updated: string;
-			kubernetes: {
-				id: number;
-				name: string;
-				cloudRegion: string | null;
-			};
-		},
-	];
+			cloudRegion: string | null;
+		};
+	}>;
 };
 
 export type ProjectsProps = {
@@ -62,29 +59,19 @@ const getLatestDate = (environments: Project['environments']) => {
 		.sort()
 		.pop();
 };
-const ProjectsTable = (props: ProjectsTableProps) => {
+
+const ProjectsTable: React.FC<ProjectsTableProps> = (props) => {
 	if ('skeleton' in props && props.skeleton) {
 		return <ProjectsTableSkeleton />;
 	}
 
 	const { resultsPerPage, filterString, projects, basePath } = props;
 
-	// pagination
 	const [currentPage, setCurrentPage] = useState(1);
-	const [pageSize, setResultsPerPage] = useState(resultsPerPage || 10);
-
-	// used for debounced filtering
+	const [pageSize, setPageSize] = useState(resultsPerPage || 10);
 	const [loading, setLoading] = useState(false);
-	const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects || []);
-
-	// custom sorter
-	const [customSort, setCustomSort] = useState<any[]>([]);
-
-	useEffect(() => {
-		if (resultsPerPage) {
-			setResultsPerPage(resultsPerPage);
-		}
-	}, [resultsPerPage]);
+	const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
+	const [customSort, setCustomSort] = useState<[string, 'ascend' | 'descend' | undefined]>(['', undefined]);
 
 	const Link = useLinkComponent();
 
@@ -93,62 +80,62 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 		[projects.length],
 	);
 
-	const debouncedFilter = useCallback(
-		debounce((filterString: string) => {
-			const filteredData =
-				projects?.filter((project) => {
-					const prodRoute = project.environments.find((environment) => {
-						return environment.name === project.productionEnvironment;
-					})?.route;
-					const routeToCheck = prodRoute && prodRoute !== 'undefined' ? prodRoute.replace(/^https?\:\/\//i, '') : '';
+	const filterAndSortProjects = useCallback(
+		(filterStr: string, sortField: string, sortOrder: 'ascend' | 'descend' | undefined) => {
+			let result = projects?.filter((project) => {
+				const prodRoute = project.environments.find((env) => env.name === project.productionEnvironment)?.route;
+				const routeToCheck = prodRoute && prodRoute !== 'undefined' ? prodRoute.replace(/^https?:\/\//i, '') : '';
+				const fieldsToCheck = [project.name, project.gitUrl, routeToCheck];
+				return fieldsToCheck.some((field) => String(field).toLowerCase().includes(filterStr.toLowerCase()));
+			});
 
-					const fieldsToCheck = [project.name, project.gitUrl, routeToCheck];
-
-					return fieldsToCheck.some((fieldValue) =>
-						String(fieldValue).toLowerCase().includes(filterString.toLowerCase()),
-					);
-				}) || [];
-
-			let sortedData = [...filteredData];
-
-			if (customSort[0] && customSort[1] !== undefined) {
-				const direction = customSort[1] === 'ascend' ? 1 : -1;
-
-				if (customSort[0] === 'name') {
-					sortedData = sortedData.sort((a, b) => direction * a.name.localeCompare(b.name));
-				} else if (customSort[0] === 'last_deployment') {
-					sortedData = sortedData.sort((a, b) => {
-						const latestDeployment_first = getLatestDate(a.environments);
-						const latestDeployment_second = getLatestDate(b.environments);
-
-						const dateA = latestDeployment_first ? new Date(latestDeployment_first).getTime() : -Infinity;
-						const dateB = latestDeployment_second ? new Date(latestDeployment_second).getTime() : -Infinity;
-
-						return direction * (dateB - dateA);
-					});
-				}
+			if (sortField && sortOrder) {
+				result.sort((a, b) => {
+					if (sortField === 'name') {
+						return sortOrder === 'ascend' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+					} else if (sortField === 'last_deployment') {
+						const dateA = getLatestDate(a.environments);
+						const dateB = getLatestDate(b.environments);
+						return sortOrder === 'ascend'
+							? (dateA ? new Date(dateA).getTime() : 0) - (dateB ? new Date(dateB).getTime() : 0)
+							: (dateB ? new Date(dateB).getTime() : 0) - (dateA ? new Date(dateA).getTime() : 0);
+					}
+					return 0;
+				});
 			}
 
-			setFilteredProjects(sortedData);
-			setLoading(false);
-		}, timerLengthPercentage),
-		[projects, customSort],
+			return result;
+		},
+		[projects],
+	);
+
+	const debouncedFilterAndSort = useMemo(
+		() =>
+			debounce((params: { filterStr: string; sortField: string; sortOrder: 'ascend' | 'descend' | undefined }) => {
+				const result = filterAndSortProjects(params.filterStr, params.sortField, params.sortOrder);
+				setFilteredProjects(result);
+				setLoading(false);
+			}, timerLengthPercentage),
+		[filterAndSortProjects, timerLengthPercentage],
 	);
 
 	useEffect(() => {
 		setLoading(true);
-		debouncedFilter(filterString);
-	}, [filterString, debouncedFilter]);
+		debouncedFilterAndSort({ filterStr: filterString, sortField: customSort[0], sortOrder: customSort[1] });
+	}, [filterString, customSort, debouncedFilterAndSort]);
 
-	// paginated data based on filtered results
-	const paginatedData =
-		pageSize > 0 ? filteredProjects.slice((currentPage - 1) * pageSize, currentPage * pageSize) : filteredProjects;
-
-	const totalFilteredCount = filteredProjects.length;
+	useEffect(() => {
+		if (resultsPerPage) {
+			setPageSize(resultsPerPage);
+		}
+	}, [resultsPerPage]);
 
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
 	};
+
+	const paginatedData =
+		pageSize > 0 ? filteredProjects.slice((currentPage - 1) * pageSize, currentPage * pageSize) : filteredProjects;
 
 	const projectsColumns = [
 		{
@@ -167,9 +154,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 			title: 'Last Deployment',
 			dataIndex: 'last_deployment',
 			key: 'last_deployment',
-			width: '10%',
 			sorter: true,
-
 			render: (lastDeploy: string) =>
 				lastDeploy ? (
 					<Tooltip placement="top" title={lastDeploy}>
@@ -178,6 +163,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 				) : (
 					'-'
 				),
+			width: '10%',
 		},
 		{
 			title: 'Prod Route',
@@ -200,51 +186,39 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 		},
 	];
 
-	// highlight found text (only certain fields)
 	const fieldsToCheck = ['name', 'prod_route', 'gitUrl'];
-	const wrappedColumns =
-		projectsColumns &&
-		projectsColumns.map((col) => {
-			return {
-				...col,
-				render: (renderElement: any, record: any, index: number): React.ReactNode | RenderedCell<any> => {
-					const renderedContent = col.render ? col.render(renderElement, record) : renderElement;
-
-					const shouldHighlight = fieldsToCheck.includes(col.dataIndex);
-					if (shouldHighlight) {
-						// RenderedCell or ReactNode
-						if (typeof renderedContent === 'object' && 'children' in renderedContent) {
-							return {
-								...renderedContent,
-								children: highlightTextInElement(renderedContent.children, filterString, index),
-							};
-						}
-
-						return highlightTextInElement(renderedContent, filterString, index);
-					}
-					return renderedContent;
-				},
-			};
-		});
+	const wrappedColumns = projectsColumns.map((col) => ({
+		...col,
+		render: (renderElement: any, record: any, index: number): React.ReactNode | RenderedCell<any> => {
+			const renderedContent = col.render ? col.render(renderElement, record) : renderElement;
+			const shouldHighlight = fieldsToCheck.includes(col.dataIndex);
+			if (shouldHighlight) {
+				if (typeof renderedContent === 'object' && 'children' in renderedContent) {
+					return {
+						...renderedContent,
+						children: highlightTextInElement(renderedContent.children, filterString, index),
+					};
+				}
+				return highlightTextInElement(renderedContent, filterString, index);
+			}
+			return renderedContent;
+		},
+	}));
 
 	const remappedProjects =
 		paginatedData &&
 		paginatedData.map((project) => {
 			const lastDeployment = getLatestDate(project.environments);
-			const prodRoute = project.environments.find((environment) => {
-				return environment.name === project.productionEnvironment;
-			})?.route;
-
+			const prodRoute = project.environments.find((env) => env.name === project.productionEnvironment)?.route;
 			return {
 				...project,
-				prod_route: prodRoute && prodRoute !== 'undefined' ? prodRoute.replace(/^https?\:\/\//i, '') : '',
+				prod_route: prodRoute && prodRoute !== 'undefined' ? prodRoute.replace(/^https?:\/\//i, '') : '',
 				last_deployment: lastDeployment,
 				created: (
 					<Tooltip placement="top" title={project.created}>
 						{dayjs.utc(project.created).local().fromNow()}
 					</Tooltip>
 				),
-
 				actions: (
 					<ActionWrap>
 						<LinkContainer>
@@ -263,16 +237,9 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 		<>
 			<BaseTable
 				disableScrollable
-				onChange={(_, __, info: any) => {
-					const col = info.field;
-					const order = info.order;
-
-					if (col && ['ascend', 'descend', undefined].includes(order)) {
-						setCustomSort([col, order]);
-						setLoading(true);
-
-						debouncedFilter(filterString);
-					}
+				onChange={(_, __, sorter: any) => {
+					const { field, order } = sorter;
+					setCustomSort([field, order]);
 				}}
 				variant="alternate"
 				dataSource={remappedProjects}
@@ -284,7 +251,7 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 				}}
 			/>
 			<Pagination
-				total={totalFilteredCount}
+				total={filteredProjects.length}
 				pageSize={pageSize === -1 ? Infinity : pageSize}
 				current={currentPage}
 				onChange={handlePageChange}

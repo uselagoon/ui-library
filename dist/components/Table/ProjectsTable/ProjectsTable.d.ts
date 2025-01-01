@@ -1,3 +1,4 @@
+import React from 'react';
 import { TableProps } from 'antd';
 export type Project = {
     id: number;
@@ -7,18 +8,16 @@ export type Project = {
     created: string;
     gitUrl: string;
     productionEnvironment: string | null;
-    environments: [
-        {
+    environments: Array<{
+        name: string;
+        route: string;
+        updated: string;
+        kubernetes: {
+            id: number;
             name: string;
-            route: string;
-            updated: string;
-            kubernetes: {
-                id: number;
-                name: string;
-                cloudRegion: string | null;
-            };
-        }
-    ];
+            cloudRegion: string | null;
+        };
+    }>;
 };
 export type ProjectsProps = {
     projects: Project[];
@@ -31,5 +30,5 @@ export type ProjectsTableSkeletonProps = {
     skeleton: true;
 };
 export type ProjectsTableProps = Omit<TableProps, 'pagination' | 'filteredValue'> & (ProjectsTableSkeletonProps | ProjectsProps);
-declare const ProjectsTable: (props: ProjectsTableProps) => import("react/jsx-runtime").JSX.Element;
+declare const ProjectsTable: React.FC<ProjectsTableProps>;
 export default ProjectsTable;
