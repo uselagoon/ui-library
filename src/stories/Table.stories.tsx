@@ -908,15 +908,13 @@ export const EnvVariablesTable: Story = {
 						id: 152,
 						name: 'INTERNAL_REGISTRY_URL',
 						scope: 'internal_container_registry',
-						value:
-							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/abcdefabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc',
+						value: '123321321123',
 					},
 					{
 						id: 153,
 						name: 'INTERNAL_REGISTRY_USERNAME',
 						scope: 'internal_container_registry',
-						value:
-							'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8/abcdefabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc',
+						value: 'MIIEowIBAAKCAQEAl284IYTVPSt0Jz8',
 					},
 					{
 						id: 235,

@@ -8,20 +8,20 @@ const OrganizationsTableSkeleton = () => {
 			dataIndex: 'orgname',
 			key: 'orgname',
 			width: '25.46%',
-			render: () => <Skeleton height={30} />,
+			render: () => <Skeleton height={40} />,
 		},
 		{
 			title: 'No. of Groups',
 			dataIndex: 'group_count',
 			key: 'group_count',
-			render: () => <Skeleton height={30} />,
+			render: () => <Skeleton height={40} />,
 			width: '19.1%',
 		},
 		{
 			title: 'No. of Projects',
 			dataIndex: 'project_count',
 			key: 'project_count',
-			render: () => <Skeleton height={30} />,
+			render: () => <Skeleton height={40} />,
 			width: '24.2%',
 		},
 		{
@@ -29,14 +29,14 @@ const OrganizationsTableSkeleton = () => {
 			dataIndex: 'target',
 			key: 'target',
 			width: '19.1%',
-			render: () => <Skeleton height={30} />,
+			render: () => <Skeleton height={40} />,
 		},
 
 		{
 			title: 'Actions',
 			dataIndex: 'actions',
 			key: 'actions',
-			render: () => <Skeleton height={30} />,
+			render: () => <Skeleton height={40} />,
 		},
 	];
 
@@ -46,7 +46,7 @@ const OrganizationsTableSkeleton = () => {
 		key: `org-skeleton-${index}`,
 	}));
 
-	return <BaseTable dataSource={skeletons} columns={orgsColumns} />;
+	return <BaseTable dataSource={skeletons} withBg columns={orgsColumns} />;
 };
 
 export default OrganizationsTableSkeleton;

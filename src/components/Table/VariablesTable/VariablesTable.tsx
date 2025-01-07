@@ -182,7 +182,7 @@ const VariablesTable = (props: VariablesTableProps) => {
 				const isHidden = hiddenVars.includes(record.id);
 
 				return (
-					<div style={{ maxWidth: '300px' }}>
+					<div>
 						{value ? (
 							<CopyToClipboard withToolTip={!isHidden} text={value} type={isHidden ? 'alwaysHidden' : 'visible'} />
 						) : (
