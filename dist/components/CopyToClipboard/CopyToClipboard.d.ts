@@ -1,7 +1,7 @@
 import { FC } from 'react';
 export interface ClipboardProps {
     text: string | number;
-    type?: 'visible' | 'hidden' | 'hiddenWithIcon';
+    type?: 'visible' | 'hidden' | 'hiddenWithIcon' | 'alwaysHidden';
     width?: number | string;
     withToolTip?: boolean;
 }

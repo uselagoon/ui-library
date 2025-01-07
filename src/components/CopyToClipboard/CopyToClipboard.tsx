@@ -7,7 +7,7 @@ import { Tooltip } from 'antd';
 
 export interface ClipboardProps {
 	text: string | number;
-	type?: 'visible' | 'hidden' | 'hiddenWithIcon';
+	type?: 'visible' | 'hidden' | 'hiddenWithIcon' | 'alwaysHidden';
 	width?: number | string;
 	withToolTip?: boolean;
 }
@@ -82,9 +82,11 @@ const CopyableText = styled.span<{
 	max-width: ${(props) =>
 		props.$maxWidth ? `${typeof props.$maxWidth === 'number' ? `${props.$maxWidth}px` : props.$maxWidth}` : '18.75rem'};
 	${(props) =>
-		(props.$type === 'hidden' || (props.$type === 'hiddenWithIcon' && !props.$manualUnblur)) &&
+		(props.$type === 'hidden' ||
+			props.$type === 'alwaysHidden' ||
+			(props.$type === 'hiddenWithIcon' && !props.$manualUnblur)) &&
 		css`
-			filter: blur(0.15rem);
+			filter: blur(0.3rem);
 			user-select: none;
 			transition: all 0.3s ease;
 		`};

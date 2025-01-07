@@ -179,14 +179,12 @@ const VariablesTable = (props: VariablesTableProps) => {
 			dataIndex: 'value',
 			key: 'value',
 			render: (value: string, record: Variable) => {
+				const isHidden = hiddenVars.includes(record.id);
+
 				return (
 					<div style={{ maxWidth: '300px' }}>
 						{value ? (
-							<CopyToClipboard
-								withToolTip={value.length > 45}
-								text={value}
-								type={hiddenVars.includes(record.id) ? 'hidden' : 'visible'}
-							/>
+							<CopyToClipboard withToolTip={!isHidden} text={value} type={isHidden ? 'alwaysHidden' : 'visible'} />
 						) : (
 							'-'
 						)}
