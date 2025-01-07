@@ -41,7 +41,7 @@ const UITab: FC<UITabsProps> = ({ type = 'default', children, ...rest }) => {
 	// manually get active key for navigation and refresh.
 	const getActiveKey = () => {
 		for (const item of items) {
-			if (pathname?.endsWith(item.key) || pathname?.includes(item.key + '/')) {
+			if (pathname?.endsWith(`/${item.key}`) || pathname?.includes(`/${item.key}/`)) {
 				return item.key;
 			}
 		}
