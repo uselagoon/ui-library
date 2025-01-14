@@ -208,16 +208,12 @@ const VariablesTable = (props: VariablesTableProps) => {
 				]
 			: []),
 
-		...(!withValues && type === 'project'
-			? []
-			: [
-					{
-						title: 'Actions',
-						dataIndex: 'actions',
-						key: 'actions',
-						render: (item: string) => <div style={{ textAlign: 'center', fontSize: '1.25rem' }}>{item}</div>,
-					},
-				]),
+		{
+			title: 'Actions',
+			dataIndex: 'actions',
+			key: 'actions',
+			render: (item: string) => <div style={{ textAlign: 'center', fontSize: '1.25rem' }}>{item}</div>,
+		},
 	];
 	// highlight manually sorted columns
 	const fieldsToCheck = ['name', 'scope'];
