@@ -1,7 +1,7 @@
 import Skeleton from '../../Skeleton';
 import BaseTable from '../Base';
 
-const VariablesSkeleton = () => {
+const VariablesSkeleton = ({ withValues = true }: { withValues?: boolean }) => {
 	const projectVariablesCols = [
 		{
 			title: 'Variable Name',
@@ -14,16 +14,22 @@ const VariablesSkeleton = () => {
 			title: 'Scope',
 			dataIndex: 'scope',
 			key: 'scope',
-			width: '11.32%',
+			width: withValues ? '11.32%' : '43.62%',
 			render: () => <Skeleton height={35} />,
 		},
-		{
-			title: 'Value',
-			dataIndex: 'value',
-			key: 'value',
-			render: () => <Skeleton height={35} />,
-			width: '32.3%',
-		},
+
+		...(withValues
+			? [
+					{
+						title: 'Value',
+						dataIndex: 'value',
+						key: 'value',
+						render: () => <Skeleton height={35} />,
+						width: '32.3%',
+					},
+				]
+			: []),
+
 		{
 			title: 'Actions',
 			dataIndex: 'actions',

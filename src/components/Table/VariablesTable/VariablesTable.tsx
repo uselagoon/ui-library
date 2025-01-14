@@ -48,11 +48,16 @@ export type VariablesProps = {
 	newVariableModal: ReactNode;
 	deleteVariableModal: (currentVariable: Variable) => ReactNode;
 	editVariableModal: (currentVariable: Variable) => ReactNode;
+	/**
+	 * when withValues is false, variable values and extra actions are not rendered.
+	 */
+	withValues?: boolean;
 	skeleton?: false;
 } & (EnvironmentVariableType | ProjectVariableType);
 
 export type VariablesTableSkeleton = {
 	skeleton: true;
+	withValues?: boolean;
 };
 
 export type VariablesTableProps = Omit<TableProps, 'pagination' | 'filteredValue'> &
@@ -60,10 +65,10 @@ export type VariablesTableProps = Omit<TableProps, 'pagination' | 'filteredValue
 
 const VariablesTable = (props: VariablesTableProps) => {
 	if ('skeleton' in props && props.skeleton) {
-		return <VariablesSkeleton />;
+		return <VariablesSkeleton withValues={props.withValues} />;
 	}
 
-	const { variables, editVariableModal, deleteVariableModal, newVariableModal, type } = props;
+	const { variables, editVariableModal, deleteVariableModal, newVariableModal, type, withValues = true } = props;
 
 	// blur every variable initially.
 	const [hiddenVars, setHiddenVars] = useState(variables.map((variable) => variable.id));
@@ -171,34 +176,48 @@ const VariablesTable = (props: VariablesTableProps) => {
 			title: 'Scope',
 			dataIndex: 'scope',
 			key: 'scope',
-			width: '11.32%',
+			width: withValues ? '11.32%' : '43.62%',
 			className: getSortedClass('scope'),
 		},
-		{
-			title: 'Value',
-			dataIndex: 'value',
-			key: 'value',
-			render: (value: string, record: Variable) => {
-				const isHidden = hiddenVars.includes(record.id);
 
-				return (
-					<div>
-						{value ? (
-							<CopyToClipboard withToolTip={!isHidden} text={value} type={isHidden ? 'alwaysHidden' : 'visible'} />
-						) : (
-							'-'
-						)}
-					</div>
-				);
-			},
-			width: '32.3%',
-		},
-		{
-			title: 'Actions',
-			dataIndex: 'actions',
-			key: 'actions',
-			render: (item: string) => <div style={{ textAlign: 'center', fontSize: '1.25rem' }}>{item}</div>,
-		},
+		...(withValues
+			? [
+					{
+						title: 'Value',
+						dataIndex: 'value',
+						key: 'value',
+						render: (value: string, record: Variable) => {
+							const isHidden = hiddenVars.includes(record.id);
+
+							return (
+								<div>
+									{value ? (
+										<CopyToClipboard
+											withToolTip={!isHidden}
+											text={value}
+											type={isHidden ? 'alwaysHidden' : 'visible'}
+										/>
+									) : (
+										'-'
+									)}
+								</div>
+							);
+						},
+						width: '32.3%',
+					},
+				]
+			: []),
+
+		...(!withValues && type === 'project'
+			? []
+			: [
+					{
+						title: 'Actions',
+						dataIndex: 'actions',
+						key: 'actions',
+						render: (item: string) => <div style={{ textAlign: 'center', fontSize: '1.25rem' }}>{item}</div>,
+					},
+				]),
 	];
 	// highlight manually sorted columns
 	const fieldsToCheck = ['name', 'scope'];
@@ -252,14 +271,19 @@ const VariablesTable = (props: VariablesTableProps) => {
 				...variable,
 				actions: (
 					<ActionWrap>
-						<LinkContainer>
-							{variable.value ? (
-								<Tooltip title={!isVariableHidden ? 'hide' : 'show'}>{blurIcon}</Tooltip>
-							) : (
-								<EmptyAction></EmptyAction>
-							)}
-						</LinkContainer>
-						{editVariableModal(variable)}
+						{withValues ? (
+							<>
+								<LinkContainer>
+									{variable.value ? (
+										<Tooltip title={!isVariableHidden ? 'hide' : 'show'}>{blurIcon}</Tooltip>
+									) : (
+										<EmptyAction></EmptyAction>
+									)}
+								</LinkContainer>
+								{editVariableModal(variable)}
+							</>
+						) : null}
+
 						{deleteVariableModal(variable)}
 					</ActionWrap>
 				),

@@ -26,10 +26,15 @@ export type VariablesProps = {
     newVariableModal: ReactNode;
     deleteVariableModal: (currentVariable: Variable) => ReactNode;
     editVariableModal: (currentVariable: Variable) => ReactNode;
+    /**
+     * when withValues is false, variable values and extra actions are not rendered.
+     */
+    withValues?: boolean;
     skeleton?: false;
 } & (EnvironmentVariableType | ProjectVariableType);
 export type VariablesTableSkeleton = {
     skeleton: true;
+    withValues?: boolean;
 };
 export type VariablesTableProps = Omit<TableProps, 'pagination' | 'filteredValue'> & (VariablesTableSkeleton | VariablesProps);
 declare const VariablesTable: (props: VariablesTableProps) => import("react/jsx-runtime").JSX.Element;

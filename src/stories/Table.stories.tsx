@@ -872,6 +872,72 @@ export const ProjectVariablesTableSkeleton: Story = {
 		return <BaseTable.VariablesTable skeleton />;
 	},
 };
+
+export const ProjectVariablesTableWithoutValuesSkeleton: Story = {
+	render: () => {
+		return <BaseTable.VariablesTable withValues={false} skeleton />;
+	},
+};
+
+export const ProjectVariablesTableWithoutValues: Story = {
+	render: () => {
+		return (
+			<BaseTable.VariablesTable
+				type="project"
+				withValues={false}
+				newVariableModal={<>+ ADD NEW</>}
+				deleteVariableModal={(current) => (
+					<>
+						<DeleteOutlined />
+					</>
+				)}
+				editVariableModal={(current) => (
+					<>
+						<EditOutlined />
+					</>
+				)}
+				variables={[
+					{
+						id: 3268,
+						name: 'fsdfsd',
+						scope: 'build',
+					},
+					{
+						id: 154,
+						name: 'INTERNAL_REGISTRY_PASSWORD',
+						scope: 'internal_container_registry',
+					},
+					{
+						id: 152,
+						name: 'INTERNAL_REGISTRY_URL',
+						scope: 'internal_container_registry',
+					},
+					{
+						id: 153,
+						name: 'INTERNAL_REGISTRY_USERNAME',
+						scope: 'internal_container_registry',
+					},
+					{
+						id: 235,
+						name: 'LAGOON_BAAS_BUCKET_NAME',
+						scope: 'global',
+					},
+					{
+						id: 229,
+						name: 'LAGOON_FEATURE_FLAG_ROOTLESS_WORKLOAD',
+						scope: 'global',
+					},
+					{
+						id: 3269,
+						name: 'sdfsdg',
+						scope: 'runtime',
+					},
+				]}
+			/>
+		);
+	},
+};
+
 export const EnvVariablesTable: Story = {
 	render: () => {
 		return (
@@ -943,6 +1009,67 @@ export const EnvVariablesTable: Story = {
 export const EnvVariablesTableSkeleton: Story = {
 	render: () => {
 		return <BaseTable.VariablesTable skeleton />;
+	},
+};
+
+export const EnvVariablesTableWithoutValues: Story = {
+	render: () => {
+		return (
+			<BaseTable.VariablesTable
+				type="environment"
+				resultDropdown={<UISelect />}
+				newVariableModal={<>+ ADD NEW</>}
+				withValues={false}
+				deleteVariableModal={(current) => (
+					<>
+						<DeleteOutlined />
+					</>
+				)}
+				editVariableModal={(current) => (
+					<>
+						<EditOutlined />
+					</>
+				)}
+				variables={[
+					{
+						id: 3268,
+						name: 'fsdfsd',
+						scope: 'build',
+					},
+					{
+						id: 152,
+						name: 'INTERNAL_REGISTRY_URL',
+						scope: 'internal_container_registry',
+					},
+					{
+						id: 153,
+						name: 'INTERNAL_REGISTRY_USERNAME',
+						scope: 'internal_container_registry',
+					},
+					{
+						id: 235,
+						name: 'LAGOON_BAAS_BUCKET_NAME',
+						scope: 'global',
+					},
+					{
+						id: 229,
+						name: 'LAGOON_FEATURE_FLAG_ROOTLESS_WORKLOAD',
+						scope: 'global',
+					},
+					{
+						id: 3269,
+						name: 'sdfsdg',
+						scope: 'runtime',
+					},
+				]}
+			/>
+		);
+	},
+};
+
+export const EnvVariablesTableWithoutValuesSkeleton: Story = {
+	render: () => {
+		return <BaseTable.VariablesTable withValues={false} skeleton />;
 	},
 };
 
