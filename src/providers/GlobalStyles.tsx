@@ -153,7 +153,9 @@ html,body{
 
   }
   .ui-treelink-overlay{
+    
     &.ant-popover {
+
 		> .ant-popover-arrow {
 			&::before {
 				background: ${(props) => (props.theme.colorScheme === 'dark' ? `${colors.cellGray}` : '#fff')};
@@ -173,7 +175,7 @@ html,body{
 				padding: 0;
 				padding: 0.5rem;
 			}
-			background-color: ${(props) => (props.theme.colorScheme === 'dark' ? `${colors.cellGray}` : 'initial')};
+			background-color: ${(props) => (props.theme.colorScheme === 'dark' ? `${colors.cellGray}` : '#fff')};
 
 			${(props) =>
 				props.theme.colorScheme === 'dark' &&
@@ -183,6 +185,15 @@ html,body{
 						-2px -2px 3px 0px #3333331a;
 					background-color: ${colors.cellGray};
 				`};
+        
+        ${(props) =>
+					props.theme.colorScheme === 'light' &&
+					css`
+						box-shadow:
+							2px 2px 3px 0px #3333331a,
+							-2px -2px 3px 0px #3333331a;
+						background-color: #fff;
+					`};
 		}
 	}
   }

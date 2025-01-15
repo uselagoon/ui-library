@@ -137,7 +137,9 @@ html,body{
 
   }
   .ui-treelink-overlay{
+    
     &.ant-popover {
+
 		> .ant-popover-arrow {
 			&::before {
 				background: ${A=>"dark"===A.theme.colorScheme?`${FA.cellGray}`:"#fff"};
@@ -155,7 +157,7 @@ html,body{
 				padding: 0;
 				padding: 0.5rem;
 			}
-			background-color: ${A=>"dark"===A.theme.colorScheme?`${FA.cellGray}`:"initial"};
+			background-color: ${A=>"dark"===A.theme.colorScheme?`${FA.cellGray}`:"#fff"};
 
 			${A=>"dark"===A.theme.colorScheme&&t`
 					box-shadow:
@@ -163,6 +165,13 @@ html,body{
 						-2px -2px 3px 0px #3333331a;
 					background-color: ${FA.cellGray};
 				`};
+        
+        ${A=>"light"===A.theme.colorScheme&&t`
+						box-shadow:
+							2px 2px 3px 0px #3333331a,
+							-2px -2px 3px 0px #3333331a;
+						background-color: #fff;
+					`};
 		}
 	}
   }
@@ -1355,9 +1364,6 @@ html,body{
 	display: inline-block;
 `,Xt=A(I)`
 	background-color: transparent;
-	${A=>"light"===A.theme.colorScheme?t`
-					background-color: #fff;
-				`:""}
 	padding-right: 1.5rem;
 	.ant-tree-indent {
 		display: none;
