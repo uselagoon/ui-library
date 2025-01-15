@@ -16,7 +16,7 @@ export const StyledPageContainer = styled.div`
 	}
 	img.logo {
 		display: block;
-		height: 35px;
+		height: 42px;
 		width: auto;
 	}
 `;

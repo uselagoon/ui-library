@@ -15,6 +15,7 @@ import genAvatarBackground from './helpers/genAvatarBackground';
 import { IconSun, LagoonIcon } from '../Icons';
 import { MenuProps } from 'antd';
 import { getCurrentPathIndex } from './helpers/getCurrentPathIndex';
+import { useLinkComponent } from '../../providers/NextLinkProvider';
 
 export type HeaderProps = {
 	logo?: React.ReactNode;
@@ -27,13 +28,11 @@ export type HeaderProps = {
 	};
 	userDropdownMenu: MenuProps['items'];
 	navLinks: ReactNode[];
-	// navigation callback on logo click
-	logoNav?: () => void;
 	currentPath?: string;
 };
 
 const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> = (
-	{ userInfo, navLinks, logo, toggleTheme, userDropdownMenu, logoNav, currentPath },
+	{ userInfo, navLinks, logo, toggleTheme, userDropdownMenu, currentPath },
 	ref,
 ) => {
 	const { firstName, lastName, image, email } = userInfo;
@@ -106,14 +105,12 @@ const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> =
 
 	const shouldUnderlineRender = !!(activeIdx !== undefined && activeIdx >= 0 && activeIdx < navLinks.length);
 
+	const Link = useLinkComponent();
+
 	return (
 		<StyledHeader ref={ref}>
 			<section className="icon-container">
-				{logo ? (
-					logo
-				) : (
-					<LagoonIcon className="icon" onClick={typeof logoNav === 'function' ? () => logoNav() : () => {}} />
-				)}
+				<Link href="/projects">{logo ? logo : <LagoonIcon className="icon" />}</Link>
 			</section>
 			<StyledNav className="navigation">
 				<StyledNavWrapper ref={navRef}>
