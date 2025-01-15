@@ -1,5 +1,5 @@
 import { Tree } from 'antd';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const PopoverContainer = styled.div`
 	display: inline-block;
@@ -7,6 +7,12 @@ export const PopoverContainer = styled.div`
 
 export const StyledTree = styled(Tree)`
 	background-color: transparent;
+	${(props) =>
+		props.theme.colorScheme === 'light'
+			? css`
+					background-color: #fff;
+				`
+			: ''}
 	padding-right: 1.5rem;
 	.ant-tree-indent {
 		display: none;

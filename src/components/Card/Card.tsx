@@ -1,6 +1,6 @@
 import React, { forwardRef, ReactNode, useState } from 'react';
 import { CardProps as AntCardProps, Skeleton, Tooltip } from 'antd';
-import { LoadingCard, StyledCard, StyledMoreActionsIcon } from './styles';
+import { LinkContainer, LoadingCard, StyledCard, StyledMoreActionsIcon } from './styles';
 import { NewCard, NewEnvironmentType } from './partials/NewCard';
 import LagoonCardLabel, { LagoonCardLabelProps } from '../CardLabel';
 import { EditOutlined, EyeOutlined, FrownOutlined, LinkOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
@@ -8,14 +8,17 @@ import colors from '../../_util/colors';
 import { EnvironmentPartial } from './partials/EnvironmentPartial';
 import { ProjectPartial } from './partials/ProjectPartial';
 import TreeList from '../TreeList';
+import { useLinkComponent } from '../../providers/NextLinkProvider';
 
 export type DefaultCardProps = {
 	loading?: boolean;
 	title: string;
+	showProblemIndicator: boolean;
 	status: 'low' | 'medium' | 'high' | 'critical';
 	styles?: React.CSSProperties;
 	cardClassName?: string;
 	navigateTo?: () => void;
+	navPath: string;
 	quickActions?: {
 		sectionTitle: string;
 		sectionChildren: ReactNode[];
@@ -55,6 +58,8 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 ) => {
 	const [isSelecting, setIsSelecting] = useState(false);
 
+	const Link = useLinkComponent();
+
 	const [copied, setCopied] = useState(false);
 	const toggleCopied = () => {
 		setCopied(true);
@@ -79,7 +84,18 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 
 	if (cardType === 'loaderOnly') return <LoadingCard loading={true} />;
 
-	const { type, loading, title, cardClassName, styles, quickActions, status = 'low', navigateTo, ...rest } = props;
+	const {
+		type,
+		loading,
+		title,
+		cardClassName,
+		styles,
+		quickActions,
+		status = 'low',
+		navPath,
+		navigateTo,
+		...rest
+	} = props;
 
 	const getStatusIcon = (status: DefaultCardProps['status']) => {
 		switch (status) {
@@ -109,12 +125,33 @@ const InternalCard: React.ForwardRefRenderFunction<HTMLDivElement, InternalCardP
 		</TreeList>
 	);
 	const actions = {
-		project: [<EditOutlined key="edit" onClick={navigatorFn} />, CardActions],
-		environment: [<EyeOutlined key="view" onClick={navigatorFn} />, CardActions],
+		project: [
+			<LinkContainer>
+				<Link href={navPath}>
+					<EditOutlined key="edit" />
+				</Link>
+			</LinkContainer>,
+
+			CardActions,
+		],
+		environment: [
+			<LinkContainer>
+				<Link href={navPath}>
+					<EyeOutlined key="view" />
+				</Link>
+			</LinkContainer>,
+			CardActions,
+		],
 	};
 
 	const extraIcons = [
-		getStatusIcon(status),
+		props.showProblemIndicator ? (
+			<Tooltip placement="top" title="Problem status">
+				<LinkContainer>
+					<Link href={`${navPath}/problems`}>{getStatusIcon(status)}</Link>
+				</LinkContainer>
+			</Tooltip>
+		) : null,
 
 		<Tooltip placement="right" title={copied ? 'Copied!' : 'Copy'}>
 			<LinkOutlined

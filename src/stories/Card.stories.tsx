@@ -125,6 +125,7 @@ export const DevEnvironment: Story = {
 		deployType: 'branch',
 		region: 'EUROPE-WEST6',
 		quickActions: quickActionItems,
+		showProblemIndicator: true,
 		navigateTo: () => {
 			console.log('navigation function');
 		},

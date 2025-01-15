@@ -5,10 +5,12 @@ import { LagoonCardLabelProps } from '../CardLabel';
 export type DefaultCardProps = {
     loading?: boolean;
     title: string;
+    showProblemIndicator: boolean;
     status: 'low' | 'medium' | 'high' | 'critical';
     styles?: React.CSSProperties;
     cardClassName?: string;
     navigateTo?: () => void;
+    navPath: string;
     quickActions?: {
         sectionTitle: string;
         sectionChildren: ReactNode[];

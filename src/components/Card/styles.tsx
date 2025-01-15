@@ -24,6 +24,10 @@ export const LoadingCard = styled(Card)`
 	&.ant-card {
 		cursor: unset;
 		${sharedCardStyles}
+		&:hover {
+			border: 1px solid ${Colors.lagoonBlue};
+		}
+		transition: all 0.2s ease;
 		border: ${(props) =>
 			props.theme.colorScheme === 'dark' &&
 			css`
@@ -31,6 +35,7 @@ export const LoadingCard = styled(Card)`
 		1px solid ${(props) => props.theme.UI.borders.card};
 	`};
 		overflow: hidden;
+
 		.ant-card-head,
 		.ant-card-body,
 		.ant-card-actions > li > span > span[role='img'] {
@@ -68,6 +73,9 @@ export const StyledCard = styled(Card)`
 		cursor: pointer;
 		overflow: hidden;
 		border-radius: 5px;
+		&:hover {
+			border: 1px solid ${Colors.lagoonBlue};
+		}
 		.ant-card-head,
 		.ant-card-body,
 		.ant-card-actions > li > span > span[role='img'] {
@@ -113,6 +121,7 @@ export const StyledCard = styled(Card)`
 			border-top: 1px solid ${(props) => props.theme.UI.borders.card};
 			border-bottom: 1px solid ${(props) => props.theme.UI.borders.card};
 			border-radius: 0;
+
 			& > .lagoon-label {
 				translate: 0 -3.5rem;
 			}
@@ -232,5 +241,18 @@ export const StyledMoreActionsIcon = styled(EllipsisOutlined)`
 	transition: color 0.3s ease;
 	&:hover {
 		color: ${colors.lagoonBlue};
+	}
+`;
+
+export const LinkContainer = styled.div`
+	display: flex;
+	align-items: center;
+	transition: all 0.2s ease;
+	> * > * {
+		color: initial;
+		transition: all 0.2s ease;
+		&:hover {
+			color: ${Colors.lagoonBlue};
+		}
 	}
 `;
