@@ -72,6 +72,10 @@ const ProblemsTable = (props: InsightsTableProps) => {
 		}
 	}, [resultsPerPage]);
 
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [filterString]);
+
 	if ('skeleton' in props && props.skeleton) {
 		return <InsightsTableSkeleton />;
 	}

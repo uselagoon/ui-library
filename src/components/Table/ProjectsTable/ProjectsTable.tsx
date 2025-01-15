@@ -130,6 +130,10 @@ const ProjectsTable: React.FC<ProjectsTableProps> = (props) => {
 		}
 	}, [resultsPerPage]);
 
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [filterString]);
+
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
 	};

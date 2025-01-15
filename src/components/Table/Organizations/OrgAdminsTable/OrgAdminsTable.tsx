@@ -53,6 +53,10 @@ const OrgAdminsTable = (props: OwnersTableProps) => {
 		}
 	}, [resultsPerPage]);
 
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [filterString]);
+
 	if ('skeleton' in props && props.skeleton) {
 		return <OrgAdminsTableSkeleton />;
 	}
@@ -93,6 +97,20 @@ const OrgAdminsTable = (props: OwnersTableProps) => {
 		pageSize > 0 ? sortedOwners.slice((currentPage - 1) * pageSize, currentPage * pageSize) : sortedOwners;
 
 	const totalFilteredCount = sortedOwners.length;
+
+	const getResultRange = () => {
+		const currentPageLength = paginatedOwners.length;
+		if (currentPageLength === 0) return 0;
+		if (currentPageLength === 1 && currentPage === 1) return 1;
+
+		const startRange = currentPage === 1 ? 1 : (currentPage - 1) * pageSize + 1;
+		// currentPageLength is never greater than pageSize
+		const endRange = startRange - 1 + currentPageLength;
+
+		const rangeText = startRange === endRange ? 'the last entry' : `${startRange} - ${endRange}`;
+
+		return rangeText;
+	};
 
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
@@ -238,7 +256,7 @@ const OrgAdminsTable = (props: OwnersTableProps) => {
 			</PaginationWithSelector>
 
 			<TotalDescription>
-				Showing {totalFilteredCount} of {owners.length} users
+				Showing {getResultRange()} of {totalFilteredCount} users
 			</TotalDescription>
 		</>
 	);

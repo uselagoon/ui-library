@@ -73,7 +73,6 @@ const TasksTable = (props: TasksTableProps) => {
 			setResultsPerPage(resultsPerPage);
 		}
 	}, [resultsPerPage]);
-
 	const Link = useLinkComponent();
 
 	if ('skeleton' in props && props.skeleton) {

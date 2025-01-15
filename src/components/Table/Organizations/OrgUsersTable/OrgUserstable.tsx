@@ -87,6 +87,10 @@ const OrgUsersTable = (props: UsersProps) => {
 		}
 	}, [resultsPerPage]);
 
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [filterString]);
+
 	if ('skeleton' in props && props.skeleton) {
 		return <OrgUsersSkeleton type={props.type} />;
 	}
@@ -153,6 +157,20 @@ const OrgUsersTable = (props: UsersProps) => {
 			: defaultFilteredUsers;
 
 	const totalFilteredCount = defaultFilteredUsers.length;
+
+	const getResultRange = () => {
+		const currentPageLength = paginatedUsers.length;
+		if (currentPageLength === 0) return 0;
+		if (currentPageLength === 1 && currentPage === 1) return 1;
+
+		const startRange = currentPage === 1 ? 1 : (currentPage - 1) * pageSize + 1;
+		// currentPageLength is never greater than pageSize
+		const endRange = startRange - 1 + currentPageLength;
+
+		const rangeText = startRange === endRange ? 'the last entry' : `${startRange} - ${endRange}`;
+
+		return rangeText;
+	};
 
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
@@ -341,7 +359,7 @@ const OrgUsersTable = (props: UsersProps) => {
 			</PaginationWithSelector>
 
 			<TotalDescription>
-				Showing {totalFilteredCount} of {users.length} users
+				Showing {getResultRange()} of {totalFilteredCount} users
 			</TotalDescription>
 		</>
 	);

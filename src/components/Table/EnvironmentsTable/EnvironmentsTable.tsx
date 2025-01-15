@@ -73,6 +73,10 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 		}
 	}, [resultsPerPage]);
 
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [filterString]);
+
 	// paginate based on the current filtered data
 	const filteredData = environments
 		? environments.filter((item) => {
@@ -110,6 +114,20 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 		pageSize > 0 ? sortedData.slice((currentPage - 1) * pageSize, currentPage * pageSize) : sortedData;
 
 	const totalFilteredCount = sortedData.length;
+
+	const getResultRange = () => {
+		const currentPageLength = paginatedData.length;
+		if (currentPageLength === 0) return 0;
+		if (currentPageLength === 1 && currentPage === 1) return 1;
+
+		const startRange = currentPage === 1 ? 1 : (currentPage - 1) * pageSize + 1;
+		// currentPageLength is never greater than pageSize
+		const endRange = startRange - 1 + currentPageLength;
+
+		const rangeText = startRange === endRange ? 'the last entry' : `${startRange} - ${endRange}`;
+
+		return rangeText;
+	};
 
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
@@ -272,7 +290,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			/>
 
 			<TotalDescription>
-				Showing {totalFilteredCount} of {environments.length} Environments
+				Showing {getResultRange()} of {totalFilteredCount} Environments
 			</TotalDescription>
 		</>
 	);

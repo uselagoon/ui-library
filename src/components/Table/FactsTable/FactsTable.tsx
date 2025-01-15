@@ -61,6 +61,10 @@ const ProblemsTable = (props: FactsTableProps) => {
 		}
 	}, [resultsPerPage]);
 
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [filterString]);
+
 	if ('skeleton' in props && props.skeleton) {
 		return <FactsTableSkeleton />;
 	}

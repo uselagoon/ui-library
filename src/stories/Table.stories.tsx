@@ -1513,6 +1513,76 @@ export const OrgProjectsTable: Story = {
 							name: 'teststaticpoc',
 							groupCount: 1,
 						},
+						{
+							id: 7,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
+						{
+							id: 8,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
+						{
+							id: 9,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
+						{
+							id: 10,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
+						{
+							id: 11,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
+						{
+							id: 12,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
+						{
+							id: 13,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
+						{
+							id: 14,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
+						{
+							id: 15,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
+						{
+							id: 16,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
+						{
+							id: 17,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
+						{
+							id: 18,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
+						{
+							id: 19,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
+						{
+							id: 20,
+							name: 'teststaticpoc',
+							groupCount: 1,
+						},
 					]}
 				/>
 			</>

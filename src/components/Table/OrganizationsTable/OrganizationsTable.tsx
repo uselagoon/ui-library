@@ -61,6 +61,10 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 		}
 	}, [resultsPerPage]);
 
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [filterString]);
+
 	const Link = useLinkComponent();
 
 	const timerLengthPercentage = useMemo(

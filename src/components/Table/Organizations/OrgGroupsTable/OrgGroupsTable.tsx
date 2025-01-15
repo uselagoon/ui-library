@@ -59,6 +59,10 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 		}
 	}, [resultsPerPage]);
 
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [filterString]);
+
 	if ('skeleton' in props && props.skeleton) {
 		return <OrgGroupsSkeleton />;
 	}
@@ -117,6 +121,20 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 			: defaultFilteredGroups;
 
 	const totalFilteredCount = defaultFilteredGroups.length;
+
+	const getResultRange = () => {
+		const currentPageLength = paginatedGroups.length;
+		if (currentPageLength === 0) return 0;
+		if (currentPageLength === 1 && currentPage === 1) return 1;
+
+		const startRange = currentPage === 1 ? 1 : (currentPage - 1) * pageSize + 1;
+		// currentPageLength is never greater than pageSize
+		const endRange = startRange - 1 + currentPageLength;
+
+		const rangeText = startRange === endRange ? 'the last entry' : `${startRange} - ${endRange}`;
+
+		return rangeText;
+	};
 
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
@@ -244,7 +262,7 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 			</PaginationWithSelector>
 
 			<TotalDescription>
-				Showing {totalFilteredCount} of {groups.length} groups
+				Showing {getResultRange()} of {totalFilteredCount} groups
 			</TotalDescription>
 		</>
 	);

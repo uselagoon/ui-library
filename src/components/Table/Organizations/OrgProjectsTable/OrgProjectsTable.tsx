@@ -66,6 +66,10 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 		}
 	}, [resultsPerPage]);
 
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [filterString]);
+
 	if ('skeleton' in props && props.skeleton) {
 		return <OrgProjectsTableSkeleton type={props.type} />;
 	}
@@ -116,6 +120,20 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 		pageSize > 0 ? sortedProjects.slice((currentPage - 1) * pageSize, currentPage * pageSize) : sortedProjects;
 
 	const totalFilteredCount = sortedProjects.length;
+
+	const getResultRange = () => {
+		const currentPageLength = paginatedProjects.length;
+		if (currentPageLength === 0) return 0;
+		if (currentPageLength === 1 && currentPage === 1) return 1;
+
+		const startRange = currentPage === 1 ? 1 : (currentPage - 1) * pageSize + 1;
+		// currentPageLength is never greater than pageSize
+		const endRange = startRange - 1 + currentPageLength;
+
+		const rangeText = startRange === endRange ? 'the last entry' : `${startRange} - ${endRange}`;
+
+		return rangeText;
+	};
 
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
@@ -261,7 +279,7 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 			</PaginationWithSelector>
 
 			<TotalDescription>
-				Showing {totalFilteredCount} of {projects.length} projects
+				Showing {getResultRange()} of {totalFilteredCount} projects
 			</TotalDescription>
 		</>
 	);

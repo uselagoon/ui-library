@@ -66,6 +66,10 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 		}
 	}, [resultsPerPage]);
 
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [filterString]);
+
 	const Link = useLinkComponent();
 
 	if ('skeleton' in props && props.skeleton) {
