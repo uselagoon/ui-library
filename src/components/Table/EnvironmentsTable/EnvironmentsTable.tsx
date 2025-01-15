@@ -276,6 +276,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 						setCustomSort([col, order]);
 					}
 				}}
+				disableScrollable
 				dataSource={remappedEnvs}
 				columns={wrappedColumns}
 				rowKey={(record) => record.title}
