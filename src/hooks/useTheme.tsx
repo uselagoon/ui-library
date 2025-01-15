@@ -17,17 +17,21 @@ export const AppThemeProvider = ({ defaultScheme, children }: { defaultScheme?: 
 
 	useEffect(() => {
 		if (defaultScheme) {
-			setTheme(defaultScheme);
-			return;
-		}
-		const storageTheme = localStorage.getItem('theme');
-		// already previously set in browser store.
-		if (storageTheme && ['light', 'dark'].includes(storageTheme)) {
-			setTheme(storageTheme as Theme);
-		} else {
-			// default to dark if not overriden in provider or is a first time visitor
-			setTheme('dark');
-			localStorage.setItem('theme', 'dark');
+			const storageTheme = localStorage.getItem('theme');
+			// already previously set in browser store.
+			if (storageTheme && ['light', 'dark'].includes(storageTheme)) {
+				setTheme(storageTheme as Theme);
+			} else {
+				// try to automatically infer dark mode theme.
+				if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					setTheme('dark');
+					localStorage.setItem('theme', 'dark');
+				} else {
+					// default to light
+					setTheme('light');
+					localStorage.setItem('theme', 'light');
+				}
+			}
 		}
 	}, []);
 
