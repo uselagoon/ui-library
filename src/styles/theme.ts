@@ -54,7 +54,7 @@ export const lightTheme: UITheme = {
 			secondary: '#fff',
 			input: '#fff',
 			modal: '#f2f2f2',
-			dataCard: colors.gray,
+			dataCard: colors.darkGray,
 			selection: '#e6f4ff',
 			lagoonCard: colors.backgrounds.primary.light,
 			lagoonCardInverted: colors.backgrounds.primary.dark,
