@@ -35,7 +35,6 @@ const AllDeploymentsSkeleton = () => {
 			title: 'Priority',
 			dataIndex: 'priority',
 			key: 'priority',
-			width: '10%',
 			render: () => <Skeleton height={48} />,
 		},
 
@@ -43,14 +42,12 @@ const AllDeploymentsSkeleton = () => {
 			title: 'Created',
 			dataIndex: 'created',
 			key: 'created',
-			width: '20%',
 			render: () => <Skeleton height={48} />,
 		},
 		{
 			title: 'Status',
 			dataIndex: 'status',
 			key: 'status',
-			width: '10%',
 
 			render: () => <Skeleton height={48} />,
 		},
@@ -58,7 +55,6 @@ const AllDeploymentsSkeleton = () => {
 			title: 'Duration',
 			dataIndex: 'duration',
 			key: 'duration',
-			width: '10%',
 			render: () => <Skeleton height={48} />,
 		},
 		{

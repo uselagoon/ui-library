@@ -167,18 +167,15 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 			title: 'Priority',
 			dataIndex: 'priority',
 			key: 'priority',
-			width: '10%',
 			render: (priority: string | null) => {
 				return priority ? priority : '-';
 			},
 		},
-
 		{
 			title: 'Created',
 			dataIndex: 'created',
 			key: 'created',
 			defaultSortOrder: 'descend' as SortOrder,
-			width: '20%',
 			sorter: (a: Deployment, b: Deployment) => new Date(a.created).getTime() - new Date(b.created).getTime(),
 			render: (created: string) => {
 				const createdLocalTime = dayjs.utc(created).local();
@@ -193,7 +190,6 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 			title: 'Status', // sorter
 			dataIndex: 'status',
 			key: 'status',
-			width: '10%',
 			sorter: (a: Deployment, b: Deployment) => a.status.localeCompare(b.status),
 
 			render: (_: string, record: Deployment) => {
@@ -224,7 +220,6 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 			title: 'Duration',
 			dataIndex: 'duration',
 			key: 'duration',
-			width: '10%',
 		},
 		{
 			title: 'Actions',
@@ -301,6 +296,7 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 				dataSource={remappedDeployments}
 				columns={wrappedColumns}
 				rowKey={(record) => record.id}
+				disableScrollable
 			/>
 			<Pagination
 				total={totalFilteredCount}
