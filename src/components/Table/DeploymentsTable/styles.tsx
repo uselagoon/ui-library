@@ -23,7 +23,7 @@ export const LinkContainer = styled.div`
 	display: flex;
 	align-items: center;
 	a {
-		color: initial;
+		color: ${(props) => (props.theme.colorScheme === 'dark' ? '#f8f8f8' : '#272822')};
 		&:hover {
 			color: ${Colors.lagoonBlue};
 		}

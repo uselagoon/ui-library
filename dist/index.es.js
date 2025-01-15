@@ -1330,7 +1330,7 @@ html,body{
 `,vt=A.div`
 	padding-left: 3.1875rem;
 `,Lt=A(rA)`
-	color: initial;
+	color: ${A=>"dark"===A.theme.colorScheme?"#f8f8f8":"#272822"};
 	transition: color 0.3s ease;
 	&:hover {
 		color: ${FA.lagoonBlue};
@@ -1340,7 +1340,7 @@ html,body{
 	align-items: center;
 	transition: all 0.2s ease;
 	> * > * {
-		color: initial;
+		color: ${A=>"dark"===A.theme.colorScheme?"#f8f8f8":"#272822"};
 		transition: all 0.2s ease;
 		&:hover {
 			color: ${FA.lagoonBlue};
@@ -2008,7 +2008,7 @@ html,body{
 	display: flex;
 	align-items: center;
 	a {
-		color: initial;
+		color: ${A=>"dark"===A.theme.colorScheme?"#f8f8f8":"#272822"};
 		&:hover {
 			color: ${FA.lagoonBlue};
 		}

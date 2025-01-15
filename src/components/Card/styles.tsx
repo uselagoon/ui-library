@@ -237,7 +237,7 @@ export const StyledProjectPartial = styled.div`
 `;
 
 export const StyledMoreActionsIcon = styled(EllipsisOutlined)`
-	color: initial;
+	color: ${(props) => (props.theme.colorScheme === 'dark' ? '#f8f8f8' : '#272822')};
 	transition: color 0.3s ease;
 	&:hover {
 		color: ${colors.lagoonBlue};
@@ -249,7 +249,7 @@ export const LinkContainer = styled.div`
 	align-items: center;
 	transition: all 0.2s ease;
 	> * > * {
-		color: initial;
+		color: ${(props) => (props.theme.colorScheme === 'dark' ? '#f8f8f8' : '#272822')};
 		transition: all 0.2s ease;
 		&:hover {
 			color: ${Colors.lagoonBlue};
