@@ -149,7 +149,9 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 			render: (deployment_name: string, deployment: Deployment) => {
 				return (
 					<LinkContainer>
-						<Link href={`/projects/${deployment.environment?.project.name}/deployments/${deployment_name}`}>
+						<Link
+							href={`/projects/${deployment.environment?.project.name}/${deployment.environment?.openshiftProjectName}/deployments/${deployment.name}`}
+						>
 							{deployment_name}
 						</Link>
 					</LinkContainer>
