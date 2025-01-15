@@ -76,7 +76,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 	// paginate based on the current filtered data
 	const filteredData = environments
 		? environments.filter((item) => {
-				const fieldsToCheck = [item.title, item.region, item.deployType, item.envType];
+				const fieldsToCheck = [item.title, item.region, item.deployType];
 
 				return fieldsToCheck.some((fieldValue) =>
 					String(fieldValue).toLowerCase().includes(filterString.toLowerCase()),
@@ -193,7 +193,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 	];
 
 	// highlight found text (only certain fields)
-	const fieldsToCheck = ['envType', 'title', 'region', 'deployType'];
+	const fieldsToCheck = ['title', 'region', 'deployType'];
 	const wrappedColumns =
 		envColumns &&
 		envColumns.map((col) => {
