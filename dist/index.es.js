@@ -1823,6 +1823,11 @@ html,body{
 		padding-inline: 8.888vw;
 		padding-block-end: 5rem;
 	}
+	img.logo {
+		display: block;
+		height: 35px;
+		width: auto;
+	}
 `,ho=m((({children:A,showHeader:e,headerProps:t,className:n},o)=>a(uo,{ref:o,className:n,children:[e?r(Ao,{...t}):null,r("main",{className:"content",children:A})]})));ho.displayName="PageContainer";const go=A.div`
 	display: block;
 	padding-block: 17px;

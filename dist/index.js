@@ -1823,6 +1823,11 @@ html,body{
 		padding-inline: 8.888vw;
 		padding-block-end: 5rem;
 	}
+	img.logo {
+		display: block;
+		height: 35px;
+		width: auto;
+	}
 `,En=t.forwardRef((({children:A,showHeader:t,headerProps:n,className:r},a)=>e.jsxs(Bn,{ref:a,className:r,children:[t?e.jsx(yn,{...n}):null,e.jsx("main",{className:"content",children:A})]})));En.displayName="PageContainer";const Jn=s.default.div`
 	display: block;
 	padding-block: 17px;

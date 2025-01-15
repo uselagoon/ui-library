@@ -14,4 +14,9 @@ export const StyledPageContainer = styled.div`
 		padding-inline: 8.888vw;
 		padding-block-end: 5rem;
 	}
+	img.logo {
+		display: block;
+		height: 35px;
+		width: auto;
+	}
 `;
