@@ -267,7 +267,9 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 				actions: (
 					<ActionWrap>
 						<LinkContainer>
-							<Link href={`/projects/${deployment.environment?.project.name}/deployments${deployment.name}`}>
+							<Link
+								href={`/projects/${deployment.environment?.project.name}/${deployment.environment?.openshiftProjectName}/deployments/${deployment.name}`}
+							>
 								<Tooltip placement="bottom" title="View deployment">
 									<EyeOutlined />
 								</Tooltip>
