@@ -9,9 +9,16 @@ export interface ClipboardProps {
 	text: string | number;
 	type?: 'visible' | 'hidden' | 'hiddenWithIcon' | 'alwaysHidden';
 	width?: number | string;
+	fontSize?: string;
 	withToolTip?: boolean;
 }
-const CopyToClipboard: FC<ClipboardProps> = ({ text, width, type = 'visible', withToolTip = false }) => {
+const CopyToClipboard: FC<ClipboardProps> = ({
+	text,
+	width,
+	fontSize = '14px',
+	type = 'visible',
+	withToolTip = false,
+}) => {
 	const copyFn = () => navigator.clipboard.writeText(text as string);
 
 	const [copied, setCopied] = useState(false);
@@ -36,7 +43,7 @@ const CopyToClipboard: FC<ClipboardProps> = ({ text, width, type = 'visible', wi
 		<EyeInvisibleOutlined className="eye-icon" onClick={handleBlurToggle} />
 	);
 	return (
-		<StyledText style={{ ...computedStyles }}>
+		<StyledText $fontSize={fontSize} style={{ ...computedStyles }}>
 			<CopyableText className="copyable" $maxWidth={width} $type={type} $manualUnblur={manualUnblur}>
 				{!withToolTip ? (
 					text
@@ -101,10 +108,12 @@ const CopyableText = styled.span<{
 		`};
 `;
 
-const StyledText = styled.div`
-	font-size: 'ArabicPro-Regular', sans-serif;
-	font-size: 14px;
-	line-height: 22px;
+const StyledText = styled.div<{
+	$fontSize: string;
+}>`
+	font-family: 'ArabicPro-Regular', sans-serif;
+	font-size: ${(props) => props.$fontSize};
+	line-height: 1.5rem;
 	min-width: max-content;
 	display: flex;
 	justify-content: space-between;

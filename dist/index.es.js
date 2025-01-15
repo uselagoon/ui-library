@@ -1745,7 +1745,7 @@ html,body{
 			}
 		}
 	}
-`;io.displayName="FormItem";const po=({text:A,width:e,type:t="visible",withToolTip:n=!1})=>{const[l,i]=d(!1),[s,p]=d(!1),c=e?{maxWidth:`${e}px`}:{},m=()=>{p(!s)},C=r(s?uA:lA,{className:"eye-icon",onClick:m});return a(Co,{style:{...c},children:[r(mo,{className:"copyable",$maxWidth:e,$type:t,$manualUnblur:s,children:n?r(L,{overlayInnerStyle:{width:"300px"},title:A,placement:"bottom",children:r(co,{children:A})}):A}),r("div",{className:"icons",children:l?a(L,{placement:"right",title:"Copied!",children:[r(VA,{className:"check-icon"}),"hiddenWithIcon"===t&&C]}):a(o,{children:[r(gA,{onClick:()=>{navigator.clipboard.writeText(A),i(!0),setTimeout((()=>{i(!1)}),3500)},className:"copy-icon"}),"hiddenWithIcon"===t&&C]})})]})},co=A.div`
+`;io.displayName="FormItem";const po=({text:A,width:e,fontSize:t="14px",type:n="visible",withToolTip:l=!1})=>{const[i,s]=d(!1),[p,c]=d(!1),m=e?{maxWidth:`${e}px`}:{},C=()=>{c(!p)},h=r(p?uA:lA,{className:"eye-icon",onClick:C});return a(Co,{$fontSize:t,style:{...m},children:[r(mo,{className:"copyable",$maxWidth:e,$type:n,$manualUnblur:p,children:l?r(L,{overlayInnerStyle:{width:"300px"},title:A,placement:"bottom",children:r(co,{children:A})}):A}),r("div",{className:"icons",children:i?a(L,{placement:"right",title:"Copied!",children:[r(VA,{className:"check-icon"}),"hiddenWithIcon"===n&&h]}):a(o,{children:[r(gA,{onClick:()=>{navigator.clipboard.writeText(A),s(!0),setTimeout((()=>{s(!1)}),3500)},className:"copy-icon"}),"hiddenWithIcon"===n&&h]})})]})},co=A.div`
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -1768,9 +1768,9 @@ html,body{
 			}
 		`};
 `,Co=A.div`
-	font-size: 'ArabicPro-Regular', sans-serif;
-	font-size: 14px;
-	line-height: 22px;
+	font-family: 'ArabicPro-Regular', sans-serif;
+	font-size: ${A=>A.$fontSize};
+	line-height: 1.5rem;
 	min-width: max-content;
 	display: flex;
 	justify-content: space-between;

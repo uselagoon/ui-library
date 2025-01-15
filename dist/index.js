@@ -1745,7 +1745,7 @@ html,body{
 			}
 		}
 	}
-`;Tn.displayName="FormItem";const bn=({text:A,width:a,type:o="visible",withToolTip:l=!1})=>{const[s,i]=t.useState(!1),[d,p]=t.useState(!1),c=a?{maxWidth:`${a}px`}:{},m=()=>{p(!d)},u=d?e.jsx(r.EyeInvisibleOutlined,{className:"eye-icon",onClick:m}):e.jsx(r.EyeOutlined,{className:"eye-icon",onClick:m});return e.jsxs(zn,{style:{...c},children:[e.jsx(In,{className:"copyable",$maxWidth:a,$type:o,$manualUnblur:d,children:l?e.jsx(n.Tooltip,{overlayInnerStyle:{width:"300px"},title:A,placement:"bottom",children:e.jsx(Nn,{children:A})}):A}),e.jsx("div",{className:"icons",children:s?e.jsxs(n.Tooltip,{placement:"right",title:"Copied!",children:[e.jsx(r.CheckOutlined,{className:"check-icon"}),"hiddenWithIcon"===o&&u]}):e.jsxs(e.Fragment,{children:[e.jsx(r.CopyOutlined,{onClick:()=>{navigator.clipboard.writeText(A),i(!0),setTimeout((()=>{i(!1)}),3500)},className:"copy-icon"}),"hiddenWithIcon"===o&&u]})})]})},Nn=s.default.div`
+`;Tn.displayName="FormItem";const bn=({text:A,width:a,fontSize:o="14px",type:l="visible",withToolTip:s=!1})=>{const[i,d]=t.useState(!1),[p,c]=t.useState(!1),m=a?{maxWidth:`${a}px`}:{},u=()=>{c(!p)},C=p?e.jsx(r.EyeInvisibleOutlined,{className:"eye-icon",onClick:u}):e.jsx(r.EyeOutlined,{className:"eye-icon",onClick:u});return e.jsxs(zn,{$fontSize:o,style:{...m},children:[e.jsx(In,{className:"copyable",$maxWidth:a,$type:l,$manualUnblur:p,children:s?e.jsx(n.Tooltip,{overlayInnerStyle:{width:"300px"},title:A,placement:"bottom",children:e.jsx(Nn,{children:A})}):A}),e.jsx("div",{className:"icons",children:i?e.jsxs(n.Tooltip,{placement:"right",title:"Copied!",children:[e.jsx(r.CheckOutlined,{className:"check-icon"}),"hiddenWithIcon"===l&&C]}):e.jsxs(e.Fragment,{children:[e.jsx(r.CopyOutlined,{onClick:()=>{navigator.clipboard.writeText(A),d(!0),setTimeout((()=>{d(!1)}),3500)},className:"copy-icon"}),"hiddenWithIcon"===l&&C]})})]})},Nn=s.default.div`
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -1768,9 +1768,9 @@ html,body{
 			}
 		`};
 `,zn=s.default.div`
-	font-size: 'ArabicPro-Regular', sans-serif;
-	font-size: 14px;
-	line-height: 22px;
+	font-family: 'ArabicPro-Regular', sans-serif;
+	font-size: ${A=>A.$fontSize};
+	line-height: 1.5rem;
 	min-width: max-content;
 	display: flex;
 	justify-content: space-between;
