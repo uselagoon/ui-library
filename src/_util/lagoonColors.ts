@@ -73,8 +73,8 @@ export const lagoonColors = {
 		dark: '#e6a645',
 	},
 	devBlue: {
-		light: '#4578e6',
-		dark: '#4578e6',
+		light: '#3A8CFF',
+		dark: '#3A8CFF',
 	},
 	prodGreen: {
 		light: '#45e685',
@@ -85,8 +85,8 @@ export const lagoonColors = {
 		dark: '#00000073',
 	},
 	lagoonBlue: {
-		light: '#4578E6',
-		dark: '#4578E6',
+		light: '#3A8CFF',
+		dark: '#3A8CFF',
 	},
 	lagoonSecondary: {
 		light: '#1b8784',

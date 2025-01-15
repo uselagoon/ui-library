@@ -5,7 +5,7 @@ const colors = {
 	buttons: {
 		primary: {
 			default: lagoonColors.devBlue.light,
-			hover: '#4578e6bf',
+			hover: '#4d97ff',
 			active: '#184CBC',
 		},
 		secondary: {

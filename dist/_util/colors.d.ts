@@ -3,7 +3,7 @@ declare const colors: {
     readonly buttons: {
         readonly primary: {
             readonly default: string;
-            readonly hover: "#4578e6bf";
+            readonly hover: "#4d97ff";
             readonly active: "#184CBC";
         };
         readonly secondary: {
