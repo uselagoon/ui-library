@@ -18,14 +18,14 @@ const ProjectsTableSkeleton = () => {
 			render: () => <Skeleton height={30} />,
 		},
 		{
-			title: 'Prod Route',
+			title: 'Production Route',
 			dataIndex: 'prod_route',
 			key: 'prod_route',
 			width: '25%',
 			render: () => <Skeleton height={30} />,
 		},
 		{
-			title: 'GitUrl',
+			title: 'Git Repository URL',
 			dataIndex: 'gitUrl',
 			key: 'gitUrl',
 			width: '30%',

@@ -170,13 +170,13 @@ const ProjectsTable: React.FC<ProjectsTableProps> = (props) => {
 			width: '10%',
 		},
 		{
-			title: 'Prod Route',
+			title: 'Production Route',
 			dataIndex: 'prod_route',
 			key: 'prod_route',
 			width: '25%',
 		},
 		{
-			title: 'GitUrl',
+			title: 'Git Repository URL',
 			dataIndex: 'gitUrl',
 			key: 'gitUrl',
 			width: '30%',
