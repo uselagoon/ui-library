@@ -184,11 +184,12 @@ const BackupsTable = (props: BackupsTableProps) => {
 	const remappedBackups =
 		paginatedData &&
 		paginatedData.map((backup) => {
+			const createdLocalTime = dayjs.utc(backup.created).local();
 			return {
 				...backup,
 				created: (
-					<Tooltip placement="top" title={backup.created}>
-						{dayjs.utc(backup.created).local().fromNow()}
+					<Tooltip placement="top" title={createdLocalTime.format('YYYY-MM-DD HH:mm:ss')}>
+						{createdLocalTime.fromNow()}
 					</Tooltip>
 				),
 

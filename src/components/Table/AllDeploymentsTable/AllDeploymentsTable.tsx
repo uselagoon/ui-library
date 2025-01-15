@@ -16,6 +16,7 @@ import { Deployment } from '../DeploymentsTable/DeploymentsTable';
 import { BuildStepTooltip, LinkContainer, StatusContainer } from '../DeploymentsTable/styles';
 import AllDeploymentsSkeleton from './AllDeploymentsSkeleton';
 import { highlightTextInElement } from '../../../_util/helpers';
+import { SortOrder } from 'antd/es/table/interface';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -176,12 +177,14 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 			title: 'Created',
 			dataIndex: 'created',
 			key: 'created',
+			defaultSortOrder: 'descend' as SortOrder,
 			width: '20%',
 			sorter: (a: Deployment, b: Deployment) => new Date(a.created).getTime() - new Date(b.created).getTime(),
 			render: (created: string) => {
+				const createdLocalTime = dayjs.utc(created).local();
 				return (
-					<Tooltip placement="top" title={created}>
-						{dayjs.utc(created).local().fromNow()}
+					<Tooltip placement="top" title={createdLocalTime.format('YYYY-MM-DD HH:mm:ss')}>
+						{createdLocalTime.fromNow()}
 					</Tooltip>
 				);
 			},

@@ -124,11 +124,12 @@ const DeploymentTable = (props: DeploymenTableProps) => {
 	const remappedDeployment =
 		deployment &&
 		[deployment].map((deployment) => {
+			const createdLocalTime = dayjs.utc(deployment.created).local();
 			return {
 				...deployment,
 				created: (
-					<Tooltip placement="top" title={deployment.created}>
-						{dayjs.utc(deployment.created).local().fromNow()}
+					<Tooltip placement="top" title={createdLocalTime.format('YYYY-MM-DD HH:mm:ss')}>
+						{createdLocalTime.fromNow()}
 					</Tooltip>
 				),
 				status: (

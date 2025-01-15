@@ -199,11 +199,12 @@ const ProblemsTable = (props: InsightsTableProps) => {
 	const remappedInsights =
 		paginatedInsights &&
 		paginatedInsights.map((insight) => {
+			const createdLocalTime = dayjs.utc(insight.created).local();
 			return {
 				...insight,
 				created: (
-					<Tooltip placement="top" title={insight.created}>
-						{dayjs.utc(insight.created).local().fromNow()}
+					<Tooltip placement="top" title={createdLocalTime.format('YYYY-MM-DD HH:mm:ss')}>
+						{createdLocalTime.fromNow()}
 					</Tooltip>
 				),
 

@@ -278,12 +278,19 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 					</>
 				),
 				created: (
-					<Tooltip placement="top" title={key.created}>
+					<Tooltip placement="top" title={dayjs.utc(key.created).local().format('YYYY-MM-DD HH:mm:ss')}>
 						{dayjs.utc(key.created).local().fromNow()}
 					</Tooltip>
 				),
 				lastUsed: (
-					<Tooltip placement="top" title={key.lastUsed ?? 'This key has not been used yet.'}>
+					<Tooltip
+						placement="top"
+						title={
+							key.lastUsed
+								? dayjs.utc(key.lastUsed).local().format('YYYY-MM-DD HH:mm:ss')
+								: 'This key has not been used yet.'
+						}
+					>
 						{key.lastUsed ? dayjs.utc(key.lastUsed).local().fromNow() : 'Never'}
 					</Tooltip>
 				),

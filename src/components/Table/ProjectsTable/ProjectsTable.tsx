@@ -161,7 +161,7 @@ const ProjectsTable: React.FC<ProjectsTableProps> = (props) => {
 			sorter: true,
 			render: (lastDeploy: string) =>
 				lastDeploy ? (
-					<Tooltip placement="top" title={lastDeploy}>
+					<Tooltip placement="top" title={dayjs.utc(lastDeploy).local().format('YYYY-MM-DD HH:mm:ss')}>
 						{dayjs.utc(lastDeploy).local().fromNow()}
 					</Tooltip>
 				) : (
@@ -219,7 +219,7 @@ const ProjectsTable: React.FC<ProjectsTableProps> = (props) => {
 				prod_route: prodRoute && prodRoute !== 'undefined' ? prodRoute.replace(/^https?:\/\//i, '') : '',
 				last_deployment: lastDeployment,
 				created: (
-					<Tooltip placement="top" title={project.created}>
+					<Tooltip placement="top" title={dayjs.utc(project.created).local().format('YYYY-MM-DD HH:mm:ss')}>
 						{dayjs.utc(project.created).local().fromNow()}
 					</Tooltip>
 				),

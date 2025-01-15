@@ -189,7 +189,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 			},
 			render: (lastDeploy: string) =>
 				lastDeploy ? (
-					<Tooltip placement="top" title={lastDeploy}>
+					<Tooltip placement="top" title={dayjs.utc(lastDeploy).local().format('YYYY-MM-DD HH:mm:ss')}>
 						{dayjs.utc(lastDeploy).local().fromNow()}
 					</Tooltip>
 				) : (

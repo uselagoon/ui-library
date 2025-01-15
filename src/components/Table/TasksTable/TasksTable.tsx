@@ -141,11 +141,12 @@ const TasksTable = (props: TasksTableProps) => {
 	const remappedTasks =
 		paginatedData &&
 		paginatedData.map((task) => {
+			const createdLocalTime = dayjs.utc(task.created).local();
 			return {
 				...task,
 				created: (
-					<Tooltip placement="top" title={task.created}>
-						{dayjs.utc(task.created).local().fromNow()}
+					<Tooltip placement="top" title={createdLocalTime.format('YYYY-MM-DD HH:mm:ss')}>
+						{createdLocalTime.fromNow()}
 					</Tooltip>
 				),
 				//@ts-ignore

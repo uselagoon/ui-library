@@ -141,9 +141,10 @@ const BulkDeploymentsTable = (props: BulkDeploymentsTableProps) => {
 			width: '20%',
 			sorter: (a: Deployment, b: Deployment) => new Date(a.created).getTime() - new Date(b.created).getTime(),
 			render: (created: string) => {
+				const createdLocalTime = dayjs.utc(created).local();
 				return (
-					<Tooltip placement="top" title={created}>
-						{dayjs.utc(created).local().fromNow()}
+					<Tooltip placement="top" title={createdLocalTime.format('YYYY-MM-DD HH:mm:ss')}>
+						{createdLocalTime.fromNow()}
 					</Tooltip>
 				);
 			},
