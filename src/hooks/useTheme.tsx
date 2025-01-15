@@ -17,20 +17,22 @@ export const AppThemeProvider = ({ defaultScheme, children }: { defaultScheme?: 
 
 	useEffect(() => {
 		if (defaultScheme) {
-			const storageTheme = localStorage.getItem('theme');
-			// already previously set in browser store.
-			if (storageTheme && ['light', 'dark'].includes(storageTheme)) {
-				setTheme(storageTheme as Theme);
+			setTheme(defaultScheme);
+			return;
+		}
+		const storageTheme = localStorage.getItem('theme');
+		// already previously set in browser store.
+		if (storageTheme && ['light', 'dark'].includes(storageTheme)) {
+			setTheme(storageTheme as Theme);
+		} else {
+			// try to automatically infer dark mode theme.
+			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				setTheme('dark');
+				localStorage.setItem('theme', 'dark');
 			} else {
-				// try to automatically infer dark mode theme.
-				if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-					setTheme('dark');
-					localStorage.setItem('theme', 'dark');
-				} else {
-					// default to light
-					setTheme('light');
-					localStorage.setItem('theme', 'light');
-				}
+				// default to light
+				setTheme('light');
+				localStorage.setItem('theme', 'light');
 			}
 		}
 	}, []);
