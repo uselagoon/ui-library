@@ -6,7 +6,7 @@ import utc from 'dayjs/plugin/utc';
 import { ActionWrap } from '../styles';
 import Modal from '../../Modal';
 import { useState } from 'react';
-import { Highlighted, ModalButton, ModalForm, ModalHeader, ModalText } from './styles';
+import { Highlighted, ModalButton, ModalForm, ModalHeader, ModalText, SShSummary } from './styles';
 import FormItem from '../../FormItem';
 import Input from '../../Input';
 import { useForm } from 'antd/es/form/Form';
@@ -183,7 +183,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 						required
 						rules={[{ required: true, message: '' }]}
 						initialValue={selectedKey?.keyValue}
-						label="Fingerprint Value"
+						label="Key Value"
 						name="keyValue"
 					>
 						<Input placeholder="Enter the variable value" />
@@ -216,7 +216,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 							name="keyName"
 						>
 							<Input
-								placeholder="Variable name"
+								placeholder="Key name"
 								value={selectedKey?.name}
 								onChange={(e) => {
 									setDeleteDisabled(e.target.value !== selectedKey?.name);
@@ -230,42 +230,40 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 	};
 
 	// add new key modal
-	const lastRow = {
-		name: (
-			<>
-				<ModalButton
-					iconBefore={<PlusOutlined size={100} />}
-					onClick={() => setNewModalOpen(true)}
-					size="middle"
-					type="primary"
-				>
-					Add new key
-				</ModalButton>
-				<Modal
-					confirmText="Create"
-					subTitle={<ModalText>Step 1 of 1</ModalText>}
-					title={<ModalHeader>Add a SSH Key</ModalHeader>}
-					open={newModalOpen}
-					onCancel={handleAddModalClose}
-					minHeight="350px"
-					onOk={handleAddKey}
-					confirmLoading={loading}
-				>
-					<ModalForm form={addForm}>
-						<FormItem required rules={[{ required: true, message: '' }]} label="Key Name" name="keyName">
-							<Input placeholder="Enter a name for the variable" />
-						</FormItem>
+	const addNewKey = (
+		<>
+			<ModalButton
+				iconBefore={<PlusOutlined size={100} />}
+				onClick={() => setNewModalOpen(true)}
+				size="middle"
+				type="primary"
+			>
+				Add new key
+			</ModalButton>
+			<Modal
+				confirmText="Create"
+				subTitle={<ModalText>Step 1 of 1</ModalText>}
+				title={<ModalHeader>Add a SSH Key</ModalHeader>}
+				open={newModalOpen}
+				onCancel={handleAddModalClose}
+				minHeight="350px"
+				onOk={handleAddKey}
+				confirmLoading={loading}
+			>
+				<ModalForm form={addForm}>
+					<FormItem required rules={[{ required: true, message: '' }]} label="Key Name" name="keyName">
+						<Input placeholder="Enter a name for the variable" />
+					</FormItem>
 
-						<FormItem required rules={[{ required: true, message: '' }]} label="Fingerprint Value" name="keyValue">
-							<TextArea placeholder="Begins with 'ssh-rsa', 'ssh-ed25519', 'ecdsa-sha2-nistp256', 'ecdsa-sha2-nistp384', 'ecdsa-sha2-nistp521'" />
-						</FormItem>
-					</ModalForm>
-				</Modal>
-				{renderEditModal()}
-				{renderDeleteModal()}
-			</>
-		),
-	};
+					<FormItem required rules={[{ required: true, message: '' }]} label="Key Value" name="keyValue">
+						<TextArea placeholder="Begins with 'ssh-rsa', 'ssh-ed25519', 'ecdsa-sha2-nistp256', 'ecdsa-sha2-nistp384', 'ecdsa-sha2-nistp521'" />
+					</FormItem>
+				</ModalForm>
+			</Modal>
+			{renderEditModal()}
+			{renderDeleteModal()}
+		</>
+	);
 
 	const relativelyTimedKeysWithActions =
 		sshKeys &&
@@ -319,11 +317,14 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 		});
 
 	return (
-		<BaseTable
-			rowKey={(record) => record.id || record.name}
-			dataSource={[...relativelyTimedKeysWithActions, lastRow]}
-			columns={sshColumns}
-		/>
+		<>
+			<BaseTable
+				rowKey={(record) => record.id || record.name}
+				dataSource={relativelyTimedKeysWithActions}
+				columns={sshColumns}
+			/>
+			<SShSummary>{addNewKey}</SShSummary>
+		</>
 	);
 };
 

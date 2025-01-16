@@ -39,3 +39,7 @@ export const Highlighted = styled.span`
 	font-weight: 600;
 	color: ${colors.lagoonBlue};
 `;
+
+export const SShSummary = styled.div`
+	display: block;
+`;
