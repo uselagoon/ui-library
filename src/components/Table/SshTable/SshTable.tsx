@@ -155,6 +155,10 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 		});
 	};
 
+	const getPK = (key?: { keyType: string; keyValue: string }) => {
+		return key?.keyType + ' ' + key?.keyValue;
+	};
+
 	const renderEditModal = () => {
 		return (
 			<Modal
@@ -181,7 +185,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 					<FormItem
 						required
 						rules={[{ required: true, message: '' }]}
-						initialValue={selectedKey?.keyValue}
+						initialValue={getPK(selectedKey)}
 						label="Key Value"
 						name="keyValue"
 					>
