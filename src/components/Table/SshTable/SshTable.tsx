@@ -6,12 +6,11 @@ import utc from 'dayjs/plugin/utc';
 import { ActionWrap } from '../styles';
 import Modal from '../../Modal';
 import { useState } from 'react';
-import { Highlighted, ModalButton, ModalForm, ModalHeader, ModalText, SShSummary } from './styles';
+import { Highlighted, ModalButton, ModalForm, ModalHeader, ModalText, SShSummary, StyledTextArea } from './styles';
 import FormItem from '../../FormItem';
 import Input from '../../Input';
 import { useForm } from 'antd/es/form/Form';
 import { Tooltip } from 'antd';
-import TextArea from 'antd/es/input/TextArea';
 
 dayjs.extend(utc);
 dayjs.extend(relativeTime);
@@ -256,7 +255,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 					</FormItem>
 
 					<FormItem required rules={[{ required: true, message: '' }]} label="Key Value" name="keyValue">
-						<TextArea placeholder="Begins with 'ssh-rsa', 'ssh-ed25519', 'ecdsa-sha2-nistp256', 'ecdsa-sha2-nistp384', 'ecdsa-sha2-nistp521'" />
+						<StyledTextArea placeholder="Begins with 'ssh-rsa', 'ssh-ed25519', 'ecdsa-sha2-nistp256', 'ecdsa-sha2-nistp384', 'ecdsa-sha2-nistp521'" />
 					</FormItem>
 				</ModalForm>
 			</Modal>

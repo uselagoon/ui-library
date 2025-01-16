@@ -1,9 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Button from '../../Button';
 import Head2 from '../../Heading/H2';
 import Text from '../../Text';
 import { Form } from 'antd';
 import colors from '../../../_util/colors';
+import TextArea from 'antd/es/input/TextArea';
 
 export const ModalButton = styled(Button)`
 	background: transparent !important;
@@ -42,4 +43,42 @@ export const Highlighted = styled.span`
 
 export const SShSummary = styled.div`
 	display: block;
+`;
+
+export const StyledTextArea = styled(TextArea)`
+	&.ant-input {
+		font-size: 0.75rem;
+		line-height: 1.25rem;
+
+		padding: 0.35rem 0.6rem;
+
+		&.ant-input-sm {
+			font-size: 0.65rem;
+			line-height: 1.15rem;
+
+			padding: 0.25rem 0.5rem;
+		}
+
+		&.ant-input-lg {
+			font-size: 1rem;
+			line-height: 1.5rem;
+			padding: 0.5rem 0.75rem;
+		}
+
+		border-radius: 2px;
+		border: 1px solid ${(props) => props.theme.UI.borders.box};
+		background-color: ${(props) => props.theme.UI.backgrounds.input};
+		&.ant-input-outlined.ant-input-status-error:not(.ant-input-disabled) {
+			background-color: ${(props) => props.theme.UI.backgrounds.input};
+		}
+
+		&::placeholder {
+			color: ${(props) => (props.theme.colorScheme === 'dark' ? colors.white : '#00000099')} !important;
+		}
+		${(props) =>
+			props.theme.colorScheme === 'dark' &&
+			css`
+				color: ${colors.white};
+			`}
+	}
 `;
