@@ -10,7 +10,6 @@ import RobotoBold from '../fonts/Roboto-Bold.woff2';
 import OpenSansRegular from '../fonts/opensans-regular.woff2';
 import OpenSansBold from '../fonts/opensans-bold.woff2';
 import OpenSansSemibold from '../fonts/opensans-semibold.woff2';
-import colors from '../_util/colors';
 
 const GlobalStyles = createGlobalStyle`
 
@@ -24,6 +23,12 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 
+// use antD fonts for everything
+* {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !important;
+  }
+
 html {
   font-size: 100%; /* 1rem = 100% = 16px */
 }
@@ -31,13 +36,13 @@ html {
 body {
   font-size: 16px;
   box-sizing: border-box;
-  background-color:${(props) => (props.theme.colorScheme === 'dark' ? '#0c0c0c' : '#f2f2f2')};
+  /* background-color:${(props) => (props.theme.colorScheme === 'dark' ? '#0c0c0c' : '#f2f2f2')}; */
 }
 
 html,body{
   scroll-behavior: smooth;
 }
-
+/* 
 @font-face {
     font-family: 'ArabicPro-Regular';
     src: url('${ArabicProRegular}') format('woff2');
@@ -115,88 +120,9 @@ html,body{
   font-weight: 600;
   font-style: normal;
   font-display: block;
-}
+} */
 
-  .ant-select-dropdown {
-    background-color: transparent;
-    padding: 0;
-    border-radius: 0;
-  }
-  .ui-notification{
 
-    ${(props) =>
-			props.theme.colorScheme === 'dark' &&
-			css`
-				box-shadow:
-					0px 9px 28px 8px #ffffff0d,
-					0px 6px 16px 0px #ffffff14,
-					0px 3px 6px -4px #ffffff1f;
-			`}
-    .ant-notification-notice-content {
-  
-    ~.ant-notification-notice-close, ~.ant-notification-notice-close:hover,  .ant-notification-notice-with-icon div{
-      color: ${(props) => props.theme.UI.texts.primary};
-    }
-
-  
-
-  }
-    background-color: ${(props) => props.theme.UI.notification};
-    &.no-icon{
-      .ant-notification-notice-message, .ant-notification-notice-description{
-        margin-inline-start:24px;
-  }
-      padding:20px 0 !important;
-
-      
-    }
-
-  }
-  .ui-treelink-overlay{
-    
-    &.ant-popover {
-
-		> .ant-popover-arrow {
-			&::before {
-				background: ${(props) => (props.theme.colorScheme === 'dark' ? `${colors.cellGray}` : '#fff')};
-			}
-			${(props) =>
-				props.theme.colorScheme === 'dark' &&
-				css`
-					box-shadow:
-						2px 2px 3px 0px #3333331a,
-						-2px -2px 3px 0px #3333331a;
-				`};
-		}
-		> .ant-popover-content {
-			border-radius: 5px;
-			.ant-popover-inner {
-				background-color: transparent;
-				padding: 0;
-				padding: 0.5rem;
-			}
-			background-color: ${(props) => (props.theme.colorScheme === 'dark' ? `${colors.cellGray}` : '#fff')};
-
-			${(props) =>
-				props.theme.colorScheme === 'dark' &&
-				css`
-					box-shadow:
-						2px 2px 3px 0px #3333331a,
-						-2px -2px 3px 0px #3333331a;
-					background-color: ${colors.cellGray};
-				`};
-        
-        ${(props) =>
-					props.theme.colorScheme === 'light' &&
-					css`
-						box-shadow:
-							2px 2px 3px 0px #3333331a,
-							-2px -2px 3px 0px #3333331a;
-						background-color: #fff;
-					`};
-		}
-	}
-  }
 `;
 
 export default GlobalStyles;

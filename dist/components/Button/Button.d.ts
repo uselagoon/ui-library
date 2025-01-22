@@ -2,9 +2,8 @@ import React from 'react';
 import { ButtonProps } from 'antd';
 export type ButtonSizeType = {
     size?: 'large' | 'middle' | 'small';
-    type?: 'primary' | 'secondary';
 };
-export type InternalButtonProps = Omit<ButtonProps, 'ghost' | 'type' | 'icon'> & ButtonSizeType & {
+export type InternalButtonProps = Omit<ButtonProps, 'icon'> & ButtonSizeType & {
     iconBefore?: React.ReactNode;
     iconAfter?: React.ReactNode;
     disabled?: boolean;
@@ -14,7 +13,7 @@ export type InternalButtonProps = Omit<ButtonProps, 'ghost' | 'type' | 'icon'> &
     styles?: React.CSSProperties;
     danger?: boolean;
 };
-declare const Button: React.ForwardRefExoticComponent<Omit<ButtonProps, "icon" | "type" | "ghost"> & ButtonSizeType & {
+declare const Button: React.ForwardRefExoticComponent<Omit<ButtonProps, "icon"> & ButtonSizeType & {
     iconBefore?: React.ReactNode;
     iconAfter?: React.ReactNode;
     disabled?: boolean | undefined;

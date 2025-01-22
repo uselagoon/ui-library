@@ -1,7 +1,7 @@
 import React, { forwardRef, ReactNode } from 'react';
 
-import { Popover } from 'antd';
-import { PopoverContainer, StyledTree } from './styles';
+import { Popover, Tree } from 'antd';
+import { PopoverContainer } from './styles';
 
 type TreeData = {
 	sectionTitle: ReactNode;
@@ -40,7 +40,7 @@ const InternalTreeList: React.ForwardRefRenderFunction<any, TreeListProps> = ({ 
 			placement="bottomRight"
 			overlayClassName="ui-treelink-overlay"
 			content={
-				<StyledTree
+				<Tree
 					ref={ref}
 					defaultExpandAll
 					treeData={internalTreeData}

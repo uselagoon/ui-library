@@ -4,19 +4,7 @@ import colors from '../../_util/colors';
 
 export const StyledTabs = styled(Tabs)<{ $type: 'navigation' | 'default' }>`
 	&.ant-tabs {
-		background-color: transparent;
-		.ant-tabs-tab {
-			margin-left: 0;
-			.ant-tabs-tab-btn {
-				transition: all 0.25s ease;
-			}
-		}
-		.ant-tabs-nav-list {
-			box-shadow: 2px 2px 4px 0px #69696933;
-		}
 		div[role='tabpanel'] {
-			padding-top: 1.5rem;
-			padding-inline: 1rem;
 			min-height: 100vmax;
 			${(props) =>
 				props.$type === 'navigation' &&
@@ -27,9 +15,6 @@ export const StyledTabs = styled(Tabs)<{ $type: 'navigation' | 'default' }>`
 				`}
 		}
 		div[role='tab'] {
-			font-family: 'Roboto', sans-serif;
-			font-size: 1rem;
-			line-height: 1.5rem;
 			transition: all 0.25s ease !important;
 			background-color: ${(props) => props.theme.UI.backgrounds.navTabs};
 			a {
@@ -97,26 +82,6 @@ export const StyledTabs = styled(Tabs)<{ $type: 'navigation' | 'default' }>`
 		div[role='tabpanel'] {
 			background-color: ${(props) => props.theme.UI.backgrounds.navTabs} !important;
 		}
-
-		${(props) =>
-			props.theme.colorScheme === 'dark' &&
-			css`
-				& .ant-tabs-nav-wrap {
-					background-color: transparent;
-				}
-				& .ant-tabs-nav-list {
-					background-color: transparent;
-					> div {
-						background-color: ${(props) => props.theme.UI.backgrounds.modal};
-					}
-				}
-				div[role='tabpanel'] {
-					color: #fff;
-				}
-				div[role='tab'] {
-					color: #fff;
-				}
-			`}
 	}
 `;
 

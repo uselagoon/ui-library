@@ -8,16 +8,6 @@ import { NewEnvironmentType } from './partials/NewCard';
 const sharedCardStyles = css`
 	width: 23.75rem;
 	height: 15.25rem;
-	background-color: ${(props) => props.theme.UI.backgrounds.lagoonCard};
-	color: ${(props) => props.theme.UI.texts.primary};
-
-	box-shadow: ${(props) =>
-		props.theme.colorScheme === 'dark' ? '3px 3px 6px 1px #8686864D;' : '2px 2px 4px 0px #69696933'};
-	${(props) =>
-		props.theme.colorScheme === 'dark' &&
-		css`
-			border: 1px solid ${(props) => props.theme.UI.borders.card};
-		`}
 `;
 
 export const LoadingCard = styled(Card)`
@@ -26,40 +16,6 @@ export const LoadingCard = styled(Card)`
 		${sharedCardStyles}
 		&:hover {
 			border: 1px solid ${Colors.lagoonBlue};
-		}
-		transition: all 0.2s ease;
-		border: ${(props) =>
-			props.theme.colorScheme === 'dark' &&
-			css`
-		
-		1px solid ${(props) => props.theme.UI.borders.card};
-	`};
-		overflow: hidden;
-
-		.ant-card-head,
-		.ant-card-body,
-		.ant-card-actions > li > span > span[role='img'] {
-			color: ${(props) => props.theme.UI.texts.primary};
-		}
-
-		.ant-card-body {
-			.ant-skeleton {
-				.ant-skeleton-content > ul > li {
-					background-color: ${(props) => props.theme.UI.backgrounds.selection};
-					+ li {
-						margin-block-start: 20px;
-					}
-				}
-			}
-		}
-		.ant-card-actions {
-			li {
-				width: max-content !important;
-				border-inline-end: none;
-				&:first-child {
-					margin-left: auto;
-				}
-			}
 		}
 	}
 `;
@@ -98,7 +54,7 @@ export const StyledCard = styled(Card)`
 
 		.ant-card-head {
 			padding-left: 3.1875rem;
-			font-family: 'Roboto', sans-serif;
+
 			font-weight: bold;
 			font-size: 1rem;
 			line-height: 1.5rem;
@@ -186,7 +142,6 @@ export const StyledNewCard = styled(Card)<{ $type: NewEnvironmentType['renderTyp
 export const NewEnvTrigger = styled.div`
 	font-size: 0.875rem;
 	line-height: 1.375rem;
-	font-family: 'ArabicPro-Regular', sans-serif;
 	border: 1px solid ${(props) => props.theme.UI.borders.box};
 	padding: 4px 15px;
 	box-shadow: 0px 2px 0px 0px #00000004;
@@ -213,12 +168,10 @@ export const StyledEnvPartial = styled.div`
 		span:nth-child(odd) {
 			font-size: 0.625rem;
 			line-height: 0.625rem;
-			font-family: 'AmericaMono-Regular', sans-serif;
 		}
 		span:nth-child(even) {
 			font-size: 0.875rem;
 			line-height: 1.375rem;
-			font-family: 'ArabicPro-Regular', sans-serif;
 			max-width: 100%;
 			text-overflow: ellipsis;
 			white-space: nowrap;

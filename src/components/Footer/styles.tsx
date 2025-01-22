@@ -9,12 +9,6 @@ export const StyledFooter = styled.footer`
 	justify-content: space-between;
 	align-items: center;
 	background-color: #fff;
-	${(props) =>
-		props.theme.colorScheme === 'dark' &&
-		css`
-			background-color: #222;
-			box-shadow: -2px 2px 2px 0px #3333331a;
-		`};
 	.icon-container {
 		width: 114px;
 		height: 42px;

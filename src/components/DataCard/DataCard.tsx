@@ -49,7 +49,6 @@ const InternalDataCard: React.ForwardRefRenderFunction<HTMLDivElement, CardProps
 const StyledCard = styled.div<{
 	$severityColor: string;
 }>`
-	font-family: 'AmericaMono-Regular', sans-serif;
 	text-transform: uppercase;
 	width: 100px;
 	height: 62px;

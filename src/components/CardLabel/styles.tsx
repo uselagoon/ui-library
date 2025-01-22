@@ -14,7 +14,6 @@ export const StyledLabel = styled.div<{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-family: 'Roboto-medium', sans-serif;
 	font-weight: 500;
 	line-height: 30px;
 	font-size: 20px;
@@ -41,7 +40,6 @@ export const StyledHorizontalLabel = styled.div<{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
 	line-height: 20px;
 	border-radius: 2px;

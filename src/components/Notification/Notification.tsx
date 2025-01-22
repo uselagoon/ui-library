@@ -43,7 +43,6 @@ const useUINotification = ({
 					{btnLabel ?? 'Confirm'}
 				</UIButton>
 			) : null,
-			style: { fontFamily: 'Roboto' },
 			className: `ui-notification ${!showIcon && 'no-icon'}`,
 			...(showIcon ? {} : { icon: <></> }),
 			...props,

@@ -7,13 +7,12 @@ import {
 	StyledLink,
 	StyledNav,
 	StyledNavWrapper,
-	StyledUserDropdown,
 	StyledUserInfo,
 	ThemeSwitcher,
 } from './styles';
 import genAvatarBackground from './helpers/genAvatarBackground';
 import { IconSun, LagoonIcon } from '../Icons';
-import { MenuProps } from 'antd';
+import { MenuProps, Dropdown } from 'antd';
 import { getCurrentPathIndex } from './helpers/getCurrentPathIndex';
 import { useLinkComponent } from '../../providers/NextLinkProvider';
 
@@ -135,7 +134,7 @@ const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> =
 				) : null}
 			</StyledNav>
 
-			<StyledUserDropdown
+			<Dropdown
 				getPopupContainer={() => document.getElementById('user_dropdown_container') as HTMLElement}
 				menu={{ items: userDropdownMenu }}
 				trigger={['hover']}
@@ -144,13 +143,13 @@ const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> =
 					{avatarToUse}
 					{userDisplayName}
 				</StyledUserInfo>
-			</StyledUserDropdown>
+			</Dropdown>
 
 			<section id="user_dropdown_container"></section>
-
+			{/* 
 			<ThemeSwitcher onClick={toggleTheme}>
 				<IconSun className="theme-icon" />
-			</ThemeSwitcher>
+			</ThemeSwitcher> */}
 		</StyledHeader>
 	);
 };

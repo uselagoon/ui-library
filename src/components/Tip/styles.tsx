@@ -17,7 +17,6 @@ export const TipIcon = styled.section`
 	}
 `;
 export const TipContent = styled.section`
-	font-family: 'ArabicPro-Regular', sans-serif;
 	line-height: 22.5px;
 	font-size: 16px;
 	color: ${(props) => props.theme.UI.texts.primary};

@@ -1,8 +1,6 @@
 import React, { FC } from 'react';
 
 import { PaginationProps, Pagination as AntPagination } from 'antd';
-import styled, { css } from 'styled-components';
-import colors from '../../_util/colors';
 
 const UIPagination: FC<
 	Omit<
@@ -13,7 +11,7 @@ const UIPagination: FC<
 	}
 > = ({ showSizeSelector = false, ...props }) => {
 	return (
-		<StyledPagination
+		<AntPagination
 			showSizeChanger={showSizeSelector}
 			defaultCurrent={1}
 			locale={{ items_per_page: 'results / page' }}
@@ -21,100 +19,6 @@ const UIPagination: FC<
 		/>
 	);
 };
-
-const StyledPagination = styled(AntPagination)`
-	&.ant-pagination {
-		max-width: 99%;
-		display: flex;
-		background-color: transparent;
-		.ant-pagination-item {
-			background-color: transparent;
-			&.ant-pagination-item-active {
-				background-color: transparent;
-				border-radius: initial;
-				transform: translateY(1px);
-				font-weight: initial;
-			}
-		}
-
-		li[tabIndex]:not(.ant-pagination-item-active) > a:not(.ant-pagination-item-link),
-		.ant-pagination-item-link a,
-		.ant-pagination-prev,
-		.ant-pagination-next {
-			${(props) =>
-				props.theme.colorScheme === 'dark' &&
-				css`
-					border: 1px solid ${colors.gray};
-				`}
-		}
-
-		li[tabIndex]:not(.ant-pagination-item-active) a,
-		.ant-pagination-item-link,
-		.ant-pagination-item-link .ant-pagination-item-container .ant-pagination-item-ellipsis {
-			${(props) =>
-				props.theme.colorScheme === 'dark' &&
-				css`
-					color: ${colors.white};
-				`}
-		}
-		.ant-pagination-prev,
-		.ant-pagination-next {
-			${(props) =>
-				props.theme.colorScheme === 'dark' &&
-				css`
-					button[disabled] {
-						color: ${colors.gray};
-					}
-				`}
-		}
-
-		.ant-pagination-prev {
-			margin-left: auto;
-		}
-		.ant-pagination-options {
-			order: -1;
-
-			.ant-select {
-				.ant-select-dropdown {
-					${(props) =>
-						props.theme.colorScheme === 'dark' &&
-						css`
-							background-color: ${colors.cellGray};
-
-							.ant-select-item.ant-select-item-option {
-								color: #fff;
-							}
-							.ant-select-item.ant-select-item-option.ant-select-item-option-active {
-								background-color: ${colors.gray};
-							}
-							.ant-select-item.ant-select-item-option.ant-select-item-option-selected {
-								background-color: ${colors.gray};
-							}
-						`}
-				}
-				.ant-select-selector {
-					&,
-					& > * {
-						${(props) =>
-							props.theme.colorScheme === 'dark' &&
-							css`
-								background-color: ${colors.darkGray};
-								color: ${colors.white};
-							`}
-					}
-
-					input[type='search'] {
-					}
-					.ant-select-selection-item {
-						&::before {
-							content: '';
-						}
-					}
-				}
-			}
-		}
-	}
-`;
 
 UIPagination.displayName = 'Pagination';
 

@@ -23,7 +23,6 @@ const InternalDetailedStats: React.ForwardRefRenderFunction<HTMLDivElement, Deta
 };
 
 const StyledDetails = styled.div`
-	font-family: 'AmericaMono-Regular', sans-serif;
 	text-transform: uppercase;
 	border-radius: 5px;
 	display: grid;

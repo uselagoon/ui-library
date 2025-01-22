@@ -111,10 +111,8 @@ const StyledItems = styled.div`
 
 	span.deploy-env,
 	span.task-env {
-		font-family: 'AmericaMono-Regular', sans-serif;
 	}
 	span {
-		font-family: 'ArabicPro-Regular', sans-serif;
 		color: ${(props) => (props.theme.colorScheme === 'dark' ? '#fff' : '#222')};
 	}
 	span.deploy-date {

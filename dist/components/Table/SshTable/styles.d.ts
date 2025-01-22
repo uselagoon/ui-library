@@ -1,5 +1,5 @@
 /// <reference types="react" />
-export declare const ModalButton: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<Omit<import("antd").ButtonProps, "icon" | "type" | "ghost"> & import("../../Button/Button").ButtonSizeType & {
+export declare const ModalButton: import("styled-components").IStyledComponent<"web", import("styled-components/dist/types").FastOmit<Omit<import("antd").ButtonProps, "icon"> & import("../../Button/Button").ButtonSizeType & {
     iconBefore?: import("react").ReactNode;
     iconAfter?: import("react").ReactNode;
     disabled?: boolean | undefined;
@@ -8,7 +8,7 @@ export declare const ModalButton: import("styled-components").IStyledComponent<"
     children?: import("react").ReactNode;
     styles?: import("react").CSSProperties | undefined;
     danger?: boolean | undefined;
-} & import("react").RefAttributes<HTMLButtonElement>, never>> & Omit<import("react").ForwardRefExoticComponent<Omit<import("antd").ButtonProps, "icon" | "type" | "ghost"> & import("../../Button/Button").ButtonSizeType & {
+} & import("react").RefAttributes<HTMLButtonElement>, never>> & Omit<import("react").ForwardRefExoticComponent<Omit<import("antd").ButtonProps, "icon"> & import("../../Button/Button").ButtonSizeType & {
     iconBefore?: import("react").ReactNode;
     iconAfter?: import("react").ReactNode;
     disabled?: boolean | undefined;

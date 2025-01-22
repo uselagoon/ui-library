@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import colors from '../../_util/colors';
-import { Dropdown } from 'antd';
 
 export const StyledAvatar = styled.div<{ $bgcolor: string | null }>`
-	font-family: 'Roboto', sans-serif;
 	font-size: 1rem;
 	height: 5rem;
 	width: 5rem;
@@ -33,7 +31,7 @@ export const StyledNav = styled.nav`
 export const StyledNavWrapper = styled.nav`
 	display: flex;
 	list-style: none;
-	font-family: 'Roboto', sans-serif;
+
 	font-size: 14px;
 	line-height: 22px;
 	font-weight: 600;
@@ -73,7 +71,7 @@ export const StyledLink = styled.div`
 		display: inline-block;
 		font-weight: 400;
 		line-height: 22px;
-		font-family: 'Roboto';
+
 		padding: 20px;
 		font-size: 14px;
 	}
@@ -82,9 +80,6 @@ export const StyledLink = styled.div`
 	& > a:link,
 	& > a:visited {
 		color: ${(props) => props.theme.UI.texts.nav};
-	}
-	& > a:hover {
-		color: ${(props) => (props.theme.colorScheme === 'dark' ? colors.lagoonBlue : '')};
 	}
 
 	&:active > a {
@@ -116,7 +111,6 @@ export const StyledAvatarImage = styled.img`
 `;
 
 export const StyledUserInfo = styled.div`
-	font-family: 'Roboto';
 	font-weight: 400;
 	line-height: 22px;
 	font-size: 14px;
@@ -128,15 +122,6 @@ export const StyledUserInfo = styled.div`
 	}
 	.user-name {
 		transition: all 0.25s ease;
-	}
-`;
-
-export const StyledUserDropdown = styled(Dropdown)`
-	cursor: pointer;
-	height: 68px;
-	transition: all 0.25s ease;
-	&:hover > .user-name {
-		color: ${colors.lagoonBlue};
 	}
 `;
 
@@ -158,8 +143,7 @@ export const StyledHeader = styled.header`
 				width: max-content;
 				text-align: center;
 				transform: translate(30px, -20px);
-				font-family: 'Roboto';
-				border: ${(props) => (props.theme.colorScheme === 'dark' ? '1px solid #f0f1f233' : 'initial')};
+				border: initial;
 				background: ${(props) => props.theme.UI.backgrounds.header};
 				&,
 				& > * {
@@ -168,12 +152,6 @@ export const StyledHeader = styled.header`
 				}
 				li {
 					padding-inline: 20px;
-					&[role='separator'] {
-						background: ${(props) => (props.theme.colorScheme === 'dark' ? colors.cellGray : '')};
-					}
-					&:hover {
-						color: ${(props) => (props.theme.colorScheme === 'dark' ? colors.lagoonBlue : '')};
-					}
 
 					> * {
 						transition: all 0.25s ease !important;
@@ -183,9 +161,6 @@ export const StyledHeader = styled.header`
 					a:visited,
 					a:active {
 						color: ${(props) => props.theme.UI.texts.nav};
-					}
-					a:hover {
-						color: ${(props) => (props.theme.colorScheme === 'dark' ? colors.lagoonBlue : '')};
 					}
 				}
 			}

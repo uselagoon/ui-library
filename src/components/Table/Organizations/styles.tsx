@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const SystemDefault = styled.span<{ $noSpace?: boolean }>`
 	background-color: #252d64;
-	font-family: 'ArabicPro-Bold', sans-serif;
 	font-weight: 500;
 	border-radius: 3px;
 	padding: 0.25rem;
@@ -14,7 +13,6 @@ export const SystemDefault = styled.span<{ $noSpace?: boolean }>`
 `;
 
 export const TotalDescription = styled.p`
-	font-family: 'ArabicPro-Regular', sans-serif;
 	margin-top: 1rem;
 `;
 

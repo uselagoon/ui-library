@@ -91,55 +91,8 @@ const UIBreadcrumb: FC<UIBreadcrumbProps> = (props) => {
 	// always prepend with " / "
 	modifiedItems.unshift({ type: 'separator', separator: '/' });
 
-	return <StyledBreadcrumb items={modifiedItems} {...rest} />;
+	return <Breadcrumb items={modifiedItems} {...rest} />;
 };
-
-const StyledBreadcrumb = styled(Breadcrumb)`
-	padding: 0.5rem;
-	margin-block: 2rem 1.375rem;
-	&.ant-breadcrumb {
-		font-family: 'ArabicPro-Regular', sans-serif;
-		font-size: 28px;
-		font-weight: 500;
-		line-height: 25px;
-
-		.ant-breadcrumb-link {
-			text-decoration: none !important;
-		}
-		li:not(.ant-breadcrumb-separator) {
-			&:not(:last-child) {
-				span,
-				a {
-					text-decoration: underline;
-					border-radius: 0;
-				}
-			}
-		}
-
-		li,
-		span,
-		a {
-			transition: all 0.25s ease;
-			color: ${(props) => props.theme.UI.texts.secondary};
-			&[data-active='active'] {
-				color: ${(props) => (props.theme.colorScheme === 'light' ? colors.texts.primary.light : colors.white)};
-			}
-		}
-		& a:hover {
-			background-color: ${(props) => (props.theme.colorScheme === 'light' ? '#0000000f' : colors.lighterGray)};
-		}
-		li.ant-breadcrumb-separator {
-			margin-inline-start: 14px;
-
-			&:first-of-type {
-				margin-inline-start: 0px;
-			}
-		}
-		li.ant-breadcrumb-separator:nth-last-child(2) {
-			color: ${(props) => (props.theme.colorScheme === 'light' ? colors.texts.primary.light : colors.white)};
-		}
-	}
-`;
 
 const Wrapper = styled.div`
 	display: flex;

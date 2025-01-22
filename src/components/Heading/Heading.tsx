@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
-import UITitleElement from './Styles';
 import { TitleProps } from 'antd/es/typography/Title';
+import { Typography } from 'antd';
 
 export type Heading = 1 | 2 | 3 | 4 | 5;
 
@@ -11,14 +11,16 @@ export type InternalHeadingProps = Omit<TitleProps, 'level'> & {
 	style?: React.CSSProperties;
 };
 
+const { Title } = Typography;
+
 const InternalHeader: React.ForwardRefRenderFunction<HTMLHeadingElement, InternalHeadingProps> = (
 	{ level = 1, className, children, style, ...props }: InternalHeadingProps,
 	ref,
 ) => {
 	return (
-		<UITitleElement level={level} ref={ref} className={className} style={style} {...props}>
+		<Title level={level} ref={ref} className={className} style={style} {...props}>
 			{children}
-		</UITitleElement>
+		</Title>
 	);
 };
 

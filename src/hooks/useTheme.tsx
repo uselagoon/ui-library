@@ -13,35 +13,37 @@ const useTheme = () => {
 };
 
 export const AppThemeProvider = ({ defaultScheme, children }: { defaultScheme?: Theme; children: React.ReactNode }) => {
-	const [theme, setTheme] = useState<Theme | null>(null);
+	const [theme, setTheme] = useState<Theme | null>('light');
 
-	useEffect(() => {
-		if (defaultScheme) {
-			setTheme(defaultScheme);
-			return;
-		}
-		const storageTheme = localStorage.getItem('theme');
-		// already previously set in browser store.
-		if (storageTheme && ['light', 'dark'].includes(storageTheme)) {
-			setTheme(storageTheme as Theme);
-		} else {
-			// try to automatically infer dark mode theme.
-			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				setTheme('dark');
-				localStorage.setItem('theme', 'dark');
-			} else {
-				// default to light
-				setTheme('light');
-				localStorage.setItem('theme', 'light');
-			}
-		}
-	}, []);
+	// TEMP: disable dark theme completely
+
+	// useEffect(() => {
+	// 	if (defaultScheme) {
+	// 		setTheme(defaultScheme);
+	// 		return;
+	// 	}
+	// 	const storageTheme = localStorage.getItem('theme');
+	// 	// already previously set in browser store.
+	// 	if (storageTheme && ['light', 'dark'].includes(storageTheme)) {
+	// 		setTheme(storageTheme as Theme);
+	// 	} else {
+	// 		// try to automatically infer dark mode theme.
+	// 		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+	// 			setTheme('dark');
+	// 			localStorage.setItem('theme', 'dark');
+	// 		} else {
+	// 			// default to light
+	// 			setTheme('light');
+	// 			localStorage.setItem('theme', 'light');
+	// 		}
+	// 	}
+	// }, []);
 
 	const toggleTheme = () => {
-		const newTheme = theme === 'light' ? 'dark' : 'light';
-		setTheme(newTheme);
-		localStorage.setItem('theme', newTheme);
-		window.dispatchEvent(new Event('storage'));
+		// const newTheme = theme === 'light' ? 'dark' : 'light';
+		// setTheme(newTheme);
+		// localStorage.setItem('theme', newTheme);
+		// window.dispatchEvent(new Event('storage'));
 	};
 
 	return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;

@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 
-import { ModalProps } from 'antd';
-import { ModalChildren, ModalFooterButton, StyledModal } from './styles';
+import { ModalProps, Modal, Button } from 'antd';
+import { ModalChildren } from './styles';
 
 type UIModalProps = {
 	subTitle?: ReactNode;
@@ -37,8 +37,7 @@ const UIModal: FC<UIModalProps> = ({
 		);
 	}
 	return (
-		<StyledModal
-			$width={props.width}
+		<Modal
 			title={modalTitle}
 			destroyOnClose
 			maskClosable
@@ -48,10 +47,10 @@ const UIModal: FC<UIModalProps> = ({
 				return <ModalChildren $minHeight={minHeight}>{node}</ModalChildren>;
 			}}
 			footer={[
-				<ModalFooterButton key="back" id="cancel-btn" onClick={onCancel}>
+				<Button key="back" id="cancel-btn" onClick={onCancel}>
 					{cancelText ? cancelText : 'Cancel'}
-				</ModalFooterButton>,
-				<ModalFooterButton
+				</Button>,
+				<Button
 					disabled={confirmDisabled}
 					danger={dangerConfirm}
 					key="submit"
@@ -60,11 +59,11 @@ const UIModal: FC<UIModalProps> = ({
 					onClick={onOk}
 				>
 					{confirmText ? confirmText : 'OK'}
-				</ModalFooterButton>,
+				</Button>,
 			]}
 		>
 			{children}
-		</StyledModal>
+		</Modal>
 	);
 };
 

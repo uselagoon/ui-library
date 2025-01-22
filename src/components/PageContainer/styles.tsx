@@ -5,7 +5,7 @@ import lightBg from '../../images/bg_light.jpg';
 export const StyledPageContainer = styled.div`
 	min-height: 100dvh;
 	margin: 0;
-	background-image: url(${(props) => (props.theme.colorScheme === 'dark' ? darkBg : lightBg)});
+	background-image: url(${(props) => lightBg});
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

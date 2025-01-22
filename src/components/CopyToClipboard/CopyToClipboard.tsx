@@ -111,7 +111,6 @@ const CopyableText = styled.span<{
 const StyledText = styled.div<{
 	$fontSize: string;
 }>`
-	font-family: 'ArabicPro-Regular', sans-serif;
 	font-size: ${(props) => props.$fontSize};
 	line-height: 1.5rem;
 	min-width: max-content;

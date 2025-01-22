@@ -25,13 +25,6 @@ const fontStyles = {
 	`,
 };
 
-const UITitleElement = styled(Typography.Title)<{ level: Heading }>`
-	&.ant-typography {
-		font-family: 'Helvetica-Regular', sans-serif;
-		font-weight: 500;
-		${(props) => props.level && fontStyles[props.level]};
-		color: ${(props) => props.theme.UI.texts.primary};
-	}
-`;
+const UITitleElement = styled(Typography.Title)<{ level: Heading }>``;
 
 export default UITitleElement;

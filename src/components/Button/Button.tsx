@@ -1,13 +1,14 @@
 import React, { forwardRef } from 'react';
 import { ButtonProps } from 'antd';
-import { IconAfterWrapper, IconBeforeWrapper, UIButton } from './Styles';
+import { IconAfterWrapper, IconBeforeWrapper } from './Styles';
+
+import { Button as AntButton } from 'antd';
 
 export type ButtonSizeType = {
 	size?: 'large' | 'middle' | 'small';
-	type?: 'primary' | 'secondary';
 };
 
-export type InternalButtonProps = Omit<ButtonProps, 'ghost' | 'type' | 'icon'> &
+export type InternalButtonProps = Omit<ButtonProps, 'icon'> &
 	ButtonSizeType & {
 		iconBefore?: React.ReactNode;
 		iconAfter?: React.ReactNode;
@@ -53,19 +54,19 @@ const InternalButton: React.ForwardRefRenderFunction<HTMLButtonElement, Internal
 		);
 	}
 	return (
-		<UIButton
+		<AntButton
 			ref={ref}
-			type={type}
 			size={size}
 			styles={styles}
 			disabled={disabled}
+			type={type}
 			loading={loading}
 			className={className}
 			danger={danger}
 			{...props}
 		>
 			{renderNode}
-		</UIButton>
+		</AntButton>
 	);
 };
 
