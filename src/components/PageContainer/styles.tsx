@@ -5,6 +5,7 @@ import lightBg from '../../images/bg_light.jpg';
 export const StyledPageContainer = styled.div`
 	min-height: 100dvh;
 	margin: 0;
+	padding-top: 2rem;
 	background-image: url(${(props) => lightBg});
 	background-size: cover;
 	background-position: center;

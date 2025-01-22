@@ -130,6 +130,7 @@ export const StyledHeader = styled.header`
 	padding-block: 3px;
 	width: 100%;
 	min-height: 4rem;
+	margin-bottom: 3rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
