@@ -100,7 +100,6 @@ const Wrapper = styled.div`
 	align-items: center;
 	justify-content: flex-end;
 	position: relative;
-	border: 5px solid hotpink;
 
 	&[data-active='active'] > *:last-child {
 		color: ${(props) => (props.theme.colorScheme === 'light' ? colors.texts.primary.light : colors.white)};
