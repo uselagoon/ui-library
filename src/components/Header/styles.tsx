@@ -130,13 +130,12 @@ export const StyledHeader = styled.header`
 	padding-block: 3px;
 	width: 100%;
 	min-height: 4rem;
-	margin-bottom: 3rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	position: relative;
 	box-shadow: 0px 8px 8px -1px #f0f1f233;
-	background: ${(props) => props.theme.UI.backgrounds.header};
+	background: #fff;
 
 	#user_dropdown_container {
 		.ant-dropdown {

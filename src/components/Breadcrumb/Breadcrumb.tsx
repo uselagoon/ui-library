@@ -91,7 +91,7 @@ const UIBreadcrumb: FC<UIBreadcrumbProps> = (props) => {
 	// always prepend with " / "
 	modifiedItems.unshift({ type: 'separator', separator: '/' });
 
-	return <Breadcrumb items={modifiedItems} {...rest} />;
+	return <Breadcrumb style={{ marginBottom: '2rem' }} items={modifiedItems} {...rest} />;
 };
 
 const Wrapper = styled.div`
@@ -100,6 +100,7 @@ const Wrapper = styled.div`
 	align-items: center;
 	justify-content: flex-end;
 	position: relative;
+	border: 5px solid hotpink;
 
 	&[data-active='active'] > *:last-child {
 		color: ${(props) => (props.theme.colorScheme === 'light' ? colors.texts.primary.light : colors.white)};

@@ -11,4 +11,5 @@ export const StyledTabChildren = styled.section`
 	min-height: 27.1875rem;
 	max-height: max-content;
 	padding-bottom: 2.5rem;
+	background-color: #fff;
 `;
