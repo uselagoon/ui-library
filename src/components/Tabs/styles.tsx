@@ -2,7 +2,7 @@ import { Tabs } from 'antd';
 import styled, { css } from 'styled-components';
 
 export const StyledTabs = styled(Tabs)<{ $type: 'navigation' | 'default' }>`
-	.ant-tabs-tab {
+	.ant-tabs-nav-list {
 		background-color: #fff;
 	}
 `;
