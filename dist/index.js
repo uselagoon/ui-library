@@ -133,7 +133,6 @@ html,body{
 	align-items: center;
 	justify-content: flex-end;
 	position: relative;
-	border: 5px solid hotpink;
 
 	&[data-active='active'] > *:last-child {
 		color: ${e=>"light"===e.theme.colorScheme?k.texts.primary.light:k.white};
