@@ -865,7 +865,7 @@ html,body{
 	.content {
 		padding-inline: 8.888vw;
 		padding-block-end: 5rem;
-		margin-top: 3rem;
+		padding-top: 3rem;
 	}
 	img.logo {
 		display: block;
