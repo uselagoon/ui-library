@@ -1,7 +1,11 @@
 import { Tabs } from 'antd';
 import styled, { css } from 'styled-components';
 
-export const StyledTabs = styled(Tabs)<{ $type: 'navigation' | 'default' }>``;
+export const StyledTabs = styled(Tabs)<{ $type: 'navigation' | 'default' }>`
+	.ant-tabs-tab {
+		background-color: #fff;
+	}
+`;
 
 export const StyledTabChildren = styled.section`
 	box-shadow: 2px 2px 4px 0px #69696933;
