@@ -19,7 +19,7 @@ const UISelect = forwardRef<RefSelectProps, UISelectProps>((props, ref) => {
 		setSelectedState && setSelectedState(value);
 	};
 	return (
-		<Select
+		<StyledSelect
 			ref={ref}
 			onChange={onChange ?? deferredChangeHandler}
 			value={value || selectedState || undefined}
@@ -36,10 +36,45 @@ const UISelect = forwardRef<RefSelectProps, UISelectProps>((props, ref) => {
 	);
 });
 
-const StyledDropDown = styled.section`
-	background-color: #fff;
+const StyledSelect = styled(Select)<SelectProps>`
+	&.ant-select {
+		& .ant-select-selector {
+			span {
+				color: #333;
+			}
+			.ant-select-selection-placeholder {
+				color: ${(props) => (props.theme.colorScheme === 'dark' ? '#fff' : '#1f1f1f')};
+			}
+			border-radius: 2px;
+		}
+
+		${(props) =>
+			props.theme.colorScheme === 'dark' &&
+			css`
+				& .ant-select-selector {
+					background-color: #1f1f1f;
+					span {
+						color: #fff;
+					}
+				}
+				& .ant-select-arrow {
+					color: #fff;
+				}
+			`}
+	}
 `;
 
+const StyledDropDown = styled.section`
+	${(props) =>
+		props.theme.colorScheme === 'dark' &&
+		css`
+			background-color: #1f1f1f;
+
+			.ant-select-item.ant-select-item-option {
+				color: #fff;
+			}
+		`}
+`;
 UISelect.displayName = 'Select';
 
 export type { SelectProps as UISelectProps };

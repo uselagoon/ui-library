@@ -42,6 +42,9 @@ body {
 html,body{
   scroll-behavior: smooth;
 }
+.ant-select-dropdown{
+  background-color: transparent;
+}
 /* 
 @font-face {
     font-family: 'ArabicPro-Regular';
