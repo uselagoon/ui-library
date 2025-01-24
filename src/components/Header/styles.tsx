@@ -135,7 +135,7 @@ export const StyledHeader = styled.header`
 	align-items: center;
 	position: relative;
 	box-shadow: 0px 8px 8px -1px #f0f1f233;
-	background: #fff;
+	background-color: ${(props) => (props.theme.colorScheme === 'light' ? '#fff' : '#1F1F1F')};
 
 	#user_dropdown_container {
 		.ant-dropdown {

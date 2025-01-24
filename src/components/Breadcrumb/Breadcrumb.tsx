@@ -98,6 +98,23 @@ const StyledBreadcrumb = styled(Breadcrumb)`
 	&.ant-breadcrumb {
 		font-size: 1.2rem;
 		line-height: 25px;
+
+		li,
+		span,
+		a {
+			transition: all 0.25s ease;
+			color: ${(props) => props.theme.UI.texts.secondary};
+			&[data-active='active'] {
+				color: ${(props) => (props.theme.colorScheme === 'light' ? colors.texts.primary.light : colors.white)};
+			}
+		}
+		& a:hover {
+			background-color: ${(props) => (props.theme.colorScheme === 'light' ? '#0000000f' : colors.lighterGray)};
+		}
+
+		li.ant-breadcrumb-separator:nth-last-child(2) {
+			color: ${(props) => (props.theme.colorScheme === 'light' ? colors.texts.primary.light : colors.white)};
+		}
 	}
 `;
 
