@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { Button, ConfigProvider, Input, Space, theme as AntdTheme } from 'antd';
 
 type Theme = 'dark' | 'light';
 //@ts-ignore
@@ -13,40 +14,48 @@ const useTheme = () => {
 };
 
 export const AppThemeProvider = ({ defaultScheme, children }: { defaultScheme?: Theme; children: React.ReactNode }) => {
-	const [theme, setTheme] = useState<Theme | null>('light');
+	const [theme, setTheme] = useState<Theme | null>(null);
 
-	// TEMP: disable dark theme completely
-
-	// useEffect(() => {
-	// 	if (defaultScheme) {
-	// 		setTheme(defaultScheme);
-	// 		return;
-	// 	}
-	// 	const storageTheme = localStorage.getItem('theme');
-	// 	// already previously set in browser store.
-	// 	if (storageTheme && ['light', 'dark'].includes(storageTheme)) {
-	// 		setTheme(storageTheme as Theme);
-	// 	} else {
-	// 		// try to automatically infer dark mode theme.
-	// 		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-	// 			setTheme('dark');
-	// 			localStorage.setItem('theme', 'dark');
-	// 		} else {
-	// 			// default to light
-	// 			setTheme('light');
-	// 			localStorage.setItem('theme', 'light');
-	// 		}
-	// 	}
-	// }, []);
+	useEffect(() => {
+		if (defaultScheme) {
+			setTheme(defaultScheme);
+			return;
+		}
+		const storageTheme = localStorage.getItem('theme');
+		// already previously set in browser store.
+		if (storageTheme && ['light', 'dark'].includes(storageTheme)) {
+			setTheme(storageTheme as Theme);
+		} else {
+			// try to automatically infer dark mode theme.
+			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				setTheme('dark');
+				localStorage.setItem('theme', 'dark');
+			} else {
+				// default to light
+				setTheme('light');
+				localStorage.setItem('theme', 'light');
+			}
+		}
+	}, []);
 
 	const toggleTheme = () => {
-		// const newTheme = theme === 'light' ? 'dark' : 'light';
-		// setTheme(newTheme);
-		// localStorage.setItem('theme', newTheme);
-		// window.dispatchEvent(new Event('storage'));
+		const newTheme = theme === 'light' ? 'dark' : 'light';
+		setTheme(newTheme);
+		localStorage.setItem('theme', newTheme);
+		window.dispatchEvent(new Event('storage'));
 	};
 
-	return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
+	return (
+		<ThemeContext.Provider value={{ theme, toggleTheme }}>
+			<ConfigProvider
+				theme={{
+					algorithm: theme === 'dark' ? AntdTheme.darkAlgorithm : AntdTheme.compactAlgorithm,
+				}}
+			>
+				{children}
+			</ConfigProvider>
+		</ThemeContext.Provider>
+	);
 };
 
 export default useTheme;

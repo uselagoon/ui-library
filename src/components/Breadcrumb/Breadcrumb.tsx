@@ -91,8 +91,15 @@ const UIBreadcrumb: FC<UIBreadcrumbProps> = (props) => {
 	// always prepend with " / "
 	modifiedItems.unshift({ type: 'separator', separator: '/' });
 
-	return <Breadcrumb style={{ marginBottom: '2rem' }} items={modifiedItems} {...rest} />;
+	return <StyledBreadcrumb style={{ marginBottom: '2rem' }} items={modifiedItems} {...rest} />;
 };
+
+const StyledBreadcrumb = styled(Breadcrumb)`
+	&.ant-breadcrumb {
+		font-size: 1.2rem;
+		line-height: 25px;
+	}
+`;
 
 const Wrapper = styled.div`
 	display: flex;

@@ -7,6 +7,10 @@ export const StyledStatistic = styled.div<{ $fullWidth?: boolean }>`
 	display: flex;
 	flex-direction: column;
 
+	.statistic-element,
+	.ant-statistic-content {
+		font-size: 1.2rem;
+	}
 	${(props) =>
 		props.$fullWidth
 			? css`

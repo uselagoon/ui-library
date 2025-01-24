@@ -146,10 +146,10 @@ const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> =
 			</Dropdown>
 
 			<section id="user_dropdown_container"></section>
-			{/* 
+
 			<ThemeSwitcher onClick={toggleTheme}>
 				<IconSun className="theme-icon" />
-			</ThemeSwitcher> */}
+			</ThemeSwitcher>
 		</StyledHeader>
 	);
 };
