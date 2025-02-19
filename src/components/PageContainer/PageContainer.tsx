@@ -24,7 +24,9 @@ const InternalPageContainer: React.ForwardRefRenderFunction<HTMLDivElement, Page
 	return (
 		<StyledPageContainer ref={ref} className={className}>
 			{showHeader ? <LagoonHeader {...headerProps} /> : null}
-			<main className="content">{children}</main>
+			<main data-cy="layout-children" className="content">
+				{children}
+			</main>
 		</StyledPageContainer>
 	);
 };

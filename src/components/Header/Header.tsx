@@ -61,9 +61,11 @@ const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> =
 	);
 
 	const userDisplayName = firstLastProvided ? (
-		<span className="user-name">{`${firstName} ${lastName}`}</span>
+		<span data-cy="user-name" className="user-name">{`${firstName} ${lastName}`}</span>
 	) : (
-		<span className="user-name">{email}</span>
+		<span data-cy="user-name" className="user-name">
+			{email}
+		</span>
 	);
 
 	const navRef = useRef<HTMLDivElement>(null);
@@ -109,7 +111,9 @@ const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> =
 	return (
 		<StyledHeader ref={ref}>
 			<section className="icon-container">
-				<Link href="/projects">{logo ? logo : <LagoonIcon className="icon" />}</Link>
+				<Link data-cy="nav-projects" href="/projects">
+					{logo ? logo : <LagoonIcon className="icon" />}
+				</Link>
 			</section>
 			<StyledNav className="navigation">
 				<StyledNavWrapper ref={navRef}>
@@ -136,7 +140,10 @@ const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> =
 
 			<Dropdown
 				getPopupContainer={() => document.getElementById('user_dropdown_container') as HTMLElement}
-				menu={{ items: userDropdownMenu }}
+				menu={{
+					items: userDropdownMenu,
+					...{ 'data-cy': 'header-menu' },
+				}}
 				trigger={['hover']}
 			>
 				<StyledUserInfo>
@@ -148,7 +155,7 @@ const InternalHeader: React.ForwardRefRenderFunction<HTMLElement, HeaderProps> =
 			<section id="user_dropdown_container"></section>
 
 			<ThemeSwitcher onClick={toggleTheme}>
-				<IconSun className="theme-icon" />
+				<IconSun data-cy="theme-icon" className="theme-icon" />
 			</ThemeSwitcher>
 		</StyledHeader>
 	);
