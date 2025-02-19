@@ -248,6 +248,11 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 				dataSource={groupsWithActions}
 				columns={highlightedColumns}
 				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="group-row" />,
+					},
+				}}
 				hasSummary
 			/>
 			<TableSummary>{newGroupModal}</TableSummary>

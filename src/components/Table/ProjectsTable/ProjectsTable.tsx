@@ -249,6 +249,11 @@ const ProjectsTable: React.FC<ProjectsTableProps> = (props) => {
 				dataSource={remappedProjects}
 				columns={wrappedColumns}
 				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="project-row" />,
+					},
+				}}
 				loading={{
 					spinning: loading,
 					indicator: <LoadingOutlined />,

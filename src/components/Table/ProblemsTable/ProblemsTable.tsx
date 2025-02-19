@@ -182,6 +182,11 @@ const ProblemsTable = (props: ProblemsTableProps) => {
 				dataSource={problemsWithActions}
 				columns={ProblemsColumns}
 				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="problem-row" />,
+					},
+				}}
 			/>
 		</>
 	);

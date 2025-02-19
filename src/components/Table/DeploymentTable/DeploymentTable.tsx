@@ -168,6 +168,11 @@ const DeploymentTable = (props: DeploymenTableProps) => {
 		<>
 			<BaseTable
 				dataSource={remappedDeployment}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="deployment-row" />,
+					},
+				}}
 				expandable={{
 					expandedRowKeys: expandedRowIds,
 					expandRowByClick: true,

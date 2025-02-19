@@ -233,6 +233,11 @@ const BulkDeploymentsTable = (props: BulkDeploymentsTableProps) => {
 				dataSource={remappedDeployments}
 				columns={bulkDeploymentsColumns}
 				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="deployment-row" />,
+					},
+				}}
 			/>
 		</>
 	);

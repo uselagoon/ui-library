@@ -324,6 +324,11 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 			<BaseTable
 				rowKey={(record) => record.id || record.name}
 				dataSource={relativelyTimedKeysWithActions}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="ssh-row" />,
+					},
+				}}
 				columns={sshColumns}
 			/>
 			<SShSummary>{addNewKey}</SShSummary>

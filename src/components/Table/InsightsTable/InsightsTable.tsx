@@ -249,7 +249,16 @@ const ProblemsTable = (props: InsightsTableProps) => {
 
 	return (
 		<>
-			<BaseTable dataSource={remappedInsights} columns={highlightedColumns} rowKey={(record) => record.id} />
+			<BaseTable
+				dataSource={remappedInsights}
+				columns={highlightedColumns}
+				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="insight-row" />,
+					},
+				}}
+			/>
 			<PaginationWithSelector>
 				<section className="selector">{resultDropdown}</section>
 				<Pagination

@@ -228,6 +228,11 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 				dataSource={remappedOrgs}
 				columns={wrappedColumns}
 				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="organization-row" />,
+					},
+				}}
 				loading={{
 					spinning: loading,
 					indicator: <LoadingOutlined />,

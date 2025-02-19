@@ -265,6 +265,11 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 				dataSource={projectsWithActions}
 				columns={highlightedColumns}
 				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="org-project-row" />,
+					},
+				}}
 				hasSummary
 			/>
 			<TableSummary>{newProjectModal}</TableSummary>

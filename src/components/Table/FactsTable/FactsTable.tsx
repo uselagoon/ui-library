@@ -175,7 +175,16 @@ const ProblemsTable = (props: FactsTableProps) => {
 
 	return (
 		<>
-			<BaseTable dataSource={paginatedFacts} columns={highlightedColumns} rowKey={(record) => record.id} />
+			<BaseTable
+				dataSource={paginatedFacts}
+				columns={highlightedColumns}
+				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="fact-row" />,
+					},
+				}}
+			/>
 			<PaginationWithSelector>
 				<section className="selector">{resultDropdown}</section>
 

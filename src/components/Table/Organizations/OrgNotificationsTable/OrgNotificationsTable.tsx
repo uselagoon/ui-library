@@ -319,6 +319,11 @@ const OrgNotificationsTable = (props: NotificationsTableProps) => {
 				dataSource={notificationsWithActions}
 				columns={highlightedColumns}
 				rowKey={(record) => record.id ?? record.name}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="notification-row" />,
+					},
+				}}
 				hasSummary
 			/>
 			<TableSummary>{newNotificationModal}</TableSummary>

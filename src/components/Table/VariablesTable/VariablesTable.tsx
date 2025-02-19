@@ -292,6 +292,11 @@ const VariablesTable = (props: VariablesTableProps) => {
 				dataSource={variablesWithActions}
 				columns={highlightedColumns}
 				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="variable-row" />,
+					},
+				}}
 				hasSummary
 			/>
 

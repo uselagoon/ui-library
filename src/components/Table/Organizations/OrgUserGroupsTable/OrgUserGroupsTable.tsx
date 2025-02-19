@@ -243,6 +243,11 @@ const OrgUserGroupsTable = (props: OrgUserGroupsTableProps) => {
 				dataSource={groupsWithActions}
 				columns={highlightedColumns}
 				rowKey={(record) => record.id ?? record.name}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="user-group-row" />,
+					},
+				}}
 			/>
 
 			<PaginationWithSelector>

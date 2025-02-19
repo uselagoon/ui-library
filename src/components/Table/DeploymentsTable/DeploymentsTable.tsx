@@ -240,7 +240,16 @@ const DeploymentsTable = (props: DeploymentsTableProps) => {
 
 	return (
 		<>
-			<BaseTable dataSource={remappedDeployments} columns={DeploymentColumns} rowKey={(record) => record.id} />
+			<BaseTable
+				dataSource={remappedDeployments}
+				columns={DeploymentColumns}
+				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="deployment-row" />,
+					},
+				}}
+			/>
 			<Pagination
 				total={totalFilteredCount}
 				pageSize={pageSize === -1 ? Infinity : pageSize}

@@ -242,6 +242,11 @@ const OrgAdminsTable = (props: OwnersTableProps) => {
 				dataSource={ownersWithActions}
 				columns={highlightedColumns}
 				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="admin-row" />,
+					},
+				}}
 				hasSummary
 			/>
 			<TableSummary>{addNewOwnerModal}</TableSummary>

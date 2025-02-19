@@ -296,6 +296,11 @@ const AllDeploymentsTable = (props: AllDeploymentsTableProps) => {
 				dataSource={remappedDeployments}
 				columns={wrappedColumns}
 				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="deployment-row" />,
+					},
+				}}
 				disableScrollable
 			/>
 			<Pagination

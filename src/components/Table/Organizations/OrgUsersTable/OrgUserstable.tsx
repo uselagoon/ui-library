@@ -345,7 +345,17 @@ const OrgUsersTable = (props: UsersProps) => {
 
 	return (
 		<>
-			<BaseTable dataSource={usersWithActions} columns={highlightedColumns} rowKey={(record) => record.id} hasSummary />
+			<BaseTable
+				dataSource={usersWithActions}
+				columns={highlightedColumns}
+				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="user-row" />,
+					},
+				}}
+				hasSummary
+			/>
 			<TableSummary>{newUserModal}</TableSummary>
 
 			<PaginationWithSelector>

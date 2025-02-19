@@ -280,6 +280,11 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 				dataSource={remappedEnvs}
 				columns={wrappedColumns}
 				rowKey={(record) => record.title}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="environment-row" />,
+					},
+				}}
 				hasSummary
 			/>
 			<TableSummary>{newEnvironmentModal}</TableSummary>

@@ -173,7 +173,16 @@ const TasksTable = (props: TasksTableProps) => {
 
 	return (
 		<>
-			<BaseTable dataSource={remappedTasks} columns={TasksColumns} rowKey={(record) => record.id} />
+			<BaseTable
+				dataSource={remappedTasks}
+				columns={TasksColumns}
+				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="task-row" />,
+					},
+				}}
+			/>
 
 			<PaginationWithSelector>
 				<section className="selector">{resultDropdown}</section>

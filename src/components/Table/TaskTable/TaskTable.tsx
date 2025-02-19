@@ -174,6 +174,11 @@ const TaskTable = (props: TaskTableProps) => {
 				disableScrollable
 				columns={TaskColumns}
 				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="task-row" />,
+					},
+				}}
 			/>
 		</>
 	);

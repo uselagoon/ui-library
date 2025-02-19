@@ -11,7 +11,7 @@ import BackupsTableSkeleton from './BackupsTableSkeleton';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
 import CopyToClipboard from '../../CopyToClipboard';
-import { Tooltip } from 'antd';
+import { Tooltip, TableProps } from 'antd';
 import Text from '../../Text';
 import { StyledDownloadButton } from './styles';
 import isBetween from 'dayjs/plugin/isBetween';
@@ -155,28 +155,29 @@ const BackupsTable = (props: BackupsTableProps) => {
 			case 'pending':
 				return (
 					<Tooltip placement="bottom" title="Retrieving...">
-						<LoadingOutlined />
+						<LoadingOutlined data-cy="retrieving" />
 					</Tooltip>
 				);
 			case 'successful':
 				return (
 					<Text underline={false} href={restoreLocation} target="_blank">
 						<Tooltip placement="bottom" title={`Download (${humanFileSize(size)})`}>
-							<StyledDownloadButton /> (<span style={{ fontSize: '12px' }}>{humanFileSize(size)}</span>)
+							<StyledDownloadButton data-cy="download" /> (
+							<span style={{ fontSize: '12px' }}>{humanFileSize(size)}</span>)
 						</Tooltip>
 					</Text>
 				);
 			case 'failed':
 				return (
 					<Tooltip placement="bottom" title="Retry">
-						{retrieveBackup ? retrieveBackup(backup, 'failed') : <RedoOutlined />}
+						{retrieveBackup ? retrieveBackup(backup, 'failed') : <RedoOutlined data-cy="retry" />}
 					</Tooltip>
 				);
 			// if there is no restore
 			default:
 				return (
 					<Tooltip placement="bottom" title="Retrieve">
-						{retrieveBackup ? retrieveBackup(backup, 'unavailable') : <CloudDownloadOutlined />}
+						{retrieveBackup ? retrieveBackup(backup, 'unavailable') : <CloudDownloadOutlined data-cy="retrieve" />}
 					</Tooltip>
 				);
 		}
@@ -200,7 +201,16 @@ const BackupsTable = (props: BackupsTableProps) => {
 
 	return (
 		<>
-			<BaseTable dataSource={remappedBackups} columns={backupsColumns} rowKey={(record) => record.id} />
+			<BaseTable
+				dataSource={remappedBackups}
+				columns={backupsColumns}
+				rowKey={(record) => record.id}
+				components={{
+					body: {
+						row: (props: any) => <tr {...props} data-cy="backup-row" />,
+					},
+				}}
+			/>
 			<Pagination
 				total={totalFilteredCount}
 				pageSize={pageSize === -1 ? Infinity : pageSize}
