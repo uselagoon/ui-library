@@ -26,7 +26,7 @@ const UISelect = forwardRef<RefSelectProps, UISelectProps>((props, ref) => {
 			defaultOpen={props.defaultOpen || true}
 			style={style}
 			dropdownRender={(menu) => {
-				return <StyledDropDown>{menu}</StyledDropDown>;
+				return <StyledDropDown data-cy="select-menu">{menu}</StyledDropDown>;
 			}}
 			onDropdownVisibleChange={(open) => setIsOpen(open)}
 			{...rest}
