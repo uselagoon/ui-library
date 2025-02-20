@@ -259,9 +259,9 @@ const VariablesTable = (props: VariablesTableProps) => {
 			};
 
 			const blurIcon = isVariableHidden ? (
-				<EyeOutlined onClick={toggleShowHide} />
+				<EyeOutlined data-cy="toggle" onClick={toggleShowHide} />
 			) : (
-				<EyeInvisibleOutlined onClick={toggleShowHide} />
+				<EyeInvisibleOutlined data-cy="toggle" onClick={toggleShowHide} />
 			);
 			return {
 				...variable,
