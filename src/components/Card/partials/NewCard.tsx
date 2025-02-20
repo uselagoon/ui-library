@@ -93,7 +93,7 @@ export const NewCard: FC<NewEnvironmentType> = ({
 	return (
 		<StyledNewCard $type={renderType}>
 			<NewEnvTrigger onClick={() => setOpen(true)}>
-				<PlusOutlined /> New environment
+				<PlusOutlined data-cy="create-environment" /> New environment
 			</NewEnvTrigger>
 
 			<UIModal

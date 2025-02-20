@@ -227,7 +227,7 @@ html,body{
 	overflow: hidden;
 	border-radius: 0;
 	box-shadow: ${e=>"dark"===e.theme.colorScheme?"2px 2px 8px 0px #ffffff40":"2px 2px 8px 0px #00000040"};
-`,Jt=({children:e,subTitle:t,title:n,onCancel:r,onOk:l,confirmText:s,cancelText:d,confirmLoading:c,minHeight:u,dangerConfirm:p,confirmDisabled:h,...m})=>{let A=n;return t&&(A=i(o,{children:[n,t]})),a(H,{title:A,destroyOnClose:!0,maskClosable:!0,onCancel:r,...m,modalRender:e=>a(Pt,{$minHeight:u,children:e}),footer:[a(w,{id:"cancel-btn",onClick:r,children:d||"Cancel"},"back"),a(w,{disabled:h,danger:p,type:"primary",loading:c,onClick:l,children:s||"OK"},"submit")],children:e})};Jt.displayName="Modal";const Gt=e.div`
+`,Jt=({children:e,subTitle:t,title:n,onCancel:r,onOk:l,confirmText:s,cancelText:d,confirmLoading:c,minHeight:u,dangerConfirm:p,confirmDisabled:h,...m})=>{let A=n;return t&&(A=i(o,{children:[n,t]})),a(H,{title:A,destroyOnClose:!0,maskClosable:!0,onCancel:r,...m,modalRender:e=>a(Pt,{$minHeight:u,children:e}),footer:[a(w,{"data-cy":"modal-cancel",id:"cancel-btn",onClick:r,children:d||"Cancel"},"back"),a(w,{"data-cy":"modal-confirm",disabled:h,danger:p,type:"primary",loading:c,onClick:l,children:s||"OK"},"submit")],children:e})};Jt.displayName="Modal";const Gt=e.div`
 	text-transform: uppercase;
 	width: 100px;
 	height: 62px;
@@ -538,7 +538,7 @@ html,body{
 			color: ${Be.lagoonBlue};
 		}
 	}
-`,yn=({steps:e,onCreateEnvironment:t,requiredFormItems:n,loading:r,renderType:o="card"})=>{const[l,s]=c(!1),[d]=Se(),[u,p]=c(1),h=e?.length??0,[m,A]=c(!0),C=()=>{const e=d.getFieldsValue(!0),t={};if(Array.isArray(n))for(const r of n){if(!e[r])return!1;t[r]=e[r]}return t},f=()=>{p(1),s(!1),A(!0),d.resetFields()};return i(pn,{$type:o,children:[i(hn,{onClick:()=>s(!0),children:[a(oe,{})," New environment"]}),a(Jt,{title:a(wn,{children:"Create an Environment"}),subTitle:i(bn,{children:["Step ",u," of ",h]}),open:l,destroyOnClose:!0,cancelText:1===u?"Cancel":"Back",onCancel:e=>{"cancel-btn"===e.target.id||"cancel-btn"===e.target.parentElement.id?u<=1?f():p(u-1):f()},onOk:()=>{const e=C();e&&(u<h?p(u+1):t(e).then((()=>s(!1))))},confirmText:u<h?"Next":"Create",confirmLoading:r,confirmDisabled:m,children:a(gn,{children:a(T,{form:d,onFieldsChange:()=>{const e=C();A(!e)},children:e[u-1]})})})]})},gn=e.div`
+`,yn=({steps:e,onCreateEnvironment:t,requiredFormItems:n,loading:r,renderType:o="card"})=>{const[l,s]=c(!1),[d]=Se(),[u,p]=c(1),h=e?.length??0,[m,A]=c(!0),C=()=>{const e=d.getFieldsValue(!0),t={};if(Array.isArray(n))for(const r of n){if(!e[r])return!1;t[r]=e[r]}return t},f=()=>{p(1),s(!1),A(!0),d.resetFields()};return i(pn,{$type:o,children:[i(hn,{onClick:()=>s(!0),children:[a(oe,{"data-cy":"create-environment"})," New environment"]}),a(Jt,{title:a(wn,{children:"Create an Environment"}),subTitle:i(bn,{children:["Step ",u," of ",h]}),open:l,destroyOnClose:!0,cancelText:1===u?"Cancel":"Back",onCancel:e=>{"cancel-btn"===e.target.id||"cancel-btn"===e.target.parentElement.id?u<=1?f():p(u-1):f()},onOk:()=>{const e=C();e&&(u<h?p(u+1):t(e).then((()=>s(!1))))},confirmText:u<h?"Next":"Create",confirmLoading:r,confirmDisabled:m,children:a(gn,{children:a(T,{form:d,onFieldsChange:()=>{const e=C();A(!e)},children:e[u-1]})})})]})},gn=e.div`
 	min-height: 300px;
 	padding-top: 5.5rem;
 	padding-bottom: 6.8125rem;

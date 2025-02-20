@@ -47,10 +47,11 @@ const UIModal: FC<UIModalProps> = ({
 				return <ModalChildren $minHeight={minHeight}>{node}</ModalChildren>;
 			}}
 			footer={[
-				<Button key="back" id="cancel-btn" onClick={onCancel}>
+				<Button data-cy="modal-cancel" key="back" id="cancel-btn" onClick={onCancel}>
 					{cancelText ? cancelText : 'Cancel'}
 				</Button>,
 				<Button
+					data-cy="modal-confirm"
 					disabled={confirmDisabled}
 					danger={dangerConfirm}
 					key="submit"
