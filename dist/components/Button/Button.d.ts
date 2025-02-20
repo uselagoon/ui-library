@@ -12,6 +12,7 @@ export type InternalButtonProps = Omit<ButtonProps, 'icon'> & ButtonSizeType & {
     children?: React.ReactNode;
     styles?: React.CSSProperties;
     danger?: boolean;
+    testId?: string;
 };
 declare const Button: React.ForwardRefExoticComponent<Omit<ButtonProps, "icon"> & ButtonSizeType & {
     iconBefore?: React.ReactNode;
@@ -22,5 +23,6 @@ declare const Button: React.ForwardRefExoticComponent<Omit<ButtonProps, "icon"> 
     children?: React.ReactNode;
     styles?: React.CSSProperties | undefined;
     danger?: boolean | undefined;
+    testId?: string | undefined;
 } & React.RefAttributes<HTMLButtonElement>>;
 export default Button;

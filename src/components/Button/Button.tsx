@@ -18,6 +18,7 @@ export type InternalButtonProps = Omit<ButtonProps, 'icon'> &
 		children?: React.ReactNode;
 		styles?: React.CSSProperties;
 		danger?: boolean;
+		testId?: string;
 	};
 
 const InternalButton: React.ForwardRefRenderFunction<HTMLButtonElement, InternalButtonProps> = (
@@ -32,6 +33,7 @@ const InternalButton: React.ForwardRefRenderFunction<HTMLButtonElement, Internal
 		className,
 		children,
 		styles,
+		testId,
 		...props
 	}: InternalButtonProps,
 	ref,
@@ -55,6 +57,7 @@ const InternalButton: React.ForwardRefRenderFunction<HTMLButtonElement, Internal
 	}
 	return (
 		<AntButton
+			{...(testId && { 'data-cy': testId })}
 			ref={ref}
 			size={size}
 			styles={styles}
