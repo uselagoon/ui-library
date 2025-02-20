@@ -57,7 +57,7 @@ const CopyToClipboard: FC<ClipboardProps> = ({
 			<div className="icons">
 				{!copied ? (
 					<>
-						<CopyOutlined onClick={handleCopy} className="copy-icon" />
+						<CopyOutlined data-cy='copy-button' onClick={handleCopy} className="copy-icon" />
 						{type === 'hiddenWithIcon' && unblurIcon}
 					</>
 				) : (
