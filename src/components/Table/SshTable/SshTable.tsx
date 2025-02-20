@@ -219,6 +219,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 							name="keyName"
 						>
 							<Input
+								data-cy="delete-confirm"
 								placeholder="Key name"
 								value={selectedKey?.name}
 								onChange={(e) => {
@@ -312,6 +313,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 						</Tooltip>
 						<Tooltip placement="bottom" title="Delete key">
 							<DeleteOutlined
+								data-cy="delete-button"
 								onClick={() => {
 									setSelectedKey(key);
 									setDeleteModalOpen(true);
