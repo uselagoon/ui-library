@@ -257,7 +257,7 @@ html,body{
 	.ant-select-tree {
 		background-color: #fff;
 	}
-`,Ft=h((({treeData:e,placeholder:t,sectionsCheckable:n=!1,...r},i)=>a(O,{ref:i,placeholder:t||"Select an action",treeDefaultExpandAll:!0,treeData:e,treeLine:!1,multiple:!1,treeIcon:!0,treeCheckable:n,popupClassName:"ui-tree",dropdownRender:e=>a(Xt,{children:e}),dropdownStyle:{width:"max-content",minWidth:"550px"},...r})));Ft.displayName="TreeSelect";const $t=h((({className:e,children:t,items:n,onClick:r,...i},o)=>a(R,{ref:o,showIcon:!0,treeData:n,defaultExpandAll:!0,showLine:!1,multiple:!1,checkable:!1,className:"ui-dropdowntree",...i})));$t.displayName="Tree";const _t=e.div`
+`,Ft=h((({treeData:e,placeholder:t,sectionsCheckable:n=!1,...r},i)=>a(O,{open:!0,ref:i,placeholder:t||"Select an action",treeDefaultExpandAll:!0,treeData:e,treeLine:!1,multiple:!1,treeIcon:!0,treeCheckable:n,popupClassName:"ui-tree",dropdownRender:e=>a(Xt,{children:e}),dropdownStyle:{width:"max-content",minWidth:"550px"},treeTitleRender:e=>a("span",{"data-cy":"tree-item",children:e.title}),...r})));Ft.displayName="TreeSelect";const $t=h((({className:e,children:t,items:n,onClick:r,...i},o)=>a(R,{ref:o,showIcon:!0,treeData:n,defaultExpandAll:!0,showLine:!1,multiple:!1,checkable:!1,className:"ui-dropdowntree",...i})));$t.displayName="Tree";const _t=e.div`
 	transform: rotate(90deg);
 	text-transform: uppercase;
 	min-width: 100px;

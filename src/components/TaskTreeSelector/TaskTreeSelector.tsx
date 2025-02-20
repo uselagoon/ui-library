@@ -14,6 +14,7 @@ const InternalTreeSelector: React.ForwardRefRenderFunction<any, UITreeSelectProp
 ) => {
 	return (
 		<TreeSelect
+			open
 			ref={ref}
 			placeholder={placeholder || 'Select an action'}
 			treeDefaultExpandAll={true}
@@ -25,6 +26,9 @@ const InternalTreeSelector: React.ForwardRefRenderFunction<any, UITreeSelectProp
 			popupClassName="ui-tree"
 			dropdownRender={(menu) => <StyledDropdown>{menu}</StyledDropdown>}
 			dropdownStyle={{ width: 'max-content', minWidth: '550px' }}
+			treeTitleRender={(node) => {
+				return <span data-cy="tree-item">{node.title}</span>;
+			}}
 			{...rest}
 		/>
 	);
