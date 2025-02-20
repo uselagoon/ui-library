@@ -269,7 +269,7 @@ const ProjectsTable: React.FC<ProjectsTableProps> = (props) => {
 					current={currentPage}
 					onChange={handlePageChange}
 				/>
-				<TotalDescription>{`Total: ${filteredProjects.length} Projects`}</TotalDescription>
+				<TotalDescription data-cy="projects-total">{`Total: ${filteredProjects.length} Projects`}</TotalDescription>
 			</PaginationWithSelector>
 		</>
 	);

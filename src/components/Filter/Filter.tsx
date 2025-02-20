@@ -48,6 +48,7 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 				{selectOptions ? (
 					<div className="results">
 						<UISelect
+							data-cy="select-results"
 							disabled={loadingSkeleton}
 							defaultOpen={false}
 							placeholder="Results per page"
@@ -63,6 +64,7 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 				{sortOptions ? (
 					<div className="sortBy">
 						<UISelect
+							data-cy="select-sort"
 							disabled={loadingSkeleton}
 							defaultOpen={false}
 							placeholder="Sort by"
@@ -79,6 +81,7 @@ const InternalFilter: React.ForwardRefRenderFunction<HTMLDivElement, FilterProps
 			</div>
 			<div className="searchBar">
 				<StyledSearch
+					data-cy="search-bar"
 					ref={inputRef}
 					placeholder="Search"
 					size="small"
