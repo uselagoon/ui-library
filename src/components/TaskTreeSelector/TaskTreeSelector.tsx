@@ -14,7 +14,6 @@ const InternalTreeSelector: React.ForwardRefRenderFunction<any, UITreeSelectProp
 ) => {
 	return (
 		<TreeSelect
-			open
 			ref={ref}
 			placeholder={placeholder || 'Select an action'}
 			treeDefaultExpandAll={true}
