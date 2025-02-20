@@ -6,6 +6,10 @@ type StatProps = Omit<StatisticProps, 'value'> & {
 	fullWidth?: boolean;
 	value: ReactNode;
 };
+function formatToCypressString(input: string) {
+	return input.toLowerCase().replace(/\s+/g, '-');
+}
+
 const UIStat: React.FC<StatProps> = ({ fullWidth = false, value, ...rest }) => {
 	let isElement = isValidElement(value);
 
@@ -16,8 +20,13 @@ const UIStat: React.FC<StatProps> = ({ fullWidth = false, value, ...rest }) => {
 				{...rest}
 				value={isElement ? '' : (value as string | number)}
 				valueStyle={isElement ? { display: 'none' } : {}}
+				valueRender={(node) => <span data-cy={formatToCypressString(rest.title as string)}>{node}</span>}
 			/>
-			{isElement ? <div className="statistic-element">{value}</div> : null}
+			{isElement ? (
+				<div data-cy={formatToCypressString(rest.title as string)} className="statistic-element">
+					{value}
+				</div>
+			) : null}
 		</StyledStatistic>
 	);
 };
