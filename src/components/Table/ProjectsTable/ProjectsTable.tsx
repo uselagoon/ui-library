@@ -13,6 +13,8 @@ import duration from 'dayjs/plugin/duration';
 import ProjectsTableSkeleton from './ProjectsTableSkeleton';
 import { highlightTextInElement } from '../../../_util/helpers';
 import { debounce } from '../_utils';
+import { TotalDescription } from '../Organizations/styles';
+import { PaginationWithSelector } from '../FactsTable/FactsTable';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -259,12 +261,16 @@ const ProjectsTable: React.FC<ProjectsTableProps> = (props) => {
 					indicator: <LoadingOutlined />,
 				}}
 			/>
-			<Pagination
-				total={filteredProjects.length}
-				pageSize={pageSize === -1 ? Infinity : pageSize}
-				current={currentPage}
-				onChange={handlePageChange}
-			/>
+
+			<PaginationWithSelector>
+				<Pagination
+					total={filteredProjects.length}
+					pageSize={pageSize === -1 ? Infinity : pageSize}
+					current={currentPage}
+					onChange={handlePageChange}
+				/>
+				<TotalDescription>{`Total: ${filteredProjects.length} Projects`}</TotalDescription>
+			</PaginationWithSelector>
 		</>
 	);
 };
