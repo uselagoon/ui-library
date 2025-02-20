@@ -4,6 +4,6 @@ import { StyledEmptyTableDescription } from './styles';
 export const EmptyDisplay = (
 	<StyledEmptyTableDescription
 		image={<IconInfoCircle size={60} />}
-		description={<span>Nothing to display</span>}
+		description={<span data-cy="empty">Nothing to display</span>}
 	></StyledEmptyTableDescription>
 );

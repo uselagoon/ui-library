@@ -91,7 +91,7 @@ const UIBreadcrumb: FC<UIBreadcrumbProps> = (props) => {
 	// always prepend with " / "
 	modifiedItems.unshift({ type: 'separator', separator: '/' });
 
-	return <StyledBreadcrumb style={{ marginBottom: '2rem' }} items={modifiedItems} {...rest} />;
+	return <StyledBreadcrumb data-cy="page-title" style={{ marginBottom: '2rem' }} items={modifiedItems} {...rest} />;
 };
 
 const StyledBreadcrumb = styled(Breadcrumb)`
