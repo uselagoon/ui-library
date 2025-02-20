@@ -48,6 +48,9 @@ const InternalTreeList: React.ForwardRefRenderFunction<any, TreeListProps> = ({ 
 					multiple={false}
 					showIcon={true}
 					rootClassName="ui-treelink"
+					titleRender={(node) => {
+						return <span data-cy="tree-item">{node.title}</span>;
+					}}
 				/>
 			}
 		>
