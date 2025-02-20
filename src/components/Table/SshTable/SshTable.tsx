@@ -236,6 +236,7 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 	const addNewKey = (
 		<>
 			<ModalButton
+				testId="add-key"
 				iconBefore={<PlusOutlined size={100} />}
 				onClick={() => setNewModalOpen(true)}
 				size="middle"
@@ -255,11 +256,14 @@ const SshTable = ({ sshKeys, addNewKey: { add, loading }, updateKey, deleteKey, 
 			>
 				<ModalForm form={addForm}>
 					<FormItem required rules={[{ required: true, message: '' }]} label="Key Name" name="keyName">
-						<Input placeholder="Enter a name for the variable" />
+						<Input data-cy="key-name" placeholder="Enter a name for the variable" />
 					</FormItem>
 
 					<FormItem required rules={[{ required: true, message: '' }]} label="Key Value" name="keyValue">
-						<StyledTextArea placeholder="Begins with 'ssh-rsa', 'ssh-ed25519', 'ecdsa-sha2-nistp256', 'ecdsa-sha2-nistp384', 'ecdsa-sha2-nistp521'" />
+						<StyledTextArea
+							data-cy="key-value"
+							placeholder="Begins with 'ssh-rsa', 'ssh-ed25519', 'ecdsa-sha2-nistp256', 'ecdsa-sha2-nistp384', 'ecdsa-sha2-nistp521'"
+						/>
 					</FormItem>
 				</ModalForm>
 			</Modal>
