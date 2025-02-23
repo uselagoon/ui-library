@@ -174,7 +174,7 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 				return 0;
 			},
 			render: (members: number) => {
-				return <>Active Members: {members}</>;
+				return <div data-cy="member-count">Active Members: {members}</div>;
 			},
 			className: getSortedClass('memberCount'),
 		},
