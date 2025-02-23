@@ -283,7 +283,7 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 				/>
 			</PaginationWithSelector>
 
-			<TotalDescription>
+			<TotalDescription data-cy='total'>
 				Showing {getResultRange()} of {totalFilteredCount} projects
 			</TotalDescription>
 		</>

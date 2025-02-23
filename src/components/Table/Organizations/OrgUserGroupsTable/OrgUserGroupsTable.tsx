@@ -260,7 +260,7 @@ const OrgUserGroupsTable = (props: OrgUserGroupsTableProps) => {
 				/>
 			</PaginationWithSelector>
 
-			<TotalDescription>
+			<TotalDescription data-cy='total'>
 				Showing {getResultRange()} of {totalFilteredCount} groups
 			</TotalDescription>
 		</>

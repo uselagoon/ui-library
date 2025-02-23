@@ -368,7 +368,7 @@ const OrgUsersTable = (props: UsersProps) => {
 				/>
 			</PaginationWithSelector>
 
-			<TotalDescription>
+			<TotalDescription data-cy='total'>
 				Showing {getResultRange()} of {totalFilteredCount} users
 			</TotalDescription>
 		</>
