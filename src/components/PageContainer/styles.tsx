@@ -5,7 +5,6 @@ import lightBg from '../../images/bg_light.jpg';
 export const StyledPageContainer = styled.div`
 	min-height: 100dvh;
 	margin: 0;
-	background-color: ${(props) => (props.theme.colorScheme === 'light' ? '#f2f2f2' : '#1F1F1F')};
 
 	.content {
 		padding-inline: 8.888vw;

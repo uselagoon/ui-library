@@ -931,7 +931,6 @@ html,body{
 `,ir=l.default.div`
 	min-height: 100dvh;
 	margin: 0;
-	background-color: ${e=>"light"===e.theme.colorScheme?"#f2f2f2":"#1F1F1F"};
 
 	.content {
 		padding-inline: 8.888vw;
