@@ -256,6 +256,12 @@ html,body{
 `,Ze=n.forwardRef(((e,n)=>{const{text:r,count:a}=e,o=["critical","high","medium","low"].every((t=>!(t in e)))?"#fff":(e=>e.critical?k.pink:e.high?k.orange:e.medium?k.yellow:e.low?k.blue:"#fff")(e);return t.jsxs(Se,{className:"ui-datacard",ref:n,$severityColor:o,children:[t.jsx("span",{className:"ui-datacard__text",children:r}),t.jsx("span",{className:"ui-datacard__count",children:a})]})}));Ze.displayName="DataCard";const Me=l.default.section`
 	.ant-select-tree {
 		background-color: #fff;
+
+		.ant-select-tree-treenode {
+			* {
+				color: #000 !important;
+			}
+		}
 	}
 `,Le=n.forwardRef((({treeData:e,placeholder:n,sectionsCheckable:a=!1,...o},s)=>t.jsx(r.TreeSelect,{ref:s,placeholder:n||"Select an action",treeDefaultExpandAll:!0,treeData:e,treeLine:!1,multiple:!1,treeIcon:!0,treeCheckable:a,popupClassName:"ui-tree",dropdownRender:e=>t.jsx(Me,{children:e}),dropdownStyle:{width:"max-content",minWidth:"550px"},...o})));Le.displayName="TreeSelect";const Ee=n.forwardRef((({className:e,children:n,items:a,onClick:o,...s},i)=>t.jsx(r.Tree,{ref:i,showIcon:!0,treeData:a,defaultExpandAll:!0,showLine:!1,multiple:!1,checkable:!1,className:"ui-dropdowntree",...s})));Ee.displayName="Tree";const We=l.default.div`
 	transform: rotate(90deg);

@@ -256,6 +256,12 @@ html,body{
 `,Qt=h(((e,t)=>{const{text:n,count:r}=e,o=["critical","high","medium","low"].every((t=>!(t in e)))?"#fff":(e=>e.critical?Be.pink:e.high?Be.orange:e.medium?Be.yellow:e.low?Be.blue:"#fff")(e);return i(Gt,{className:"ui-datacard",ref:t,$severityColor:o,children:[a("span",{className:"ui-datacard__text",children:n}),a("span",{className:"ui-datacard__count",children:r})]})}));Qt.displayName="DataCard";const Xt=e.section`
 	.ant-select-tree {
 		background-color: #fff;
+
+		.ant-select-tree-treenode {
+			* {
+				color: #000 !important;
+			}
+		}
 	}
 `,Ft=h((({treeData:e,placeholder:t,sectionsCheckable:n=!1,...r},i)=>a(O,{ref:i,placeholder:t||"Select an action",treeDefaultExpandAll:!0,treeData:e,treeLine:!1,multiple:!1,treeIcon:!0,treeCheckable:n,popupClassName:"ui-tree",dropdownRender:e=>a(Xt,{children:e}),dropdownStyle:{width:"max-content",minWidth:"550px"},...r})));Ft.displayName="TreeSelect";const $t=h((({className:e,children:t,items:n,onClick:r,...i},o)=>a(R,{ref:o,showIcon:!0,treeData:n,defaultExpandAll:!0,showLine:!1,multiple:!1,checkable:!1,className:"ui-dropdowntree",...i})));$t.displayName="Tree";const _t=e.div`
 	transform: rotate(90deg);

@@ -33,6 +33,12 @@ const InternalTreeSelector: React.ForwardRefRenderFunction<any, UITreeSelectProp
 const StyledDropdown = styled.section`
 	.ant-select-tree {
 		background-color: #fff;
+
+		.ant-select-tree-treenode {
+			* {
+				color: #000 !important;
+			}
+		}
 	}
 `;
 
