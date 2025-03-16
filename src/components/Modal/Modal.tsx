@@ -36,12 +36,23 @@ const UIModal: FC<UIModalProps> = ({
 			</>
 		);
 	}
+
+	const handleVisibility = (opened: boolean): void => {
+		const htmlElement = document.documentElement;
+		if (opened) {
+			htmlElement.style.overflow = 'hidden';
+		} else {
+			htmlElement.style.overflow = 'initial';
+		}
+	};
+
 	return (
 		<Modal
 			title={modalTitle}
 			destroyOnClose
 			maskClosable
 			onCancel={onCancel}
+			afterOpenChange={handleVisibility}
 			{...props}
 			modalRender={(node: ReactNode) => {
 				return <ModalChildren $minHeight={minHeight}>{node}</ModalChildren>;

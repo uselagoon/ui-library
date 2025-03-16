@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { StatisticProps } from 'antd';
 type StatProps = Omit<StatisticProps, 'value'> & {
     fullWidth?: boolean;
+    lowercaseValue?: boolean;
     value: ReactNode;
 };
 declare const UIStat: React.FC<StatProps>;

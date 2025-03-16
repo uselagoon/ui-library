@@ -35,7 +35,7 @@ type Backup = {
 
 export type BackupsProps = {
 	backups: Backup[];
-	retrieveBackup: (backup: Backup, type: 'failed' | 'unavailable') => JSX.Element;
+	retrieveBackup: (backup: Backup, type: 'failed' | 'retrievable') => JSX.Element;
 	skeleton?: false;
 };
 
@@ -45,7 +45,7 @@ export type BackupsTableSkeleton = {
 
 export type BackupsTableProps = {
 	resultsPerPage?: number;
-	filterStatus?: 'pending' | 'failed' | 'successful';
+	filterStatus?: 'pending' | 'failed' | 'successful' | 'retrievable';
 	filterDateRange?: string[] | null;
 } & (BackupsTableSkeleton | BackupsProps);
 
@@ -79,8 +79,16 @@ const BackupsTable = (props: BackupsTableProps) => {
 	const filteredBackups = useMemo(() => {
 		return backups
 			? backups.filter((item) => {
-					const statusMatches = filterStatus ? item?.restore?.status === filterStatus : true;
+					let statusMatches = true;
 
+					if (filterStatus) {
+						if (filterStatus === 'retrievable') {
+							statusMatches = item?.restore === null;
+						} else {
+							statusMatches = item?.restore?.status === filterStatus;
+						}
+					}
+					
 					const dateMatches =
 						filterDateRange && filterDateRange.every(Boolean)
 							? dayjs(item.created).isBetween(
@@ -177,7 +185,7 @@ const BackupsTable = (props: BackupsTableProps) => {
 			default:
 				return (
 					<Tooltip placement="bottom" title="Retrieve">
-						{retrieveBackup ? retrieveBackup(backup, 'unavailable') : <CloudDownloadOutlined data-cy="retrieve" />}
+						{retrieveBackup ? retrieveBackup(backup, 'retrievable') : <CloudDownloadOutlined data-cy="retrieve" />}
 					</Tooltip>
 				);
 		}

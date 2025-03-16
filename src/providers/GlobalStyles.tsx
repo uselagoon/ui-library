@@ -36,7 +36,7 @@ html {
 body {
   font-size: 16px;
   box-sizing: border-box;
-  /* background-color:${(props) => (props.theme.colorScheme === 'dark' ? '#0c0c0c' : '#f2f2f2')}; */
+  background-color:${(props) => (props.theme.colorScheme === 'dark' ? '#0C0C0C' : '#f2f2f2')};
 }
 
 html,body{

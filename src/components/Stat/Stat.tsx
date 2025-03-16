@@ -4,13 +4,14 @@ import { StyledStatistic } from './styles';
 
 type StatProps = Omit<StatisticProps, 'value'> & {
 	fullWidth?: boolean;
+	lowercaseValue?: boolean;
 	value: ReactNode;
 };
 function formatToCypressString(input: string) {
 	return input.toLowerCase().replace(/\s+/g, '-');
 }
 
-const UIStat: React.FC<StatProps> = ({ fullWidth = false, value, ...rest }) => {
+const UIStat: React.FC<StatProps> = ({ fullWidth = false, lowercaseValue, value, ...rest }) => {
 	let isElement = isValidElement(value);
 
 	return (
@@ -20,7 +21,14 @@ const UIStat: React.FC<StatProps> = ({ fullWidth = false, value, ...rest }) => {
 				{...rest}
 				value={isElement ? '' : (value as string | number)}
 				valueStyle={isElement ? { display: 'none' } : {}}
-				valueRender={(node) => <span data-cy={formatToCypressString(rest.title as string)}>{node}</span>}
+				valueRender={(node) => (
+					<span
+						style={lowercaseValue ? { textTransform: 'lowercase' } : {}}
+						data-cy={formatToCypressString(rest.title as string)}
+					>
+						{node}
+					</span>
+				)}
 			/>
 			{isElement ? (
 				<div data-cy={formatToCypressString(rest.title as string)} className="statistic-element">

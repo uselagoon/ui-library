@@ -12,7 +12,7 @@ type Backup = {
 };
 export type BackupsProps = {
     backups: Backup[];
-    retrieveBackup: (backup: Backup, type: 'failed' | 'unavailable') => JSX.Element;
+    retrieveBackup: (backup: Backup, type: 'failed' | 'retrievable') => JSX.Element;
     skeleton?: false;
 };
 export type BackupsTableSkeleton = {
@@ -20,7 +20,7 @@ export type BackupsTableSkeleton = {
 };
 export type BackupsTableProps = {
     resultsPerPage?: number;
-    filterStatus?: 'pending' | 'failed' | 'successful';
+    filterStatus?: 'pending' | 'failed' | 'successful' | 'retrievable';
     filterDateRange?: string[] | null;
 } & (BackupsTableSkeleton | BackupsProps);
 declare const BackupsTable: (props: BackupsTableProps) => import("react/jsx-runtime").JSX.Element;

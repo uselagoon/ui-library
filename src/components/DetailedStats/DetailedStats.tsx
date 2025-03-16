@@ -16,7 +16,7 @@ const InternalDetailedStats: React.ForwardRefRenderFunction<HTMLDivElement, Deta
 	return (
 		<StyledDetails className="ui-detailedStats" ref={ref}>
 			{items.map(({ label, children, key, loading = false }) => (
-				<Stat key={key} title={label} value={children} loading={loading} fullWidth />
+				<Stat lowercaseValue key={key} title={label} value={children} loading={loading} fullWidth />
 			))}
 		</StyledDetails>
 	);
