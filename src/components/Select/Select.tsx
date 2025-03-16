@@ -25,6 +25,7 @@ const UISelect = forwardRef<RefSelectProps, UISelectProps>((props, ref) => {
 			value={value || selectedState || undefined}
 			defaultOpen={props.defaultOpen || true}
 			style={style}
+			dropdownStyle={{ padding: 0 }}
 			dropdownRender={(menu) => {
 				return <StyledDropDown data-cy="select-menu">{menu}</StyledDropDown>;
 			}}
@@ -66,7 +67,6 @@ const StyledSelect = styled(Select)<SelectProps>`
 
 const StyledDropDown = styled.section`
 	background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#1f1f1f' : '#fff')};
-
 	${(props) =>
 		props.theme.colorScheme === 'dark' &&
 		css`
