@@ -31,7 +31,11 @@ const UIStat: React.FC<StatProps> = ({ fullWidth = false, lowercaseValue, value,
 				)}
 			/>
 			{isElement ? (
-				<div data-cy={formatToCypressString(rest.title as string)} className="statistic-element">
+				<div
+					style={lowercaseValue ? { textTransform: 'lowercase' } : {}}
+					data-cy={formatToCypressString(rest.title as string)}
+					className="statistic-element"
+				>
 					{value}
 				</div>
 			) : null}

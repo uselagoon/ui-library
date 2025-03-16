@@ -1172,7 +1172,7 @@ html,body{
 					min-width: 20.25rem;
 					max-width: max-content;
 				`}
-`;function eo(e){return e.toLowerCase().replace(/\s+/g,"-")}const to=({fullWidth:e=!1,lowercaseValue:a,value:o,...s})=>{let i=n.isValidElement(o);return t.jsxs(_a,{$fullWidth:e,children:[t.jsx(r.Statistic,{className:"ui-statistic",...s,value:i?"":o,valueStyle:i?{display:"none"}:{},valueRender:e=>t.jsx("span",{style:a?{textTransform:"lowercase"}:{},"data-cy":eo(s.title),children:e})}),i?t.jsx("div",{"data-cy":eo(s.title),className:"statistic-element",children:o}):null]})};to.displayName="Stat";const no=l.default.div`
+`;function eo(e){return e.toLowerCase().replace(/\s+/g,"-")}const to=({fullWidth:e=!1,lowercaseValue:a,value:o,...s})=>{let i=n.isValidElement(o);return t.jsxs(_a,{$fullWidth:e,children:[t.jsx(r.Statistic,{className:"ui-statistic",...s,value:i?"":o,valueStyle:i?{display:"none"}:{},valueRender:e=>t.jsx("span",{style:a?{textTransform:"lowercase"}:{},"data-cy":eo(s.title),children:e})}),i?t.jsx("div",{style:a?{textTransform:"lowercase"}:{},"data-cy":eo(s.title),className:"statistic-element",children:o}):null]})};to.displayName="Stat";const no=l.default.div`
 	text-transform: uppercase;
 	border-radius: 5px;
 	display: grid;

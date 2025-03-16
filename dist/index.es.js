@@ -1172,7 +1172,7 @@ html,body{
 					min-width: 20.25rem;
 					max-width: max-content;
 				`}
-`;function Ol(e){return e.toLowerCase().replace(/\s+/g,"-")}const Hl=({fullWidth:e=!1,lowercaseValue:t,value:n,...r})=>{let o=f(n);return i(zl,{$fullWidth:e,children:[a(G,{className:"ui-statistic",...r,value:o?"":n,valueStyle:o?{display:"none"}:{},valueRender:e=>a("span",{style:t?{textTransform:"lowercase"}:{},"data-cy":Ol(r.title),children:e})}),o?a("div",{"data-cy":Ol(r.title),className:"statistic-element",children:n}):null]})};Hl.displayName="Stat";const Rl=e.div`
+`;function Ol(e){return e.toLowerCase().replace(/\s+/g,"-")}const Hl=({fullWidth:e=!1,lowercaseValue:t,value:n,...r})=>{let o=f(n);return i(zl,{$fullWidth:e,children:[a(G,{className:"ui-statistic",...r,value:o?"":n,valueStyle:o?{display:"none"}:{},valueRender:e=>a("span",{style:t?{textTransform:"lowercase"}:{},"data-cy":Ol(r.title),children:e})}),o?a("div",{style:t?{textTransform:"lowercase"}:{},"data-cy":Ol(r.title),className:"statistic-element",children:n}):null]})};Hl.displayName="Stat";const Rl=e.div`
 	text-transform: uppercase;
 	border-radius: 5px;
 	display: grid;
