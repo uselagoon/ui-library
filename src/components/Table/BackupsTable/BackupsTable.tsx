@@ -11,7 +11,7 @@ import BackupsTableSkeleton from './BackupsTableSkeleton';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
 import CopyToClipboard from '../../CopyToClipboard';
-import { Tooltip, TableProps } from 'antd';
+import { Tooltip } from 'antd';
 import Text from '../../Text';
 import { StyledDownloadButton } from './styles';
 import isBetween from 'dayjs/plugin/isBetween';
@@ -194,7 +194,7 @@ const BackupsTable = (props: BackupsTableProps) => {
 					</Tooltip>
 				),
 
-				status: <StatusTag type={backup.restore?.status ?? 'unavailable'} />,
+				status: <StatusTag type={backup.restore?.status ?? 'retrievable'} />,
 				actions: <ActionWrap>{getButtonWithAction(backup)}</ActionWrap>,
 			};
 		});

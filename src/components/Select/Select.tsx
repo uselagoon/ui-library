@@ -65,11 +65,11 @@ const StyledSelect = styled(Select)<SelectProps>`
 `;
 
 const StyledDropDown = styled.section`
+	background-color: ${(props) => (props.theme.colorScheme === 'dark' ? '#1f1f1f' : '#fff')};
+
 	${(props) =>
 		props.theme.colorScheme === 'dark' &&
 		css`
-			background-color: #1f1f1f;
-
 			.ant-select-item.ant-select-item-option {
 				color: #fff;
 			}

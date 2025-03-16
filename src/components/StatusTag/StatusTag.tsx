@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-import { Tag, TagProps } from 'antd';
+import { Tag, TagProps, Tooltip } from 'antd';
 import colors from '../../_util/colors';
 import {
 	CheckCircleOutlined,
@@ -28,7 +28,8 @@ export type UITagProps = Omit<TagProps, 'color' | 'icon'> &
 					| 'new'
 					| 'pending'
 					| 'cancelled'
-					| 'unavailable';
+					| 'unavailable'
+					| 'retrievable';
 		  }
 		| {
 				type: 'custom';
@@ -85,6 +86,14 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, UITagProps> =
 		unavailable: {
 			color: colors.lightOrange,
 			icon: <QuestionCircleOutlined />,
+		},
+		retrievable: {
+			color: colors.lightOrange,
+			icon: (
+				<Tooltip title="Ready to be retrieved">
+					<QuestionCircleOutlined />
+				</Tooltip>
+			),
 		},
 		cancelled: {
 			color: colors.pink,
