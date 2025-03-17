@@ -7,6 +7,8 @@ type StatItem = {
 	label: string;
 	children?: ReactNode;
 	loading?: boolean;
+	capitalizeValue?: boolean;
+	lowercaseValue?: boolean;
 };
 type DetailedStatsProps = {
 	items: StatItem[];
@@ -15,8 +17,16 @@ type DetailedStatsProps = {
 const InternalDetailedStats: React.ForwardRefRenderFunction<HTMLDivElement, DetailedStatsProps> = ({ items }, ref) => {
 	return (
 		<StyledDetails className="ui-detailedStats" ref={ref}>
-			{items.map(({ label, children, key, loading = false }) => (
-				<Stat lowercaseValue key={key} title={label} value={children} loading={loading} fullWidth />
+			{items.map(({ capitalizeValue, lowercaseValue, label, children, key, loading = false }) => (
+				<Stat
+					lowercaseValue={lowercaseValue}
+					capitalizeValue={capitalizeValue}
+					key={key}
+					title={label}
+					value={children}
+					loading={loading}
+					fullWidth
+				/>
 			))}
 		</StyledDetails>
 	);

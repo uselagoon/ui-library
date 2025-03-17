@@ -4,6 +4,8 @@ type StatItem = {
     label: string;
     children?: ReactNode;
     loading?: boolean;
+    capitalizeValue?: boolean;
+    lowercaseValue?: boolean;
 };
 type DetailedStatsProps = {
     items: StatItem[];

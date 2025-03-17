@@ -5,14 +5,24 @@ import { StyledStatistic } from './styles';
 type StatProps = Omit<StatisticProps, 'value'> & {
 	fullWidth?: boolean;
 	lowercaseValue?: boolean;
+	capitalizeValue?: boolean;
 	value: ReactNode;
 };
 function formatToCypressString(input: string) {
 	return input.toLowerCase().replace(/\s+/g, '-');
 }
 
-const UIStat: React.FC<StatProps> = ({ fullWidth = false, lowercaseValue, value, ...rest }) => {
+const UIStat: React.FC<StatProps> = ({ fullWidth = false, lowercaseValue, capitalizeValue, value, ...rest }) => {
 	let isElement = isValidElement(value);
+
+	let textStyles = {};
+
+	if (lowercaseValue) {
+		textStyles = { textTransform: 'lowercase' };
+	}
+	if (capitalizeValue) {
+		textStyles = { textTransform: 'capitalize' };
+	}
 
 	return (
 		<StyledStatistic $fullWidth={fullWidth}>
@@ -22,20 +32,13 @@ const UIStat: React.FC<StatProps> = ({ fullWidth = false, lowercaseValue, value,
 				value={isElement ? '' : (value as string | number)}
 				valueStyle={isElement ? { display: 'none' } : {}}
 				valueRender={(node) => (
-					<span
-						style={lowercaseValue ? { textTransform: 'lowercase' } : {}}
-						data-cy={formatToCypressString(rest.title as string)}
-					>
+					<span style={textStyles} data-cy={formatToCypressString(rest.title as string)}>
 						{node}
 					</span>
 				)}
 			/>
 			{isElement ? (
-				<div
-					style={lowercaseValue ? { textTransform: 'lowercase' } : {}}
-					data-cy={formatToCypressString(rest.title as string)}
-					className="statistic-element"
-				>
+				<div style={textStyles} data-cy={formatToCypressString(rest.title as string)} className="statistic-element">
 					{value}
 				</div>
 			) : null}
