@@ -11,6 +11,7 @@ export interface ClipboardProps {
 	width?: number | string;
 	fontSize?: string;
 	withToolTip?: boolean;
+	iconOnly?: boolean;
 }
 const CopyToClipboard: FC<ClipboardProps> = ({
 	text,
@@ -18,6 +19,7 @@ const CopyToClipboard: FC<ClipboardProps> = ({
 	fontSize = '14px',
 	type = 'visible',
 	withToolTip = false,
+	iconOnly = false,
 }) => {
 	const copyFn = () => navigator.clipboard.writeText(text as string);
 
@@ -33,7 +35,8 @@ const CopyToClipboard: FC<ClipboardProps> = ({
 		}, 3500);
 	};
 
-	const computedStyles = width ? { maxWidth: `${width}px` } : {};
+	const computedStyles: React.CSSProperties = width ? { maxWidth: `${width}px` } : {};
+	const iconOnlyStyles: React.CSSProperties = iconOnly ? {width: 'max-content'} : {};
 
 	const handleBlurToggle = () => void setManualUnblur(!manualUnblur);
 
@@ -43,8 +46,8 @@ const CopyToClipboard: FC<ClipboardProps> = ({
 		<EyeInvisibleOutlined className="eye-icon" onClick={handleBlurToggle} />
 	);
 	return (
-		<StyledText $fontSize={fontSize} style={{ ...computedStyles }}>
-			<CopyableText className="copyable" $maxWidth={width} $type={type} $manualUnblur={manualUnblur}>
+		<StyledText  $fontSize={fontSize} style={{ ...computedStyles, ...iconOnlyStyles}}>
+			{!iconOnly ? <CopyableText className="copyable" $maxWidth={width} $type={type} $manualUnblur={manualUnblur}>
 				{!withToolTip ? (
 					text
 				) : (
@@ -52,7 +55,7 @@ const CopyToClipboard: FC<ClipboardProps> = ({
 						<TooltipTextLabel>{text}</TooltipTextLabel>
 					</Tooltip>
 				)}
-			</CopyableText>
+			</CopyableText> : null}
 
 			<div className="icons">
 				{!copied ? (

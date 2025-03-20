@@ -5,6 +5,7 @@ export interface ClipboardProps {
     width?: number | string;
     fontSize?: string;
     withToolTip?: boolean;
+    iconOnly?: boolean;
 }
 declare const CopyToClipboard: FC<ClipboardProps>;
 export default CopyToClipboard;

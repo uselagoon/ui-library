@@ -111,10 +111,12 @@ const LinkItems: BreadCrumbProps['items'] = [
 	},
 	{
 		title: <a href="#">as-demo</a>,
+		copyText: 'as-demo',
 	},
 	{
 		title: <a href="#">Environment</a>,
 		key: 'activeItem',
+		copyText: 'Environment',
 	},
 ];
 
@@ -124,10 +126,12 @@ const OrgLinkitems: BreadCrumbProps['items'] = [
 	},
 	{
 		title: <a href="#">Some org</a>,
+		copyText: 'Some org',
 	},
 	{
 		title: <a href="#">as-demo</a>,
 		key: 'activeItem',
+		copyText: 'as-demo',
 	},
 ];
 

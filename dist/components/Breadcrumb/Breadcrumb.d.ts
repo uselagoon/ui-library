@@ -8,9 +8,11 @@ export interface UIBreadcrumbProps extends Omit<BreadcrumbProps, 'itemRender' | 
     items: (({
         navOnClick?: MouseEventHandler<HTMLAnchorElement | HTMLSpanElement>;
         key?: string | number;
+        copyText?: string;
     } & Pick<ItemType, 'title'>) | {
-        key?: string | number;
         title: LinkComponent;
+        key?: string | number;
+        copyText?: string;
     } | {
         separator: ReactNode;
         type: 'separator';

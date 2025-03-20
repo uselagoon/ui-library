@@ -1,8 +1,9 @@
 import React, { FC, Fragment, MouseEventHandler, ReactElement, ReactNode } from 'react';
-import { Breadcrumb, BreadcrumbProps } from 'antd';
+import { BreadcrumbProps } from 'antd';
 import { ItemType } from 'antd/es/breadcrumb/Breadcrumb';
-import styled from 'styled-components';
-import colors from '../../_util/colors';
+
+import CopyToClipboard from '../CopyToClipboard';
+import { StyledBreadcrumb, WithCopy, Wrapper } from './styles';
 
 // type when array of Next links are used
 type Component<T extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> = ReactElement<T>;
@@ -18,10 +19,12 @@ export interface UIBreadcrumbProps extends Omit<BreadcrumbProps, 'itemRender' | 
 		| ({
 				navOnClick?: MouseEventHandler<HTMLAnchorElement | HTMLSpanElement>;
 				key?: string | number;
+				copyText?: string;
 		  } & Pick<ItemType, 'title'>)
 		| {
-				key?: string | number;
 				title: LinkComponent;
+				key?: string | number;
+				copyText?: string;
 		  }
 		| { separator: ReactNode; type: 'separator' }
 	)[];
@@ -34,6 +37,8 @@ const UIBreadcrumb: FC<UIBreadcrumbProps> = (props) => {
 
 	const decoratorList = type && ['default', 'orgs'].includes(type) ? decorators[type] : null;
 
+	let defaultMargins = false;
+
 	const modifiedItems = items.map((item, idx) => {
 		const titleDecorator = decoratorList ? decoratorList[idx] : null;
 
@@ -41,45 +46,49 @@ const UIBreadcrumb: FC<UIBreadcrumbProps> = (props) => {
 			const { title, navOnClick, key } = item;
 
 			let isActive = false;
+			defaultMargins = true;
 
 			if (activeKey && activeKey === key) isActive = true;
 
 			const activeDataProp = isActive ? { ['data-active']: 'active' } : {};
 
+			const wrapperChildren = (
+				<Wrapper>
+					{titleDecorator ? <span>{titleDecorator}</span> : null}
+					{title}
+				</Wrapper>
+			);
 			return {
 				...item,
 				title: navOnClick ? (
-					<a {...activeDataProp}>
-						<Wrapper>
-							<span> {titleDecorator}</span>
-							{title}
-						</Wrapper>
-					</a>
+					<a {...activeDataProp}>{wrapperChildren}</a>
 				) : (
-					<span {...activeDataProp}>
-						<Wrapper>
-							<span> {titleDecorator}</span>
-							{title}
-						</Wrapper>
-					</span>
+					<span {...activeDataProp}>{wrapperChildren}</span>
 				),
 				onClick: navOnClick || undefined,
 			};
 		} else if (!('separator' in item) && !('navOnClick' in item)) {
-			const { title, key } = item;
+			const { title, key, copyText } = item;
 
 			let isActive = false;
 
 			if (activeKey && activeKey === key) isActive = true;
 
 			const activeDataProp = isActive ? { ['data-active']: 'active' } : {};
+
+			const shouldCopyToClipboardRender = !!(titleDecorator && copyText);
 			return {
 				...item,
 				title: (
 					<Fragment key={key}>
 						<Wrapper {...activeDataProp}>
-							<span> {titleDecorator}</span>
-							{title}
+							<span className="decorator"> {titleDecorator}</span>
+							<WithCopy {...activeDataProp}>
+								{title}
+								<div className="copy">
+									{shouldCopyToClipboardRender && <CopyToClipboard text={copyText} iconOnly />}
+								</div>
+							</WithCopy>
 						</Wrapper>
 					</Fragment>
 				),
@@ -91,59 +100,16 @@ const UIBreadcrumb: FC<UIBreadcrumbProps> = (props) => {
 	// always prepend with " / "
 	modifiedItems.unshift({ type: 'separator', separator: '/' });
 
-	return <StyledBreadcrumb data-cy="page-title" style={{ marginBottom: '2rem' }} items={modifiedItems} {...rest} />;
+	return (
+		<StyledBreadcrumb
+			$defaultMargins={defaultMargins}
+			data-cy="page-title"
+			style={{ marginBottom: '2rem' }}
+			items={modifiedItems}
+			{...rest}
+		/>
+	);
 };
-
-const StyledBreadcrumb = styled(Breadcrumb)`
-	&.ant-breadcrumb {
-		font-size: 1.2rem;
-		line-height: 25px;
-
-		li,
-		span,
-		a {
-			transition: all 0.25s ease;
-			color: ${(props) => props.theme.UI.texts.secondary};
-			&[data-active='active'] {
-				color: ${(props) => (props.theme.colorScheme === 'light' ? colors.texts.primary.light : colors.white)};
-			}
-		}
-		& a:hover {
-			background-color: ${(props) => (props.theme.colorScheme === 'light' ? '#0000000f' : colors.lighterGray)};
-		}
-
-		li.ant-breadcrumb-separator:nth-last-child(2) {
-			color: ${(props) => (props.theme.colorScheme === 'light' ? colors.texts.primary.light : colors.white)};
-		}
-	}
-`;
-
-const Wrapper = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-end;
-	position: relative;
-
-	&[data-active='active'] > *:last-child {
-		color: ${(props) => (props.theme.colorScheme === 'light' ? colors.texts.primary.light : colors.white)};
-		text-decoration: none !important;
-	}
-
-	span {
-		left: 0;
-		font-size: 13px;
-		font-weight: bolder;
-		color: ${colors.lagoonBlue} !important;
-		top: -100%;
-		position: absolute;
-		pointer-events: none;
-		user-select: none;
-		text-transform: uppercase;
-		text-decoration: none !important;
-		border-bottom: none !important;
-	}
-`;
 
 UIBreadcrumb.displayName = 'Breadcrumb';
 export default UIBreadcrumb;
