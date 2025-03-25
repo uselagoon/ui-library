@@ -4,7 +4,7 @@ type ProjectBase = {
     name: string;
 };
 type StandaloneProject = ProjectBase & {
-    groupCount: number;
+    groupCount?: number;
 };
 export type ProjectsProps = {
     newProjectModal: ReactNode;
