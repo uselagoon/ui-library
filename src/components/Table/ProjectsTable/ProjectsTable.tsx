@@ -136,6 +136,10 @@ const ProjectsTable: React.FC<ProjectsTableProps> = (props) => {
 		setCurrentPage(1);
 	}, [filterString]);
 
+	useEffect(() => {
+		setFilteredProjects(projects);
+	}, [projects]);
+
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
 	};

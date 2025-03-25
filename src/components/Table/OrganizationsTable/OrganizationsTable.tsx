@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useLinkComponent } from '../../../providers/NextLinkProvider';
 
 import { ActionWrap } from '../styles';
@@ -13,6 +13,7 @@ import { debounce } from '../_utils';
 import OrganizationsTableSkeleton from './OrganizationsTableSkeleton';
 import Text from '../../Text';
 import { Tooltip } from 'antd';
+import equal from 'fast-deep-equal/react';
 
 export type Organization = {
 	id: number;
@@ -53,19 +54,18 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 
 	// used for debounced filtering
 	const [loading, setLoading] = useState(false);
+
 	const [filteredOrgs, setFilteredOrgs] = useState<Organization[]>(organizations || []);
 
-	useEffect(() => {
-		if (resultsPerPage) {
-			setResultsPerPage(resultsPerPage);
-		}
-	}, [resultsPerPage]);
+	const [prevOrgs, setPrevOrgs] = useState<Organization[]>(organizations || []);
+	const [prevFilterString, setPrevFilterString] = useState(filterString);
+	const [prevResultsPerPage, setPrevResultsPerPage] = useState(resultsPerPage);
 
-	useEffect(() => {
+	if (resultsPerPage && resultsPerPage !== prevResultsPerPage) {
+		setPrevResultsPerPage(pageSize);
 		setCurrentPage(1);
-	}, [filterString]);
-
-	const Link = useLinkComponent();
+		setResultsPerPage(pageSize);
+	}
 
 	const timerLengthPercentage = useMemo(
 		() => Math.min(1000, Math.max(40, Math.floor(organizations.length * 0.0725))),
@@ -88,10 +88,22 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 		}, timerLengthPercentage),
 		[],
 	);
-	useEffect(() => {
+
+	const isNewOrgs = !equal(prevOrgs, organizations);
+	const isNewFilter = filterString !== prevFilterString;
+
+	if (isNewOrgs || isNewFilter) {
+		if (isNewOrgs) setPrevOrgs(organizations);
+		if (isNewFilter) {
+			setPrevFilterString(filterString);
+			setCurrentPage(1);
+		}
+
 		setLoading(true);
 		debouncedFilter(filterString);
-	}, [filterString, debouncedFilter]);
+	}
+
+	const Link = useLinkComponent();
 
 	// paginated data based on filtered results
 	const paginatedData =
