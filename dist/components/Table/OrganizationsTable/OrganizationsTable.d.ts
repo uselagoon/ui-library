@@ -8,10 +8,10 @@ export type Organization = {
     groups: {
         id: string;
         type?: null | 'project-default-group';
-    }[];
+    }[] | null;
     projects: {
         id: number;
-    }[];
+    }[] | null;
     deployTargets: {
         id: number;
         name: string;

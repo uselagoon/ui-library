@@ -14,6 +14,7 @@ import OrganizationsTableSkeleton from './OrganizationsTableSkeleton';
 import Text from '../../Text';
 import { Tooltip } from 'antd';
 import equal from 'fast-deep-equal/react';
+import Skeleton from '../../Skeleton';
 
 export type Organization = {
 	id: number;
@@ -22,8 +23,8 @@ export type Organization = {
 	friendlyName: string | null;
 	quotaProject: number;
 	quotaGroup: number;
-	groups: { id: string; type?: null | 'project-default-group' }[];
-	projects: { id: number }[];
+	groups: { id: string; type?: null | 'project-default-group' }[] | null;
+	projects: { id: number }[] | null;
 	deployTargets: { id: number; name: string }[];
 };
 
@@ -118,6 +119,8 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 		setCurrentPage(page);
 	};
 
+	const LoaderStyle = { display: 'flex', gap: '0.25rem', alignItems: 'baseline' };
+
 	const orgsColumns = [
 		{
 			title: 'Organization Name',
@@ -142,9 +145,13 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 			dataIndex: 'group_count',
 			key: 'group_count',
 			render: (allGroups: number, org: Organization) => {
-				const groupCount = Object.values(org.groups).filter((group) => group.type !== 'project-default-group').length;
+				let groupCount: number | JSX.Element = <Skeleton height={16} width={20} />;
+
+				if (org.groups) {
+					groupCount = Object.values(org.groups).filter((group) => group.type !== 'project-default-group').length;
+				}
 				return (
-					<div>
+					<div style={{ ...LoaderStyle }}>
 						{groupCount} of {org.quotaGroup === -1 ? 'unlimited' : org.quotaGroup} groups
 					</div>
 				);
@@ -155,11 +162,15 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 			title: 'No. of Projects',
 			dataIndex: 'project_count',
 			key: 'project_count',
-			render: (projectCount: number, org: Organization) => (
-				<div>
-					{projectCount} of {org.quotaProject === -1 ? 'unlimited' : org.quotaProject} projects
-				</div>
-			),
+			render: (projectCount: number | null, org: Organization) => {
+				let count: number | JSX.Element =
+					typeof projectCount === 'number' ? projectCount : <Skeleton height={16} width={20} />;
+				return (
+					<div style={{ ...LoaderStyle }}>
+						{count} of {org.quotaProject === -1 ? 'unlimited' : org.quotaProject} projects
+					</div>
+				);
+			},
 			width: '24.2%',
 		},
 		{
@@ -211,8 +222,8 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 		paginatedData.map((org) => {
 			return {
 				...org,
-				group_count: org.groups?.length,
-				project_count: org.projects?.length,
+				group_count: org.groups?.length ?? null,
+				project_count: org.projects?.length ?? null,
 				target: (
 					<>
 						{org.deployTargets.map((deploytarget) => (
