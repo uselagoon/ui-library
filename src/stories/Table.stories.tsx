@@ -1485,8 +1485,7 @@ export const OrgProjectsTable: Story = {
 					projects={[
 						{
 							id: 1,
-							name: 'a-lot-of-testing',
-							groupCount: 2,
+							name: 'a-lot-of-testing-loading-groupCount',
 						},
 						{
 							id: 2,

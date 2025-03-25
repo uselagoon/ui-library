@@ -12,6 +12,7 @@ import Pagination from '../../../Pagination';
 import { Tooltip } from 'antd';
 import { IconLagoonOnly } from '../../../Icons';
 import OrgProjectsTableSkeleton from './OrgProjectsTableSkeleton';
+import Skeleton from '../../../Skeleton';
 
 type ProjectBase = {
 	id: number;
@@ -19,7 +20,7 @@ type ProjectBase = {
 };
 
 type StandaloneProject = ProjectBase & {
-	groupCount: number;
+	groupCount?: number;
 };
 
 export type ProjectsProps = { newProjectModal: ReactNode; basePath: string; skeleton?: false } & (
@@ -83,7 +84,7 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 				const fieldsToCheck = [project.name];
 
 				if (type === 'standalone') {
-					fieldsToCheck.push(String((project as StandaloneProject).groupCount));
+					fieldsToCheck.push(String((project as StandaloneProject)?.groupCount));
 				}
 
 				return fieldsToCheck.some((fieldValue) =>
@@ -173,8 +174,8 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 							}
 							return 0;
 						},
-						render: (members: number) => {
-							return <>Groups: {members}</>;
+						render: (members?: number) => {
+							return <>Groups: {members != undefined ? members : <Skeleton height={15} width={15} />}</>;
 						},
 						className: getSortedClass('groupCount'),
 					},
@@ -283,7 +284,7 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 				/>
 			</PaginationWithSelector>
 
-			<TotalDescription data-cy='total'>
+			<TotalDescription data-cy="total">
 				Showing {getResultRange()} of {totalFilteredCount} projects
 			</TotalDescription>
 		</>
