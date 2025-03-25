@@ -76,7 +76,7 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 		debounce((filterString: string) => {
 			const filteredData =
 				organizations?.filter((org) => {
-					const fieldsToCheck = [org.name];
+					const fieldsToCheck = [org.friendlyName, org.description, org.name];
 
 					return fieldsToCheck.some((fieldValue) =>
 						String(fieldValue).toLowerCase().includes(filterString.toLowerCase()),
@@ -86,20 +86,23 @@ const OrganizationsTable = (props: OrganizationsTableProps) => {
 			setFilteredOrgs(filteredData);
 			setLoading(false);
 		}, timerLengthPercentage),
-		[],
+		[organizations],
 	);
 
 	const isNewOrgs = !equal(prevOrgs, organizations);
 	const isNewFilter = filterString !== prevFilterString;
 
 	if (isNewOrgs || isNewFilter) {
-		if (isNewOrgs) setPrevOrgs(organizations);
+		setLoading(true);
+
+		if (isNewOrgs) {
+			setPrevOrgs(organizations);
+		}
 		if (isNewFilter) {
 			setPrevFilterString(filterString);
 			setCurrentPage(1);
 		}
 
-		setLoading(true);
 		debouncedFilter(filterString);
 	}
 
