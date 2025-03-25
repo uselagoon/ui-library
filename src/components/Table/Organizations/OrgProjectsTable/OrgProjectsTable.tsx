@@ -27,12 +27,12 @@ export type ProjectsProps = { newProjectModal: ReactNode; basePath: string; skel
 	| {
 			type?: 'standalone';
 			projects: StandaloneProject[];
-			deleteProjectModal: (group: StandaloneProject) => ReactNode;
+			deleteProjectModal: (project: ProjectBase) => ReactNode;
 	  }
 	| {
 			type?: 'subTable';
 			projects: ProjectBase[];
-			unlinkProjectModal: (group: ProjectBase) => ReactNode;
+			unlinkProjectModal: (project: ProjectBase) => ReactNode;
 	  }
 );
 
@@ -192,7 +192,7 @@ const OrgProjectsTable = (props: OrgProjectsProps) => {
 	// unlink or delete
 	const renderDeleteModal = (project: ProjectBase) => {
 		if (type === 'standalone' && 'deleteProjectModal' in props) {
-			return props.deleteProjectModal(project as StandaloneProject);
+			return props.deleteProjectModal(project);
 		} else if (type === 'subTable' && 'unlinkProjectModal' in props) {
 			return props.unlinkProjectModal(project);
 		}

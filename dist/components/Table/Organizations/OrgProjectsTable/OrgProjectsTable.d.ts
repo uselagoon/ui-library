@@ -13,11 +13,11 @@ export type ProjectsProps = {
 } & ({
     type?: 'standalone';
     projects: StandaloneProject[];
-    deleteProjectModal: (group: StandaloneProject) => ReactNode;
+    deleteProjectModal: (project: ProjectBase) => ReactNode;
 } | {
     type?: 'subTable';
     projects: ProjectBase[];
-    unlinkProjectModal: (group: ProjectBase) => ReactNode;
+    unlinkProjectModal: (project: ProjectBase) => ReactNode;
 });
 export type ProjectsTableSkeleton = {
     skeleton: true;
