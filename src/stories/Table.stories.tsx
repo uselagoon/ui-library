@@ -1198,7 +1198,6 @@ export const OrgGroupsTable: Story = {
 							id: 'randomstring',
 							name: 'some-group',
 							type: 'null',
-							memberCount: 1,
 						},
 						{
 							id: 'randomstring2',

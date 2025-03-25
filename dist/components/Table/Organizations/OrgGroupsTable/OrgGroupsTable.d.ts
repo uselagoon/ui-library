@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 type Group = {
     id: string;
-    memberCount: number;
+    memberCount?: number;
     name: string;
     type: 'null' | 'project-default-group';
 };

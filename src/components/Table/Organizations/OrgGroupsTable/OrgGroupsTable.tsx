@@ -11,10 +11,11 @@ import BaseTable from '../../Base';
 import Pagination from '../../../Pagination';
 import OrgGroupsSkeleton from './OrgGroupsSkeleton';
 import { Tooltip } from 'antd';
+import Skeleton from '../../../Skeleton';
 
 type Group = {
 	id: string;
-	memberCount: number;
+	memberCount?: number;
 	name: string;
 	type: 'null' | 'project-default-group';
 };
@@ -94,9 +95,9 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 			const direction = sortOrder === 'asc' ? 1 : -1;
 
 			// possible null checks.
-			if (aValue === null && bValue === null) return 0;
-			if (aValue === null) return direction;
-			if (bValue === null) return -direction;
+			if (aValue == null && bValue == null) return 0;
+			if (aValue == null) return direction;
+			if (bValue == null) return -direction;
 
 			if (aValue > bValue) return direction;
 			if (aValue < bValue) return -direction;
@@ -174,7 +175,11 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 				return 0;
 			},
 			render: (members: number) => {
-				return <div data-cy="member-count">Active Members: {members}</div>;
+				return (
+					<div data-cy="member-count">
+						Active Members: {members != undefined ? members : <Skeleton height={15} width={15} />}
+					</div>
+				);
 			},
 			className: getSortedClass('memberCount'),
 		},
@@ -266,7 +271,7 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 				/>
 			</PaginationWithSelector>
 
-			<TotalDescription data-cy='total'>
+			<TotalDescription data-cy="total">
 				Showing {getResultRange()} of {totalFilteredCount} groups
 			</TotalDescription>
 		</>
