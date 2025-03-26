@@ -23,7 +23,7 @@ export type UIBreadcrumbProps = BasicProps & ({
     currentSlug?: never;
 } | {
     type: 'orgs';
-    currentSlug: 'project' | 'user' | 'group';
+    currentSlug?: 'project' | 'user' | 'group';
 });
 declare const UIBreadcrumb: FC<UIBreadcrumbProps>;
 export default UIBreadcrumb;

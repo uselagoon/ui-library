@@ -32,7 +32,7 @@ export interface BasicProps extends Omit<BreadcrumbProps, 'itemRender' | 'params
 }
 
 export type UIBreadcrumbProps = BasicProps &
-	({ type: 'default'; currentSlug?: never } | { type: 'orgs'; currentSlug: 'project' | 'user' | 'group' });
+	({ type: 'default'; currentSlug?: never } | { type: 'orgs'; currentSlug?: 'project' | 'user' | 'group' });
 
 const UIBreadcrumb: FC<UIBreadcrumbProps> = (props) => {
 	const { activeKey, items, type, currentSlug, ...rest } = props;
