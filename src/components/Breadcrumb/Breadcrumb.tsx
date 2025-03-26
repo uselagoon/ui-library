@@ -83,12 +83,16 @@ const UIBreadcrumb: FC<UIBreadcrumbProps> = (props) => {
 			const activeDataProp = isActive ? { ['data-active']: 'active' } : {};
 
 			const shouldCopyToClipboardRender = !!(titleDecorator && copyText);
+
+			const isTitleSmall = String(title).length < 10;
+
+			const decorator = isTitleSmall && titleDecorator === 'organization' ? 'Org' : titleDecorator;
 			return {
 				...item,
 				title: (
 					<Fragment key={key}>
 						<Wrapper {...activeDataProp}>
-							<span className="decorator"> {titleDecorator}</span>
+							<span className="decorator"> {decorator}</span>
 							<WithCopy {...activeDataProp}>
 								{title}
 								<div className="copy">
