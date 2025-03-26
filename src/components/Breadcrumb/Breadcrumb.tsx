@@ -13,8 +13,7 @@ const decorators = {
 	default: ['', 'project', 'environment'],
 	orgs: ['', 'organization', 'project'],
 };
-export interface UIBreadcrumbProps extends Omit<BreadcrumbProps, 'itemRender' | 'params'> {
-	type?: 'default' | 'orgs';
+export interface BasicProps extends Omit<BreadcrumbProps, 'itemRender' | 'params'> {
 	items: (
 		| ({
 				navOnClick?: MouseEventHandler<HTMLAnchorElement | HTMLSpanElement>;
@@ -32,10 +31,17 @@ export interface UIBreadcrumbProps extends Omit<BreadcrumbProps, 'itemRender' | 
 	activeKey?: string | number;
 }
 
+export type UIBreadcrumbProps = BasicProps &
+	({ type: 'default'; currentSlug?: never } | { type: 'orgs'; currentSlug: 'project' | 'user' | 'group' });
+
 const UIBreadcrumb: FC<UIBreadcrumbProps> = (props) => {
-	const { activeKey, items, type, ...rest } = props;
+	const { activeKey, items, type, currentSlug, ...rest } = props;
 
 	const decoratorList = type && ['default', 'orgs'].includes(type) ? decorators[type] : null;
+
+	if (currentSlug && decoratorList) {
+		decoratorList[2] = currentSlug;
+	}
 
 	let defaultMargins = false;
 
