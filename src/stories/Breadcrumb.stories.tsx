@@ -125,8 +125,8 @@ const OrgLinkitems: BreadCrumbProps['items'] = [
 		title: <a href="#">Organizations</a>,
 	},
 	{
-		title: <a href="#">Some org</a>,
-		copyText: 'Some org',
+		title: <a href="#">Some organization</a>,
+		copyText: 'Some organization',
 	},
 	{
 		title: <a href="#">as-demo</a>,

@@ -84,9 +84,9 @@ const UIBreadcrumb: FC<UIBreadcrumbProps> = (props) => {
 
 			const shouldCopyToClipboardRender = !!(titleDecorator && copyText);
 
-			const isTitleSmall = String(title).length < 10;
+			const isTextSmall = copyText && copyText.length < 15;
 
-			const decorator = isTitleSmall && titleDecorator === 'organization' ? 'Org' : titleDecorator;
+			const decorator = isTextSmall && titleDecorator === 'organization' ? 'Org' : titleDecorator;
 			return {
 				...item,
 				title: (
