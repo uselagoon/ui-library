@@ -260,7 +260,7 @@ const OrgAdminsTable = (props: OwnersTableProps) => {
 				/>
 			</PaginationWithSelector>
 
-			<TotalDescription data-cy='total'>
+			<TotalDescription data-cy="total">
 				Showing {getResultRange()} of {totalFilteredCount} users
 			</TotalDescription>
 		</>

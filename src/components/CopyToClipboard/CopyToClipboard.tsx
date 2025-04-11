@@ -36,7 +36,7 @@ const CopyToClipboard: FC<ClipboardProps> = ({
 	};
 
 	const computedStyles: React.CSSProperties = width ? { maxWidth: `${width}px` } : {};
-	const iconOnlyStyles: React.CSSProperties = iconOnly ? {width: 'max-content'} : {};
+	const iconOnlyStyles: React.CSSProperties = iconOnly ? { width: 'max-content' } : {};
 
 	const handleBlurToggle = () => void setManualUnblur(!manualUnblur);
 
@@ -46,21 +46,23 @@ const CopyToClipboard: FC<ClipboardProps> = ({
 		<EyeInvisibleOutlined className="eye-icon" onClick={handleBlurToggle} />
 	);
 	return (
-		<StyledText  $fontSize={fontSize} style={{ ...computedStyles, ...iconOnlyStyles}}>
-			{!iconOnly ? <CopyableText className="copyable" $maxWidth={width} $type={type} $manualUnblur={manualUnblur}>
-				{!withToolTip ? (
-					text
-				) : (
-					<Tooltip overlayInnerStyle={{ width: '300px' }} title={text} placement="bottom">
-						<TooltipTextLabel>{text}</TooltipTextLabel>
-					</Tooltip>
-				)}
-			</CopyableText> : null}
+		<StyledText $fontSize={fontSize} style={{ ...computedStyles, ...iconOnlyStyles }}>
+			{!iconOnly ? (
+				<CopyableText className="copyable" $maxWidth={width} $type={type} $manualUnblur={manualUnblur}>
+					{!withToolTip ? (
+						text
+					) : (
+						<Tooltip overlayInnerStyle={{ width: '300px' }} title={text} placement="bottom">
+							<TooltipTextLabel>{text}</TooltipTextLabel>
+						</Tooltip>
+					)}
+				</CopyableText>
+			) : null}
 
 			<div className="icons">
 				{!copied ? (
 					<>
-						<CopyOutlined data-cy='copy-button' onClick={handleCopy} className="copy-icon" />
+						<CopyOutlined data-cy="copy-button" onClick={handleCopy} className="copy-icon" />
 						{type === 'hiddenWithIcon' && unblurIcon}
 					</>
 				) : (

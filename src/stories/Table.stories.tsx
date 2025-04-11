@@ -1193,6 +1193,7 @@ export const OrgGroupsTable: Story = {
 					filterString={filterString}
 					basePath="/groups"
 					showDefaults
+					resultsPerPage={5}
 					groups={[
 						{
 							id: 'randomstring',

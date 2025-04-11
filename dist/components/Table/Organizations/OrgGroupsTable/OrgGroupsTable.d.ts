@@ -22,6 +22,7 @@ export type GroupsTableProps = {
     showDefaults?: boolean;
     sortBy?: 'name_asc' | 'name_desc' | 'memberCount_asc' | 'memberCount_desc' | null;
     resultDropdown?: ReactNode;
+    onVisibleDataChange?: (data: Group[]) => void;
 } & (GroupsTableSkeleton | GroupsProps);
 declare const OrgGroupsTable: (props: GroupsTableProps) => import("react/jsx-runtime").JSX.Element;
 export default OrgGroupsTable;

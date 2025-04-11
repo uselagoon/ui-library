@@ -295,7 +295,7 @@ const EnvironmentsTable = (props: EnvironmentsTableProps) => {
 				onChange={handlePageChange}
 			/>
 
-			<TotalDescription data-cy='total'>
+			<TotalDescription data-cy="total">
 				Showing {getResultRange()} of {totalFilteredCount} Environments
 			</TotalDescription>
 		</>

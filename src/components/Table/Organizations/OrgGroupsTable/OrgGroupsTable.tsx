@@ -12,6 +12,7 @@ import Pagination from '../../../Pagination';
 import OrgGroupsSkeleton from './OrgGroupsSkeleton';
 import { Tooltip } from 'antd';
 import Skeleton from '../../../Skeleton';
+import { useDebouncedEffect } from '../../hooks';
 
 type Group = {
 	id: string;
@@ -42,6 +43,7 @@ export type GroupsTableProps = {
 	 * For stylistic reasons, `results per page` select component next to pagination
 	 */
 	resultDropdown?: ReactNode;
+	onVisibleDataChange?: (data: Group[]) => void;
 } & (GroupsTableSkeleton | GroupsProps);
 
 /*
@@ -68,42 +70,43 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 		return <OrgGroupsSkeleton />;
 	}
 
-	const { groups, basePath, addUserModal, deleteUserModal, newGroupModal } = props;
+	const { groups, basePath, addUserModal, deleteUserModal, newGroupModal, onVisibleDataChange } = props;
 
 	const Link = useLinkComponent();
 
-	const filteredGroups = groups
-		? groups.filter((group) => {
-				const fieldsToCheck = [group.name, group.memberCount];
+	const filteredGroups = useMemo(() => {
+		if (!groups) return [];
 
-				return fieldsToCheck.some((fieldValue) =>
-					String(fieldValue).toLowerCase().includes(filterString.toLowerCase()),
-				);
-			})
-		: [];
+		return groups.filter((group) => {
+			const fieldsToCheck = [group.name, group.memberCount];
+			return fieldsToCheck.some((fieldValue) => String(fieldValue).toLowerCase().includes(filterString.toLowerCase()));
+		});
+	}, [groups, filterString]);
 
 	// sorting based on sortBy
 	const sortColumn = sortBy ? sortBy.split('_')[0] : null;
 	const sortOrder = sortBy ? sortBy.split('_')[1] : null;
 
-	const sortedGroups = [...filteredGroups].sort((a, b) => {
-		if (sortColumn) {
+	const sortedGroups = useMemo(() => {
+		if (!filteredGroups) return [];
+
+		return [...filteredGroups].sort((a, b) => {
+			if (!sortColumn) return 0;
+
 			const aValue = a[sortColumn as keyof Group];
 			const bValue = b[sortColumn as keyof Group];
-
-			// determine the sort direction (1 for asc, -1 for desc)
 			const direction = sortOrder === 'asc' ? 1 : -1;
 
-			// possible null checks.
 			if (aValue == null && bValue == null) return 0;
 			if (aValue == null) return direction;
 			if (bValue == null) return -direction;
 
 			if (aValue > bValue) return direction;
 			if (aValue < bValue) return -direction;
-		}
-		return 0;
-	});
+
+			return 0;
+		});
+	}, [filteredGroups, sortColumn, sortOrder]);
 
 	const defaultFilteredGroups = useMemo(() => {
 		if (!sortedGroups) return [];
@@ -115,11 +118,11 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 		return sortedGroups;
 	}, [sortedGroups, showDefaults]);
 
-	// paginated data based on filtered results
-	const paginatedGroups =
-		pageSize > 0
+	const paginatedGroups = useMemo(() => {
+		return pageSize > 0
 			? defaultFilteredGroups.slice((currentPage - 1) * pageSize, currentPage * pageSize)
 			: defaultFilteredGroups;
+	}, [defaultFilteredGroups, currentPage, pageSize]);
 
 	const totalFilteredCount = defaultFilteredGroups.length;
 
@@ -246,6 +249,15 @@ const OrgGroupsTable = (props: GroupsTableProps) => {
 				},
 			};
 		});
+
+	// trigger onVisibleDataChange with currently visible rows
+	useDebouncedEffect(
+		() => {
+			onVisibleDataChange?.(paginatedGroups);
+		},
+		[paginatedGroups],
+		200,
+	);
 
 	return (
 		<>

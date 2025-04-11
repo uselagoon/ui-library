@@ -88,7 +88,7 @@ const BackupsTable = (props: BackupsTableProps) => {
 							statusMatches = item?.restore?.status === filterStatus;
 						}
 					}
-					
+
 					const dateMatches =
 						filterDateRange && filterDateRange.every(Boolean)
 							? dayjs(item.created).isBetween(
