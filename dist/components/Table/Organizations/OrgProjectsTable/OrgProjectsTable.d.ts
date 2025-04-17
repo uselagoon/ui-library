@@ -28,6 +28,7 @@ export type OrgProjectsProps = {
     filterString?: string;
     sortBy?: 'name_asc' | 'name_desc' | 'groupCount_asc' | 'groupCount_desc' | null;
     resultDropdown?: ReactNode;
+    onVisibleDataChange?: (data: StandaloneProject[]) => void;
 } & (ProjectsTableSkeleton | ProjectsProps);
 declare const OrgProjectsTable: (props: OrgProjectsProps) => import("react/jsx-runtime").JSX.Element;
 export default OrgProjectsTable;
