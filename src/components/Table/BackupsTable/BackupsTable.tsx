@@ -15,6 +15,7 @@ import { Tooltip } from 'antd';
 import Text from '../../Text';
 import { StyledDownloadButton } from './styles';
 import isBetween from 'dayjs/plugin/isBetween';
+import { isValidUrl } from '../_utils';
 
 dayjs.extend(isBetween);
 dayjs.extend(utc);
@@ -159,6 +160,7 @@ const BackupsTable = (props: BackupsTableProps) => {
 		const size = backup.restore?.restoreSize || 0;
 		const restoreLocation = backup.restore?.restoreLocation || '';
 
+		const downloadURL = isValidUrl(restoreLocation) ? restoreLocation : undefined;
 		switch (status) {
 			case 'pending':
 				return (
@@ -168,7 +170,7 @@ const BackupsTable = (props: BackupsTableProps) => {
 				);
 			case 'successful':
 				return (
-					<Text underline={false} href={restoreLocation} target="_blank">
+					<Text underline={false} href={downloadURL} target="_blank">
 						<Tooltip placement="bottom" title={`Download (${humanFileSize(size)})`}>
 							<StyledDownloadButton data-cy="download" /> (
 							<span style={{ fontSize: '12px' }}>{humanFileSize(size)}</span>)

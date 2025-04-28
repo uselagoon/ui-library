@@ -13,6 +13,7 @@ import { highlightTextInElement } from '../../../_util/helpers';
 import type { RenderedCell } from 'rc-table/lib/interface';
 import { PaginationWithSelector } from '../FactsTable/FactsTable';
 import Pagination from '../../Pagination';
+import { isValidUrl } from '../_utils';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -199,7 +200,10 @@ const ProblemsTable = (props: InsightsTableProps) => {
 	const remappedInsights =
 		paginatedInsights &&
 		paginatedInsights.map((insight) => {
-			const createdLocalTime = dayjs.utc(insight.created).local();
+			const { created, size, downloadUrl } = insight;
+			const downloadURL = isValidUrl(downloadUrl) ? downloadUrl : undefined;
+
+			const createdLocalTime = dayjs.utc(created).local();
 			return {
 				...insight,
 				created: (
@@ -210,8 +214,8 @@ const ProblemsTable = (props: InsightsTableProps) => {
 
 				actions: (
 					<ActionWrap>
-						<Text underline={false} href={insight.downloadUrl} target="_blank">
-							<Tooltip placement="bottom" title={`Download (${insight.size})`}>
+						<Text underline={false} href={downloadURL} target="_blank">
+							<Tooltip placement="bottom" title={`Download (${size})`}>
 								<StyledDownloadButton />
 							</Tooltip>
 						</Text>
