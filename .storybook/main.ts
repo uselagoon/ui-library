@@ -1,38 +1,30 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const config: StorybookConfig = {
 	stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 	addons: [
-		'@storybook/addon-links',
+		'@storybook/addon-webpack5-compiler-swc',
 		'@storybook/addon-essentials',
+		'@storybook/addon-onboarding',
 		'@storybook/addon-interactions',
-		'@storybook/addon-controls',
-		'@storybook/addon-a11y',
-		'@storybook/addon-designs',
 	],
-
 	framework: {
 		name: '@storybook/react-webpack5',
-		options: {
-			builder: {
-				useSWC: true,
-			},
-		},
+		options: {},
 	},
-	docs: {
-		autodocs: true,
+	webpackFinal: async (config) => {
+		if (config.resolve) {
+			config.resolve.alias = {
+				...config.resolve.alias,
+				'@': path.resolve(__dirname, '../src'),
+			};
+		}
+		return config;
 	},
-	core: {
-		disableTelemetry: true,
-	},
-	swc: () => ({
-		jsc: {
-			transform: {
-				react: {
-					runtime: 'automatic',
-				},
-			},
-		},
-	}),
 };
 export default config;

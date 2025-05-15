@@ -13,7 +13,6 @@ import { defineConfig } from 'rollup';
 
 const rollupConfig = defineConfig({
 	input: './src/index.ts',
-	external: ['antd'],
 	output: [
 		{
 			file: 'dist/index.js',
@@ -35,6 +34,7 @@ const rollupConfig = defineConfig({
 		postcss({
 			plugins: [],
 			minimize: true,
+			extract: true,
 		}),
 		typescript({ tsconfig: './tsconfig.json' }),
 		babel({

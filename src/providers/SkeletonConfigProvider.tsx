@@ -26,14 +26,10 @@ const SkeletonConfigProvider = ({
 	// use localstorage first to avoid flickers if toggling theme too quickly;
 	const currentTheme = cachedTheme ? cachedTheme : theme;
 
-	const {
-		UI: {
-			skeleton: { base, highlight },
-		},
-	} = currentTheme === 'dark' ? darkTheme : lightTheme;
+	const { UI } = currentTheme === 'dark' ? darkTheme : lightTheme;
 
 	return (
-		<SkeletonTheme baseColor={baseColor || base} highlightColor={highlightColor || highlight}>
+		<SkeletonTheme baseColor={baseColor || '#000'} highlightColor={highlightColor || '#c9c9c9'}>
 			{children}
 		</SkeletonTheme>
 	);

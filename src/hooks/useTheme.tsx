@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { Button, ConfigProvider, Input, Space, theme as AntdTheme } from 'antd';
 
 type Theme = 'dark' | 'light';
 //@ts-ignore
@@ -45,17 +44,7 @@ export const AppThemeProvider = ({ defaultScheme, children }: { defaultScheme?: 
 		window.dispatchEvent(new Event('storage'));
 	};
 
-	return (
-		<ThemeContext.Provider value={{ theme, toggleTheme }}>
-			<ConfigProvider
-				theme={{
-					algorithm: theme === 'dark' ? AntdTheme.darkAlgorithm : AntdTheme.compactAlgorithm,
-				}}
-			>
-				{children}
-			</ConfigProvider>
-		</ThemeContext.Provider>
-	);
+	return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 };
 
 export default useTheme;
