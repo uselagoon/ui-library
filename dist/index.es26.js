@@ -3,7 +3,9 @@ import { Slot as l } from "@radix-ui/react-slot";
 import { FormProvider as f, useFormContext as u, useFormState as F, Controller as x } from "react-hook-form";
 import { cn as s } from "./index.es54.js";
 import { Label as I } from "./index.es30.js";
-const E = f, c = r.createContext({}), b = ({
+const E = f, c = r.createContext(
+  {}
+), b = ({
   ...e
 }) => /* @__PURE__ */ r.createElement(c.Provider, { value: { name: e.name } }, /* @__PURE__ */ r.createElement(x, { ...e })), i = () => {
   const e = r.useContext(c), t = r.useContext(d), { getFieldState: o } = u(), m = F({ name: e.name }), n = o(e.name, m);
@@ -18,12 +20,24 @@ const E = f, c = r.createContext({}), b = ({
     formMessageId: `${a}-form-item-message`,
     ...n
   };
-}, d = r.createContext({});
+}, d = r.createContext(
+  {}
+);
 function S({ className: e, ...t }) {
   const o = r.useId();
-  return /* @__PURE__ */ r.createElement(d.Provider, { value: { id: o } }, /* @__PURE__ */ r.createElement("div", { "data-slot": "form-item", className: s("grid gap-2", e), ...t }));
+  return /* @__PURE__ */ r.createElement(d.Provider, { value: { id: o } }, /* @__PURE__ */ r.createElement(
+    "div",
+    {
+      "data-slot": "form-item",
+      className: s("grid gap-2", e),
+      ...t
+    }
+  ));
 }
-function $({ className: e, ...t }) {
+function $({
+  className: e,
+  ...t
+}) {
   const { error: o, formItemId: m } = i();
   return /* @__PURE__ */ r.createElement(
     I,
@@ -63,7 +77,16 @@ function D({ className: e, ...t }) {
 }
 function M({ className: e, ...t }) {
   const { error: o, formMessageId: m } = i(), n = o ? String(o?.message ?? "") : t.children;
-  return n ? /* @__PURE__ */ r.createElement("p", { "data-slot": "form-message", id: m, className: s("text-destructive text-sm", e), ...t }, n) : null;
+  return n ? /* @__PURE__ */ r.createElement(
+    "p",
+    {
+      "data-slot": "form-message",
+      id: m,
+      className: s("text-destructive text-sm", e),
+      ...t
+    },
+    n
+  ) : null;
 }
 export {
   E as Form,
@@ -75,4 +98,3 @@ export {
   M as FormMessage,
   i as useFormField
 };
-//# sourceMappingURL=index.es26.js.map

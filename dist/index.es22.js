@@ -2,23 +2,41 @@ import * as t from "react";
 import * as a from "@radix-ui/react-context-menu";
 import { CheckIcon as i, CircleIcon as d, ChevronRightIcon as c } from "lucide-react";
 import { cn as r } from "./index.es54.js";
-function m({ ...e }) {
+function m({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(a.Root, { "data-slot": "context-menu", ...e });
 }
-function f({ ...e }) {
+function f({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(a.Trigger, { "data-slot": "context-menu-trigger", ...e });
 }
-function x({ ...e }) {
+function x({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(a.Group, { "data-slot": "context-menu-group", ...e });
 }
-function p({ ...e }) {
+function p({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(a.Portal, { "data-slot": "context-menu-portal", ...e });
 }
-function g({ ...e }) {
+function g({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(a.Sub, { "data-slot": "context-menu-sub", ...e });
 }
-function v({ ...e }) {
-  return /* @__PURE__ */ t.createElement(a.RadioGroup, { "data-slot": "context-menu-radio-group", ...e });
+function v({
+  ...e
+}) {
+  return /* @__PURE__ */ t.createElement(
+    a.RadioGroup,
+    {
+      "data-slot": "context-menu-radio-group",
+      ...e
+    }
+  );
 }
 function b({
   className: e,
@@ -41,7 +59,10 @@ function b({
     /* @__PURE__ */ t.createElement(c, { className: "ml-auto" })
   );
 }
-function h({ className: e, ...n }) {
+function h({
+  className: e,
+  ...n
+}) {
   return /* @__PURE__ */ t.createElement(
     a.SubContent,
     {
@@ -54,7 +75,10 @@ function h({ className: e, ...n }) {
     }
   );
 }
-function C({ className: e, ...n }) {
+function C({
+  className: e,
+  ...n
+}) {
   return /* @__PURE__ */ t.createElement(a.Portal, null, /* @__PURE__ */ t.createElement(
     a.Content,
     {
@@ -137,12 +161,18 @@ function N({
     {
       "data-slot": "context-menu-label",
       "data-inset": n,
-      className: r("text-foreground px-2 py-1.5 text-sm font-medium data-[inset]:pl-8", e),
+      className: r(
+        "text-foreground px-2 py-1.5 text-sm font-medium data-[inset]:pl-8",
+        e
+      ),
       ...o
     }
   );
 }
-function I({ className: e, ...n }) {
+function I({
+  className: e,
+  ...n
+}) {
   return /* @__PURE__ */ t.createElement(
     a.Separator,
     {
@@ -152,12 +182,18 @@ function I({ className: e, ...n }) {
     }
   );
 }
-function _({ className: e, ...n }) {
+function _({
+  className: e,
+  ...n
+}) {
   return /* @__PURE__ */ t.createElement(
     "span",
     {
       "data-slot": "context-menu-shortcut",
-      className: r("text-muted-foreground ml-auto text-xs tracking-widest", e),
+      className: r(
+        "text-muted-foreground ml-auto text-xs tracking-widest",
+        e
+      ),
       ...n
     }
   );
@@ -179,4 +215,3 @@ export {
   b as ContextMenuSubTrigger,
   f as ContextMenuTrigger
 };
-//# sourceMappingURL=index.es22.js.map

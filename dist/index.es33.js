@@ -14,13 +14,28 @@ function f({ className: e, ...a }) {
     }
   );
 }
-function d({ className: e, ...a }) {
-  return /* @__PURE__ */ t.createElement("ul", { "data-slot": "pagination-content", className: n("flex flex-row items-center gap-1", e), ...a });
+function d({
+  className: e,
+  ...a
+}) {
+  return /* @__PURE__ */ t.createElement(
+    "ul",
+    {
+      "data-slot": "pagination-content",
+      className: n("flex flex-row items-center gap-1", e),
+      ...a
+    }
+  );
 }
 function E({ ...e }) {
   return /* @__PURE__ */ t.createElement("li", { "data-slot": "pagination-item", ...e });
 }
-function i({ className: e, isActive: a, size: o = "icon", ...r }) {
+function i({
+  className: e,
+  isActive: a,
+  size: o = "icon",
+  ...r
+}) {
   return /* @__PURE__ */ t.createElement(
     "a",
     {
@@ -38,7 +53,10 @@ function i({ className: e, isActive: a, size: o = "icon", ...r }) {
     }
   );
 }
-function N({ className: e, ...a }) {
+function N({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     i,
     {
@@ -51,7 +69,10 @@ function N({ className: e, ...a }) {
     /* @__PURE__ */ t.createElement("span", { className: "hidden sm:block" }, "Previous")
   );
 }
-function x({ className: e, ...a }) {
+function x({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     i,
     {
@@ -64,7 +85,10 @@ function x({ className: e, ...a }) {
     /* @__PURE__ */ t.createElement(s, null)
   );
 }
-function P({ className: e, ...a }) {
+function P({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     "span",
     {
@@ -86,4 +110,3 @@ export {
   x as PaginationNext,
   N as PaginationPrevious
 };
-//# sourceMappingURL=index.es33.js.map

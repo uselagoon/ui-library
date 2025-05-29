@@ -2,7 +2,10 @@ import * as e from "react";
 import * as r from "@radix-ui/react-checkbox";
 import { CheckIcon as i } from "lucide-react";
 import { cn as o } from "./index.es54.js";
-function d({ className: t, ...a }) {
+function d({
+  className: t,
+  ...a
+}) {
   return /* @__PURE__ */ e.createElement(
     r.Root,
     {
@@ -26,4 +29,3 @@ function d({ className: t, ...a }) {
 export {
   d as Checkbox
 };
-//# sourceMappingURL=index.es19.js.map

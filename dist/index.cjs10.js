@@ -1,2 +1,1 @@
 "use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const c=require("@radix-ui/react-aspect-ratio");function i(t){const o=Object.create(null,{[Symbol.toStringTag]:{value:"Module"}});if(t){for(const e in t)if(e!=="default"){const r=Object.getOwnPropertyDescriptor(t,e);Object.defineProperty(o,e,r.get?r:{enumerable:!0,get:()=>t[e]})}}return o.default=t,Object.freeze(o)}const a=i(c);function n({...t}){return React.createElement(a.Root,{"data-slot":"aspect-ratio",...t})}exports.AspectRatio=n;
-//# sourceMappingURL=index.cjs10.js.map

@@ -2,10 +2,23 @@ import * as r from "react";
 import * as t from "@radix-ui/react-radio-group";
 import { CircleIcon as o } from "lucide-react";
 import { cn as a } from "./index.es54.js";
-function l({ className: e, ...i }) {
-  return /* @__PURE__ */ r.createElement(t.Root, { "data-slot": "radio-group", className: a("grid gap-3", e), ...i });
+function l({
+  className: e,
+  ...i
+}) {
+  return /* @__PURE__ */ r.createElement(
+    t.Root,
+    {
+      "data-slot": "radio-group",
+      className: a("grid gap-3", e),
+      ...i
+    }
+  );
 }
-function d({ className: e, ...i }) {
+function d({
+  className: e,
+  ...i
+}) {
   return /* @__PURE__ */ r.createElement(
     t.Item,
     {
@@ -30,4 +43,3 @@ export {
   l as RadioGroup,
   d as RadioGroupItem
 };
-//# sourceMappingURL=index.es36.js.map

@@ -3,7 +3,10 @@ import { Command as o } from "cmdk";
 import { SearchIcon as d } from "lucide-react";
 import { cn as n } from "./index.es54.js";
 import { Dialog as c, DialogHeader as l, DialogTitle as s, DialogDescription as u, DialogContent as i } from "./index.es23.js";
-function p({ className: e, ...a }) {
+function p({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     o,
     {
@@ -24,33 +27,62 @@ function _({
 }) {
   return /* @__PURE__ */ t.createElement(c, { ...r }, /* @__PURE__ */ t.createElement(l, { className: "sr-only" }, /* @__PURE__ */ t.createElement(s, null, e), /* @__PURE__ */ t.createElement(u, null, a)), /* @__PURE__ */ t.createElement(i, { className: "overflow-hidden p-0" }, /* @__PURE__ */ t.createElement(p, { className: "[&_[cmdk-group-heading]]:text-muted-foreground **:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5" }, m)));
 }
-function k({ className: e, ...a }) {
-  return /* @__PURE__ */ t.createElement("div", { "data-slot": "command-input-wrapper", className: "flex h-9 items-center gap-2 border-b px-3" }, /* @__PURE__ */ t.createElement(d, { className: "size-4 shrink-0 opacity-50" }), /* @__PURE__ */ t.createElement(
-    o.Input,
+function k({
+  className: e,
+  ...a
+}) {
+  return /* @__PURE__ */ t.createElement(
+    "div",
     {
-      "data-slot": "command-input",
-      className: n(
-        "placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
-        e
-      ),
-      ...a
-    }
-  ));
+      "data-slot": "command-input-wrapper",
+      className: "flex h-9 items-center gap-2 border-b px-3"
+    },
+    /* @__PURE__ */ t.createElement(d, { className: "size-4 shrink-0 opacity-50" }),
+    /* @__PURE__ */ t.createElement(
+      o.Input,
+      {
+        "data-slot": "command-input",
+        className: n(
+          "placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+          e
+        ),
+        ...a
+      }
+    )
+  );
 }
-function v({ className: e, ...a }) {
+function v({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     o.List,
     {
       "data-slot": "command-list",
-      className: n("max-h-[300px] scroll-py-1 overflow-x-hidden overflow-y-auto", e),
+      className: n(
+        "max-h-[300px] scroll-py-1 overflow-x-hidden overflow-y-auto",
+        e
+      ),
       ...a
     }
   );
 }
-function E({ ...e }) {
-  return /* @__PURE__ */ t.createElement(o.Empty, { "data-slot": "command-empty", className: "py-6 text-center text-sm", ...e });
+function E({
+  ...e
+}) {
+  return /* @__PURE__ */ t.createElement(
+    o.Empty,
+    {
+      "data-slot": "command-empty",
+      className: "py-6 text-center text-sm",
+      ...e
+    }
+  );
 }
-function w({ className: e, ...a }) {
+function w({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     o.Group,
     {
@@ -63,7 +95,10 @@ function w({ className: e, ...a }) {
     }
   );
 }
-function y({ className: e, ...a }) {
+function y({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     o.Separator,
     {
@@ -73,7 +108,10 @@ function y({ className: e, ...a }) {
     }
   );
 }
-function C({ className: e, ...a }) {
+function C({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     o.Item,
     {
@@ -86,12 +124,18 @@ function C({ className: e, ...a }) {
     }
   );
 }
-function N({ className: e, ...a }) {
+function N({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     "span",
     {
       "data-slot": "command-shortcut",
-      className: n("text-muted-foreground ml-auto text-xs tracking-widest", e),
+      className: n(
+        "text-muted-foreground ml-auto text-xs tracking-widest",
+        e
+      ),
       ...a
     }
   );
@@ -107,4 +151,3 @@ export {
   y as CommandSeparator,
   N as CommandShortcut
 };
-//# sourceMappingURL=index.es21.js.map

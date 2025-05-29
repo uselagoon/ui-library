@@ -82,19 +82,18 @@
 		"zod": "^3.25.34"
 	},
 	"peerDependencies": {
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0"
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.25.0",
 		"@storybook/addon-docs": "^9.0.0",
 		"@storybook/addon-onboarding": "^9.0.0",
-		"@storybook/blocks": "^8.6.14",
 		"@storybook/react-vite": "^9.0.0",
 		"@types/lodash": "^4.17.17",
 		"@types/node": "^22.15.24",
-		"@types/react": "^19.1.2",
-		"@types/react-dom": "^19.1.2",
+		"@types/react": "^18.2.47",
+		"@types/react-dom": "^18.2.18",
 		"@types/react-highlight-words": "^0.20.0",
 		"@vitejs/plugin-react": "^4.4.1",
 		"eslint": "^9.25.0",

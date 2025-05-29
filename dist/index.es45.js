@@ -19,4 +19,3 @@ const m = ({ ...r }) => {
 export {
   m as Toaster
 };
-//# sourceMappingURL=index.es45.js.map

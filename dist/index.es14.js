@@ -35,10 +35,16 @@ function b({
   ...n
 }) {
   const o = i ? s : "button";
-  return /* @__PURE__ */ a.createElement(o, { "data-slot": "button", className: c(u({ variant: r, size: t, className: e })), ...n });
+  return /* @__PURE__ */ a.createElement(
+    o,
+    {
+      "data-slot": "button",
+      className: c(u({ variant: r, size: t, className: e })),
+      ...n
+    }
+  );
 }
 export {
   b as Button,
   u as buttonVariants
 };
-//# sourceMappingURL=index.es14.js.map

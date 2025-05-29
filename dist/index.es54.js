@@ -6,4 +6,3 @@ function n(...r) {
 export {
   n as cn
 };
-//# sourceMappingURL=index.es54.js.map

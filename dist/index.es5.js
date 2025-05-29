@@ -5,4 +5,3 @@ const d = ({ children: r, defaultScheme: t }) => /* @__PURE__ */ e.createElement
 export {
   d as default
 };
-//# sourceMappingURL=index.es5.js.map

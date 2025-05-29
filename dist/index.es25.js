@@ -2,14 +2,26 @@ import * as t from "react";
 import * as o from "@radix-ui/react-dropdown-menu";
 import { CheckIcon as s, CircleIcon as i, ChevronRightIcon as u } from "lucide-react";
 import { cn as r } from "./index.es54.js";
-function m({ ...e }) {
+function m({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(o.Root, { "data-slot": "dropdown-menu", ...e });
 }
-function p({ ...e }) {
+function p({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(o.Portal, { "data-slot": "dropdown-menu-portal", ...e });
 }
-function f({ ...e }) {
-  return /* @__PURE__ */ t.createElement(o.Trigger, { "data-slot": "dropdown-menu-trigger", ...e });
+function f({
+  ...e
+}) {
+  return /* @__PURE__ */ t.createElement(
+    o.Trigger,
+    {
+      "data-slot": "dropdown-menu-trigger",
+      ...e
+    }
+  );
 }
 function g({
   className: e,
@@ -29,7 +41,9 @@ function g({
     }
   ));
 }
-function v({ ...e }) {
+function v({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(o.Group, { "data-slot": "dropdown-menu-group", ...e });
 }
 function w({
@@ -73,8 +87,16 @@ function b({
     n
   );
 }
-function x({ ...e }) {
-  return /* @__PURE__ */ t.createElement(o.RadioGroup, { "data-slot": "dropdown-menu-radio-group", ...e });
+function x({
+  ...e
+}) {
+  return /* @__PURE__ */ t.createElement(
+    o.RadioGroup,
+    {
+      "data-slot": "dropdown-menu-radio-group",
+      ...e
+    }
+  );
 }
 function h({
   className: e,
@@ -105,12 +127,18 @@ function E({
     {
       "data-slot": "dropdown-menu-label",
       "data-inset": n,
-      className: r("px-2 py-1.5 text-sm font-medium data-[inset]:pl-8", e),
+      className: r(
+        "px-2 py-1.5 text-sm font-medium data-[inset]:pl-8",
+        e
+      ),
       ...a
     }
   );
 }
-function z({ className: e, ...n }) {
+function z({
+  className: e,
+  ...n
+}) {
   return /* @__PURE__ */ t.createElement(
     o.Separator,
     {
@@ -120,17 +148,25 @@ function z({ className: e, ...n }) {
     }
   );
 }
-function D({ className: e, ...n }) {
+function D({
+  className: e,
+  ...n
+}) {
   return /* @__PURE__ */ t.createElement(
     "span",
     {
       "data-slot": "dropdown-menu-shortcut",
-      className: r("text-muted-foreground ml-auto text-xs tracking-widest", e),
+      className: r(
+        "text-muted-foreground ml-auto text-xs tracking-widest",
+        e
+      ),
       ...n
     }
   );
 }
-function M({ ...e }) {
+function M({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(o.Sub, { "data-slot": "dropdown-menu-sub", ...e });
 }
 function N({
@@ -187,4 +223,3 @@ export {
   N as DropdownMenuSubTrigger,
   f as DropdownMenuTrigger
 };
-//# sourceMappingURL=index.es25.js.map

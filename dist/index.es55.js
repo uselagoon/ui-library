@@ -12,4 +12,3 @@ function r() {
 export {
   r as useIsMobile
 };
-//# sourceMappingURL=index.es55.js.map

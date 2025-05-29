@@ -2,19 +2,30 @@ import * as t from "react";
 import * as o from "@radix-ui/react-dialog";
 import { XIcon as r } from "lucide-react";
 import { cn as n } from "./index.es54.js";
-function g({ ...e }) {
+function g({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(o.Root, { "data-slot": "dialog", ...e });
 }
-function m({ ...e }) {
+function m({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(o.Trigger, { "data-slot": "dialog-trigger", ...e });
 }
-function i({ ...e }) {
+function i({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(o.Portal, { "data-slot": "dialog-portal", ...e });
 }
-function u({ ...e }) {
+function u({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(o.Close, { "data-slot": "dialog-close", ...e });
 }
-function s({ className: e, ...a }) {
+function s({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     o.Overlay,
     {
@@ -27,7 +38,11 @@ function s({ className: e, ...a }) {
     }
   );
 }
-function f({ className: e, children: a, ...l }) {
+function f({
+  className: e,
+  children: a,
+  ...l
+}) {
   return /* @__PURE__ */ t.createElement(i, { "data-slot": "dialog-portal" }, /* @__PURE__ */ t.createElement(s, null), /* @__PURE__ */ t.createElement(
     o.Content,
     {
@@ -57,12 +72,18 @@ function x({ className: e, ...a }) {
     "div",
     {
       "data-slot": "dialog-footer",
-      className: n("flex flex-col-reverse gap-2 sm:flex-row sm:justify-end", e),
+      className: n(
+        "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+        e
+      ),
       ...a
     }
   );
 }
-function E({ className: e, ...a }) {
+function E({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     o.Title,
     {
@@ -72,7 +93,10 @@ function E({ className: e, ...a }) {
     }
   );
 }
-function v({ className: e, ...a }) {
+function v({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     o.Description,
     {
@@ -94,4 +118,3 @@ export {
   E as DialogTitle,
   m as DialogTrigger
 };
-//# sourceMappingURL=index.es23.js.map

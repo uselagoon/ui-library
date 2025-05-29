@@ -1,10 +1,14 @@
 import * as e from "react";
 import * as o from "@radix-ui/react-hover-card";
 import { cn as n } from "./index.es54.js";
-function s({ ...t }) {
+function s({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(o.Root, { "data-slot": "hover-card", ...t });
 }
-function m({ ...t }) {
+function m({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(o.Trigger, { "data-slot": "hover-card-trigger", ...t });
 }
 function c({
@@ -32,4 +36,3 @@ export {
   c as HoverCardContent,
   m as HoverCardTrigger
 };
-//# sourceMappingURL=index.es27.js.map

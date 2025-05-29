@@ -74,7 +74,25 @@ function D({
 }
 function A({ className: o, ...r }) {
   const { carouselRef: l, orientation: n } = m();
-  return /* @__PURE__ */ e.createElement("div", { ref: l, className: "overflow-hidden", "data-slot": "carousel-content" }, /* @__PURE__ */ e.createElement("div", { className: f("flex", n === "horizontal" ? "-ml-4" : "-mt-4 flex-col", o), ...r }));
+  return /* @__PURE__ */ e.createElement(
+    "div",
+    {
+      ref: l,
+      className: "overflow-hidden",
+      "data-slot": "carousel-content"
+    },
+    /* @__PURE__ */ e.createElement(
+      "div",
+      {
+        className: f(
+          "flex",
+          n === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
+          o
+        ),
+        ...r
+      }
+    )
+  );
 }
 function I({ className: o, ...r }) {
   const { orientation: l } = m();
@@ -84,7 +102,11 @@ function I({ className: o, ...r }) {
       role: "group",
       "aria-roledescription": "slide",
       "data-slot": "carousel-item",
-      className: f("min-w-0 shrink-0 grow-0 basis-full", l === "horizontal" ? "pl-4" : "pt-4", o),
+      className: f(
+        "min-w-0 shrink-0 grow-0 basis-full",
+        l === "horizontal" ? "pl-4" : "pt-4",
+        o
+      ),
       ...r
     }
   );
@@ -148,4 +170,3 @@ export {
   L as CarouselNext,
   K as CarouselPrevious
 };
-//# sourceMappingURL=index.es17.js.map

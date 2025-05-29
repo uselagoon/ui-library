@@ -28,10 +28,16 @@ function l({
   size: r,
   ...i
 }) {
-  return /* @__PURE__ */ n.createElement(a.Root, { "data-slot": "toggle", className: s(d({ variant: t, size: r, className: e })), ...i });
+  return /* @__PURE__ */ n.createElement(
+    a.Root,
+    {
+      "data-slot": "toggle",
+      className: s(d({ variant: t, size: r, className: e })),
+      ...i
+    }
+  );
 }
 export {
   l as Toggle,
   d as toggleVariants
 };
-//# sourceMappingURL=index.es51.js.map

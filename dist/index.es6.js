@@ -10,4 +10,3 @@ export {
   u as LinkProvider,
   c as useLinkComponent
 };
-//# sourceMappingURL=index.es6.js.map

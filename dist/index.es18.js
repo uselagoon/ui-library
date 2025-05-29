@@ -32,7 +32,9 @@ function P({
   ));
 }
 const $ = ({ id: s, config: t }) => {
-  const o = Object.entries(t).filter(([, r]) => r.theme || r.color);
+  const o = Object.entries(t).filter(
+    ([, r]) => r.theme || r.color
+  );
   return o.length ? /* @__PURE__ */ e.createElement(
     "style",
     {
@@ -73,7 +75,15 @@ function I({
       return null;
     const [n] = t, v = `${g || n?.dataKey || n?.name || "value"}`, p = b(f, n, v), m = !g && typeof a == "string" ? f[a]?.label || a : p?.label;
     return i ? /* @__PURE__ */ e.createElement("div", { className: l("font-medium", d) }, i(m, t)) : m ? /* @__PURE__ */ e.createElement("div", { className: l("font-medium", d) }, m) : null;
-  }, [a, i, t, c, d, f, g]);
+  }, [
+    a,
+    i,
+    t,
+    c,
+    d,
+    f,
+    g
+  ]);
   if (!s || !t?.length)
     return null;
   const h = t.length === 1 && r !== "dot";
@@ -100,12 +110,15 @@ function I({
         E && n?.value !== void 0 && n.name ? E(n.value, n.name, n, v, n.payload) : /* @__PURE__ */ e.createElement(e.Fragment, null, m?.icon ? /* @__PURE__ */ e.createElement(m.icon, null) : !u && /* @__PURE__ */ e.createElement(
           "div",
           {
-            className: l("shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)", {
-              "h-2.5 w-2.5": r === "dot",
-              "w-1": r === "line",
-              "w-0 border-[1.5px] border-dashed bg-transparent": r === "dashed",
-              "my-0.5": h && r === "dashed"
-            }),
+            className: l(
+              "shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)",
+              {
+                "h-2.5 w-2.5": r === "dot",
+                "w-1": r === "line",
+                "w-0 border-[1.5px] border-dashed bg-transparent": r === "dashed",
+                "my-0.5": h && r === "dashed"
+              }
+            ),
             style: {
               "--color-bg": _,
               "--color-border": _
@@ -114,7 +127,10 @@ function I({
         ), /* @__PURE__ */ e.createElement(
           "div",
           {
-            className: l("flex flex-1 justify-between leading-none", h ? "items-end" : "items-center")
+            className: l(
+              "flex flex-1 justify-between leading-none",
+              h ? "items-end" : "items-center"
+            )
           },
           /* @__PURE__ */ e.createElement("div", { className: "grid gap-1.5" }, h ? C : null, /* @__PURE__ */ e.createElement("span", { className: "text-muted-foreground" }, m?.label || n.name)),
           n.value && /* @__PURE__ */ e.createElement("span", { className: "text-foreground font-mono font-medium tabular-nums" }, n.value.toLocaleString())
@@ -132,26 +148,38 @@ function K({
   nameKey: c
 }) {
   const { config: u } = w();
-  return o?.length ? /* @__PURE__ */ e.createElement("div", { className: l("flex items-center justify-center gap-4", r === "top" ? "pb-3" : "pt-3", s) }, o.map((a) => {
-    const i = `${c || a.dataKey || "value"}`, d = b(u, a, i);
-    return /* @__PURE__ */ e.createElement(
-      "div",
-      {
-        key: a.value,
-        className: l("[&>svg]:text-muted-foreground flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3")
-      },
-      d?.icon && !t ? /* @__PURE__ */ e.createElement(d.icon, null) : /* @__PURE__ */ e.createElement(
+  return o?.length ? /* @__PURE__ */ e.createElement(
+    "div",
+    {
+      className: l(
+        "flex items-center justify-center gap-4",
+        r === "top" ? "pb-3" : "pt-3",
+        s
+      )
+    },
+    o.map((a) => {
+      const i = `${c || a.dataKey || "value"}`, d = b(u, a, i);
+      return /* @__PURE__ */ e.createElement(
         "div",
         {
-          className: "h-2 w-2 shrink-0 rounded-[2px]",
-          style: {
-            backgroundColor: a.color
+          key: a.value,
+          className: l(
+            "[&>svg]:text-muted-foreground flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3"
+          )
+        },
+        d?.icon && !t ? /* @__PURE__ */ e.createElement(d.icon, null) : /* @__PURE__ */ e.createElement(
+          "div",
+          {
+            className: "h-2 w-2 shrink-0 rounded-[2px]",
+            style: {
+              backgroundColor: a.color
+            }
           }
-        }
-      ),
-      d?.label
-    );
-  })) : null;
+        ),
+        d?.label
+      );
+    })
+  ) : null;
 }
 function b(s, t, o) {
   if (typeof t != "object" || t === null)
@@ -168,4 +196,3 @@ export {
   T as ChartTooltip,
   I as ChartTooltipContent
 };
-//# sourceMappingURL=index.es18.js.map

@@ -60,7 +60,10 @@ function ne({
         "--sidebar-width-icon": V,
         ...o
       },
-      className: r("group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full", i),
+      className: r(
+        "group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full",
+        i
+      ),
       ...m
     },
     d
@@ -79,7 +82,10 @@ function ie({
     "div",
     {
       "data-slot": "sidebar",
-      className: r("bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col", i),
+      className: r(
+        "bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col",
+        i
+      ),
       ...d
     },
     o
@@ -144,7 +150,11 @@ function ie({
     )
   );
 }
-function oe({ className: t, onClick: e, ...n }) {
+function oe({
+  className: t,
+  onClick: e,
+  ...n
+}) {
   const { toggleSidebar: i } = x();
   return /* @__PURE__ */ a.createElement(
     C,
@@ -201,7 +211,10 @@ function de({ className: t, ...e }) {
     }
   );
 }
-function le({ className: t, ...e }) {
+function le({
+  className: t,
+  ...e
+}) {
   return /* @__PURE__ */ a.createElement(
     z,
     {
@@ -234,7 +247,10 @@ function ue({ className: t, ...e }) {
     }
   );
 }
-function be({ className: t, ...e }) {
+function be({
+  className: t,
+  ...e
+}) {
   return /* @__PURE__ */ a.createElement(
     I,
     {
@@ -312,7 +328,10 @@ function ge({
     }
   );
 }
-function he({ className: t, ...e }) {
+function he({
+  className: t,
+  ...e
+}) {
   return /* @__PURE__ */ a.createElement(
     "div",
     {
@@ -387,7 +406,15 @@ function we({
   );
   return o ? (typeof o == "string" && (o = {
     children: o
-  }), /* @__PURE__ */ a.createElement(R, null, /* @__PURE__ */ a.createElement(H, { asChild: !0 }, g), /* @__PURE__ */ a.createElement(K, { side: "right", align: "center", hidden: c !== "collapsed" || b, ...o }))) : g;
+  }), /* @__PURE__ */ a.createElement(R, null, /* @__PURE__ */ a.createElement(H, { asChild: !0 }, g), /* @__PURE__ */ a.createElement(
+    K,
+    {
+      side: "right",
+      align: "center",
+      hidden: c !== "collapsed" || b,
+      ...o
+    }
+  ))) : g;
 }
 function Ee({
   className: t,
@@ -416,7 +443,10 @@ function Ee({
     }
   );
 }
-function Se({ className: t, ...e }) {
+function Se({
+  className: t,
+  ...e
+}) {
   return /* @__PURE__ */ a.createElement(
     "div",
     {
@@ -449,7 +479,13 @@ function Ne({
       className: r("flex h-8 items-center gap-2 rounded-md px-2", t),
       ...n
     },
-    e && /* @__PURE__ */ a.createElement(E, { className: "size-4 rounded-md", "data-sidebar": "menu-skeleton-icon" }),
+    e && /* @__PURE__ */ a.createElement(
+      E,
+      {
+        className: "size-4 rounded-md",
+        "data-sidebar": "menu-skeleton-icon"
+      }
+    ),
     /* @__PURE__ */ a.createElement(
       E,
       {
@@ -477,7 +513,10 @@ function ye({ className: t, ...e }) {
     }
   );
 }
-function _e({ className: t, ...e }) {
+function _e({
+  className: t,
+  ...e
+}) {
   return /* @__PURE__ */ a.createElement(
     "li",
     {
@@ -541,4 +580,3 @@ export {
   oe as SidebarTrigger,
   x as useSidebar
 };
-//# sourceMappingURL=index.es42.js.map

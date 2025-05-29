@@ -59,4 +59,3 @@ export {
   c as ToggleGroup,
   f as ToggleGroupItem
 };
-//# sourceMappingURL=index.es50.js.map

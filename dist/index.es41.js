@@ -5,16 +5,25 @@ import { cn as n } from "./index.es54.js";
 function u({ ...t }) {
   return /* @__PURE__ */ e.createElement(o.Root, { "data-slot": "sheet", ...t });
 }
-function f({ ...t }) {
+function f({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(o.Trigger, { "data-slot": "sheet-trigger", ...t });
 }
-function h({ ...t }) {
+function h({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(o.Close, { "data-slot": "sheet-close", ...t });
 }
-function i({ ...t }) {
+function i({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(o.Portal, { "data-slot": "sheet-portal", ...t });
 }
-function d({ className: t, ...a }) {
+function d({
+  className: t,
+  ...a
+}) {
   return /* @__PURE__ */ e.createElement(
     o.Overlay,
     {
@@ -52,12 +61,29 @@ function p({
   ));
 }
 function g({ className: t, ...a }) {
-  return /* @__PURE__ */ e.createElement("div", { "data-slot": "sheet-header", className: n("flex flex-col gap-1.5 p-4", t), ...a });
+  return /* @__PURE__ */ e.createElement(
+    "div",
+    {
+      "data-slot": "sheet-header",
+      className: n("flex flex-col gap-1.5 p-4", t),
+      ...a
+    }
+  );
 }
 function b({ className: t, ...a }) {
-  return /* @__PURE__ */ e.createElement("div", { "data-slot": "sheet-footer", className: n("mt-auto flex flex-col gap-2 p-4", t), ...a });
+  return /* @__PURE__ */ e.createElement(
+    "div",
+    {
+      "data-slot": "sheet-footer",
+      className: n("mt-auto flex flex-col gap-2 p-4", t),
+      ...a
+    }
+  );
 }
-function x({ className: t, ...a }) {
+function x({
+  className: t,
+  ...a
+}) {
   return /* @__PURE__ */ e.createElement(
     o.Title,
     {
@@ -67,7 +93,10 @@ function x({ className: t, ...a }) {
     }
   );
 }
-function E({ className: t, ...a }) {
+function E({
+  className: t,
+  ...a
+}) {
   return /* @__PURE__ */ e.createElement(
     o.Description,
     {
@@ -87,4 +116,3 @@ export {
   x as SheetTitle,
   f as SheetTrigger
 };
-//# sourceMappingURL=index.es41.js.map

@@ -1,12 +1,19 @@
 import * as r from "react";
 import * as e from "@radix-ui/react-progress";
 import { cn as l } from "./index.es54.js";
-function i({ className: t, value: a, ...o }) {
+function i({
+  className: t,
+  value: a,
+  ...o
+}) {
   return /* @__PURE__ */ r.createElement(
     e.Root,
     {
       "data-slot": "progress",
-      className: l("bg-primary/20 relative h-2 w-full overflow-hidden rounded-full", t),
+      className: l(
+        "bg-primary/20 relative h-2 w-full overflow-hidden rounded-full",
+        t
+      ),
       ...o
     },
     /* @__PURE__ */ r.createElement(
@@ -22,4 +29,3 @@ function i({ className: t, value: a, ...o }) {
 export {
   i as Progress
 };
-//# sourceMappingURL=index.es35.js.map

@@ -1,7 +1,10 @@
 import * as a from "react";
 import * as o from "@radix-ui/react-label";
 import { cn as r } from "./index.es54.js";
-function n({ className: e, ...t }) {
+function n({
+  className: e,
+  ...t
+}) {
   return /* @__PURE__ */ a.createElement(
     o.Root,
     {
@@ -17,4 +20,3 @@ function n({ className: e, ...t }) {
 export {
   n as Label
 };
-//# sourceMappingURL=index.es30.js.map

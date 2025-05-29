@@ -11,14 +11,24 @@ function f({
     u,
     {
       "data-slot": "input-otp",
-      containerClassName: r("flex items-center gap-2 has-disabled:opacity-50", a),
+      containerClassName: r(
+        "flex items-center gap-2 has-disabled:opacity-50",
+        a
+      ),
       className: r("disabled:cursor-not-allowed", e),
       ...n
     }
   );
 }
 function b({ className: e, ...a }) {
-  return /* @__PURE__ */ t.createElement("div", { "data-slot": "input-otp-group", className: r("flex items-center", e), ...a });
+  return /* @__PURE__ */ t.createElement(
+    "div",
+    {
+      "data-slot": "input-otp-group",
+      className: r("flex items-center", e),
+      ...a
+    }
+  );
 }
 function x({
   index: e,
@@ -50,4 +60,3 @@ export {
   g as InputOTPSeparator,
   x as InputOTPSlot
 };
-//# sourceMappingURL=index.es28.js.map

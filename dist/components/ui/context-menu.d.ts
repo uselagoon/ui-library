@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
+import * as React from "react";
+import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 declare function ContextMenu({ ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Root>): import("react/jsx-dev-runtime").JSX.Element;
 declare function ContextMenuTrigger({ ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Trigger>): import("react/jsx-dev-runtime").JSX.Element;
 declare function ContextMenuGroup({ ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Group>): import("react/jsx-dev-runtime").JSX.Element;
@@ -13,7 +13,7 @@ declare function ContextMenuSubContent({ className, ...props }: React.ComponentP
 declare function ContextMenuContent({ className, ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Content>): import("react/jsx-dev-runtime").JSX.Element;
 declare function ContextMenuItem({ className, inset, variant, ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Item> & {
     inset?: boolean;
-    variant?: 'default' | 'destructive';
+    variant?: "default" | "destructive";
 }): import("react/jsx-dev-runtime").JSX.Element;
 declare function ContextMenuCheckboxItem({ className, children, checked, ...props }: React.ComponentProps<typeof ContextMenuPrimitive.CheckboxItem>): import("react/jsx-dev-runtime").JSX.Element;
 declare function ContextMenuRadioItem({ className, children, ...props }: React.ComponentProps<typeof ContextMenuPrimitive.RadioItem>): import("react/jsx-dev-runtime").JSX.Element;
@@ -21,6 +21,6 @@ declare function ContextMenuLabel({ className, inset, ...props }: React.Componen
     inset?: boolean;
 }): import("react/jsx-dev-runtime").JSX.Element;
 declare function ContextMenuSeparator({ className, ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Separator>): import("react/jsx-dev-runtime").JSX.Element;
-declare function ContextMenuShortcut({ className, ...props }: React.ComponentProps<'span'>): import("react/jsx-dev-runtime").JSX.Element;
+declare function ContextMenuShortcut({ className, ...props }: React.ComponentProps<"span">): import("react/jsx-dev-runtime").JSX.Element;
 export { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuRadioItem, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuGroup, ContextMenuPortal, ContextMenuSub, ContextMenuSubContent, ContextMenuSubTrigger, ContextMenuRadioGroup, };
 //# sourceMappingURL=context-menu.d.ts.map

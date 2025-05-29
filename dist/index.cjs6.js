@@ -1,2 +1,1 @@
 "use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const t=require("react"),n=t.createContext(void 0),r=({linkComponent:e,children:o})=>t.createElement(n.Provider,{value:e},o),i=()=>{const e=t.useContext(n);if(!e)throw new Error("useLinkComponent must be used within a LinkProvider");return e};exports.LinkContext=n;exports.LinkProvider=r;exports.useLinkComponent=i;
-//# sourceMappingURL=index.cjs6.js.map

@@ -1,10 +1,23 @@
 import * as a from "react";
 import * as n from "@radix-ui/react-tabs";
 import { cn as r } from "./index.es54.js";
-function i({ className: e, ...t }) {
-  return /* @__PURE__ */ a.createElement(n.Root, { "data-slot": "tabs", className: r("flex flex-col gap-2", e), ...t });
+function i({
+  className: e,
+  ...t
+}) {
+  return /* @__PURE__ */ a.createElement(
+    n.Root,
+    {
+      "data-slot": "tabs",
+      className: r("flex flex-col gap-2", e),
+      ...t
+    }
+  );
 }
-function o({ className: e, ...t }) {
+function o({
+  className: e,
+  ...t
+}) {
   return /* @__PURE__ */ a.createElement(
     n.List,
     {
@@ -17,7 +30,10 @@ function o({ className: e, ...t }) {
     }
   );
 }
-function c({ className: e, ...t }) {
+function c({
+  className: e,
+  ...t
+}) {
   return /* @__PURE__ */ a.createElement(
     n.Trigger,
     {
@@ -30,8 +46,18 @@ function c({ className: e, ...t }) {
     }
   );
 }
-function d({ className: e, ...t }) {
-  return /* @__PURE__ */ a.createElement(n.Content, { "data-slot": "tabs-content", className: r("flex-1 outline-none", e), ...t });
+function d({
+  className: e,
+  ...t
+}) {
+  return /* @__PURE__ */ a.createElement(
+    n.Content,
+    {
+      "data-slot": "tabs-content",
+      className: r("flex-1 outline-none", e),
+      ...t
+    }
+  );
 }
 export {
   i as Tabs,
@@ -39,4 +65,3 @@ export {
   o as TabsList,
   c as TabsTrigger
 };
-//# sourceMappingURL=index.es48.js.map

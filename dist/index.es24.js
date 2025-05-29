@@ -1,19 +1,30 @@
 import * as e from "react";
 import { Drawer as r } from "vaul";
 import { cn as d } from "./index.es54.js";
-function u({ ...t }) {
+function u({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(r.Root, { "data-slot": "drawer", ...t });
 }
-function m({ ...t }) {
+function m({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(r.Trigger, { "data-slot": "drawer-trigger", ...t });
 }
-function n({ ...t }) {
+function n({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(r.Portal, { "data-slot": "drawer-portal", ...t });
 }
-function w({ ...t }) {
+function w({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(r.Close, { "data-slot": "drawer-close", ...t });
 }
-function i({ className: t, ...a }) {
+function i({
+  className: t,
+  ...a
+}) {
   return /* @__PURE__ */ e.createElement(
     r.Overlay,
     {
@@ -26,7 +37,11 @@ function i({ className: t, ...a }) {
     }
   );
 }
-function s({ className: t, children: a, ...o }) {
+function s({
+  className: t,
+  children: a,
+  ...o
+}) {
   return /* @__PURE__ */ e.createElement(n, { "data-slot": "drawer-portal" }, /* @__PURE__ */ e.createElement(i, null), /* @__PURE__ */ e.createElement(
     r.Content,
     {
@@ -46,12 +61,29 @@ function s({ className: t, children: a, ...o }) {
   ));
 }
 function f({ className: t, ...a }) {
-  return /* @__PURE__ */ e.createElement("div", { "data-slot": "drawer-header", className: d("flex flex-col gap-1.5 p-4", t), ...a });
+  return /* @__PURE__ */ e.createElement(
+    "div",
+    {
+      "data-slot": "drawer-header",
+      className: d("flex flex-col gap-1.5 p-4", t),
+      ...a
+    }
+  );
 }
 function v({ className: t, ...a }) {
-  return /* @__PURE__ */ e.createElement("div", { "data-slot": "drawer-footer", className: d("mt-auto flex flex-col gap-2 p-4", t), ...a });
+  return /* @__PURE__ */ e.createElement(
+    "div",
+    {
+      "data-slot": "drawer-footer",
+      className: d("mt-auto flex flex-col gap-2 p-4", t),
+      ...a
+    }
+  );
 }
-function p({ className: t, ...a }) {
+function p({
+  className: t,
+  ...a
+}) {
   return /* @__PURE__ */ e.createElement(
     r.Title,
     {
@@ -61,7 +93,10 @@ function p({ className: t, ...a }) {
     }
   );
 }
-function g({ className: t, ...a }) {
+function g({
+  className: t,
+  ...a
+}) {
   return /* @__PURE__ */ e.createElement(
     r.Description,
     {
@@ -83,4 +118,3 @@ export {
   p as DrawerTitle,
   m as DrawerTrigger
 };
-//# sourceMappingURL=index.es24.js.map

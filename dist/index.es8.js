@@ -2,16 +2,25 @@ import * as a from "react";
 import * as l from "@radix-ui/react-alert-dialog";
 import { cn as o } from "./index.es54.js";
 import { buttonVariants as r } from "./index.es14.js";
-function c({ ...t }) {
+function c({
+  ...t
+}) {
   return /* @__PURE__ */ a.createElement(l.Root, { "data-slot": "alert-dialog", ...t });
 }
-function m({ ...t }) {
+function m({
+  ...t
+}) {
   return /* @__PURE__ */ a.createElement(l.Trigger, { "data-slot": "alert-dialog-trigger", ...t });
 }
-function n({ ...t }) {
+function n({
+  ...t
+}) {
   return /* @__PURE__ */ a.createElement(l.Portal, { "data-slot": "alert-dialog-portal", ...t });
 }
-function i({ className: t, ...e }) {
+function i({
+  className: t,
+  ...e
+}) {
   return /* @__PURE__ */ a.createElement(
     l.Overlay,
     {
@@ -24,7 +33,10 @@ function i({ className: t, ...e }) {
     }
   );
 }
-function g({ className: t, ...e }) {
+function g({
+  className: t,
+  ...e
+}) {
   return /* @__PURE__ */ a.createElement(n, null, /* @__PURE__ */ a.createElement(i, null), /* @__PURE__ */ a.createElement(
     l.Content,
     {
@@ -37,7 +49,10 @@ function g({ className: t, ...e }) {
     }
   ));
 }
-function u({ className: t, ...e }) {
+function u({
+  className: t,
+  ...e
+}) {
   return /* @__PURE__ */ a.createElement(
     "div",
     {
@@ -47,17 +62,26 @@ function u({ className: t, ...e }) {
     }
   );
 }
-function f({ className: t, ...e }) {
+function f({
+  className: t,
+  ...e
+}) {
   return /* @__PURE__ */ a.createElement(
     "div",
     {
       "data-slot": "alert-dialog-footer",
-      className: o("flex flex-col-reverse gap-2 sm:flex-row sm:justify-end", t),
+      className: o(
+        "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+        t
+      ),
       ...e
     }
   );
 }
-function p({ className: t, ...e }) {
+function p({
+  className: t,
+  ...e
+}) {
   return /* @__PURE__ */ a.createElement(
     l.Title,
     {
@@ -80,11 +104,29 @@ function x({
     }
   );
 }
-function A({ className: t, ...e }) {
-  return /* @__PURE__ */ a.createElement(l.Action, { className: o(r(), t), ...e });
+function A({
+  className: t,
+  ...e
+}) {
+  return /* @__PURE__ */ a.createElement(
+    l.Action,
+    {
+      className: o(r(), t),
+      ...e
+    }
+  );
 }
-function D({ className: t, ...e }) {
-  return /* @__PURE__ */ a.createElement(l.Cancel, { className: o(r({ variant: "outline" }), t), ...e });
+function D({
+  className: t,
+  ...e
+}) {
+  return /* @__PURE__ */ a.createElement(
+    l.Cancel,
+    {
+      className: o(r({ variant: "outline" }), t),
+      ...e
+    }
+  );
 }
 export {
   c as AlertDialog,
@@ -99,4 +141,3 @@ export {
   p as AlertDialogTitle,
   m as AlertDialogTrigger
 };
-//# sourceMappingURL=index.es8.js.map

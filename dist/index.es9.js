@@ -15,20 +15,38 @@ const l = i(
     }
   }
 );
-function d({ className: t, variant: e, ...s }) {
-  return /* @__PURE__ */ r.createElement("div", { "data-slot": "alert", role: "alert", className: a(l({ variant: e }), t), ...s });
+function d({
+  className: t,
+  variant: e,
+  ...s
+}) {
+  return /* @__PURE__ */ r.createElement(
+    "div",
+    {
+      "data-slot": "alert",
+      role: "alert",
+      className: a(l({ variant: e }), t),
+      ...s
+    }
+  );
 }
 function o({ className: t, ...e }) {
   return /* @__PURE__ */ r.createElement(
     "div",
     {
       "data-slot": "alert-title",
-      className: a("col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight", t),
+      className: a(
+        "col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight",
+        t
+      ),
       ...e
     }
   );
 }
-function g({ className: t, ...e }) {
+function g({
+  className: t,
+  ...e
+}) {
   return /* @__PURE__ */ r.createElement(
     "div",
     {
@@ -46,4 +64,3 @@ export {
   g as AlertDescription,
   o as AlertTitle
 };
-//# sourceMappingURL=index.es9.js.map

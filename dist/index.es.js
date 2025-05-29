@@ -300,4 +300,3 @@ export {
   Yt as useSidebar,
   n as useTheme
 };
-//# sourceMappingURL=index.es.js.map

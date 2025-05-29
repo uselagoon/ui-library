@@ -1,15 +1,29 @@
 import * as e from "react";
 import * as l from "@radix-ui/react-scroll-area";
 import { cn as t } from "./index.es54.js";
-function s({ className: o, children: r, ...a }) {
-  return /* @__PURE__ */ e.createElement(l.Root, { "data-slot": "scroll-area", className: t("relative", o), ...a }, /* @__PURE__ */ e.createElement(
-    l.Viewport,
+function s({
+  className: o,
+  children: r,
+  ...a
+}) {
+  return /* @__PURE__ */ e.createElement(
+    l.Root,
     {
-      "data-slot": "scroll-area-viewport",
-      className: "focus-visible:ring-ring/50 size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1"
+      "data-slot": "scroll-area",
+      className: t("relative", o),
+      ...a
     },
-    r
-  ), /* @__PURE__ */ e.createElement(c, null), /* @__PURE__ */ e.createElement(l.Corner, null));
+    /* @__PURE__ */ e.createElement(
+      l.Viewport,
+      {
+        "data-slot": "scroll-area-viewport",
+        className: "focus-visible:ring-ring/50 size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1"
+      },
+      r
+    ),
+    /* @__PURE__ */ e.createElement(c, null),
+    /* @__PURE__ */ e.createElement(l.Corner, null)
+  );
 }
 function c({
   className: o,
@@ -42,4 +56,3 @@ export {
   s as ScrollArea,
   c as ScrollBar
 };
-//# sourceMappingURL=index.es38.js.map

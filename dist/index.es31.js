@@ -2,29 +2,46 @@ import * as t from "react";
 import * as n from "@radix-ui/react-menubar";
 import { CheckIcon as i, CircleIcon as u, ChevronRightIcon as c } from "lucide-react";
 import { cn as o } from "./index.es54.js";
-function b({ className: e, ...a }) {
+function b({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     n.Root,
     {
       "data-slot": "menubar",
-      className: o("bg-background flex h-9 items-center gap-1 rounded-md border p-1 shadow-xs", e),
+      className: o(
+        "bg-background flex h-9 items-center gap-1 rounded-md border p-1 shadow-xs",
+        e
+      ),
       ...a
     }
   );
 }
-function p({ ...e }) {
+function p({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(n.Menu, { "data-slot": "menubar-menu", ...e });
 }
-function g({ ...e }) {
+function g({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(n.Group, { "data-slot": "menubar-group", ...e });
 }
-function l({ ...e }) {
+function l({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(n.Portal, { "data-slot": "menubar-portal", ...e });
 }
-function v({ ...e }) {
+function v({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(n.RadioGroup, { "data-slot": "menubar-radio-group", ...e });
 }
-function x({ className: e, ...a }) {
+function x({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     n.Trigger,
     {
@@ -100,7 +117,11 @@ function M({
     a
   );
 }
-function z({ className: e, children: a, ...r }) {
+function z({
+  className: e,
+  children: a,
+  ...r
+}) {
   return /* @__PURE__ */ t.createElement(
     n.RadioItem,
     {
@@ -125,12 +146,18 @@ function N({
     {
       "data-slot": "menubar-label",
       "data-inset": a,
-      className: o("px-2 py-1.5 text-sm font-medium data-[inset]:pl-8", e),
+      className: o(
+        "px-2 py-1.5 text-sm font-medium data-[inset]:pl-8",
+        e
+      ),
       ...r
     }
   );
 }
-function I({ className: e, ...a }) {
+function I({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     n.Separator,
     {
@@ -140,17 +167,25 @@ function I({ className: e, ...a }) {
     }
   );
 }
-function y({ className: e, ...a }) {
+function y({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     "span",
     {
       "data-slot": "menubar-shortcut",
-      className: o("text-muted-foreground ml-auto text-xs tracking-widest", e),
+      className: o(
+        "text-muted-foreground ml-auto text-xs tracking-widest",
+        e
+      ),
       ...a
     }
   );
 }
-function k({ ...e }) {
+function k({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(n.Sub, { "data-slot": "menubar-sub", ...e });
 }
 function _({
@@ -174,7 +209,10 @@ function _({
     /* @__PURE__ */ t.createElement(c, { className: "ml-auto h-4 w-4" })
   );
 }
-function w({ className: e, ...a }) {
+function w({
+  className: e,
+  ...a
+}) {
   return /* @__PURE__ */ t.createElement(
     n.SubContent,
     {
@@ -205,4 +243,3 @@ export {
   _ as MenubarSubTrigger,
   x as MenubarTrigger
 };
-//# sourceMappingURL=index.es31.js.map

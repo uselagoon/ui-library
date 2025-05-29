@@ -14,25 +14,44 @@ function v({
     {
       "data-slot": "navigation-menu",
       "data-viewport": i,
-      className: n("group/navigation-menu relative flex max-w-max flex-1 items-center justify-center", t),
+      className: n(
+        "group/navigation-menu relative flex max-w-max flex-1 items-center justify-center",
+        t
+      ),
       ...r
     },
     e,
     i && /* @__PURE__ */ a.createElement(l, null)
   );
 }
-function f({ className: t, ...e }) {
+function f({
+  className: t,
+  ...e
+}) {
   return /* @__PURE__ */ a.createElement(
     o.List,
     {
       "data-slot": "navigation-menu-list",
-      className: n("group flex flex-1 list-none items-center justify-center gap-1", t),
+      className: n(
+        "group flex flex-1 list-none items-center justify-center gap-1",
+        t
+      ),
       ...e
     }
   );
 }
-function p({ className: t, ...e }) {
-  return /* @__PURE__ */ a.createElement(o.Item, { "data-slot": "navigation-menu-item", className: n("relative", t), ...e });
+function p({
+  className: t,
+  ...e
+}) {
+  return /* @__PURE__ */ a.createElement(
+    o.Item,
+    {
+      "data-slot": "navigation-menu-item",
+      className: n("relative", t),
+      ...e
+    }
+  );
 }
 const d = u(
   "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1"
@@ -60,7 +79,10 @@ function w({
     )
   );
 }
-function x({ className: t, ...e }) {
+function x({
+  className: t,
+  ...e
+}) {
   return /* @__PURE__ */ a.createElement(
     o.Content,
     {
@@ -78,19 +100,30 @@ function l({
   className: t,
   ...e
 }) {
-  return /* @__PURE__ */ a.createElement("div", { className: n("absolute top-full left-0 isolate z-50 flex justify-center") }, /* @__PURE__ */ a.createElement(
-    o.Viewport,
+  return /* @__PURE__ */ a.createElement(
+    "div",
     {
-      "data-slot": "navigation-menu-viewport",
       className: n(
-        "origin-top-center bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow md:w-[var(--radix-navigation-menu-viewport-width)]",
-        t
-      ),
-      ...e
-    }
-  ));
+        "absolute top-full left-0 isolate z-50 flex justify-center"
+      )
+    },
+    /* @__PURE__ */ a.createElement(
+      o.Viewport,
+      {
+        "data-slot": "navigation-menu-viewport",
+        className: n(
+          "origin-top-center bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow md:w-[var(--radix-navigation-menu-viewport-width)]",
+          t
+        ),
+        ...e
+      }
+    )
+  );
 }
-function b({ className: t, ...e }) {
+function b({
+  className: t,
+  ...e
+}) {
   return /* @__PURE__ */ a.createElement(
     o.Link,
     {
@@ -131,4 +164,3 @@ export {
   l as NavigationMenuViewport,
   d as navigationMenuTriggerStyle
 };
-//# sourceMappingURL=index.es32.js.map

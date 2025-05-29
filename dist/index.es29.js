@@ -19,4 +19,3 @@ function a({ className: e, type: i, ...r }) {
 export {
   a as Input
 };
-//# sourceMappingURL=index.es29.js.map

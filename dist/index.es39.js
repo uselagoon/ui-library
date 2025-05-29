@@ -2,13 +2,19 @@ import * as e from "react";
 import * as a from "@radix-ui/react-select";
 import { CheckIcon as i, ChevronDownIcon as o, ChevronUpIcon as c } from "lucide-react";
 import { cn as l } from "./index.es54.js";
-function f({ ...t }) {
+function f({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(a.Root, { "data-slot": "select", ...t });
 }
-function g({ ...t }) {
+function g({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(a.Group, { "data-slot": "select-group", ...t });
 }
-function v({ ...t }) {
+function v({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(a.Value, { "data-slot": "select-value", ...t });
 }
 function x({
@@ -64,7 +70,10 @@ function b({
     /* @__PURE__ */ e.createElement(u, null)
   ));
 }
-function h({ className: t, ...r }) {
+function h({
+  className: t,
+  ...r
+}) {
   return /* @__PURE__ */ e.createElement(
     a.Label,
     {
@@ -74,7 +83,11 @@ function h({ className: t, ...r }) {
     }
   );
 }
-function E({ className: t, children: r, ...n }) {
+function E({
+  className: t,
+  children: r,
+  ...n
+}) {
   return /* @__PURE__ */ e.createElement(
     a.Item,
     {
@@ -89,7 +102,10 @@ function E({ className: t, children: r, ...n }) {
     /* @__PURE__ */ e.createElement(a.ItemText, null, r)
   );
 }
-function w({ className: t, ...r }) {
+function w({
+  className: t,
+  ...r
+}) {
   return /* @__PURE__ */ e.createElement(
     a.Separator,
     {
@@ -99,12 +115,18 @@ function w({ className: t, ...r }) {
     }
   );
 }
-function d({ className: t, ...r }) {
+function d({
+  className: t,
+  ...r
+}) {
   return /* @__PURE__ */ e.createElement(
     a.ScrollUpButton,
     {
       "data-slot": "select-scroll-up-button",
-      className: l("flex cursor-default items-center justify-center py-1", t),
+      className: l(
+        "flex cursor-default items-center justify-center py-1",
+        t
+      ),
       ...r
     },
     /* @__PURE__ */ e.createElement(c, { className: "size-4" })
@@ -118,7 +140,10 @@ function u({
     a.ScrollDownButton,
     {
       "data-slot": "select-scroll-down-button",
-      className: l("flex cursor-default items-center justify-center py-1", t),
+      className: l(
+        "flex cursor-default items-center justify-center py-1",
+        t
+      ),
       ...r
     },
     /* @__PURE__ */ e.createElement(o, { className: "size-4" })
@@ -136,4 +161,3 @@ export {
   x as SelectTrigger,
   v as SelectValue
 };
-//# sourceMappingURL=index.es39.js.map

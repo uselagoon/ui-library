@@ -19,7 +19,14 @@ function b({ className: e, ...r }) {
   );
 }
 function p({ className: e, ...r }) {
-  return /* @__PURE__ */ t.createElement("li", { "data-slot": "breadcrumb-item", className: a("inline-flex items-center gap-1.5", e), ...r });
+  return /* @__PURE__ */ t.createElement(
+    "li",
+    {
+      "data-slot": "breadcrumb-item",
+      className: a("inline-flex items-center gap-1.5", e),
+      ...r
+    }
+  );
 }
 function f({
   asChild: e,
@@ -27,7 +34,14 @@ function f({
   ...n
 }) {
   const l = e ? o : "a";
-  return /* @__PURE__ */ t.createElement(l, { "data-slot": "breadcrumb-link", className: a("hover:text-foreground transition-colors", r), ...n });
+  return /* @__PURE__ */ t.createElement(
+    l,
+    {
+      "data-slot": "breadcrumb-link",
+      className: a("hover:text-foreground transition-colors", r),
+      ...n
+    }
+  );
 }
 function g({ className: e, ...r }) {
   return /* @__PURE__ */ t.createElement(
@@ -42,7 +56,11 @@ function g({ className: e, ...r }) {
     }
   );
 }
-function E({ children: e, className: r, ...n }) {
+function E({
+  children: e,
+  className: r,
+  ...n
+}) {
   return /* @__PURE__ */ t.createElement(
     "li",
     {
@@ -55,7 +73,10 @@ function E({ children: e, className: r, ...n }) {
     e ?? /* @__PURE__ */ t.createElement(s, null)
   );
 }
-function x({ className: e, ...r }) {
+function x({
+  className: e,
+  ...r
+}) {
   return /* @__PURE__ */ t.createElement(
     "span",
     {
@@ -78,4 +99,3 @@ export {
   g as BreadcrumbPage,
   E as BreadcrumbSeparator
 };
-//# sourceMappingURL=index.es13.js.map

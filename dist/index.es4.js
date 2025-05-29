@@ -24,4 +24,3 @@ export {
   g as AppThemeProvider,
   u as default
 };
-//# sourceMappingURL=index.es4.js.map

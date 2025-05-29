@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
+import * as React from "react";
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 declare function DropdownMenu({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Root>): import("react/jsx-dev-runtime").JSX.Element;
 declare function DropdownMenuPortal({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>): import("react/jsx-dev-runtime").JSX.Element;
 declare function DropdownMenuTrigger({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>): import("react/jsx-dev-runtime").JSX.Element;
@@ -7,7 +7,7 @@ declare function DropdownMenuContent({ className, sideOffset, ...props }: React.
 declare function DropdownMenuGroup({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Group>): import("react/jsx-dev-runtime").JSX.Element;
 declare function DropdownMenuItem({ className, inset, variant, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Item> & {
     inset?: boolean;
-    variant?: 'default' | 'destructive';
+    variant?: "default" | "destructive";
 }): import("react/jsx-dev-runtime").JSX.Element;
 declare function DropdownMenuCheckboxItem({ className, children, checked, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>): import("react/jsx-dev-runtime").JSX.Element;
 declare function DropdownMenuRadioGroup({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>): import("react/jsx-dev-runtime").JSX.Element;
@@ -16,7 +16,7 @@ declare function DropdownMenuLabel({ className, inset, ...props }: React.Compone
     inset?: boolean;
 }): import("react/jsx-dev-runtime").JSX.Element;
 declare function DropdownMenuSeparator({ className, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Separator>): import("react/jsx-dev-runtime").JSX.Element;
-declare function DropdownMenuShortcut({ className, ...props }: React.ComponentProps<'span'>): import("react/jsx-dev-runtime").JSX.Element;
+declare function DropdownMenuShortcut({ className, ...props }: React.ComponentProps<"span">): import("react/jsx-dev-runtime").JSX.Element;
 declare function DropdownMenuSub({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Sub>): import("react/jsx-dev-runtime").JSX.Element;
 declare function DropdownMenuSubTrigger({ className, inset, children, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & {
     inset?: boolean;

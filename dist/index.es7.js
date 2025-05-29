@@ -2,10 +2,15 @@ import * as t from "react";
 import * as n from "@radix-ui/react-accordion";
 import { ChevronDownIcon as i } from "lucide-react";
 import { cn as a } from "./index.es54.js";
-function d({ ...e }) {
+function d({
+  ...e
+}) {
   return /* @__PURE__ */ t.createElement(n.Root, { "data-slot": "accordion", ...e });
 }
-function m({ className: e, ...o }) {
+function m({
+  className: e,
+  ...o
+}) {
   return /* @__PURE__ */ t.createElement(
     n.Item,
     {
@@ -15,7 +20,11 @@ function m({ className: e, ...o }) {
     }
   );
 }
-function l({ className: e, children: o, ...r }) {
+function l({
+  className: e,
+  children: o,
+  ...r
+}) {
   return /* @__PURE__ */ t.createElement(n.Header, { className: "flex" }, /* @__PURE__ */ t.createElement(
     n.Trigger,
     {
@@ -30,7 +39,11 @@ function l({ className: e, children: o, ...r }) {
     /* @__PURE__ */ t.createElement(i, { className: "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200" })
   ));
 }
-function f({ className: e, children: o, ...r }) {
+function f({
+  className: e,
+  children: o,
+  ...r
+}) {
   return /* @__PURE__ */ t.createElement(
     n.Content,
     {
@@ -47,4 +60,3 @@ export {
   m as AccordionItem,
   l as AccordionTrigger
 };
-//# sourceMappingURL=index.es7.js.map

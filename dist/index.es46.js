@@ -1,7 +1,10 @@
 import * as e from "react";
 import * as t from "@radix-ui/react-switch";
 import { cn as a } from "./index.es54.js";
-function o({ className: r, ...n }) {
+function o({
+  className: r,
+  ...n
+}) {
   return /* @__PURE__ */ e.createElement(
     t.Root,
     {
@@ -26,4 +29,3 @@ function o({ className: r, ...n }) {
 export {
   o as Switch
 };
-//# sourceMappingURL=index.es46.js.map

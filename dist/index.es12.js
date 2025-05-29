@@ -25,10 +25,16 @@ function f({
   ...i
 }) {
   const a = t ? o : "span";
-  return /* @__PURE__ */ n.createElement(a, { "data-slot": "badge", className: d(c({ variant: e }), r), ...i });
+  return /* @__PURE__ */ n.createElement(
+    a,
+    {
+      "data-slot": "badge",
+      className: d(c({ variant: e }), r),
+      ...i
+    }
+  );
 }
 export {
   f as Badge,
   c as badgeVariants
 };
-//# sourceMappingURL=index.es12.js.map

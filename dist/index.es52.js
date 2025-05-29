@@ -1,13 +1,27 @@
 import * as e from "react";
 import * as o from "@radix-ui/react-tooltip";
 import { cn as n } from "./index.es54.js";
-function l({ delayDuration: t = 0, ...r }) {
-  return /* @__PURE__ */ e.createElement(o.Provider, { "data-slot": "tooltip-provider", delayDuration: t, ...r });
+function l({
+  delayDuration: t = 0,
+  ...r
+}) {
+  return /* @__PURE__ */ e.createElement(
+    o.Provider,
+    {
+      "data-slot": "tooltip-provider",
+      delayDuration: t,
+      ...r
+    }
+  );
 }
-function m({ ...t }) {
+function m({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(l, null, /* @__PURE__ */ e.createElement(o.Root, { "data-slot": "tooltip", ...t }));
 }
-function s({ ...t }) {
+function s({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(o.Trigger, { "data-slot": "tooltip-trigger", ...t });
 }
 function p({
@@ -37,4 +51,3 @@ export {
   l as TooltipProvider,
   s as TooltipTrigger
 };
-//# sourceMappingURL=index.es52.js.map

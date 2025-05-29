@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
-import { Controls, Primary, Stories, Story, Title } from '@storybook/blocks';
+import { Controls, Primary, Stories, Story, Title } from '@storybook/addon-docs/blocks';
 
 import { Button } from '../components/ui/button';
 

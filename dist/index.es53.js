@@ -13,4 +13,3 @@ const i = ({
 export {
   i as default
 };
-//# sourceMappingURL=index.es53.js.map

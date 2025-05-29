@@ -1,2 +1,1 @@
 "use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const n=require("./index.cjs54.js");function a({className:e,...t}){return React.createElement("div",{"data-slot":"skeleton",className:n.cn("bg-accent animate-pulse rounded-md",e),...t})}exports.Skeleton=a;
-//# sourceMappingURL=index.cjs43.js.map

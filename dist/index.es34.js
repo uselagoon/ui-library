@@ -1,10 +1,14 @@
 import * as e from "react";
 import * as o from "@radix-ui/react-popover";
 import { cn as i } from "./index.es54.js";
-function p({ ...t }) {
+function p({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(o.Root, { "data-slot": "popover", ...t });
 }
-function s({ ...t }) {
+function s({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(o.Trigger, { "data-slot": "popover-trigger", ...t });
 }
 function m({
@@ -27,7 +31,9 @@ function m({
     }
   ));
 }
-function l({ ...t }) {
+function l({
+  ...t
+}) {
   return /* @__PURE__ */ e.createElement(o.Anchor, { "data-slot": "popover-anchor", ...t });
 }
 export {
@@ -36,4 +42,3 @@ export {
   m as PopoverContent,
   s as PopoverTrigger
 };
-//# sourceMappingURL=index.es34.js.map

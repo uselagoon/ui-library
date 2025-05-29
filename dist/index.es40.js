@@ -24,4 +24,3 @@ function m({
 export {
   m as Separator
 };
-//# sourceMappingURL=index.es40.js.map

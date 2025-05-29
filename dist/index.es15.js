@@ -3,7 +3,12 @@ import { ChevronRight as l, ChevronLeft as c } from "lucide-react";
 import { DayPicker as m } from "react-day-picker";
 import { cn as e } from "./index.es54.js";
 import { buttonVariants as d } from "./index.es14.js";
-function y({ className: n, classNames: i, showOutsideDays: s = !0, ...o }) {
+function y({
+  className: n,
+  classNames: i,
+  showOutsideDays: s = !0,
+  ...o
+}) {
   return /* @__PURE__ */ r.createElement(
     m,
     {
@@ -29,7 +34,10 @@ function y({ className: n, classNames: i, showOutsideDays: s = !0, ...o }) {
           "relative p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:has([aria-selected].day-range-end)]:rounded-r-md",
           o.mode === "range" ? "[&:has(>.day-range-end)]:rounded-r-md [&:has(>.day-range-start)]:rounded-l-md first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md" : "[&:has([aria-selected])]:rounded-md"
         ),
-        day: e(d({ variant: "ghost" }), "size-8 p-0 font-normal aria-selected:opacity-100"),
+        day: e(
+          d({ variant: "ghost" }),
+          "size-8 p-0 font-normal aria-selected:opacity-100"
+        ),
         day_range_start: "day-range-start aria-selected:bg-primary aria-selected:text-primary-foreground",
         day_range_end: "day-range-end aria-selected:bg-primary aria-selected:text-primary-foreground",
         day_selected: "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
@@ -51,4 +59,3 @@ function y({ className: n, classNames: i, showOutsideDays: s = !0, ...o }) {
 export {
   y as Calendar
 };
-//# sourceMappingURL=index.es15.js.map

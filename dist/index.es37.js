@@ -2,17 +2,25 @@ import * as a from "react";
 import { GripVerticalIcon as n } from "lucide-react";
 import * as r from "react-resizable-panels";
 import { cn as l } from "./index.es54.js";
-function s({ className: e, ...t }) {
+function s({
+  className: e,
+  ...t
+}) {
   return /* @__PURE__ */ a.createElement(
     r.PanelGroup,
     {
       "data-slot": "resizable-panel-group",
-      className: l("flex h-full w-full data-[panel-group-direction=vertical]:flex-col", e),
+      className: l(
+        "flex h-full w-full data-[panel-group-direction=vertical]:flex-col",
+        e
+      ),
       ...t
     }
   );
 }
-function f({ ...e }) {
+function f({
+  ...e
+}) {
   return /* @__PURE__ */ a.createElement(r.Panel, { "data-slot": "resizable-panel", ...e });
 }
 function d({
@@ -38,4 +46,3 @@ export {
   f as ResizablePanel,
   s as ResizablePanelGroup
 };
-//# sourceMappingURL=index.es37.js.map

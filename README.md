@@ -18,11 +18,7 @@ Alternatively, add the following to your `package.json` and run `npm i`:
    "dependencies": {
     "react": "^18",
     "react-dom": "^18",
-
     "ui-library": "github:uselagoon/ui-library#main",
-    "antd": "^5.13.0",
-    "styled-components": "^6.1.8",
-    "@ant-design/icons": "^5.2.6"
   }
 
 ```
@@ -35,5 +31,6 @@ Alternatively, add the following to your `package.json` and run `npm i`:
 Using a component from the library:
 
 ```tsx
+import '@uselagoon/ui-library/dist/ui-library.css';
 import { Button } from '@uselagoon/ui-library';
 ```

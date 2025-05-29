@@ -39,7 +39,9 @@ function b({
         r.Range,
         {
           "data-slot": "slider-range",
-          className: n("bg-primary absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full")
+          className: n(
+            "bg-primary absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
+          )
         }
       )
     ),
@@ -56,4 +58,3 @@ function b({
 export {
   b as Slider
 };
-//# sourceMappingURL=index.es44.js.map

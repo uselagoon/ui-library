@@ -1,2 +1,1 @@
 "use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const o=require("next-themes"),t=require("sonner"),s=({...e})=>{const{theme:r="system"}=o.useTheme();return React.createElement(t.Toaster,{theme:r,className:"toaster group",style:{"--normal-bg":"var(--popover)","--normal-text":"var(--popover-foreground)","--normal-border":"var(--border)"},...e})};exports.Toaster=s;
-//# sourceMappingURL=index.cjs45.js.map
