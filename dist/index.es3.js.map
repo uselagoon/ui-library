@@ -1,0 +1,1 @@
+{"version":3,"file":"index.es3.js","sources":["../src/_util/colors.ts"],"sourcesContent":["import { lagoonColors } from './lagoonColors';\n\nconst colors = Object.freeze({} as const);\n\nexport default colors;\n"],"names":["colors"],"mappings":"AAEA,MAAMA,IAAS,OAAO,OAAO,CAAW,CAAA;"}

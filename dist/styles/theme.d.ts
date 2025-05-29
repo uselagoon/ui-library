@@ -6,3 +6,4 @@ export declare const lightTheme: {
     colorScheme: string;
     UI: {};
 };
+//# sourceMappingURL=theme.d.ts.map

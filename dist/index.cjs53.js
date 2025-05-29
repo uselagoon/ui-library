@@ -1,0 +1,2 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("react-loading-skeleton"),l=require("./index.cjs4.js");;/* empty css             */const c=({children:e,baseColor:t,highlightColor:o})=>{localStorage.getItem("theme");const{theme:n}=l.default();return React.createElement(r.SkeletonTheme,{baseColor:t||"#000",highlightColor:o||"#c9c9c9"},e)};exports.default=c;
+//# sourceMappingURL=index.cjs53.js.map

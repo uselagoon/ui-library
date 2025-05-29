@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import 'react-loading-skeleton/dist/skeleton.css';
 /**
  * A global config provider for react-loading-skeleton
  *
@@ -12,5 +11,6 @@ declare const SkeletonConfigProvider: ({ children, baseColor, highlightColor, }:
     children: ReactNode;
     baseColor?: string;
     highlightColor?: string;
-}) => import("react/jsx-runtime").JSX.Element;
+}) => import("react/jsx-dev-runtime").JSX.Element;
 export default SkeletonConfigProvider;
+//# sourceMappingURL=SkeletonConfigProvider.d.ts.map

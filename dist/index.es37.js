@@ -1,0 +1,41 @@
+import * as a from "react";
+import { GripVerticalIcon as n } from "lucide-react";
+import * as r from "react-resizable-panels";
+import { cn as l } from "./index.es54.js";
+function s({ className: e, ...t }) {
+  return /* @__PURE__ */ a.createElement(
+    r.PanelGroup,
+    {
+      "data-slot": "resizable-panel-group",
+      className: l("flex h-full w-full data-[panel-group-direction=vertical]:flex-col", e),
+      ...t
+    }
+  );
+}
+function f({ ...e }) {
+  return /* @__PURE__ */ a.createElement(r.Panel, { "data-slot": "resizable-panel", ...e });
+}
+function d({
+  withHandle: e,
+  className: t,
+  ...i
+}) {
+  return /* @__PURE__ */ a.createElement(
+    r.PanelResizeHandle,
+    {
+      "data-slot": "resizable-handle",
+      className: l(
+        "bg-border focus-visible:ring-ring relative flex w-px items-center justify-center after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:ring-1 focus-visible:ring-offset-1 focus-visible:outline-hidden data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90",
+        t
+      ),
+      ...i
+    },
+    e && /* @__PURE__ */ a.createElement("div", { className: "bg-border z-10 flex h-4 w-3 items-center justify-center rounded-xs border" }, /* @__PURE__ */ a.createElement(n, { className: "size-2.5" }))
+  );
+}
+export {
+  d as ResizableHandle,
+  f as ResizablePanel,
+  s as ResizablePanelGroup
+};
+//# sourceMappingURL=index.es37.js.map

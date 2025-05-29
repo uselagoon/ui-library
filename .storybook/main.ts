@@ -1,30 +1,11 @@
-import type { StorybookConfig } from '@storybook/react-webpack5';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
 	stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-	addons: [
-		'@storybook/addon-webpack5-compiler-swc',
-		'@storybook/addon-essentials',
-		'@storybook/addon-onboarding',
-		'@storybook/addon-interactions',
-	],
+	addons: ['@storybook/addon-onboarding', '@storybook/addon-docs'],
 	framework: {
-		name: '@storybook/react-webpack5',
+		name: '@storybook/react-vite',
 		options: {},
-	},
-	webpackFinal: async (config) => {
-		if (config.resolve) {
-			config.resolve.alias = {
-				...config.resolve.alias,
-				'@': path.resolve(__dirname, '../src'),
-			};
-		}
-		return config;
 	},
 };
 export default config;
