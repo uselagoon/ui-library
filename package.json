@@ -22,8 +22,7 @@
 	"homepage": "https://github.com/uselagoon/ui-library#readme",
 	"scripts": {
 		"build": "npm run bundle && npm run copy",
-		"bundle": "rm -rf ./dist && tsc -b && vite build && npm run build:tw",
-		"build:tw": "postcss ./src/styles/globals.css -o ./dist/style.css",
+		"bundle": "rm -rf ./dist && tsc -b && vite build",
 		"lint": "eslint .",
 		"preview": "vite preview",
 		"copy": "cp package.json dist/",
