@@ -1,120 +1,96 @@
 import * as t from "react";
-import * as o from "@radix-ui/react-dialog";
-import { XIcon as r } from "lucide-react";
-import { cn as n } from "./index.es54.js";
-function g({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(o.Root, { "data-slot": "dialog", ...e });
+import * as a from "@radix-ui/react-dialog";
+import { XIcon as n } from "lucide-react";
+import { cn as i } from "./index.es54.js";
+function c({ ...e }) {
+  return /* @__PURE__ */ t.createElement(a.Root, { "data-slot": "dialog", ...e });
 }
-function m({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(o.Trigger, { "data-slot": "dialog-trigger", ...e });
+function g({ ...e }) {
+  return /* @__PURE__ */ t.createElement(a.Trigger, { "data-slot": "dialog-trigger", ...e });
 }
-function i({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(o.Portal, { "data-slot": "dialog-portal", ...e });
+function r({ ...e }) {
+  return /* @__PURE__ */ t.createElement(a.Portal, { "data-slot": "dialog-portal", ...e });
 }
-function u({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(o.Close, { "data-slot": "dialog-close", ...e });
+function m({ ...e }) {
+  return /* @__PURE__ */ t.createElement(a.Close, { "data-slot": "dialog-close", ...e });
 }
-function s({
-  className: e,
-  ...a
-}) {
+function s({ className: e, ...l }) {
   return /* @__PURE__ */ t.createElement(
-    o.Overlay,
+    a.Overlay,
     {
       "data-slot": "dialog-overlay",
-      className: n(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
-        e
-      ),
-      ...a
-    }
-  );
-}
-function f({
-  className: e,
-  children: a,
-  ...l
-}) {
-  return /* @__PURE__ */ t.createElement(i, { "data-slot": "dialog-portal" }, /* @__PURE__ */ t.createElement(s, null), /* @__PURE__ */ t.createElement(
-    o.Content,
-    {
-      "data-slot": "dialog-content",
-      className: n(
-        "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 sm:max-w-lg",
+      className: i(
+        "data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 lib:fixed lib:inset-0 lib:z-50 lib:bg-black/50",
         e
       ),
       ...l
+    }
+  );
+}
+function u({ className: e, children: l, ...o }) {
+  return /* @__PURE__ */ t.createElement(r, { "data-slot": "dialog-portal" }, /* @__PURE__ */ t.createElement(s, null), /* @__PURE__ */ t.createElement(
+    a.Content,
+    {
+      "data-slot": "dialog-content",
+      className: i(
+        "lib:bg-background data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 data-[state=closed]:lib:zoom-out-95 data-[state=open]:lib:zoom-in-95 lib:fixed lib:top-[50%] lib:left-[50%] lib:z-50 lib:grid lib:w-full lib:max-w-[calc(100%-2rem)] lib:translate-x-[-50%] lib:translate-y-[-50%] lib:gap-4 lib:rounded-lg lib:border lib:p-6 lib:shadow-lg lib:duration-200 sm:lib:max-w-lg",
+        e
+      ),
+      ...o
     },
-    a,
-    /* @__PURE__ */ t.createElement(o.Close, { className: "ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4" }, /* @__PURE__ */ t.createElement(r, null), /* @__PURE__ */ t.createElement("span", { className: "sr-only" }, "Close"))
+    l,
+    /* @__PURE__ */ t.createElement(a.Close, { className: "lib:ring-offset-background focus:lib:ring-ring data-[state=open]:lib:bg-accent data-[state=open]:lib:text-muted-foreground lib:absolute lib:top-4 lib:right-4 lib:rounded-xs lib:opacity-70 lib:transition-opacity hover:lib:opacity-100 focus:lib:ring-2 focus:lib:ring-offset-2 focus:lib:outline-hidden disabled:lib:pointer-events-none [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4" }, /* @__PURE__ */ t.createElement(n, null), /* @__PURE__ */ t.createElement("span", { className: "lib:sr-only" }, "Close"))
   ));
 }
-function p({ className: e, ...a }) {
+function f({ className: e, ...l }) {
   return /* @__PURE__ */ t.createElement(
     "div",
     {
       "data-slot": "dialog-header",
-      className: n("flex flex-col gap-2 text-center sm:text-left", e),
-      ...a
+      className: i("lib:flex lib:flex-col lib:gap-2 lib:text-center sm:lib:text-left", e),
+      ...l
     }
   );
 }
-function x({ className: e, ...a }) {
+function p({ className: e, ...l }) {
   return /* @__PURE__ */ t.createElement(
     "div",
     {
       "data-slot": "dialog-footer",
-      className: n(
-        "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-        e
-      ),
-      ...a
+      className: i("lib:flex lib:flex-col-reverse lib:gap-2 sm:lib:flex-row sm:lib:justify-end", e),
+      ...l
     }
   );
 }
-function E({
-  className: e,
-  ...a
-}) {
+function x({ className: e, ...l }) {
   return /* @__PURE__ */ t.createElement(
-    o.Title,
+    a.Title,
     {
       "data-slot": "dialog-title",
-      className: n("text-lg leading-none font-semibold", e),
-      ...a
+      className: i("lib:text-lg lib:leading-none lib:font-semibold", e),
+      ...l
     }
   );
 }
-function v({
-  className: e,
-  ...a
-}) {
+function E({ className: e, ...l }) {
   return /* @__PURE__ */ t.createElement(
-    o.Description,
+    a.Description,
     {
       "data-slot": "dialog-description",
-      className: n("text-muted-foreground text-sm", e),
-      ...a
+      className: i("lib:text-muted-foreground lib:text-sm", e),
+      ...l
     }
   );
 }
 export {
-  g as Dialog,
-  u as DialogClose,
-  f as DialogContent,
-  v as DialogDescription,
-  x as DialogFooter,
-  p as DialogHeader,
+  c as Dialog,
+  m as DialogClose,
+  u as DialogContent,
+  E as DialogDescription,
+  p as DialogFooter,
+  f as DialogHeader,
   s as DialogOverlay,
-  i as DialogPortal,
-  E as DialogTitle,
-  m as DialogTrigger
+  r as DialogPortal,
+  x as DialogTitle,
+  g as DialogTrigger
 };

@@ -1,61 +1,61 @@
 import * as e from "react";
-import * as l from "@radix-ui/react-toggle-group";
+import * as n from "@radix-ui/react-toggle-group";
 import { cn as d } from "./index.es54.js";
 import { toggleVariants as u } from "./index.es51.js";
 const s = e.createContext({
   size: "default",
   variant: "default"
 });
-function c({
-  className: n,
+function g({
+  className: r,
   variant: o,
   size: t,
   children: a,
-  ...i
+  ...l
 }) {
   return /* @__PURE__ */ e.createElement(
-    l.Root,
+    n.Root,
     {
       "data-slot": "toggle-group",
       "data-variant": o,
       "data-size": t,
       className: d(
-        "group/toggle-group flex w-fit items-center rounded-md data-[variant=outline]:shadow-xs",
-        n
+        "lib:group/toggle-group lib:flex lib:w-fit lib:items-center lib:rounded-md data-[variant=outline]:lib:shadow-xs",
+        r
       ),
-      ...i
+      ...l
     },
     /* @__PURE__ */ e.createElement(s.Provider, { value: { variant: o, size: t } }, a)
   );
 }
-function f({
-  className: n,
+function c({
+  className: r,
   children: o,
   variant: t,
   size: a,
-  ...i
+  ...l
 }) {
-  const r = e.useContext(s);
+  const i = e.useContext(s);
   return /* @__PURE__ */ e.createElement(
-    l.Item,
+    n.Item,
     {
       "data-slot": "toggle-group-item",
-      "data-variant": r.variant || t,
-      "data-size": r.size || a,
+      "data-variant": i.variant || t,
+      "data-size": i.size || a,
       className: d(
         u({
-          variant: r.variant || t,
-          size: r.size || a
+          variant: i.variant || t,
+          size: i.size || a
         }),
-        "min-w-0 flex-1 shrink-0 rounded-none shadow-none first:rounded-l-md last:rounded-r-md focus:z-10 focus-visible:z-10 data-[variant=outline]:border-l-0 data-[variant=outline]:first:border-l",
-        n
+        "lib:min-w-0 lib:flex-1 lib:shrink-0 lib:rounded-none lib:shadow-none first:lib:rounded-l-md last:lib:rounded-r-md focus:lib:z-10 focus-visible:lib:z-10 data-[variant=outline]:lib:border-l-0 data-[variant=outline]:first:lib:border-l",
+        r
       ),
-      ...i
+      ...l
     },
     o
   );
 }
 export {
-  c as ToggleGroup,
-  f as ToggleGroupItem
+  g as ToggleGroup,
+  c as ToggleGroupItem
 };

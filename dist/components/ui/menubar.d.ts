@@ -1,5 +1,5 @@
-import * as React from "react";
-import * as MenubarPrimitive from "@radix-ui/react-menubar";
+import * as React from 'react';
+import * as MenubarPrimitive from '@radix-ui/react-menubar';
 declare function Menubar({ className, ...props }: React.ComponentProps<typeof MenubarPrimitive.Root>): import("react/jsx-dev-runtime").JSX.Element;
 declare function MenubarMenu({ ...props }: React.ComponentProps<typeof MenubarPrimitive.Menu>): import("react/jsx-dev-runtime").JSX.Element;
 declare function MenubarGroup({ ...props }: React.ComponentProps<typeof MenubarPrimitive.Group>): import("react/jsx-dev-runtime").JSX.Element;
@@ -9,7 +9,7 @@ declare function MenubarTrigger({ className, ...props }: React.ComponentProps<ty
 declare function MenubarContent({ className, align, alignOffset, sideOffset, ...props }: React.ComponentProps<typeof MenubarPrimitive.Content>): import("react/jsx-dev-runtime").JSX.Element;
 declare function MenubarItem({ className, inset, variant, ...props }: React.ComponentProps<typeof MenubarPrimitive.Item> & {
     inset?: boolean;
-    variant?: "default" | "destructive";
+    variant?: 'default' | 'destructive';
 }): import("react/jsx-dev-runtime").JSX.Element;
 declare function MenubarCheckboxItem({ className, children, checked, ...props }: React.ComponentProps<typeof MenubarPrimitive.CheckboxItem>): import("react/jsx-dev-runtime").JSX.Element;
 declare function MenubarRadioItem({ className, children, ...props }: React.ComponentProps<typeof MenubarPrimitive.RadioItem>): import("react/jsx-dev-runtime").JSX.Element;
@@ -17,7 +17,7 @@ declare function MenubarLabel({ className, inset, ...props }: React.ComponentPro
     inset?: boolean;
 }): import("react/jsx-dev-runtime").JSX.Element;
 declare function MenubarSeparator({ className, ...props }: React.ComponentProps<typeof MenubarPrimitive.Separator>): import("react/jsx-dev-runtime").JSX.Element;
-declare function MenubarShortcut({ className, ...props }: React.ComponentProps<"span">): import("react/jsx-dev-runtime").JSX.Element;
+declare function MenubarShortcut({ className, ...props }: React.ComponentProps<'span'>): import("react/jsx-dev-runtime").JSX.Element;
 declare function MenubarSub({ ...props }: React.ComponentProps<typeof MenubarPrimitive.Sub>): import("react/jsx-dev-runtime").JSX.Element;
 declare function MenubarSubTrigger({ className, inset, children, ...props }: React.ComponentProps<typeof MenubarPrimitive.SubTrigger> & {
     inset?: boolean;

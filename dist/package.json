@@ -25,7 +25,7 @@
 		"bundle": "rm -rf ./dist && tsc -b && vite build",
 		"lint": "eslint .",
 		"preview": "vite preview",
-		"copy": "cp package.json dist/",
+		"copy": "cp package.json dist/ && cp dist/ui-library.css .storybook/globals.css",
 		"postinstall": "node postinstall.cjs",
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
@@ -82,8 +82,8 @@
 		"zod": "^3.25.34"
 	},
 	"peerDependencies": {
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"react": ">=18.2.0",
+		"react-dom": ">=18.2.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.25.0",

@@ -1,58 +1,44 @@
-import * as e from "react";
-import * as l from "@radix-ui/react-scroll-area";
-import { cn as t } from "./index.es54.js";
-function s({
-  className: o,
-  children: r,
-  ...a
-}) {
-  return /* @__PURE__ */ e.createElement(
-    l.Root,
+import * as l from "react";
+import * as r from "@radix-ui/react-scroll-area";
+import { cn as a } from "./index.es54.js";
+function c({ className: i, children: e, ...o }) {
+  return /* @__PURE__ */ l.createElement(r.Root, { "data-slot": "scroll-area", className: a("lib:relative", i), ...o }, /* @__PURE__ */ l.createElement(
+    r.Viewport,
     {
-      "data-slot": "scroll-area",
-      className: t("relative", o),
-      ...a
+      "data-slot": "scroll-area-viewport",
+      className: "focus-visible:lib:ring-ring/50 lib:size-full lib:rounded-[inherit] lib:transition-[color,box-shadow] lib:outline-none focus-visible:lib:ring-[3px] focus-visible:lib:outline-1"
     },
-    /* @__PURE__ */ e.createElement(
-      l.Viewport,
-      {
-        "data-slot": "scroll-area-viewport",
-        className: "focus-visible:ring-ring/50 size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1"
-      },
-      r
-    ),
-    /* @__PURE__ */ e.createElement(c, null),
-    /* @__PURE__ */ e.createElement(l.Corner, null)
-  );
+    e
+  ), /* @__PURE__ */ l.createElement(t, null), /* @__PURE__ */ l.createElement(r.Corner, null));
 }
-function c({
-  className: o,
-  orientation: r = "vertical",
-  ...a
+function t({
+  className: i,
+  orientation: e = "vertical",
+  ...o
 }) {
-  return /* @__PURE__ */ e.createElement(
-    l.ScrollAreaScrollbar,
+  return /* @__PURE__ */ l.createElement(
+    r.ScrollAreaScrollbar,
     {
       "data-slot": "scroll-area-scrollbar",
-      orientation: r,
-      className: t(
-        "flex touch-none p-px transition-colors select-none",
-        r === "vertical" && "h-full w-2.5 border-l border-l-transparent",
-        r === "horizontal" && "h-2.5 flex-col border-t border-t-transparent",
-        o
+      orientation: e,
+      className: a(
+        "lib:flex lib:touch-none lib:p-px lib:transition-colors lib:select-none",
+        e === "vertical" && "lib:h-full lib:w-2.5 lib:border-l lib:border-l-transparent",
+        e === "horizontal" && "lib:h-2.5 lib:flex-col lib:border-t lib:border-t-transparent",
+        i
       ),
-      ...a
+      ...o
     },
-    /* @__PURE__ */ e.createElement(
-      l.ScrollAreaThumb,
+    /* @__PURE__ */ l.createElement(
+      r.ScrollAreaThumb,
       {
         "data-slot": "scroll-area-thumb",
-        className: "bg-border relative flex-1 rounded-full"
+        className: "lib:bg-border lib:relative lib:flex-1 lib:rounded-full"
       }
     )
   );
 }
 export {
-  s as ScrollArea,
-  c as ScrollBar
+  c as ScrollArea,
+  t as ScrollBar
 };

@@ -1,163 +1,138 @@
 import * as e from "react";
-import * as a from "@radix-ui/react-select";
-import { CheckIcon as i, ChevronDownIcon as o, ChevronUpIcon as c } from "lucide-react";
-import { cn as l } from "./index.es54.js";
-function f({
-  ...t
-}) {
-  return /* @__PURE__ */ e.createElement(a.Root, { "data-slot": "select", ...t });
+import * as l from "@radix-ui/react-select";
+import { CheckIcon as o, ChevronDownIcon as s, ChevronUpIcon as b } from "lucide-react";
+import { cn as a } from "./index.es54.js";
+function p({ ...t }) {
+  return /* @__PURE__ */ e.createElement(l.Root, { "data-slot": "select", ...t });
 }
-function g({
-  ...t
-}) {
-  return /* @__PURE__ */ e.createElement(a.Group, { "data-slot": "select-group", ...t });
+function f({ ...t }) {
+  return /* @__PURE__ */ e.createElement(l.Group, { "data-slot": "select-group", ...t });
+}
+function g({ ...t }) {
+  return /* @__PURE__ */ e.createElement(l.Value, { "data-slot": "select-value", ...t });
 }
 function v({
-  ...t
-}) {
-  return /* @__PURE__ */ e.createElement(a.Value, { "data-slot": "select-value", ...t });
-}
-function x({
   className: t,
-  size: r = "default",
-  children: n,
-  ...s
-}) {
-  return /* @__PURE__ */ e.createElement(
-    a.Trigger,
-    {
-      "data-slot": "select-trigger",
-      "data-size": r,
-      className: l(
-        "border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        t
-      ),
-      ...s
-    },
-    n,
-    /* @__PURE__ */ e.createElement(a.Icon, { asChild: !0 }, /* @__PURE__ */ e.createElement(o, { className: "size-4 opacity-50" }))
-  );
-}
-function b({
-  className: t,
-  children: r,
-  position: n = "popper",
-  ...s
-}) {
-  return /* @__PURE__ */ e.createElement(a.Portal, null, /* @__PURE__ */ e.createElement(
-    a.Content,
-    {
-      "data-slot": "select-content",
-      className: l(
-        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-(--radix-select-content-available-height) min-w-[8rem] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border shadow-md",
-        n === "popper" && "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
-        t
-      ),
-      position: n,
-      ...s
-    },
-    /* @__PURE__ */ e.createElement(d, null),
-    /* @__PURE__ */ e.createElement(
-      a.Viewport,
-      {
-        className: l(
-          "p-1",
-          n === "popper" && "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)] scroll-my-1"
-        )
-      },
-      r
-    ),
-    /* @__PURE__ */ e.createElement(u, null)
-  ));
-}
-function h({
-  className: t,
-  ...r
-}) {
-  return /* @__PURE__ */ e.createElement(
-    a.Label,
-    {
-      "data-slot": "select-label",
-      className: l("text-muted-foreground px-2 py-1.5 text-xs", t),
-      ...r
-    }
-  );
-}
-function E({
-  className: t,
+  size: i = "default",
   children: r,
   ...n
 }) {
   return /* @__PURE__ */ e.createElement(
-    a.Item,
+    l.Trigger,
     {
-      "data-slot": "select-item",
-      className: l(
-        "focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+      "data-slot": "select-trigger",
+      "data-size": i,
+      className: a(
+        "lib:border-input data-[placeholder]:lib:text-muted-foreground [&_svg:not([class*=text-])]:lib:text-muted-foreground focus-visible:lib:border-ring focus-visible:lib:ring-ring/50 aria-invalid:lib:ring-destructive/20 dark:aria-invalid:lib:ring-destructive/40 aria-invalid:lib:border-destructive dark:lib:bg-input/30 dark:hover:lib:bg-input/50 lib:flex lib:w-fit lib:items-center lib:justify-between lib:gap-2 lib:rounded-md lib:border lib:bg-transparent lib:px-3 lib:py-2 lib:text-sm lib:whitespace-nowrap lib:shadow-xs lib:transition-[color,box-shadow] lib:outline-none focus-visible:lib:ring-[3px] disabled:lib:cursor-not-allowed disabled:lib:opacity-50 data-[size=default]:lib:h-9 data-[size=sm]:lib:h-8 *:data-[slot=select-value]:lib:line-clamp-1 *:data-[slot=select-value]:lib:flex *:data-[slot=select-value]:lib:items-center *:data-[slot=select-value]:lib:gap-2 [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4",
         t
       ),
       ...n
     },
-    /* @__PURE__ */ e.createElement("span", { className: "absolute right-2 flex size-3.5 items-center justify-center" }, /* @__PURE__ */ e.createElement(a.ItemIndicator, null, /* @__PURE__ */ e.createElement(i, { className: "size-4" }))),
-    /* @__PURE__ */ e.createElement(a.ItemText, null, r)
+    r,
+    /* @__PURE__ */ e.createElement(l.Icon, { asChild: !0 }, /* @__PURE__ */ e.createElement(s, { className: "lib:size-4 lib:opacity-50" }))
   );
 }
-function w({
+function x({
   className: t,
-  ...r
+  children: i,
+  position: r = "popper",
+  ...n
 }) {
+  return /* @__PURE__ */ e.createElement(l.Portal, null, /* @__PURE__ */ e.createElement(
+    l.Content,
+    {
+      "data-slot": "select-content",
+      className: a(
+        "lib:bg-popover lib:text-popover-foreground data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 data-[state=closed]:lib:zoom-out-95 data-[state=open]:lib:zoom-in-95 data-[side=bottom]:lib:slide-in-from-top-2 data-[side=left]:lib:slide-in-from-right-2 data-[side=right]:lib:slide-in-from-left-2 data-[side=top]:lib:slide-in-from-bottom-2 lib:relative lib:z-50 lib:max-h-(--radix-select-content-available-height) lib:min-w-[8rem] lib:origin-(--radix-select-content-transform-origin) lib:overflow-x-hidden lib:overflow-y-auto lib:rounded-md lib:border lib:shadow-md",
+        r === "popper" && "data-[side=bottom]:lib:translate-y-1 data-[side=left]:lib:-translate-x-1 data-[side=right]:lib:translate-x-1 data-[side=top]:lib:-translate-y-1",
+        t
+      ),
+      position: r,
+      ...n
+    },
+    /* @__PURE__ */ e.createElement(c, null),
+    /* @__PURE__ */ e.createElement(
+      l.Viewport,
+      {
+        className: a(
+          "lib:p-1",
+          r === "popper" && "lib:h-[var(--radix-select-trigger-height)] lib:w-full lib:min-w-[var(--radix-select-trigger-width)] lib:scroll-my-1"
+        )
+      },
+      i
+    ),
+    /* @__PURE__ */ e.createElement(d, null)
+  ));
+}
+function h({ className: t, ...i }) {
   return /* @__PURE__ */ e.createElement(
-    a.Separator,
+    l.Label,
+    {
+      "data-slot": "select-label",
+      className: a("lib:text-muted-foreground lib:px-2 lib:py-1.5 lib:text-xs", t),
+      ...i
+    }
+  );
+}
+function E({ className: t, children: i, ...r }) {
+  return /* @__PURE__ */ e.createElement(
+    l.Item,
+    {
+      "data-slot": "select-item",
+      className: a(
+        "focus:lib:bg-accent focus:lib:text-accent-foreground [&_svg:not([class*=text-])]:lib:text-muted-foreground lib:relative lib:flex lib:w-full lib:cursor-default lib:items-center lib:gap-2 lib:rounded-sm lib:py-1.5 lib:pr-8 lib:pl-2 lib:text-sm lib:outline-hidden lib:select-none data-[disabled]:lib:pointer-events-none data-[disabled]:lib:opacity-50 [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4 *:[span]:last:lib:flex *:[span]:last:lib:items-center *:[span]:last:lib:gap-2",
+        t
+      ),
+      ...r
+    },
+    /* @__PURE__ */ e.createElement("span", { className: "lib:absolute lib:right-2 lib:flex lib:size-3.5 lib:items-center lib:justify-center" }, /* @__PURE__ */ e.createElement(l.ItemIndicator, null, /* @__PURE__ */ e.createElement(o, { className: "lib:size-4" }))),
+    /* @__PURE__ */ e.createElement(l.ItemText, null, i)
+  );
+}
+function w({ className: t, ...i }) {
+  return /* @__PURE__ */ e.createElement(
+    l.Separator,
     {
       "data-slot": "select-separator",
-      className: l("bg-border pointer-events-none -mx-1 my-1 h-px", t),
-      ...r
+      className: a("lib:bg-border lib:pointer-events-none lib:-mx-1 lib:my-1 lib:h-px", t),
+      ...i
     }
+  );
+}
+function c({ className: t, ...i }) {
+  return /* @__PURE__ */ e.createElement(
+    l.ScrollUpButton,
+    {
+      "data-slot": "select-scroll-up-button",
+      className: a("lib:flex lib:cursor-default lib:items-center lib:justify-center lib:py-1", t),
+      ...i
+    },
+    /* @__PURE__ */ e.createElement(b, { className: "lib:size-4" })
   );
 }
 function d({
   className: t,
-  ...r
+  ...i
 }) {
   return /* @__PURE__ */ e.createElement(
-    a.ScrollUpButton,
-    {
-      "data-slot": "select-scroll-up-button",
-      className: l(
-        "flex cursor-default items-center justify-center py-1",
-        t
-      ),
-      ...r
-    },
-    /* @__PURE__ */ e.createElement(c, { className: "size-4" })
-  );
-}
-function u({
-  className: t,
-  ...r
-}) {
-  return /* @__PURE__ */ e.createElement(
-    a.ScrollDownButton,
+    l.ScrollDownButton,
     {
       "data-slot": "select-scroll-down-button",
-      className: l(
-        "flex cursor-default items-center justify-center py-1",
-        t
-      ),
-      ...r
+      className: a("lib:flex lib:cursor-default lib:items-center lib:justify-center lib:py-1", t),
+      ...i
     },
-    /* @__PURE__ */ e.createElement(o, { className: "size-4" })
+    /* @__PURE__ */ e.createElement(s, { className: "lib:size-4" })
   );
 }
 export {
-  f as Select,
-  b as SelectContent,
-  g as SelectGroup,
+  p as Select,
+  x as SelectContent,
+  f as SelectGroup,
   E as SelectItem,
   h as SelectLabel,
-  u as SelectScrollDownButton,
-  d as SelectScrollUpButton,
+  d as SelectScrollDownButton,
+  c as SelectScrollUpButton,
   w as SelectSeparator,
-  x as SelectTrigger,
-  v as SelectValue
+  v as SelectTrigger,
+  g as SelectValue
 };

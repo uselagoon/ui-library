@@ -1,49 +1,44 @@
-import * as a from "react";
-import { cn as l } from "./index.es54.js";
+import * as l from "react";
+import { cn as a } from "./index.es54.js";
+function r({ className: e, ...t }) {
+  return /* @__PURE__ */ l.createElement("div", { "data-slot": "table-container", className: "lib:relative lib:w-full lib:overflow-x-auto" }, /* @__PURE__ */ l.createElement("table", { "data-slot": "table", className: a("lib:w-full lib:caption-bottom lib:text-sm", e), ...t }));
+}
 function o({ className: e, ...t }) {
-  return /* @__PURE__ */ a.createElement(
-    "div",
-    {
-      "data-slot": "table-container",
-      className: "relative w-full overflow-x-auto"
-    },
-    /* @__PURE__ */ a.createElement(
-      "table",
-      {
-        "data-slot": "table",
-        className: l("w-full caption-bottom text-sm", e),
-        ...t
-      }
-    )
-  );
+  return /* @__PURE__ */ l.createElement("thead", { "data-slot": "table-header", className: a("[&_tr]:lib:border-b", e), ...t });
+}
+function i({ className: e, ...t }) {
+  return /* @__PURE__ */ l.createElement("tbody", { "data-slot": "table-body", className: a("[&_tr:last-child]:lib:border-0", e), ...t });
 }
 function n({ className: e, ...t }) {
-  return /* @__PURE__ */ a.createElement(
-    "thead",
+  return /* @__PURE__ */ l.createElement(
+    "tfoot",
     {
-      "data-slot": "table-header",
-      className: l("[&_tr]:border-b", e),
+      "data-slot": "table-footer",
+      className: a("lib:bg-muted/50 lib:border-t lib:font-medium [&>tr]:last:lib:border-b-0", e),
       ...t
     }
   );
 }
 function c({ className: e, ...t }) {
-  return /* @__PURE__ */ a.createElement(
-    "tbody",
+  return /* @__PURE__ */ l.createElement(
+    "tr",
     {
-      "data-slot": "table-body",
-      className: l("[&_tr:last-child]:border-0", e),
+      "data-slot": "table-row",
+      className: a(
+        "hover:lib:bg-muted/50 data-[state=selected]:lib:bg-muted lib:border-b lib:transition-colors",
+        e
+      ),
       ...t
     }
   );
 }
 function s({ className: e, ...t }) {
-  return /* @__PURE__ */ a.createElement(
-    "tfoot",
+  return /* @__PURE__ */ l.createElement(
+    "th",
     {
-      "data-slot": "table-footer",
-      className: l(
-        "bg-muted/50 border-t font-medium [&>tr]:last:border-b-0",
+      "data-slot": "table-head",
+      className: a(
+        "lib:text-foreground lib:h-10 lib:px-2 lib:text-left lib:align-middle lib:font-medium lib:whitespace-nowrap [&:has([role=checkbox])]:lib:pr-0 [&>[role=checkbox]]:lib:translate-y-[2px]",
         e
       ),
       ...t
@@ -51,25 +46,12 @@ function s({ className: e, ...t }) {
   );
 }
 function d({ className: e, ...t }) {
-  return /* @__PURE__ */ a.createElement(
-    "tr",
+  return /* @__PURE__ */ l.createElement(
+    "td",
     {
-      "data-slot": "table-row",
-      className: l(
-        "hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors",
-        e
-      ),
-      ...t
-    }
-  );
-}
-function b({ className: e, ...t }) {
-  return /* @__PURE__ */ a.createElement(
-    "th",
-    {
-      "data-slot": "table-head",
-      className: l(
-        "text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+      "data-slot": "table-cell",
+      className: a(
+        "lib:p-2 lib:align-middle lib:whitespace-nowrap [&:has([role=checkbox])]:lib:pr-0 [&>[role=checkbox]]:lib:translate-y-[2px]",
         e
       ),
       ...t
@@ -77,38 +59,22 @@ function b({ className: e, ...t }) {
   );
 }
 function m({ className: e, ...t }) {
-  return /* @__PURE__ */ a.createElement(
-    "td",
-    {
-      "data-slot": "table-cell",
-      className: l(
-        "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
-        e
-      ),
-      ...t
-    }
-  );
-}
-function i({
-  className: e,
-  ...t
-}) {
-  return /* @__PURE__ */ a.createElement(
+  return /* @__PURE__ */ l.createElement(
     "caption",
     {
       "data-slot": "table-caption",
-      className: l("text-muted-foreground mt-4 text-sm", e),
+      className: a("lib:text-muted-foreground lib:mt-4 lib:text-sm", e),
       ...t
     }
   );
 }
 export {
-  o as Table,
-  c as TableBody,
-  i as TableCaption,
-  m as TableCell,
-  s as TableFooter,
-  b as TableHead,
-  n as TableHeader,
-  d as TableRow
+  r as Table,
+  i as TableBody,
+  m as TableCaption,
+  d as TableCell,
+  n as TableFooter,
+  s as TableHead,
+  o as TableHeader,
+  c as TableRow
 };

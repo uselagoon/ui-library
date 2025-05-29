@@ -1,13 +1,13 @@
-import * as r from "react";
-import { cva as i } from "class-variance-authority";
-import { cn as a } from "./index.es54.js";
-const l = i(
-  "relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
+import * as l from "react";
+import { cva as a } from "class-variance-authority";
+import { cn as e } from "./index.es54.js";
+const s = a(
+  "lib:relative lib:w-full lib:rounded-lg lib:border lib:px-4 lib:py-3 lib:text-sm lib:grid has-[>svg]:lib:grid-cols-[calc(var(--spacing)*4)_1fr] lib:grid-cols-[0_1fr] has-[>svg]:lib:gap-x-3 lib:gap-y-0.5 lib:items-start [&>svg]:lib:size-4 [&>svg]:lib:translate-y-0.5 [&>svg]:lib:text-current",
   {
     variants: {
       variant: {
-        default: "bg-card text-card-foreground",
-        destructive: "text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90"
+        default: "lib:bg-card lib:text-card-foreground",
+        destructive: "lib:text-destructive lib:bg-card [&>svg]:lib:text-current *:data-[slot=alert-description]:lib:text-destructive/90"
       }
     },
     defaultVariants: {
@@ -15,52 +15,34 @@ const l = i(
     }
   }
 );
-function d({
-  className: t,
-  variant: e,
-  ...s
-}) {
-  return /* @__PURE__ */ r.createElement(
-    "div",
-    {
-      "data-slot": "alert",
-      role: "alert",
-      className: a(l({ variant: e }), t),
-      ...s
-    }
-  );
+function c({ className: t, variant: i, ...r }) {
+  return /* @__PURE__ */ l.createElement("div", { "data-slot": "alert", role: "alert", className: e(s({ variant: i }), t), ...r });
 }
-function o({ className: t, ...e }) {
-  return /* @__PURE__ */ r.createElement(
+function d({ className: t, ...i }) {
+  return /* @__PURE__ */ l.createElement(
     "div",
     {
       "data-slot": "alert-title",
-      className: a(
-        "col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight",
-        t
-      ),
-      ...e
+      className: e("lib:col-start-2 lib:line-clamp-1 lib:min-h-4 lib:font-medium lib:tracking-tight", t),
+      ...i
     }
   );
 }
-function g({
-  className: t,
-  ...e
-}) {
-  return /* @__PURE__ */ r.createElement(
+function o({ className: t, ...i }) {
+  return /* @__PURE__ */ l.createElement(
     "div",
     {
       "data-slot": "alert-description",
-      className: a(
-        "text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
+      className: e(
+        "lib:text-muted-foreground lib:col-start-2 lib:grid lib:justify-items-start lib:gap-1 lib:text-sm [&_p]:lib:leading-relaxed",
         t
       ),
-      ...e
+      ...i
     }
   );
 }
 export {
-  d as Alert,
-  g as AlertDescription,
-  o as AlertTitle
+  c as Alert,
+  o as AlertDescription,
+  d as AlertTitle
 };

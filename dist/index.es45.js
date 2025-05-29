@@ -6,7 +6,7 @@ const m = ({ ...r }) => {
     t,
     {
       theme: e,
-      className: "toaster group",
+      className: "lib:toaster lib:group",
       style: {
         "--normal-bg": "var(--popover)",
         "--normal-text": "var(--popover-foreground)",

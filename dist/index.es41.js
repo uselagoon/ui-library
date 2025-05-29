@@ -1,118 +1,96 @@
 import * as e from "react";
-import * as o from "@radix-ui/react-dialog";
-import { XIcon as l } from "lucide-react";
-import { cn as n } from "./index.es54.js";
+import * as i from "@radix-ui/react-dialog";
+import { XIcon as s } from "lucide-react";
+import { cn as a } from "./index.es54.js";
+function m({ ...t }) {
+  return /* @__PURE__ */ e.createElement(i.Root, { "data-slot": "sheet", ...t });
+}
 function u({ ...t }) {
-  return /* @__PURE__ */ e.createElement(o.Root, { "data-slot": "sheet", ...t });
+  return /* @__PURE__ */ e.createElement(i.Trigger, { "data-slot": "sheet-trigger", ...t });
 }
-function f({
-  ...t
-}) {
-  return /* @__PURE__ */ e.createElement(o.Trigger, { "data-slot": "sheet-trigger", ...t });
+function f({ ...t }) {
+  return /* @__PURE__ */ e.createElement(i.Close, { "data-slot": "sheet-close", ...t });
 }
-function h({
-  ...t
-}) {
-  return /* @__PURE__ */ e.createElement(o.Close, { "data-slot": "sheet-close", ...t });
+function r({ ...t }) {
+  return /* @__PURE__ */ e.createElement(i.Portal, { "data-slot": "sheet-portal", ...t });
 }
-function i({
-  ...t
-}) {
-  return /* @__PURE__ */ e.createElement(o.Portal, { "data-slot": "sheet-portal", ...t });
-}
-function d({
-  className: t,
-  ...a
-}) {
+function b({ className: t, ...l }) {
   return /* @__PURE__ */ e.createElement(
-    o.Overlay,
+    i.Overlay,
     {
       "data-slot": "sheet-overlay",
-      className: n(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+      className: a(
+        "data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 lib:fixed lib:inset-0 lib:z-50 lib:bg-black/50",
         t
       ),
-      ...a
+      ...l
     }
   );
 }
-function p({
+function h({
   className: t,
-  children: a,
-  side: s = "right",
-  ...r
+  children: l,
+  side: o = "right",
+  ...n
 }) {
-  return /* @__PURE__ */ e.createElement(i, null, /* @__PURE__ */ e.createElement(d, null), /* @__PURE__ */ e.createElement(
-    o.Content,
+  return /* @__PURE__ */ e.createElement(r, null, /* @__PURE__ */ e.createElement(b, null), /* @__PURE__ */ e.createElement(
+    i.Content,
     {
       "data-slot": "sheet-content",
-      className: n(
-        "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
-        s === "right" && "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
-        s === "left" && "data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm",
-        s === "top" && "data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top inset-x-0 top-0 h-auto border-b",
-        s === "bottom" && "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 bottom-0 h-auto border-t",
+      className: a(
+        "lib:bg-background data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out lib:fixed lib:z-50 lib:flex lib:flex-col lib:gap-4 lib:shadow-lg lib:transition lib:ease-in-out data-[state=closed]:lib:duration-300 data-[state=open]:lib:duration-500",
+        o === "right" && "data-[state=closed]:lib:slide-out-to-right data-[state=open]:lib:slide-in-from-right lib:inset-y-0 lib:right-0 lib:h-full lib:w-3/4 lib:border-l sm:lib:max-w-sm",
+        o === "left" && "data-[state=closed]:lib:slide-out-to-left data-[state=open]:lib:slide-in-from-left lib:inset-y-0 lib:left-0 lib:h-full lib:w-3/4 lib:border-r sm:lib:max-w-sm",
+        o === "top" && "data-[state=closed]:lib:slide-out-to-top data-[state=open]:lib:slide-in-from-top lib:inset-x-0 lib:top-0 lib:h-auto lib:border-b",
+        o === "bottom" && "data-[state=closed]:lib:slide-out-to-bottom data-[state=open]:lib:slide-in-from-bottom lib:inset-x-0 lib:bottom-0 lib:h-auto lib:border-t",
         t
       ),
-      ...r
+      ...n
     },
-    a,
-    /* @__PURE__ */ e.createElement(o.Close, { className: "ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none" }, /* @__PURE__ */ e.createElement(l, { className: "size-4" }), /* @__PURE__ */ e.createElement("span", { className: "sr-only" }, "Close"))
+    l,
+    /* @__PURE__ */ e.createElement(i.Close, { className: "lib:ring-offset-background focus:lib:ring-ring data-[state=open]:lib:bg-secondary lib:absolute lib:top-4 lib:right-4 lib:rounded-xs lib:opacity-70 lib:transition-opacity hover:lib:opacity-100 focus:lib:ring-2 focus:lib:ring-offset-2 focus:lib:outline-hidden disabled:lib:pointer-events-none" }, /* @__PURE__ */ e.createElement(s, { className: "lib:size-4" }), /* @__PURE__ */ e.createElement("span", { className: "lib:sr-only" }, "Close"))
   ));
 }
-function g({ className: t, ...a }) {
-  return /* @__PURE__ */ e.createElement(
-    "div",
-    {
-      "data-slot": "sheet-header",
-      className: n("flex flex-col gap-1.5 p-4", t),
-      ...a
-    }
-  );
+function p({ className: t, ...l }) {
+  return /* @__PURE__ */ e.createElement("div", { "data-slot": "sheet-header", className: a("lib:flex lib:flex-col lib:gap-1.5 lib:p-4", t), ...l });
 }
-function b({ className: t, ...a }) {
+function g({ className: t, ...l }) {
   return /* @__PURE__ */ e.createElement(
     "div",
     {
       "data-slot": "sheet-footer",
-      className: n("mt-auto flex flex-col gap-2 p-4", t),
-      ...a
+      className: a("lib:mt-auto lib:flex lib:flex-col lib:gap-2 lib:p-4", t),
+      ...l
     }
   );
 }
-function x({
-  className: t,
-  ...a
-}) {
+function x({ className: t, ...l }) {
   return /* @__PURE__ */ e.createElement(
-    o.Title,
+    i.Title,
     {
       "data-slot": "sheet-title",
-      className: n("text-foreground font-semibold", t),
-      ...a
+      className: a("lib:text-foreground lib:font-semibold", t),
+      ...l
     }
   );
 }
-function E({
-  className: t,
-  ...a
-}) {
+function E({ className: t, ...l }) {
   return /* @__PURE__ */ e.createElement(
-    o.Description,
+    i.Description,
     {
       "data-slot": "sheet-description",
-      className: n("text-muted-foreground text-sm", t),
-      ...a
+      className: a("lib:text-muted-foreground lib:text-sm", t),
+      ...l
     }
   );
 }
 export {
-  u as Sheet,
-  h as SheetClose,
-  p as SheetContent,
+  m as Sheet,
+  f as SheetClose,
+  h as SheetContent,
   E as SheetDescription,
-  b as SheetFooter,
-  g as SheetHeader,
+  g as SheetFooter,
+  p as SheetHeader,
   x as SheetTitle,
-  f as SheetTrigger
+  u as SheetTrigger
 };

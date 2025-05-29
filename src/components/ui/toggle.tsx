@@ -5,17 +5,18 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const toggleVariants = cva(
-	"inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium hover:bg-muted hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-[color,box-shadow] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive whitespace-nowrap",
+	'lib:inline-flex lib:items-center lib:justify-center lib:gap-2 lib:rounded-md lib:text-sm lib:font-medium hover:lib:bg-muted hover:lib:text-muted-foreground disabled:lib:pointer-events-none disabled:lib:opacity-50 data-[state=on]:lib:bg-accent data-[state=on]:lib:text-accent-foreground [&_svg]:lib:pointer-events-none [&_svg:not([class*=size-])]:lib:size-4 [&_svg]:lib:shrink-0 focus-visible:lib:border-ring focus-visible:lib:ring-ring/50 focus-visible:lib:ring-[3px] lib:outline-none lib:transition-[color,box-shadow] aria-invalid:lib:ring-destructive/20 dark:aria-invalid:lib:ring-destructive/40 aria-invalid:lib:border-destructive lib:whitespace-nowrap',
 	{
 		variants: {
 			variant: {
-				default: 'bg-transparent',
-				outline: 'border border-input bg-transparent shadow-xs hover:bg-accent hover:text-accent-foreground',
+				default: 'lib:bg-transparent',
+				outline:
+					'lib:border lib:border-input lib:bg-transparent lib:shadow-xs hover:lib:bg-accent hover:lib:text-accent-foreground',
 			},
 			size: {
-				default: 'h-9 px-2 min-w-9',
-				sm: 'h-8 px-1.5 min-w-8',
-				lg: 'h-10 px-2.5 min-w-10',
+				default: 'lib:h-9 lib:px-2 lib:min-w-9',
+				sm: 'lib:h-8 lib:px-1.5 lib:min-w-8',
+				lg: 'lib:h-10 lib:px-2.5 lib:min-w-10',
 			},
 		},
 		defaultVariants: {

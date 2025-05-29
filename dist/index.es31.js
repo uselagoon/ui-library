@@ -1,239 +1,204 @@
 import * as t from "react";
-import * as n from "@radix-ui/react-menubar";
-import { CheckIcon as i, CircleIcon as u, ChevronRightIcon as c } from "lucide-react";
-import { cn as o } from "./index.es54.js";
-function b({
-  className: e,
-  ...a
-}) {
+import * as a from "@radix-ui/react-menubar";
+import { CheckIcon as o, CircleIcon as s, ChevronRightIcon as d } from "lucide-react";
+import { cn as n } from "./index.es54.js";
+function f({ className: e, ...i }) {
   return /* @__PURE__ */ t.createElement(
-    n.Root,
+    a.Root,
     {
       "data-slot": "menubar",
-      className: o(
-        "bg-background flex h-9 items-center gap-1 rounded-md border p-1 shadow-xs",
+      className: n(
+        "lib:bg-background lib:flex lib:h-9 lib:items-center lib:gap-1 lib:rounded-md lib:border lib:p-1 lib:shadow-xs",
         e
       ),
-      ...a
+      ...i
     }
   );
 }
-function p({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(n.Menu, { "data-slot": "menubar-menu", ...e });
+function p({ ...e }) {
+  return /* @__PURE__ */ t.createElement(a.Menu, { "data-slot": "menubar-menu", ...e });
 }
-function g({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(n.Group, { "data-slot": "menubar-group", ...e });
+function g({ ...e }) {
+  return /* @__PURE__ */ t.createElement(a.Group, { "data-slot": "menubar-group", ...e });
 }
-function l({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(n.Portal, { "data-slot": "menubar-portal", ...e });
+function u({ ...e }) {
+  return /* @__PURE__ */ t.createElement(a.Portal, { "data-slot": "menubar-portal", ...e });
 }
-function v({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(n.RadioGroup, { "data-slot": "menubar-radio-group", ...e });
+function v({ ...e }) {
+  return /* @__PURE__ */ t.createElement(a.RadioGroup, { "data-slot": "menubar-radio-group", ...e });
 }
-function x({
-  className: e,
-  ...a
-}) {
+function x({ className: e, ...i }) {
   return /* @__PURE__ */ t.createElement(
-    n.Trigger,
+    a.Trigger,
     {
       "data-slot": "menubar-trigger",
-      className: o(
-        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
+      className: n(
+        "focus:lib:bg-accent focus:lib:text-accent-foreground data-[state=open]:lib:bg-accent data-[state=open]:lib:text-accent-foreground lib:flex lib:items-center lib:rounded-sm lib:px-2 lib:py-1 lib:text-sm lib:font-medium lib:outline-hidden lib:select-none",
         e
       ),
-      ...a
+      ...i
     }
   );
 }
 function h({
   className: e,
-  align: a = "start",
-  alignOffset: r = -4,
-  sideOffset: s = 8,
-  ...d
+  align: i = "start",
+  alignOffset: l = -4,
+  sideOffset: r = 8,
+  ...b
 }) {
-  return /* @__PURE__ */ t.createElement(l, null, /* @__PURE__ */ t.createElement(
-    n.Content,
+  return /* @__PURE__ */ t.createElement(u, null, /* @__PURE__ */ t.createElement(
+    a.Content,
     {
       "data-slot": "menubar-content",
-      align: a,
-      alignOffset: r,
-      sideOffset: s,
-      className: o(
-        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[12rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-md",
+      align: i,
+      alignOffset: l,
+      sideOffset: r,
+      className: n(
+        "lib:bg-popover lib:text-popover-foreground data-[state=open]:lib:animate-in data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 data-[state=closed]:lib:zoom-out-95 data-[state=open]:lib:zoom-in-95 data-[side=bottom]:lib:slide-in-from-top-2 data-[side=left]:lib:slide-in-from-right-2 data-[side=right]:lib:slide-in-from-left-2 data-[side=top]:lib:slide-in-from-bottom-2 lib:z-50 lib:min-w-[12rem] lib:origin-(--radix-menubar-content-transform-origin) lib:overflow-hidden lib:rounded-md lib:border lib:p-1 lib:shadow-md",
         e
       ),
-      ...d
+      ...b
     }
   ));
 }
 function E({
   className: e,
-  inset: a,
-  variant: r = "default",
-  ...s
+  inset: i,
+  variant: l = "default",
+  ...r
 }) {
   return /* @__PURE__ */ t.createElement(
-    n.Item,
+    a.Item,
     {
       "data-slot": "menubar-item",
-      "data-inset": a,
-      "data-variant": r,
-      className: o(
-        "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+      "data-inset": i,
+      "data-variant": l,
+      className: n(
+        "focus:lib:bg-accent focus:lib:text-accent-foreground data-[variant=destructive]:lib:text-destructive data-[variant=destructive]:focus:lib:bg-destructive/10 dark:data-[variant=destructive]:focus:lib:bg-destructive/20 data-[variant=destructive]:focus:lib:text-destructive data-[variant=destructive]:*:[svg]:lib:!text-destructive [&_svg:not([class*=text-])]:lib:text-muted-foreground lib:relative lib:flex lib:cursor-default lib:items-center lib:gap-2 lib:rounded-sm lib:px-2 lib:py-1.5 lib:text-sm lib:outline-hidden lib:select-none data-[disabled]:lib:pointer-events-none data-[disabled]:lib:opacity-50 data-[inset]:lib:pl-8 [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4",
         e
       ),
-      ...s
+      ...r
     }
   );
 }
 function M({
   className: e,
-  children: a,
-  checked: r,
-  ...s
-}) {
-  return /* @__PURE__ */ t.createElement(
-    n.CheckboxItem,
-    {
-      "data-slot": "menubar-checkbox-item",
-      className: o(
-        "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-xs py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        e
-      ),
-      checked: r,
-      ...s
-    },
-    /* @__PURE__ */ t.createElement("span", { className: "pointer-events-none absolute left-2 flex size-3.5 items-center justify-center" }, /* @__PURE__ */ t.createElement(n.ItemIndicator, null, /* @__PURE__ */ t.createElement(i, { className: "size-4" }))),
-    a
-  );
-}
-function z({
-  className: e,
-  children: a,
+  children: i,
+  checked: l,
   ...r
 }) {
   return /* @__PURE__ */ t.createElement(
-    n.RadioItem,
+    a.CheckboxItem,
     {
-      "data-slot": "menubar-radio-item",
-      className: o(
-        "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-xs py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+      "data-slot": "menubar-checkbox-item",
+      className: n(
+        "focus:lib:bg-accent focus:lib:text-accent-foreground lib:relative lib:flex lib:cursor-default lib:items-center lib:gap-2 lib:rounded-xs lib:py-1.5 lib:pr-2 lib:pl-8 lib:text-sm lib:outline-hidden lib:select-none data-[disabled]:lib:pointer-events-none data-[disabled]:lib:opacity-50 [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4",
         e
       ),
+      checked: l,
       ...r
     },
-    /* @__PURE__ */ t.createElement("span", { className: "pointer-events-none absolute left-2 flex size-3.5 items-center justify-center" }, /* @__PURE__ */ t.createElement(n.ItemIndicator, null, /* @__PURE__ */ t.createElement(u, { className: "size-2 fill-current" }))),
-    a
+    /* @__PURE__ */ t.createElement("span", { className: "lib:pointer-events-none lib:absolute lib:left-2 lib:flex lib:size-3.5 lib:items-center lib:justify-center" }, /* @__PURE__ */ t.createElement(a.ItemIndicator, null, /* @__PURE__ */ t.createElement(o, { className: "lib:size-4" }))),
+    i
+  );
+}
+function z({ className: e, children: i, ...l }) {
+  return /* @__PURE__ */ t.createElement(
+    a.RadioItem,
+    {
+      "data-slot": "menubar-radio-item",
+      className: n(
+        "focus:lib:bg-accent focus:lib:text-accent-foreground lib:relative lib:flex lib:cursor-default lib:items-center lib:gap-2 lib:rounded-xs lib:py-1.5 lib:pr-2 lib:pl-8 lib:text-sm lib:outline-hidden lib:select-none data-[disabled]:lib:pointer-events-none data-[disabled]:lib:opacity-50 [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4",
+        e
+      ),
+      ...l
+    },
+    /* @__PURE__ */ t.createElement("span", { className: "lib:pointer-events-none lib:absolute lib:left-2 lib:flex lib:size-3.5 lib:items-center lib:justify-center" }, /* @__PURE__ */ t.createElement(a.ItemIndicator, null, /* @__PURE__ */ t.createElement(s, { className: "lib:size-2 lib:fill-current" }))),
+    i
   );
 }
 function N({
   className: e,
-  inset: a,
-  ...r
+  inset: i,
+  ...l
 }) {
   return /* @__PURE__ */ t.createElement(
-    n.Label,
+    a.Label,
     {
       "data-slot": "menubar-label",
-      "data-inset": a,
-      className: o(
-        "px-2 py-1.5 text-sm font-medium data-[inset]:pl-8",
-        e
-      ),
-      ...r
+      "data-inset": i,
+      className: n("lib:px-2 lib:py-1.5 lib:text-sm lib:font-medium data-[inset]:lib:pl-8", e),
+      ...l
     }
   );
 }
-function I({
-  className: e,
-  ...a
-}) {
+function I({ className: e, ...i }) {
   return /* @__PURE__ */ t.createElement(
-    n.Separator,
+    a.Separator,
     {
       "data-slot": "menubar-separator",
-      className: o("bg-border -mx-1 my-1 h-px", e),
-      ...a
+      className: n("lib:bg-border lib:-mx-1 lib:my-1 lib:h-px", e),
+      ...i
     }
   );
 }
-function y({
-  className: e,
-  ...a
-}) {
+function y({ className: e, ...i }) {
   return /* @__PURE__ */ t.createElement(
     "span",
     {
       "data-slot": "menubar-shortcut",
-      className: o(
-        "text-muted-foreground ml-auto text-xs tracking-widest",
-        e
-      ),
-      ...a
+      className: n("lib:text-muted-foreground lib:ml-auto lib:text-xs lib:tracking-widest", e),
+      ...i
     }
   );
 }
-function k({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(n.Sub, { "data-slot": "menubar-sub", ...e });
+function k({ ...e }) {
+  return /* @__PURE__ */ t.createElement(a.Sub, { "data-slot": "menubar-sub", ...e });
 }
 function _({
   className: e,
-  inset: a,
-  children: r,
-  ...s
+  inset: i,
+  children: l,
+  ...r
 }) {
   return /* @__PURE__ */ t.createElement(
-    n.SubTrigger,
+    a.SubTrigger,
     {
       "data-slot": "menubar-sub-trigger",
-      "data-inset": a,
-      className: o(
-        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-none select-none data-[inset]:pl-8",
+      "data-inset": i,
+      className: n(
+        "focus:lib:bg-accent focus:lib:text-accent-foreground data-[state=open]:lib:bg-accent data-[state=open]:lib:text-accent-foreground lib:flex lib:cursor-default lib:items-center lib:rounded-sm lib:px-2 lib:py-1.5 lib:text-sm lib:outline-none lib:select-none data-[inset]:lib:pl-8",
         e
       ),
-      ...s
+      ...r
     },
-    r,
-    /* @__PURE__ */ t.createElement(c, { className: "ml-auto h-4 w-4" })
+    l,
+    /* @__PURE__ */ t.createElement(d, { className: "lib:ml-auto lib:h-4 lib:w-4" })
   );
 }
-function w({
-  className: e,
-  ...a
-}) {
+function w({ className: e, ...i }) {
   return /* @__PURE__ */ t.createElement(
-    n.SubContent,
+    a.SubContent,
     {
       "data-slot": "menubar-sub-content",
-      className: o(
-        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-lg",
+      className: n(
+        "lib:bg-popover lib:text-popover-foreground data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 data-[state=closed]:lib:zoom-out-95 data-[state=open]:lib:zoom-in-95 data-[side=bottom]:lib:slide-in-from-top-2 data-[side=left]:lib:slide-in-from-right-2 data-[side=right]:lib:slide-in-from-left-2 data-[side=top]:lib:slide-in-from-bottom-2 lib:z-50 lib:min-w-[8rem] lib:origin-(--radix-menubar-content-transform-origin) lib:overflow-hidden lib:rounded-md lib:border lib:p-1 lib:shadow-lg",
         e
       ),
-      ...a
+      ...i
     }
   );
 }
 export {
-  b as Menubar,
+  f as Menubar,
   M as MenubarCheckboxItem,
   h as MenubarContent,
   g as MenubarGroup,
   E as MenubarItem,
   N as MenubarLabel,
   p as MenubarMenu,
-  l as MenubarPortal,
+  u as MenubarPortal,
   v as MenubarRadioGroup,
   z as MenubarRadioItem,
   I as MenubarSeparator,

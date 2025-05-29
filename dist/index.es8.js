@@ -1,79 +1,68 @@
-import * as a from "react";
-import * as l from "@radix-ui/react-alert-dialog";
-import { cn as o } from "./index.es54.js";
-import { buttonVariants as r } from "./index.es14.js";
-function c({
-  ...t
-}) {
-  return /* @__PURE__ */ a.createElement(l.Root, { "data-slot": "alert-dialog", ...t });
+import * as l from "react";
+import * as a from "@radix-ui/react-alert-dialog";
+import { cn as i } from "./index.es54.js";
+import { buttonVariants as o } from "./index.es14.js";
+function c({ ...t }) {
+  return /* @__PURE__ */ l.createElement(a.Root, { "data-slot": "alert-dialog", ...t });
 }
-function m({
-  ...t
-}) {
-  return /* @__PURE__ */ a.createElement(l.Trigger, { "data-slot": "alert-dialog-trigger", ...t });
+function b({ ...t }) {
+  return /* @__PURE__ */ l.createElement(a.Trigger, { "data-slot": "alert-dialog-trigger", ...t });
 }
-function n({
-  ...t
-}) {
-  return /* @__PURE__ */ a.createElement(l.Portal, { "data-slot": "alert-dialog-portal", ...t });
+function r({ ...t }) {
+  return /* @__PURE__ */ l.createElement(a.Portal, { "data-slot": "alert-dialog-portal", ...t });
 }
-function i({
-  className: t,
-  ...e
-}) {
-  return /* @__PURE__ */ a.createElement(
-    l.Overlay,
+function n({ className: t, ...e }) {
+  return /* @__PURE__ */ l.createElement(
+    a.Overlay,
     {
       "data-slot": "alert-dialog-overlay",
-      className: o(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+      className: i(
+        "data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 lib:fixed lib:inset-0 lib:z-50 lib:bg-black/50",
         t
       ),
       ...e
     }
   );
 }
-function g({
-  className: t,
-  ...e
-}) {
-  return /* @__PURE__ */ a.createElement(n, null, /* @__PURE__ */ a.createElement(i, null), /* @__PURE__ */ a.createElement(
-    l.Content,
+function m({ className: t, ...e }) {
+  return /* @__PURE__ */ l.createElement(r, null, /* @__PURE__ */ l.createElement(n, null), /* @__PURE__ */ l.createElement(
+    a.Content,
     {
       "data-slot": "alert-dialog-content",
-      className: o(
-        "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 sm:max-w-lg",
+      className: i(
+        "lib:bg-background data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 data-[state=closed]:lib:zoom-out-95 data-[state=open]:lib:zoom-in-95 lib:fixed lib:top-[50%] lib:left-[50%] lib:z-50 lib:grid lib:w-full lib:max-w-[calc(100%-2rem)] lib:translate-x-[-50%] lib:translate-y-[-50%] lib:gap-4 lib:rounded-lg lib:border lib:p-6 lib:shadow-lg lib:duration-200 sm:lib:max-w-lg",
         t
       ),
       ...e
     }
   ));
 }
-function u({
-  className: t,
-  ...e
-}) {
-  return /* @__PURE__ */ a.createElement(
+function g({ className: t, ...e }) {
+  return /* @__PURE__ */ l.createElement(
     "div",
     {
       "data-slot": "alert-dialog-header",
-      className: o("flex flex-col gap-2 text-center sm:text-left", t),
+      className: i("lib:flex lib:flex-col lib:gap-2 lib:text-center sm:lib:text-left", t),
       ...e
     }
   );
 }
-function f({
-  className: t,
-  ...e
-}) {
-  return /* @__PURE__ */ a.createElement(
+function u({ className: t, ...e }) {
+  return /* @__PURE__ */ l.createElement(
     "div",
     {
       "data-slot": "alert-dialog-footer",
-      className: o(
-        "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-        t
-      ),
+      className: i("lib:flex lib:flex-col-reverse lib:gap-2 sm:lib:flex-row sm:lib:justify-end", t),
+      ...e
+    }
+  );
+}
+function f({ className: t, ...e }) {
+  return /* @__PURE__ */ l.createElement(
+    a.Title,
+    {
+      "data-slot": "alert-dialog-title",
+      className: i("lib:text-lg lib:font-semibold", t),
       ...e
     }
   );
@@ -82,62 +71,31 @@ function p({
   className: t,
   ...e
 }) {
-  return /* @__PURE__ */ a.createElement(
-    l.Title,
-    {
-      "data-slot": "alert-dialog-title",
-      className: o("text-lg font-semibold", t),
-      ...e
-    }
-  );
-}
-function x({
-  className: t,
-  ...e
-}) {
-  return /* @__PURE__ */ a.createElement(
-    l.Description,
+  return /* @__PURE__ */ l.createElement(
+    a.Description,
     {
       "data-slot": "alert-dialog-description",
-      className: o("text-muted-foreground text-sm", t),
+      className: i("lib:text-muted-foreground lib:text-sm", t),
       ...e
     }
   );
 }
-function A({
-  className: t,
-  ...e
-}) {
-  return /* @__PURE__ */ a.createElement(
-    l.Action,
-    {
-      className: o(r(), t),
-      ...e
-    }
-  );
+function x({ className: t, ...e }) {
+  return /* @__PURE__ */ l.createElement(a.Action, { className: i(o(), t), ...e });
 }
-function D({
-  className: t,
-  ...e
-}) {
-  return /* @__PURE__ */ a.createElement(
-    l.Cancel,
-    {
-      className: o(r({ variant: "outline" }), t),
-      ...e
-    }
-  );
+function A({ className: t, ...e }) {
+  return /* @__PURE__ */ l.createElement(a.Cancel, { className: i(o({ variant: "outline" }), t), ...e });
 }
 export {
   c as AlertDialog,
-  A as AlertDialogAction,
-  D as AlertDialogCancel,
-  g as AlertDialogContent,
-  x as AlertDialogDescription,
-  f as AlertDialogFooter,
-  u as AlertDialogHeader,
-  i as AlertDialogOverlay,
-  n as AlertDialogPortal,
-  p as AlertDialogTitle,
-  m as AlertDialogTrigger
+  x as AlertDialogAction,
+  A as AlertDialogCancel,
+  m as AlertDialogContent,
+  p as AlertDialogDescription,
+  u as AlertDialogFooter,
+  g as AlertDialogHeader,
+  n as AlertDialogOverlay,
+  r as AlertDialogPortal,
+  f as AlertDialogTitle,
+  b as AlertDialogTrigger
 };

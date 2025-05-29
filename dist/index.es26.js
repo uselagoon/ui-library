@@ -1,59 +1,45 @@
 import * as r from "react";
-import { Slot as l } from "@radix-ui/react-slot";
+import { Slot as d } from "@radix-ui/react-slot";
 import { FormProvider as f, useFormContext as u, useFormState as F, Controller as x } from "react-hook-form";
-import { cn as s } from "./index.es54.js";
+import { cn as a } from "./index.es54.js";
 import { Label as I } from "./index.es30.js";
-const E = f, c = r.createContext(
-  {}
-), b = ({
+const v = f, c = r.createContext({}), E = ({
   ...e
-}) => /* @__PURE__ */ r.createElement(c.Provider, { value: { name: e.name } }, /* @__PURE__ */ r.createElement(x, { ...e })), i = () => {
-  const e = r.useContext(c), t = r.useContext(d), { getFieldState: o } = u(), m = F({ name: e.name }), n = o(e.name, m);
+}) => /* @__PURE__ */ r.createElement(c.Provider, { value: { name: e.name } }, /* @__PURE__ */ r.createElement(x, { ...e })), s = () => {
+  const e = r.useContext(c), t = r.useContext(l), { getFieldState: o } = u(), m = F({ name: e.name }), n = o(e.name, m);
   if (!e)
     throw new Error("useFormField should be used within <FormField>");
-  const { id: a } = t;
+  const { id: i } = t;
   return {
-    id: a,
+    id: i,
     name: e.name,
-    formItemId: `${a}-form-item`,
-    formDescriptionId: `${a}-form-item-description`,
-    formMessageId: `${a}-form-item-message`,
+    formItemId: `${i}-form-item`,
+    formDescriptionId: `${i}-form-item-description`,
+    formMessageId: `${i}-form-item-message`,
     ...n
   };
-}, d = r.createContext(
-  {}
-);
+}, l = r.createContext({});
 function S({ className: e, ...t }) {
   const o = r.useId();
-  return /* @__PURE__ */ r.createElement(d.Provider, { value: { id: o } }, /* @__PURE__ */ r.createElement(
-    "div",
-    {
-      "data-slot": "form-item",
-      className: s("grid gap-2", e),
-      ...t
-    }
-  ));
+  return /* @__PURE__ */ r.createElement(l.Provider, { value: { id: o } }, /* @__PURE__ */ r.createElement("div", { "data-slot": "form-item", className: a("lib:grid lib:gap-2", e), ...t }));
 }
-function $({
-  className: e,
-  ...t
-}) {
-  const { error: o, formItemId: m } = i();
+function $({ className: e, ...t }) {
+  const { error: o, formItemId: m } = s();
   return /* @__PURE__ */ r.createElement(
     I,
     {
       "data-slot": "form-label",
       "data-error": !!o,
-      className: s("data-[error=true]:text-destructive", e),
+      className: a("data-[error=true]:lib:text-destructive", e),
       htmlFor: m,
       ...t
     }
   );
 }
 function h({ ...e }) {
-  const { error: t, formItemId: o, formDescriptionId: m, formMessageId: n } = i();
+  const { error: t, formItemId: o, formDescriptionId: m, formMessageId: n } = s();
   return /* @__PURE__ */ r.createElement(
-    l,
+    d,
     {
       "data-slot": "form-control",
       id: o,
@@ -64,37 +50,37 @@ function h({ ...e }) {
   );
 }
 function D({ className: e, ...t }) {
-  const { formDescriptionId: o } = i();
+  const { formDescriptionId: o } = s();
   return /* @__PURE__ */ r.createElement(
     "p",
     {
       "data-slot": "form-description",
       id: o,
-      className: s("text-muted-foreground text-sm", e),
+      className: a("lib:text-muted-foreground lib:text-sm", e),
       ...t
     }
   );
 }
 function M({ className: e, ...t }) {
-  const { error: o, formMessageId: m } = i(), n = o ? String(o?.message ?? "") : t.children;
+  const { error: o, formMessageId: m } = s(), n = o ? String(o?.message ?? "") : t.children;
   return n ? /* @__PURE__ */ r.createElement(
     "p",
     {
       "data-slot": "form-message",
       id: m,
-      className: s("text-destructive text-sm", e),
+      className: a("lib:text-destructive lib:text-sm", e),
       ...t
     },
     n
   ) : null;
 }
 export {
-  E as Form,
+  v as Form,
   h as FormControl,
   D as FormDescription,
-  b as FormField,
+  E as FormField,
   S as FormItem,
   $ as FormLabel,
   M as FormMessage,
-  i as useFormField
+  s as useFormField
 };

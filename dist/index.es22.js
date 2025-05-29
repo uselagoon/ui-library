@@ -1,217 +1,184 @@
 import * as t from "react";
-import * as a from "@radix-ui/react-context-menu";
-import { CheckIcon as i, CircleIcon as d, ChevronRightIcon as c } from "lucide-react";
-import { cn as r } from "./index.es54.js";
-function m({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(a.Root, { "data-slot": "context-menu", ...e });
+import * as n from "@radix-ui/react-context-menu";
+import { CheckIcon as r, CircleIcon as s, ChevronRightIcon as b } from "lucide-react";
+import { cn as a } from "./index.es54.js";
+function u({ ...e }) {
+  return /* @__PURE__ */ t.createElement(n.Root, { "data-slot": "context-menu", ...e });
 }
-function f({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(a.Trigger, { "data-slot": "context-menu-trigger", ...e });
+function m({ ...e }) {
+  return /* @__PURE__ */ t.createElement(n.Trigger, { "data-slot": "context-menu-trigger", ...e });
 }
-function x({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(a.Group, { "data-slot": "context-menu-group", ...e });
+function f({ ...e }) {
+  return /* @__PURE__ */ t.createElement(n.Group, { "data-slot": "context-menu-group", ...e });
 }
-function p({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(a.Portal, { "data-slot": "context-menu-portal", ...e });
+function x({ ...e }) {
+  return /* @__PURE__ */ t.createElement(n.Portal, { "data-slot": "context-menu-portal", ...e });
 }
-function g({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(a.Sub, { "data-slot": "context-menu-sub", ...e });
+function p({ ...e }) {
+  return /* @__PURE__ */ t.createElement(n.Sub, { "data-slot": "context-menu-sub", ...e });
+}
+function g({ ...e }) {
+  return /* @__PURE__ */ t.createElement(n.RadioGroup, { "data-slot": "context-menu-radio-group", ...e });
 }
 function v({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(
-    a.RadioGroup,
-    {
-      "data-slot": "context-menu-radio-group",
-      ...e
-    }
-  );
-}
-function b({
   className: e,
-  inset: n,
-  children: o,
-  ...s
+  inset: i,
+  children: l,
+  ...o
 }) {
   return /* @__PURE__ */ t.createElement(
-    a.SubTrigger,
+    n.SubTrigger,
     {
       "data-slot": "context-menu-sub-trigger",
-      "data-inset": n,
-      className: r(
-        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+      "data-inset": i,
+      className: a(
+        "focus:lib:bg-accent focus:lib:text-accent-foreground data-[state=open]:lib:bg-accent data-[state=open]:lib:text-accent-foreground lib:flex lib:cursor-default lib:items-center lib:rounded-sm lib:px-2 lib:py-1.5 lib:text-sm lib:outline-hidden lib:select-none data-[inset]:lib:pl-8 [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4",
         e
       ),
-      ...s
+      ...o
     },
-    o,
-    /* @__PURE__ */ t.createElement(c, { className: "ml-auto" })
+    l,
+    /* @__PURE__ */ t.createElement(b, { className: "lib:ml-auto" })
   );
 }
-function h({
-  className: e,
-  ...n
-}) {
+function h({ className: e, ...i }) {
   return /* @__PURE__ */ t.createElement(
-    a.SubContent,
+    n.SubContent,
     {
       "data-slot": "context-menu-sub-content",
-      className: r(
-        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] origin-(--radix-context-menu-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-lg",
+      className: a(
+        "lib:bg-popover lib:text-popover-foreground data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 data-[state=closed]:lib:zoom-out-95 data-[state=open]:lib:zoom-in-95 data-[side=bottom]:lib:slide-in-from-top-2 data-[side=left]:lib:slide-in-from-right-2 data-[side=right]:lib:slide-in-from-left-2 data-[side=top]:lib:slide-in-from-bottom-2 lib:z-50 lib:min-w-[8rem] lib:origin-(--radix-context-menu-content-transform-origin) lib:overflow-hidden lib:rounded-md lib:border lib:p-1 lib:shadow-lg",
         e
       ),
-      ...n
+      ...i
     }
   );
 }
-function C({
-  className: e,
-  ...n
-}) {
-  return /* @__PURE__ */ t.createElement(a.Portal, null, /* @__PURE__ */ t.createElement(
-    a.Content,
+function C({ className: e, ...i }) {
+  return /* @__PURE__ */ t.createElement(n.Portal, null, /* @__PURE__ */ t.createElement(
+    n.Content,
     {
       "data-slot": "context-menu-content",
-      className: r(
-        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-context-menu-content-available-height) min-w-[8rem] origin-(--radix-context-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md",
+      className: a(
+        "lib:bg-popover lib:text-popover-foreground data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 data-[state=closed]:lib:zoom-out-95 data-[state=open]:lib:zoom-in-95 data-[side=bottom]:lib:slide-in-from-top-2 data-[side=left]:lib:slide-in-from-right-2 data-[side=right]:lib:slide-in-from-left-2 data-[side=top]:lib:slide-in-from-bottom-2 lib:z-50 lib:max-h-(--radix-context-menu-content-available-height) lib:min-w-[8rem] lib:origin-(--radix-context-menu-content-transform-origin) lib:overflow-x-hidden lib:overflow-y-auto lib:rounded-md lib:border lib:p-1 lib:shadow-md",
         e
       ),
-      ...n
+      ...i
     }
   ));
 }
 function E({
   className: e,
-  inset: n,
-  variant: o = "default",
-  ...s
+  inset: i,
+  variant: l = "default",
+  ...o
 }) {
   return /* @__PURE__ */ t.createElement(
-    a.Item,
+    n.Item,
     {
       "data-slot": "context-menu-item",
-      "data-inset": n,
-      "data-variant": o,
-      className: r(
-        "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+      "data-inset": i,
+      "data-variant": l,
+      className: a(
+        "focus:lib:bg-accent focus:lib:text-accent-foreground data-[variant=destructive]:lib:text-destructive data-[variant=destructive]:focus:lib:bg-destructive/10 dark:data-[variant=destructive]:focus:lib:bg-destructive/20 data-[variant=destructive]:focus:lib:text-destructive data-[variant=destructive]:*:[svg]:lib:!text-destructive [&_svg:not([class*=text-])]:lib:text-muted-foreground lib:relative lib:flex lib:cursor-default lib:items-center lib:gap-2 lib:rounded-sm lib:px-2 lib:py-1.5 lib:text-sm lib:outline-hidden lib:select-none data-[disabled]:lib:pointer-events-none data-[disabled]:lib:opacity-50 data-[inset]:lib:pl-8 [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4",
         e
       ),
-      ...s
+      ...o
     }
   );
 }
 function z({
   className: e,
-  children: n,
-  checked: o,
-  ...s
+  children: i,
+  checked: l,
+  ...o
 }) {
   return /* @__PURE__ */ t.createElement(
-    a.CheckboxItem,
+    n.CheckboxItem,
     {
       "data-slot": "context-menu-checkbox-item",
-      className: r(
-        "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+      className: a(
+        "focus:lib:bg-accent focus:lib:text-accent-foreground lib:relative lib:flex lib:cursor-default lib:items-center lib:gap-2 lib:rounded-sm lib:py-1.5 lib:pr-2 lib:pl-8 lib:text-sm lib:outline-hidden lib:select-none data-[disabled]:lib:pointer-events-none data-[disabled]:lib:opacity-50 [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4",
         e
       ),
-      checked: o,
-      ...s
+      checked: l,
+      ...o
     },
-    /* @__PURE__ */ t.createElement("span", { className: "pointer-events-none absolute left-2 flex size-3.5 items-center justify-center" }, /* @__PURE__ */ t.createElement(a.ItemIndicator, null, /* @__PURE__ */ t.createElement(i, { className: "size-4" }))),
-    n
+    /* @__PURE__ */ t.createElement("span", { className: "lib:pointer-events-none lib:absolute lib:left-2 lib:flex lib:size-3.5 lib:items-center lib:justify-center" }, /* @__PURE__ */ t.createElement(n.ItemIndicator, null, /* @__PURE__ */ t.createElement(r, { className: "lib:size-4" }))),
+    i
   );
 }
 function M({
   className: e,
-  children: n,
-  ...o
+  children: i,
+  ...l
 }) {
   return /* @__PURE__ */ t.createElement(
-    a.RadioItem,
+    n.RadioItem,
     {
       "data-slot": "context-menu-radio-item",
-      className: r(
-        "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+      className: a(
+        "focus:lib:bg-accent focus:lib:text-accent-foreground lib:relative lib:flex lib:cursor-default lib:items-center lib:gap-2 lib:rounded-sm lib:py-1.5 lib:pr-2 lib:pl-8 lib:text-sm lib:outline-hidden lib:select-none data-[disabled]:lib:pointer-events-none data-[disabled]:lib:opacity-50 [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4",
         e
       ),
-      ...o
+      ...l
     },
-    /* @__PURE__ */ t.createElement("span", { className: "pointer-events-none absolute left-2 flex size-3.5 items-center justify-center" }, /* @__PURE__ */ t.createElement(a.ItemIndicator, null, /* @__PURE__ */ t.createElement(d, { className: "size-2 fill-current" }))),
-    n
+    /* @__PURE__ */ t.createElement("span", { className: "lib:pointer-events-none lib:absolute lib:left-2 lib:flex lib:size-3.5 lib:items-center lib:justify-center" }, /* @__PURE__ */ t.createElement(n.ItemIndicator, null, /* @__PURE__ */ t.createElement(s, { className: "lib:size-2 lib:fill-current" }))),
+    i
   );
 }
 function N({
   className: e,
-  inset: n,
-  ...o
+  inset: i,
+  ...l
 }) {
   return /* @__PURE__ */ t.createElement(
-    a.Label,
+    n.Label,
     {
       "data-slot": "context-menu-label",
-      "data-inset": n,
-      className: r(
-        "text-foreground px-2 py-1.5 text-sm font-medium data-[inset]:pl-8",
+      "data-inset": i,
+      className: a(
+        "lib:text-foreground lib:px-2 lib:py-1.5 lib:text-sm lib:font-medium data-[inset]:lib:pl-8",
         e
       ),
-      ...o
+      ...l
     }
   );
 }
-function I({
-  className: e,
-  ...n
-}) {
+function I({ className: e, ...i }) {
   return /* @__PURE__ */ t.createElement(
-    a.Separator,
+    n.Separator,
     {
       "data-slot": "context-menu-separator",
-      className: r("bg-border -mx-1 my-1 h-px", e),
-      ...n
+      className: a("lib:bg-border lib:-mx-1 lib:my-1 lib:h-px", e),
+      ...i
     }
   );
 }
-function _({
-  className: e,
-  ...n
-}) {
+function _({ className: e, ...i }) {
   return /* @__PURE__ */ t.createElement(
     "span",
     {
       "data-slot": "context-menu-shortcut",
-      className: r(
-        "text-muted-foreground ml-auto text-xs tracking-widest",
-        e
-      ),
-      ...n
+      className: a("lib:text-muted-foreground lib:ml-auto lib:text-xs lib:tracking-widest", e),
+      ...i
     }
   );
 }
 export {
-  m as ContextMenu,
+  u as ContextMenu,
   z as ContextMenuCheckboxItem,
   C as ContextMenuContent,
-  x as ContextMenuGroup,
+  f as ContextMenuGroup,
   E as ContextMenuItem,
   N as ContextMenuLabel,
-  p as ContextMenuPortal,
-  v as ContextMenuRadioGroup,
+  x as ContextMenuPortal,
+  g as ContextMenuRadioGroup,
   M as ContextMenuRadioItem,
   I as ContextMenuSeparator,
   _ as ContextMenuShortcut,
-  g as ContextMenuSub,
+  p as ContextMenuSub,
   h as ContextMenuSubContent,
-  b as ContextMenuSubTrigger,
-  f as ContextMenuTrigger
+  v as ContextMenuSubTrigger,
+  m as ContextMenuTrigger
 };

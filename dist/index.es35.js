@@ -1,31 +1,27 @@
 import * as r from "react";
-import * as e from "@radix-ui/react-progress";
-import { cn as l } from "./index.es54.js";
-function i({
-  className: t,
-  value: a,
-  ...o
-}) {
+import * as l from "@radix-ui/react-progress";
+import { cn as a } from "./index.es54.js";
+function s({ className: i, value: e, ...t }) {
   return /* @__PURE__ */ r.createElement(
-    e.Root,
+    l.Root,
     {
       "data-slot": "progress",
-      className: l(
-        "bg-primary/20 relative h-2 w-full overflow-hidden rounded-full",
-        t
+      className: a(
+        "lib:bg-primary/20 lib:relative lib:h-2 lib:w-full lib:overflow-hidden lib:rounded-full",
+        i
       ),
-      ...o
+      ...t
     },
     /* @__PURE__ */ r.createElement(
-      e.Indicator,
+      l.Indicator,
       {
         "data-slot": "progress-indicator",
-        className: "bg-primary h-full w-full flex-1 transition-all",
-        style: { transform: `translateX(-${100 - (a || 0)}%)` }
+        className: "lib:bg-primary lib:h-full lib:w-full lib:flex-1 lib:transition-all",
+        style: { transform: `translateX(-${100 - (e || 0)}%)` }
       }
     )
   );
 }
 export {
-  i as Progress
+  s as Progress
 };

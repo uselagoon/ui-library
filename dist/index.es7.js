@@ -1,62 +1,49 @@
 import * as t from "react";
-import * as n from "@radix-ui/react-accordion";
-import { ChevronDownIcon as i } from "lucide-react";
-import { cn as a } from "./index.es54.js";
-function d({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(n.Root, { "data-slot": "accordion", ...e });
+import * as o from "@radix-ui/react-accordion";
+import { ChevronDownIcon as l } from "lucide-react";
+import { cn as r } from "./index.es54.js";
+function b({ ...e }) {
+  return /* @__PURE__ */ t.createElement(o.Root, { "data-slot": "accordion", ...e });
 }
-function m({
-  className: e,
-  ...o
-}) {
+function s({ className: e, ...i }) {
   return /* @__PURE__ */ t.createElement(
-    n.Item,
+    o.Item,
     {
       "data-slot": "accordion-item",
-      className: a("border-b last:border-b-0", e),
-      ...o
+      className: r("lib:border-b last:lib:border-b-0", e),
+      ...i
     }
   );
 }
-function l({
-  className: e,
-  children: o,
-  ...r
-}) {
-  return /* @__PURE__ */ t.createElement(n.Header, { className: "flex" }, /* @__PURE__ */ t.createElement(
-    n.Trigger,
+function d({ className: e, children: i, ...n }) {
+  return /* @__PURE__ */ t.createElement(o.Header, { className: "lib:flex" }, /* @__PURE__ */ t.createElement(
+    o.Trigger,
     {
       "data-slot": "accordion-trigger",
-      className: a(
-        "focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180",
+      className: r(
+        "focus-visible:lib:border-ring focus-visible:lib:ring-ring/50 lib:flex lib:flex-1 lib:items-start lib:justify-between lib:gap-4 lib:rounded-md lib:py-4 lib:text-left lib:text-sm lib:font-medium lib:transition-all lib:outline-none hover:lib:underline focus-visible:lib:ring-[3px] disabled:lib:pointer-events-none disabled:lib:opacity-50 [&[data-state=open]>svg]:lib:rotate-180",
         e
       ),
-      ...r
+      ...n
     },
-    o,
-    /* @__PURE__ */ t.createElement(i, { className: "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200" })
+    i,
+    /* @__PURE__ */ t.createElement(l, { className: "lib:text-muted-foreground lib:pointer-events-none lib:size-4 lib:shrink-0 lib:translate-y-0.5 lib:transition-transform lib:duration-200" })
   ));
 }
-function f({
-  className: e,
-  children: o,
-  ...r
-}) {
+function m({ className: e, children: i, ...n }) {
   return /* @__PURE__ */ t.createElement(
-    n.Content,
+    o.Content,
     {
       "data-slot": "accordion-content",
-      className: "data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm",
-      ...r
+      className: "data-[state=closed]:lib:animate-accordion-up data-[state=open]:lib:animate-accordion-down lib:overflow-hidden lib:text-sm",
+      ...n
     },
-    /* @__PURE__ */ t.createElement("div", { className: a("pt-0 pb-4", e) }, o)
+    /* @__PURE__ */ t.createElement("div", { className: r("lib:pt-0 lib:pb-4", e) }, i)
   );
 }
 export {
-  d as Accordion,
-  f as AccordionContent,
-  m as AccordionItem,
-  l as AccordionTrigger
+  b as Accordion,
+  m as AccordionContent,
+  s as AccordionItem,
+  d as AccordionTrigger
 };

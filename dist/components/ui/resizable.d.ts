@@ -1,5 +1,5 @@
-import * as React from "react";
-import * as ResizablePrimitive from "react-resizable-panels";
+import * as React from 'react';
+import * as ResizablePrimitive from 'react-resizable-panels';
 declare function ResizablePanelGroup({ className, ...props }: React.ComponentProps<typeof ResizablePrimitive.PanelGroup>): import("react/jsx-dev-runtime").JSX.Element;
 declare function ResizablePanel({ ...props }: React.ComponentProps<typeof ResizablePrimitive.Panel>): import("react/jsx-dev-runtime").JSX.Element;
 declare function ResizableHandle({ withHandle, className, ...props }: React.ComponentProps<typeof ResizablePrimitive.PanelResizeHandle> & {

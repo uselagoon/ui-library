@@ -1,166 +1,154 @@
 import * as e from "react";
 import S from "embla-carousel-react";
 import { ArrowLeft as y, ArrowRight as P } from "lucide-react";
-import { cn as f } from "./index.es54.js";
-import { Button as x } from "./index.es14.js";
-const v = e.createContext(null);
-function m() {
-  const o = e.useContext(v);
-  if (!o)
+import { cn as b } from "./index.es54.js";
+import { Button as C } from "./index.es14.js";
+const x = e.createContext(null);
+function f() {
+  const t = e.useContext(x);
+  if (!t)
     throw new Error("useCarousel must be used within a <Carousel />");
-  return o;
+  return t;
 }
 function D({
-  orientation: o = "horizontal",
-  opts: r,
-  setApi: l,
+  orientation: t = "horizontal",
+  opts: o,
+  setApi: r,
   plugins: n,
-  className: s,
-  children: c,
-  ...i
+  className: i,
+  children: s,
+  ...c
 }) {
-  const [N, t] = S(
+  const [v, l] = S(
     {
-      ...r,
-      axis: o === "horizontal" ? "x" : "y"
+      ...o,
+      axis: t === "horizontal" ? "x" : "y"
     },
     n
-  ), [h, p] = e.useState(!1), [E, b] = e.useState(!1), u = e.useCallback((a) => {
-    a && (p(a.canScrollPrev()), b(a.canScrollNext()));
-  }, []), d = e.useCallback(() => {
-    t?.scrollPrev();
-  }, [t]), C = e.useCallback(() => {
-    t?.scrollNext();
-  }, [t]), w = e.useCallback(
+  ), [N, h] = e.useState(!1), [p, E] = e.useState(!1), u = e.useCallback((a) => {
+    a && (h(a.canScrollPrev()), E(a.canScrollNext()));
+  }, []), m = e.useCallback(() => {
+    l?.scrollPrev();
+  }, [l]), d = e.useCallback(() => {
+    l?.scrollNext();
+  }, [l]), w = e.useCallback(
     (a) => {
-      a.key === "ArrowLeft" ? (a.preventDefault(), d()) : a.key === "ArrowRight" && (a.preventDefault(), C());
+      a.key === "ArrowLeft" ? (a.preventDefault(), m()) : a.key === "ArrowRight" && (a.preventDefault(), d());
     },
-    [d, C]
+    [m, d]
   );
   return e.useEffect(() => {
-    !t || !l || l(t);
-  }, [t, l]), e.useEffect(() => {
-    if (t)
-      return u(t), t.on("reInit", u), t.on("select", u), () => {
-        t?.off("select", u);
+    !l || !r || r(l);
+  }, [l, r]), e.useEffect(() => {
+    if (l)
+      return u(l), l.on("reInit", u), l.on("select", u), () => {
+        l?.off("select", u);
       };
-  }, [t, u]), /* @__PURE__ */ e.createElement(
-    v.Provider,
+  }, [l, u]), /* @__PURE__ */ e.createElement(
+    x.Provider,
     {
       value: {
-        carouselRef: N,
-        api: t,
-        opts: r,
-        orientation: o || (r?.axis === "y" ? "vertical" : "horizontal"),
-        scrollPrev: d,
-        scrollNext: C,
-        canScrollPrev: h,
-        canScrollNext: E
+        carouselRef: v,
+        api: l,
+        opts: o,
+        orientation: t || (o?.axis === "y" ? "vertical" : "horizontal"),
+        scrollPrev: m,
+        scrollNext: d,
+        canScrollPrev: N,
+        canScrollNext: p
       }
     },
     /* @__PURE__ */ e.createElement(
       "div",
       {
         onKeyDownCapture: w,
-        className: f("relative", s),
+        className: b("lib:relative", i),
         role: "region",
         "aria-roledescription": "carousel",
         "data-slot": "carousel",
-        ...i
+        ...c
       },
-      c
+      s
     )
   );
 }
-function A({ className: o, ...r }) {
-  const { carouselRef: l, orientation: n } = m();
-  return /* @__PURE__ */ e.createElement(
+function A({ className: t, ...o }) {
+  const { carouselRef: r, orientation: n } = f();
+  return /* @__PURE__ */ e.createElement("div", { ref: r, className: "lib:overflow-hidden", "data-slot": "carousel-content" }, /* @__PURE__ */ e.createElement(
     "div",
     {
-      ref: l,
-      className: "overflow-hidden",
-      "data-slot": "carousel-content"
-    },
-    /* @__PURE__ */ e.createElement(
-      "div",
-      {
-        className: f(
-          "flex",
-          n === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
-          o
-        ),
-        ...r
-      }
-    )
-  );
+      className: b("lib:flex", n === "horizontal" ? "lib:-ml-4" : "lib:-mt-4 lib:flex-col", t),
+      ...o
+    }
+  ));
 }
-function I({ className: o, ...r }) {
-  const { orientation: l } = m();
+function I({ className: t, ...o }) {
+  const { orientation: r } = f();
   return /* @__PURE__ */ e.createElement(
     "div",
     {
       role: "group",
       "aria-roledescription": "slide",
       "data-slot": "carousel-item",
-      className: f(
-        "min-w-0 shrink-0 grow-0 basis-full",
-        l === "horizontal" ? "pl-4" : "pt-4",
-        o
+      className: b(
+        "lib:min-w-0 lib:shrink-0 lib:grow-0 lib:basis-full",
+        r === "horizontal" ? "lib:pl-4" : "lib:pt-4",
+        t
       ),
-      ...r
+      ...o
     }
   );
 }
 function K({
-  className: o,
-  variant: r = "outline",
-  size: l = "icon",
+  className: t,
+  variant: o = "outline",
+  size: r = "icon",
   ...n
 }) {
-  const { orientation: s, scrollPrev: c, canScrollPrev: i } = m();
+  const { orientation: i, scrollPrev: s, canScrollPrev: c } = f();
   return /* @__PURE__ */ e.createElement(
-    x,
+    C,
     {
       "data-slot": "carousel-previous",
-      variant: r,
-      size: l,
-      className: f(
-        "absolute size-8 rounded-full",
-        s === "horizontal" ? "top-1/2 -left-12 -translate-y-1/2" : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
-        o
+      variant: o,
+      size: r,
+      className: b(
+        "lib:absolute lib:size-8 lib:rounded-full",
+        i === "horizontal" ? "lib:top-1/2 lib:-left-12 lib:-translate-y-1/2" : "lib:-top-12 lib:left-1/2 lib:-translate-x-1/2 lib:rotate-90",
+        t
       ),
-      disabled: !i,
-      onClick: c,
+      disabled: !c,
+      onClick: s,
       ...n
     },
     /* @__PURE__ */ e.createElement(y, null),
-    /* @__PURE__ */ e.createElement("span", { className: "sr-only" }, "Previous slide")
+    /* @__PURE__ */ e.createElement("span", { className: "lib:sr-only" }, "Previous slide")
   );
 }
 function L({
-  className: o,
-  variant: r = "outline",
-  size: l = "icon",
+  className: t,
+  variant: o = "outline",
+  size: r = "icon",
   ...n
 }) {
-  const { orientation: s, scrollNext: c, canScrollNext: i } = m();
+  const { orientation: i, scrollNext: s, canScrollNext: c } = f();
   return /* @__PURE__ */ e.createElement(
-    x,
+    C,
     {
       "data-slot": "carousel-next",
-      variant: r,
-      size: l,
-      className: f(
-        "absolute size-8 rounded-full",
-        s === "horizontal" ? "top-1/2 -right-12 -translate-y-1/2" : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
-        o
+      variant: o,
+      size: r,
+      className: b(
+        "lib:absolute lib:size-8 lib:rounded-full",
+        i === "horizontal" ? "lib:top-1/2 lib:-right-12 lib:-translate-y-1/2" : "lib:-bottom-12 lib:left-1/2 lib:-translate-x-1/2 lib:rotate-90",
+        t
       ),
-      disabled: !i,
-      onClick: c,
+      disabled: !c,
+      onClick: s,
       ...n
     },
     /* @__PURE__ */ e.createElement(P, null),
-    /* @__PURE__ */ e.createElement("span", { className: "sr-only" }, "Next slide")
+    /* @__PURE__ */ e.createElement("span", { className: "lib:sr-only" }, "Next slide")
   );
 }
 export {

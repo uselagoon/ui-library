@@ -1,153 +1,117 @@
 import * as t from "react";
-import { Command as o } from "cmdk";
-import { SearchIcon as d } from "lucide-react";
-import { cn as n } from "./index.es54.js";
-import { Dialog as c, DialogHeader as l, DialogTitle as s, DialogDescription as u, DialogContent as i } from "./index.es23.js";
-function p({
-  className: e,
-  ...a
-}) {
+import { Command as i } from "cmdk";
+import { SearchIcon as m } from "lucide-react";
+import { cn as a } from "./index.es54.js";
+import { Dialog as r, DialogHeader as d, DialogTitle as b, DialogDescription as c, DialogContent as s } from "./index.es23.js";
+function u({ className: e, ...l }) {
   return /* @__PURE__ */ t.createElement(
-    o,
+    i,
     {
       "data-slot": "command",
-      className: n(
-        "bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md",
+      className: a(
+        "lib:bg-popover lib:text-popover-foreground lib:flex lib:h-full lib:w-full lib:flex-col lib:overflow-hidden lib:rounded-md",
         e
       ),
-      ...a
+      ...l
     }
   );
 }
-function _({
+function h({
   title: e = "Command Palette",
-  description: a = "Search for a command to run...",
-  children: m,
-  ...r
+  description: l = "Search for a command to run...",
+  children: o,
+  ...n
 }) {
-  return /* @__PURE__ */ t.createElement(c, { ...r }, /* @__PURE__ */ t.createElement(l, { className: "sr-only" }, /* @__PURE__ */ t.createElement(s, null, e), /* @__PURE__ */ t.createElement(u, null, a)), /* @__PURE__ */ t.createElement(i, { className: "overflow-hidden p-0" }, /* @__PURE__ */ t.createElement(p, { className: "[&_[cmdk-group-heading]]:text-muted-foreground **:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5" }, m)));
+  return /* @__PURE__ */ t.createElement(r, { ...n }, /* @__PURE__ */ t.createElement(d, { className: "lib:sr-only" }, /* @__PURE__ */ t.createElement(b, null, e), /* @__PURE__ */ t.createElement(c, null, l)), /* @__PURE__ */ t.createElement(s, { className: "lib:overflow-hidden lib:p-0" }, /* @__PURE__ */ t.createElement(u, { className: "[&_[cmdk-group-heading]]:lib:text-muted-foreground **:data-[slot=command-input-wrapper]:lib:h-12 [&_[cmdk-group-heading]]:lib:px-2 [&_[cmdk-group-heading]]:lib:font-medium [&_[cmdk-group]]:lib:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:lib:pt-0 [&_[cmdk-input-wrapper]_svg]:lib:h-5 [&_[cmdk-input-wrapper]_svg]:lib:w-5 [&_[cmdk-input]]:lib:h-12 [&_[cmdk-item]]:lib:px-2 [&_[cmdk-item]]:lib:py-3 [&_[cmdk-item]_svg]:lib:h-5 [&_[cmdk-item]_svg]:lib:w-5" }, o)));
 }
-function k({
-  className: e,
-  ...a
-}) {
+function _({ className: e, ...l }) {
   return /* @__PURE__ */ t.createElement(
     "div",
     {
       "data-slot": "command-input-wrapper",
-      className: "flex h-9 items-center gap-2 border-b px-3"
+      className: "lib:flex lib:h-9 lib:items-center lib:gap-2 lib:border-b lib:px-3"
     },
-    /* @__PURE__ */ t.createElement(d, { className: "size-4 shrink-0 opacity-50" }),
+    /* @__PURE__ */ t.createElement(m, { className: "lib:size-4 lib:shrink-0 lib:opacity-50" }),
     /* @__PURE__ */ t.createElement(
-      o.Input,
+      i.Input,
       {
         "data-slot": "command-input",
-        className: n(
-          "placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+        className: a(
+          "placeholder:lib:text-muted-foreground lib:flex lib:h-10 lib:w-full lib:rounded-md lib:bg-transparent lib:py-3 lib:text-sm lib:outline-hidden disabled:lib:cursor-not-allowed disabled:lib:opacity-50",
           e
         ),
-        ...a
+        ...l
       }
     )
   );
 }
-function v({
-  className: e,
-  ...a
-}) {
+function k({ className: e, ...l }) {
   return /* @__PURE__ */ t.createElement(
-    o.List,
+    i.List,
     {
       "data-slot": "command-list",
-      className: n(
-        "max-h-[300px] scroll-py-1 overflow-x-hidden overflow-y-auto",
-        e
-      ),
-      ...a
+      className: a("lib:max-h-[300px] lib:scroll-py-1 lib:overflow-x-hidden lib:overflow-y-auto", e),
+      ...l
     }
   );
 }
-function E({
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(
-    o.Empty,
-    {
-      "data-slot": "command-empty",
-      className: "py-6 text-center text-sm",
-      ...e
-    }
-  );
+function v({ ...e }) {
+  return /* @__PURE__ */ t.createElement(i.Empty, { "data-slot": "command-empty", className: "lib:py-6 lib:text-center lib:text-sm", ...e });
 }
-function w({
-  className: e,
-  ...a
-}) {
+function E({ className: e, ...l }) {
   return /* @__PURE__ */ t.createElement(
-    o.Group,
+    i.Group,
     {
       "data-slot": "command-group",
-      className: n(
-        "text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium",
+      className: a(
+        "lib:text-foreground [&_[cmdk-group-heading]]:lib:text-muted-foreground lib:overflow-hidden lib:p-1 [&_[cmdk-group-heading]]:lib:px-2 [&_[cmdk-group-heading]]:lib:py-1.5 [&_[cmdk-group-heading]]:lib:text-xs [&_[cmdk-group-heading]]:lib:font-medium",
         e
       ),
-      ...a
+      ...l
     }
   );
 }
-function y({
-  className: e,
-  ...a
-}) {
+function w({ className: e, ...l }) {
   return /* @__PURE__ */ t.createElement(
-    o.Separator,
+    i.Separator,
     {
       "data-slot": "command-separator",
-      className: n("bg-border -mx-1 h-px", e),
-      ...a
+      className: a("lib:bg-border lib:-mx-1 lib:h-px", e),
+      ...l
     }
   );
 }
-function C({
-  className: e,
-  ...a
-}) {
+function y({ className: e, ...l }) {
   return /* @__PURE__ */ t.createElement(
-    o.Item,
+    i.Item,
     {
       "data-slot": "command-item",
-      className: n(
-        "data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+      className: a(
+        "data-[selected=true]:lib:bg-accent data-[selected=true]:lib:text-accent-foreground [&_svg:not([class*=text-])]:lib:text-muted-foreground lib:relative lib:flex lib:cursor-default lib:items-center lib:gap-2 lib:rounded-sm lib:px-2 lib:py-1.5 lib:text-sm lib:outline-hidden lib:select-none data-[disabled=true]:lib:pointer-events-none data-[disabled=true]:lib:opacity-50 [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4",
         e
       ),
-      ...a
+      ...l
     }
   );
 }
-function N({
-  className: e,
-  ...a
-}) {
+function C({ className: e, ...l }) {
   return /* @__PURE__ */ t.createElement(
     "span",
     {
       "data-slot": "command-shortcut",
-      className: n(
-        "text-muted-foreground ml-auto text-xs tracking-widest",
-        e
-      ),
-      ...a
+      className: a("lib:text-muted-foreground lib:ml-auto lib:text-xs lib:tracking-widest", e),
+      ...l
     }
   );
 }
 export {
-  p as Command,
-  _ as CommandDialog,
-  E as CommandEmpty,
-  w as CommandGroup,
-  k as CommandInput,
-  C as CommandItem,
-  v as CommandList,
-  y as CommandSeparator,
-  N as CommandShortcut
+  u as Command,
+  h as CommandDialog,
+  v as CommandEmpty,
+  E as CommandGroup,
+  _ as CommandInput,
+  y as CommandItem,
+  k as CommandList,
+  w as CommandSeparator,
+  C as CommandShortcut
 };

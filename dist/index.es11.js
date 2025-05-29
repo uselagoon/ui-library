@@ -1,45 +1,33 @@
-import * as t from "react";
-import * as r from "@radix-ui/react-avatar";
-import { cn as l } from "./index.es54.js";
-function o({
-  className: a,
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(
-    r.Root,
+import * as l from "react";
+import * as t from "@radix-ui/react-avatar";
+import { cn as i } from "./index.es54.js";
+function n({ className: a, ...e }) {
+  return /* @__PURE__ */ l.createElement(
+    t.Root,
     {
       "data-slot": "avatar",
-      className: l(
-        "relative flex size-8 shrink-0 overflow-hidden rounded-full",
-        a
-      ),
+      className: i("lib:relative lib:flex lib:size-8 lib:shrink-0 lib:overflow-hidden lib:rounded-full", a),
       ...e
     }
   );
 }
-function s({
-  className: a,
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(
-    r.Image,
+function o({ className: a, ...e }) {
+  return /* @__PURE__ */ l.createElement(
+    t.Image,
     {
       "data-slot": "avatar-image",
-      className: l("aspect-square size-full", a),
+      className: i("lib:aspect-square lib:size-full", a),
       ...e
     }
   );
 }
-function i({
-  className: a,
-  ...e
-}) {
-  return /* @__PURE__ */ t.createElement(
-    r.Fallback,
+function s({ className: a, ...e }) {
+  return /* @__PURE__ */ l.createElement(
+    t.Fallback,
     {
       "data-slot": "avatar-fallback",
-      className: l(
-        "bg-muted flex size-full items-center justify-center rounded-full",
+      className: i(
+        "lib:bg-muted lib:flex lib:size-full lib:items-center lib:justify-center lib:rounded-full",
         a
       ),
       ...e
@@ -47,7 +35,7 @@ function i({
   );
 }
 export {
-  o as Avatar,
-  i as AvatarFallback,
-  s as AvatarImage
+  n as Avatar,
+  s as AvatarFallback,
+  o as AvatarImage
 };

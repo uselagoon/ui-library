@@ -1,166 +1,146 @@
-import * as a from "react";
-import * as o from "@radix-ui/react-navigation-menu";
-import { cva as u } from "class-variance-authority";
-import { ChevronDownIcon as s } from "lucide-react";
-import { cn as n } from "./index.es54.js";
-function v({
-  className: t,
-  children: e,
-  viewport: i = !0,
-  ...r
+import * as e from "react";
+import * as n from "@radix-ui/react-navigation-menu";
+import { cva as r } from "class-variance-authority";
+import { ChevronDownIcon as b } from "lucide-react";
+import { cn as a } from "./index.es54.js";
+function g({
+  className: i,
+  children: t,
+  viewport: o = !0,
+  ...l
 }) {
-  return /* @__PURE__ */ a.createElement(
-    o.Root,
+  return /* @__PURE__ */ e.createElement(
+    n.Root,
     {
       "data-slot": "navigation-menu",
-      "data-viewport": i,
-      className: n(
-        "group/navigation-menu relative flex max-w-max flex-1 items-center justify-center",
-        t
+      "data-viewport": o,
+      className: a(
+        "lib:group/navigation-menu lib:relative lib:flex lib:max-w-max lib:flex-1 lib:items-center lib:justify-center",
+        i
       ),
-      ...r
+      ...l
     },
-    e,
-    i && /* @__PURE__ */ a.createElement(l, null)
+    t,
+    o && /* @__PURE__ */ e.createElement(s, null)
   );
 }
-function f({
-  className: t,
-  ...e
-}) {
-  return /* @__PURE__ */ a.createElement(
-    o.List,
+function v({ className: i, ...t }) {
+  return /* @__PURE__ */ e.createElement(
+    n.List,
     {
       "data-slot": "navigation-menu-list",
-      className: n(
-        "group flex flex-1 list-none items-center justify-center gap-1",
-        t
+      className: a(
+        "lib:group lib:flex lib:flex-1 lib:list-none lib:items-center lib:justify-center lib:gap-1",
+        i
       ),
-      ...e
+      ...t
     }
   );
 }
-function p({
-  className: t,
-  ...e
-}) {
-  return /* @__PURE__ */ a.createElement(
-    o.Item,
+function f({ className: i, ...t }) {
+  return /* @__PURE__ */ e.createElement(
+    n.Item,
     {
       "data-slot": "navigation-menu-item",
-      className: n("relative", t),
-      ...e
+      className: a("lib:relative", i),
+      ...t
     }
   );
 }
-const d = u(
-  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1"
+const u = r(
+  "lib:group lib:inline-flex lib:h-9 lib:w-max lib:items-center lib:justify-center lib:rounded-md lib:bg-background lib:px-4 lib:py-2 lib:text-sm lib:font-medium hover:lib:bg-accent hover:lib:text-accent-foreground focus:lib:bg-accent focus:lib:text-accent-foreground disabled:lib:pointer-events-none disabled:lib:opacity-50 data-[state=open]:hover:lib:bg-accent data-[state=open]:lib:text-accent-foreground data-[state=open]:focus:lib:bg-accent data-[state=open]:lib:bg-accent/50 focus-visible:lib:ring-ring/50 lib:outline-none lib:transition-[color,box-shadow] focus-visible:lib:ring-[3px] focus-visible:lib:outline-1"
 );
-function w({
-  className: t,
-  children: e,
-  ...i
+function p({
+  className: i,
+  children: t,
+  ...o
 }) {
-  return /* @__PURE__ */ a.createElement(
-    o.Trigger,
+  return /* @__PURE__ */ e.createElement(
+    n.Trigger,
     {
       "data-slot": "navigation-menu-trigger",
-      className: n(d(), "group", t),
-      ...i
+      className: a(u(), "lib:group", i),
+      ...o
     },
-    e,
+    t,
     " ",
-    /* @__PURE__ */ a.createElement(
-      s,
+    /* @__PURE__ */ e.createElement(
+      b,
       {
-        className: "relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180",
+        className: "lib:relative lib:top-[1px] lib:ml-1 lib:size-3 lib:transition lib:duration-300 group-data-[state=open]:lib:rotate-180",
         "aria-hidden": "true"
       }
     )
   );
 }
-function x({
-  className: t,
-  ...e
-}) {
-  return /* @__PURE__ */ a.createElement(
-    o.Content,
+function w({ className: i, ...t }) {
+  return /* @__PURE__ */ e.createElement(
+    n.Content,
     {
       "data-slot": "navigation-menu-content",
-      className: n(
-        "data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 top-0 left-0 w-full p-2 pr-2.5 md:absolute md:w-auto",
-        "group-data-[viewport=false]/navigation-menu:bg-popover group-data-[viewport=false]/navigation-menu:text-popover-foreground group-data-[viewport=false]/navigation-menu:data-[state=open]:animate-in group-data-[viewport=false]/navigation-menu:data-[state=closed]:animate-out group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0 group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0 group-data-[viewport=false]/navigation-menu:top-full group-data-[viewport=false]/navigation-menu:mt-1.5 group-data-[viewport=false]/navigation-menu:overflow-hidden group-data-[viewport=false]/navigation-menu:rounded-md group-data-[viewport=false]/navigation-menu:border group-data-[viewport=false]/navigation-menu:shadow group-data-[viewport=false]/navigation-menu:duration-200 **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none",
-        t
+      className: a(
+        "data-[motion^=from-]:lib:animate-in data-[motion^=to-]:lib:animate-out data-[motion^=from-]:lib:fade-in data-[motion^=to-]:lib:fade-out data-[motion=from-end]:lib:slide-in-from-right-52 data-[motion=from-start]:lib:slide-in-from-left-52 data-[motion=to-end]:lib:slide-out-to-right-52 data-[motion=to-start]:lib:slide-out-to-left-52 lib:top-0 lib:left-0 lib:w-full lib:p-2 lib:pr-2.5 md:lib:absolute md:lib:w-auto",
+        "lib:group-data-[viewport=false]/navigation-menu:bg-popover lib:group-data-[viewport=false]/navigation-menu:text-popover-foreground lib:group-data-[viewport=false]/navigation-menu:data-[state=open]:animate-in lib:group-data-[viewport=false]/navigation-menu:data-[state=closed]:animate-out lib:group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95 lib:group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95 lib:group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0 lib:group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0 lib:group-data-[viewport=false]/navigation-menu:top-full lib:group-data-[viewport=false]/navigation-menu:mt-1.5 lib:group-data-[viewport=false]/navigation-menu:overflow-hidden lib:group-data-[viewport=false]/navigation-menu:rounded-md lib:group-data-[viewport=false]/navigation-menu:border lib:group-data-[viewport=false]/navigation-menu:shadow lib:group-data-[viewport=false]/navigation-menu:duration-200 **:data-[slot=navigation-menu-link]:focus:lib:ring-0 **:data-[slot=navigation-menu-link]:focus:lib:outline-none",
+        i
       ),
-      ...e
+      ...t
     }
   );
 }
-function l({
-  className: t,
-  ...e
+function s({
+  className: i,
+  ...t
 }) {
-  return /* @__PURE__ */ a.createElement(
-    "div",
+  return /* @__PURE__ */ e.createElement("div", { className: a("lib:absolute lib:top-full lib:left-0 lib:isolate lib:z-50 lib:flex lib:justify-center") }, /* @__PURE__ */ e.createElement(
+    n.Viewport,
     {
-      className: n(
-        "absolute top-full left-0 isolate z-50 flex justify-center"
-      )
-    },
-    /* @__PURE__ */ a.createElement(
-      o.Viewport,
-      {
-        "data-slot": "navigation-menu-viewport",
-        className: n(
-          "origin-top-center bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow md:w-[var(--radix-navigation-menu-viewport-width)]",
-          t
-        ),
-        ...e
-      }
-    )
-  );
+      "data-slot": "navigation-menu-viewport",
+      className: a(
+        "lib:origin-top-center lib:bg-popover lib:text-popover-foreground data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:zoom-out-95 data-[state=open]:lib:zoom-in-90 lib:relative lib:mt-1.5 lib:h-[var(--radix-navigation-menu-viewport-height)] lib:w-full lib:overflow-hidden lib:rounded-md lib:border lib:shadow md:lib:w-[var(--radix-navigation-menu-viewport-width)]",
+        i
+      ),
+      ...t
+    }
+  ));
 }
-function b({
-  className: t,
-  ...e
-}) {
-  return /* @__PURE__ */ a.createElement(
-    o.Link,
+function x({ className: i, ...t }) {
+  return /* @__PURE__ */ e.createElement(
+    n.Link,
     {
       "data-slot": "navigation-menu-link",
-      className: n(
-        "data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
-        t
+      className: a(
+        "data-[active=true]:focus:lib:bg-accent data-[active=true]:hover:lib:bg-accent data-[active=true]:lib:bg-accent/50 data-[active=true]:lib:text-accent-foreground hover:lib:bg-accent hover:lib:text-accent-foreground focus:lib:bg-accent focus:lib:text-accent-foreground focus-visible:lib:ring-ring/50 [&_svg:not([class*=text-])]:lib:text-muted-foreground lib:flex lib:flex-col lib:gap-1 lib:rounded-sm lib:p-2 lib:text-sm lib:transition-all lib:outline-none focus-visible:lib:ring-[3px] focus-visible:lib:outline-1 [&_svg:not([class*=size-])]:lib:size-4",
+        i
       ),
-      ...e
+      ...t
     }
   );
 }
 function h({
-  className: t,
-  ...e
+  className: i,
+  ...t
 }) {
-  return /* @__PURE__ */ a.createElement(
-    o.Indicator,
+  return /* @__PURE__ */ e.createElement(
+    n.Indicator,
     {
       "data-slot": "navigation-menu-indicator",
-      className: n(
-        "data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
-        t
+      className: a(
+        "data-[state=visible]:lib:animate-in data-[state=hidden]:lib:animate-out data-[state=hidden]:lib:fade-out data-[state=visible]:lib:fade-in lib:top-full lib:z-[1] lib:flex lib:h-1.5 lib:items-end lib:justify-center lib:overflow-hidden",
+        i
       ),
-      ...e
+      ...t
     },
-    /* @__PURE__ */ a.createElement("div", { className: "bg-border relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm shadow-md" })
+    /* @__PURE__ */ e.createElement("div", { className: "lib:bg-border lib:relative lib:top-[60%] lib:h-2 lib:w-2 lib:rotate-45 lib:rounded-tl-sm lib:shadow-md" })
   );
 }
 export {
-  v as NavigationMenu,
-  x as NavigationMenuContent,
+  g as NavigationMenu,
+  w as NavigationMenuContent,
   h as NavigationMenuIndicator,
-  p as NavigationMenuItem,
-  b as NavigationMenuLink,
-  f as NavigationMenuList,
-  w as NavigationMenuTrigger,
-  l as NavigationMenuViewport,
-  d as navigationMenuTriggerStyle
+  f as NavigationMenuItem,
+  x as NavigationMenuLink,
+  v as NavigationMenuList,
+  p as NavigationMenuTrigger,
+  s as NavigationMenuViewport,
+  u as navigationMenuTriggerStyle
 };

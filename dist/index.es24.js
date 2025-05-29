@@ -1,120 +1,92 @@
 import * as e from "react";
 import { Drawer as r } from "vaul";
-import { cn as d } from "./index.es54.js";
-function u({
-  ...t
-}) {
+import { cn as i } from "./index.es54.js";
+function c({ ...t }) {
   return /* @__PURE__ */ e.createElement(r.Root, { "data-slot": "drawer", ...t });
 }
-function m({
-  ...t
-}) {
+function u({ ...t }) {
   return /* @__PURE__ */ e.createElement(r.Trigger, { "data-slot": "drawer-trigger", ...t });
 }
-function n({
-  ...t
-}) {
+function d({ ...t }) {
   return /* @__PURE__ */ e.createElement(r.Portal, { "data-slot": "drawer-portal", ...t });
 }
-function w({
-  ...t
-}) {
+function m({ ...t }) {
   return /* @__PURE__ */ e.createElement(r.Close, { "data-slot": "drawer-close", ...t });
 }
-function i({
-  className: t,
-  ...a
-}) {
+function o({ className: t, ...a }) {
   return /* @__PURE__ */ e.createElement(
     r.Overlay,
     {
       "data-slot": "drawer-overlay",
-      className: d(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+      className: i(
+        "data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 lib:fixed lib:inset-0 lib:z-50 lib:bg-black/50",
         t
       ),
       ...a
     }
   );
 }
-function s({
-  className: t,
-  children: a,
-  ...o
-}) {
-  return /* @__PURE__ */ e.createElement(n, { "data-slot": "drawer-portal" }, /* @__PURE__ */ e.createElement(i, null), /* @__PURE__ */ e.createElement(
+function w({ className: t, children: a, ...l }) {
+  return /* @__PURE__ */ e.createElement(d, { "data-slot": "drawer-portal" }, /* @__PURE__ */ e.createElement(o, null), /* @__PURE__ */ e.createElement(
     r.Content,
     {
       "data-slot": "drawer-content",
-      className: d(
-        "group/drawer-content bg-background fixed z-50 flex h-auto flex-col",
-        "data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=top]:rounded-b-lg data-[vaul-drawer-direction=top]:border-b",
-        "data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh] data-[vaul-drawer-direction=bottom]:rounded-t-lg data-[vaul-drawer-direction=bottom]:border-t",
-        "data-[vaul-drawer-direction=right]:inset-y-0 data-[vaul-drawer-direction=right]:right-0 data-[vaul-drawer-direction=right]:w-3/4 data-[vaul-drawer-direction=right]:border-l data-[vaul-drawer-direction=right]:sm:max-w-sm",
-        "data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-3/4 data-[vaul-drawer-direction=left]:border-r data-[vaul-drawer-direction=left]:sm:max-w-sm",
+      className: i(
+        "lib:group/drawer-content lib:bg-background lib:fixed lib:z-50 lib:flex lib:h-auto lib:flex-col",
+        "data-[vaul-drawer-direction=top]:lib:inset-x-0 data-[vaul-drawer-direction=top]:lib:top-0 data-[vaul-drawer-direction=top]:lib:mb-24 data-[vaul-drawer-direction=top]:lib:max-h-[80vh] data-[vaul-drawer-direction=top]:lib:rounded-b-lg data-[vaul-drawer-direction=top]:lib:border-b",
+        "data-[vaul-drawer-direction=bottom]:lib:inset-x-0 data-[vaul-drawer-direction=bottom]:lib:bottom-0 data-[vaul-drawer-direction=bottom]:lib:mt-24 data-[vaul-drawer-direction=bottom]:lib:max-h-[80vh] data-[vaul-drawer-direction=bottom]:lib:rounded-t-lg data-[vaul-drawer-direction=bottom]:lib:border-t",
+        "data-[vaul-drawer-direction=right]:lib:inset-y-0 data-[vaul-drawer-direction=right]:lib:right-0 data-[vaul-drawer-direction=right]:lib:w-3/4 data-[vaul-drawer-direction=right]:lib:border-l data-[vaul-drawer-direction=right]:sm:lib:max-w-sm",
+        "data-[vaul-drawer-direction=left]:lib:inset-y-0 data-[vaul-drawer-direction=left]:lib:left-0 data-[vaul-drawer-direction=left]:lib:w-3/4 data-[vaul-drawer-direction=left]:lib:border-r data-[vaul-drawer-direction=left]:sm:lib:max-w-sm",
         t
       ),
-      ...o
+      ...l
     },
-    /* @__PURE__ */ e.createElement("div", { className: "bg-muted mx-auto mt-4 hidden h-2 w-[100px] shrink-0 rounded-full group-data-[vaul-drawer-direction=bottom]/drawer-content:block" }),
+    /* @__PURE__ */ e.createElement("div", { className: "lib:bg-muted lib:mx-auto lib:mt-4 lib:hidden lib:h-2 lib:w-[100px] lib:shrink-0 lib:rounded-full lib:group-data-[vaul-drawer-direction=bottom]/drawer-content:block" }),
     a
   ));
+}
+function s({ className: t, ...a }) {
+  return /* @__PURE__ */ e.createElement("div", { "data-slot": "drawer-header", className: i("lib:flex lib:flex-col lib:gap-1.5 lib:p-4", t), ...a });
 }
 function f({ className: t, ...a }) {
   return /* @__PURE__ */ e.createElement(
     "div",
     {
-      "data-slot": "drawer-header",
-      className: d("flex flex-col gap-1.5 p-4", t),
+      "data-slot": "drawer-footer",
+      className: i("lib:mt-auto lib:flex lib:flex-col lib:gap-2 lib:p-4", t),
       ...a
     }
   );
 }
 function v({ className: t, ...a }) {
   return /* @__PURE__ */ e.createElement(
-    "div",
-    {
-      "data-slot": "drawer-footer",
-      className: d("mt-auto flex flex-col gap-2 p-4", t),
-      ...a
-    }
-  );
-}
-function p({
-  className: t,
-  ...a
-}) {
-  return /* @__PURE__ */ e.createElement(
     r.Title,
     {
       "data-slot": "drawer-title",
-      className: d("text-foreground font-semibold", t),
+      className: i("lib:text-foreground lib:font-semibold", t),
       ...a
     }
   );
 }
-function g({
-  className: t,
-  ...a
-}) {
+function p({ className: t, ...a }) {
   return /* @__PURE__ */ e.createElement(
     r.Description,
     {
       "data-slot": "drawer-description",
-      className: d("text-muted-foreground text-sm", t),
+      className: i("lib:text-muted-foreground lib:text-sm", t),
       ...a
     }
   );
 }
 export {
-  u as Drawer,
-  w as DrawerClose,
-  s as DrawerContent,
-  g as DrawerDescription,
-  v as DrawerFooter,
-  f as DrawerHeader,
-  i as DrawerOverlay,
-  n as DrawerPortal,
-  p as DrawerTitle,
-  m as DrawerTrigger
+  c as Drawer,
+  m as DrawerClose,
+  w as DrawerContent,
+  p as DrawerDescription,
+  f as DrawerFooter,
+  s as DrawerHeader,
+  o as DrawerOverlay,
+  d as DrawerPortal,
+  v as DrawerTitle,
+  u as DrawerTrigger
 };

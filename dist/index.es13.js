@@ -1,17 +1,17 @@
 import * as t from "react";
-import { Slot as o } from "@radix-ui/react-slot";
-import { ChevronRight as s, MoreHorizontal as m } from "lucide-react";
+import { Slot as n } from "@radix-ui/react-slot";
+import { ChevronRight as o, MoreHorizontal as s } from "lucide-react";
 import { cn as a } from "./index.es54.js";
-function d({ ...e }) {
+function u({ ...e }) {
   return /* @__PURE__ */ t.createElement("nav", { "aria-label": "breadcrumb", "data-slot": "breadcrumb", ...e });
 }
-function b({ className: e, ...r }) {
+function d({ className: e, ...r }) {
   return /* @__PURE__ */ t.createElement(
     "ol",
     {
       "data-slot": "breadcrumb-list",
       className: a(
-        "text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5",
+        "lib:text-muted-foreground lib:flex lib:flex-wrap lib:items-center lib:gap-1.5 lib:text-sm lib:break-words sm:lib:gap-2.5",
         e
       ),
       ...r
@@ -23,7 +23,7 @@ function p({ className: e, ...r }) {
     "li",
     {
       "data-slot": "breadcrumb-item",
-      className: a("inline-flex items-center gap-1.5", e),
+      className: a("lib:inline-flex lib:items-center lib:gap-1.5", e),
       ...r
     }
   );
@@ -31,15 +31,15 @@ function p({ className: e, ...r }) {
 function f({
   asChild: e,
   className: r,
-  ...n
+  ...l
 }) {
-  const l = e ? o : "a";
+  const i = e ? n : "a";
   return /* @__PURE__ */ t.createElement(
-    l,
+    i,
     {
       "data-slot": "breadcrumb-link",
-      className: a("hover:text-foreground transition-colors", r),
-      ...n
+      className: a("hover:lib:text-foreground lib:transition-colors", r),
+      ...l
     }
   );
 }
@@ -51,51 +51,44 @@ function g({ className: e, ...r }) {
       role: "link",
       "aria-disabled": "true",
       "aria-current": "page",
-      className: a("text-foreground font-normal", e),
+      className: a("lib:text-foreground lib:font-normal", e),
       ...r
     }
   );
 }
-function E({
-  children: e,
-  className: r,
-  ...n
-}) {
+function E({ children: e, className: r, ...l }) {
   return /* @__PURE__ */ t.createElement(
     "li",
     {
       "data-slot": "breadcrumb-separator",
       role: "presentation",
       "aria-hidden": "true",
-      className: a("[&>svg]:size-3.5", r),
-      ...n
+      className: a("[&>svg]:lib:size-3.5", r),
+      ...l
     },
-    e ?? /* @__PURE__ */ t.createElement(s, null)
+    e ?? /* @__PURE__ */ t.createElement(o, null)
   );
 }
-function x({
-  className: e,
-  ...r
-}) {
+function x({ className: e, ...r }) {
   return /* @__PURE__ */ t.createElement(
     "span",
     {
       "data-slot": "breadcrumb-ellipsis",
       role: "presentation",
       "aria-hidden": "true",
-      className: a("flex size-9 items-center justify-center", e),
+      className: a("lib:flex lib:size-9 lib:items-center lib:justify-center", e),
       ...r
     },
-    /* @__PURE__ */ t.createElement(m, { className: "size-4" }),
-    /* @__PURE__ */ t.createElement("span", { className: "sr-only" }, "More")
+    /* @__PURE__ */ t.createElement(s, { className: "lib:size-4" }),
+    /* @__PURE__ */ t.createElement("span", { className: "lib:sr-only" }, "More")
   );
 }
 export {
-  d as Breadcrumb,
+  u as Breadcrumb,
   x as BreadcrumbEllipsis,
   p as BreadcrumbItem,
   f as BreadcrumbLink,
-  b as BreadcrumbList,
+  d as BreadcrumbList,
   g as BreadcrumbPage,
   E as BreadcrumbSeparator
 };

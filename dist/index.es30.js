@@ -1,22 +1,19 @@
-import * as a from "react";
-import * as o from "@radix-ui/react-label";
-import { cn as r } from "./index.es54.js";
-function n({
-  className: e,
-  ...t
-}) {
-  return /* @__PURE__ */ a.createElement(
-    o.Root,
+import * as t from "react";
+import * as l from "@radix-ui/react-label";
+import { cn as a } from "./index.es54.js";
+function r({ className: e, ...i }) {
+  return /* @__PURE__ */ t.createElement(
+    l.Root,
     {
       "data-slot": "label",
-      className: r(
-        "flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
+      className: a(
+        "lib:flex lib:items-center lib:gap-2 lib:text-sm lib:leading-none lib:font-medium lib:select-none group-data-[disabled=true]:lib:pointer-events-none group-data-[disabled=true]:lib:opacity-50 peer-disabled:lib:cursor-not-allowed peer-disabled:lib:opacity-50",
         e
       ),
-      ...t
+      ...i
     }
   );
 }
 export {
-  n as Label
+  r as Label
 };
