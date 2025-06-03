@@ -12,5 +12,5 @@ export type InternalTextType = {
     children?: React.ReactNode;
     underline?: boolean;
 } & (TextItemProps | LinkItemProps) & TextProps;
-declare const InternalText: React.ForwardRefRenderFunction<HTMLSpanElement, InternalTextType>;
+declare const InternalText: React.ForwardRefExoticComponent<InternalTextType & React.RefAttributes<HTMLSpanElement>>;
 export default InternalText;

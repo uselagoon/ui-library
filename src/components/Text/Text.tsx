@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { TextProps } from 'antd/es/typography/Text';
 import { Typography } from 'antd';
 
@@ -20,27 +20,26 @@ export type InternalTextType = {
 } & (TextItemProps | LinkItemProps) &
 	TextProps;
 
-const InternalText: React.ForwardRefRenderFunction<HTMLSpanElement, InternalTextType> = (
-	{ className, children, underline = true, ...rest }: InternalTextType,
-	ref,
-) => {
-	if ('href' in rest) {
-		const destination = rest.href ?? null;
-		const target = rest.target ?? '__blank';
+const InternalText = forwardRef<HTMLSpanElement, InternalTextType>(
+	({ className, children, underline = true, ...rest }, ref) => {
+		if ('href' in rest) {
+			const destination = rest.href ?? null;
+			const target = rest.target ?? '__blank';
+
+			return (
+				<LinkElement ref={ref} className={className} href={destination} target={target}>
+					{children}
+				</LinkElement>
+			);
+		}
 
 		return (
-			<LinkElement ref={ref} className={className} href={destination} target={target}>
+			<TextElement ref={ref} className={className} {...rest}>
 				{children}
-			</LinkElement>
+			</TextElement>
 		);
-	}
-
-	return (
-		<TextElement ref={ref} className={className} {...rest}>
-			{children}
-		</TextElement>
-	);
-};
+	},
+);
 
 InternalText.displayName = 'Text';
 
