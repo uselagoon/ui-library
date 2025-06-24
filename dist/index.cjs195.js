@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("./index.cjs196.js"),l=require("./index.cjs197.js"),c=require("./index.cjs198.js");function o(t,e,u){return e=r.default(e),c.default(t,l.default()?Reflect.construct(e,[],r.default(t).constructor):e.apply(t,u))}exports.default=o;

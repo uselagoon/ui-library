@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("react"),e=t.createContext(void 0);process.env.NODE_ENV!=="production"&&(e.displayName="zIndexContext");exports.default=e;

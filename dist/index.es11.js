@@ -1,41 +1,33 @@
-import * as l from "react";
-import * as t from "@radix-ui/react-avatar";
-import { cn as i } from "./index.es54.js";
-function n({ className: a, ...e }) {
-  return /* @__PURE__ */ l.createElement(
-    t.Root,
-    {
-      "data-slot": "avatar",
-      className: i("lib:relative lib:flex lib:size-8 lib:shrink-0 lib:overflow-hidden lib:rounded-full", a),
-      ...e
+import { j as o } from "./index.es64.js";
+import { Slot as n } from "@radix-ui/react-slot";
+import { cva as s } from "class-variance-authority";
+import { cn as d } from "./index.es65.js";
+const c = s(
+  "inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
+  {
+    variants: {
+      variant: {
+        default: "border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
+        secondary: "border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
+        destructive: "border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+        outline: "text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground"
+      }
+    },
+    defaultVariants: {
+      variant: "default"
     }
-  );
-}
-function o({ className: a, ...e }) {
-  return /* @__PURE__ */ l.createElement(
-    t.Image,
-    {
-      "data-slot": "avatar-image",
-      className: i("lib:aspect-square lib:size-full", a),
-      ...e
-    }
-  );
-}
-function s({ className: a, ...e }) {
-  return /* @__PURE__ */ l.createElement(
-    t.Fallback,
-    {
-      "data-slot": "avatar-fallback",
-      className: i(
-        "lib:bg-muted lib:flex lib:size-full lib:items-center lib:justify-center lib:rounded-full",
-        a
-      ),
-      ...e
-    }
-  );
+  }
+);
+function b({
+  className: r,
+  variant: e,
+  asChild: t = !1,
+  ...i
+}) {
+  const a = t ? n : "span";
+  return /* @__PURE__ */ o.jsx(a, { "data-slot": "badge", className: d(c({ variant: e }), r), ...i });
 }
 export {
-  n as Avatar,
-  s as AvatarFallback,
-  o as AvatarImage
+  b as Badge,
+  c as badgeVariants
 };

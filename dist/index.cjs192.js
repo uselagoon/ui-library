@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});function t(e,a){if(!(e instanceof a))throw new TypeError("Cannot call a class as a function")}exports.default=t;

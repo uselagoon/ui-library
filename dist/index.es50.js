@@ -1,61 +1,36 @@
-import * as e from "react";
-import * as n from "@radix-ui/react-toggle-group";
-import { cn as d } from "./index.es54.js";
-import { toggleVariants as u } from "./index.es51.js";
-const s = e.createContext({
-  size: "default",
-  variant: "default"
-});
-function g({
-  className: r,
-  variant: o,
-  size: t,
-  children: a,
-  ...l
-}) {
-  return /* @__PURE__ */ e.createElement(
-    n.Root,
-    {
-      "data-slot": "toggle-group",
-      "data-variant": o,
-      "data-size": t,
-      className: d(
-        "lib:group/toggle-group lib:flex lib:w-fit lib:items-center lib:rounded-md data-[variant=outline]:lib:shadow-xs",
-        r
-      ),
-      ...l
+import { j as n } from "./index.es64.js";
+import * as a from "@radix-ui/react-toggle";
+import { cva as o } from "class-variance-authority";
+import { cn as s } from "./index.es65.js";
+const d = o(
+  "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium hover:bg-muted hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-[color,box-shadow] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive whitespace-nowrap",
+  {
+    variants: {
+      variant: {
+        default: "bg-transparent",
+        outline: "border border-input bg-transparent shadow-xs hover:bg-accent hover:text-accent-foreground"
+      },
+      size: {
+        default: "h-9 px-2 min-w-9",
+        sm: "h-8 px-1.5 min-w-8",
+        lg: "h-10 px-2.5 min-w-10"
+      }
     },
-    /* @__PURE__ */ e.createElement(s.Provider, { value: { variant: o, size: t } }, a)
-  );
-}
-function c({
-  className: r,
-  children: o,
+    defaultVariants: {
+      variant: "default",
+      size: "default"
+    }
+  }
+);
+function u({
+  className: e,
   variant: t,
-  size: a,
-  ...l
+  size: i,
+  ...r
 }) {
-  const i = e.useContext(s);
-  return /* @__PURE__ */ e.createElement(
-    n.Item,
-    {
-      "data-slot": "toggle-group-item",
-      "data-variant": i.variant || t,
-      "data-size": i.size || a,
-      className: d(
-        u({
-          variant: i.variant || t,
-          size: i.size || a
-        }),
-        "lib:min-w-0 lib:flex-1 lib:shrink-0 lib:rounded-none lib:shadow-none first:lib:rounded-l-md last:lib:rounded-r-md focus:lib:z-10 focus-visible:lib:z-10 data-[variant=outline]:lib:border-l-0 data-[variant=outline]:first:lib:border-l",
-        r
-      ),
-      ...l
-    },
-    o
-  );
+  return /* @__PURE__ */ n.jsx(a.Root, { "data-slot": "toggle", className: s(d({ variant: t, size: i, className: e })), ...r });
 }
 export {
-  g as ToggleGroup,
-  c as ToggleGroupItem
+  u as Toggle,
+  d as toggleVariants
 };

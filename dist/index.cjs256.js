@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./index.cjs162.js"),e=require("react");var u=t.default()?e.useLayoutEffect:e.useEffect;exports.default=u;

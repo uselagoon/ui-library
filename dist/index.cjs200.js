@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});function e(o,r){return e=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(t,u){return t.__proto__=u,t},e(o,r)}exports.default=e;

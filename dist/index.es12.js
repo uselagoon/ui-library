@@ -1,33 +1,82 @@
-import * as b from "react";
-import { Slot as l } from "@radix-ui/react-slot";
-import { cva as n } from "class-variance-authority";
-import { cn as o } from "./index.es54.js";
-const s = n(
-  "lib:inline-flex lib:items-center lib:justify-center lib:rounded-md lib:border lib:px-2 lib:py-0.5 lib:text-xs lib:font-medium lib:w-fit lib:whitespace-nowrap lib:shrink-0 [&>svg]:lib:size-3 lib:gap-1 [&>svg]:lib:pointer-events-none focus-visible:lib:border-ring focus-visible:lib:ring-ring/50 focus-visible:lib:ring-[3px] aria-invalid:lib:ring-destructive/20 dark:aria-invalid:lib:ring-destructive/40 aria-invalid:lib:border-destructive lib:transition-[color,box-shadow] lib:overflow-hidden",
-  {
-    variants: {
-      variant: {
-        default: "lib:border-transparent lib:bg-primary lib:text-primary-foreground [a&]:hover:lib:bg-primary/90",
-        secondary: "lib:border-transparent lib:bg-secondary lib:text-secondary-foreground [a&]:hover:lib:bg-secondary/90",
-        destructive: "lib:border-transparent lib:bg-destructive lib:text-white [a&]:hover:lib:bg-destructive/90 focus-visible:lib:ring-destructive/20 dark:focus-visible:lib:ring-destructive/40 dark:lib:bg-destructive/60",
-        outline: "lib:text-foreground [a&]:hover:lib:bg-accent [a&]:hover:lib:text-accent-foreground"
-      }
-    },
-    defaultVariants: {
-      variant: "default"
+import { j as a } from "./index.es64.js";
+import { Slot as o } from "@radix-ui/react-slot";
+import { ChevronRight as i, MoreHorizontal as l } from "lucide-react";
+import { cn as t } from "./index.es65.js";
+function b({ ...r }) {
+  return /* @__PURE__ */ a.jsx("nav", { "aria-label": "breadcrumb", "data-slot": "breadcrumb", ...r });
+}
+function p({ className: r, ...e }) {
+  return /* @__PURE__ */ a.jsx(
+    "ol",
+    {
+      "data-slot": "breadcrumb-list",
+      className: t(
+        "text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5",
+        r
+      ),
+      ...e
     }
-  }
-);
-function u({
-  className: i,
-  variant: r,
-  asChild: e = !1,
-  ...t
+  );
+}
+function x({ className: r, ...e }) {
+  return /* @__PURE__ */ a.jsx("li", { "data-slot": "breadcrumb-item", className: t("inline-flex items-center gap-1.5", r), ...e });
+}
+function f({
+  asChild: r,
+  className: e,
+  ...s
 }) {
-  const a = e ? l : "span";
-  return /* @__PURE__ */ b.createElement(a, { "data-slot": "badge", className: o(s({ variant: r }), i), ...t });
+  const n = r ? o : "a";
+  return /* @__PURE__ */ a.jsx(n, { "data-slot": "breadcrumb-link", className: t("hover:text-foreground transition-colors", e), ...s });
+}
+function j({ className: r, ...e }) {
+  return /* @__PURE__ */ a.jsx(
+    "span",
+    {
+      "data-slot": "breadcrumb-page",
+      role: "link",
+      "aria-disabled": "true",
+      "aria-current": "page",
+      className: t("text-foreground font-normal", r),
+      ...e
+    }
+  );
+}
+function g({ children: r, className: e, ...s }) {
+  return /* @__PURE__ */ a.jsx(
+    "li",
+    {
+      "data-slot": "breadcrumb-separator",
+      role: "presentation",
+      "aria-hidden": "true",
+      className: t("[&>svg]:size-3.5", e),
+      ...s,
+      children: r ?? /* @__PURE__ */ a.jsx(i, {})
+    }
+  );
+}
+function h({ className: r, ...e }) {
+  return /* @__PURE__ */ a.jsxs(
+    "span",
+    {
+      "data-slot": "breadcrumb-ellipsis",
+      role: "presentation",
+      "aria-hidden": "true",
+      className: t("flex size-9 items-center justify-center", r),
+      ...e,
+      children: [
+        /* @__PURE__ */ a.jsx(l, { className: "size-4" }),
+        /* @__PURE__ */ a.jsx("span", { className: "sr-only", children: "More" })
+      ]
+    }
+  );
 }
 export {
-  u as Badge,
-  s as badgeVariants
+  b as Breadcrumb,
+  h as BreadcrumbEllipsis,
+  x as BreadcrumbItem,
+  f as BreadcrumbLink,
+  p as BreadcrumbList,
+  j as BreadcrumbPage,
+  g as BreadcrumbSeparator
 };

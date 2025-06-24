@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./index.cjs258.js");var a=function(n,e,i){n==="animation"&&i.hashId&&e!=="none"&&t.lintWarning("You seem to be using hashed animation '".concat(e,"', in which case 'animationName' with Keyframe as value is recommended."),i)};exports.default=a;

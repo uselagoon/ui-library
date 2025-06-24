@@ -1,86 +1,34 @@
-import * as r from "react";
-import { Slot as d } from "@radix-ui/react-slot";
-import { FormProvider as f, useFormContext as u, useFormState as F, Controller as x } from "react-hook-form";
-import { cn as a } from "./index.es54.js";
-import { Label as I } from "./index.es30.js";
-const v = f, c = r.createContext({}), E = ({
-  ...e
-}) => /* @__PURE__ */ r.createElement(c.Provider, { value: { name: e.name } }, /* @__PURE__ */ r.createElement(x, { ...e })), s = () => {
-  const e = r.useContext(c), t = r.useContext(l), { getFieldState: o } = u(), m = F({ name: e.name }), n = o(e.name, m);
-  if (!e)
-    throw new Error("useFormField should be used within <FormField>");
-  const { id: i } = t;
-  return {
-    id: i,
-    name: e.name,
-    formItemId: `${i}-form-item`,
-    formDescriptionId: `${i}-form-item-description`,
-    formMessageId: `${i}-form-item-message`,
-    ...n
-  };
-}, l = r.createContext({});
-function S({ className: e, ...t }) {
-  const o = r.useId();
-  return /* @__PURE__ */ r.createElement(l.Provider, { value: { id: o } }, /* @__PURE__ */ r.createElement("div", { "data-slot": "form-item", className: a("lib:grid lib:gap-2", e), ...t }));
+import { j as o } from "./index.es64.js";
+import * as r from "@radix-ui/react-hover-card";
+import { cn as i } from "./index.es65.js";
+function m({ ...t }) {
+  return /* @__PURE__ */ o.jsx(r.Root, { "data-slot": "hover-card", ...t });
 }
-function $({ className: e, ...t }) {
-  const { error: o, formItemId: m } = s();
-  return /* @__PURE__ */ r.createElement(
-    I,
+function l({ ...t }) {
+  return /* @__PURE__ */ o.jsx(r.Trigger, { "data-slot": "hover-card-trigger", ...t });
+}
+function c({
+  className: t,
+  align: e = "center",
+  sideOffset: a = 4,
+  ...d
+}) {
+  return /* @__PURE__ */ o.jsx(r.Portal, { "data-slot": "hover-card-portal", children: /* @__PURE__ */ o.jsx(
+    r.Content,
     {
-      "data-slot": "form-label",
-      "data-error": !!o,
-      className: a("data-[error=true]:lib:text-destructive", e),
-      htmlFor: m,
-      ...t
+      "data-slot": "hover-card-content",
+      align: e,
+      sideOffset: a,
+      className: i(
+        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-64 origin-(--radix-hover-card-content-transform-origin) rounded-md border p-4 shadow-md outline-hidden",
+        t
+      ),
+      ...d
     }
-  );
-}
-function h({ ...e }) {
-  const { error: t, formItemId: o, formDescriptionId: m, formMessageId: n } = s();
-  return /* @__PURE__ */ r.createElement(
-    d,
-    {
-      "data-slot": "form-control",
-      id: o,
-      "aria-describedby": t ? `${m} ${n}` : `${m}`,
-      "aria-invalid": !!t,
-      ...e
-    }
-  );
-}
-function D({ className: e, ...t }) {
-  const { formDescriptionId: o } = s();
-  return /* @__PURE__ */ r.createElement(
-    "p",
-    {
-      "data-slot": "form-description",
-      id: o,
-      className: a("lib:text-muted-foreground lib:text-sm", e),
-      ...t
-    }
-  );
-}
-function M({ className: e, ...t }) {
-  const { error: o, formMessageId: m } = s(), n = o ? String(o?.message ?? "") : t.children;
-  return n ? /* @__PURE__ */ r.createElement(
-    "p",
-    {
-      "data-slot": "form-message",
-      id: m,
-      className: a("lib:text-destructive lib:text-sm", e),
-      ...t
-    },
-    n
-  ) : null;
+  ) });
 }
 export {
-  v as Form,
-  h as FormControl,
-  D as FormDescription,
-  E as FormField,
-  S as FormItem,
-  $ as FormLabel,
-  M as FormMessage,
-  s as useFormField
+  m as HoverCard,
+  c as HoverCardContent,
+  l as HoverCardTrigger
 };

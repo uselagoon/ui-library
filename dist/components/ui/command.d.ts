@@ -2,9 +2,11 @@ import { Command as CommandPrimitive } from 'cmdk';
 import { Dialog } from './dialog';
 import * as React from 'react';
 declare function Command({ className, ...props }: React.ComponentProps<typeof CommandPrimitive>): import("react/jsx-dev-runtime").JSX.Element;
-declare function CommandDialog({ title, description, children, ...props }: React.ComponentProps<typeof Dialog> & {
+declare function CommandDialog({ title, description, children, className, showCloseButton, ...props }: React.ComponentProps<typeof Dialog> & {
     title?: string;
     description?: string;
+    className?: string;
+    showCloseButton?: boolean;
 }): import("react/jsx-dev-runtime").JSX.Element;
 declare function CommandInput({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Input>): import("react/jsx-dev-runtime").JSX.Element;
 declare function CommandList({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.List>): import("react/jsx-dev-runtime").JSX.Element;

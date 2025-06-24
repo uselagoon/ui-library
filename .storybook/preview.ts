@@ -1,7 +1,9 @@
 import type { Preview } from '@storybook/react';
-import './globals.css';
+
+import '../src/index.css';
 
 import React from 'react';
+import withNextLink from './decorators/withNextLink';
 const preview: Preview = {
 	parameters: {
 		controls: {
@@ -29,6 +31,7 @@ const preview: Preview = {
 			},
 		},
 	},
+	decorators: [withNextLink],
 };
 
 export default preview;

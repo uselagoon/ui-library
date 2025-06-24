@@ -117,7 +117,7 @@ function Carousel({
 		>
 			<div
 				onKeyDownCapture={handleKeyDown}
-				className={cn('lib:relative', className)}
+				className={cn('relative', className)}
 				role="region"
 				aria-roledescription="carousel"
 				data-slot="carousel"
@@ -133,11 +133,8 @@ function CarouselContent({ className, ...props }: React.ComponentProps<'div'>) {
 	const { carouselRef, orientation } = useCarousel();
 
 	return (
-		<div ref={carouselRef} className="lib:overflow-hidden" data-slot="carousel-content">
-			<div
-				className={cn('lib:flex', orientation === 'horizontal' ? 'lib:-ml-4' : 'lib:-mt-4 lib:flex-col', className)}
-				{...props}
-			/>
+		<div ref={carouselRef} className="overflow-hidden" data-slot="carousel-content">
+			<div className={cn('flex', orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col', className)} {...props} />
 		</div>
 	);
 }
@@ -150,11 +147,7 @@ function CarouselItem({ className, ...props }: React.ComponentProps<'div'>) {
 			role="group"
 			aria-roledescription="slide"
 			data-slot="carousel-item"
-			className={cn(
-				'lib:min-w-0 lib:shrink-0 lib:grow-0 lib:basis-full',
-				orientation === 'horizontal' ? 'lib:pl-4' : 'lib:pt-4',
-				className,
-			)}
+			className={cn('min-w-0 shrink-0 grow-0 basis-full', orientation === 'horizontal' ? 'pl-4' : 'pt-4', className)}
 			{...props}
 		/>
 	);
@@ -174,10 +167,10 @@ function CarouselPrevious({
 			variant={variant}
 			size={size}
 			className={cn(
-				'lib:absolute lib:size-8 lib:rounded-full',
+				'absolute size-8 rounded-full',
 				orientation === 'horizontal'
-					? 'lib:top-1/2 lib:-left-12 lib:-translate-y-1/2'
-					: 'lib:-top-12 lib:left-1/2 lib:-translate-x-1/2 lib:rotate-90',
+					? 'top-1/2 -left-12 -translate-y-1/2'
+					: '-top-12 left-1/2 -translate-x-1/2 rotate-90',
 				className,
 			)}
 			disabled={!canScrollPrev}
@@ -185,7 +178,7 @@ function CarouselPrevious({
 			{...props}
 		>
 			<ArrowLeft />
-			<span className="lib:sr-only">Previous slide</span>
+			<span className="sr-only">Previous slide</span>
 		</Button>
 	);
 }
@@ -204,10 +197,10 @@ function CarouselNext({
 			variant={variant}
 			size={size}
 			className={cn(
-				'lib:absolute lib:size-8 lib:rounded-full',
+				'absolute size-8 rounded-full',
 				orientation === 'horizontal'
-					? 'lib:top-1/2 lib:-right-12 lib:-translate-y-1/2'
-					: 'lib:-bottom-12 lib:left-1/2 lib:-translate-x-1/2 lib:rotate-90',
+					? 'top-1/2 -right-12 -translate-y-1/2'
+					: '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
 				className,
 			)}
 			disabled={!canScrollNext}
@@ -215,7 +208,7 @@ function CarouselNext({
 			{...props}
 		>
 			<ArrowRight />
-			<span className="lib:sr-only">Next slide</span>
+			<span className="sr-only">Next slide</span>
 		</Button>
 	);
 }

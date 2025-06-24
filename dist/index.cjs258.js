@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const c=require("./index.cjs96.js");function a(r,n){var t=n.path,e=n.parentSelectors;c.warningOnce(!1,"[Ant Design CSS-in-JS] ".concat(t?"Error in ".concat(t,": "):"").concat(r).concat(e.length?" Selector: ".concat(e.join(" | ")):""))}exports.lintWarning=a;

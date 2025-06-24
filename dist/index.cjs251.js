@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const t=require("./index.cjs165.js"),n=(o,e)=>new t.TinyColor(o).setAlpha(e).toRgbString(),r=(o,e)=>new t.TinyColor(o).darken(e).toHexString();exports.getAlphaColor=n;exports.getSolidColor=r;

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});function n(o){var t;return o==null||(t=o.getRootNode)===null||t===void 0?void 0:t.call(o)}function d(o){return n(o)instanceof ShadowRoot}function e(o){return d(o)?n(o):null}exports.getShadowRoot=e;exports.inShadow=d;

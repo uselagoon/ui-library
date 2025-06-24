@@ -1,34 +1,55 @@
-import * as e from "react";
-import * as o from "@radix-ui/react-hover-card";
-import { cn as d } from "./index.es54.js";
-function l({ ...t }) {
-  return /* @__PURE__ */ e.createElement(o.Root, { "data-slot": "hover-card", ...t });
-}
-function s({ ...t }) {
-  return /* @__PURE__ */ e.createElement(o.Trigger, { "data-slot": "hover-card-trigger", ...t });
-}
-function m({
+import { j as e } from "./index.es64.js";
+import * as u from "react";
+import { OTPInput as c, OTPInputContext as l } from "input-otp";
+import { MinusIcon as p } from "lucide-react";
+import { cn as a } from "./index.es65.js";
+function b({
   className: t,
-  align: a = "center",
-  sideOffset: r = 4,
+  containerClassName: r,
   ...i
 }) {
-  return /* @__PURE__ */ e.createElement(o.Portal, { "data-slot": "hover-card-portal" }, /* @__PURE__ */ e.createElement(
-    o.Content,
+  return /* @__PURE__ */ e.jsx(
+    c,
     {
-      "data-slot": "hover-card-content",
-      align: a,
-      sideOffset: r,
-      className: d(
-        "lib:bg-popover lib:text-popover-foreground data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 data-[state=closed]:lib:zoom-out-95 data-[state=open]:lib:zoom-in-95 data-[side=bottom]:lib:slide-in-from-top-2 data-[side=left]:lib:slide-in-from-right-2 data-[side=right]:lib:slide-in-from-left-2 data-[side=top]:lib:slide-in-from-bottom-2 lib:z-50 lib:w-64 lib:origin-(--radix-hover-card-content-transform-origin) lib:rounded-md lib:border lib:p-4 lib:shadow-md lib:outline-hidden",
-        t
-      ),
+      "data-slot": "input-otp",
+      containerClassName: a("flex items-center gap-2 has-disabled:opacity-50", r),
+      className: a("disabled:cursor-not-allowed", t),
       ...i
     }
-  ));
+  );
+}
+function g({ className: t, ...r }) {
+  return /* @__PURE__ */ e.jsx("div", { "data-slot": "input-otp-group", className: a("flex items-center", t), ...r });
+}
+function j({
+  index: t,
+  className: r,
+  ...i
+}) {
+  const n = u.useContext(l), { char: o, hasFakeCaret: s, isActive: d } = n?.slots[t] ?? {};
+  return /* @__PURE__ */ e.jsxs(
+    "div",
+    {
+      "data-slot": "input-otp-slot",
+      "data-active": d,
+      className: a(
+        "data-[active=true]:border-ring data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:ring-destructive/20 dark:data-[active=true]:aria-invalid:ring-destructive/40 aria-invalid:border-destructive data-[active=true]:aria-invalid:border-destructive dark:bg-input/30 border-input relative flex h-9 w-9 items-center justify-center border-y border-r text-sm shadow-xs transition-all outline-none first:rounded-l-md first:border-l last:rounded-r-md data-[active=true]:z-10 data-[active=true]:ring-[3px]",
+        r
+      ),
+      ...i,
+      children: [
+        o,
+        s && /* @__PURE__ */ e.jsx("div", { className: "pointer-events-none absolute inset-0 flex items-center justify-center", children: /* @__PURE__ */ e.jsx("div", { className: "animate-caret-blink bg-foreground h-4 w-px duration-1000" }) })
+      ]
+    }
+  );
+}
+function h({ ...t }) {
+  return /* @__PURE__ */ e.jsx("div", { "data-slot": "input-otp-separator", role: "separator", ...t, children: /* @__PURE__ */ e.jsx(p, {}) });
 }
 export {
-  l as HoverCard,
-  m as HoverCardContent,
-  s as HoverCardTrigger
+  b as InputOTP,
+  g as InputOTPGroup,
+  h as InputOTPSeparator,
+  j as InputOTPSlot
 };

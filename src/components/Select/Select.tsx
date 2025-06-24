@@ -1,0 +1,44 @@
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '../ui/select';
+
+type Option = { label: string; value: string | number };
+type OptionGroup = { label: string; options: Option[] };
+
+type SelectProps = Omit<React.ComponentProps<typeof Select>, 'disabled'> & {
+	placeholder: string;
+	options?: Option[] | OptionGroup[];
+	disabled?: boolean;
+};
+
+function isOptionGroupArray(options: Option[] | OptionGroup[] | undefined): options is OptionGroup[] {
+	return Array.isArray(options) && 'options' in options[0]!;
+}
+
+export default function SelectWithOptions({ placeholder, options, disabled, ...rest }: SelectProps) {
+	return (
+		<Select disabled={disabled} {...rest}>
+			<SelectTrigger className="w-[266px]">
+				<SelectValue placeholder={placeholder || 'Make a selection'} />
+			</SelectTrigger>
+			{!disabled && options && (
+				<SelectContent>
+					{isOptionGroupArray(options)
+						? options.map((group) => (
+								<SelectGroup key={group.label}>
+									<SelectLabel>{group.label}</SelectLabel>
+									{group.options.map((option) => (
+										<SelectItem key={option.value} value={String(option.value)}>
+											{option.label}
+										</SelectItem>
+									))}
+								</SelectGroup>
+							))
+						: options.map((option) => (
+								<SelectItem key={option.value} value={String(option.value)}>
+									{option.label}
+								</SelectItem>
+							))}
+				</SelectContent>
+			)}
+		</Select>
+	);
+}

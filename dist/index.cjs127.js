@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const t=require("react");function l(e){return e&&t.isValidElement(e)&&e.type===t.Fragment}const i=(e,n,r)=>t.isValidElement(e)?t.cloneElement(e,typeof r=="function"?r(e.props||{}):r):n;function o(e,n){return i(e,e,n)}exports.cloneElement=o;exports.isFragment=l;exports.replaceElement=i;

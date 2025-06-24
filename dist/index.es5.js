@@ -1,7 +1,13 @@
-import { AppThemeProvider as o } from "./index.es4.js";
-import e from "react";
-import m from "./index.es53.js";
-const d = ({ children: r, defaultScheme: t }) => /* @__PURE__ */ e.createElement(o, { defaultScheme: t || void 0 }, /* @__PURE__ */ e.createElement(m, null, r));
+import { j as n } from "./index.es64.js";
+import { createContext as r, useContext as i } from "react";
+const o = r(void 0), m = ({ linkComponent: t, children: e }) => /* @__PURE__ */ n.jsx(o.Provider, { value: t, children: e }), x = () => {
+  const t = i(o);
+  if (!t)
+    throw new Error("useLinkComponent must be used within a LinkProvider");
+  return t;
+};
 export {
-  d as default
+  o as LinkContext,
+  m as LinkProvider,
+  x as useLinkComponent
 };

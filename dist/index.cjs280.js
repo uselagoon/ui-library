@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});var E="comm",r="rule",e="decl",a="@import",A="@namespace",M="@keyframes",R="@layer";exports.COMMENT=E;exports.DECLARATION=e;exports.IMPORT=a;exports.KEYFRAMES=M;exports.LAYER=R;exports.NAMESPACE=A;exports.RULESET=r;
