@@ -1,5 +1,0 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const s=require("./index.cjs163.js");function g(t){var o="rc-scrollbar-measure-".concat(Math.random().toString(36).substring(7)),r=document.createElement("div");r.id=o;var e=r.style;e.position="absolute",e.left="0",e.top="0",e.width="100px",e.height="100px",e.overflow="scroll";var a,i;if(t){var n=getComputedStyle(t);e.scrollbarColor=n.scrollbarColor,e.scrollbarWidth=n.scrollbarWidth;var c=getComputedStyle(t,"::-webkit-scrollbar"),l=parseInt(c.width,10),d=parseInt(c.height,10);try{var h=l?"width: ".concat(c.width,";"):"",u=d?"height: ".concat(c.height,";"):"";s.updateCSS(`
-#`.concat(o,`::-webkit-scrollbar {
-`).concat(h,`
-`).concat(u,`
-}`),o)}catch(f){console.error(f),a=l,i=d}}document.body.appendChild(r);var m=t&&a&&!isNaN(a)?a:r.offsetWidth-r.clientWidth,v=t&&i&&!isNaN(i)?i:r.offsetHeight-r.clientHeight;return document.body.removeChild(r),s.removeCSS(o),{width:m,height:v}}function p(t){return typeof document>"u"||!t||!(t instanceof Element)?{width:0,height:0}:g(t)}exports.getTargetScrollBarSize=p;

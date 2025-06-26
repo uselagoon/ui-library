@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});function t(s){const{sizeUnit:e,sizeStep:i}=s;return{sizeXXL:e*(i+8),sizeXL:e*(i+4),sizeLG:e*(i+2),sizeMD:e*(i+1),sizeMS:e*i,size:e*i,sizeSM:e*(i-1),sizeXS:e*(i-2),sizeXXS:e*(i-3)}}exports.default=t;

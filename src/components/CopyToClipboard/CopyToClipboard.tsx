@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Copy, Check, Eye, EyeOff } from 'lucide-react';
-import { Tooltip } from 'antd';
 import { cva } from 'class-variance-authority';
+import { Tooltip, TooltipTrigger, TooltipContent } from '../ui/tooltip';
 
 export interface ClipboardProps {
 	text: string | number;
@@ -77,8 +77,13 @@ const CopyToClipboard: React.FC<ClipboardProps> = ({
 			{!iconOnly && (
 				<span className={textVariants({ type, unblur: manualUnblur })} style={{ maxWidth: containerStyle.maxWidth }}>
 					{withToolTip ? (
-						<Tooltip overlayInnerStyle={{ width: '300px' }} title={text} placement="bottom">
-							<span className="truncate">{text}</span>
+						<Tooltip>
+							<TooltipTrigger asChild>
+								<span className="truncate">{text}</span>
+							</TooltipTrigger>
+							<TooltipContent side="bottom">
+								<p>{text}</p>
+							</TooltipContent>
 						</Tooltip>
 					) : (
 						text
@@ -108,23 +113,29 @@ const CopyToClipboard: React.FC<ClipboardProps> = ({
 							))}
 					</>
 				) : (
-					<Tooltip placement="right" title="Copied!">
-						<div className="flex items-center">
-							<Check className="w-4 h-4 text-green-500" />
-							{type === 'hiddenWithIcon' &&
-								(manualUnblur ? (
-									<EyeOff
-										className="w-4 h-4 ml-3 cursor-pointer text-muted-foreground hover:bg-gray-200 active:bg-gray-300"
-										onClick={handleBlurToggle}
-									/>
-								) : (
-									<Eye
-										className="w-4 h-4 ml-3 cursor-pointer text-muted-foreground hover:bg-gray-200 active:bg-gray-300"
-										onClick={handleBlurToggle}
-									/>
-								))}
-						</div>
-					</Tooltip>
+					<div className="flex items-center gap-3">
+						<Tooltip>
+							<TooltipTrigger asChild>
+								<Check className="w-4 h-4 text-green-500" />
+							</TooltipTrigger>
+							<TooltipContent>
+								<span className="truncate">Copied!</span>
+							</TooltipContent>
+						</Tooltip>
+
+						{type === 'hiddenWithIcon' &&
+							(manualUnblur ? (
+								<EyeOff
+									className="w-4 h-4 ml-3 cursor-pointer text-muted-foreground hover:bg-gray-200 active:bg-gray-300"
+									onClick={handleBlurToggle}
+								/>
+							) : (
+								<Eye
+									className="w-4 h-4 ml-3 cursor-pointer text-muted-foreground hover:bg-gray-200 active:bg-gray-300"
+									onClick={handleBlurToggle}
+								/>
+							))}
+					</div>
 				)}
 			</div>
 		</div>

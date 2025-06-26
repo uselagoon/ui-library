@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const a=require("./index.cjs121.js"),i=require("./index.cjs143.js");function l(n,e){const r=i.isPresetColor(e),s=a.default({[`${n}-${e}`]:e&&r}),t={},o={};return e&&!r&&(t.background=e,o["--antd-arrow-background-color"]=e),{className:s,overlayStyle:t,arrowStyle:o}}exports.parseColor=l;

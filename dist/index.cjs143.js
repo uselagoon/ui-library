@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const s=require("./index.cjs144.js"),r=require("./index.cjs145.js"),t=r.PresetColors.map(e=>`${e}-inverse`);function n(e){return(arguments.length>1&&arguments[1]!==void 0?arguments[1]:!0)?[].concat(s.default(t),s.default(r.PresetColors)).includes(e):r.PresetColors.includes(e)}exports.isPresetColor=n;

@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./index.cjs155.js");var r=Symbol.for("react.element"),a=Symbol.for("react.transitional.element"),o=Symbol.for("react.fragment");function l(e){return e&&t.default(e)==="object"&&(e.$$typeof===r||e.$$typeof===a)&&e.type===o}exports.default=l;

@@ -1,4 +1,4 @@
-import { __exports as m } from "./index.es88.js";
+import { __exports as m } from "./index.es84.js";
 import ir from "react";
 /**
  * @license React

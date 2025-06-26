@@ -1,5 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const l=require("./index.cjs171.js"),d=require("react"),n=require("./index.cjs163.js"),s=require("./index.cjs173.js"),f=require("./index.cjs287.js"),S=require("./index.cjs291.js");function v(e){const t=Object.create(null,{[Symbol.toStringTag]:{value:"Module"}});if(e){for(const r in e)if(r!=="default"){const c=Object.getOwnPropertyDescriptor(e,r);Object.defineProperty(t,r,c.get?c:{enumerable:!0,get:()=>e[r]})}}return t.default=e,Object.freeze(t)}const g=v(d);var m="rc-util-locker-".concat(Date.now()),a=0;function y(e){var t=!!e,r=g.useState(function(){return a+=1,"".concat(m,"_").concat(a)}),c=l.default(r,1),o=c[0];s.default(function(){if(t){var u=f.getTargetScrollBarSize(document.body).width,i=S.isBodyOverflowing();n.updateCSS(`
-html body {
-  overflow-y: hidden;
-  `.concat(i?"width: calc(100% - ".concat(u,"px);"):"",`
-}`),o)}else n.removeCSS(o);return function(){n.removeCSS(o)}},[t,o])}exports.default=y;

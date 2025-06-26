@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});function u(t,e){(e==null||e>t.length)&&(e=t.length);for(var r=0,l=Array(e);r<e;r++)l[r]=t[r];return l}exports.default=u;

@@ -49,6 +49,14 @@ export const Default: Story = {
 	},
 };
 
+export const WithToolTip: Story = {
+	args: {
+		width: 250,
+		withToolTip: true,
+		text: 'github.com/amazeeio-demos/as-demo',
+	},
+};
+
 export const HiddenEllipsis: Story = {
 	args: {
 		width: 150,

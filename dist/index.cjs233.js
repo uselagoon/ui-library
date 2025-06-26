@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e={placeholder:"Select time",rangePlaceholder:["Start time","End time"]};exports.default=e;

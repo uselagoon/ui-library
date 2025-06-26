@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=require("react"),n=require("./index.cjs114.js"),u=require("./index.cjs119.js");function s(){const t=e.useContext(n.default),o=e.useContext(u.default);return{componentDisabled:t,componentSize:o}}exports.default=s;
