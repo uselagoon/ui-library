@@ -1,32 +1,40 @@
-import * as i from "react";
-import * as e from "@radix-ui/react-radio-group";
-import { CircleIcon as a } from "lucide-react";
-import { cn as t } from "./index.es54.js";
-function s({ className: r, ...l }) {
-  return /* @__PURE__ */ i.createElement(e.Root, { "data-slot": "radio-group", className: t("lib:grid lib:gap-3", r), ...l });
-}
-function n({ className: r, ...l }) {
-  return /* @__PURE__ */ i.createElement(
-    e.Item,
+import { j as a } from "./index.es64.js";
+import { GripVerticalIcon as n } from "lucide-react";
+import * as t from "react-resizable-panels";
+import { cn as i } from "./index.es65.js";
+function d({ className: e, ...r }) {
+  return /* @__PURE__ */ a.jsx(
+    t.PanelGroup,
     {
-      "data-slot": "radio-group-item",
-      className: t(
-        "lib:border-input lib:text-primary focus-visible:lib:border-ring focus-visible:lib:ring-ring/50 aria-invalid:lib:ring-destructive/20 dark:aria-invalid:lib:ring-destructive/40 aria-invalid:lib:border-destructive dark:lib:bg-input/30 lib:aspect-square lib:size-4 lib:shrink-0 lib:rounded-full lib:border lib:shadow-xs lib:transition-[color,box-shadow] lib:outline-none focus-visible:lib:ring-[3px] disabled:lib:cursor-not-allowed disabled:lib:opacity-50",
+      "data-slot": "resizable-panel-group",
+      className: i("flex h-full w-full data-[panel-group-direction=vertical]:flex-col", e),
+      ...r
+    }
+  );
+}
+function f({ ...e }) {
+  return /* @__PURE__ */ a.jsx(t.Panel, { "data-slot": "resizable-panel", ...e });
+}
+function p({
+  withHandle: e,
+  className: r,
+  ...l
+}) {
+  return /* @__PURE__ */ a.jsx(
+    t.PanelResizeHandle,
+    {
+      "data-slot": "resizable-handle",
+      className: i(
+        "bg-border focus-visible:ring-ring relative flex w-px items-center justify-center after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:ring-1 focus-visible:ring-offset-1 focus-visible:outline-hidden data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:translate-x-0 data-[panel-group-direction=vertical]:after:-translate-y-1/2 [&[data-panel-group-direction=vertical]>div]:rotate-90",
         r
       ),
-      ...l
-    },
-    /* @__PURE__ */ i.createElement(
-      e.Indicator,
-      {
-        "data-slot": "radio-group-indicator",
-        className: "lib:relative lib:flex lib:items-center lib:justify-center"
-      },
-      /* @__PURE__ */ i.createElement(a, { className: "lib:fill-primary lib:absolute lib:top-1/2 lib:left-1/2 lib:size-2 lib:-translate-x-1/2 lib:-translate-y-1/2" })
-    )
+      ...l,
+      children: e && /* @__PURE__ */ a.jsx("div", { className: "bg-border z-10 flex h-4 w-3 items-center justify-center rounded-xs border", children: /* @__PURE__ */ a.jsx(n, { className: "size-2.5" }) })
+    }
   );
 }
 export {
-  s as RadioGroup,
-  n as RadioGroupItem
+  p as ResizableHandle,
+  f as ResizablePanel,
+  d as ResizablePanelGroup
 };

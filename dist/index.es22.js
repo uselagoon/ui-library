@@ -1,184 +1,116 @@
-import * as t from "react";
-import * as n from "@radix-ui/react-context-menu";
-import { CheckIcon as r, CircleIcon as s, ChevronRightIcon as b } from "lucide-react";
-import { cn as a } from "./index.es54.js";
-function u({ ...e }) {
-  return /* @__PURE__ */ t.createElement(n.Root, { "data-slot": "context-menu", ...e });
+import { j as a } from "./index.es64.js";
+import * as o from "@radix-ui/react-dialog";
+import { XIcon as l } from "lucide-react";
+import { cn as s } from "./index.es65.js";
+function f({ ...t }) {
+  return /* @__PURE__ */ a.jsx(o.Root, { "data-slot": "dialog", ...t });
 }
-function m({ ...e }) {
-  return /* @__PURE__ */ t.createElement(n.Trigger, { "data-slot": "context-menu-trigger", ...e });
+function m({ ...t }) {
+  return /* @__PURE__ */ a.jsx(o.Trigger, { "data-slot": "dialog-trigger", ...t });
 }
-function f({ ...e }) {
-  return /* @__PURE__ */ t.createElement(n.Group, { "data-slot": "context-menu-group", ...e });
+function r({ ...t }) {
+  return /* @__PURE__ */ a.jsx(o.Portal, { "data-slot": "dialog-portal", ...t });
 }
-function x({ ...e }) {
-  return /* @__PURE__ */ t.createElement(n.Portal, { "data-slot": "context-menu-portal", ...e });
+function x({ ...t }) {
+  return /* @__PURE__ */ a.jsx(o.Close, { "data-slot": "dialog-close", ...t });
 }
-function p({ ...e }) {
-  return /* @__PURE__ */ t.createElement(n.Sub, { "data-slot": "context-menu-sub", ...e });
-}
-function g({ ...e }) {
-  return /* @__PURE__ */ t.createElement(n.RadioGroup, { "data-slot": "context-menu-radio-group", ...e });
-}
-function v({
-  className: e,
-  inset: i,
-  children: l,
-  ...o
-}) {
-  return /* @__PURE__ */ t.createElement(
-    n.SubTrigger,
+function d({ className: t, ...e }) {
+  return /* @__PURE__ */ a.jsx(
+    o.Overlay,
     {
-      "data-slot": "context-menu-sub-trigger",
-      "data-inset": i,
-      className: a(
-        "focus:lib:bg-accent focus:lib:text-accent-foreground data-[state=open]:lib:bg-accent data-[state=open]:lib:text-accent-foreground lib:flex lib:cursor-default lib:items-center lib:rounded-sm lib:px-2 lib:py-1.5 lib:text-sm lib:outline-hidden lib:select-none data-[inset]:lib:pl-8 [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4",
-        e
+      "data-slot": "dialog-overlay",
+      className: s(
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+        t
       ),
-      ...o
-    },
-    l,
-    /* @__PURE__ */ t.createElement(b, { className: "lib:ml-auto" })
-  );
-}
-function h({ className: e, ...i }) {
-  return /* @__PURE__ */ t.createElement(
-    n.SubContent,
-    {
-      "data-slot": "context-menu-sub-content",
-      className: a(
-        "lib:bg-popover lib:text-popover-foreground data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 data-[state=closed]:lib:zoom-out-95 data-[state=open]:lib:zoom-in-95 data-[side=bottom]:lib:slide-in-from-top-2 data-[side=left]:lib:slide-in-from-right-2 data-[side=right]:lib:slide-in-from-left-2 data-[side=top]:lib:slide-in-from-bottom-2 lib:z-50 lib:min-w-[8rem] lib:origin-(--radix-context-menu-content-transform-origin) lib:overflow-hidden lib:rounded-md lib:border lib:p-1 lib:shadow-lg",
-        e
-      ),
-      ...i
+      ...e
     }
   );
 }
-function C({ className: e, ...i }) {
-  return /* @__PURE__ */ t.createElement(n.Portal, null, /* @__PURE__ */ t.createElement(
-    n.Content,
-    {
-      "data-slot": "context-menu-content",
-      className: a(
-        "lib:bg-popover lib:text-popover-foreground data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 data-[state=closed]:lib:zoom-out-95 data-[state=open]:lib:zoom-in-95 data-[side=bottom]:lib:slide-in-from-top-2 data-[side=left]:lib:slide-in-from-right-2 data-[side=right]:lib:slide-in-from-left-2 data-[side=top]:lib:slide-in-from-bottom-2 lib:z-50 lib:max-h-(--radix-context-menu-content-available-height) lib:min-w-[8rem] lib:origin-(--radix-context-menu-content-transform-origin) lib:overflow-x-hidden lib:overflow-y-auto lib:rounded-md lib:border lib:p-1 lib:shadow-md",
-        e
-      ),
-      ...i
-    }
-  ));
-}
-function E({
-  className: e,
-  inset: i,
-  variant: l = "default",
-  ...o
+function p({
+  className: t,
+  children: e,
+  showCloseButton: n = !0,
+  ...i
 }) {
-  return /* @__PURE__ */ t.createElement(
-    n.Item,
-    {
-      "data-slot": "context-menu-item",
-      "data-inset": i,
-      "data-variant": l,
-      className: a(
-        "focus:lib:bg-accent focus:lib:text-accent-foreground data-[variant=destructive]:lib:text-destructive data-[variant=destructive]:focus:lib:bg-destructive/10 dark:data-[variant=destructive]:focus:lib:bg-destructive/20 data-[variant=destructive]:focus:lib:text-destructive data-[variant=destructive]:*:[svg]:lib:!text-destructive [&_svg:not([class*=text-])]:lib:text-muted-foreground lib:relative lib:flex lib:cursor-default lib:items-center lib:gap-2 lib:rounded-sm lib:px-2 lib:py-1.5 lib:text-sm lib:outline-hidden lib:select-none data-[disabled]:lib:pointer-events-none data-[disabled]:lib:opacity-50 data-[inset]:lib:pl-8 [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4",
-        e
-      ),
-      ...o
-    }
-  );
+  return /* @__PURE__ */ a.jsxs(r, { "data-slot": "dialog-portal", children: [
+    /* @__PURE__ */ a.jsx(d, {}),
+    /* @__PURE__ */ a.jsxs(
+      o.Content,
+      {
+        "data-slot": "dialog-content",
+        className: s(
+          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 sm:max-w-lg",
+          t
+        ),
+        ...i,
+        children: [
+          e,
+          n && /* @__PURE__ */ a.jsxs(
+            o.Close,
+            {
+              "data-slot": "dialog-close",
+              className: "ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+              children: [
+                /* @__PURE__ */ a.jsx(l, {}),
+                /* @__PURE__ */ a.jsx("span", { className: "sr-only", children: "Close" })
+              ]
+            }
+          )
+        ]
+      }
+    )
+  ] });
 }
-function z({
-  className: e,
-  children: i,
-  checked: l,
-  ...o
-}) {
-  return /* @__PURE__ */ t.createElement(
-    n.CheckboxItem,
+function j({ className: t, ...e }) {
+  return /* @__PURE__ */ a.jsx(
+    "div",
     {
-      "data-slot": "context-menu-checkbox-item",
-      className: a(
-        "focus:lib:bg-accent focus:lib:text-accent-foreground lib:relative lib:flex lib:cursor-default lib:items-center lib:gap-2 lib:rounded-sm lib:py-1.5 lib:pr-2 lib:pl-8 lib:text-sm lib:outline-hidden lib:select-none data-[disabled]:lib:pointer-events-none data-[disabled]:lib:opacity-50 [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4",
-        e
-      ),
-      checked: l,
-      ...o
-    },
-    /* @__PURE__ */ t.createElement("span", { className: "lib:pointer-events-none lib:absolute lib:left-2 lib:flex lib:size-3.5 lib:items-center lib:justify-center" }, /* @__PURE__ */ t.createElement(n.ItemIndicator, null, /* @__PURE__ */ t.createElement(r, { className: "lib:size-4" }))),
-    i
-  );
-}
-function M({
-  className: e,
-  children: i,
-  ...l
-}) {
-  return /* @__PURE__ */ t.createElement(
-    n.RadioItem,
-    {
-      "data-slot": "context-menu-radio-item",
-      className: a(
-        "focus:lib:bg-accent focus:lib:text-accent-foreground lib:relative lib:flex lib:cursor-default lib:items-center lib:gap-2 lib:rounded-sm lib:py-1.5 lib:pr-2 lib:pl-8 lib:text-sm lib:outline-hidden lib:select-none data-[disabled]:lib:pointer-events-none data-[disabled]:lib:opacity-50 [&_svg]:lib:pointer-events-none [&_svg]:lib:shrink-0 [&_svg:not([class*=size-])]:lib:size-4",
-        e
-      ),
-      ...l
-    },
-    /* @__PURE__ */ t.createElement("span", { className: "lib:pointer-events-none lib:absolute lib:left-2 lib:flex lib:size-3.5 lib:items-center lib:justify-center" }, /* @__PURE__ */ t.createElement(n.ItemIndicator, null, /* @__PURE__ */ t.createElement(s, { className: "lib:size-2 lib:fill-current" }))),
-    i
-  );
-}
-function N({
-  className: e,
-  inset: i,
-  ...l
-}) {
-  return /* @__PURE__ */ t.createElement(
-    n.Label,
-    {
-      "data-slot": "context-menu-label",
-      "data-inset": i,
-      className: a(
-        "lib:text-foreground lib:px-2 lib:py-1.5 lib:text-sm lib:font-medium data-[inset]:lib:pl-8",
-        e
-      ),
-      ...l
+      "data-slot": "dialog-header",
+      className: s("flex flex-col gap-2 text-center sm:text-left", t),
+      ...e
     }
   );
 }
-function I({ className: e, ...i }) {
-  return /* @__PURE__ */ t.createElement(
-    n.Separator,
+function v({ className: t, ...e }) {
+  return /* @__PURE__ */ a.jsx(
+    "div",
     {
-      "data-slot": "context-menu-separator",
-      className: a("lib:bg-border lib:-mx-1 lib:my-1 lib:h-px", e),
-      ...i
+      "data-slot": "dialog-footer",
+      className: s("flex flex-col-reverse gap-2 sm:flex-row sm:justify-end", t),
+      ...e
     }
   );
 }
-function _({ className: e, ...i }) {
-  return /* @__PURE__ */ t.createElement(
-    "span",
+function D({ className: t, ...e }) {
+  return /* @__PURE__ */ a.jsx(
+    o.Title,
     {
-      "data-slot": "context-menu-shortcut",
-      className: a("lib:text-muted-foreground lib:ml-auto lib:text-xs lib:tracking-widest", e),
-      ...i
+      "data-slot": "dialog-title",
+      className: s("text-lg leading-none font-semibold", t),
+      ...e
+    }
+  );
+}
+function b({ className: t, ...e }) {
+  return /* @__PURE__ */ a.jsx(
+    o.Description,
+    {
+      "data-slot": "dialog-description",
+      className: s("text-muted-foreground text-sm", t),
+      ...e
     }
   );
 }
 export {
-  u as ContextMenu,
-  z as ContextMenuCheckboxItem,
-  C as ContextMenuContent,
-  f as ContextMenuGroup,
-  E as ContextMenuItem,
-  N as ContextMenuLabel,
-  x as ContextMenuPortal,
-  g as ContextMenuRadioGroup,
-  M as ContextMenuRadioItem,
-  I as ContextMenuSeparator,
-  _ as ContextMenuShortcut,
-  p as ContextMenuSub,
-  h as ContextMenuSubContent,
-  v as ContextMenuSubTrigger,
-  m as ContextMenuTrigger
+  f as Dialog,
+  x as DialogClose,
+  p as DialogContent,
+  b as DialogDescription,
+  v as DialogFooter,
+  j as DialogHeader,
+  d as DialogOverlay,
+  r as DialogPortal,
+  D as DialogTitle,
+  m as DialogTrigger
 };

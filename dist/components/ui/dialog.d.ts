@@ -5,7 +5,9 @@ declare function DialogTrigger({ ...props }: React.ComponentProps<typeof DialogP
 declare function DialogPortal({ ...props }: React.ComponentProps<typeof DialogPrimitive.Portal>): import("react/jsx-dev-runtime").JSX.Element;
 declare function DialogClose({ ...props }: React.ComponentProps<typeof DialogPrimitive.Close>): import("react/jsx-dev-runtime").JSX.Element;
 declare function DialogOverlay({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Overlay>): import("react/jsx-dev-runtime").JSX.Element;
-declare function DialogContent({ className, children, ...props }: React.ComponentProps<typeof DialogPrimitive.Content>): import("react/jsx-dev-runtime").JSX.Element;
+declare function DialogContent({ className, children, showCloseButton, ...props }: React.ComponentProps<typeof DialogPrimitive.Content> & {
+    showCloseButton?: boolean;
+}): import("react/jsx-dev-runtime").JSX.Element;
 declare function DialogHeader({ className, ...props }: React.ComponentProps<'div'>): import("react/jsx-dev-runtime").JSX.Element;
 declare function DialogFooter({ className, ...props }: React.ComponentProps<'div'>): import("react/jsx-dev-runtime").JSX.Element;
 declare function DialogTitle({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Title>): import("react/jsx-dev-runtime").JSX.Element;

@@ -1,94 +1,43 @@
-import * as t from "react";
-import { Slot as n } from "@radix-ui/react-slot";
-import { ChevronRight as o, MoreHorizontal as s } from "lucide-react";
-import { cn as a } from "./index.es54.js";
-function u({ ...e }) {
-  return /* @__PURE__ */ t.createElement("nav", { "aria-label": "breadcrumb", "data-slot": "breadcrumb", ...e });
-}
-function d({ className: e, ...r }) {
-  return /* @__PURE__ */ t.createElement(
-    "ol",
-    {
-      "data-slot": "breadcrumb-list",
-      className: a(
-        "lib:text-muted-foreground lib:flex lib:flex-wrap lib:items-center lib:gap-1.5 lib:text-sm lib:break-words sm:lib:gap-2.5",
-        e
-      ),
-      ...r
+import { j as s } from "./index.es64.js";
+import { Slot as a } from "@radix-ui/react-slot";
+import { cva as d } from "class-variance-authority";
+import { cn as u } from "./index.es65.js";
+const c = d(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+        destructive: "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+        outline: "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+        secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        link: "text-primary underline-offset-4 hover:underline"
+      },
+      size: {
+        default: "h-9 px-4 py-2 has-[>svg]:px-3",
+        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
+        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        icon: "size-9"
+      }
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default"
     }
-  );
-}
-function p({ className: e, ...r }) {
-  return /* @__PURE__ */ t.createElement(
-    "li",
-    {
-      "data-slot": "breadcrumb-item",
-      className: a("lib:inline-flex lib:items-center lib:gap-1.5", e),
-      ...r
-    }
-  );
-}
-function f({
-  asChild: e,
-  className: r,
-  ...l
+  }
+);
+function b({
+  className: e,
+  variant: r,
+  size: t,
+  asChild: i = !1,
+  ...n
 }) {
-  const i = e ? n : "a";
-  return /* @__PURE__ */ t.createElement(
-    i,
-    {
-      "data-slot": "breadcrumb-link",
-      className: a("hover:lib:text-foreground lib:transition-colors", r),
-      ...l
-    }
-  );
-}
-function g({ className: e, ...r }) {
-  return /* @__PURE__ */ t.createElement(
-    "span",
-    {
-      "data-slot": "breadcrumb-page",
-      role: "link",
-      "aria-disabled": "true",
-      "aria-current": "page",
-      className: a("lib:text-foreground lib:font-normal", e),
-      ...r
-    }
-  );
-}
-function E({ children: e, className: r, ...l }) {
-  return /* @__PURE__ */ t.createElement(
-    "li",
-    {
-      "data-slot": "breadcrumb-separator",
-      role: "presentation",
-      "aria-hidden": "true",
-      className: a("[&>svg]:lib:size-3.5", r),
-      ...l
-    },
-    e ?? /* @__PURE__ */ t.createElement(o, null)
-  );
-}
-function x({ className: e, ...r }) {
-  return /* @__PURE__ */ t.createElement(
-    "span",
-    {
-      "data-slot": "breadcrumb-ellipsis",
-      role: "presentation",
-      "aria-hidden": "true",
-      className: a("lib:flex lib:size-9 lib:items-center lib:justify-center", e),
-      ...r
-    },
-    /* @__PURE__ */ t.createElement(s, { className: "lib:size-4" }),
-    /* @__PURE__ */ t.createElement("span", { className: "lib:sr-only" }, "More")
-  );
+  const o = i ? a : "button";
+  return /* @__PURE__ */ s.jsx(o, { "data-slot": "button", className: u(c({ variant: r, size: t, className: e })), ...n });
 }
 export {
-  u as Breadcrumb,
-  x as BreadcrumbEllipsis,
-  p as BreadcrumbItem,
-  f as BreadcrumbLink,
-  d as BreadcrumbList,
-  g as BreadcrumbPage,
-  E as BreadcrumbSeparator
+  b as Button,
+  c as buttonVariants
 };

@@ -2,9 +2,7 @@ import './index.css';
 // config/providers
 export { default as Colors } from './_util/colors';
 
-export { default as useTheme } from './hooks/useTheme';
-
-export { default as UIThemeProvider } from './providers/__ContextWrapper';
+export { default as ThemeProvider } from './providers/ThemeProvider';
 
 export { LinkProvider as NextLinkProvider, useLinkComponent as useNextLink } from './providers/NextLinkProvider';
 
@@ -168,7 +166,7 @@ export { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/h
 
 export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } from '@/components/ui/input-otp';
 
-export { Input } from '@/components/ui/input';
+export { Input as ShadInput } from '@/components/ui/input';
 
 export { Label } from '@/components/ui/label';
 
@@ -304,3 +302,28 @@ export { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 export { Toggle, toggleVariants } from '@/components/ui/toggle';
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip';
+
+// custom components
+export { default as RootLayout } from '@/components/RootLayout';
+
+export { default as Sidenav } from '@/components/sidenav';
+
+export { default as CheckboxWithLabel } from '@/components/Checkbox';
+
+export { default as StatCard } from '@/components/StatCard';
+
+export { default as DetailStat } from '@/components/DetailStat';
+
+export { default as KeyFactCard } from '@/components/KeyFactCard';
+
+export { default as CopyToClipboard } from '@/components/CopyToClipboard';
+
+export { default as NavBreadcrumb } from '@/components/Breadcrumb';
+
+export { default as Notification } from '@/components/Notification';
+
+export { default as ProblemsOverview } from '@/components/ProblemsOverview';
+
+export { default as SelectWithOptions } from '@/components/Select';
+
+export { default as Input } from '@/components/Input';

@@ -1,66 +1,155 @@
-import * as a from "react";
-import { cn as r } from "./index.es54.js";
-function l({ className: t, ...e }) {
-  return /* @__PURE__ */ a.createElement(
+import { j as l } from "./index.es64.js";
+import * as s from "react";
+import y from "embla-carousel-react";
+import { ArrowLeft as P, ArrowRight as k } from "lucide-react";
+import { cn as x } from "./index.es65.js";
+import { Button as h } from "./index.es13.js";
+const v = s.createContext(null);
+function d() {
+  const o = s.useContext(v);
+  if (!o)
+    throw new Error("useCarousel must be used within a <Carousel />");
+  return o;
+}
+function A({
+  orientation: o = "horizontal",
+  opts: r,
+  setApi: t,
+  plugins: n,
+  className: c,
+  children: i,
+  ...u
+}) {
+  const [p, e] = y(
+    {
+      ...r,
+      axis: o === "horizontal" ? "x" : "y"
+    },
+    n
+  ), [N, j] = s.useState(!1), [b, w] = s.useState(!1), f = s.useCallback((a) => {
+    a && (j(a.canScrollPrev()), w(a.canScrollNext()));
+  }, []), m = s.useCallback(() => {
+    e?.scrollPrev();
+  }, [e]), C = s.useCallback(() => {
+    e?.scrollNext();
+  }, [e]), S = s.useCallback(
+    (a) => {
+      a.key === "ArrowLeft" ? (a.preventDefault(), m()) : a.key === "ArrowRight" && (a.preventDefault(), C());
+    },
+    [m, C]
+  );
+  return s.useEffect(() => {
+    !e || !t || t(e);
+  }, [e, t]), s.useEffect(() => {
+    if (e)
+      return f(e), e.on("reInit", f), e.on("select", f), () => {
+        e?.off("select", f);
+      };
+  }, [e, f]), /* @__PURE__ */ l.jsx(
+    v.Provider,
+    {
+      value: {
+        carouselRef: p,
+        api: e,
+        opts: r,
+        orientation: o || (r?.axis === "y" ? "vertical" : "horizontal"),
+        scrollPrev: m,
+        scrollNext: C,
+        canScrollPrev: N,
+        canScrollNext: b
+      },
+      children: /* @__PURE__ */ l.jsx(
+        "div",
+        {
+          onKeyDownCapture: S,
+          className: x("relative", c),
+          role: "region",
+          "aria-roledescription": "carousel",
+          "data-slot": "carousel",
+          ...u,
+          children: i
+        }
+      )
+    }
+  );
+}
+function I({ className: o, ...r }) {
+  const { carouselRef: t, orientation: n } = d();
+  return /* @__PURE__ */ l.jsx("div", { ref: t, className: "overflow-hidden", "data-slot": "carousel-content", children: /* @__PURE__ */ l.jsx("div", { className: x("flex", n === "horizontal" ? "-ml-4" : "-mt-4 flex-col", o), ...r }) });
+}
+function K({ className: o, ...r }) {
+  const { orientation: t } = d();
+  return /* @__PURE__ */ l.jsx(
     "div",
     {
-      "data-slot": "card",
-      className: r(
-        "lib:bg-card lib:text-card-foreground lib:flex lib:flex-col lib:gap-6 lib:rounded-xl lib:border lib:py-6 lib:shadow-sm",
-        t
+      role: "group",
+      "aria-roledescription": "slide",
+      "data-slot": "carousel-item",
+      className: x("min-w-0 shrink-0 grow-0 basis-full", t === "horizontal" ? "pl-4" : "pt-4", o),
+      ...r
+    }
+  );
+}
+function L({
+  className: o,
+  variant: r = "outline",
+  size: t = "icon",
+  ...n
+}) {
+  const { orientation: c, scrollPrev: i, canScrollPrev: u } = d();
+  return /* @__PURE__ */ l.jsxs(
+    h,
+    {
+      "data-slot": "carousel-previous",
+      variant: r,
+      size: t,
+      className: x(
+        "absolute size-8 rounded-full",
+        c === "horizontal" ? "top-1/2 -left-12 -translate-y-1/2" : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+        o
       ),
-      ...e
+      disabled: !u,
+      onClick: i,
+      ...n,
+      children: [
+        /* @__PURE__ */ l.jsx(P, {}),
+        /* @__PURE__ */ l.jsx("span", { className: "sr-only", children: "Previous slide" })
+      ]
     }
   );
 }
-function o({ className: t, ...e }) {
-  return /* @__PURE__ */ a.createElement(
-    "div",
+function B({
+  className: o,
+  variant: r = "outline",
+  size: t = "icon",
+  ...n
+}) {
+  const { orientation: c, scrollNext: i, canScrollNext: u } = d();
+  return /* @__PURE__ */ l.jsxs(
+    h,
     {
-      "data-slot": "card-header",
-      className: r(
-        "lib:@container/card-header lib:grid lib:auto-rows-min lib:grid-rows-[auto_auto] lib:items-start lib:gap-1.5 lib:px-6 has-data-[slot=card-action]:lib:grid-cols-[1fr_auto] [.border-b]:lib:pb-6",
-        t
+      "data-slot": "carousel-next",
+      variant: r,
+      size: t,
+      className: x(
+        "absolute size-8 rounded-full",
+        c === "horizontal" ? "top-1/2 -right-12 -translate-y-1/2" : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+        o
       ),
-      ...e
-    }
-  );
-}
-function d({ className: t, ...e }) {
-  return /* @__PURE__ */ a.createElement("div", { "data-slot": "card-title", className: r("lib:leading-none lib:font-semibold", t), ...e });
-}
-function n({ className: t, ...e }) {
-  return /* @__PURE__ */ a.createElement("div", { "data-slot": "card-description", className: r("lib:text-muted-foreground lib:text-sm", t), ...e });
-}
-function c({ className: t, ...e }) {
-  return /* @__PURE__ */ a.createElement(
-    "div",
-    {
-      "data-slot": "card-action",
-      className: r("lib:col-start-2 lib:row-span-2 lib:row-start-1 lib:self-start lib:justify-self-end", t),
-      ...e
-    }
-  );
-}
-function s({ className: t, ...e }) {
-  return /* @__PURE__ */ a.createElement("div", { "data-slot": "card-content", className: r("lib:px-6", t), ...e });
-}
-function b({ className: t, ...e }) {
-  return /* @__PURE__ */ a.createElement(
-    "div",
-    {
-      "data-slot": "card-footer",
-      className: r("lib:flex lib:items-center lib:px-6 [.border-t]:lib:pt-6", t),
-      ...e
+      disabled: !u,
+      onClick: i,
+      ...n,
+      children: [
+        /* @__PURE__ */ l.jsx(k, {}),
+        /* @__PURE__ */ l.jsx("span", { className: "sr-only", children: "Next slide" })
+      ]
     }
   );
 }
 export {
-  l as Card,
-  c as CardAction,
-  s as CardContent,
-  n as CardDescription,
-  b as CardFooter,
-  o as CardHeader,
-  d as CardTitle
+  A as Carousel,
+  I as CarouselContent,
+  K as CarouselItem,
+  B as CarouselNext,
+  L as CarouselPrevious
 };

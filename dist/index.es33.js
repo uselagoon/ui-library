@@ -1,95 +1,38 @@
-import * as t from "react";
-import { ChevronLeftIcon as r, ChevronRightIcon as s, MoreHorizontalIcon as c } from "lucide-react";
-import { cn as n } from "./index.es54.js";
-import { buttonVariants as m } from "./index.es14.js";
-function g({ className: e, ...a }) {
-  return /* @__PURE__ */ t.createElement(
-    "nav",
-    {
-      role: "navigation",
-      "aria-label": "pagination",
-      "data-slot": "pagination",
-      className: n("lib:mx-auto lib:flex lib:w-full lib:justify-center", e),
-      ...a
-    }
-  );
+import { j as t } from "./index.es64.js";
+import * as e from "@radix-ui/react-popover";
+import { cn as i } from "./index.es65.js";
+function p({ ...o }) {
+  return /* @__PURE__ */ t.jsx(e.Root, { "data-slot": "popover", ...o });
 }
-function f({ className: e, ...a }) {
-  return /* @__PURE__ */ t.createElement(
-    "ul",
-    {
-      "data-slot": "pagination-content",
-      className: n("lib:flex lib:flex-row lib:items-center lib:gap-1", e),
-      ...a
-    }
-  );
+function m({ ...o }) {
+  return /* @__PURE__ */ t.jsx(e.Trigger, { "data-slot": "popover-trigger", ...o });
 }
-function d({ ...e }) {
-  return /* @__PURE__ */ t.createElement("li", { "data-slot": "pagination-item", ...e });
-}
-function i({ className: e, isActive: a, size: l = "icon", ...o }) {
-  return /* @__PURE__ */ t.createElement(
-    "a",
+function f({
+  className: o,
+  align: r = "center",
+  sideOffset: a = 4,
+  ...n
+}) {
+  return /* @__PURE__ */ t.jsx(e.Portal, { children: /* @__PURE__ */ t.jsx(
+    e.Content,
     {
-      "aria-current": a ? "page" : void 0,
-      "data-slot": "pagination-link",
-      "data-active": a,
-      className: n(
-        m({
-          variant: a ? "outline" : "ghost",
-          size: l
-        }),
-        e
+      "data-slot": "popover-content",
+      align: r,
+      sideOffset: a,
+      className: i(
+        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-72 origin-(--radix-popover-content-transform-origin) rounded-md border p-4 shadow-md outline-hidden",
+        o
       ),
-      ...o
+      ...n
     }
-  );
+  ) });
 }
-function E({ className: e, ...a }) {
-  return /* @__PURE__ */ t.createElement(
-    i,
-    {
-      "aria-label": "Go to previous page",
-      size: "default",
-      className: n("lib:gap-1 lib:px-2.5 sm:lib:pl-2.5", e),
-      ...a
-    },
-    /* @__PURE__ */ t.createElement(r, null),
-    /* @__PURE__ */ t.createElement("span", { className: "lib:hidden sm:lib:block" }, "Previous")
-  );
-}
-function N({ className: e, ...a }) {
-  return /* @__PURE__ */ t.createElement(
-    i,
-    {
-      "aria-label": "Go to next page",
-      size: "default",
-      className: n("lib:gap-1 lib:px-2.5 sm:lib:pr-2.5", e),
-      ...a
-    },
-    /* @__PURE__ */ t.createElement("span", { className: "lib:hidden sm:lib:block" }, "Next"),
-    /* @__PURE__ */ t.createElement(s, null)
-  );
-}
-function x({ className: e, ...a }) {
-  return /* @__PURE__ */ t.createElement(
-    "span",
-    {
-      "aria-hidden": !0,
-      "data-slot": "pagination-ellipsis",
-      className: n("lib:flex lib:size-9 lib:items-center lib:justify-center", e),
-      ...a
-    },
-    /* @__PURE__ */ t.createElement(c, { className: "lib:size-4" }),
-    /* @__PURE__ */ t.createElement("span", { className: "lib:sr-only" }, "More pages")
-  );
+function l({ ...o }) {
+  return /* @__PURE__ */ t.jsx(e.Anchor, { "data-slot": "popover-anchor", ...o });
 }
 export {
-  g as Pagination,
-  f as PaginationContent,
-  x as PaginationEllipsis,
-  d as PaginationItem,
-  i as PaginationLink,
-  N as PaginationNext,
-  E as PaginationPrevious
+  p as Popover,
+  l as PopoverAnchor,
+  f as PopoverContent,
+  m as PopoverTrigger
 };

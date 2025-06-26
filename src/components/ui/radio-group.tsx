@@ -7,9 +7,7 @@ import { CircleIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 function RadioGroup({ className, ...props }: React.ComponentProps<typeof RadioGroupPrimitive.Root>) {
-	return (
-		<RadioGroupPrimitive.Root data-slot="radio-group" className={cn('lib:grid lib:gap-3', className)} {...props} />
-	);
+	return <RadioGroupPrimitive.Root data-slot="radio-group" className={cn('grid gap-3', className)} {...props} />;
 }
 
 function RadioGroupItem({ className, ...props }: React.ComponentProps<typeof RadioGroupPrimitive.Item>) {
@@ -17,16 +15,16 @@ function RadioGroupItem({ className, ...props }: React.ComponentProps<typeof Rad
 		<RadioGroupPrimitive.Item
 			data-slot="radio-group-item"
 			className={cn(
-				'lib:border-input lib:text-primary focus-visible:lib:border-ring focus-visible:lib:ring-ring/50 aria-invalid:lib:ring-destructive/20 dark:aria-invalid:lib:ring-destructive/40 aria-invalid:lib:border-destructive dark:lib:bg-input/30 lib:aspect-square lib:size-4 lib:shrink-0 lib:rounded-full lib:border lib:shadow-xs lib:transition-[color,box-shadow] lib:outline-none focus-visible:lib:ring-[3px] disabled:lib:cursor-not-allowed disabled:lib:opacity-50',
+				'border-input text-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 aspect-square size-4 shrink-0 rounded-full border shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50',
 				className,
 			)}
 			{...props}
 		>
 			<RadioGroupPrimitive.Indicator
 				data-slot="radio-group-indicator"
-				className="lib:relative lib:flex lib:items-center lib:justify-center"
+				className="relative flex items-center justify-center"
 			>
-				<CircleIcon className="lib:fill-primary lib:absolute lib:top-1/2 lib:left-1/2 lib:size-2 lib:-translate-x-1/2 lib:-translate-y-1/2" />
+				<CircleIcon className="fill-primary absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2" />
 			</RadioGroupPrimitive.Indicator>
 		</RadioGroupPrimitive.Item>
 	);

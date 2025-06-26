@@ -11,7 +11,7 @@ import { peerDependencies, dependencies } from './package.json';
 export default defineConfig({
 	plugins: [
 		react({
-			jsxRuntime: 'classic',
+			jsxRuntime: 'automatic',
 		}),
 		tailwindcss(),
 		dts({

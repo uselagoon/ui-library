@@ -1,101 +1,48 @@
-import * as l from "react";
-import * as a from "@radix-ui/react-alert-dialog";
-import { cn as i } from "./index.es54.js";
-import { buttonVariants as o } from "./index.es14.js";
-function c({ ...t }) {
-  return /* @__PURE__ */ l.createElement(a.Root, { "data-slot": "alert-dialog", ...t });
-}
-function b({ ...t }) {
-  return /* @__PURE__ */ l.createElement(a.Trigger, { "data-slot": "alert-dialog-trigger", ...t });
-}
-function r({ ...t }) {
-  return /* @__PURE__ */ l.createElement(a.Portal, { "data-slot": "alert-dialog-portal", ...t });
-}
-function n({ className: t, ...e }) {
-  return /* @__PURE__ */ l.createElement(
-    a.Overlay,
-    {
-      "data-slot": "alert-dialog-overlay",
-      className: i(
-        "data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 lib:fixed lib:inset-0 lib:z-50 lib:bg-black/50",
-        t
-      ),
-      ...e
+import { j as e } from "./index.es64.js";
+import { cva as i } from "class-variance-authority";
+import { cn as a } from "./index.es65.js";
+const l = i(
+  "relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
+  {
+    variants: {
+      variant: {
+        default: "bg-card text-card-foreground",
+        destructive: "text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90"
+      }
+    },
+    defaultVariants: {
+      variant: "default"
     }
-  );
+  }
+);
+function c({ className: t, variant: r, ...s }) {
+  return /* @__PURE__ */ e.jsx("div", { "data-slot": "alert", role: "alert", className: a(l({ variant: r }), t), ...s });
 }
-function m({ className: t, ...e }) {
-  return /* @__PURE__ */ l.createElement(r, null, /* @__PURE__ */ l.createElement(n, null), /* @__PURE__ */ l.createElement(
-    a.Content,
-    {
-      "data-slot": "alert-dialog-content",
-      className: i(
-        "lib:bg-background data-[state=open]:lib:animate-in data-[state=closed]:lib:animate-out data-[state=closed]:lib:fade-out-0 data-[state=open]:lib:fade-in-0 data-[state=closed]:lib:zoom-out-95 data-[state=open]:lib:zoom-in-95 lib:fixed lib:top-[50%] lib:left-[50%] lib:z-50 lib:grid lib:w-full lib:max-w-[calc(100%-2rem)] lib:translate-x-[-50%] lib:translate-y-[-50%] lib:gap-4 lib:rounded-lg lib:border lib:p-6 lib:shadow-lg lib:duration-200 sm:lib:max-w-lg",
-        t
-      ),
-      ...e
-    }
-  ));
-}
-function g({ className: t, ...e }) {
-  return /* @__PURE__ */ l.createElement(
+function g({ className: t, ...r }) {
+  return /* @__PURE__ */ e.jsx(
     "div",
     {
-      "data-slot": "alert-dialog-header",
-      className: i("lib:flex lib:flex-col lib:gap-2 lib:text-center sm:lib:text-left", t),
-      ...e
+      "data-slot": "alert-title",
+      className: a("col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight", t),
+      ...r
     }
   );
 }
-function u({ className: t, ...e }) {
-  return /* @__PURE__ */ l.createElement(
+function u({ className: t, ...r }) {
+  return /* @__PURE__ */ e.jsx(
     "div",
     {
-      "data-slot": "alert-dialog-footer",
-      className: i("lib:flex lib:flex-col-reverse lib:gap-2 sm:lib:flex-row sm:lib:justify-end", t),
-      ...e
+      "data-slot": "alert-description",
+      className: a(
+        "text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
+        t
+      ),
+      ...r
     }
   );
-}
-function f({ className: t, ...e }) {
-  return /* @__PURE__ */ l.createElement(
-    a.Title,
-    {
-      "data-slot": "alert-dialog-title",
-      className: i("lib:text-lg lib:font-semibold", t),
-      ...e
-    }
-  );
-}
-function p({
-  className: t,
-  ...e
-}) {
-  return /* @__PURE__ */ l.createElement(
-    a.Description,
-    {
-      "data-slot": "alert-dialog-description",
-      className: i("lib:text-muted-foreground lib:text-sm", t),
-      ...e
-    }
-  );
-}
-function x({ className: t, ...e }) {
-  return /* @__PURE__ */ l.createElement(a.Action, { className: i(o(), t), ...e });
-}
-function A({ className: t, ...e }) {
-  return /* @__PURE__ */ l.createElement(a.Cancel, { className: i(o({ variant: "outline" }), t), ...e });
 }
 export {
-  c as AlertDialog,
-  x as AlertDialogAction,
-  A as AlertDialogCancel,
-  m as AlertDialogContent,
-  p as AlertDialogDescription,
-  u as AlertDialogFooter,
-  g as AlertDialogHeader,
-  n as AlertDialogOverlay,
-  r as AlertDialogPortal,
-  f as AlertDialogTitle,
-  b as AlertDialogTrigger
+  c as Alert,
+  u as AlertDescription,
+  g as AlertTitle
 };
