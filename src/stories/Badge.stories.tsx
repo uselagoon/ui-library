@@ -1,4 +1,3 @@
-import React from 'react';
 import {Check, ArrowRight, CircleAlert} from 'lucide-react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Story } from '@storybook/addon-docs/blocks';
