@@ -6,6 +6,7 @@ import KeyFactCard from '../components/KeyFactCard';
 const meta: Meta<typeof KeyFactCard> = {
 	component: KeyFactCard,
 	title: 'Components/KeyFactCard',
+	tags: ['autodocs'],
 	parameters: {
 		docs: {
 			page: () => (

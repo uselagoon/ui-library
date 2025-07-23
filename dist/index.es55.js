@@ -1,7 +1,7 @@
-import { j as a } from "./index.es64.js";
+import { j as a } from "./index.es70.js";
 import { Card as e, CardHeader as s, CardTitle as l, CardContent as o } from "./index.es15.js";
 import { cva as d } from "class-variance-authority";
-import { cn as i } from "./index.es65.js";
+import { cn as i } from "./index.es71.js";
 const m = d("max-w-[160px] border rounded-lg flex flex-col justify-center", {
   variants: {
     type: {

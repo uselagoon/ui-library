@@ -1,4 +1,4 @@
-var e = { exports: {} };
+import a from "./index.es59.js";
 export {
-  e as __module
+  a as default
 };

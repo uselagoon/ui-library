@@ -1,4 +1,4 @@
-import { j as e } from "./index.es64.js";
+import { j as e } from "./index.es70.js";
 import { SidebarProvider as a, SidebarTrigger as o } from "./index.es41.js";
 import m from "./index.es53.js";
 import n from "./index.es4.js";

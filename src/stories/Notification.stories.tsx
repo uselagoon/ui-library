@@ -7,6 +7,7 @@ import { Button } from '../components/ui/button';
 const meta: Meta<typeof Notification> = {
 	component: Notification,
 	title: 'Components/Notification',
+	tags: ['autodocs'],
 	parameters: {
 		docs: {
 			page: () => (

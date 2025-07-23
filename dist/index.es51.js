@@ -1,6 +1,6 @@
-import { j as o } from "./index.es64.js";
+import { j as o } from "./index.es70.js";
 import * as i from "@radix-ui/react-tooltip";
-import { cn as n } from "./index.es65.js";
+import { cn as n } from "./index.es71.js";
 function s({ delayDuration: t = 0, ...r }) {
   return /* @__PURE__ */ o.jsx(i.Provider, { "data-slot": "tooltip-provider", delayDuration: t, ...r });
 }

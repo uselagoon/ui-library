@@ -8,6 +8,7 @@ import { Controls, Primary, Stories, Story, Title } from '@storybook/addon-docs/
 const meta: Meta<typeof DetailStat> = {
 	component: DetailStat,
 	title: 'Components/DetailStat',
+	tags: ['autodocs'],
 	parameters: {
 		docs: {
 			page: () => (

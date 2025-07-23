@@ -7,6 +7,7 @@ import RootLayout from '../components/RootLayout';
 const meta = {
 	component: RootLayout,
 	title: 'Components/RootLayout',
+	tags: ['autodocs'],
 	parameters: {
 		docs: {
 			page: () => (

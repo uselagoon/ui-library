@@ -3,11 +3,12 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { default as Checkbox } from '../components/Checkbox';
-import { Controls, Primary, Stories, Story, Title } from '@storybook/addon-docs/blocks';
+import { Story } from '@storybook/addon-docs/blocks';
 
 const meta: Meta<typeof Checkbox> = {
 	component: Checkbox,
 	title: 'Components/Checkbox',
+	tags: ['autodocs'],
 	parameters: {
 		design: {
 			type: 'figspec',

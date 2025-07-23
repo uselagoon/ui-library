@@ -1,4 +1,4 @@
-import { j as t } from "./index.es64.js";
+import { j as t } from "./index.es70.js";
 import o from "./index.es55.js";
 function l({ name: e, category: n, value: s, img: a }) {
   const r = /* @__PURE__ */ t.jsxs("section", { className: "flex-row justify-items-end font-sans font-normal text-xs leading-[1.25] tracking-normal text-right", children: [

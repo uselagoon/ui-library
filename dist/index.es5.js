@@ -1,4 +1,4 @@
-import { j as n } from "./index.es64.js";
+import { j as n } from "./index.es70.js";
 import { createContext as r, useContext as i } from "react";
 const o = r(void 0), m = ({ linkComponent: t, children: e }) => /* @__PURE__ */ n.jsx(o.Provider, { value: t, children: e }), x = () => {
   const t = i(o);

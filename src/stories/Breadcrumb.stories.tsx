@@ -8,6 +8,7 @@ import { Controls, Primary, Stories, Story, Title } from '@storybook/addon-docs/
 const meta: Meta<typeof BreadCrumb> = {
 	component: BreadCrumb,
 	title: 'Components/BreadCrumb',
+	tags: ['autodocs'],
 	parameters: {
 		docs: {
 			page: () => (

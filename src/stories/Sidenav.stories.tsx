@@ -6,6 +6,7 @@ import Sidenav from '../components/sidenav';
 const meta: Meta<typeof Sidenav> = {
 	component: Sidenav,
 	title: 'Components/Sidenav',
+	tags: ['autodocs'],
 	parameters: {
 		docs: {
 			page: () => (

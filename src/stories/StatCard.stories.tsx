@@ -6,6 +6,7 @@ import StatCard from '../components/StatCard';
 const meta: Meta<typeof StatCard> = {
 	component: StatCard,
 	title: 'Components/StatCard',
+	tags: ['autodocs'],
 	parameters: {
 		docs: {
 			page: () => (

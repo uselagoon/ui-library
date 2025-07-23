@@ -1,5 +1,5 @@
-import { j as a } from "./index.es64.js";
-import { cn as o } from "./index.es65.js";
+import { j as a } from "./index.es70.js";
+import { cn as o } from "./index.es71.js";
 function s({ className: t, ...e }) {
   return /* @__PURE__ */ a.jsx("div", { "data-slot": "table-container", className: "relative w-full overflow-x-auto", children: /* @__PURE__ */ a.jsx("table", { "data-slot": "table", className: o("w-full caption-bottom text-sm", t), ...e }) });
 }

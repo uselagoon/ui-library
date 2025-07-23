@@ -7,7 +7,12 @@ export { default as ThemeProvider } from './providers/ThemeProvider';
 export { LinkProvider as NextLinkProvider, useLinkComponent as useNextLink } from './providers/NextLinkProvider';
 
 // components
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
+export {
+	Accordion as ShadAccordion,
+	AccordionItem,
+	AccordionTrigger,
+	AccordionContent,
+} from '@/components/ui/accordion';
 
 export {
 	AlertDialog,
@@ -32,7 +37,7 @@ export { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 export { Badge, badgeVariants } from '@/components/ui/badge';
 
 export {
-	Breadcrumb,
+	Breadcrumb as ShadBradcrumb,
 	BreadcrumbList,
 	BreadcrumbItem,
 	BreadcrumbLink,
@@ -73,7 +78,7 @@ export {
 	ChartStyle,
 } from '@/components/ui/chart';
 
-export { Checkbox } from '@/components/ui/checkbox';
+export { Checkbox as ShadCheckbox } from '@/components/ui/checkbox';
 
 export { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/ui/collapsible';
 
@@ -202,7 +207,7 @@ export {
 } from '@/components/ui/navigation-menu';
 
 export {
-	Pagination,
+	Pagination as ShadPagination,
 	PaginationContent,
 	PaginationLink,
 	PaginationItem,
@@ -237,7 +242,7 @@ export {
 export { Separator } from '@/components/ui/separator';
 
 export {
-	Sheet,
+	Sheet as ShadSheet,
 	SheetTrigger,
 	SheetClose,
 	SheetContent,
@@ -280,7 +285,7 @@ export { Slider } from '@/components/ui/slider';
 
 export { Toaster } from '@/components/ui/sonner';
 
-export { Switch } from '@/components/ui/switch';
+export { Switch as ShadSwitch } from '@/components/ui/switch';
 
 export {
 	Table,
@@ -308,7 +313,7 @@ export { default as RootLayout } from '@/components/RootLayout';
 
 export { default as Sidenav } from '@/components/sidenav';
 
-export { default as CheckboxWithLabel } from '@/components/Checkbox';
+export { default as Checkbox } from '@/components/Checkbox';
 
 export { default as StatCard } from '@/components/StatCard';
 
@@ -318,7 +323,7 @@ export { default as KeyFactCard } from '@/components/KeyFactCard';
 
 export { default as CopyToClipboard } from '@/components/CopyToClipboard';
 
-export { default as NavBreadcrumb } from '@/components/Breadcrumb';
+export { default as Breadcrumb } from '@/components/Breadcrumb';
 
 export { default as Notification } from '@/components/Notification';
 
@@ -327,3 +332,15 @@ export { default as ProblemsOverview } from '@/components/ProblemsOverview';
 export { default as SelectWithOptions } from '@/components/Select';
 
 export { default as Input } from '@/components/Input';
+
+export { default as Accordion } from '@/components/Accordion';
+
+export { default as Pagination } from '@/components/Pagination';
+
+export { default as Sheet } from '@/components/Sheet';
+
+export { default as Switch } from '@/components/Switch';
+
+export { default as BasicTable } from '@/components/Table';
+
+export { default as DataTable } from '@/components/DataTable';

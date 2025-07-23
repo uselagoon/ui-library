@@ -1,4 +1,4 @@
-import { j as e } from "./index.es64.js";
+import { j as e } from "./index.es70.js";
 import { Checkbox as s } from "./index.es18.js";
 import { Label as a } from "./index.es29.js";
 function i({ label: t, id: r, ...o }) {

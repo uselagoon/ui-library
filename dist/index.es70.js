@@ -1,4 +1,5 @@
-import a from "./index.es55.js";
+import { __require as r } from "./index.es91.js";
+var i = r();
 export {
-  a as default
+  i as j
 };

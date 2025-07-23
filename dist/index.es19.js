@@ -1,4 +1,4 @@
-import { j as o } from "./index.es64.js";
+import { j as o } from "./index.es70.js";
 import * as t from "@radix-ui/react-collapsible";
 function i({ ...l }) {
   return /* @__PURE__ */ o.jsx(t.Root, { "data-slot": "collapsible", ...l });

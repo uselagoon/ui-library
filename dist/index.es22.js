@@ -1,7 +1,7 @@
-import { j as a } from "./index.es64.js";
+import { j as a } from "./index.es70.js";
 import * as o from "@radix-ui/react-dialog";
 import { XIcon as l } from "lucide-react";
-import { cn as s } from "./index.es65.js";
+import { cn as s } from "./index.es71.js";
 function f({ ...t }) {
   return /* @__PURE__ */ a.jsx(o.Root, { "data-slot": "dialog", ...t });
 }

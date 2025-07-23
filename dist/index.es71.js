@@ -1,4 +1,8 @@
-import a from "./index.es56.js";
+import { clsx as o } from "clsx";
+import { twMerge as t } from "tailwind-merge";
+function n(...r) {
+  return t(o(r));
+}
 export {
-  a as default
+  n as cn
 };

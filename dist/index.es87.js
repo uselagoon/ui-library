@@ -1,4 +1,4 @@
-var e = {};
+import t from "./index.es66.js";
 export {
-  e as __exports
+  t as default
 };

@@ -9,6 +9,7 @@ import { Controls, Primary, Stories, Story, Title } from '@storybook/addon-docs/
 const meta: Meta<typeof Input> = {
 	component: Input,
 	title: 'Components/ Input',
+	tags: ['autodocs'],
 	argTypes: {
 		name: { control: 'text' },
 		placeholder: { control: 'text' },
