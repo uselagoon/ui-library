@@ -130,13 +130,13 @@ export default function DataTable<TData, TValue>({
 					<TableHeader>
 						{table.getHeaderGroups().map((headerGroup) => {
 							return (
-								<TableRow key={headerGroup.id}>
+								<TableRow key={headerGroup.id} className="py-4">
 									{headerGroup.headers.map((header) => {
 										const isSorted = header.column.id === sortedColumnId;
 										return (
 											<TableHead
 												key={header.id}
-												className={cn('transition-colors', isSorted && 'bg-gray-100 dark:bg-gray-700')}
+												className={cn('transition-colors py-1', isSorted && 'bg-gray-100 dark:bg-gray-700')}
 											>
 												{header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
 											</TableHead>
@@ -151,13 +151,13 @@ export default function DataTable<TData, TValue>({
 						{table.getRowModel().rows?.length ? (
 							table.getRowModel().rows.map((row) => {
 								return (
-									<TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
+									<TableRow className="py-4" key={row.id} data-state={row.getIsSelected() && 'selected'}>
 										{row.getVisibleCells().map((visibleCell) => {
 											const isSorted = visibleCell.column.id === sortedColumnId;
 											return (
 												<TableCell
 													key={visibleCell.id}
-													className={cn('transition-colors', isSorted && 'bg-gray-100 dark:bg-gray-700')}
+													className={cn('transition-colors py-4', isSorted && 'bg-gray-100 dark:bg-gray-700')}
 												>
 													{renderCellWithHighlight(visibleCell)}
 												</TableCell>

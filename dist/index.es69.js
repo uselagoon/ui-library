@@ -2,19 +2,19 @@ import { jsxs as r, jsx as n } from "react/jsx-runtime";
 import d, { useEffect as V } from "react";
 import { Button as x } from "./index.es13.js";
 import { useReactTable as j, getSortedRowModel as D, getFilteredRowModel as H, getPaginationRowModel as I, getCoreRowModel as k, flexRender as w } from "@tanstack/react-table";
-import { Table as z, TableHeader as L, TableRow as u, TableHead as B, TableBody as G, TableCell as C } from "./index.es46.js";
+import { Table as z, TableHeader as L, TableRow as m, TableHead as B, TableBody as G, TableCell as y } from "./index.es46.js";
 import { DebouncedInput as _ } from "./index.es63.js";
 import { highlightTextInElement as $ } from "./index.es93.js";
-import { cn as S } from "./index.es70.js";
+import { cn as C } from "./index.es70.js";
 import { l as W } from "./index.es94.js";
 function Y({
-  columns: m,
+  columns: u,
   data: c,
   searchableColumns: i,
   renderFilters: h,
   disableExtra: s
 }) {
-  const [g, b] = d.useState([]), [y, R] = d.useState([]), [N, P] = d.useState({}), [a, M] = d.useState(""), v = (e, t, l) => i?.length === 0 ? String(e.getValue(t)).toLowerCase().includes(l.toLowerCase()) : i?.some((p) => {
+  const [g, S] = d.useState([]), [b, N] = d.useState([]), [R, P] = d.useState({}), [a, M] = d.useState(""), v = (e, t, l) => i?.length === 0 ? String(e.getValue(t)).toLowerCase().includes(l.toLowerCase()) : i?.some((p) => {
     const T = e.getValue(p);
     return String(T).toLowerCase().includes(l.toLowerCase());
   }), F = (e) => {
@@ -26,19 +26,19 @@ function Y({
     ) : l;
   }, o = j({
     data: c,
-    columns: m,
+    columns: u,
     getCoreRowModel: k(),
     getPaginationRowModel: I(),
     getFilteredRowModel: H(),
     getSortedRowModel: D(),
-    onColumnFiltersChange: R,
-    onSortingChange: b,
+    onColumnFiltersChange: N,
+    onSortingChange: S,
     onColumnVisibilityChange: P,
     ...i ? { globalFilterFn: v } : {},
     state: {
       sorting: g,
-      columnFilters: y,
-      columnVisibility: N,
+      columnFilters: b,
+      columnVisibility: R,
       globalFilter: a
     }
   }), f = g.length > 0 ? g[0].id : null;
@@ -59,28 +59,28 @@ function Y({
       h && h(o)
     ] }),
     /* @__PURE__ */ n("div", { className: "rounded-md border", children: /* @__PURE__ */ r(z, { children: [
-      /* @__PURE__ */ n(L, { children: o.getHeaderGroups().map((e) => /* @__PURE__ */ n(u, { children: e.headers.map((t) => {
+      /* @__PURE__ */ n(L, { children: o.getHeaderGroups().map((e) => /* @__PURE__ */ n(m, { className: "py-4", children: e.headers.map((t) => {
         const l = t.column.id === f;
         return /* @__PURE__ */ n(
           B,
           {
-            className: S("transition-colors", l && "bg-gray-100 dark:bg-gray-700"),
+            className: C("transition-colors py-1", l && "bg-gray-100 dark:bg-gray-700"),
             children: t.isPlaceholder ? null : w(t.column.columnDef.header, t.getContext())
           },
           t.id
         );
       }) }, e.id)) }),
-      /* @__PURE__ */ n(G, { children: o.getRowModel().rows?.length ? o.getRowModel().rows.map((e) => /* @__PURE__ */ n(u, { "data-state": e.getIsSelected() && "selected", children: e.getVisibleCells().map((t) => {
+      /* @__PURE__ */ n(G, { children: o.getRowModel().rows?.length ? o.getRowModel().rows.map((e) => /* @__PURE__ */ n(m, { className: "py-4", "data-state": e.getIsSelected() && "selected", children: e.getVisibleCells().map((t) => {
         const l = t.column.id === f;
         return /* @__PURE__ */ n(
-          C,
+          y,
           {
-            className: S("transition-colors", l && "bg-gray-100 dark:bg-gray-700"),
+            className: C("transition-colors py-4", l && "bg-gray-100 dark:bg-gray-700"),
             children: F(t)
           },
           t.id
         );
-      }) }, e.id)) : /* @__PURE__ */ n(u, { children: /* @__PURE__ */ n(C, { colSpan: m.length, className: "h-28 text-center", children: "Nothing here." }) }) })
+      }) }, e.id)) : /* @__PURE__ */ n(m, { children: /* @__PURE__ */ n(y, { colSpan: u.length, className: "h-28 text-center", children: "Nothing here." }) }) })
     ] }) }),
     s ? null : /* @__PURE__ */ r("div", { className: "flex items-center justify-end space-x-2 py-4", children: [
       /* @__PURE__ */ r("div", { className: "text-muted-foreground flex-1 text-sm", children: [

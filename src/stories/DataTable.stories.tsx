@@ -152,7 +152,7 @@ const tableColumns = [
 				currency: 'USD',
 			}).format(amount);
 
-			return <div className="text-2xl font-medium text-green-300">{formatted}</div>;
+			return <div className="text-1xl font-medium text-green-300">{formatted}</div>;
 		},
 	},
 	{
