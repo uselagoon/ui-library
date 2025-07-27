@@ -31,6 +31,7 @@ export interface DataTableProps<TData, TValue> {
 	renderFilters?: (table: TableType<TData>) => ReactNode;
 	/** Do not render the top filter section, nor the bottom pagination section */
 	disableExtra?: boolean;
+	onSearch?: (searchString: string) => void;
 }
 
 export default function DataTable<TData, TValue>({
@@ -39,6 +40,7 @@ export default function DataTable<TData, TValue>({
 	searchableColumns,
 	renderFilters,
 	disableExtra,
+	onSearch,
 }: DataTableProps<TData, TValue>) {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
 
@@ -117,7 +119,10 @@ export default function DataTable<TData, TValue>({
 						label=""
 						placeholder={`Search ${searchableColumns?.length ? `by ${searchableColumns.map((col) => capitalize(col)).join(',')}` : 'all columns'}...`}
 						value={globalFilter ?? ''}
-						onChange={(value) => setGlobalFilter(value)}
+						onChange={(value) => {
+							setGlobalFilter(value);
+							onSearch && onSearch(value);
+						}}
 						className="max-w-sm"
 					/>
 					{/** render out custom filters */}
