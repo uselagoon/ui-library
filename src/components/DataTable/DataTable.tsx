@@ -22,7 +22,6 @@ import { DebouncedInput } from '../Input';
 import { highlightTextInElement } from './HighlightText';
 import { cn } from '@/lib/utils';
 import { capitalize } from 'lodash';
-import Pagination from '../Pagination';
 
 export interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];

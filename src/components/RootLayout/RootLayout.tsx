@@ -22,7 +22,7 @@ export default function RootLayout({ userInfo, appInfo, signOutFn, currentPath, 
 			<SidebarProvider defaultOpen>
 				<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath }} />
 
-				<main className="w-fit">
+				<main className="flex-1">
 					<SidebarTrigger />
 					{children}
 				</main>
