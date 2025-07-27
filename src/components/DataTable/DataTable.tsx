@@ -130,7 +130,7 @@ export default function DataTable<TData, TValue>({
 					<TableHeader>
 						{table.getHeaderGroups().map((headerGroup) => {
 							return (
-								<TableRow key={headerGroup.id} className="py-4">
+								<TableRow key={headerGroup.id} className="py-6">
 									{headerGroup.headers.map((header) => {
 										const isSorted = header.column.id === sortedColumnId;
 										return (
@@ -151,13 +151,13 @@ export default function DataTable<TData, TValue>({
 						{table.getRowModel().rows?.length ? (
 							table.getRowModel().rows.map((row) => {
 								return (
-									<TableRow className="py-4" key={row.id} data-state={row.getIsSelected() && 'selected'}>
+									<TableRow className="py-6" key={row.id} data-state={row.getIsSelected() && 'selected'}>
 										{row.getVisibleCells().map((visibleCell) => {
 											const isSorted = visibleCell.column.id === sortedColumnId;
 											return (
 												<TableCell
 													key={visibleCell.id}
-													className={cn('transition-colors py-4', isSorted && 'bg-gray-100 dark:bg-gray-700')}
+													className={cn('transition-colors py-6', isSorted && 'bg-gray-100 dark:bg-gray-700')}
 												>
 													{renderCellWithHighlight(visibleCell)}
 												</TableCell>
@@ -178,7 +178,7 @@ export default function DataTable<TData, TValue>({
 			</div>
 
 			{disableExtra ? null : (
-				<div className="flex items-center justify-end space-x-2 py-4">
+				<div className="flex items-center justify-end space-x-2 py-6">
 					<div className="text-muted-foreground flex-1 text-sm">
 						Showing {table.getRowModel().rows.length} of {data.length} entries
 					</div>

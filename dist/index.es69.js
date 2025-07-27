@@ -59,7 +59,7 @@ function Y({
       h && h(o)
     ] }),
     /* @__PURE__ */ n("div", { className: "rounded-md border", children: /* @__PURE__ */ r(z, { children: [
-      /* @__PURE__ */ n(L, { children: o.getHeaderGroups().map((e) => /* @__PURE__ */ n(m, { className: "py-4", children: e.headers.map((t) => {
+      /* @__PURE__ */ n(L, { children: o.getHeaderGroups().map((e) => /* @__PURE__ */ n(m, { className: "py-6", children: e.headers.map((t) => {
         const l = t.column.id === f;
         return /* @__PURE__ */ n(
           B,
@@ -70,19 +70,19 @@ function Y({
           t.id
         );
       }) }, e.id)) }),
-      /* @__PURE__ */ n(G, { children: o.getRowModel().rows?.length ? o.getRowModel().rows.map((e) => /* @__PURE__ */ n(m, { className: "py-4", "data-state": e.getIsSelected() && "selected", children: e.getVisibleCells().map((t) => {
+      /* @__PURE__ */ n(G, { children: o.getRowModel().rows?.length ? o.getRowModel().rows.map((e) => /* @__PURE__ */ n(m, { className: "py-6", "data-state": e.getIsSelected() && "selected", children: e.getVisibleCells().map((t) => {
         const l = t.column.id === f;
         return /* @__PURE__ */ n(
           y,
           {
-            className: C("transition-colors py-4", l && "bg-gray-100 dark:bg-gray-700"),
+            className: C("transition-colors py-6", l && "bg-gray-100 dark:bg-gray-700"),
             children: F(t)
           },
           t.id
         );
       }) }, e.id)) : /* @__PURE__ */ n(m, { children: /* @__PURE__ */ n(y, { colSpan: u.length, className: "h-28 text-center", children: "Nothing here." }) }) })
     ] }) }),
-    s ? null : /* @__PURE__ */ r("div", { className: "flex items-center justify-end space-x-2 py-4", children: [
+    s ? null : /* @__PURE__ */ r("div", { className: "flex items-center justify-end space-x-2 py-6", children: [
       /* @__PURE__ */ r("div", { className: "text-muted-foreground flex-1 text-sm", children: [
         "Showing ",
         o.getRowModel().rows.length,
