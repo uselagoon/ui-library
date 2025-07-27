@@ -33,6 +33,7 @@ export interface DataTableProps<TData, TValue> {
 	disableExtra?: boolean;
 	onSearch?: (searchString: string) => void;
 	initialSearch?: string;
+	initialPageSize?: number;
 }
 
 export default function DataTable<TData, TValue>({
@@ -43,6 +44,7 @@ export default function DataTable<TData, TValue>({
 	disableExtra,
 	onSearch,
 	initialSearch,
+	initialPageSize,
 }: DataTableProps<TData, TValue>) {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
 
@@ -110,6 +112,12 @@ export default function DataTable<TData, TValue>({
 			table.setPageSize(data.length);
 		}
 	}, [disableExtra]);
+
+	useEffect(() => {
+		if (initialPageSize) {
+			table.setPageSize(initialPageSize);
+		}
+	}, [initialPageSize]);
 
 	return (
 		<div className="w-[92%] mx-auto">

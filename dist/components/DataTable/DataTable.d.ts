@@ -10,7 +10,8 @@ export interface DataTableProps<TData, TValue> {
     disableExtra?: boolean;
     onSearch?: (searchString: string) => void;
     initialSearch?: string;
+    initialPageSize?: number;
 }
-export default function DataTable<TData, TValue>({ columns, data, searchableColumns, renderFilters, disableExtra, onSearch, initialSearch, }: DataTableProps<TData, TValue>): import("react/jsx-dev-runtime").JSX.Element;
+export default function DataTable<TData, TValue>({ columns, data, searchableColumns, renderFilters, disableExtra, onSearch, initialSearch, initialPageSize, }: DataTableProps<TData, TValue>): import("react/jsx-dev-runtime").JSX.Element;
 export type { ColumnDef as DataTableColumnDef };
 //# sourceMappingURL=DataTable.d.ts.map
