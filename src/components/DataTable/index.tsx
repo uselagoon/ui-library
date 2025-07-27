@@ -1,3 +1,5 @@
-import { default as DataTable } from './DataTable';
+import { default as DataTable, DataTableColumnDef } from './DataTable';
+
+export { type DataTableColumnDef };
 
 export default DataTable;

@@ -13,17 +13,35 @@ type PaginationProps = React.ComponentProps<typeof Pagination> & {
 	allItems: number;
 	itemsPerPage: number;
 	initialPage?: number;
+	onClickPrevious?: () => void;
+	onClickNext?: () => void;
+	onClickPageNumber?: React.Dispatch<
+		React.SetStateAction<{
+			pageIndex: number;
+			pageSize: number;
+		}>
+	>;
 };
 
-export default function UIPagination({ allItems, itemsPerPage, initialPage = 1, ...rest }: PaginationProps) {
+export default function UIPagination({
+	allItems,
+	itemsPerPage,
+	initialPage = 1,
+	onClickPrevious,
+	onClickNext,
+	onClickPageNumber,
+	...rest
+}: PaginationProps) {
 	const totalPages = Math.ceil(allItems / itemsPerPage);
 	const [currentPage, setCurrentPage] = useState(initialPage);
 
 	const handlePrevious = () => {
+		onClickPrevious && onClickPrevious();
 		setCurrentPage((prev) => Math.max(1, prev - 1));
 	};
 
 	const handleNext = () => {
+		onClickNext && onClickNext();
 		setCurrentPage((prev) => Math.min(totalPages, prev + 1));
 	};
 
@@ -54,6 +72,8 @@ export default function UIPagination({ allItems, itemsPerPage, initialPage = 1, 
 						onClick={(e) => {
 							e.preventDefault();
 							setCurrentPage(i);
+
+							onClickPageNumber && onClickPageNumber((p) => ({ ...p, pageIndex: i - 1 }));
 						}}
 						isActive={i === currentPage}
 					>

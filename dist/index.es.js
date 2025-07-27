@@ -59,15 +59,15 @@ import { default as ja } from "./index.es59.js";
 import { default as Ja } from "./index.es60.js";
 import { default as Xa } from "./index.es61.js";
 import { default as Za } from "./index.es62.js";
-import { default as $a } from "./index.es63.js";
-import { default as on } from "./index.es64.js";
-import { default as tn } from "./index.es65.js";
-import { default as nn } from "./index.es66.js";
-import { default as un } from "./index.es67.js";
-import { default as dn } from "./index.es68.js";
-import { default as bn } from "./index.es69.js";
+import { DebouncedInput as $a, default as en } from "./index.es63.js";
+import { default as rn } from "./index.es64.js";
+import { default as an } from "./index.es65.js";
+import { default as ln } from "./index.es66.js";
+import { default as pn } from "./index.es67.js";
+import { default as mn } from "./index.es68.js";
+import { default as gn } from "./index.es69.js";
 export {
-  on as Accordion,
+  rn as Accordion,
   d as AccordionContent,
   m as AccordionItem,
   b as AccordionTrigger,
@@ -90,7 +90,7 @@ export {
   R as AvatarFallback,
   N as AvatarImage,
   y as Badge,
-  dn as BasicTable,
+  mn as BasicTable,
   ja as Breadcrumb,
   z as BreadcrumbEllipsis,
   E as BreadcrumbItem,
@@ -148,7 +148,8 @@ export {
   Xe as ContextMenuSubTrigger,
   Ye as ContextMenuTrigger,
   Ua as CopyToClipboard,
-  bn as DataTable,
+  gn as DataTable,
+  $a as DebouncedInput,
   Va as DetailStat,
   _e as Dialog,
   $e as DialogClose,
@@ -195,7 +196,7 @@ export {
   qo as HoverCard,
   Jo as HoverCardContent,
   Qo as HoverCardTrigger,
-  $a as Input,
+  en as Input,
   Yo as InputOTP,
   Zo as InputOTPGroup,
   _o as InputOTPSeparator,
@@ -228,7 +229,7 @@ export {
   Lr as NavigationMenuViewport,
   l as NextLinkProvider,
   Ja as Notification,
-  tn as Pagination,
+  an as Pagination,
   Gr as PaginationContent,
   kr as PaginationEllipsis,
   Rr as PaginationItem,
@@ -268,7 +269,7 @@ export {
   Or as ShadPagination,
   St as ShadSheet,
   ra as ShadSwitch,
-  nn as Sheet,
+  ln as Sheet,
   ft as SheetClose,
   st as SheetContent,
   ct as SheetDescription,
@@ -303,7 +304,7 @@ export {
   Yt as Skeleton,
   _t as Slider,
   ya as StatCard,
-  un as Switch,
+  pn as Switch,
   aa as Table,
   na as TableBody,
   ia as TableCaption,

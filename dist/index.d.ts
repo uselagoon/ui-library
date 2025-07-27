@@ -58,11 +58,11 @@ export { default as Breadcrumb } from './components/Breadcrumb';
 export { default as Notification } from './components/Notification';
 export { default as ProblemsOverview } from './components/ProblemsOverview';
 export { default as SelectWithOptions } from './components/Select';
-export { default as Input } from './components/Input';
+export { default as Input, DebouncedInput } from './components/Input';
 export { default as Accordion } from './components/Accordion';
 export { default as Pagination } from './components/Pagination';
 export { default as Sheet } from './components/Sheet';
 export { default as Switch } from './components/Switch';
 export { default as BasicTable } from './components/Table';
-export { default as DataTable } from './components/DataTable';
+export { default as DataTable, type DataTableColumnDef } from './components/DataTable';
 //# sourceMappingURL=index.d.ts.map

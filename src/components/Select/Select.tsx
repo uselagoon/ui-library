@@ -7,16 +7,17 @@ type SelectProps = Omit<React.ComponentProps<typeof Select>, 'disabled'> & {
 	placeholder: string;
 	options?: Option[] | OptionGroup[];
 	disabled?: boolean;
+	width?: number;
 };
 
 function isOptionGroupArray(options: Option[] | OptionGroup[] | undefined): options is OptionGroup[] {
 	return Array.isArray(options) && 'options' in options[0]!;
 }
 
-export default function SelectWithOptions({ placeholder, options, disabled, ...rest }: SelectProps) {
+export default function SelectWithOptions({ placeholder, options, disabled, width, ...rest }: SelectProps) {
 	return (
 		<Select disabled={disabled} {...rest}>
-			<SelectTrigger className="w-[266px]">
+			<SelectTrigger className={`w-[${width ?? '266px'}]`}>
 				<SelectValue placeholder={placeholder || 'Make a selection'} />
 			</SelectTrigger>
 			{!disabled && options && (

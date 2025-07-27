@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const m=require("./index.cjs99.js"),ir=require("react");/**
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const m=require("./index.cjs96.js"),ir=require("react");/**
  * @license React
  * react-jsx-runtime.development.js
  *

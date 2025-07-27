@@ -1,8 +1,14 @@
-import { ColumnDef } from '@tanstack/react-table';
-interface DataTableProps<TData, TValue> {
+import { ReactNode } from 'react';
+import { ColumnDef, Table as TableType } from '@tanstack/react-table';
+export interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
+    searchableColumns?: string[];
+    /** pass in custom filters - datatime/pagination/status dropdowns etc */
+    renderFilters?: (table: TableType<TData>) => ReactNode;
+    /** Do not render the top filter section, nor the bottom pagination section */
+    disableExtra?: boolean;
 }
-export default function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>): import("react/jsx-dev-runtime").JSX.Element;
-export {};
+export default function DataTable<TData, TValue>({ columns, data, searchableColumns, renderFilters, disableExtra, }: DataTableProps<TData, TValue>): import("react/jsx-dev-runtime").JSX.Element;
+export type { ColumnDef as DataTableColumnDef };
 //# sourceMappingURL=DataTable.d.ts.map
