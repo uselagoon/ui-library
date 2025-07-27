@@ -65,4 +65,5 @@ export { default as Sheet } from './components/Sheet';
 export { default as Switch } from './components/Switch';
 export { default as BasicTable } from './components/Table';
 export { default as DataTable, type DataTableColumnDef } from './components/DataTable';
+export { cn } from './lib/utils';
 //# sourceMappingURL=index.d.ts.map

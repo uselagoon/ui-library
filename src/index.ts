@@ -344,3 +344,5 @@ export { default as Switch } from '@/components/Switch';
 export { default as BasicTable } from '@/components/Table';
 
 export { default as DataTable, type DataTableColumnDef } from '@/components/DataTable';
+
+export { cn } from '@/lib/utils';
