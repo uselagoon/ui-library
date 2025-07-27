@@ -1,6 +1,6 @@
 import { jsxs as t, jsx as e } from "react/jsx-runtime";
 import { useMemo as v } from "react";
-import { Sidebar as P, SidebarHeader as z, SidebarMenu as f, SidebarMenuItem as m, SidebarContent as L, SidebarGroup as $, SidebarGroupLabel as w, SidebarGroupContent as D, SidebarMenuButton as A, SidebarFooter as G } from "./index.es41.js";
+import { Sidebar as M, SidebarHeader as P, SidebarMenu as f, SidebarMenuItem as m, SidebarContent as z, SidebarGroup as L, SidebarGroupLabel as $, SidebarGroupContent as D, SidebarMenuButton as A, SidebarFooter as G } from "./index.es41.js";
 import { SquareTerminal as T, BriefcaseBusiness as _, ServerCog as F, KeyRound as H, UserRoundCog as K } from "lucide-react";
 import O from "./index.es90.js";
 import { genAvatarBackground as S, getCurrentPath as R } from "./index.es91.js";
@@ -54,17 +54,17 @@ const W = (s, a) => [
   }
 ];
 function oe({ userInfo: s, appInfo: a, currentPath: u, signOutFn: h, ...C }) {
-  const k = V(), { firstName: i, lastName: n, image: p, email: o } = s, x = !!p, l = !!(i && n), g = l ? S(i.charAt(0), n.charAt(0)) : S(o.charAt(0), o.charAt(1)), y = l ? i.charAt(0).toUpperCase() + n.charAt(0).toUpperCase() : o.charAt(0).toUpperCase(), N = x ? /* @__PURE__ */ t(q, { children: [
+  const k = V(), { firstName: i, lastName: n, image: p, email: o } = s, x = !!p, l = !!(i && n), g = l ? S(i.charAt(0), n.charAt(0)) : S(o.charAt(0), o.charAt(1)), N = l ? i.charAt(0).toUpperCase() + n.charAt(0).toUpperCase() : o.charAt(0).toUpperCase(), w = x ? /* @__PURE__ */ t(q, { children: [
     /* @__PURE__ */ e(E, { src: p, alt: "user_avatar" }),
     /* @__PURE__ */ e(J, { children: "Avatar" })
-  ] }) : /* @__PURE__ */ e(Q, { bgColor: g.bgColor, textColor: g.textColor, children: y }), U = l ? /* @__PURE__ */ e("span", { className: "user-name", children: `${i} ${n}` }) : /* @__PURE__ */ e("span", { className: "user-name", children: o }), c = v(() => W(a.kcUrl), [a.kcUrl, h]), B = v(() => R(c, u || ""), [c, u]), j = { ...a, signOutFn: h };
-  return /* @__PURE__ */ t(P, { variant: "sidebar", collapsible: "icon", ...C, children: [
-    /* @__PURE__ */ e(z, { children: /* @__PURE__ */ e(f, { children: /* @__PURE__ */ e(m, { children: /* @__PURE__ */ e(O, { ...j }) }) }) }),
-    /* @__PURE__ */ e(L, { children: c.map((d) => /* @__PURE__ */ t($, { children: [
-      /* @__PURE__ */ e(w, { children: d.section }),
+  ] }) : /* @__PURE__ */ e(Q, { bgColor: g.bgColor, textColor: g.textColor, children: N }), y = l ? /* @__PURE__ */ e("span", { className: "user-name", children: `${i} ${n}` }) : /* @__PURE__ */ e("span", { className: "user-name", children: o }), c = v(() => W(a.kcUrl), [a.kcUrl, h]), U = v(() => R(c, u || ""), [c, u]), B = { ...a, signOutFn: h };
+  return /* @__PURE__ */ t(M, { variant: "sidebar", collapsible: "icon", ...C, className: "min-w-[17.77vw] max-w-[22vw]! w-max", children: [
+    /* @__PURE__ */ e(P, { children: /* @__PURE__ */ e(f, { children: /* @__PURE__ */ e(m, { children: /* @__PURE__ */ e(O, { ...B }) }) }) }),
+    /* @__PURE__ */ e(z, { children: c.map((d) => /* @__PURE__ */ t(L, { children: [
+      /* @__PURE__ */ e($, { children: d.section }),
       /* @__PURE__ */ e(D, { className: "list-none", children: d.sectionItems.map((r) => {
-        const M = r.target === "blank", b = r?.onClick;
-        return /* @__PURE__ */ e(m, { children: /* @__PURE__ */ e(A, { asChild: !0, isActive: B === r.url, children: /* @__PURE__ */ t(
+        const j = r.target === "blank", b = r?.onClick;
+        return /* @__PURE__ */ e(m, { children: /* @__PURE__ */ e(A, { asChild: !0, isActive: U === r.url, children: /* @__PURE__ */ t(
           k,
           {
             "data-cy": `nav-${r.url.slice(1)}`,
@@ -72,7 +72,7 @@ function oe({ userInfo: s, appInfo: a, currentPath: u, signOutFn: h, ...C }) {
               b && await b();
             },
             href: r.url,
-            target: M ? "_blank" : "_self",
+            target: j ? "_blank" : "_self",
             children: [
               /* @__PURE__ */ e(r.icon, {}),
               /* @__PURE__ */ e("span", { children: r.title })
@@ -82,8 +82,8 @@ function oe({ userInfo: s, appInfo: a, currentPath: u, signOutFn: h, ...C }) {
       }) })
     ] }, d.section)) }),
     /* @__PURE__ */ e(G, { children: /* @__PURE__ */ e(f, { children: /* @__PURE__ */ e(m, { children: /* @__PURE__ */ t(A, { size: "lg", children: [
-      N,
-      /* @__PURE__ */ e("div", { className: "grid flex-1 text-left text-sm leading-tight", children: /* @__PURE__ */ e("span", { className: "truncate font-light", children: U }) })
+      w,
+      /* @__PURE__ */ e("div", { className: "grid flex-1 text-left text-sm leading-tight", children: /* @__PURE__ */ e("span", { className: "truncate font-light", children: y }) })
     ] }) }) }) })
   ] });
 }
