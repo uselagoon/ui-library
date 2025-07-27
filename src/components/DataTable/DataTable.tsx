@@ -22,11 +22,13 @@ import { DebouncedInput } from '../Input';
 import { highlightTextInElement } from './HighlightText';
 import { cn } from '@/lib/utils';
 import { capitalize } from 'lodash';
+import { Skeleton } from '../ui/skeleton';
 
 export interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];
 	data: TData[];
 	searchableColumns?: string[];
+	loading?: boolean;
 	/** pass in custom filters - datatime/pagination/status dropdowns etc */
 	renderFilters?: (table: TableType<TData>) => ReactNode;
 	/** Do not render the top filter section, nor the bottom pagination section */
@@ -40,6 +42,7 @@ export default function DataTable<TData, TValue>({
 	columns,
 	data,
 	searchableColumns,
+	loading,
 	renderFilters,
 	disableExtra,
 	onSearch,
@@ -85,9 +88,22 @@ export default function DataTable<TData, TValue>({
 		return rendered;
 	};
 
+	// loading state skeletons
+	const tableData = React.useMemo(() => (loading ? Array(10).fill({}) : data), [loading, data]);
+	const tableColumns = React.useMemo(
+		() =>
+			loading
+				? columns.map((column) => ({
+						...column,
+						cell: () => <Skeleton className="h-6 w-50 rounded-sm" />,
+					}))
+				: columns,
+		[loading, columns],
+	);
+
 	const table = useReactTable({
-		data,
-		columns,
+		data: tableData,
+		columns: tableColumns,
 		getCoreRowModel: getCoreRowModel(),
 		getPaginationRowModel: getPaginationRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),

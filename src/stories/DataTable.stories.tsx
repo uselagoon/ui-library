@@ -190,6 +190,7 @@ export const Default: Story = {
 		// disableExtra: true,
 		// searchableColumns: ['email', 'status'],
 		// initialSearch: ''
+		// loading: true,
 		renderFilters: (table) => {
 			return (
 				<>
