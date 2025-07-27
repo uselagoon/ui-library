@@ -58,7 +58,7 @@ function oe({ userInfo: s, appInfo: a, currentPath: u, signOutFn: h, ...C }) {
     /* @__PURE__ */ e(E, { src: p, alt: "user_avatar" }),
     /* @__PURE__ */ e(J, { children: "Avatar" })
   ] }) : /* @__PURE__ */ e(Q, { bgColor: g.bgColor, textColor: g.textColor, children: N }), y = l ? /* @__PURE__ */ e("span", { className: "user-name", children: `${i} ${n}` }) : /* @__PURE__ */ e("span", { className: "user-name", children: o }), c = v(() => W(a.kcUrl), [a.kcUrl, h]), U = v(() => R(c, u || ""), [c, u]), B = { ...a, signOutFn: h };
-  return /* @__PURE__ */ t(M, { variant: "sidebar", collapsible: "icon", ...C, className: "min-w-[17.77vw] max-w-[22vw]! w-max", children: [
+  return /* @__PURE__ */ t(M, { variant: "sidebar", collapsible: "icon", ...C, className: "w-[18vw] min-w-0 max-w-[22vw] transition-all", children: [
     /* @__PURE__ */ e(P, { children: /* @__PURE__ */ e(f, { children: /* @__PURE__ */ e(m, { children: /* @__PURE__ */ e(O, { ...B }) }) }) }),
     /* @__PURE__ */ e(z, { children: c.map((d) => /* @__PURE__ */ t(L, { children: [
       /* @__PURE__ */ e($, { children: d.section }),
