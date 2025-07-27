@@ -136,7 +136,7 @@ export default function DataTable<TData, TValue>({
 	}, [initialPageSize]);
 
 	return (
-		<div className="w-[92%] mx-auto">
+		<div className="w-[100%] mx-auto">
 			{/* filter/searchbar*/}
 
 			{disableExtra ? null : (

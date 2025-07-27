@@ -57,7 +57,7 @@ function re({
     c && t.setPageSize(m.length);
   }, [c]), b(() => {
     u && t.setPageSize(u);
-  }, [u]), /* @__PURE__ */ r("div", { className: "w-[92%] mx-auto", children: [
+  }, [u]), /* @__PURE__ */ r("div", { className: "w-[100%] mx-auto", children: [
     c ? null : /* @__PURE__ */ r("div", { className: "flex items-end justify-between py-4", children: [
       /* @__PURE__ */ l(
         J,
