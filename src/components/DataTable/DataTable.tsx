@@ -211,7 +211,7 @@ export default function DataTable<TData, TValue>({
 			{disableExtra ? null : (
 				<div className="flex items-center justify-end space-x-2 py-6">
 					<div className="text-muted-foreground flex-1 text-sm">
-						Showing {table.getRowModel().rows.length} of {data.length} entries
+						Showing {table.getRowModel().rows.length} of {table.getPrePaginationRowModel().rows.length} entries
 					</div>
 
 					<div className="flex w-[100px] items-center justify-center text-sm font-medium">
