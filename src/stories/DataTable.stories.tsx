@@ -189,6 +189,7 @@ export const Default: Story = {
 		data: tableData,
 		// disableExtra: true,
 		// searchableColumns: ['email', 'status'],
+		// initialSearch: ''
 		renderFilters: (table) => {
 			return (
 				<>

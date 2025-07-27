@@ -32,6 +32,7 @@ export interface DataTableProps<TData, TValue> {
 	/** Do not render the top filter section, nor the bottom pagination section */
 	disableExtra?: boolean;
 	onSearch?: (searchString: string) => void;
+	initialSearch?: string;
 }
 
 export default function DataTable<TData, TValue>({
@@ -41,6 +42,7 @@ export default function DataTable<TData, TValue>({
 	renderFilters,
 	disableExtra,
 	onSearch,
+	initialSearch,
 }: DataTableProps<TData, TValue>) {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
 
@@ -48,7 +50,7 @@ export default function DataTable<TData, TValue>({
 
 	const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
 
-	const [globalFilter, setGlobalFilter] = React.useState<string>('');
+	const [globalFilter, setGlobalFilter] = React.useState<string>(initialSearch ?? '');
 
 	const customGlobalFilter = (row: any, columnId: string, value: string) => {
 		// globally search everything if searchableCols isnt provided

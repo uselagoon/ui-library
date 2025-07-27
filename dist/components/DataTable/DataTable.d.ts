@@ -9,7 +9,8 @@ export interface DataTableProps<TData, TValue> {
     /** Do not render the top filter section, nor the bottom pagination section */
     disableExtra?: boolean;
     onSearch?: (searchString: string) => void;
+    initialSearch?: string;
 }
-export default function DataTable<TData, TValue>({ columns, data, searchableColumns, renderFilters, disableExtra, onSearch, }: DataTableProps<TData, TValue>): import("react/jsx-dev-runtime").JSX.Element;
+export default function DataTable<TData, TValue>({ columns, data, searchableColumns, renderFilters, disableExtra, onSearch, initialSearch, }: DataTableProps<TData, TValue>): import("react/jsx-dev-runtime").JSX.Element;
 export type { ColumnDef as DataTableColumnDef };
 //# sourceMappingURL=DataTable.d.ts.map

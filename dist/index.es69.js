@@ -1,71 +1,72 @@
 import { jsxs as r, jsx as n } from "react/jsx-runtime";
-import d, { useEffect as j } from "react";
+import d, { useEffect as D } from "react";
 import { Button as w } from "./index.es13.js";
-import { useReactTable as D, getSortedRowModel as H, getFilteredRowModel as I, getPaginationRowModel as k, getCoreRowModel as z, flexRender as y } from "@tanstack/react-table";
-import { Table as L, TableHeader as B, TableRow as m, TableHead as G, TableBody as _, TableCell as C } from "./index.es46.js";
-import { DebouncedInput as $ } from "./index.es63.js";
-import { highlightTextInElement as W } from "./index.es93.js";
+import { useReactTable as H, getSortedRowModel as I, getFilteredRowModel as k, getPaginationRowModel as z, getCoreRowModel as L, flexRender as y } from "@tanstack/react-table";
+import { Table as B, TableHeader as G, TableRow as m, TableHead as _, TableBody as $, TableCell as C } from "./index.es46.js";
+import { DebouncedInput as W } from "./index.es63.js";
+import { highlightTextInElement as q } from "./index.es93.js";
 import { cn as b } from "./index.es70.js";
-import { l as q } from "./index.es94.js";
-function Z({
+import { l as A } from "./index.es94.js";
+function ee({
   columns: u,
   data: c,
   searchableColumns: i,
   renderFilters: h,
   disableExtra: s,
-  onSearch: f
+  onSearch: f,
+  initialSearch: S
 }) {
-  const [g, S] = d.useState([]), [N, R] = d.useState([]), [P, M] = d.useState({}), [a, F] = d.useState(""), T = (e, t, l) => i?.length === 0 ? String(e.getValue(t)).toLowerCase().includes(l.toLowerCase()) : i?.some((x) => {
-    const v = e.getValue(x);
-    return String(v).toLowerCase().includes(l.toLowerCase());
-  }), V = (e) => {
+  const [g, N] = d.useState([]), [R, P] = d.useState([]), [M, F] = d.useState({}), [a, T] = d.useState(S ?? ""), V = (e, t, l) => i?.length === 0 ? String(e.getValue(t)).toLowerCase().includes(l.toLowerCase()) : i?.some((x) => {
+    const j = e.getValue(x);
+    return String(j).toLowerCase().includes(l.toLowerCase());
+  }), v = (e) => {
     const t = e.getValue(), l = y(e.column.columnDef.cell, e.getContext());
-    return t && a && (!i?.length || i?.includes(e.column.id)) && typeof e.column.columnDef.cell == "function" ? W(
+    return t && a && (!i?.length || i?.includes(e.column.id)) && typeof e.column.columnDef.cell == "function" ? q(
       e?.column?.columnDef?.cell(e.getContext()),
       a,
       t
     ) : l;
-  }, o = D({
+  }, o = H({
     data: c,
     columns: u,
-    getCoreRowModel: z(),
-    getPaginationRowModel: k(),
-    getFilteredRowModel: I(),
-    getSortedRowModel: H(),
-    onColumnFiltersChange: R,
-    onSortingChange: S,
-    onColumnVisibilityChange: M,
-    ...i ? { globalFilterFn: T } : {},
+    getCoreRowModel: L(),
+    getPaginationRowModel: z(),
+    getFilteredRowModel: k(),
+    getSortedRowModel: I(),
+    onColumnFiltersChange: P,
+    onSortingChange: N,
+    onColumnVisibilityChange: F,
+    ...i ? { globalFilterFn: V } : {},
     state: {
       sorting: g,
-      columnFilters: N,
-      columnVisibility: P,
+      columnFilters: R,
+      columnVisibility: M,
       globalFilter: a
     }
   }), p = g.length > 0 ? g[0].id : null;
-  return j(() => {
+  return D(() => {
     s && o.setPageSize(c.length);
   }, [s]), /* @__PURE__ */ r("div", { className: "w-[92%] mx-auto", children: [
     s ? null : /* @__PURE__ */ r("div", { className: "flex items-end justify-between py-4", children: [
       /* @__PURE__ */ n(
-        $,
+        W,
         {
           label: "",
-          placeholder: `Search ${i?.length ? `by ${i.map((e) => q.capitalize(e)).join(",")}` : "all columns"}...`,
+          placeholder: `Search ${i?.length ? `by ${i.map((e) => A.capitalize(e)).join(",")}` : "all columns"}...`,
           value: a ?? "",
           onChange: (e) => {
-            F(e), f && f(e);
+            T(e), f && f(e);
           },
           className: "max-w-sm"
         }
       ),
       h && h(o)
     ] }),
-    /* @__PURE__ */ n("div", { className: "rounded-md border", children: /* @__PURE__ */ r(L, { children: [
-      /* @__PURE__ */ n(B, { children: o.getHeaderGroups().map((e) => /* @__PURE__ */ n(m, { className: "py-6", children: e.headers.map((t) => {
+    /* @__PURE__ */ n("div", { className: "rounded-md border", children: /* @__PURE__ */ r(B, { children: [
+      /* @__PURE__ */ n(G, { children: o.getHeaderGroups().map((e) => /* @__PURE__ */ n(m, { className: "py-6", children: e.headers.map((t) => {
         const l = t.column.id === p;
         return /* @__PURE__ */ n(
-          G,
+          _,
           {
             className: b("transition-colors py-1", l && "bg-gray-100 dark:bg-gray-700"),
             children: t.isPlaceholder ? null : y(t.column.columnDef.header, t.getContext())
@@ -73,13 +74,13 @@ function Z({
           t.id
         );
       }) }, e.id)) }),
-      /* @__PURE__ */ n(_, { children: o.getRowModel().rows?.length ? o.getRowModel().rows.map((e) => /* @__PURE__ */ n(m, { className: "py-6", "data-state": e.getIsSelected() && "selected", children: e.getVisibleCells().map((t) => {
+      /* @__PURE__ */ n($, { children: o.getRowModel().rows?.length ? o.getRowModel().rows.map((e) => /* @__PURE__ */ n(m, { className: "py-6", "data-state": e.getIsSelected() && "selected", children: e.getVisibleCells().map((t) => {
         const l = t.column.id === p;
         return /* @__PURE__ */ n(
           C,
           {
             className: b("transition-colors py-6", l && "bg-gray-100 dark:bg-gray-700"),
-            children: V(t)
+            children: v(t)
           },
           t.id
         );
@@ -114,5 +115,5 @@ function Z({
   ] });
 }
 export {
-  Z as default
+  ee as default
 };
