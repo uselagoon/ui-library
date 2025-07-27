@@ -136,7 +136,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, signOutFn, ...
 
 	const sidenavProps = { ...appInfo, signOutFn };
 	return (
-		<Sidebar variant="sidebar" collapsible="icon" {...props} className="w-[18vw] min-w-0 max-w-[22vw] transition-all">
+		<Sidebar variant="sidebar" collapsible="icon" {...props} className="w-[clamp(0px,20vw,256px)] transition-all">
 			<SidebarHeader>
 				<SidebarMenu>
 					<SidebarMenuItem>

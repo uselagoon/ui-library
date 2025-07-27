@@ -54,17 +54,17 @@ const W = (s, a) => [
   }
 ];
 function oe({ userInfo: s, appInfo: a, currentPath: u, signOutFn: h, ...C }) {
-  const k = V(), { firstName: i, lastName: n, image: p, email: o } = s, x = !!p, l = !!(i && n), g = l ? S(i.charAt(0), n.charAt(0)) : S(o.charAt(0), o.charAt(1)), N = l ? i.charAt(0).toUpperCase() + n.charAt(0).toUpperCase() : o.charAt(0).toUpperCase(), w = x ? /* @__PURE__ */ t(q, { children: [
+  const k = V(), { firstName: i, lastName: n, image: p, email: o } = s, x = !!p, l = !!(i && n), g = l ? S(i.charAt(0), n.charAt(0)) : S(o.charAt(0), o.charAt(1)), N = l ? i.charAt(0).toUpperCase() + n.charAt(0).toUpperCase() : o.charAt(0).toUpperCase(), y = x ? /* @__PURE__ */ t(q, { children: [
     /* @__PURE__ */ e(E, { src: p, alt: "user_avatar" }),
     /* @__PURE__ */ e(J, { children: "Avatar" })
-  ] }) : /* @__PURE__ */ e(Q, { bgColor: g.bgColor, textColor: g.textColor, children: N }), y = l ? /* @__PURE__ */ e("span", { className: "user-name", children: `${i} ${n}` }) : /* @__PURE__ */ e("span", { className: "user-name", children: o }), c = v(() => W(a.kcUrl), [a.kcUrl, h]), U = v(() => R(c, u || ""), [c, u]), B = { ...a, signOutFn: h };
-  return /* @__PURE__ */ t(M, { variant: "sidebar", collapsible: "icon", ...C, className: "w-[18vw] min-w-0 max-w-[22vw] transition-all", children: [
-    /* @__PURE__ */ e(P, { children: /* @__PURE__ */ e(f, { children: /* @__PURE__ */ e(m, { children: /* @__PURE__ */ e(O, { ...B }) }) }) }),
+  ] }) : /* @__PURE__ */ e(Q, { bgColor: g.bgColor, textColor: g.textColor, children: N }), U = l ? /* @__PURE__ */ e("span", { className: "user-name", children: `${i} ${n}` }) : /* @__PURE__ */ e("span", { className: "user-name", children: o }), c = v(() => W(a.kcUrl), [a.kcUrl, h]), B = v(() => R(c, u || ""), [c, u]), j = { ...a, signOutFn: h };
+  return /* @__PURE__ */ t(M, { variant: "sidebar", collapsible: "icon", ...C, className: "w-[clamp(0px,20vw,256px)] transition-all", children: [
+    /* @__PURE__ */ e(P, { children: /* @__PURE__ */ e(f, { children: /* @__PURE__ */ e(m, { children: /* @__PURE__ */ e(O, { ...j }) }) }) }),
     /* @__PURE__ */ e(z, { children: c.map((d) => /* @__PURE__ */ t(L, { children: [
       /* @__PURE__ */ e($, { children: d.section }),
       /* @__PURE__ */ e(D, { className: "list-none", children: d.sectionItems.map((r) => {
-        const j = r.target === "blank", b = r?.onClick;
-        return /* @__PURE__ */ e(m, { children: /* @__PURE__ */ e(A, { asChild: !0, isActive: U === r.url, children: /* @__PURE__ */ t(
+        const w = r.target === "blank", b = r?.onClick;
+        return /* @__PURE__ */ e(m, { children: /* @__PURE__ */ e(A, { asChild: !0, isActive: B === r.url, children: /* @__PURE__ */ t(
           k,
           {
             "data-cy": `nav-${r.url.slice(1)}`,
@@ -72,7 +72,7 @@ function oe({ userInfo: s, appInfo: a, currentPath: u, signOutFn: h, ...C }) {
               b && await b();
             },
             href: r.url,
-            target: j ? "_blank" : "_self",
+            target: w ? "_blank" : "_self",
             children: [
               /* @__PURE__ */ e(r.icon, {}),
               /* @__PURE__ */ e("span", { children: r.title })
@@ -82,8 +82,8 @@ function oe({ userInfo: s, appInfo: a, currentPath: u, signOutFn: h, ...C }) {
       }) })
     ] }, d.section)) }),
     /* @__PURE__ */ e(G, { children: /* @__PURE__ */ e(f, { children: /* @__PURE__ */ e(m, { children: /* @__PURE__ */ t(A, { size: "lg", children: [
-      w,
-      /* @__PURE__ */ e("div", { className: "grid flex-1 text-left text-sm leading-tight", children: /* @__PURE__ */ e("span", { className: "truncate font-light", children: y }) })
+      y,
+      /* @__PURE__ */ e("div", { className: "grid flex-1 text-left text-sm leading-tight", children: /* @__PURE__ */ e("span", { className: "truncate font-light", children: U }) })
     ] }) }) }) })
   ] });
 }
