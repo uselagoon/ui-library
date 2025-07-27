@@ -9,17 +9,18 @@ interface RootLayoutProps {
 	appInfo: AppInfo;
 	children: ReactNode;
 	signOutFn: () => Promise<void>;
+	currentPath: string;
 }
 
 //**
 // Root layout wrapping the whole app with the side navigation
 // */
 
-export default function RootLayout({ userInfo, appInfo, signOutFn, children }: RootLayoutProps) {
+export default function RootLayout({ userInfo, appInfo, signOutFn, currentPath, children }: RootLayoutProps) {
 	return (
 		<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 			<SidebarProvider defaultOpen>
-				<Sidenav {...{ userInfo, appInfo, signOutFn }} />
+				<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath }} />
 
 				<main className="w-fit">
 					<SidebarTrigger />

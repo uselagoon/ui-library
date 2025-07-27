@@ -83,7 +83,7 @@ const getSidenavItems = (kcUrl: string, signOutFn: () => Promise<void>) => [
 				title: 'My Account',
 				url: `${kcUrl}/account`,
 				target: 'blank',
-				onClick: signOutFn,
+				onClick: () => {},
 				icon: UserRoundCog,
 			},
 		],
@@ -153,11 +153,12 @@ export default function Sidenav({ userInfo, appInfo, currentPath, signOutFn, ...
 							<SidebarGroupContent className="list-none">
 								{navItem.sectionItems.map((sectionItem) => {
 									const newTab = sectionItem.target === 'blank';
-									const action = sectionItem.onClick;
+									const action = sectionItem?.onClick;
 									return (
 										<SidebarMenuItem key={sectionItem.title}>
 											<SidebarMenuButton asChild isActive={activePath === sectionItem.url}>
 												<Link
+													data-cy={`nav-${sectionItem.url.slice(1)}`}
 													onClick={async () => {
 														action && (await action());
 													}}

@@ -32,7 +32,7 @@ declare const getSidenavItems: (kcUrl: string, signOutFn: () => Promise<void>) =
         title: string;
         url: string;
         target: string;
-        onClick: () => Promise<void>;
+        onClick: () => void;
         icon: React.ForwardRefExoticComponent<Omit<import('lucide-react').LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
     })[];
 }[];
