@@ -1,115 +1,115 @@
-import { j as t } from "./index.es70.js";
-import a, { useEffect as F } from "react";
-import { Button as f } from "./index.es13.js";
-import { useReactTable as T, getSortedRowModel as V, getFilteredRowModel as D, getPaginationRowModel as H, getCoreRowModel as I, flexRender as p } from "@tanstack/react-table";
-import { Table as k, TableHeader as z, TableRow as g, TableHead as L, TableBody as B, TableCell as j } from "./index.es46.js";
-import { DebouncedInput as G } from "./index.es63.js";
-import { highlightTextInElement as _ } from "./index.es100.js";
-import { cn as w } from "./index.es71.js";
-import { l as $ } from "./index.es101.js";
-function X({
-  columns: u,
-  data: d,
+import { jsxs as r, jsx as n } from "react/jsx-runtime";
+import d, { useEffect as V } from "react";
+import { Button as x } from "./index.es13.js";
+import { useReactTable as j, getSortedRowModel as D, getFilteredRowModel as H, getPaginationRowModel as I, getCoreRowModel as k, flexRender as w } from "@tanstack/react-table";
+import { Table as z, TableHeader as L, TableRow as u, TableHead as B, TableBody as G, TableCell as C } from "./index.es46.js";
+import { DebouncedInput as _ } from "./index.es63.js";
+import { highlightTextInElement as $ } from "./index.es93.js";
+import { cn as S } from "./index.es70.js";
+import { l as W } from "./index.es94.js";
+function Y({
+  columns: m,
+  data: c,
   searchableColumns: i,
-  renderFilters: m,
+  renderFilters: h,
   disableExtra: s
 }) {
-  const [c, C] = a.useState([]), [S, b] = a.useState([]), [R, y] = a.useState({}), [r, N] = a.useState(""), P = (e, o, l) => i?.length === 0 ? String(e.getValue(o)).toLowerCase().includes(l.toLowerCase()) : i?.some((x) => {
-    const v = e.getValue(x);
-    return String(v).toLowerCase().includes(l.toLowerCase());
-  }), M = (e) => {
-    const o = e.getValue(), l = p(e.column.columnDef.cell, e.getContext());
-    return o && r && (!i?.length || i?.includes(e.column.id)) && typeof e.column.columnDef.cell == "function" ? _(
+  const [g, b] = d.useState([]), [y, R] = d.useState([]), [N, P] = d.useState({}), [a, M] = d.useState(""), v = (e, t, l) => i?.length === 0 ? String(e.getValue(t)).toLowerCase().includes(l.toLowerCase()) : i?.some((p) => {
+    const T = e.getValue(p);
+    return String(T).toLowerCase().includes(l.toLowerCase());
+  }), F = (e) => {
+    const t = e.getValue(), l = w(e.column.columnDef.cell, e.getContext());
+    return t && a && (!i?.length || i?.includes(e.column.id)) && typeof e.column.columnDef.cell == "function" ? $(
       e?.column?.columnDef?.cell(e.getContext()),
-      r,
-      o
+      a,
+      t
     ) : l;
-  }, n = T({
-    data: d,
-    columns: u,
-    getCoreRowModel: I(),
-    getPaginationRowModel: H(),
-    getFilteredRowModel: D(),
-    getSortedRowModel: V(),
-    onColumnFiltersChange: b,
-    onSortingChange: C,
-    onColumnVisibilityChange: y,
-    ...i ? { globalFilterFn: P } : {},
+  }, o = j({
+    data: c,
+    columns: m,
+    getCoreRowModel: k(),
+    getPaginationRowModel: I(),
+    getFilteredRowModel: H(),
+    getSortedRowModel: D(),
+    onColumnFiltersChange: R,
+    onSortingChange: b,
+    onColumnVisibilityChange: P,
+    ...i ? { globalFilterFn: v } : {},
     state: {
-      sorting: c,
-      columnFilters: S,
-      columnVisibility: R,
-      globalFilter: r
+      sorting: g,
+      columnFilters: y,
+      columnVisibility: N,
+      globalFilter: a
     }
-  }), h = c.length > 0 ? c[0].id : null;
-  return F(() => {
-    s && n.setPageSize(d.length);
-  }, [s]), /* @__PURE__ */ t.jsxs("div", { className: "w-[92%] mx-auto", children: [
-    s ? null : /* @__PURE__ */ t.jsxs("div", { className: "flex items-end justify-between py-4", children: [
-      /* @__PURE__ */ t.jsx(
-        G,
+  }), f = g.length > 0 ? g[0].id : null;
+  return V(() => {
+    s && o.setPageSize(c.length);
+  }, [s]), /* @__PURE__ */ r("div", { className: "w-[92%] mx-auto", children: [
+    s ? null : /* @__PURE__ */ r("div", { className: "flex items-end justify-between py-4", children: [
+      /* @__PURE__ */ n(
+        _,
         {
           label: "",
-          placeholder: `Search ${i?.length ? `by ${i.map((e) => $.capitalize(e)).join(",")}` : "all columns"}...`,
-          value: r ?? "",
-          onChange: (e) => N(e),
+          placeholder: `Search ${i?.length ? `by ${i.map((e) => W.capitalize(e)).join(",")}` : "all columns"}...`,
+          value: a ?? "",
+          onChange: (e) => M(e),
           className: "max-w-sm"
         }
       ),
-      m && m(n)
+      h && h(o)
     ] }),
-    /* @__PURE__ */ t.jsx("div", { className: "rounded-md border", children: /* @__PURE__ */ t.jsxs(k, { children: [
-      /* @__PURE__ */ t.jsx(z, { children: n.getHeaderGroups().map((e) => /* @__PURE__ */ t.jsx(g, { children: e.headers.map((o) => {
-        const l = o.column.id === h;
-        return /* @__PURE__ */ t.jsx(
-          L,
+    /* @__PURE__ */ n("div", { className: "rounded-md border", children: /* @__PURE__ */ r(z, { children: [
+      /* @__PURE__ */ n(L, { children: o.getHeaderGroups().map((e) => /* @__PURE__ */ n(u, { children: e.headers.map((t) => {
+        const l = t.column.id === f;
+        return /* @__PURE__ */ n(
+          B,
           {
-            className: w("transition-colors", l && "bg-gray-100 dark:bg-gray-700"),
-            children: o.isPlaceholder ? null : p(o.column.columnDef.header, o.getContext())
+            className: S("transition-colors", l && "bg-gray-100 dark:bg-gray-700"),
+            children: t.isPlaceholder ? null : w(t.column.columnDef.header, t.getContext())
           },
-          o.id
+          t.id
         );
       }) }, e.id)) }),
-      /* @__PURE__ */ t.jsx(B, { children: n.getRowModel().rows?.length ? n.getRowModel().rows.map((e) => /* @__PURE__ */ t.jsx(g, { "data-state": e.getIsSelected() && "selected", children: e.getVisibleCells().map((o) => {
-        const l = o.column.id === h;
-        return /* @__PURE__ */ t.jsx(
-          j,
+      /* @__PURE__ */ n(G, { children: o.getRowModel().rows?.length ? o.getRowModel().rows.map((e) => /* @__PURE__ */ n(u, { "data-state": e.getIsSelected() && "selected", children: e.getVisibleCells().map((t) => {
+        const l = t.column.id === f;
+        return /* @__PURE__ */ n(
+          C,
           {
-            className: w("transition-colors", l && "bg-gray-100 dark:bg-gray-700"),
-            children: M(o)
+            className: S("transition-colors", l && "bg-gray-100 dark:bg-gray-700"),
+            children: F(t)
           },
-          o.id
+          t.id
         );
-      }) }, e.id)) : /* @__PURE__ */ t.jsx(g, { children: /* @__PURE__ */ t.jsx(j, { colSpan: u.length, className: "h-28 text-center", children: "Nothing here." }) }) })
+      }) }, e.id)) : /* @__PURE__ */ n(u, { children: /* @__PURE__ */ n(C, { colSpan: m.length, className: "h-28 text-center", children: "Nothing here." }) }) })
     ] }) }),
-    s ? null : /* @__PURE__ */ t.jsxs("div", { className: "flex items-center justify-end space-x-2 py-4", children: [
-      /* @__PURE__ */ t.jsxs("div", { className: "text-muted-foreground flex-1 text-sm", children: [
+    s ? null : /* @__PURE__ */ r("div", { className: "flex items-center justify-end space-x-2 py-4", children: [
+      /* @__PURE__ */ r("div", { className: "text-muted-foreground flex-1 text-sm", children: [
         "Showing ",
-        n.getRowModel().rows.length,
+        o.getRowModel().rows.length,
         " of ",
-        d.length,
+        c.length,
         " entries"
       ] }),
-      /* @__PURE__ */ t.jsxs("div", { className: "flex w-[100px] items-center justify-center text-sm font-medium", children: [
+      /* @__PURE__ */ r("div", { className: "flex w-[100px] items-center justify-center text-sm font-medium", children: [
         "Page ",
-        n.getState().pagination.pageIndex + 1,
+        o.getState().pagination.pageIndex + 1,
         " of ",
-        n.getPageCount()
+        o.getPageCount()
       ] }),
-      /* @__PURE__ */ t.jsx(
-        f,
+      /* @__PURE__ */ n(
+        x,
         {
           variant: "outline",
           size: "sm",
-          onClick: () => n.previousPage(),
-          disabled: !n.getCanPreviousPage(),
+          onClick: () => o.previousPage(),
+          disabled: !o.getCanPreviousPage(),
           children: "Previous"
         }
       ),
-      /* @__PURE__ */ t.jsx(f, { variant: "outline", size: "sm", onClick: () => n.nextPage(), disabled: !n.getCanNextPage(), children: "Next" })
+      /* @__PURE__ */ n(x, { variant: "outline", size: "sm", onClick: () => o.nextPage(), disabled: !o.getCanNextPage(), children: "Next" })
     ] })
   ] });
 }
 export {
-  X as default
+  Y as default
 };

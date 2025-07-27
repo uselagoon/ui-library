@@ -1,9 +1,9 @@
-import { j as r } from "./index.es70.js";
+import { jsx as r } from "react/jsx-runtime";
 import * as e from "@radix-ui/react-checkbox";
 import { CheckIcon as a } from "lucide-react";
-import { cn as o } from "./index.es71.js";
-function c({ className: i, ...t }) {
-  return /* @__PURE__ */ r.jsx(
+import { cn as o } from "./index.es70.js";
+function s({ className: i, ...t }) {
+  return /* @__PURE__ */ r(
     e.Root,
     {
       "data-slot": "checkbox",
@@ -12,17 +12,17 @@ function c({ className: i, ...t }) {
         i
       ),
       ...t,
-      children: /* @__PURE__ */ r.jsx(
+      children: /* @__PURE__ */ r(
         e.Indicator,
         {
           "data-slot": "checkbox-indicator",
           className: "flex items-center justify-center text-current transition-none",
-          children: /* @__PURE__ */ r.jsx(a, { className: "size-3.5" })
+          children: /* @__PURE__ */ r(a, { className: "size-3.5" })
         }
       )
     }
   );
 }
 export {
-  c as Checkbox
+  s as Checkbox
 };

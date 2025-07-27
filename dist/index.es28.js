@@ -1,7 +1,7 @@
-import { j as t } from "./index.es70.js";
-import { cn as n } from "./index.es71.js";
+import { jsx as t } from "react/jsx-runtime";
+import { cn as n } from "./index.es70.js";
 function a({ className: e, type: i, ...r }) {
-  return /* @__PURE__ */ t.jsx(
+  return /* @__PURE__ */ t(
     "input",
     {
       type: i,

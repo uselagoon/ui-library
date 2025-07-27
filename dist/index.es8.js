@@ -1,6 +1,6 @@
-import { j as e } from "./index.es70.js";
+import { jsx as e } from "react/jsx-runtime";
 import { cva as i } from "class-variance-authority";
-import { cn as a } from "./index.es71.js";
+import { cn as a } from "./index.es70.js";
 const l = i(
   "relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
   {
@@ -16,10 +16,10 @@ const l = i(
   }
 );
 function c({ className: t, variant: r, ...s }) {
-  return /* @__PURE__ */ e.jsx("div", { "data-slot": "alert", role: "alert", className: a(l({ variant: r }), t), ...s });
+  return /* @__PURE__ */ e("div", { "data-slot": "alert", role: "alert", className: a(l({ variant: r }), t), ...s });
 }
 function g({ className: t, ...r }) {
-  return /* @__PURE__ */ e.jsx(
+  return /* @__PURE__ */ e(
     "div",
     {
       "data-slot": "alert-title",
@@ -29,7 +29,7 @@ function g({ className: t, ...r }) {
   );
 }
 function u({ className: t, ...r }) {
-  return /* @__PURE__ */ e.jsx(
+  return /* @__PURE__ */ e(
     "div",
     {
       "data-slot": "alert-description",

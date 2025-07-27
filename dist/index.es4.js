@@ -1,8 +1,8 @@
-import { j as o } from "./index.es70.js";
+import { jsx as o } from "react/jsx-runtime";
 import { ThemeProvider as m } from "next-themes";
-function s({ children: r, ...e }) {
-  return /* @__PURE__ */ o.jsx(m, { ...e, children: r });
+function d({ children: r, ...e }) {
+  return /* @__PURE__ */ o(m, { ...e, children: r });
 }
 export {
-  s as default
+  d as default
 };

@@ -1,17 +1,17 @@
-import { j as e } from "./index.es70.js";
-import { Select as u, SelectTrigger as x, SelectValue as j, SelectContent as m, SelectGroup as S, SelectLabel as h, SelectItem as s } from "./index.es38.js";
-function d(r) {
+import { jsxs as n, jsx as l } from "react/jsx-runtime";
+import { Select as h, SelectTrigger as m, SelectValue as d, SelectContent as s, SelectGroup as v, SelectLabel as f, SelectItem as i } from "./index.es38.js";
+function b(r) {
   return Array.isArray(r) && "options" in r[0];
 }
-function p({ placeholder: r, options: a, disabled: c, width: n, ...i }) {
-  return /* @__PURE__ */ e.jsxs(u, { disabled: c, ...i, children: [
-    /* @__PURE__ */ e.jsx(x, { className: `w-[${n ?? "266px"}]`, children: /* @__PURE__ */ e.jsx(j, { placeholder: r || "Make a selection" }) }),
-    !c && a && /* @__PURE__ */ e.jsx(m, { children: d(a) ? a.map((l) => /* @__PURE__ */ e.jsxs(S, { children: [
-      /* @__PURE__ */ e.jsx(h, { children: l.label }),
-      l.options.map((t) => /* @__PURE__ */ e.jsx(s, { value: String(t.value), children: t.label }, t.value))
-    ] }, l.label)) : a.map((l) => /* @__PURE__ */ e.jsx(s, { value: String(l.value), children: l.label }, l.value)) })
+function y({ placeholder: r, options: a, disabled: t, width: u, ...S }) {
+  return /* @__PURE__ */ n(h, { disabled: t, ...S, children: [
+    /* @__PURE__ */ l(m, { className: `w-[${u ?? "266px"}]`, children: /* @__PURE__ */ l(d, { placeholder: r || "Make a selection" }) }),
+    !t && a && /* @__PURE__ */ l(s, { children: b(a) ? a.map((e) => /* @__PURE__ */ n(v, { children: [
+      /* @__PURE__ */ l(f, { children: e.label }),
+      e.options.map((c) => /* @__PURE__ */ l(i, { value: String(c.value), children: c.label }, c.value))
+    ] }, e.label)) : a.map((e) => /* @__PURE__ */ l(i, { value: String(e.value), children: e.label }, e.value)) })
   ] });
 }
 export {
-  p as default
+  y as default
 };

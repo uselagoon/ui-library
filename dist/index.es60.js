@@ -1,39 +1,39 @@
-import { j as e } from "./index.es70.js";
-import { AlertDialog as s, AlertDialogTrigger as g, AlertDialogContent as h, AlertDialogHeader as d, AlertDialogTitle as p, AlertDialogDescription as x, AlertDialogFooter as j, AlertDialogCancel as D, AlertDialogAction as A } from "./index.es7.js";
-function m({
-  title: o,
-  message: r,
-  cancelText: t,
-  onCancel: i,
-  confirmText: a,
-  onConfirm: l,
-  ...n
+import { jsxs as i, jsx as n } from "react/jsx-runtime";
+import { AlertDialog as h, AlertDialogTrigger as d, AlertDialogContent as p, AlertDialogHeader as D, AlertDialogTitle as A, AlertDialogDescription as C, AlertDialogFooter as u, AlertDialogCancel as s, AlertDialogAction as f } from "./index.es7.js";
+function O({
+  title: r,
+  message: t,
+  cancelText: a,
+  onCancel: l,
+  confirmText: c,
+  onConfirm: o,
+  ...e
 }) {
-  const c = "rest" in arguments && "open" in n && "onOpenChange" in n ? { open: n.open, onOpenChange: n.onOpenChange } : {};
-  return /* @__PURE__ */ e.jsxs(s, { ...c, children: [
-    /* @__PURE__ */ e.jsx(g, { asChild: !0, children: "children" in n ? n.children : null }),
-    /* @__PURE__ */ e.jsxs(h, { children: [
-      /* @__PURE__ */ e.jsxs(d, { children: [
-        /* @__PURE__ */ e.jsx(p, { children: o }),
-        /* @__PURE__ */ e.jsx(x, { children: r })
+  const g = "rest" in arguments && "open" in e && "onOpenChange" in e ? { open: e.open, onOpenChange: e.onOpenChange } : {};
+  return /* @__PURE__ */ i(h, { ...g, children: [
+    /* @__PURE__ */ n(d, { asChild: !0, children: "children" in e ? e.children : null }),
+    /* @__PURE__ */ i(p, { children: [
+      /* @__PURE__ */ i(D, { children: [
+        /* @__PURE__ */ n(A, { children: r }),
+        /* @__PURE__ */ n(C, { children: t })
       ] }),
-      /* @__PURE__ */ e.jsxs(j, { children: [
-        /* @__PURE__ */ e.jsx(
-          D,
-          {
-            onClick: () => {
-              i && i();
-            },
-            children: t ?? "Cancel"
-          }
-        ),
-        /* @__PURE__ */ e.jsx(
-          A,
+      /* @__PURE__ */ i(u, { children: [
+        /* @__PURE__ */ n(
+          s,
           {
             onClick: () => {
               l && l();
             },
-            children: a ?? "Continue"
+            children: a ?? "Cancel"
+          }
+        ),
+        /* @__PURE__ */ n(
+          f,
+          {
+            onClick: () => {
+              o && o();
+            },
+            children: c ?? "Continue"
           }
         )
       ] })
@@ -41,5 +41,5 @@ function m({
   ] });
 }
 export {
-  m as default
+  O as default
 };

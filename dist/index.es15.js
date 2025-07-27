@@ -1,7 +1,7 @@
-import { j as a } from "./index.es70.js";
-import { cn as o } from "./index.es71.js";
-function s({ className: t, ...r }) {
-  return /* @__PURE__ */ a.jsx(
+import { jsx as a } from "react/jsx-runtime";
+import { cn as o } from "./index.es70.js";
+function n({ className: t, ...r }) {
+  return /* @__PURE__ */ a(
     "div",
     {
       "data-slot": "card",
@@ -10,8 +10,8 @@ function s({ className: t, ...r }) {
     }
   );
 }
-function n({ className: t, ...r }) {
-  return /* @__PURE__ */ a.jsx(
+function s({ className: t, ...r }) {
+  return /* @__PURE__ */ a(
     "div",
     {
       "data-slot": "card-header",
@@ -24,13 +24,13 @@ function n({ className: t, ...r }) {
   );
 }
 function c({ className: t, ...r }) {
-  return /* @__PURE__ */ a.jsx("div", { "data-slot": "card-title", className: o("leading-none font-semibold", t), ...r });
+  return /* @__PURE__ */ a("div", { "data-slot": "card-title", className: o("leading-none font-semibold", t), ...r });
 }
 function i({ className: t, ...r }) {
-  return /* @__PURE__ */ a.jsx("div", { "data-slot": "card-description", className: o("text-muted-foreground text-sm", t), ...r });
+  return /* @__PURE__ */ a("div", { "data-slot": "card-description", className: o("text-muted-foreground text-sm", t), ...r });
 }
 function l({ className: t, ...r }) {
-  return /* @__PURE__ */ a.jsx(
+  return /* @__PURE__ */ a(
     "div",
     {
       "data-slot": "card-action",
@@ -40,17 +40,17 @@ function l({ className: t, ...r }) {
   );
 }
 function u({ className: t, ...r }) {
-  return /* @__PURE__ */ a.jsx("div", { "data-slot": "card-content", className: o("px-6", t), ...r });
+  return /* @__PURE__ */ a("div", { "data-slot": "card-content", className: o("px-6", t), ...r });
 }
 function f({ className: t, ...r }) {
-  return /* @__PURE__ */ a.jsx("div", { "data-slot": "card-footer", className: o("flex items-center px-6 [.border-t]:pt-6", t), ...r });
+  return /* @__PURE__ */ a("div", { "data-slot": "card-footer", className: o("flex items-center px-6 [.border-t]:pt-6", t), ...r });
 }
 export {
-  s as Card,
+  n as Card,
   l as CardAction,
   u as CardContent,
   i as CardDescription,
   f as CardFooter,
-  n as CardHeader,
+  s as CardHeader,
   c as CardTitle
 };

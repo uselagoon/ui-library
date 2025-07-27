@@ -1,9 +1,9 @@
-import { j as e } from "./index.es70.js";
-import { useState as c } from "react";
-import { Copy as v, EyeOff as d, Eye as u, Check as C } from "lucide-react";
-import { cva as N } from "class-variance-authority";
-import { Tooltip as m, TooltipTrigger as h, TooltipContent as x } from "./index.es51.js";
-const w = N("truncate transition-all duration-300", {
+import { jsxs as t, jsx as e, Fragment as N } from "react/jsx-runtime";
+import { useState as d } from "react";
+import { Copy as w, EyeOff as u, Eye as m, Check as T } from "lucide-react";
+import { cva as W } from "class-variance-authority";
+import { Tooltip as h, TooltipTrigger as p, TooltipContent as g } from "./index.es51.js";
+const k = W("truncate transition-all duration-300", {
   variants: {
     type: {
       visible: "",
@@ -32,71 +32,71 @@ const w = N("truncate transition-all duration-300", {
     type: "visible",
     unblur: !1
   }
-}), S = ({
-  text: t,
-  width: s,
-  fontSize: p = "14px",
-  type: n = "visible",
-  withToolTip: g = !1,
-  iconOnly: o = !1
+}), F = ({
+  text: r,
+  width: a,
+  fontSize: b = "14px",
+  type: l = "visible",
+  withToolTip: f = !1,
+  iconOnly: s = !1
 }) => {
-  const [b, l] = c(!1), [r, f] = c(!1), y = () => {
-    navigator.clipboard.writeText(t.toString());
-  }, j = () => {
-    y(), l(!0), setTimeout(() => l(!1), 3500);
-  }, a = () => f(!r), i = {
-    maxWidth: s ? typeof s == "number" ? `${s}px` : s : void 0,
-    fontSize: p,
-    width: o ? "max-content" : void 0
+  const [y, i] = d(!1), [n, v] = d(!1), x = () => {
+    navigator.clipboard.writeText(r.toString());
+  }, C = () => {
+    x(), i(!0), setTimeout(() => i(!1), 3500);
+  }, o = () => v(!n), c = {
+    maxWidth: a ? typeof a == "number" ? `${a}px` : a : void 0,
+    fontSize: b,
+    width: s ? "max-content" : void 0
   };
-  return /* @__PURE__ */ e.jsxs("div", { className: "flex items-start gap-4 min-w-max justify-between", style: i, children: [
-    !o && /* @__PURE__ */ e.jsx("span", { className: w({ type: n, unblur: r }), style: { maxWidth: i.maxWidth }, children: g ? /* @__PURE__ */ e.jsxs(m, { children: [
-      /* @__PURE__ */ e.jsx(h, { asChild: !0, children: /* @__PURE__ */ e.jsx("span", { className: "truncate", children: t }) }),
-      /* @__PURE__ */ e.jsx(x, { side: "bottom", children: /* @__PURE__ */ e.jsx("p", { children: t }) })
-    ] }) : t }),
-    /* @__PURE__ */ e.jsx("div", { className: "flex items-center gap-3", children: b ? /* @__PURE__ */ e.jsxs("div", { className: "flex items-center gap-3", children: [
-      /* @__PURE__ */ e.jsxs(m, { children: [
-        /* @__PURE__ */ e.jsx(h, { asChild: !0, children: /* @__PURE__ */ e.jsx(C, { className: "w-4 h-4 text-green-500" }) }),
-        /* @__PURE__ */ e.jsx(x, { children: /* @__PURE__ */ e.jsx("span", { className: "truncate", children: "Copied!" }) })
+  return /* @__PURE__ */ t("div", { className: "flex items-start gap-4 min-w-max justify-between", style: c, children: [
+    !s && /* @__PURE__ */ e("span", { className: k({ type: l, unblur: n }), style: { maxWidth: c.maxWidth }, children: f ? /* @__PURE__ */ t(h, { children: [
+      /* @__PURE__ */ e(p, { asChild: !0, children: /* @__PURE__ */ e("span", { className: "truncate", children: r }) }),
+      /* @__PURE__ */ e(g, { side: "bottom", children: /* @__PURE__ */ e("p", { children: r }) })
+    ] }) : r }),
+    /* @__PURE__ */ e("div", { className: "flex items-center gap-3", children: y ? /* @__PURE__ */ t("div", { className: "flex items-center gap-3", children: [
+      /* @__PURE__ */ t(h, { children: [
+        /* @__PURE__ */ e(p, { asChild: !0, children: /* @__PURE__ */ e(T, { className: "w-4 h-4 text-green-500" }) }),
+        /* @__PURE__ */ e(g, { children: /* @__PURE__ */ e("span", { className: "truncate", children: "Copied!" }) })
       ] }),
-      n === "hiddenWithIcon" && (r ? /* @__PURE__ */ e.jsx(
-        d,
-        {
-          className: "w-4 h-4 ml-3 cursor-pointer text-muted-foreground hover:bg-gray-200 active:bg-gray-300",
-          onClick: a
-        }
-      ) : /* @__PURE__ */ e.jsx(
+      l === "hiddenWithIcon" && (n ? /* @__PURE__ */ e(
         u,
         {
           className: "w-4 h-4 ml-3 cursor-pointer text-muted-foreground hover:bg-gray-200 active:bg-gray-300",
-          onClick: a
+          onClick: o
+        }
+      ) : /* @__PURE__ */ e(
+        m,
+        {
+          className: "w-4 h-4 ml-3 cursor-pointer text-muted-foreground hover:bg-gray-200 active:bg-gray-300",
+          onClick: o
         }
       ))
-    ] }) : /* @__PURE__ */ e.jsxs(e.Fragment, { children: [
-      /* @__PURE__ */ e.jsx(
-        v,
+    ] }) : /* @__PURE__ */ t(N, { children: [
+      /* @__PURE__ */ e(
+        w,
         {
           className: "w-4 h-4 text-muted-foreground hover:bg-gray-200 active:bg-gray-300 cursor-pointer",
           "data-cy": "copy-button",
-          onClick: j
+          onClick: C
         }
       ),
-      n === "hiddenWithIcon" && (r ? /* @__PURE__ */ e.jsx(
-        d,
-        {
-          className: "w-4 h-4 ml-3 cursor-pointer text-muted-foreground hover:bg-gray-200 active:bg-gray-300",
-          onClick: a
-        }
-      ) : /* @__PURE__ */ e.jsx(
+      l === "hiddenWithIcon" && (n ? /* @__PURE__ */ e(
         u,
         {
           className: "w-4 h-4 ml-3 cursor-pointer text-muted-foreground hover:bg-gray-200 active:bg-gray-300",
-          onClick: a
+          onClick: o
+        }
+      ) : /* @__PURE__ */ e(
+        m,
+        {
+          className: "w-4 h-4 ml-3 cursor-pointer text-muted-foreground hover:bg-gray-200 active:bg-gray-300",
+          onClick: o
         }
       ))
     ] }) })
   ] });
 };
 export {
-  S as default
+  F as default
 };

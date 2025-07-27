@@ -1,13 +1,13 @@
-import { j as e } from "./index.es70.js";
-import { Checkbox as s } from "./index.es18.js";
-import { Label as a } from "./index.es29.js";
-function i({ label: t, id: r, ...o }) {
-  return /* @__PURE__ */ e.jsx(e.Fragment, { children: /* @__PURE__ */ e.jsxs("div", { className: "flex items-center gap-3", children: [
-    /* @__PURE__ */ e.jsx(s, { id: r, ...o }),
-    /* @__PURE__ */ e.jsx(a, { htmlFor: r, children: t })
+import { jsx as e, Fragment as a, jsxs as i } from "react/jsx-runtime";
+import { Checkbox as l } from "./index.es18.js";
+import { Label as m } from "./index.es29.js";
+function c({ label: t, id: r, ...o }) {
+  return /* @__PURE__ */ e(a, { children: /* @__PURE__ */ i("div", { className: "flex items-center gap-3", children: [
+    /* @__PURE__ */ e(l, { id: r, ...o }),
+    /* @__PURE__ */ e(m, { htmlFor: r, children: t })
   ] }) });
 }
-i.displayName = "CheckboxWithLabel";
+c.displayName = "CheckboxWithLabel";
 export {
-  i as default
+  c as default
 };

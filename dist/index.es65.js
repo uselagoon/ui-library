@@ -1,49 +1,49 @@
-import { j as e } from "./index.es70.js";
-import { useState as I } from "react";
-import { Pagination as C, PaginationContent as E, PaginationItem as a, PaginationPrevious as N, PaginationNext as b, PaginationEllipsis as d, PaginationLink as k } from "./index.es32.js";
-function R({
-  allItems: g,
-  itemsPerPage: j,
-  initialPage: p = 1,
+import { jsx as e, jsxs as I } from "react/jsx-runtime";
+import { useState as N } from "react";
+import { Pagination as b, PaginationContent as j, PaginationItem as a, PaginationPrevious as C, PaginationNext as k, PaginationEllipsis as g, PaginationLink as A } from "./index.es32.js";
+function U({
+  allItems: P,
+  itemsPerPage: u,
+  initialPage: f = 1,
   onClickPrevious: l,
   onClickNext: h,
-  onClickPageNumber: x,
-  ...u
+  onClickPageNumber: c,
+  ...m
 }) {
-  const s = Math.ceil(g / j), [c, o] = I(p), P = () => {
-    l && l(), o((t) => Math.max(1, t - 1));
-  }, f = () => {
-    h && h(), o((t) => Math.min(s, t + 1));
-  }, m = () => {
-    const t = [];
-    let r = Math.max(1, c - 1), i = r + 2;
-    i > s && (i = s, r = Math.max(1, i - 2)), r > 1 && t.push(
-      /* @__PURE__ */ e.jsx(a, { children: /* @__PURE__ */ e.jsx(d, {}) }, "start-ellipsis")
-    );
-    for (let n = r; n <= i; n++)
-      t.push(
-        /* @__PURE__ */ e.jsx(a, { children: /* @__PURE__ */ e.jsx(
-          k,
-          {
-            href: "#",
-            onClick: (M) => {
-              M.preventDefault(), o(n), x && x((v) => ({ ...v, pageIndex: n - 1 }));
-            },
-            isActive: n === c,
-            children: n
-          }
-        ) }, n)
-      );
-    return i < s && t.push(
-      /* @__PURE__ */ e.jsx(a, { children: /* @__PURE__ */ e.jsx(d, {}) }, "end-ellipsis")
-    ), t;
+  const r = Math.ceil(P / u), [d, o] = N(f), p = () => {
+    l && l(), o((n) => Math.max(1, n - 1));
+  }, x = () => {
+    h && h(), o((n) => Math.min(r, n + 1));
   };
-  return /* @__PURE__ */ e.jsx(C, { ...u, children: /* @__PURE__ */ e.jsxs(E, { children: [
-    /* @__PURE__ */ e.jsx(a, { children: /* @__PURE__ */ e.jsx(N, { href: "#", onClick: P }) }),
-    m(),
-    /* @__PURE__ */ e.jsx(a, { children: /* @__PURE__ */ e.jsx(b, { href: "#", onClick: f }) })
+  return /* @__PURE__ */ e(b, { ...m, children: /* @__PURE__ */ I(j, { children: [
+    /* @__PURE__ */ e(a, { children: /* @__PURE__ */ e(C, { href: "#", onClick: p }) }),
+    (() => {
+      const n = [];
+      let s = Math.max(1, d - 1), i = s + 2;
+      i > r && (i = r, s = Math.max(1, i - 2)), s > 1 && n.push(
+        /* @__PURE__ */ e(a, { children: /* @__PURE__ */ e(g, {}) }, "start-ellipsis")
+      );
+      for (let t = s; t <= i; t++)
+        n.push(
+          /* @__PURE__ */ e(a, { children: /* @__PURE__ */ e(
+            A,
+            {
+              href: "#",
+              onClick: (M) => {
+                M.preventDefault(), o(t), c && c((v) => ({ ...v, pageIndex: t - 1 }));
+              },
+              isActive: t === d,
+              children: t
+            }
+          ) }, t)
+        );
+      return i < r && n.push(
+        /* @__PURE__ */ e(a, { children: /* @__PURE__ */ e(g, {}) }, "end-ellipsis")
+      ), n;
+    })(),
+    /* @__PURE__ */ e(a, { children: /* @__PURE__ */ e(k, { href: "#", onClick: x }) })
   ] }) });
 }
 export {
-  R as default
+  U as default
 };

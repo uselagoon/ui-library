@@ -1,11 +1,11 @@
-import { j as t } from "./index.es70.js";
+import { jsx as t } from "react/jsx-runtime";
 import * as e from "@radix-ui/react-popover";
-import { cn as i } from "./index.es71.js";
-function p({ ...o }) {
-  return /* @__PURE__ */ t.jsx(e.Root, { "data-slot": "popover", ...o });
+import { cn as i } from "./index.es70.js";
+function s({ ...o }) {
+  return /* @__PURE__ */ t(e.Root, { "data-slot": "popover", ...o });
 }
 function m({ ...o }) {
-  return /* @__PURE__ */ t.jsx(e.Trigger, { "data-slot": "popover-trigger", ...o });
+  return /* @__PURE__ */ t(e.Trigger, { "data-slot": "popover-trigger", ...o });
 }
 function f({
   className: o,
@@ -13,7 +13,7 @@ function f({
   sideOffset: a = 4,
   ...n
 }) {
-  return /* @__PURE__ */ t.jsx(e.Portal, { children: /* @__PURE__ */ t.jsx(
+  return /* @__PURE__ */ t(e.Portal, { children: /* @__PURE__ */ t(
     e.Content,
     {
       "data-slot": "popover-content",
@@ -28,10 +28,10 @@ function f({
   ) });
 }
 function l({ ...o }) {
-  return /* @__PURE__ */ t.jsx(e.Anchor, { "data-slot": "popover-anchor", ...o });
+  return /* @__PURE__ */ t(e.Anchor, { "data-slot": "popover-anchor", ...o });
 }
 export {
-  p as Popover,
+  s as Popover,
   l as PopoverAnchor,
   f as PopoverContent,
   m as PopoverTrigger

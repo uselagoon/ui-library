@@ -1,16 +1,16 @@
-import { j as a } from "./index.es70.js";
-import { cn as o } from "./index.es71.js";
-function s({ className: t, ...e }) {
-  return /* @__PURE__ */ a.jsx("div", { "data-slot": "table-container", className: "relative w-full overflow-x-auto", children: /* @__PURE__ */ a.jsx("table", { "data-slot": "table", className: o("w-full caption-bottom text-sm", t), ...e }) });
-}
+import { jsx as a } from "react/jsx-runtime";
+import { cn as o } from "./index.es70.js";
 function n({ className: t, ...e }) {
-  return /* @__PURE__ */ a.jsx("thead", { "data-slot": "table-header", className: o("[&_tr]:border-b", t), ...e });
+  return /* @__PURE__ */ a("div", { "data-slot": "table-container", className: "relative w-full overflow-x-auto", children: /* @__PURE__ */ a("table", { "data-slot": "table", className: o("w-full caption-bottom text-sm", t), ...e }) });
+}
+function s({ className: t, ...e }) {
+  return /* @__PURE__ */ a("thead", { "data-slot": "table-header", className: o("[&_tr]:border-b", t), ...e });
 }
 function d({ className: t, ...e }) {
-  return /* @__PURE__ */ a.jsx("tbody", { "data-slot": "table-body", className: o("[&_tr:last-child]:border-0", t), ...e });
+  return /* @__PURE__ */ a("tbody", { "data-slot": "table-body", className: o("[&_tr:last-child]:border-0", t), ...e });
 }
 function c({ className: t, ...e }) {
-  return /* @__PURE__ */ a.jsx(
+  return /* @__PURE__ */ a(
     "tfoot",
     {
       "data-slot": "table-footer",
@@ -20,7 +20,7 @@ function c({ className: t, ...e }) {
   );
 }
 function b({ className: t, ...e }) {
-  return /* @__PURE__ */ a.jsx(
+  return /* @__PURE__ */ a(
     "tr",
     {
       "data-slot": "table-row",
@@ -30,7 +30,7 @@ function b({ className: t, ...e }) {
   );
 }
 function i({ className: t, ...e }) {
-  return /* @__PURE__ */ a.jsx(
+  return /* @__PURE__ */ a(
     "th",
     {
       "data-slot": "table-head",
@@ -43,7 +43,7 @@ function i({ className: t, ...e }) {
   );
 }
 function m({ className: t, ...e }) {
-  return /* @__PURE__ */ a.jsx(
+  return /* @__PURE__ */ a(
     "td",
     {
       "data-slot": "table-cell",
@@ -56,15 +56,15 @@ function m({ className: t, ...e }) {
   );
 }
 function u({ className: t, ...e }) {
-  return /* @__PURE__ */ a.jsx("caption", { "data-slot": "table-caption", className: o("text-muted-foreground mt-4 text-sm", t), ...e });
+  return /* @__PURE__ */ a("caption", { "data-slot": "table-caption", className: o("text-muted-foreground mt-4 text-sm", t), ...e });
 }
 export {
-  s as Table,
+  n as Table,
   d as TableBody,
   u as TableCaption,
   m as TableCell,
   c as TableFooter,
   i as TableHead,
-  n as TableHeader,
+  s as TableHeader,
   b as TableRow
 };

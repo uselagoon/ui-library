@@ -1,4 +1,4 @@
-import { j as n } from "./index.es70.js";
+import { jsx as n } from "react/jsx-runtime";
 import { isValidElement as m } from "react";
 import l from "./index.es55.js";
 import { cva as f } from "class-variance-authority";
@@ -17,11 +17,11 @@ const p = f("font-sans font-normal text-lg leading-normal tracking-normal text-r
 function s(t) {
   return t.toLowerCase().replace(/\s+/g, "-");
 }
-const w = ({ title: t, value: a, lowercaseValue: e, capitalizeValue: o }) => {
+const y = ({ title: t, value: a, lowercaseValue: e, capitalizeValue: o }) => {
   const i = m(a);
   let r = "";
   e && (r = "lowercase"), o && (r = "capitalize");
-  const c = i ? /* @__PURE__ */ n.jsx("div", { className: r, "data-cy": s(t), children: a }) : /* @__PURE__ */ n.jsx(
+  const c = i ? /* @__PURE__ */ n("div", { className: r, "data-cy": s(t), children: a }) : /* @__PURE__ */ n(
     "span",
     {
       className: p({
@@ -31,8 +31,8 @@ const w = ({ title: t, value: a, lowercaseValue: e, capitalizeValue: o }) => {
       children: a
     }
   );
-  return /* @__PURE__ */ n.jsx(l, { type: "stat", title: t, content: c });
+  return /* @__PURE__ */ n(l, { type: "stat", title: t, content: c });
 };
 export {
-  w as default
+  y as default
 };

@@ -1,13 +1,13 @@
-import { j as n } from "./index.es70.js";
+import { jsx as n } from "react/jsx-runtime";
 import { createContext as r, useContext as i } from "react";
-const o = r(void 0), m = ({ linkComponent: t, children: e }) => /* @__PURE__ */ n.jsx(o.Provider, { value: t, children: e }), x = () => {
-  const t = i(o);
-  if (!t)
+const t = r(void 0), m = ({ linkComponent: o, children: e }) => /* @__PURE__ */ n(t.Provider, { value: o, children: e }), c = () => {
+  const o = i(t);
+  if (!o)
     throw new Error("useLinkComponent must be used within a LinkProvider");
-  return t;
+  return o;
 };
 export {
-  o as LinkContext,
+  t as LinkContext,
   m as LinkProvider,
-  x as useLinkComponent
+  c as useLinkComponent
 };

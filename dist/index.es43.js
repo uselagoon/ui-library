@@ -1,42 +1,42 @@
-import { j as a } from "./index.es70.js";
-import * as h from "react";
-import * as o from "@radix-ui/react-slider";
-import { cn as n } from "./index.es71.js";
-function u({
+import { jsxs as h, jsx as e } from "react/jsx-runtime";
+import * as m from "react";
+import * as a from "@radix-ui/react-slider";
+import { cn as n } from "./index.es70.js";
+function g({
   className: l,
   defaultValue: r,
   value: t,
-  min: i = 0,
-  max: e = 100,
+  min: o = 0,
+  max: i = 100,
   ...s
 }) {
-  const d = h.useMemo(
-    () => Array.isArray(t) ? t : Array.isArray(r) ? r : [i, e],
-    [t, r, i, e]
+  const d = m.useMemo(
+    () => Array.isArray(t) ? t : Array.isArray(r) ? r : [o, i],
+    [t, r, o, i]
   );
-  return /* @__PURE__ */ a.jsxs(
-    o.Root,
+  return /* @__PURE__ */ h(
+    a.Root,
     {
       "data-slot": "slider",
       defaultValue: r,
       value: t,
-      min: i,
-      max: e,
+      min: o,
+      max: i,
       className: n(
         "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
         l
       ),
       ...s,
       children: [
-        /* @__PURE__ */ a.jsx(
-          o.Track,
+        /* @__PURE__ */ e(
+          a.Track,
           {
             "data-slot": "slider-track",
             className: n(
               "bg-muted relative grow overflow-hidden rounded-full data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5"
             ),
-            children: /* @__PURE__ */ a.jsx(
-              o.Range,
+            children: /* @__PURE__ */ e(
+              a.Range,
               {
                 "data-slot": "slider-range",
                 className: n("bg-primary absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full")
@@ -44,8 +44,8 @@ function u({
             )
           }
         ),
-        Array.from({ length: d.length }, (m, c) => /* @__PURE__ */ a.jsx(
-          o.Thumb,
+        Array.from({ length: d.length }, (b, c) => /* @__PURE__ */ e(
+          a.Thumb,
           {
             "data-slot": "slider-thumb",
             className: "border-primary bg-background ring-ring/50 block size-4 shrink-0 rounded-full border shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
@@ -57,5 +57,5 @@ function u({
   );
 }
 export {
-  u as Slider
+  g as Slider
 };

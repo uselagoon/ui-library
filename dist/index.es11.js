@@ -1,8 +1,8 @@
-import { j as o } from "./index.es70.js";
-import { Slot as n } from "@radix-ui/react-slot";
-import { cva as s } from "class-variance-authority";
-import { cn as d } from "./index.es71.js";
-const c = s(
+import { jsx as a } from "react/jsx-runtime";
+import { Slot as o } from "@radix-ui/react-slot";
+import { cva as n } from "class-variance-authority";
+import { cn as s } from "./index.es70.js";
+const d = n(
   "inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
   {
     variants: {
@@ -24,10 +24,9 @@ function b({
   asChild: t = !1,
   ...i
 }) {
-  const a = t ? n : "span";
-  return /* @__PURE__ */ o.jsx(a, { "data-slot": "badge", className: d(c({ variant: e }), r), ...i });
+  return /* @__PURE__ */ a(t ? o : "span", { "data-slot": "badge", className: s(d({ variant: e }), r), ...i });
 }
 export {
   b as Badge,
-  c as badgeVariants
+  d as badgeVariants
 };

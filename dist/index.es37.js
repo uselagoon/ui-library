@@ -1,38 +1,38 @@
-import { j as r } from "./index.es70.js";
+import { jsxs as s, jsx as l } from "react/jsx-runtime";
 import * as o from "@radix-ui/react-scroll-area";
-import { cn as s } from "./index.es71.js";
-function n({ className: e, children: l, ...a }) {
-  return /* @__PURE__ */ r.jsxs(o.Root, { "data-slot": "scroll-area", className: s("relative", e), ...a, children: [
-    /* @__PURE__ */ r.jsx(
+import { cn as t } from "./index.es70.js";
+function u({ className: e, children: r, ...a }) {
+  return /* @__PURE__ */ s(o.Root, { "data-slot": "scroll-area", className: t("relative", e), ...a, children: [
+    /* @__PURE__ */ l(
       o.Viewport,
       {
         "data-slot": "scroll-area-viewport",
         className: "focus-visible:ring-ring/50 size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1",
-        children: l
+        children: r
       }
     ),
-    /* @__PURE__ */ r.jsx(t, {}),
-    /* @__PURE__ */ r.jsx(o.Corner, {})
+    /* @__PURE__ */ l(i, {}),
+    /* @__PURE__ */ l(o.Corner, {})
   ] });
 }
-function t({
+function i({
   className: e,
-  orientation: l = "vertical",
+  orientation: r = "vertical",
   ...a
 }) {
-  return /* @__PURE__ */ r.jsx(
+  return /* @__PURE__ */ l(
     o.ScrollAreaScrollbar,
     {
       "data-slot": "scroll-area-scrollbar",
-      orientation: l,
-      className: s(
+      orientation: r,
+      className: t(
         "flex touch-none p-px transition-colors select-none",
-        l === "vertical" && "h-full w-2.5 border-l border-l-transparent",
-        l === "horizontal" && "h-2.5 flex-col border-t border-t-transparent",
+        r === "vertical" && "h-full w-2.5 border-l border-l-transparent",
+        r === "horizontal" && "h-2.5 flex-col border-t border-t-transparent",
         e
       ),
       ...a,
-      children: /* @__PURE__ */ r.jsx(
+      children: /* @__PURE__ */ l(
         o.ScrollAreaThumb,
         {
           "data-slot": "scroll-area-thumb",
@@ -43,6 +43,6 @@ function t({
   );
 }
 export {
-  n as ScrollArea,
-  t as ScrollBar
+  u as ScrollArea,
+  i as ScrollBar
 };

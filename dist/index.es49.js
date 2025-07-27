@@ -1,21 +1,21 @@
-import { j as n } from "./index.es70.js";
-import * as s from "react";
-import * as d from "@radix-ui/react-toggle-group";
-import { cn as l } from "./index.es71.js";
+import { jsx as n } from "react/jsx-runtime";
+import * as d from "react";
+import * as s from "@radix-ui/react-toggle-group";
+import { cn as l } from "./index.es70.js";
 import { toggleVariants as m } from "./index.es50.js";
-const u = s.createContext({
+const u = d.createContext({
   size: "default",
   variant: "default"
 });
-function c({
+function p({
   className: a,
   variant: o,
   size: t,
   children: e,
   ...i
 }) {
-  return /* @__PURE__ */ n.jsx(
-    d.Root,
+  return /* @__PURE__ */ n(
+    s.Root,
     {
       "data-slot": "toggle-group",
       "data-variant": o,
@@ -25,20 +25,20 @@ function c({
         a
       ),
       ...i,
-      children: /* @__PURE__ */ n.jsx(u.Provider, { value: { variant: o, size: t }, children: e })
+      children: /* @__PURE__ */ n(u.Provider, { value: { variant: o, size: t }, children: e })
     }
   );
 }
-function x({
+function v({
   className: a,
   children: o,
   variant: t,
   size: e,
   ...i
 }) {
-  const r = s.useContext(u);
-  return /* @__PURE__ */ n.jsx(
-    d.Item,
+  const r = d.useContext(u);
+  return /* @__PURE__ */ n(
+    s.Item,
     {
       "data-slot": "toggle-group-item",
       "data-variant": r.variant || t,
@@ -57,6 +57,6 @@ function x({
   );
 }
 export {
-  c as ToggleGroup,
-  x as ToggleGroupItem
+  p as ToggleGroup,
+  v as ToggleGroupItem
 };

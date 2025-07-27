@@ -1,15 +1,15 @@
-import { j as s } from "./index.es70.js";
+import { jsxs as r, jsx as e } from "react/jsx-runtime";
 import { Label as i } from "./index.es29.js";
-import { Switch as c } from "./index.es45.js";
-function o({ id: e, label: t, description: r, ...a }) {
-  return /* @__PURE__ */ s.jsxs("div", { className: "flex space-x-2", children: [
-    /* @__PURE__ */ s.jsx(c, { id: e, ...a }),
-    /* @__PURE__ */ s.jsxs("div", { className: "space-y-2", children: [
-      /* @__PURE__ */ s.jsx(i, { className: "pt-[3px]", htmlFor: e, children: t }),
-      /* @__PURE__ */ s.jsx("span", { className: "text-[#737373]", children: r })
+import { Switch as l } from "./index.es45.js";
+function n({ id: s, label: t, description: a, ...c }) {
+  return /* @__PURE__ */ r("div", { className: "flex space-x-2", children: [
+    /* @__PURE__ */ e(l, { id: s, ...c }),
+    /* @__PURE__ */ r("div", { className: "space-y-2", children: [
+      /* @__PURE__ */ e(i, { className: "pt-[3px]", htmlFor: s, children: t }),
+      /* @__PURE__ */ e("span", { className: "text-[#737373]", children: a })
     ] })
   ] });
 }
 export {
-  o as default
+  n as default
 };

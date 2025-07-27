@@ -1,9 +1,9 @@
-import { j as t } from "./index.es70.js";
-import * as e from "@radix-ui/react-switch";
-import { cn as a } from "./index.es71.js";
-function o({ className: r, ...n }) {
-  return /* @__PURE__ */ t.jsx(
-    e.Root,
+import { jsx as e } from "react/jsx-runtime";
+import * as t from "@radix-ui/react-switch";
+import { cn as a } from "./index.es70.js";
+function s({ className: r, ...n }) {
+  return /* @__PURE__ */ e(
+    t.Root,
     {
       "data-slot": "switch",
       className: a(
@@ -11,8 +11,8 @@ function o({ className: r, ...n }) {
         r
       ),
       ...n,
-      children: /* @__PURE__ */ t.jsx(
-        e.Thumb,
+      children: /* @__PURE__ */ e(
+        t.Thumb,
         {
           "data-slot": "switch-thumb",
           className: a(
@@ -24,5 +24,5 @@ function o({ className: r, ...n }) {
   );
 }
 export {
-  o as Switch
+  s as Switch
 };

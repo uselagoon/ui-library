@@ -1,13 +1,13 @@
-import { j as i } from "./index.es70.js";
+import { jsx as i } from "react/jsx-runtime";
 import * as n from "@radix-ui/react-separator";
-import { cn as e } from "./index.es71.js";
-function s({
+import { cn as e } from "./index.es70.js";
+function m({
   className: t,
   orientation: o = "horizontal",
   decorative: r = !0,
   ...a
 }) {
-  return /* @__PURE__ */ i.jsx(
+  return /* @__PURE__ */ i(
     n.Root,
     {
       "data-slot": "separator",
@@ -22,5 +22,5 @@ function s({
   );
 }
 export {
-  s as Separator
+  m as Separator
 };

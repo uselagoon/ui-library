@@ -1,18 +1,18 @@
-import { j as e } from "./index.es70.js";
+import { jsx as e, jsxs as n } from "react/jsx-runtime";
 import * as o from "@radix-ui/react-alert-dialog";
-import { cn as l } from "./index.es71.js";
+import { cn as l } from "./index.es70.js";
 import { buttonVariants as r } from "./index.es13.js";
-function g({ ...t }) {
-  return /* @__PURE__ */ e.jsx(o.Root, { "data-slot": "alert-dialog", ...t });
-}
 function u({ ...t }) {
-  return /* @__PURE__ */ e.jsx(o.Trigger, { "data-slot": "alert-dialog-trigger", ...t });
+  return /* @__PURE__ */ e(o.Root, { "data-slot": "alert-dialog", ...t });
 }
-function n({ ...t }) {
-  return /* @__PURE__ */ e.jsx(o.Portal, { "data-slot": "alert-dialog-portal", ...t });
+function f({ ...t }) {
+  return /* @__PURE__ */ e(o.Trigger, { "data-slot": "alert-dialog-trigger", ...t });
 }
-function i({ className: t, ...a }) {
-  return /* @__PURE__ */ e.jsx(
+function i({ ...t }) {
+  return /* @__PURE__ */ e(o.Portal, { "data-slot": "alert-dialog-portal", ...t });
+}
+function s({ className: t, ...a }) {
+  return /* @__PURE__ */ e(
     o.Overlay,
     {
       "data-slot": "alert-dialog-overlay",
@@ -25,9 +25,9 @@ function i({ className: t, ...a }) {
   );
 }
 function m({ className: t, ...a }) {
-  return /* @__PURE__ */ e.jsxs(n, { children: [
-    /* @__PURE__ */ e.jsx(i, {}),
-    /* @__PURE__ */ e.jsx(
+  return /* @__PURE__ */ n(i, { children: [
+    /* @__PURE__ */ e(s, {}),
+    /* @__PURE__ */ e(
       o.Content,
       {
         "data-slot": "alert-dialog-content",
@@ -40,8 +40,8 @@ function m({ className: t, ...a }) {
     )
   ] });
 }
-function f({ className: t, ...a }) {
-  return /* @__PURE__ */ e.jsx(
+function p({ className: t, ...a }) {
+  return /* @__PURE__ */ e(
     "div",
     {
       "data-slot": "alert-dialog-header",
@@ -51,7 +51,7 @@ function f({ className: t, ...a }) {
   );
 }
 function x({ className: t, ...a }) {
-  return /* @__PURE__ */ e.jsx(
+  return /* @__PURE__ */ e(
     "div",
     {
       "data-slot": "alert-dialog-footer",
@@ -60,8 +60,8 @@ function x({ className: t, ...a }) {
     }
   );
 }
-function p({ className: t, ...a }) {
-  return /* @__PURE__ */ e.jsx(
+function A({ className: t, ...a }) {
+  return /* @__PURE__ */ e(
     o.Title,
     {
       "data-slot": "alert-dialog-title",
@@ -70,11 +70,11 @@ function p({ className: t, ...a }) {
     }
   );
 }
-function j({
+function D({
   className: t,
   ...a
 }) {
-  return /* @__PURE__ */ e.jsx(
+  return /* @__PURE__ */ e(
     o.Description,
     {
       "data-slot": "alert-dialog-description",
@@ -83,22 +83,22 @@ function j({
     }
   );
 }
-function A({ className: t, ...a }) {
-  return /* @__PURE__ */ e.jsx(o.Action, { className: l(r(), t), ...a });
+function v({ className: t, ...a }) {
+  return /* @__PURE__ */ e(o.Action, { className: l(r(), t), ...a });
 }
-function D({ className: t, ...a }) {
-  return /* @__PURE__ */ e.jsx(o.Cancel, { className: l(r({ variant: "outline" }), t), ...a });
+function N({ className: t, ...a }) {
+  return /* @__PURE__ */ e(o.Cancel, { className: l(r({ variant: "outline" }), t), ...a });
 }
 export {
-  g as AlertDialog,
-  A as AlertDialogAction,
-  D as AlertDialogCancel,
+  u as AlertDialog,
+  v as AlertDialogAction,
+  N as AlertDialogCancel,
   m as AlertDialogContent,
-  j as AlertDialogDescription,
+  D as AlertDialogDescription,
   x as AlertDialogFooter,
-  f as AlertDialogHeader,
-  i as AlertDialogOverlay,
-  n as AlertDialogPortal,
-  p as AlertDialogTitle,
-  u as AlertDialogTrigger
+  p as AlertDialogHeader,
+  s as AlertDialogOverlay,
+  i as AlertDialogPortal,
+  A as AlertDialogTitle,
+  f as AlertDialogTrigger
 };

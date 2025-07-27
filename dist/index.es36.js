@@ -1,9 +1,9 @@
-import { j as a } from "./index.es70.js";
+import { jsx as a } from "react/jsx-runtime";
 import { GripVerticalIcon as n } from "lucide-react";
 import * as t from "react-resizable-panels";
-import { cn as i } from "./index.es71.js";
+import { cn as i } from "./index.es70.js";
 function d({ className: e, ...r }) {
-  return /* @__PURE__ */ a.jsx(
+  return /* @__PURE__ */ a(
     t.PanelGroup,
     {
       "data-slot": "resizable-panel-group",
@@ -13,14 +13,14 @@ function d({ className: e, ...r }) {
   );
 }
 function f({ ...e }) {
-  return /* @__PURE__ */ a.jsx(t.Panel, { "data-slot": "resizable-panel", ...e });
+  return /* @__PURE__ */ a(t.Panel, { "data-slot": "resizable-panel", ...e });
 }
 function p({
   withHandle: e,
   className: r,
   ...l
 }) {
-  return /* @__PURE__ */ a.jsx(
+  return /* @__PURE__ */ a(
     t.PanelResizeHandle,
     {
       "data-slot": "resizable-handle",
@@ -29,7 +29,7 @@ function p({
         r
       ),
       ...l,
-      children: e && /* @__PURE__ */ a.jsx("div", { className: "bg-border z-10 flex h-4 w-3 items-center justify-center rounded-xs border", children: /* @__PURE__ */ a.jsx(n, { className: "size-2.5" }) })
+      children: e && /* @__PURE__ */ a("div", { className: "bg-border z-10 flex h-4 w-3 items-center justify-center rounded-xs border", children: /* @__PURE__ */ a(n, { className: "size-2.5" }) })
     }
   );
 }

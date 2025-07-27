@@ -29,11 +29,20 @@ export default defineConfig({
 			formats: ['es', 'cjs'],
 			fileName: (ext) => `index.${ext}.js`,
 		},
+
 		rollupOptions: {
-			external: [...Object.keys(peerDependencies), ...Object.keys(dependencies)],
+			external: Array.from(
+				new Set([
+					'react',
+					/^react\/.*/,
+					'react-dom',
+					/react-dom\/.*/,
+					...Object.keys(peerDependencies),
+					...Object.keys(dependencies),
+				]),
+			),
 			output: { preserveModules: true, exports: 'named' },
 		},
-
 		target: 'esnext',
 		sourcemap: false,
 	},

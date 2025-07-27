@@ -1,4 +1,6 @@
-import e from "./index.es62.js";
+import t from "./index.es63.js";
+import { DebouncedInput as r } from "./index.es63.js";
 export {
-  e as default
+  r as DebouncedInput,
+  t as default
 };

@@ -1,12 +1,12 @@
-import { j as s } from "./index.es70.js";
-import * as a from "@radix-ui/react-tabs";
-import { cn as i } from "./index.es71.js";
+import { jsx as a } from "react/jsx-runtime";
+import * as s from "@radix-ui/react-tabs";
+import { cn as i } from "./index.es70.js";
 function o({ className: t, ...e }) {
-  return /* @__PURE__ */ s.jsx(a.Root, { "data-slot": "tabs", className: i("flex flex-col gap-2", t), ...e });
+  return /* @__PURE__ */ a(s.Root, { "data-slot": "tabs", className: i("flex flex-col gap-2", t), ...e });
 }
 function d({ className: t, ...e }) {
-  return /* @__PURE__ */ s.jsx(
-    a.List,
+  return /* @__PURE__ */ a(
+    s.List,
     {
       "data-slot": "tabs-list",
       className: i(
@@ -18,8 +18,8 @@ function d({ className: t, ...e }) {
   );
 }
 function c({ className: t, ...e }) {
-  return /* @__PURE__ */ s.jsx(
-    a.Trigger,
+  return /* @__PURE__ */ a(
+    s.Trigger,
     {
       "data-slot": "tabs-trigger",
       className: i(
@@ -31,7 +31,7 @@ function c({ className: t, ...e }) {
   );
 }
 function l({ className: t, ...e }) {
-  return /* @__PURE__ */ s.jsx(a.Content, { "data-slot": "tabs-content", className: i("flex-1 outline-none", t), ...e });
+  return /* @__PURE__ */ a(s.Content, { "data-slot": "tabs-content", className: i("flex-1 outline-none", t), ...e });
 }
 export {
   o as Tabs,

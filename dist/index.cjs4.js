@@ -1,1 +1,1 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./index.cjs70.js"),u=require("next-themes");function i({children:e,...r}){return t.jsxRuntimeExports.jsx(u.ThemeProvider,{...r,children:e})}exports.default=i;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("react/jsx-runtime"),u=require("next-themes");function i({children:e,...r}){return t.jsx(u.ThemeProvider,{...r,children:e})}exports.default=i;

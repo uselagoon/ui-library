@@ -1,11 +1,11 @@
-import { j as o } from "./index.es70.js";
+import { jsx as o } from "react/jsx-runtime";
 import * as r from "@radix-ui/react-hover-card";
-import { cn as i } from "./index.es71.js";
+import { cn as i } from "./index.es70.js";
 function m({ ...t }) {
-  return /* @__PURE__ */ o.jsx(r.Root, { "data-slot": "hover-card", ...t });
+  return /* @__PURE__ */ o(r.Root, { "data-slot": "hover-card", ...t });
 }
 function l({ ...t }) {
-  return /* @__PURE__ */ o.jsx(r.Trigger, { "data-slot": "hover-card-trigger", ...t });
+  return /* @__PURE__ */ o(r.Trigger, { "data-slot": "hover-card-trigger", ...t });
 }
 function c({
   className: t,
@@ -13,7 +13,7 @@ function c({
   sideOffset: a = 4,
   ...d
 }) {
-  return /* @__PURE__ */ o.jsx(r.Portal, { "data-slot": "hover-card-portal", children: /* @__PURE__ */ o.jsx(
+  return /* @__PURE__ */ o(r.Portal, { "data-slot": "hover-card-portal", children: /* @__PURE__ */ o(
     r.Content,
     {
       "data-slot": "hover-card-content",

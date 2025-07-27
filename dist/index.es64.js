@@ -1,11 +1,11 @@
-import { j as o } from "./index.es70.js";
-import { Accordion as i, AccordionItem as d, AccordionTrigger as e, AccordionContent as t } from "./index.es6.js";
-function j({ items: n, ...c }) {
-  return /* @__PURE__ */ o.jsx(i, { ...c, children: n.map((r) => /* @__PURE__ */ o.jsxs(d, { value: r.id, children: [
-    /* @__PURE__ */ o.jsx(e, { children: r.trigger }),
-    /* @__PURE__ */ o.jsx(t, { children: r.content })
+import { jsx as o, jsxs as i } from "react/jsx-runtime";
+import { Accordion as d, AccordionItem as e, AccordionTrigger as t, AccordionContent as l } from "./index.es6.js";
+function f({ items: c, ...n }) {
+  return /* @__PURE__ */ o(d, { ...n, children: c.map((r) => /* @__PURE__ */ i(e, { value: r.id, children: [
+    /* @__PURE__ */ o(t, { children: r.trigger }),
+    /* @__PURE__ */ o(l, { children: r.content })
   ] }, r.id)) });
 }
 export {
-  j as default
+  f as default
 };

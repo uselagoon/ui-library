@@ -1,8 +1,14 @@
-import { clsx as o } from "clsx";
-import { twMerge as t } from "tailwind-merge";
-function n(...r) {
-  return t(o(r));
+import * as o from "react";
+const e = 768;
+function r() {
+  const [s, n] = o.useState(void 0);
+  return o.useEffect(() => {
+    const t = window.matchMedia(`(max-width: ${e - 1}px)`), i = () => {
+      n(window.innerWidth < e);
+    };
+    return t.addEventListener("change", i), n(window.innerWidth < e), () => t.removeEventListener("change", i);
+  }, []), !!s;
 }
 export {
-  n as cn
+  r as useIsMobile
 };
