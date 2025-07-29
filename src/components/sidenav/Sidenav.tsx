@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import {
 	Sidebar,
 	SidebarContent,
@@ -25,8 +25,7 @@ type SidebarProps = React.ComponentProps<typeof Sidebar>;
 export type UserInfo = {
 	email: string;
 	image?: React.ImgHTMLAttributes<HTMLImageElement>['src'];
-	firstName?: string;
-	lastName?: string;
+	name?: string;
 };
 
 export type AppInfo = {
@@ -93,9 +92,13 @@ const getSidenavItems = (kcUrl: string, signOutFn: () => Promise<void>) => [
 export default function Sidenav({ userInfo, appInfo, currentPath, signOutFn, ...props }: SidenavProps) {
 	const Link = useLinkComponent();
 
-	const { firstName, lastName, image, email } = userInfo;
+	const { name, image, email } = userInfo;
 
 	const userImageExists = !!image;
+
+	const nameParts = name?.split(' ') ?? [];
+	const firstName = nameParts[0] ?? undefined;
+	const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : ' ';
 
 	const firstLastProvided = !!(firstName && lastName);
 

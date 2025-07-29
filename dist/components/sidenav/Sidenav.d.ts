@@ -4,8 +4,7 @@ type SidebarProps = React.ComponentProps<typeof Sidebar>;
 export type UserInfo = {
     email: string;
     image?: React.ImgHTMLAttributes<HTMLImageElement>['src'];
-    firstName?: string;
-    lastName?: string;
+    name?: string;
 };
 export type AppInfo = {
     name: string;

@@ -1,21 +1,21 @@
 import { jsxs as t, jsx as e } from "react/jsx-runtime";
-import { useMemo as v } from "react";
-import { Sidebar as M, SidebarHeader as P, SidebarMenu as f, SidebarMenuItem as m, SidebarContent as z, SidebarGroup as L, SidebarGroupLabel as $, SidebarGroupContent as D, SidebarMenuButton as A, SidebarFooter as G } from "./index.es41.js";
-import { SquareTerminal as T, BriefcaseBusiness as _, ServerCog as F, KeyRound as H, UserRoundCog as K } from "lucide-react";
-import O from "./index.es90.js";
-import { genAvatarBackground as S, getCurrentPath as R } from "./index.es91.js";
-import { Avatar as q, AvatarImage as E } from "./index.es10.js";
-import { AvatarFallback as J } from "@radix-ui/react-avatar";
-import Q from "./index.es92.js";
-import { useLinkComponent as V } from "./index.es5.js";
-const W = (s, a) => [
+import { useMemo as f } from "react";
+import { Sidebar as z, SidebarHeader as L, SidebarMenu as A, SidebarMenuItem as u, SidebarContent as $, SidebarGroup as D, SidebarGroupLabel as G, SidebarGroupContent as T, SidebarMenuButton as S, SidebarFooter as _ } from "./index.es41.js";
+import { SquareTerminal as F, BriefcaseBusiness as H, ServerCog as K, KeyRound as O, UserRoundCog as R } from "lucide-react";
+import q from "./index.es90.js";
+import { genAvatarBackground as C, getCurrentPath as E } from "./index.es91.js";
+import { Avatar as J, AvatarImage as Q } from "./index.es10.js";
+import { AvatarFallback as V } from "@radix-ui/react-avatar";
+import W from "./index.es92.js";
+import { useLinkComponent as X } from "./index.es5.js";
+const Y = (s, a) => [
   {
     section: "Projects",
     sectionItems: [
       {
         title: "All Projects",
         url: "/projects",
-        icon: T
+        icon: F
       }
     ]
   },
@@ -25,12 +25,12 @@ const W = (s, a) => [
       {
         title: "All Organizations",
         url: "/organizations",
-        icon: _
+        icon: H
       },
       {
         title: "All Deployments",
         url: "/deployments",
-        icon: F
+        icon: K
       }
     ]
   },
@@ -40,7 +40,7 @@ const W = (s, a) => [
       {
         title: "SSH Keys",
         url: "/settings",
-        icon: H
+        icon: O
       },
       {
         title: "My Account",
@@ -48,31 +48,31 @@ const W = (s, a) => [
         target: "blank",
         onClick: () => {
         },
-        icon: K
+        icon: R
       }
     ]
   }
 ];
-function oe({ userInfo: s, appInfo: a, currentPath: u, signOutFn: h, ...C }) {
-  const k = V(), { firstName: i, lastName: n, image: p, email: o } = s, x = !!p, l = !!(i && n), g = l ? S(i.charAt(0), n.charAt(0)) : S(o.charAt(0), o.charAt(1)), N = l ? i.charAt(0).toUpperCase() + n.charAt(0).toUpperCase() : o.charAt(0).toUpperCase(), y = x ? /* @__PURE__ */ t(q, { children: [
-    /* @__PURE__ */ e(E, { src: p, alt: "user_avatar" }),
-    /* @__PURE__ */ e(J, { children: "Avatar" })
-  ] }) : /* @__PURE__ */ e(Q, { bgColor: g.bgColor, textColor: g.textColor, children: N }), U = l ? /* @__PURE__ */ e("span", { className: "user-name", children: `${i} ${n}` }) : /* @__PURE__ */ e("span", { className: "user-name", children: o }), c = v(() => W(a.kcUrl), [a.kcUrl, h]), B = v(() => R(c, u || ""), [c, u]), j = { ...a, signOutFn: h };
-  return /* @__PURE__ */ t(M, { variant: "sidebar", collapsible: "icon", ...C, className: "w-[clamp(0px,20vw,256px)] transition-all", children: [
-    /* @__PURE__ */ e(P, { children: /* @__PURE__ */ e(f, { children: /* @__PURE__ */ e(m, { children: /* @__PURE__ */ e(O, { ...j }) }) }) }),
-    /* @__PURE__ */ e(z, { children: c.map((d) => /* @__PURE__ */ t(L, { children: [
-      /* @__PURE__ */ e($, { children: d.section }),
-      /* @__PURE__ */ e(D, { className: "list-none", children: d.sectionItems.map((r) => {
-        const w = r.target === "blank", b = r?.onClick;
-        return /* @__PURE__ */ e(m, { children: /* @__PURE__ */ e(A, { asChild: !0, isActive: B === r.url, children: /* @__PURE__ */ t(
-          k,
+function le({ userInfo: s, appInfo: a, currentPath: h, signOutFn: p, ...k }) {
+  const x = X(), { name: N, image: g, email: n } = s, y = !!g, l = N?.split(" ") ?? [], i = l[0] ?? void 0, o = l.length > 1 ? l.slice(1).join(" ") : " ", c = !!(i && o), b = c ? C(i.charAt(0), o.charAt(0)) : C(n.charAt(0), n.charAt(1)), U = c ? i.charAt(0).toUpperCase() + o.charAt(0).toUpperCase() : n.charAt(0).toUpperCase(), j = y ? /* @__PURE__ */ t(J, { children: [
+    /* @__PURE__ */ e(Q, { src: g, alt: "user_avatar" }),
+    /* @__PURE__ */ e(V, { children: "Avatar" })
+  ] }) : /* @__PURE__ */ e(W, { bgColor: b.bgColor, textColor: b.textColor, children: U }), B = c ? /* @__PURE__ */ e("span", { className: "user-name", children: `${i} ${o}` }) : /* @__PURE__ */ e("span", { className: "user-name", children: n }), d = f(() => Y(a.kcUrl), [a.kcUrl, p]), P = f(() => E(d, h || ""), [d, h]), w = { ...a, signOutFn: p };
+  return /* @__PURE__ */ t(z, { variant: "sidebar", collapsible: "icon", ...k, className: "w-[clamp(0px,20vw,256px)] transition-all", children: [
+    /* @__PURE__ */ e(L, { children: /* @__PURE__ */ e(A, { children: /* @__PURE__ */ e(u, { children: /* @__PURE__ */ e(q, { ...w }) }) }) }),
+    /* @__PURE__ */ e($, { children: d.map((m) => /* @__PURE__ */ t(D, { children: [
+      /* @__PURE__ */ e(G, { children: m.section }),
+      /* @__PURE__ */ e(T, { className: "list-none", children: m.sectionItems.map((r) => {
+        const M = r.target === "blank", v = r?.onClick;
+        return /* @__PURE__ */ e(u, { children: /* @__PURE__ */ e(S, { asChild: !0, isActive: P === r.url, children: /* @__PURE__ */ t(
+          x,
           {
             "data-cy": `nav-${r.url.slice(1)}`,
             onClick: async () => {
-              b && await b();
+              v && await v();
             },
             href: r.url,
-            target: w ? "_blank" : "_self",
+            target: M ? "_blank" : "_self",
             children: [
               /* @__PURE__ */ e(r.icon, {}),
               /* @__PURE__ */ e("span", { children: r.title })
@@ -80,13 +80,13 @@ function oe({ userInfo: s, appInfo: a, currentPath: u, signOutFn: h, ...C }) {
           }
         ) }) }, r.title);
       }) })
-    ] }, d.section)) }),
-    /* @__PURE__ */ e(G, { children: /* @__PURE__ */ e(f, { children: /* @__PURE__ */ e(m, { children: /* @__PURE__ */ t(A, { size: "lg", children: [
-      y,
-      /* @__PURE__ */ e("div", { className: "grid flex-1 text-left text-sm leading-tight", children: /* @__PURE__ */ e("span", { className: "truncate font-light", children: U }) })
+    ] }, m.section)) }),
+    /* @__PURE__ */ e(_, { children: /* @__PURE__ */ e(A, { children: /* @__PURE__ */ e(u, { children: /* @__PURE__ */ t(S, { size: "lg", children: [
+      j,
+      /* @__PURE__ */ e("div", { className: "grid flex-1 text-left text-sm leading-tight", children: /* @__PURE__ */ e("span", { className: "truncate font-light", children: B }) })
     ] }) }) }) })
   ] });
 }
 export {
-  oe as default
+  le as default
 };
