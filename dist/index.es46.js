@@ -9,7 +9,7 @@ function s({ className: t, ...e }) {
 function d({ className: t, ...e }) {
   return /* @__PURE__ */ a("tbody", { "data-slot": "table-body", className: o("[&_tr:last-child]:border-0", t), ...e });
 }
-function c({ className: t, ...e }) {
+function b({ className: t, ...e }) {
   return /* @__PURE__ */ a(
     "tfoot",
     {
@@ -19,7 +19,7 @@ function c({ className: t, ...e }) {
     }
   );
 }
-function b({ className: t, ...e }) {
+function c({ className: t, ...e }) {
   return /* @__PURE__ */ a(
     "tr",
     {
@@ -47,10 +47,7 @@ function m({ className: t, ...e }) {
     "td",
     {
       "data-slot": "table-cell",
-      className: o(
-        "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
-        t
-      ),
+      className: o("p-2 align-middle [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]", t),
       ...e
     }
   );
@@ -63,8 +60,8 @@ export {
   d as TableBody,
   u as TableCaption,
   m as TableCell,
-  c as TableFooter,
+  b as TableFooter,
   i as TableHead,
   s as TableHeader,
-  b as TableRow
+  c as TableRow
 };

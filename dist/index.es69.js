@@ -19,10 +19,10 @@ function ie({
   initialSearch: D,
   initialPageSize: f
 }) {
-  const [p, F] = r.useState([]), [T, V] = r.useState([]), [v, I] = r.useState({}), [u, H] = r.useState(D ?? ""), j = (e, t, l) => a?.length === 0 ? String(e.getValue(t)).toLowerCase().includes(l.toLowerCase()) : a?.some((i) => {
+  const [p, F] = r.useState([]), [T, V] = r.useState([]), [v, I] = r.useState({}), [u, k] = r.useState(D ?? ""), H = (e, t, l) => a?.length === 0 ? String(e.getValue(t)).toLowerCase().includes(l.toLowerCase()) : a?.some((i) => {
     const c = e.getValue(i);
     return String(c).toLowerCase().includes(l.toLowerCase());
-  }), k = (e) => {
+  }), j = (e) => {
     const t = e.getValue(), l = N(e.column.columnDef.cell, e.getContext());
     return t && u && (!a?.length || a?.includes(e.column.id)) && typeof e.column.columnDef.cell == "function" ? U(
       e?.column?.columnDef?.cell(e.getContext()),
@@ -45,7 +45,7 @@ function ie({
     onColumnFiltersChange: V,
     onSortingChange: F,
     onColumnVisibilityChange: I,
-    ...a ? { globalFilterFn: j } : {},
+    ...a ? { globalFilterFn: H } : {},
     state: {
       sorting: p,
       columnFilters: T,
@@ -66,7 +66,7 @@ function ie({
           placeholder: P ?? "Start typing to search",
           value: u ?? "",
           onChange: (e) => {
-            H(e), x && x(e);
+            k(e), x && x(e);
           },
           className: "max-w-sm"
         }
@@ -94,8 +94,11 @@ function ie({
             style: {
               width: c
             },
-            className: M("transition-colors py-6", l && "bg-gray-100 dark:bg-gray-700"),
-            children: /* @__PURE__ */ n("div", { className: "overflow-hidden text-ellipsis whitespace-nowrap", children: k(t) })
+            className: M(
+              "transition-colors py-6 text-ellipsis",
+              l && "bg-gray-100 dark:bg-gray-700"
+            ),
+            children: /* @__PURE__ */ n("div", { className: "line-clamp-3 break-words leading-snug", children: j(t) })
           },
           t.id
         );

@@ -164,6 +164,7 @@ const tableColumns = [
 	{
 		id: 'something_else',
 		header: 'Extra',
+		width: '30%',
 		// used for searching without accessorKey
 		accessorFn: (row) => row.extraInfo?.name ?? '',
 		cell: ({ row }) => {

@@ -204,9 +204,12 @@ export default function DataTable<TData, TValue>({
 														width: tdWidth,
 													}}
 													key={visibleCell.id}
-													className={cn('transition-colors py-6', isSorted && 'bg-gray-100 dark:bg-gray-700')}
+													className={cn(
+														'transition-colors py-6 text-ellipsis',
+														isSorted && 'bg-gray-100 dark:bg-gray-700',
+													)}
 												>
-													<div className="overflow-hidden text-ellipsis whitespace-nowrap">
+													<div className="line-clamp-3 break-words leading-snug">
 														{renderCellWithHighlight(visibleCell)}
 													</div>
 												</TableCell>
