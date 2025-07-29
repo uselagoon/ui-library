@@ -1,130 +1,134 @@
-import { jsx as l, jsxs as r } from "react/jsx-runtime";
-import s, { useEffect as b } from "react";
-import { Button as C } from "./index.es13.js";
-import { useReactTable as z, getSortedRowModel as B, getFilteredRowModel as G, getPaginationRowModel as _, getCoreRowModel as $, flexRender as S } from "@tanstack/react-table";
-import { Table as A, TableHeader as W, TableRow as f, TableHead as q, TableBody as E, TableCell as N } from "./index.es46.js";
-import { DebouncedInput as J } from "./index.es63.js";
-import { highlightTextInElement as K } from "./index.es93.js";
-import { cn as R } from "./index.es70.js";
-import { l as O } from "./index.es94.js";
-import { Skeleton as Q } from "./index.es42.js";
-function re({
-  columns: a,
-  data: m,
-  searchableColumns: i,
-  loading: d,
-  renderFilters: p,
-  disableExtra: c,
-  onSearch: w,
-  initialSearch: M,
-  initialPageSize: u
+import { jsx as n, jsxs as s } from "react/jsx-runtime";
+import r, { useEffect as C } from "react";
+import { Button as S } from "./index.es13.js";
+import { useReactTable as L, getSortedRowModel as B, getFilteredRowModel as G, getPaginationRowModel as _, getCoreRowModel as A, flexRender as N } from "@tanstack/react-table";
+import { Table as q, TableHeader as J, TableRow as w, TableHead as K, TableBody as O, TableCell as R } from "./index.es46.js";
+import { DebouncedInput as Q } from "./index.es63.js";
+import { highlightTextInElement as U } from "./index.es93.js";
+import { cn as M } from "./index.es70.js";
+import { Skeleton as X } from "./index.es42.js";
+function ie({
+  columns: d,
+  data: h,
+  searchableColumns: a,
+  searchPlaceholder: P,
+  onSearch: x,
+  loading: m,
+  renderFilters: y,
+  disableExtra: g,
+  initialSearch: D,
+  initialPageSize: f
 }) {
-  const [h, P] = s.useState([]), [F, T] = s.useState([]), [V, v] = s.useState({}), [g, D] = s.useState(M ?? ""), j = (e, o, n) => i?.length === 0 ? String(e.getValue(o)).toLowerCase().includes(n.toLowerCase()) : i?.some((y) => {
-    const L = e.getValue(y);
-    return String(L).toLowerCase().includes(n.toLowerCase());
-  }), H = (e) => {
-    const o = e.getValue(), n = S(e.column.columnDef.cell, e.getContext());
-    return o && g && (!i?.length || i?.includes(e.column.id)) && typeof e.column.columnDef.cell == "function" ? K(
+  const [p, F] = r.useState([]), [T, V] = r.useState([]), [v, I] = r.useState({}), [u, H] = r.useState(D ?? ""), j = (e, t, l) => a?.length === 0 ? String(e.getValue(t)).toLowerCase().includes(l.toLowerCase()) : a?.some((i) => {
+    const c = e.getValue(i);
+    return String(c).toLowerCase().includes(l.toLowerCase());
+  }), k = (e) => {
+    const t = e.getValue(), l = N(e.column.columnDef.cell, e.getContext());
+    return t && u && (!a?.length || a?.includes(e.column.id)) && typeof e.column.columnDef.cell == "function" ? U(
       e?.column?.columnDef?.cell(e.getContext()),
-      g,
-      o
-    ) : n;
-  }, k = s.useMemo(() => d ? Array(10).fill({}) : m, [d, m]), I = s.useMemo(
-    () => d ? a.map((e) => ({
+      u,
+      t
+    ) : l;
+  }, W = r.useMemo(() => m ? Array(10).fill({}) : h, [m, h]), z = r.useMemo(
+    () => m ? d.map((e) => ({
       ...e,
-      cell: () => /* @__PURE__ */ l(Q, { className: "h-6 w-50 rounded-sm" })
-    })) : a,
-    [d, a]
-  ), t = z({
-    data: k,
-    columns: I,
-    getCoreRowModel: $(),
+      cell: () => /* @__PURE__ */ n(X, { className: "h-6 w-50 rounded-sm" })
+    })) : d,
+    [m, d]
+  ), o = L({
+    data: W,
+    columns: z,
+    getCoreRowModel: A(),
     getPaginationRowModel: _(),
     getFilteredRowModel: G(),
     getSortedRowModel: B(),
-    onColumnFiltersChange: T,
-    onSortingChange: P,
-    onColumnVisibilityChange: v,
-    ...i ? { globalFilterFn: j } : {},
+    onColumnFiltersChange: V,
+    onSortingChange: F,
+    onColumnVisibilityChange: I,
+    ...a ? { globalFilterFn: j } : {},
     state: {
-      sorting: h,
-      columnFilters: F,
-      columnVisibility: V,
-      globalFilter: g
+      sorting: p,
+      columnFilters: T,
+      columnVisibility: v,
+      globalFilter: u
     }
-  }), x = h.length > 0 ? h[0].id : null;
-  return b(() => {
-    c && t.setPageSize(m.length);
-  }, [c]), b(() => {
-    u && t.setPageSize(u);
-  }, [u]), /* @__PURE__ */ r("div", { className: "w-[100%] mx-auto", children: [
-    c ? null : /* @__PURE__ */ r("div", { className: "flex items-end justify-between py-4", children: [
-      /* @__PURE__ */ l(
-        J,
+  }), b = p.length > 0 ? p[0].id : null;
+  return C(() => {
+    g && o.setPageSize(h.length);
+  }, [g]), C(() => {
+    f && o.setPageSize(f);
+  }, [f]), /* @__PURE__ */ s("div", { className: "w-[100%] mx-auto", children: [
+    g ? null : /* @__PURE__ */ s("div", { className: "flex items-end justify-between py-4", children: [
+      /* @__PURE__ */ n(
+        Q,
         {
           label: "",
-          placeholder: `Search ${i?.length ? `by ${i.map((e) => O.capitalize(e)).join(",")}` : "all columns"}...`,
-          value: g ?? "",
+          placeholder: P ?? "Start typing to search",
+          value: u ?? "",
           onChange: (e) => {
-            D(e), w && w(e);
+            H(e), x && x(e);
           },
           className: "max-w-sm"
         }
       ),
-      p && p(t)
+      y && y(o)
     ] }),
-    /* @__PURE__ */ l("div", { className: "rounded-md border", children: /* @__PURE__ */ r(A, { children: [
-      /* @__PURE__ */ l(W, { children: t.getHeaderGroups().map((e) => /* @__PURE__ */ l(f, { className: "py-6", children: e.headers.map((o) => {
-        const n = o.column.id === x;
-        return /* @__PURE__ */ l(
-          q,
+    /* @__PURE__ */ n("div", { className: "rounded-md border", children: /* @__PURE__ */ s(q, { className: "table-fixed", children: [
+      /* @__PURE__ */ n(J, { children: o.getHeaderGroups().map((e) => /* @__PURE__ */ n(w, { className: "py-6", children: e.headers.map((t) => {
+        const l = t.column.id === b, i = t.column.getSize(), c = t.column.columnDef?.width || i;
+        return /* @__PURE__ */ n(
+          K,
           {
-            className: R("transition-colors py-1", n && "bg-gray-100 dark:bg-gray-700"),
-            children: o.isPlaceholder ? null : S(o.column.columnDef.header, o.getContext())
+            className: M("transition-colors py-1", l && "bg-gray-100 dark:bg-gray-700"),
+            style: { width: c },
+            children: t.isPlaceholder ? null : N(t.column.columnDef.header, t.getContext())
           },
-          o.id
+          t.id
         );
       }) }, e.id)) }),
-      /* @__PURE__ */ l(E, { children: t.getRowModel().rows?.length ? t.getRowModel().rows.map((e) => /* @__PURE__ */ l(f, { className: "py-6", "data-state": e.getIsSelected() && "selected", children: e.getVisibleCells().map((o) => {
-        const n = o.column.id === x;
-        return /* @__PURE__ */ l(
-          N,
+      /* @__PURE__ */ n(O, { children: o.getRowModel().rows?.length ? o.getRowModel().rows.map((e) => /* @__PURE__ */ n(w, { className: "py-6", "data-state": e.getIsSelected() && "selected", children: e.getVisibleCells().map((t) => {
+        const l = t.column.id === b, i = t.column.getSize(), c = t.column.columnDef?.width || i;
+        return /* @__PURE__ */ n(
+          R,
           {
-            className: R("transition-colors py-6", n && "bg-gray-100 dark:bg-gray-700"),
-            children: H(o)
+            style: {
+              width: c
+            },
+            className: M("transition-colors py-6", l && "bg-gray-100 dark:bg-gray-700"),
+            children: /* @__PURE__ */ n("div", { className: "overflow-hidden text-ellipsis whitespace-nowrap", children: k(t) })
           },
-          o.id
+          t.id
         );
-      }) }, e.id)) : /* @__PURE__ */ l(f, { children: /* @__PURE__ */ l(N, { colSpan: a.length, className: "h-28 text-center", children: "Nothing here." }) }) })
+      }) }, e.id)) : /* @__PURE__ */ n(w, { children: /* @__PURE__ */ n(R, { colSpan: d.length, className: "h-48 text-center", children: "No entries" }) }) })
     ] }) }),
-    c ? null : /* @__PURE__ */ r("div", { className: "flex items-center justify-end space-x-2 py-6", children: [
-      /* @__PURE__ */ r("div", { className: "text-muted-foreground flex-1 text-sm", children: [
+    g ? null : /* @__PURE__ */ s("div", { className: "flex items-center justify-end space-x-2 py-6", children: [
+      /* @__PURE__ */ s("div", { className: "text-muted-foreground flex-1 text-sm", children: [
         "Showing ",
-        t.getRowModel().rows.length,
+        o.getRowModel().rows.length,
         " of ",
-        t.getPrePaginationRowModel().rows.length,
+        o.getPrePaginationRowModel().rows.length,
         " entries"
       ] }),
-      /* @__PURE__ */ r("div", { className: "flex w-[100px] items-center justify-center text-sm font-medium", children: [
+      /* @__PURE__ */ s("div", { className: "flex w-[100px] items-center justify-center text-sm font-medium", children: [
         "Page ",
-        t.getState().pagination.pageIndex + 1,
+        o.getState().pagination.pageIndex + 1,
         " of ",
-        t.getPageCount()
+        o.getPageCount()
       ] }),
-      /* @__PURE__ */ l(
-        C,
+      /* @__PURE__ */ n(
+        S,
         {
           variant: "outline",
           size: "sm",
-          onClick: () => t.previousPage(),
-          disabled: !t.getCanPreviousPage(),
+          onClick: () => o.previousPage(),
+          disabled: !o.getCanPreviousPage(),
           children: "Previous"
         }
       ),
-      /* @__PURE__ */ l(C, { variant: "outline", size: "sm", onClick: () => t.nextPage(), disabled: !t.getCanNextPage(), children: "Next" })
+      /* @__PURE__ */ n(S, { variant: "outline", size: "sm", onClick: () => o.nextPage(), disabled: !o.getCanNextPage(), children: "Next" })
     ] })
   ] });
 }
 export {
-  re as default
+  ie as default
 };

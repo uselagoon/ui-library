@@ -97,6 +97,9 @@ const tableData = [
 		amount: 100000,
 		status: 'completed',
 		email: 'someoneelse@email.com',
+		extraInfo: {
+			name: 'extra information',
+		},
 	},
 	{
 		id: 3,
@@ -112,8 +115,8 @@ const tableData = [
 	},
 	{
 		id: 3,
-		amount: 100000,
-		status: 'completed',
+		amount: 500,
+		status: 'someverybigstatusthatisstillunclear',
 		email: 'someoneelse@email.com',
 	},
 ];
@@ -121,6 +124,7 @@ const tableData = [
 const tableColumns = [
 	{
 		accessorKey: 'status',
+		width: '20%',
 		header: ({ column }) => {
 			const sortDirection = column.getIsSorted();
 			return (
@@ -141,10 +145,12 @@ const tableColumns = [
 	{
 		accessorKey: 'email',
 		header: 'Email',
+		width: '30%',
 	},
 	{
 		accessorKey: 'amount',
 		header: 'Amount',
+		width: '30%',
 		cell: ({ row }) => {
 			const amount = parseFloat(row.getValue('amount'));
 			const formatted = new Intl.NumberFormat('en-US', {
@@ -156,7 +162,25 @@ const tableColumns = [
 		},
 	},
 	{
+		id: 'something_else',
+		header: 'Extra',
+		// used for searching without accessorKey
+		accessorFn: (row) => row.extraInfo?.name ?? '',
+		cell: ({ row }) => {
+			const entry = row.original;
+			return (
+				<div>
+					<a className="hover:text-blue-800 transition-colors" href={``}>
+						{entry.extraInfo?.name}
+					</a>
+				</div>
+			);
+		},
+	},
+	{
 		id: 'actions',
+		header: 'Actions',
+		width: '20%',
 		cell: ({ row }) => {
 			const payment = row.original;
 
@@ -189,6 +213,8 @@ export const Default: Story = {
 		data: tableData,
 		// disableExtra: true,
 		// searchableColumns: ['email', 'status'],
+		searchableColumns: ['something_else'],
+		// searchPlaceholder: 'Enter something to search',
 		// initialSearch: ''
 		// loading: true,
 		renderFilters: (table) => {

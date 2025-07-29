@@ -29,7 +29,7 @@ const Y = (s, a) => [
       },
       {
         title: "All Deployments",
-        url: "/deployments",
+        url: "/alldeployments",
         icon: K
       }
     ]

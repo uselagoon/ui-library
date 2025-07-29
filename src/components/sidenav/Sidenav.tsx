@@ -65,7 +65,7 @@ const getSidenavItems = (kcUrl: string, signOutFn: () => Promise<void>) => [
 
 			{
 				title: 'All Deployments',
-				url: '/deployments',
+				url: '/alldeployments',
 				icon: ServerCog,
 			},
 		],

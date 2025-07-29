@@ -21,15 +21,19 @@ import { DebouncedInput } from '../Input';
 
 import { highlightTextInElement } from './HighlightText';
 import { cn } from '@/lib/utils';
-import { capitalize } from 'lodash';
 import { Skeleton } from '../ui/skeleton';
 
+type LibColumnDef<TData, TValue> = ColumnDef<TData, TValue> & {
+	width?: string;
+};
 export interface DataTableProps<TData, TValue> {
-	columns: ColumnDef<TData, TValue>[];
+	columns: LibColumnDef<TData, TValue>[];
 	data: TData[];
+	/** Either accessorKeys, or ids from the column definition */
 	searchableColumns?: string[];
+	searchPlaceholder?: string;
 	loading?: boolean;
-	/** pass in custom filters - datatime/pagination/status dropdowns etc */
+	/** Pass in custom filters - datatime/pagination/status dropdowns etc */
 	renderFilters?: (table: TableType<TData>) => ReactNode;
 	/** Do not render the top filter section, nor the bottom pagination section */
 	disableExtra?: boolean;
@@ -42,10 +46,11 @@ export default function DataTable<TData, TValue>({
 	columns,
 	data,
 	searchableColumns,
+	searchPlaceholder,
+	onSearch,
 	loading,
 	renderFilters,
 	disableExtra,
-	onSearch,
 	initialSearch,
 	initialPageSize,
 }: DataTableProps<TData, TValue>) {
@@ -143,7 +148,7 @@ export default function DataTable<TData, TValue>({
 				<div className="flex items-end justify-between py-4">
 					<DebouncedInput
 						label=""
-						placeholder={`Search ${searchableColumns?.length ? `by ${searchableColumns.map((col) => capitalize(col)).join(',')}` : 'all columns'}...`}
+						placeholder={searchPlaceholder ?? 'Start typing to search'}
 						value={globalFilter ?? ''}
 						onChange={(value) => {
 							setGlobalFilter(value);
@@ -157,17 +162,21 @@ export default function DataTable<TData, TValue>({
 			)}
 
 			<div className="rounded-md border">
-				<Table>
+				<Table className="table-fixed">
 					<TableHeader>
 						{table.getHeaderGroups().map((headerGroup) => {
 							return (
 								<TableRow key={headerGroup.id} className="py-6">
 									{headerGroup.headers.map((header) => {
 										const isSorted = header.column.id === sortedColumnId;
+										const thInitialWidth = header.column.getSize();
+										const thWidth = (header.column.columnDef as LibColumnDef<TData, TValue>)?.width || thInitialWidth;
+
 										return (
 											<TableHead
 												key={header.id}
 												className={cn('transition-colors py-1', isSorted && 'bg-gray-100 dark:bg-gray-700')}
+												style={{ width: thWidth }}
 											>
 												{header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
 											</TableHead>
@@ -185,12 +194,21 @@ export default function DataTable<TData, TValue>({
 									<TableRow className="py-6" key={row.id} data-state={row.getIsSelected() && 'selected'}>
 										{row.getVisibleCells().map((visibleCell) => {
 											const isSorted = visibleCell.column.id === sortedColumnId;
+											const tdInitialWidth = visibleCell.column.getSize();
+											const tdWidth =
+												(visibleCell.column.columnDef as LibColumnDef<TData, TValue>)?.width || tdInitialWidth;
+
 											return (
 												<TableCell
+													style={{
+														width: tdWidth,
+													}}
 													key={visibleCell.id}
 													className={cn('transition-colors py-6', isSorted && 'bg-gray-100 dark:bg-gray-700')}
 												>
-													{renderCellWithHighlight(visibleCell)}
+													<div className="overflow-hidden text-ellipsis whitespace-nowrap">
+														{renderCellWithHighlight(visibleCell)}
+													</div>
 												</TableCell>
 											);
 										})}
@@ -199,8 +217,8 @@ export default function DataTable<TData, TValue>({
 							})
 						) : (
 							<TableRow>
-								<TableCell colSpan={columns.length} className="h-28 text-center">
-									Nothing here.
+								<TableCell colSpan={columns.length} className="h-48 text-center">
+									No entries
 								</TableCell>
 							</TableRow>
 						)}
