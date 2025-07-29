@@ -178,7 +178,11 @@ export default function DataTable<TData, TValue>({
 												className={cn('transition-colors py-1', isSorted && 'bg-gray-100 dark:bg-gray-700')}
 												style={{ width: thWidth }}
 											>
-												{header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+												<div className="line-clamp-2 break-all leading-snug">
+													{header.isPlaceholder
+														? null
+														: flexRender(header.column.columnDef.header, header.getContext())}
+												</div>
 											</TableHead>
 										);
 									})}
@@ -200,9 +204,7 @@ export default function DataTable<TData, TValue>({
 
 											return (
 												<TableCell
-													style={{
-														width: tdWidth,
-													}}
+													style={{ width: tdWidth }}
 													key={visibleCell.id}
 													className={cn(
 														'transition-colors py-6 text-ellipsis',
