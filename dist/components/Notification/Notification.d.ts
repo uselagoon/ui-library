@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 type NotificationProps = {
     title: string;
-    message: string;
+    message: ReactNode;
     cancelText?: string;
     onCancel?: () => void;
     confirmText?: string;

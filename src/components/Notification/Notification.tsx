@@ -9,12 +9,11 @@ import {
 	AlertDialogTitle,
 	AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import { Button } from '@/components/ui/button';
 import { ReactNode } from 'react';
 
 type NotificationProps = {
 	title: string;
-	message: string;
+	message: ReactNode;
 	cancelText?: string;
 	onCancel?: () => void;
 	confirmText?: string;
