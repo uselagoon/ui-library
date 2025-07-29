@@ -23,7 +23,7 @@ import { highlightTextInElement } from './HighlightText';
 import { cn } from '@/lib/utils';
 import { Skeleton } from '../ui/skeleton';
 
-type LibColumnDef<TData, TValue> = ColumnDef<TData, TValue> & {
+type LibColumnDef<TData, TValue = unknown> = ColumnDef<TData, TValue> & {
 	width?: string;
 };
 export interface DataTableProps<TData, TValue> {

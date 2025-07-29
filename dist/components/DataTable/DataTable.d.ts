@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { ColumnDef, Table as TableType } from '@tanstack/react-table';
-type LibColumnDef<TData, TValue> = ColumnDef<TData, TValue> & {
+type LibColumnDef<TData, TValue = unknown> = ColumnDef<TData, TValue> & {
     width?: string;
 };
 export interface DataTableProps<TData, TValue> {
