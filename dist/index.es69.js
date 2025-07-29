@@ -114,7 +114,7 @@ function ie({
         "Page ",
         n.getState().pagination.pageIndex + 1,
         " of ",
-        n.getPageCount()
+        n.getPageCount() || 1
       ] }),
       /* @__PURE__ */ o(
         N,
