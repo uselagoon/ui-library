@@ -19,5 +19,5 @@ export interface DataTableProps<TData, TValue> {
     initialPageSize?: number;
 }
 export default function DataTable<TData, TValue>({ columns, data, searchableColumns, searchPlaceholder, onSearch, loading, renderFilters, disableExtra, initialSearch, initialPageSize, }: DataTableProps<TData, TValue>): import("react/jsx-dev-runtime").JSX.Element;
-export type { ColumnDef as DataTableColumnDef };
+export type { LibColumnDef as DataTableColumnDef };
 //# sourceMappingURL=DataTable.d.ts.map

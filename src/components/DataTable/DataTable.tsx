@@ -253,4 +253,4 @@ export default function DataTable<TData, TValue>({
 	);
 }
 
-export type { ColumnDef as DataTableColumnDef };
+export type { LibColumnDef as DataTableColumnDef };
