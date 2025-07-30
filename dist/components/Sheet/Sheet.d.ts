@@ -3,7 +3,7 @@ import { Sheet } from '../ui/sheet';
 import { SelectProps } from '../Select/Select';
 type SheetProps = React.ComponentProps<typeof Sheet> & {
     sheetTitle?: ReactNode;
-    sheetTrigger?: string;
+    sheetTrigger?: ReactNode;
     sheetDescription?: string;
     sheetFooterButton?: string;
     loading?: boolean;

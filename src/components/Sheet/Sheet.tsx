@@ -19,7 +19,7 @@ import { Loader2 } from 'lucide-react';
 
 type SheetProps = React.ComponentProps<typeof Sheet> & {
 	sheetTitle?: ReactNode;
-	sheetTrigger?: string;
+	sheetTrigger?: ReactNode;
 	sheetDescription?: string;
 	sheetFooterButton?: string;
 	loading?: boolean;
