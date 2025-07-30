@@ -14,16 +14,16 @@ function Y({
   sheetFooterButton: N = "Save changes",
   buttonAction: d = () => {
   },
-  sheetFields: o,
+  sheetFields: c,
   loading: n = !1,
   ...w
 }) {
-  const [c, l] = x(!1), p = q(n), u = g(() => () => {
+  const [i, l] = x(!1), p = q(n), u = g(() => () => {
     const e = {};
-    return o.forEach((t) => {
+    return c.forEach((t) => {
       t.inputDefault !== void 0 && (e[t.id] = t.inputDefault);
     }), e;
-  }, [o]), [s, m] = x(u), b = g(() => o.some((t) => {
+  }, [c]), [s, m] = x(u), b = g(() => c.some((t) => {
     if (t.required)
       switch (t.type ?? "text") {
         case "checkbox":
@@ -40,26 +40,26 @@ function Y({
           return !1;
       }
     return !1;
-  }) || n, [o, s, n]), i = (e, t) => {
+  }) || n, [c, s, n]), o = (e, t) => {
     m((V) => ({
       ...V,
       [e]: t
     }));
-  }, y = (e) => {
-    b || (d && d(e, s), n || setImmediate(() => l(!1)));
+  }, y = async (e) => {
+    b || (d && await d(e, s), n || setImmediate(() => l(!1)));
   };
   return f(() => {
-    c && m(u());
-  }, [c, u]), f(() => {
-    p.current === !0 && n === !1 && c && l(!1), p.current = n;
-  }, [n, c]), /* @__PURE__ */ a(F, { open: c, onOpenChange: l, ...w, children: [
+    i && m(u());
+  }, [i, u]), f(() => {
+    p.current === !0 && n === !1 && i && l(!1), p.current = n;
+  }, [n, i]), /* @__PURE__ */ a(F, { open: i, onOpenChange: l, ...w, children: [
     /* @__PURE__ */ r(I, { asChild: !0, children: /* @__PURE__ */ r(h, { variant: "outline", children: C }) }),
     /* @__PURE__ */ a(O, { children: [
       /* @__PURE__ */ a(D, { children: [
         /* @__PURE__ */ r(L, { children: S }),
         /* @__PURE__ */ r(j, { children: k })
       ] }),
-      o.map((e) => /* @__PURE__ */ r("div", { className: "grid auto-rows-min gap-6 px-4", children: /* @__PURE__ */ a("div", { className: "grid gap-3", children: [
+      c.map((e) => /* @__PURE__ */ r("div", { className: "grid auto-rows-min gap-6 px-4", children: /* @__PURE__ */ a("div", { className: "grid gap-3", children: [
         e.type !== "checkbox" && /* @__PURE__ */ a(v, { htmlFor: e.id, children: [
           e.label,
           e.required && /* @__PURE__ */ r("span", { className: "text-red-500 ml-1", children: "*" })
@@ -74,7 +74,7 @@ function Y({
                     label: e.label,
                     id: e.id,
                     checked: s[e.id] === "true",
-                    onCheckedChange: (t) => i(e.id, t)
+                    onCheckedChange: (t) => o(e.id, t)
                   }
                 ),
                 /* @__PURE__ */ a(v, { htmlFor: e.id, children: [
@@ -89,7 +89,7 @@ function Y({
                   id: e.id,
                   className: "flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
                   value: s[e.id] || "",
-                  onChange: (t) => i(e.id, t.target.value),
+                  onChange: (t) => o(e.id, t.target.value),
                   placeholder: e?.placeholder
                 }
               );
@@ -100,7 +100,7 @@ function Y({
                   placeholder: e?.placeholder || "",
                   options: e?.options || [],
                   defaultValue: s[e.id] || "",
-                  onValueChange: (t) => i(e.id, t.target.value)
+                  onValueChange: (t) => o(e.id, t.target.value)
                 }
               );
             default:
@@ -110,7 +110,7 @@ function Y({
                   type: e?.type || "text",
                   id: e.id,
                   value: s[e.id] || "",
-                  onChange: (t) => i(e.id, t.target.value),
+                  onChange: (t) => o(e.id, t.target.value),
                   placeholder: e?.placeholder
                 }
               );

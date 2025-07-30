@@ -93,9 +93,9 @@ export default function UISheet({
 		}));
 	};
 
-	const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+	const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		if (buttonDisabled) return;
-		buttonAction && buttonAction(e, fieldValues);
+		buttonAction && (await buttonAction(e, fieldValues));
 		// if loading was never passed/default false, then close
 		if (!loading) {
 			setImmediate(() => setSheetOpen(false));
