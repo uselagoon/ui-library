@@ -67,6 +67,7 @@ import { default as pn } from "./index.es67.js";
 import { default as mn } from "./index.es68.js";
 import { default as gn } from "./index.es69.js";
 import { cn as Cn } from "./index.es70.js";
+import { default as fn } from "./index.es71.js";
 export {
   rn as Accordion,
   d as AccordionContent,
@@ -306,6 +307,7 @@ export {
   _t as Slider,
   ya as StatCard,
   pn as Switch,
+  fn as TabNavigation,
   aa as Table,
   na as TableBody,
   ia as TableCaption,
