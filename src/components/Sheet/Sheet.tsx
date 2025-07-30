@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useMemo, useState } from 'react';
+import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { Label } from '../ui/label';
 import {
 	Sheet,
@@ -47,6 +47,8 @@ export default function UISheet({
 }: SheetProps) {
 	const [sheetOpen, setSheetOpen] = useState(false);
 
+	const prevLoadingRef = useRef(loading);
+
 	const getInitialFieldValues = useMemo(() => {
 		return () => {
 			const initialValues: Record<string, string | boolean> = {};
@@ -94,6 +96,10 @@ export default function UISheet({
 	const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		if (buttonDisabled) return;
 		buttonAction && buttonAction(e, fieldValues);
+		// if loading was never passed/default false, then close
+		if (!loading) {
+			setImmediate(() => setSheetOpen(false));
+		}
 	};
 
 	useEffect(() => {
@@ -102,11 +108,12 @@ export default function UISheet({
 		}
 	}, [sheetOpen, getInitialFieldValues]);
 
-	// control auto-closing here on submission
 	useEffect(() => {
-		if (!loading && sheetOpen) {
+		// if loading was provided and it flips, close the sheet, otherwise this won't have an effect and will be dealt in the submit handler.
+		if (prevLoadingRef.current === true && loading === false && sheetOpen) {
 			setSheetOpen(false);
 		}
+		prevLoadingRef.current = loading;
 	}, [loading, sheetOpen]);
 
 	return (
