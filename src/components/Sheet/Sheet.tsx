@@ -98,7 +98,7 @@ export default function UISheet({
 		buttonAction && (await buttonAction(e, fieldValues));
 		// if loading was never passed/default false, then close
 		if (!loading) {
-			setImmediate(() => setSheetOpen(false));
+			setTimeout(() => setSheetOpen(false));
 		}
 	};
 
