@@ -6,6 +6,7 @@ type SheetProps = React.ComponentProps<typeof Sheet> & {
     sheetTrigger?: string;
     sheetDescription?: string;
     sheetFooterButton?: string;
+    loading?: boolean;
     buttonAction?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, values: any) => void;
     sheetFields: {
         id: string;
@@ -17,6 +18,6 @@ type SheetProps = React.ComponentProps<typeof Sheet> & {
         options?: SelectProps['options'];
     }[];
 };
-export default function UISheet({ sheetTrigger, sheetTitle, sheetDescription, sheetFooterButton, buttonAction, sheetFields, ...rest }: SheetProps): import("react/jsx-dev-runtime").JSX.Element;
+export default function UISheet({ sheetTrigger, sheetTitle, sheetDescription, sheetFooterButton, buttonAction, sheetFields, loading, ...rest }: SheetProps): import("react/jsx-dev-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=Sheet.d.ts.map

@@ -13,15 +13,16 @@ import {
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import Checkbox from '../Checkbox';
-import { Select } from '../ui/select';
 import SelectWithOptions from '../Select';
 import { SelectProps } from '../Select/Select';
+import { Loader2 } from 'lucide-react';
 
 type SheetProps = React.ComponentProps<typeof Sheet> & {
 	sheetTitle?: ReactNode;
 	sheetTrigger?: string;
 	sheetDescription?: string;
 	sheetFooterButton?: string;
+	loading?: boolean;
 	buttonAction?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, values: any) => void;
 	sheetFields: {
 		id: string;
@@ -41,6 +42,7 @@ export default function UISheet({
 	sheetFooterButton = 'Save changes',
 	buttonAction = () => {},
 	sheetFields,
+	loading = false,
 	...rest
 }: SheetProps) {
 	const [sheetOpen, setSheetOpen] = useState(false);
@@ -56,14 +58,15 @@ export default function UISheet({
 			return initialValues;
 		};
 	}, [sheetFields]);
+
 	const [fieldValues, setFieldValues] = useState<Record<string, string | boolean>>(getInitialFieldValues);
 
 	const buttonDisabled = useMemo(() => {
-		return sheetFields.some((field) => {
+		const requiredFieldsNotFilled = sheetFields.some((field) => {
 			if (field.required) {
 				switch (field.type ?? 'text') {
 					case 'checkbox':
-						return fieldValues[field.id] !== 'true';
+						return fieldValues[field.id] !== true;
 					case 'select':
 					case 'textarea':
 					case 'text':
@@ -78,7 +81,8 @@ export default function UISheet({
 			}
 			return false;
 		});
-	}, [sheetFields, fieldValues]);
+		return requiredFieldsNotFilled || loading;
+	}, [sheetFields, fieldValues, loading]);
 
 	const handleInputChange = (id: string, value: string | boolean) => {
 		setFieldValues((prev) => ({
@@ -90,7 +94,6 @@ export default function UISheet({
 	const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		if (buttonDisabled) return;
 		buttonAction && buttonAction(e, fieldValues);
-		setSheetOpen(false);
 	};
 
 	useEffect(() => {
@@ -98,6 +101,13 @@ export default function UISheet({
 			setFieldValues(getInitialFieldValues());
 		}
 	}, [sheetOpen, getInitialFieldValues]);
+
+	// control auto-closing here on submission
+	useEffect(() => {
+		if (!loading && sheetOpen) {
+			setSheetOpen(false);
+		}
+	}, [loading, sheetOpen]);
 
 	return (
 		<Sheet open={sheetOpen} onOpenChange={setSheetOpen} {...rest}>
@@ -172,6 +182,7 @@ export default function UISheet({
 				))}
 				<SheetFooter>
 					<Button onClick={handleSubmit} disabled={buttonDisabled}>
+						{loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
 						{sheetFooterButton}
 					</Button>
 					<SheetClose asChild>

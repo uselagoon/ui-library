@@ -1,31 +1,33 @@
-import { jsxs as n, jsx as t } from "react/jsx-runtime";
-import { useState as m, useMemo as g, useEffect as w } from "react";
-import { Label as b } from "./index.es29.js";
-import { Sheet as N, SheetTrigger as V, SheetContent as O, SheetHeader as D, SheetTitle as I, SheetDescription as q, SheetFooter as j, SheetClose as E } from "./index.es40.js";
-import { Button as l } from "./index.es13.js";
-import { Input as L } from "./index.es28.js";
+import { jsxs as a, jsx as r } from "react/jsx-runtime";
+import { useState as b, useMemo as x, useEffect as g } from "react";
+import { Label as v } from "./index.es29.js";
+import { Sheet as V, SheetTrigger as q, SheetContent as F, SheetHeader as O, SheetTitle as D, SheetDescription as I, SheetFooter as L, SheetClose as j } from "./index.es40.js";
+import { Button as u } from "./index.es13.js";
+import { Input as E } from "./index.es28.js";
 import T from "./index.es54.js";
 import W from "./index.es62.js";
-function K({
-  sheetTrigger: x = "Open",
-  sheetTitle: v = "",
-  sheetDescription: C = "",
-  sheetFooterButton: S = "Save changes",
-  buttonAction: u = () => {
+import { Loader2 as B } from "lucide-react";
+function R({
+  sheetTrigger: C = "Open",
+  sheetTitle: S = "",
+  sheetDescription: f = "",
+  sheetFooterButton: k = "Save changes",
+  buttonAction: h = () => {
   },
   sheetFields: o,
-  ...f
+  loading: i = !1,
+  ...N
 }) {
-  const [i, h] = m(!1), s = g(() => () => {
+  const [s, d] = b(!1), l = x(() => () => {
     const e = {};
-    return o.forEach((r) => {
-      r.inputDefault !== void 0 && (e[r.id] = r.inputDefault);
+    return o.forEach((t) => {
+      t.inputDefault !== void 0 && (e[t.id] = t.inputDefault);
     }), e;
-  }, [o]), [a, d] = m(s), p = g(() => o.some((e) => {
-    if (e.required)
-      switch (e.type ?? "text") {
+  }, [o]), [n, p] = b(l), m = x(() => o.some((t) => {
+    if (t.required)
+      switch (t.type ?? "text") {
         case "checkbox":
-          return a[e.id] !== "true";
+          return n[t.id] !== !0;
         case "select":
         case "textarea":
         case "text":
@@ -33,93 +35,98 @@ function K({
         case "number":
         case "password":
         case "tel":
-          return !a[e.id];
+          return !n[t.id];
         default:
           return !1;
       }
     return !1;
-  }), [o, a]), c = (e, r) => {
-    d((y) => ({
+  }) || i, [o, n, i]), c = (e, t) => {
+    p((y) => ({
       ...y,
-      [e]: r
+      [e]: t
     }));
-  }, k = (e) => {
-    p || (u && u(e, a), h(!1));
+  }, w = (e) => {
+    m || h && h(e, n);
   };
-  return w(() => {
-    i && d(s());
-  }, [i, s]), /* @__PURE__ */ n(N, { open: i, onOpenChange: h, ...f, children: [
-    /* @__PURE__ */ t(V, { asChild: !0, children: /* @__PURE__ */ t(l, { variant: "outline", children: x }) }),
-    /* @__PURE__ */ n(O, { children: [
-      /* @__PURE__ */ n(D, { children: [
-        /* @__PURE__ */ t(I, { children: v }),
-        /* @__PURE__ */ t(q, { children: C })
+  return g(() => {
+    s && p(l());
+  }, [s, l]), g(() => {
+    !i && s && d(!1);
+  }, [i, s]), /* @__PURE__ */ a(V, { open: s, onOpenChange: d, ...N, children: [
+    /* @__PURE__ */ r(q, { asChild: !0, children: /* @__PURE__ */ r(u, { variant: "outline", children: C }) }),
+    /* @__PURE__ */ a(F, { children: [
+      /* @__PURE__ */ a(O, { children: [
+        /* @__PURE__ */ r(D, { children: S }),
+        /* @__PURE__ */ r(I, { children: f })
       ] }),
-      o.map((e) => /* @__PURE__ */ t("div", { className: "grid auto-rows-min gap-6 px-4", children: /* @__PURE__ */ n("div", { className: "grid gap-3", children: [
-        e.type !== "checkbox" && /* @__PURE__ */ n(b, { htmlFor: e.id, children: [
+      o.map((e) => /* @__PURE__ */ r("div", { className: "grid auto-rows-min gap-6 px-4", children: /* @__PURE__ */ a("div", { className: "grid gap-3", children: [
+        e.type !== "checkbox" && /* @__PURE__ */ a(v, { htmlFor: e.id, children: [
           e.label,
-          e.required && /* @__PURE__ */ t("span", { className: "text-red-500 ml-1", children: "*" })
+          e.required && /* @__PURE__ */ r("span", { className: "text-red-500 ml-1", children: "*" })
         ] }),
         (() => {
           switch (e.type) {
             case "checkbox":
-              return /* @__PURE__ */ n("div", { className: "flex items-center space-x-2", children: [
-                /* @__PURE__ */ t(
+              return /* @__PURE__ */ a("div", { className: "flex items-center space-x-2", children: [
+                /* @__PURE__ */ r(
                   T,
                   {
                     label: e.label,
                     id: e.id,
-                    checked: a[e.id] === "true",
-                    onCheckedChange: (r) => c(e.id, r)
+                    checked: n[e.id] === "true",
+                    onCheckedChange: (t) => c(e.id, t)
                   }
                 ),
-                /* @__PURE__ */ n(b, { htmlFor: e.id, children: [
+                /* @__PURE__ */ a(v, { htmlFor: e.id, children: [
                   e.label,
-                  e.required && /* @__PURE__ */ t("span", { className: "text-red-500 ml-1", children: "*" })
+                  e.required && /* @__PURE__ */ r("span", { className: "text-red-500 ml-1", children: "*" })
                 ] })
               ] });
             case "textarea":
-              return /* @__PURE__ */ t(
+              return /* @__PURE__ */ r(
                 "textarea",
                 {
                   id: e.id,
                   className: "flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-                  value: a[e.id] || "",
-                  onChange: (r) => c(e.id, r.target.value),
+                  value: n[e.id] || "",
+                  onChange: (t) => c(e.id, t.target.value),
                   placeholder: e?.placeholder
                 }
               );
             case "select":
-              return /* @__PURE__ */ t(
+              return /* @__PURE__ */ r(
                 W,
                 {
                   placeholder: e?.placeholder || "",
                   options: e?.options || [],
-                  defaultValue: a[e.id] || "",
-                  onValueChange: (r) => c(e.id, r.target.value)
+                  defaultValue: n[e.id] || "",
+                  onValueChange: (t) => c(e.id, t.target.value)
                 }
               );
             default:
-              return /* @__PURE__ */ t(
-                L,
+              return /* @__PURE__ */ r(
+                E,
                 {
                   type: e?.type || "text",
                   id: e.id,
-                  value: a[e.id] || "",
-                  onChange: (r) => c(e.id, r.target.value),
+                  value: n[e.id] || "",
+                  onChange: (t) => c(e.id, t.target.value),
                   placeholder: e?.placeholder
                 }
               );
           }
         })()
       ] }) }, e.id)),
-      /* @__PURE__ */ n(j, { children: [
-        /* @__PURE__ */ t(l, { onClick: k, disabled: p, children: S }),
-        /* @__PURE__ */ t(E, { asChild: !0, children: /* @__PURE__ */ t(l, { variant: "outline", children: "Close" }) })
+      /* @__PURE__ */ a(L, { children: [
+        /* @__PURE__ */ a(u, { onClick: w, disabled: m, children: [
+          i && /* @__PURE__ */ r(B, { className: "mr-2 h-4 w-4 animate-spin" }),
+          k
+        ] }),
+        /* @__PURE__ */ r(j, { asChild: !0, children: /* @__PURE__ */ r(u, { variant: "outline", children: "Close" }) })
       ] })
     ] })
   ] });
 }
 export {
-  K as default
+  R as default
 };
