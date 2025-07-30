@@ -7,7 +7,7 @@ type OptionGroup = {
     label: string;
     options: Option[];
 };
-type SelectProps = Omit<React.ComponentProps<typeof Select>, 'disabled'> & {
+export type SelectProps = Omit<React.ComponentProps<typeof Select>, 'disabled'> & {
     placeholder: string;
     options?: Option[] | OptionGroup[];
     disabled?: boolean;

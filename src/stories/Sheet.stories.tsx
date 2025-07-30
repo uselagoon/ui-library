@@ -33,11 +33,15 @@ export const Custom: Story = {
 		sheetTrigger: 'Edit Profile',
 		sheetDescription: 'Test Description',
 		sheetFooterButton: 'Save!!',
+		buttonAction: (_, vals) => {
+			console.warn(vals);
+		},
 		sheetFields: [
 			{
 				id: 'sheet-demo',
 				label: 'Name',
 				inputDefault: 'Placeholder',
+				required: true,
 			},
 			{
 				id: 'sheet-demo-username',

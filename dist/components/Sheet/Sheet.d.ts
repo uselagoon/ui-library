@@ -1,15 +1,20 @@
-import { default as React } from 'react';
+import { default as React, ReactNode } from 'react';
 import { Sheet } from '../ui/sheet';
+import { SelectProps } from '../Select/Select';
 type SheetProps = React.ComponentProps<typeof Sheet> & {
-    sheetTitle?: string;
+    sheetTitle?: ReactNode;
     sheetTrigger?: string;
     sheetDescription?: string;
     sheetFooterButton?: string;
-    buttonAction?: React.MouseEventHandler<HTMLButtonElement>;
+    buttonAction?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, values: any) => void;
     sheetFields: {
         id: string;
         label: string;
-        inputDefault: string;
+        inputDefault?: string;
+        type?: string;
+        placeholder?: string;
+        required?: boolean;
+        options?: SelectProps['options'];
     }[];
 };
 export default function UISheet({ sheetTrigger, sheetTitle, sheetDescription, sheetFooterButton, buttonAction, sheetFields, ...rest }: SheetProps): import("react/jsx-dev-runtime").JSX.Element;
