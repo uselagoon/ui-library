@@ -169,7 +169,7 @@ export default function UISheet({
 												placeholder={field?.placeholder || ''}
 												options={field?.options || []}
 												defaultValue={(fieldValues[field.id] as string) || ''}
-												onValueChange={(e: any) => handleInputChange(field.id, e.target.value)}
+												onValueChange={(val: any) => handleInputChange(field.id, val)}
 											/>
 										);
 									default: // defaults for for text, email, number, password, tel

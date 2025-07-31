@@ -100,7 +100,7 @@ function Y({
                   placeholder: e?.placeholder || "",
                   options: e?.options || [],
                   defaultValue: s[e.id] || "",
-                  onValueChange: (t) => i(e.id, t.target.value)
+                  onValueChange: (t) => i(e.id, t)
                 }
               );
             default:
