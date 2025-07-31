@@ -6,6 +6,7 @@ type NavItem = {
 type TabNavigationProps = {
     items: NavItem[];
     pathname: string;
+    onTabNav?: (key: string) => void;
 };
 declare const TabNavigation: FC<TabNavigationProps>;
 export type { TabNavigationProps };
