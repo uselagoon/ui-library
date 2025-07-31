@@ -9,9 +9,10 @@ type NavItem = {
 type TabNavigationProps = {
 	items: NavItem[];
 	pathname: string;
+	onTabNav?: (key: string) => void;
 };
 
-const TabNavigation: FC<TabNavigationProps> = ({ items, pathname }) => {
+const TabNavigation: FC<TabNavigationProps> = ({ items, pathname, onTabNav }) => {
 	// manually get active key for navigation and refresh.
 	const getActiveValue = () => {
 		for (const item of items) {
@@ -23,9 +24,13 @@ const TabNavigation: FC<TabNavigationProps> = ({ items, pathname }) => {
 		return items[0]?.key || '';
 	};
 
+	const handleTabNav = (value: string) => {
+		onTabNav?.(value);
+	};
+
 	return (
 		<>
-			<Tabs value={getActiveValue()}>
+			<Tabs value={getActiveValue()} onValueChange={handleTabNav}>
 				<TabsList>
 					{items.map((navItem) => (
 						<TabsTrigger value={navItem.key} key={navItem.key}>
