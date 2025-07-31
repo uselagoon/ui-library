@@ -68,6 +68,7 @@ import { default as mn } from "./index.es68.js";
 import { default as gn } from "./index.es69.js";
 import { cn as Cn } from "./index.es70.js";
 import { default as fn } from "./index.es71.js";
+import { DateRangePicker as cn } from "./index.es72.js";
 export {
   rn as Accordion,
   d as AccordionContent,
@@ -151,6 +152,7 @@ export {
   Ye as ContextMenuTrigger,
   Ua as CopyToClipboard,
   gn as DataTable,
+  cn as DateRangePicker,
   $a as DebouncedInput,
   Va as DetailStat,
   _e as Dialog,

@@ -1,4 +1,10 @@
-const e = "data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M17.8262%2015.3527L30.0001%2022.1537V8.61523L24.1268%2011.6919L17.8262%2015.3527Z'%20fill='url(%23paint0_linear_2241_6387)'/%3e%3cpath%20d='M30%2024.0036L16%2016L11.36%2018.2397L2%2024.0022L16.0087%2032L30%2024.0036Z'%20fill='url(%23paint1_linear_2241_6387)'/%3e%3cpath%20d='M16.6087%2016.4073V0L2%208.19701L2.00455%2024.6154L16.6087%2016.4073Z'%20fill='url(%23paint2_linear_2241_6387)'/%3e%3cpath%20d='M30.0001%207.99624L17.8262%201.23096V14.7694L30.0001%207.99624Z'%20fill='url(%23paint3_linear_2241_6387)'/%3e%3cdefs%3e%3clinearGradient%20id='paint0_linear_2241_6387'%20x1='22.6449'%20y1='19.9685'%20x2='31.8358'%20y2='10.3738'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%234578E6'/%3e%3cstop%20offset='0.9'%20stop-color='%232BC0E4'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint1_linear_2241_6387'%20x1='21.7839'%20y1='17.1815'%20x2='10.358'%20y2='30.9421'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%234578E6'/%3e%3cstop%20offset='0.75'%20stop-color='%23262D65'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint2_linear_2241_6387'%20x1='19.2776'%20y1='2.59742'%20x2='-0.127779'%20y2='22.5405'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0.15'%20stop-color='%234578E6'/%3e%3cstop%20offset='0.95'%20stop-color='%23262D65'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint3_linear_2241_6387'%20x1='17.8264'%20y1='8.0002'%20x2='30.0003'%20y2='8.0002'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%234578E6'/%3e%3cstop%20offset='0.55'%20stop-color='%232BC0E4'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e";
+import { jsx as l } from "react/jsx-runtime";
+import { cva as m } from "class-variance-authority";
+import { cn as n } from "./index.es70.js";
+const c = m("rounded-full h-6 w-6 min-w-[24px] flex justify-center items-center mr-2 text-xs");
+function i({ bgColor: r, textColor: t, className: e, children: o, ...a }) {
+  return /* @__PURE__ */ l("div", { ...a, className: n(c(), e), style: { backgroundColor: r, color: t }, children: o });
+}
 export {
-  e as default
+  i as default
 };

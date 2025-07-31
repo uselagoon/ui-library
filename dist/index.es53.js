@@ -2,11 +2,11 @@ import { jsxs as t, jsx as e } from "react/jsx-runtime";
 import { useMemo as f } from "react";
 import { Sidebar as z, SidebarHeader as L, SidebarMenu as A, SidebarMenuItem as u, SidebarContent as $, SidebarGroup as D, SidebarGroupLabel as G, SidebarGroupContent as T, SidebarMenuButton as S, SidebarFooter as _ } from "./index.es41.js";
 import { SquareTerminal as F, BriefcaseBusiness as H, ServerCog as K, KeyRound as O, UserRoundCog as R } from "lucide-react";
-import q from "./index.es92.js";
-import { genAvatarBackground as C, getCurrentPath as E } from "./index.es93.js";
+import q from "./index.es94.js";
+import { genAvatarBackground as C, getCurrentPath as E } from "./index.es95.js";
 import { Avatar as J, AvatarImage as Q } from "./index.es10.js";
 import { AvatarFallback as V } from "@radix-ui/react-avatar";
-import W from "./index.es94.js";
+import W from "./index.es96.js";
 import { useLinkComponent as X } from "./index.es5.js";
 const Y = (s, a) => [
   {

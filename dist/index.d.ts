@@ -67,4 +67,5 @@ export { default as BasicTable } from './components/Table';
 export { default as DataTable, type DataTableColumnDef } from './components/DataTable';
 export { cn } from './lib/utils';
 export { default as TabNavigation } from './components/TabNavigation';
+export { default as DateRangePicker } from './components/DateRangePicker';
 //# sourceMappingURL=index.d.ts.map

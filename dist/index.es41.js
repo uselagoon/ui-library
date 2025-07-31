@@ -3,7 +3,7 @@ import * as l from "react";
 import { Slot as h } from "@radix-ui/react-slot";
 import { cva as M } from "class-variance-authority";
 import { PanelLeftIcon as z } from "lucide-react";
-import { useIsMobile as I } from "./index.es72.js";
+import { useIsMobile as I } from "./index.es73.js";
 import { cn as r } from "./index.es70.js";
 import { Button as E } from "./index.es13.js";
 import { Input as D } from "./index.es28.js";
