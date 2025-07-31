@@ -1,30 +1,31 @@
 import { jsxs as s, jsx as r } from "react/jsx-runtime";
-import { useState as x, useRef as O, useMemo as f, useEffect as g } from "react";
-import { Label as q } from "./index.es29.js";
-import { Sheet as D, SheetTrigger as F, SheetContent as I, SheetHeader as L, SheetTitle as T, SheetDescription as j, SheetFooter as E, SheetClose as R } from "./index.es40.js";
-import { Button as h } from "./index.es13.js";
-import { Input as W } from "./index.es28.js";
-import B from "./index.es54.js";
-import H from "./index.es62.js";
-import { Loader2 as M } from "lucide-react";
-function Z({
-  sheetTrigger: v = "Open",
-  sheetTitle: C = "",
-  sheetDescription: S = "",
-  sheetFooterButton: k = "Save changes",
-  buttonAction: d = () => {
+import { useState as f, useRef as q, useMemo as g, useEffect as v } from "react";
+import { Label as D } from "./index.es29.js";
+import { Sheet as F, SheetTrigger as I, SheetContent as L, SheetHeader as T, SheetTitle as j, SheetDescription as E, SheetFooter as R, SheetClose as W } from "./index.es40.js";
+import { Button as d } from "./index.es13.js";
+import { Input as B } from "./index.es28.js";
+import H from "./index.es54.js";
+import M from "./index.es62.js";
+import { Loader2 as U } from "lucide-react";
+function _({
+  sheetTrigger: C = "Open",
+  sheetTitle: S = "",
+  sheetDescription: k = "",
+  sheetFooterButton: w = "Save changes",
+  buttonAction: p = () => {
   },
-  sheetFields: o,
+  sheetFields: i,
   loading: n = !1,
-  additionalContent: w = null,
-  ...y
+  additionalContent: y = null,
+  error: l = !1,
+  ...N
 }) {
-  const [i, l] = x(!1), p = O(n), u = f(() => () => {
+  const [o, u] = f(!1), m = q(n), h = g(() => () => {
     const e = {};
-    return o.forEach((t) => {
+    return i.forEach((t) => {
       t.inputDefault !== void 0 && (e[t.id] = t.inputDefault);
     }), e;
-  }, [o]), [a, m] = x(u), b = f(() => o.some((t) => {
+  }, [i]), [a, b] = f(h), x = g(() => i.some((t) => {
     if (t.required)
       switch (t.type ?? "text") {
         case "checkbox":
@@ -41,27 +42,27 @@ function Z({
           return !1;
       }
     return !1;
-  }) || n, [o, a, n]), c = (e, t) => {
-    m((V) => ({
-      ...V,
+  }) || n, [i, a, n]), c = (e, t) => {
+    b((O) => ({
+      ...O,
       [e]: t
     }));
-  }, N = async (e) => {
-    b || (d && await d(e, a), n || setTimeout(() => l(!1)));
+  }, V = async (e) => {
+    x || (p && await p(e, a), !n && !l && setTimeout(() => u(!1)));
   };
-  return g(() => {
-    i && m(u());
-  }, [i, u]), g(() => {
-    p.current === !0 && n === !1 && i && l(!1), p.current = n;
-  }, [n, i]), /* @__PURE__ */ s(D, { open: i, onOpenChange: l, ...y, children: [
-    /* @__PURE__ */ r(F, { asChild: !0, children: /* @__PURE__ */ r(h, { variant: "outline", children: v }) }),
-    /* @__PURE__ */ s(I, { children: [
-      /* @__PURE__ */ s(L, { children: [
-        /* @__PURE__ */ r(T, { children: C }),
-        /* @__PURE__ */ r(j, { children: S })
+  return v(() => {
+    o && b(h());
+  }, [o, h]), v(() => {
+    m.current === !0 && n === !1 && o && !l && u(!1), m.current = n;
+  }, [n, o, l]), /* @__PURE__ */ s(F, { open: o, onOpenChange: u, ...N, children: [
+    /* @__PURE__ */ r(I, { asChild: !0, children: /* @__PURE__ */ r(d, { variant: "outline", children: C }) }),
+    /* @__PURE__ */ s(L, { children: [
+      /* @__PURE__ */ s(T, { children: [
+        /* @__PURE__ */ r(j, { children: S }),
+        /* @__PURE__ */ r(E, { children: k })
       ] }),
-      o.map((e) => /* @__PURE__ */ r("div", { className: "grid auto-rows-min gap-6 px-4", children: /* @__PURE__ */ s("div", { className: "grid gap-3", children: [
-        e.type !== "checkbox" && /* @__PURE__ */ s(q, { htmlFor: e.id, children: [
+      i.map((e) => /* @__PURE__ */ r("div", { className: "grid auto-rows-min gap-6 px-4", children: /* @__PURE__ */ s("div", { className: "grid gap-3", children: [
+        e.type !== "checkbox" && /* @__PURE__ */ s(D, { htmlFor: e.id, children: [
           e.label,
           e.required && /* @__PURE__ */ r("span", { className: "text-red-500 ml-1", children: "*" })
         ] }),
@@ -69,7 +70,7 @@ function Z({
           switch (e.type) {
             case "checkbox":
               return /* @__PURE__ */ r("div", { className: "flex items-center space-x-2", children: /* @__PURE__ */ r(
-                B,
+                H,
                 {
                   label: e.label,
                   id: e.id,
@@ -90,7 +91,7 @@ function Z({
               );
             case "select":
               return /* @__PURE__ */ r(
-                H,
+                M,
                 {
                   placeholder: e?.placeholder || "",
                   options: e?.options || [],
@@ -100,7 +101,7 @@ function Z({
               );
             default:
               return /* @__PURE__ */ r(
-                W,
+                B,
                 {
                   type: e?.type || "text",
                   id: e.id,
@@ -112,17 +113,17 @@ function Z({
           }
         })()
       ] }) }, e.id)),
-      w,
-      /* @__PURE__ */ s(E, { children: [
-        /* @__PURE__ */ s(h, { onClick: N, disabled: b, children: [
-          n && /* @__PURE__ */ r(M, { className: "mr-2 h-4 w-4 animate-spin" }),
-          k
+      y,
+      /* @__PURE__ */ s(R, { children: [
+        /* @__PURE__ */ s(d, { onClick: V, disabled: x, children: [
+          n && /* @__PURE__ */ r(U, { className: "mr-2 h-4 w-4 animate-spin" }),
+          w
         ] }),
-        /* @__PURE__ */ r(R, { asChild: !0, children: /* @__PURE__ */ r(h, { variant: "outline", children: "Close" }) })
+        /* @__PURE__ */ r(W, { asChild: !0, children: /* @__PURE__ */ r(d, { variant: "outline", children: "Close" }) })
       ] })
     ] })
   ] });
 }
 export {
-  Z as default
+  _ as default
 };

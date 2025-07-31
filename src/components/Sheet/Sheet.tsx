@@ -25,6 +25,7 @@ type SheetProps = React.ComponentProps<typeof Sheet> & {
 	loading?: boolean;
 	buttonAction?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, values: any) => void;
 	additionalContent: ReactNode;
+	error: boolean;
 	sheetFields: {
 		id: string;
 		label: string;
@@ -45,6 +46,7 @@ export default function UISheet({
 	sheetFields,
 	loading = false,
 	additionalContent = null,
+	error = false,
 	...rest
 }: SheetProps) {
 	const [sheetOpen, setSheetOpen] = useState(false);
@@ -99,7 +101,7 @@ export default function UISheet({
 		if (buttonDisabled) return;
 		buttonAction && (await buttonAction(e, fieldValues));
 		// if loading was never passed/default false, then close
-		if (!loading) {
+		if (!loading && !error) {
 			setTimeout(() => setSheetOpen(false));
 		}
 	};
@@ -112,11 +114,11 @@ export default function UISheet({
 
 	useEffect(() => {
 		// if loading was provided and it flips, close the sheet, otherwise this won't have an effect and will be dealt in the submit handler.
-		if (prevLoadingRef.current === true && loading === false && sheetOpen) {
+		if (prevLoadingRef.current === true && loading === false && sheetOpen && !error) {
 			setSheetOpen(false);
 		}
 		prevLoadingRef.current = loading;
-	}, [loading, sheetOpen]);
+	}, [loading, sheetOpen, error]);
 
 	return (
 		<Sheet open={sheetOpen} onOpenChange={setSheetOpen} {...rest}>
