@@ -36,6 +36,11 @@ export const Custom: Story = {
 		buttonAction: (_, vals) => {
 			console.warn(vals);
 		},
+		additionalContent: (
+			<div className="text-purple-700">
+				<p>Hello World</p>
+			</div>
+		),
 		sheetFields: [
 			{
 				id: 'sheet-demo',

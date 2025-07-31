@@ -24,6 +24,7 @@ type SheetProps = React.ComponentProps<typeof Sheet> & {
 	sheetFooterButton?: string;
 	loading?: boolean;
 	buttonAction?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, values: any) => void;
+	additionalContent: ReactNode;
 	sheetFields: {
 		id: string;
 		label: string;
@@ -43,6 +44,7 @@ export default function UISheet({
 	buttonAction = () => {},
 	sheetFields,
 	loading = false,
+	additionalContent = null,
 	...rest
 }: SheetProps) {
 	const [sheetOpen, setSheetOpen] = useState(false);
@@ -183,6 +185,7 @@ export default function UISheet({
 						</div>
 					</div>
 				))}
+				{additionalContent}
 				<SheetFooter>
 					<Button onClick={handleSubmit} disabled={buttonDisabled}>
 						{loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
