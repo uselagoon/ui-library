@@ -1,17 +1,15 @@
-import { jsx as a, Fragment as t } from "react/jsx-runtime";
-import { Tabs as s, TabsList as c, TabsTrigger as d } from "./index.es47.js";
-const u = ({ items: r, pathname: i, onTabNav: n }) => {
-  const l = () => {
-    for (const e of r)
-      if (i?.endsWith(`/${e.key}`) || i?.includes(`/${e.key}/`))
-        return e.key;
-    return r[0]?.key || "";
-  }, o = (e) => {
-    n?.(e);
+import { jsx as t, Fragment as d } from "react/jsx-runtime";
+import { Tabs as g, TabsList as u, TabsTrigger as y } from "./index.es47.js";
+const b = ({ items: a, pathname: n, onTabNav: o, basePath: s }) => {
+  const i = [...a].sort((e, r) => r.key.length - e.key.length), c = () => i.find((r) => {
+    const l = `${s}/${r.key}`;
+    return n === l || n.startsWith(`${l}/`);
+  })?.key || a[0]?.key || "", h = (e) => {
+    o?.(e);
   };
-  return /* @__PURE__ */ a(t, { children: /* @__PURE__ */ a(s, { value: l(), onValueChange: o, children: /* @__PURE__ */ a(c, { children: r.map((e) => /* @__PURE__ */ a(d, { value: e.key, children: e.label }, e.key)) }) }) });
+  return /* @__PURE__ */ t(d, { children: /* @__PURE__ */ t(g, { value: c(), onValueChange: h, children: /* @__PURE__ */ t(u, { children: a.map((e) => /* @__PURE__ */ t(y, { value: e.key, children: e.label }, e.key)) }) }) });
 };
-u.displayName = "TabNavigation";
+b.displayName = "TabNavigation";
 export {
-  u as default
+  b as default
 };

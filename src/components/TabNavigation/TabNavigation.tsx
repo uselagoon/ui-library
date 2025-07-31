@@ -9,19 +9,20 @@ type NavItem = {
 type TabNavigationProps = {
 	items: NavItem[];
 	pathname: string;
+	basePath: string;
 	onTabNav?: (key: string) => void;
 };
 
-const TabNavigation: FC<TabNavigationProps> = ({ items, pathname, onTabNav }) => {
+const TabNavigation: FC<TabNavigationProps> = ({ items, pathname, onTabNav, basePath }) => {
+	const sortedItems = [...items].sort((a, b) => b.key.length - a.key.length);
 	// manually get active key for navigation and refresh.
 	const getActiveValue = () => {
-		for (const item of items) {
-			if (pathname?.endsWith(`/${item.key}`) || pathname?.includes(`/${item.key}/`)) {
-				return item.key;
-			}
-		}
+		const path = sortedItems.find((item) => {
+			const fullPath = `${basePath}/${item.key}`;
+			return pathname === fullPath || pathname.startsWith(`${fullPath}/`);
+		});
 
-		return items[0]?.key || '';
+		return path?.key || items[0]?.key || '';
 	};
 
 	const handleTabNav = (value: string) => {
