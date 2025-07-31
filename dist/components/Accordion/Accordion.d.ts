@@ -6,7 +6,10 @@ type AccordionProps = React.ComponentProps<typeof Accordion> & {
         trigger: React.ReactNode;
         content: React.ReactNode;
     }[];
+    showArrows?: boolean;
+    showSeparators?: boolean;
+    secondaryText?: boolean;
 };
-export default function UIAccordion({ items, ...rest }: AccordionProps): import("react/jsx-dev-runtime").JSX.Element;
+export default function UIAccordion({ items, showArrows, secondaryText, showSeparators, ...rest }: AccordionProps): import("react/jsx-dev-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=Accordion.d.ts.map

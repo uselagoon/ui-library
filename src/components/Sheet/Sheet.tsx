@@ -187,7 +187,7 @@ export default function UISheet({
 						</div>
 					</div>
 				))}
-				{additionalContent}
+				<section className="px-4">{additionalContent}</section>
 				<SheetFooter>
 					<Button onClick={handleSubmit} disabled={buttonDisabled}>
 						{loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}

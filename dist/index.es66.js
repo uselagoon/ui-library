@@ -11,16 +11,16 @@ function _({
   sheetTrigger: C = "Open",
   sheetTitle: S = "",
   sheetDescription: k = "",
-  sheetFooterButton: w = "Save changes",
+  sheetFooterButton: N = "Save changes",
   buttonAction: p = () => {
   },
   sheetFields: i,
   loading: n = !1,
-  additionalContent: y = null,
+  additionalContent: w = null,
   error: l = !1,
-  ...N
+  ...y
 }) {
-  const [o, u] = f(!1), m = q(n), h = g(() => () => {
+  const [c, u] = f(!1), m = q(n), h = g(() => () => {
     const e = {};
     return i.forEach((t) => {
       t.inputDefault !== void 0 && (e[t.id] = t.inputDefault);
@@ -42,7 +42,7 @@ function _({
           return !1;
       }
     return !1;
-  }) || n, [i, a, n]), c = (e, t) => {
+  }) || n, [i, a, n]), o = (e, t) => {
     b((O) => ({
       ...O,
       [e]: t
@@ -51,10 +51,10 @@ function _({
     x || (p && await p(e, a), !n && !l && setTimeout(() => u(!1)));
   };
   return v(() => {
-    o && b(h());
-  }, [o, h]), v(() => {
-    m.current === !0 && n === !1 && o && !l && u(!1), m.current = n;
-  }, [n, o, l]), /* @__PURE__ */ s(F, { open: o, onOpenChange: u, ...N, children: [
+    c && b(h());
+  }, [c, h]), v(() => {
+    m.current === !0 && n === !1 && c && !l && u(!1), m.current = n;
+  }, [n, c, l]), /* @__PURE__ */ s(F, { open: c, onOpenChange: u, ...y, children: [
     /* @__PURE__ */ r(I, { asChild: !0, children: /* @__PURE__ */ r(d, { variant: "outline", children: C }) }),
     /* @__PURE__ */ s(L, { children: [
       /* @__PURE__ */ s(T, { children: [
@@ -75,7 +75,7 @@ function _({
                   label: e.label,
                   id: e.id,
                   checked: a[e.id] === !0 || a[e.id] === "true",
-                  onCheckedChange: (t) => c(e.id, t)
+                  onCheckedChange: (t) => o(e.id, t)
                 }
               ) });
             case "textarea":
@@ -85,7 +85,7 @@ function _({
                   id: e.id,
                   className: "flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
                   value: a[e.id] || "",
-                  onChange: (t) => c(e.id, t.target.value),
+                  onChange: (t) => o(e.id, t.target.value),
                   placeholder: e?.placeholder
                 }
               );
@@ -96,7 +96,7 @@ function _({
                   placeholder: e?.placeholder || "",
                   options: e?.options || [],
                   defaultValue: a[e.id] || "",
-                  onValueChange: (t) => c(e.id, t)
+                  onValueChange: (t) => o(e.id, t)
                 }
               );
             default:
@@ -106,18 +106,18 @@ function _({
                   type: e?.type || "text",
                   id: e.id,
                   value: a[e.id] || "",
-                  onChange: (t) => c(e.id, t.target.value),
+                  onChange: (t) => o(e.id, t.target.value),
                   placeholder: e?.placeholder
                 }
               );
           }
         })()
       ] }) }, e.id)),
-      y,
+      /* @__PURE__ */ r("section", { className: "px-4", children: w }),
       /* @__PURE__ */ s(R, { children: [
         /* @__PURE__ */ s(d, { onClick: V, disabled: x, children: [
           n && /* @__PURE__ */ r(U, { className: "mr-2 h-4 w-4 animate-spin" }),
-          w
+          N
         ] }),
         /* @__PURE__ */ r(W, { asChild: !0, children: /* @__PURE__ */ r(d, { variant: "outline", children: "Close" }) })
       ] })
