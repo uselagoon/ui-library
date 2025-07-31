@@ -116,6 +116,7 @@ export default function DataTable<TData, TValue>({
 		onColumnFiltersChange: setColumnFilters,
 		onSortingChange: setSorting,
 		onColumnVisibilityChange: setColumnVisibility,
+		autoResetPageIndex: false,
 		...(searchableColumns ? { globalFilterFn: customGlobalFilter as FilterFnOption<TData> } : {}),
 		state: {
 			sorting,
