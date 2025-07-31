@@ -1,35 +1,37 @@
-import { jsxs as i, jsx as n } from "react/jsx-runtime";
-import { AlertDialog as h, AlertDialogTrigger as d, AlertDialogContent as p, AlertDialogHeader as D, AlertDialogTitle as A, AlertDialogDescription as C, AlertDialogFooter as u, AlertDialogCancel as s, AlertDialogAction as f } from "./index.es7.js";
-function O({
+import { jsxs as i, jsx as l } from "react/jsx-runtime";
+import { AlertDialog as h, AlertDialogTrigger as p, AlertDialogContent as D, AlertDialogHeader as A, AlertDialogTitle as C, AlertDialogDescription as s, AlertDialogFooter as u, AlertDialogCancel as f, AlertDialogAction as m } from "./index.es7.js";
+function j({
   title: r,
   message: t,
   cancelText: a,
-  onCancel: l,
+  onCancel: n,
   confirmText: c,
+  confirmDisabled: d = !1,
   onConfirm: o,
   ...e
 }) {
   const g = "rest" in arguments && "open" in e && "onOpenChange" in e ? { open: e.open, onOpenChange: e.onOpenChange } : {};
   return /* @__PURE__ */ i(h, { ...g, children: [
-    /* @__PURE__ */ n(d, { asChild: !0, children: "children" in e ? e.children : null }),
-    /* @__PURE__ */ i(p, { children: [
-      /* @__PURE__ */ i(D, { children: [
-        /* @__PURE__ */ n(A, { children: r }),
-        /* @__PURE__ */ n(C, { children: t })
+    /* @__PURE__ */ l(p, { asChild: !0, children: "children" in e ? e.children : null }),
+    /* @__PURE__ */ i(D, { children: [
+      /* @__PURE__ */ i(A, { children: [
+        /* @__PURE__ */ l(C, { children: r }),
+        /* @__PURE__ */ l(s, { children: t })
       ] }),
       /* @__PURE__ */ i(u, { children: [
-        /* @__PURE__ */ n(
-          s,
+        /* @__PURE__ */ l(
+          f,
           {
             onClick: () => {
-              l && l();
+              n && n();
             },
             children: a ?? "Cancel"
           }
         ),
-        /* @__PURE__ */ n(
-          f,
+        /* @__PURE__ */ l(
+          m,
           {
+            disabled: d,
             onClick: () => {
               o && o();
             },
@@ -41,5 +43,5 @@ function O({
   ] });
 }
 export {
-  O as default
+  j as default
 };

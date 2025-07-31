@@ -5,6 +5,7 @@ type NotificationProps = {
     cancelText?: string;
     onCancel?: () => void;
     confirmText?: string;
+    confirmDisabled?: boolean;
     onConfirm?: () => void;
 } & ({
     children?: ReactNode;
@@ -12,6 +13,6 @@ type NotificationProps = {
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
 });
-export default function Notification({ title, message, cancelText, onCancel, confirmText, onConfirm, ...rest }: NotificationProps): import("react/jsx-dev-runtime").JSX.Element;
+export default function Notification({ title, message, cancelText, onCancel, confirmText, confirmDisabled, onConfirm, ...rest }: NotificationProps): import("react/jsx-dev-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=Notification.d.ts.map

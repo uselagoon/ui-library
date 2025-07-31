@@ -17,6 +17,7 @@ type NotificationProps = {
 	cancelText?: string;
 	onCancel?: () => void;
 	confirmText?: string;
+	confirmDisabled?: boolean;
 	onConfirm?: () => void;
 } & (
 	| { children?: ReactNode }
@@ -32,6 +33,7 @@ export default function Notification({
 	cancelText,
 	onCancel,
 	confirmText,
+	confirmDisabled = false,
 	onConfirm,
 	...rest
 }: NotificationProps) {
@@ -58,6 +60,7 @@ export default function Notification({
 						{cancelText ?? 'Cancel'}
 					</AlertDialogCancel>
 					<AlertDialogAction
+						disabled={confirmDisabled}
 						onClick={() => {
 							onConfirm && onConfirm();
 						}}
