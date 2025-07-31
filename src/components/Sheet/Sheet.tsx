@@ -144,13 +144,9 @@ export default function UISheet({
 												<Checkbox
 													label={field.label}
 													id={field.id}
-													checked={fieldValues[field.id] === 'true'}
+													checked={fieldValues[field.id] === true || fieldValues[field.id] === 'true'}
 													onCheckedChange={(checked) => handleInputChange(field.id, checked)}
 												/>
-												<Label htmlFor={field.id}>
-													{field.label}
-													{field.required && <span className="text-red-500 ml-1">*</span>}
-												</Label>
 											</div>
 										);
 									case 'textarea':
