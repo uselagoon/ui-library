@@ -18,6 +18,7 @@ type SheetProps = React.ComponentProps<typeof Sheet> & {
         placeholder?: string;
         required?: boolean;
         options?: SelectProps['options'];
+        readonly?: boolean;
     }[];
 };
 export default function UISheet({ sheetTrigger, sheetTitle, sheetDescription, sheetFooterButton, buttonAction, sheetFields, loading, additionalContent, error, ...rest }: SheetProps): import("react/jsx-dev-runtime").JSX.Element;
