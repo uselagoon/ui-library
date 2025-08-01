@@ -35,7 +35,9 @@ type SheetProps = React.ComponentProps<typeof Sheet> & {
 		required?: boolean;
 		options?: SelectProps['options'];
 		readOnly?: boolean;
+		triggerFieldUpdate?: boolean;
 	}[];
+	onFieldChange?: (fieldId: string, value: string | boolean, currentValues: Record<string, string | boolean>) => void;
 };
 
 export default function UISheet({
@@ -48,6 +50,7 @@ export default function UISheet({
 	loading = false,
 	additionalContent = null,
 	error = false,
+	onFieldChange,
 	...rest
 }: SheetProps) {
 	const [sheetOpen, setSheetOpen] = useState(false);
@@ -92,10 +95,17 @@ export default function UISheet({
 	}, [sheetFields, fieldValues, loading]);
 
 	const handleInputChange = (id: string, value: string | boolean) => {
-		setFieldValues((prev) => ({
-			...prev,
+		const newValues = {
+			...fieldValues,
 			[id]: value,
-		}));
+		};
+
+		setFieldValues(newValues);
+		const changedField = sheetFields.find((field) => field.id === id);
+
+		if (changedField?.triggerFieldUpdate && onFieldChange) {
+			onFieldChange(id, value, newValues);
+		}
 	};
 
 	const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -114,12 +124,31 @@ export default function UISheet({
 	}, [sheetOpen, getInitialFieldValues]);
 
 	useEffect(() => {
-		// if loading was provided and it flips, close the sheet, otherwise this won't have an effect and will be dealt in the submit handler.
 		if (prevLoadingRef.current === true && loading === false && sheetOpen && !error) {
 			setSheetOpen(false);
 		}
 		prevLoadingRef.current = loading;
 	}, [loading, sheetOpen, error]);
+
+	useEffect(() => {
+		const currentFieldIds = sheetFields.map((field) => field.id);
+		const currentValueIds = Object.keys(fieldValues);
+
+		const updatedValues = { ...fieldValues };
+		currentValueIds.forEach((id) => {
+			if (!currentFieldIds.includes(id)) {
+				delete updatedValues[id];
+			}
+		});
+
+		sheetFields.forEach((field) => {
+			if (field.inputDefault !== undefined && !(field.id in updatedValues)) {
+				updatedValues[field.id] = field.inputDefault;
+			}
+		});
+
+		setFieldValues(updatedValues);
+	}, [sheetFields]);
 
 	return (
 		<Sheet open={sheetOpen} onOpenChange={setSheetOpen} {...rest}>
@@ -170,11 +199,11 @@ export default function UISheet({
 											<SelectWithOptions
 												placeholder={field?.placeholder || ''}
 												options={field?.options || []}
-												defaultValue={(fieldValues[field.id] as string) || ''}
+												value={(fieldValues[field.id] as string) || ''}
 												onValueChange={(val: any) => handleInputChange(field.id, val)}
 											/>
 										);
-									default: // defaults for for text, email, number, password, tel
+									default:
 										return (
 											<Input
 												type={field?.type || 'text'}

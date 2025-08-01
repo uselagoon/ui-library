@@ -19,8 +19,10 @@ type SheetProps = React.ComponentProps<typeof Sheet> & {
         required?: boolean;
         options?: SelectProps['options'];
         readOnly?: boolean;
+        triggerFieldUpdate?: boolean;
     }[];
+    onFieldChange?: (fieldId: string, value: string | boolean, currentValues: Record<string, string | boolean>) => void;
 };
-export default function UISheet({ sheetTrigger, sheetTitle, sheetDescription, sheetFooterButton, buttonAction, sheetFields, loading, additionalContent, error, ...rest }: SheetProps): import("react/jsx-dev-runtime").JSX.Element;
+export default function UISheet({ sheetTrigger, sheetTitle, sheetDescription, sheetFooterButton, buttonAction, sheetFields, loading, additionalContent, error, onFieldChange, ...rest }: SheetProps): import("react/jsx-dev-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=Sheet.d.ts.map
