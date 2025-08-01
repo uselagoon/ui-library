@@ -34,7 +34,7 @@ type SheetProps = React.ComponentProps<typeof Sheet> & {
 		placeholder?: string;
 		required?: boolean;
 		options?: SelectProps['options'];
-		readonly?: boolean;
+		readOnly?: boolean;
 	}[];
 };
 
@@ -162,7 +162,7 @@ export default function UISheet({
 												value={(fieldValues[field.id] as string) || ''}
 												onChange={(e) => handleInputChange(field.id, e.target.value)}
 												placeholder={field?.placeholder}
-												readOnly={field.readonly}
+												readOnly={field.readOnly}
 											/>
 										);
 									case 'select':
@@ -182,7 +182,7 @@ export default function UISheet({
 												value={(fieldValues[field.id] as string) || ''}
 												onChange={(e) => handleInputChange(field.id, e.target.value)}
 												placeholder={field?.placeholder}
-												readOnly={field.readonly}
+												readOnly={field.readOnly}
 											/>
 										);
 								}

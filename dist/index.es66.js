@@ -14,18 +14,18 @@ function _({
   sheetFooterButton: k = "Save changes",
   buttonAction: p = () => {
   },
-  sheetFields: o,
+  sheetFields: c,
   loading: n = !1,
   additionalContent: N = null,
   error: l = !1,
-  ...w
+  ...O
 }) {
-  const [c, u] = g(!1), m = q(n), d = f(() => () => {
+  const [i, u] = g(!1), m = q(n), d = f(() => () => {
     const e = {};
-    return o.forEach((t) => {
+    return c.forEach((t) => {
       t.inputDefault !== void 0 && (e[t.id] = t.inputDefault);
     }), e;
-  }, [o]), [a, b] = g(d), x = f(() => o.some((t) => {
+  }, [c]), [a, b] = g(d), x = f(() => c.some((t) => {
     if (t.required)
       switch (t.type ?? "text") {
         case "checkbox":
@@ -42,26 +42,26 @@ function _({
           return !1;
       }
     return !1;
-  }) || n, [o, a, n]), i = (e, t) => {
+  }) || n, [c, a, n]), o = (e, t) => {
     b((V) => ({
       ...V,
       [e]: t
     }));
-  }, O = async (e) => {
+  }, w = async (e) => {
     x || (p && await p(e, a), !n && !l && setTimeout(() => u(!1)));
   };
   return v(() => {
-    c && b(d());
-  }, [c, d]), v(() => {
-    m.current === !0 && n === !1 && c && !l && u(!1), m.current = n;
-  }, [n, c, l]), /* @__PURE__ */ s(F, { open: c, onOpenChange: u, ...w, children: [
+    i && b(d());
+  }, [i, d]), v(() => {
+    m.current === !0 && n === !1 && i && !l && u(!1), m.current = n;
+  }, [n, i, l]), /* @__PURE__ */ s(F, { open: i, onOpenChange: u, ...O, children: [
     /* @__PURE__ */ r(I, { asChild: !0, children: /* @__PURE__ */ r(h, { variant: "outline", children: C }) }),
     /* @__PURE__ */ s(L, { children: [
       /* @__PURE__ */ s(T, { children: [
         /* @__PURE__ */ r(j, { children: S }),
         /* @__PURE__ */ r(E, { children: y })
       ] }),
-      o.map((e) => /* @__PURE__ */ r("div", { className: "grid auto-rows-min gap-6 px-4", children: /* @__PURE__ */ s("div", { className: "grid gap-3", children: [
+      c.map((e) => /* @__PURE__ */ r("div", { className: "grid auto-rows-min gap-6 px-4", children: /* @__PURE__ */ s("div", { className: "grid gap-3", children: [
         e.type !== "checkbox" && /* @__PURE__ */ s(D, { htmlFor: e.id, children: [
           e.label,
           e.required && /* @__PURE__ */ r("span", { className: "text-red-500 ml-1", children: "*" })
@@ -75,7 +75,7 @@ function _({
                   label: e.label,
                   id: e.id,
                   checked: a[e.id] === !0 || a[e.id] === "true",
-                  onCheckedChange: (t) => i(e.id, t)
+                  onCheckedChange: (t) => o(e.id, t)
                 }
               ) });
             case "textarea":
@@ -85,9 +85,9 @@ function _({
                   id: e.id,
                   className: "flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
                   value: a[e.id] || "",
-                  onChange: (t) => i(e.id, t.target.value),
+                  onChange: (t) => o(e.id, t.target.value),
                   placeholder: e?.placeholder,
-                  readOnly: e.readonly
+                  readOnly: e.readOnly
                 }
               );
             case "select":
@@ -97,7 +97,7 @@ function _({
                   placeholder: e?.placeholder || "",
                   options: e?.options || [],
                   defaultValue: a[e.id] || "",
-                  onValueChange: (t) => i(e.id, t)
+                  onValueChange: (t) => o(e.id, t)
                 }
               );
             default:
@@ -107,9 +107,9 @@ function _({
                   type: e?.type || "text",
                   id: e.id,
                   value: a[e.id] || "",
-                  onChange: (t) => i(e.id, t.target.value),
+                  onChange: (t) => o(e.id, t.target.value),
                   placeholder: e?.placeholder,
-                  readOnly: e.readonly
+                  readOnly: e.readOnly
                 }
               );
           }
@@ -117,7 +117,7 @@ function _({
       ] }) }, e.id)),
       /* @__PURE__ */ r("section", { className: "px-4", children: N }),
       /* @__PURE__ */ s(R, { children: [
-        /* @__PURE__ */ s(h, { onClick: O, disabled: x, children: [
+        /* @__PURE__ */ s(h, { onClick: w, disabled: x, children: [
           n && /* @__PURE__ */ r(U, { className: "mr-2 h-4 w-4 animate-spin" }),
           k
         ] }),
