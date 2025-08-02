@@ -12,7 +12,7 @@ const h = N("w-full rounded-lg bg-background", {
     }
   }
 });
-function j({ label: e, placeholder: o = "", icon: r, description: a, ...u }) {
+function j({ label: e = "", placeholder: o = "", icon: r, description: a, ...u }) {
   return /* @__PURE__ */ n("div", { className: "grid w-full max-w-sm items-center gap-1.5", children: [
     /* @__PURE__ */ t(p, { htmlFor: `${e}-input`, children: e }),
     /* @__PURE__ */ n("div", { className: "relative", children: [

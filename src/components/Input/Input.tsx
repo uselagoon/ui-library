@@ -5,7 +5,7 @@ import { cva } from 'class-variance-authority';
 import { Loader2 } from 'lucide-react';
 
 type InputProps = ComponentProps<typeof ShadInput> & {
-	label: string;
+	label?: string;
 	placeholder?: string;
 	description?: string;
 	icon?: ReactNode;
@@ -19,7 +19,7 @@ const inputVariants = cva('w-full rounded-lg bg-background', {
 	},
 });
 
-export default function Input({ label, placeholder = '', icon, description, ...rest }: InputProps) {
+export default function Input({ label = '', placeholder = '', icon, description, ...rest }: InputProps) {
 	return (
 		<div className="grid w-full max-w-sm items-center gap-1.5">
 			<Label htmlFor={`${label}-input`}>{label}</Label>

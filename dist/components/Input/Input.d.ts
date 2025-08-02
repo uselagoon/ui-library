@@ -1,7 +1,7 @@
 import { Input as ShadInput } from '../ui/input';
 import { default as React, ComponentProps, ReactNode } from 'react';
 type InputProps = ComponentProps<typeof ShadInput> & {
-    label: string;
+    label?: string;
     placeholder?: string;
     description?: string;
     icon?: ReactNode;
