@@ -11,10 +11,28 @@ import { AppInfo } from './Sidenav';
 type DropdownProps = AppInfo & { signOutFn: () => Promise<void> };
 
 export default function SidenavDropdown({ name, version, logo, signOutFn }: DropdownProps) {
-	const { setTheme, theme } = useTheme();
+	const { setTheme, theme, systemTheme } = useTheme();
 
 	const Link = useLinkComponent();
 
+	const darkSwitcher = (
+		<DropdownMenuItem onClick={() => setTheme('light')}>
+			<Sun className="mr-2 h-4 w-4" />
+			Light
+		</DropdownMenuItem>
+	);
+
+	const lightSwitcher = (
+		<DropdownMenuItem onClick={() => setTheme('dark')}>
+			<Moon className="mr-2 h-4 w-4" />
+			Dark
+		</DropdownMenuItem>
+	);
+	const renderThemeSwitcher = () => {
+		if (theme === 'dark' || (theme === 'system' && systemTheme === 'dark')) return darkSwitcher;
+
+		return lightSwitcher;
+	};
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger className="w-full">
@@ -34,17 +52,7 @@ export default function SidenavDropdown({ name, version, logo, signOutFn }: Drop
 				</SidebarMenuButton>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56" align="start" side="right" sideOffset={4} style={{ zIndex: 9999 }}>
-				{theme === 'dark' ? (
-					<DropdownMenuItem onClick={() => setTheme('light')}>
-						<Sun className="mr-2 h-4 w-4" />
-						Light
-					</DropdownMenuItem>
-				) : (
-					<DropdownMenuItem onClick={() => setTheme('dark')}>
-						<Moon className="mr-2 h-4 w-4" />
-						Dark
-					</DropdownMenuItem>
-				)}
+				{renderThemeSwitcher()}
 				<DropdownMenuItem onClick={() => signOutFn()}>
 					<LogOut className="mr-2 h-4 w-4" />
 					Sign Out
