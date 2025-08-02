@@ -1,5 +1,5 @@
-import { jsx as o, jsxs as a } from "react/jsx-runtime";
-import s, { useEffect as y, useMemo as O } from "react";
+import { jsx as o, jsxs as s } from "react/jsx-runtime";
+import r, { useEffect as y, useMemo as O } from "react";
 import { Button as h } from "./index.es13.js";
 import { useReactTable as $, getSortedRowModel as q, getFilteredRowModel as J, getPaginationRowModel as K, getCoreRowModel as Q, flexRender as N } from "@tanstack/react-table";
 import { Table as U, TableHeader as X, TableRow as x, TableHead as Y, TableBody as Z, TableCell as M } from "./index.es46.js";
@@ -11,31 +11,31 @@ import ne from "./index.es62.js";
 function ue({
   columns: g,
   data: f,
-  searchableColumns: r,
+  searchableColumns: c,
   searchPlaceholder: v,
   onSearch: C,
-  loading: c,
+  loading: i,
   renderFilters: P,
   disableExtra: m,
   initialSearch: V,
   initialPageSize: p
 }) {
-  const [w, k] = s.useState([]), [D, F] = s.useState([]), [I, T] = s.useState({}), [u, z] = s.useState(V ?? ""), H = (e, n, l) => r?.length === 0 ? String(e.getValue(n)).toLowerCase().includes(l.toLowerCase()) : r?.some((i) => {
-    const d = e.getValue(i);
+  const [w, k] = r.useState([]), [D, F] = r.useState([]), [I, T] = r.useState({}), [u, z] = r.useState(V ?? ""), H = (e, n, l) => c?.length === 0 ? String(e.getValue(n)).toLowerCase().includes(l.toLowerCase()) : c?.some((a) => {
+    const d = e.getValue(a);
     return String(d).toLowerCase().includes(l.toLowerCase());
   }), W = (e) => {
     const n = e.getValue(), l = N(e.column.columnDef.cell, e.getContext());
-    return n && u && (!r?.length || r?.includes(e.column.id)) && typeof e.column.columnDef.cell == "function" ? ee(
+    return n && u && (!c?.length || c?.includes(e.column.id)) && typeof e.column.columnDef.cell == "function" ? ee(
       e?.column?.columnDef?.cell(e.getContext()),
       u,
       n
     ) : l;
-  }, b = s.useMemo(() => c ? Array(10).fill({}) : f, [c, f]), j = s.useMemo(
-    () => c ? g.map((e) => ({
+  }, b = r.useMemo(() => i ? Array(10).fill({}) : f, [i, f]), j = r.useMemo(
+    () => i ? g.map((e) => ({
       ...e,
       cell: () => /* @__PURE__ */ o(te, { className: "h-6 w-50 rounded-sm" })
     })) : g,
-    [c, g]
+    [i, g]
   ), t = $({
     data: b,
     columns: j,
@@ -47,7 +47,7 @@ function ue({
     onSortingChange: k,
     onColumnVisibilityChange: T,
     autoResetPageIndex: !1,
-    ...r ? { globalFilterFn: H } : {},
+    ...c ? { globalFilterFn: H } : {},
     state: {
       sorting: w,
       columnFilters: D,
@@ -66,8 +66,8 @@ function ue({
   ), G = t.getPageCount(), _ = t.getState().pagination.pageIndex + 1, A = Array.from({ length: G || 1 }, (e, n) => n + 1).map((e) => ({ label: `Page ${String(e)}`, value: e })), B = (e) => {
     t.setPageIndex(Number(e) - 1);
   };
-  return /* @__PURE__ */ a("div", { className: "w-[100%] mx-auto", children: [
-    m ? null : /* @__PURE__ */ a("div", { className: "flex items-end justify-between py-4", children: [
+  return /* @__PURE__ */ s("div", { className: "w-[100%] mx-auto", children: [
+    m ? null : /* @__PURE__ */ s("div", { className: "flex items-end justify-between py-4", children: [
       /* @__PURE__ */ o(
         E,
         {
@@ -76,16 +76,16 @@ function ue({
           placeholder: v ?? "Start typing to search",
           value: u ?? "",
           onChange: (e) => {
-            z(e), C && C(e);
+            C && C(e), !i && z(e);
           },
           className: "max-w-sm"
         }
       ),
       P && P(t)
     ] }),
-    /* @__PURE__ */ o("div", { className: "rounded-md border", children: /* @__PURE__ */ a(U, { className: "table-fixed", children: [
+    /* @__PURE__ */ o("div", { className: "rounded-md border", children: /* @__PURE__ */ s(U, { className: "table-fixed", children: [
       /* @__PURE__ */ o(X, { children: t.getHeaderGroups().map((e) => /* @__PURE__ */ o(x, { className: "py-6", children: e.headers.map((n) => {
-        const l = n.column.id === S, i = n.column.getSize(), d = n.column.columnDef?.width || i;
+        const l = n.column.id === S, a = n.column.getSize(), d = n.column.columnDef?.width || a;
         return /* @__PURE__ */ o(
           Y,
           {
@@ -97,7 +97,7 @@ function ue({
         );
       }) }, e.id)) }),
       /* @__PURE__ */ o(Z, { children: t.getRowModel().rows?.length ? t.getRowModel().rows.map((e) => /* @__PURE__ */ o(x, { className: "py-6", "data-state": e.getIsSelected() && "selected", children: e.getVisibleCells().map((n) => {
-        const l = n.column.id === S, i = n.column.getSize(), d = n.column.columnDef?.width || i;
+        const l = n.column.id === S, a = n.column.getSize(), d = n.column.columnDef?.width || a;
         return /* @__PURE__ */ o(
           M,
           {
@@ -112,15 +112,15 @@ function ue({
         );
       }) }, e.id)) : /* @__PURE__ */ o(x, { children: /* @__PURE__ */ o(M, { colSpan: g.length, className: "h-48 text-center", children: "No entries" }) }) })
     ] }) }),
-    m ? null : /* @__PURE__ */ a("div", { className: "flex items-center justify-end space-x-2 py-6", children: [
-      /* @__PURE__ */ a("div", { className: "text-muted-foreground flex-1 text-sm", children: [
+    m ? null : /* @__PURE__ */ s("div", { className: "flex items-center justify-end space-x-2 py-6", children: [
+      /* @__PURE__ */ s("div", { className: "text-muted-foreground flex-1 text-sm", children: [
         "Showing ",
         t.getRowModel().rows.length,
         " of ",
         t.getPrePaginationRowModel().rows.length,
         " entries"
       ] }),
-      /* @__PURE__ */ a("div", { className: "flex w-[100px] items-center justify-center text-sm font-medium", children: [
+      /* @__PURE__ */ s("div", { className: "flex w-[100px] items-center justify-center text-sm font-medium", children: [
         "Page ",
         t.getState().pagination.pageIndex + 1,
         " of ",
@@ -146,7 +146,7 @@ function ue({
           placeholder: "Go to page",
           options: A,
           onValueChange: B,
-          disabled: c
+          disabled: i
         }
       )
     ] })

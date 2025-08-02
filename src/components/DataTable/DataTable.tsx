@@ -170,8 +170,10 @@ export default function DataTable<TData, TValue>({
 						placeholder={searchPlaceholder ?? 'Start typing to search'}
 						value={globalFilter ?? ''}
 						onChange={(value) => {
-							setGlobalFilter(value);
 							onSearch && onSearch(value);
+							// don't trigger filtering with empty data
+							if (loading) return;
+							setGlobalFilter(value);
 						}}
 						className="max-w-sm"
 					/>
