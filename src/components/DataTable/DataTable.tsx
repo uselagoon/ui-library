@@ -1,5 +1,5 @@
 'use client';
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import {
 	ColumnDef,
@@ -141,6 +141,12 @@ export default function DataTable<TData, TValue>({
 		}
 	}, [initialPageSize]);
 
+	// 7.26% of data, never higher than a second, nor lower than 40ms
+	const timerLengthPercentage = useMemo(
+		() => Math.min(1000, Math.max(40, Math.floor(tableData.length * 0.0725))),
+		[tableData.length],
+	);
+
 	return (
 		<div className="w-[100%] mx-auto">
 			{/* filter/searchbar*/}
@@ -148,6 +154,7 @@ export default function DataTable<TData, TValue>({
 			{disableExtra ? null : (
 				<div className="flex items-end justify-between py-4">
 					<DebouncedInput
+						debounce={timerLengthPercentage}
 						label=""
 						placeholder={searchPlaceholder ?? 'Start typing to search'}
 						value={globalFilter ?? ''}
