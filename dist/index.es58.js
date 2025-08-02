@@ -35,9 +35,9 @@ const W = T("truncate transition-all duration-300", {
 }), F = ({
   text: r,
   width: a,
-  fontSize: x = "14px",
+  fontSize: b = "14px",
   type: l = "visible",
-  withToolTip: b = !1,
+  withToolTip: x = !1,
   iconOnly: s = !1
 }) => {
   const [f, i] = d(!1), [o, v] = d(!1), y = () => {
@@ -46,11 +46,11 @@ const W = T("truncate transition-all duration-300", {
     y(), i(!0), setTimeout(() => i(!1), 3500);
   }, n = () => v(!o), c = {
     maxWidth: a ? typeof a == "number" ? `${a}px` : a : void 0,
-    fontSize: x,
+    fontSize: b,
     width: s ? "max-content" : void 0
   };
-  return /* @__PURE__ */ t("div", { className: "flex items-start gap-4 min-w-max justify-between", style: c, children: [
-    !s && /* @__PURE__ */ e("span", { className: W({ type: l, unblur: o }), style: { maxWidth: c.maxWidth }, children: b ? /* @__PURE__ */ t(h, { children: [
+  return /* @__PURE__ */ t("div", { className: "flex items-center justify-between w-full gap-2", style: c, children: [
+    !s && /* @__PURE__ */ e("span", { className: W({ type: l, unblur: o }), style: { maxWidth: c.maxWidth }, children: x ? /* @__PURE__ */ t(h, { children: [
       /* @__PURE__ */ e(p, { asChild: !0, children: /* @__PURE__ */ e("span", { className: "truncate", children: r }) }),
       /* @__PURE__ */ e(g, { side: "bottom", children: /* @__PURE__ */ e("p", { children: r }) })
     ] }) : r }),

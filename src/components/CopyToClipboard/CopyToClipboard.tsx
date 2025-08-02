@@ -73,7 +73,7 @@ const CopyToClipboard: React.FC<ClipboardProps> = ({
 	};
 
 	return (
-		<div className="flex items-start gap-4 min-w-max justify-between" style={containerStyle}>
+		<div className="flex items-center justify-between w-full gap-2" style={containerStyle}>
 			{!iconOnly && (
 				<span className={textVariants({ type, unblur: manualUnblur })} style={{ maxWidth: containerStyle.maxWidth }}>
 					{withToolTip ? (
