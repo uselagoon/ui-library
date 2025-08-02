@@ -95,19 +95,19 @@ const CopyToClipboard: React.FC<ClipboardProps> = ({
 				{!copied ? (
 					<>
 						<Copy
-							className="w-4 h-4 text-muted-foreground hover:bg-gray-200 active:bg-gray-300 cursor-pointer"
+							className="w-4 h-4 text-muted-foreground dark:hover:text-gray-100 hover:text-black transition-colors active:text-gray-300 cursor-pointer"
 							data-cy="copy-button"
 							onClick={handleCopy}
 						/>
 						{type === 'hiddenWithIcon' &&
 							(manualUnblur ? (
 								<EyeOff
-									className="w-4 h-4 ml-3 cursor-pointer text-muted-foreground hover:bg-gray-200 active:bg-gray-300"
+									className="w-4 h-4 ml-3 cursor-pointer text-muted-foreground dark:hover:text-gray-100 hover:text-black transition-colors active:text-gray-300"
 									onClick={handleBlurToggle}
 								/>
 							) : (
 								<Eye
-									className="w-4 h-4 ml-3 cursor-pointer text-muted-foreground hover:bg-gray-200 active:bg-gray-300"
+									className="w-4 h-4 ml-3 cursor-pointer text-muted-foreground dark:hover:text-gray-100 hover:text-black transition-colors active:text-gray-300"
 									onClick={handleBlurToggle}
 								/>
 							))}
