@@ -22,6 +22,7 @@ import { DebouncedInput } from '../Input';
 import { highlightTextInElement } from './HighlightText';
 import { cn } from '@/lib/utils';
 import { Skeleton } from '../ui/skeleton';
+import SelectWithOptions from '../Select';
 
 type LibColumnDef<TData, TValue = unknown> = ColumnDef<TData, TValue> & {
 	width?: string;
@@ -147,6 +148,16 @@ export default function DataTable<TData, TValue>({
 		[tableData.length],
 	);
 
+	const pageCount = table.getPageCount();
+	const currentPage = table.getState().pagination.pageIndex + 1;
+
+	const pageSelectOptions = Array.from({ length: pageCount }, (_, idx) => idx + 1).map((pageIndex) => {
+		return { label: `Page ${String(pageIndex)}`, value: pageIndex };
+	});
+
+	const handlePageSelect = (pageIndex: string) => {
+		table.setPageIndex(Number(pageIndex) - 1);
+	};
 	return (
 		<div className="w-[100%] mx-auto">
 			{/* filter/searchbar*/}
@@ -249,6 +260,10 @@ export default function DataTable<TData, TValue>({
 						Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount() || 1}
 					</div>
 
+					<Button variant="outline" size="sm" onClick={() => table.firstPage()} disabled={!table.getCanPreviousPage()}>
+						{'<<'}
+					</Button>
+
 					<Button
 						variant="outline"
 						size="sm"
@@ -260,6 +275,16 @@ export default function DataTable<TData, TValue>({
 					<Button variant="outline" size="sm" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
 						Next
 					</Button>
+
+					<Button variant="outline" size="sm" onClick={() => table.lastPage()} disabled={!table.getCanNextPage()}>
+						{'>>'}
+					</Button>
+					<SelectWithOptions
+						value={String(currentPage) || undefined}
+						placeholder="Go to page"
+						options={pageSelectOptions}
+						onValueChange={handlePageSelect}
+					/>
 				</div>
 			)}
 		</div>
