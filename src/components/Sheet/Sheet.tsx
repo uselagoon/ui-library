@@ -160,7 +160,7 @@ export default function UISheet({
 					<SheetTitle>{sheetTitle}</SheetTitle>
 					<SheetDescription>{sheetDescription}</SheetDescription>
 				</SheetHeader>
-				<div className="flex flex-col gap-4 overflow-y-auto px-4">
+				<div className="flex flex-col gap-4 overflow-y-auto">
 					{sheetFields.map((field) => (
 						<div className="grid auto-rows-min gap-6 px-4" key={field.id}>
 							<div className="grid gap-3">

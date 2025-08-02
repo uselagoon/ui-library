@@ -70,7 +70,7 @@ function ee({
         /* @__PURE__ */ r(U, { children: k }),
         /* @__PURE__ */ r(W, { children: w })
       ] }),
-      /* @__PURE__ */ o("div", { className: "flex flex-col gap-4 overflow-y-auto px-4", children: [
+      /* @__PURE__ */ o("div", { className: "flex flex-col gap-4 overflow-y-auto", children: [
         c.map((e) => /* @__PURE__ */ r("div", { className: "grid auto-rows-min gap-6 px-4", children: /* @__PURE__ */ o("div", { className: "grid gap-3", children: [
           e.type !== "checkbox" && /* @__PURE__ */ o(L, { htmlFor: e.id, children: [
             e.label,
