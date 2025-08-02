@@ -2,27 +2,27 @@ import { jsx as o, jsxs as a } from "react/jsx-runtime";
 import s, { useEffect as y, useMemo as O } from "react";
 import { Button as h } from "./index.es13.js";
 import { useReactTable as $, getSortedRowModel as q, getFilteredRowModel as J, getPaginationRowModel as K, getCoreRowModel as Q, flexRender as N } from "@tanstack/react-table";
-import { Table as U, TableHeader as X, TableRow as b, TableHead as Y, TableBody as Z, TableCell as M } from "./index.es46.js";
+import { Table as U, TableHeader as X, TableRow as x, TableHead as Y, TableBody as Z, TableCell as M } from "./index.es46.js";
 import { DebouncedInput as E } from "./index.es63.js";
 import { highlightTextInElement as ee } from "./index.es97.js";
 import { cn as R } from "./index.es70.js";
 import { Skeleton as te } from "./index.es42.js";
 import ne from "./index.es62.js";
 function ue({
-  columns: d,
+  columns: g,
   data: f,
   searchableColumns: r,
   searchPlaceholder: v,
   onSearch: C,
-  loading: g,
+  loading: c,
   renderFilters: P,
   disableExtra: m,
   initialSearch: V,
   initialPageSize: p
 }) {
   const [w, k] = s.useState([]), [D, F] = s.useState([]), [I, T] = s.useState({}), [u, z] = s.useState(V ?? ""), H = (e, n, l) => r?.length === 0 ? String(e.getValue(n)).toLowerCase().includes(l.toLowerCase()) : r?.some((i) => {
-    const c = e.getValue(i);
-    return String(c).toLowerCase().includes(l.toLowerCase());
+    const d = e.getValue(i);
+    return String(d).toLowerCase().includes(l.toLowerCase());
   }), W = (e) => {
     const n = e.getValue(), l = N(e.column.columnDef.cell, e.getContext());
     return n && u && (!r?.length || r?.includes(e.column.id)) && typeof e.column.columnDef.cell == "function" ? ee(
@@ -30,14 +30,14 @@ function ue({
       u,
       n
     ) : l;
-  }, x = s.useMemo(() => g ? Array(10).fill({}) : f, [g, f]), j = s.useMemo(
-    () => g ? d.map((e) => ({
+  }, b = s.useMemo(() => c ? Array(10).fill({}) : f, [c, f]), j = s.useMemo(
+    () => c ? g.map((e) => ({
       ...e,
       cell: () => /* @__PURE__ */ o(te, { className: "h-6 w-50 rounded-sm" })
-    })) : d,
-    [g, d]
+    })) : g,
+    [c, g]
   ), t = $({
-    data: x,
+    data: b,
     columns: j,
     getCoreRowModel: Q(),
     getPaginationRowModel: K(),
@@ -61,9 +61,9 @@ function ue({
     p && t.setPageSize(p);
   }, [p]);
   const L = O(
-    () => Math.min(1e3, Math.max(40, Math.floor(x.length * 0.0725))),
-    [x.length]
-  ), G = t.getPageCount(), _ = t.getState().pagination.pageIndex + 1, A = Array.from({ length: G }, (e, n) => n + 1).map((e) => ({ label: `Page ${String(e)}`, value: e })), B = (e) => {
+    () => Math.min(1e3, Math.max(40, Math.floor(b.length * 0.0725))),
+    [b.length]
+  ), G = t.getPageCount(), _ = t.getState().pagination.pageIndex + 1, A = Array.from({ length: G || 1 }, (e, n) => n + 1).map((e) => ({ label: `Page ${String(e)}`, value: e })), B = (e) => {
     t.setPageIndex(Number(e) - 1);
   };
   return /* @__PURE__ */ a("div", { className: "w-[100%] mx-auto", children: [
@@ -84,24 +84,24 @@ function ue({
       P && P(t)
     ] }),
     /* @__PURE__ */ o("div", { className: "rounded-md border", children: /* @__PURE__ */ a(U, { className: "table-fixed", children: [
-      /* @__PURE__ */ o(X, { children: t.getHeaderGroups().map((e) => /* @__PURE__ */ o(b, { className: "py-6", children: e.headers.map((n) => {
-        const l = n.column.id === S, i = n.column.getSize(), c = n.column.columnDef?.width || i;
+      /* @__PURE__ */ o(X, { children: t.getHeaderGroups().map((e) => /* @__PURE__ */ o(x, { className: "py-6", children: e.headers.map((n) => {
+        const l = n.column.id === S, i = n.column.getSize(), d = n.column.columnDef?.width || i;
         return /* @__PURE__ */ o(
           Y,
           {
             className: R("transition-colors py-1", l && "bg-gray-100 dark:bg-gray-700"),
-            style: { width: c },
+            style: { width: d },
             children: /* @__PURE__ */ o("div", { className: "line-clamp-2 break-all leading-snug", children: n.isPlaceholder ? null : N(n.column.columnDef.header, n.getContext()) })
           },
           n.id
         );
       }) }, e.id)) }),
-      /* @__PURE__ */ o(Z, { children: t.getRowModel().rows?.length ? t.getRowModel().rows.map((e) => /* @__PURE__ */ o(b, { className: "py-6", "data-state": e.getIsSelected() && "selected", children: e.getVisibleCells().map((n) => {
-        const l = n.column.id === S, i = n.column.getSize(), c = n.column.columnDef?.width || i;
+      /* @__PURE__ */ o(Z, { children: t.getRowModel().rows?.length ? t.getRowModel().rows.map((e) => /* @__PURE__ */ o(x, { className: "py-6", "data-state": e.getIsSelected() && "selected", children: e.getVisibleCells().map((n) => {
+        const l = n.column.id === S, i = n.column.getSize(), d = n.column.columnDef?.width || i;
         return /* @__PURE__ */ o(
           M,
           {
-            style: { width: c },
+            style: { width: d },
             className: R(
               "transition-colors py-6 text-ellipsis",
               l && "bg-gray-100 dark:bg-gray-700"
@@ -110,7 +110,7 @@ function ue({
           },
           n.id
         );
-      }) }, e.id)) : /* @__PURE__ */ o(b, { children: /* @__PURE__ */ o(M, { colSpan: d.length, className: "h-48 text-center", children: "No entries" }) }) })
+      }) }, e.id)) : /* @__PURE__ */ o(x, { children: /* @__PURE__ */ o(M, { colSpan: g.length, className: "h-48 text-center", children: "No entries" }) }) })
     ] }) }),
     m ? null : /* @__PURE__ */ a("div", { className: "flex items-center justify-end space-x-2 py-6", children: [
       /* @__PURE__ */ a("div", { className: "text-muted-foreground flex-1 text-sm", children: [
@@ -145,7 +145,8 @@ function ue({
           value: String(_) || void 0,
           placeholder: "Go to page",
           options: A,
-          onValueChange: B
+          onValueChange: B,
+          disabled: c
         }
       )
     ] })

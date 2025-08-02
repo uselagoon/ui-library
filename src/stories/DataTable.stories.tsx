@@ -218,6 +218,7 @@ export const Default: Story = {
 		// searchPlaceholder: 'Enter something to search',
 		// initialSearch: ''
 		// loading: true,
+		loading: true,
 		renderFilters: (table) => {
 			return (
 				<>

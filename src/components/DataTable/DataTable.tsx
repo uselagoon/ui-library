@@ -151,7 +151,7 @@ export default function DataTable<TData, TValue>({
 	const pageCount = table.getPageCount();
 	const currentPage = table.getState().pagination.pageIndex + 1;
 
-	const pageSelectOptions = Array.from({ length: pageCount }, (_, idx) => idx + 1).map((pageIndex) => {
+	const pageSelectOptions = Array.from({ length: pageCount || 1 }, (_, idx) => idx + 1).map((pageIndex) => {
 		return { label: `Page ${String(pageIndex)}`, value: pageIndex };
 	});
 
@@ -284,6 +284,7 @@ export default function DataTable<TData, TValue>({
 						placeholder="Go to page"
 						options={pageSelectOptions}
 						onValueChange={handlePageSelect}
+						disabled={loading}
 					/>
 				</div>
 			)}
