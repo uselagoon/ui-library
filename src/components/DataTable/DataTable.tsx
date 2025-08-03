@@ -1,5 +1,5 @@
 'use client';
-import React, { ReactNode, useEffect, useMemo } from 'react';
+import React, { ReactNode, useEffect, useMemo, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import {
 	ColumnDef,
@@ -62,6 +62,15 @@ export default function DataTable<TData, TValue>({
 	const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
 
 	const [globalFilter, setGlobalFilter] = React.useState<string>(initialSearch ?? '');
+
+	// auto-focus if search was filled during loading state
+	const searchInputRef = useRef<HTMLInputElement>(null);
+
+	useEffect(() => {
+		if (initialSearch && searchInputRef.current) {
+			searchInputRef.current.focus();
+		}
+	}, []);
 
 	const customGlobalFilter = (row: any, columnId: string, value: string) => {
 		// globally search everything if searchableCols isnt provided
@@ -165,6 +174,7 @@ export default function DataTable<TData, TValue>({
 			{disableExtra ? null : (
 				<div className="flex items-end justify-between py-4">
 					<DebouncedInput
+						ref={searchInputRef}
 						debounce={timerLengthPercentage}
 						label=""
 						placeholder={searchPlaceholder ?? 'Start typing to search'}
