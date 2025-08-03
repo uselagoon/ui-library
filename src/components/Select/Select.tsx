@@ -20,7 +20,7 @@ export default function SelectWithOptions({ placeholder, options, disabled, widt
 			<SelectTrigger className={`w-[${width ?? '266px'}]`}>
 				<SelectValue placeholder={placeholder || 'Make a selection'} />
 			</SelectTrigger>
-			{!disabled && options && (
+			{!disabled && options && Array.isArray(options) && (
 				<SelectContent>
 					{isOptionGroupArray(options)
 						? options.map((group) => (
