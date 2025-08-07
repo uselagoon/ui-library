@@ -15,6 +15,7 @@ import {
 	FilterFnOption,
 	Cell,
 	Table as TableType,
+	Row,
 } from '@tanstack/react-table';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
 import { DebouncedInput } from '../Input';
@@ -26,6 +27,7 @@ import SelectWithOptions from '../Select';
 
 type LibColumnDef<TData, TValue = unknown> = ColumnDef<TData, TValue> & {
 	width?: string;
+	onRowClick?: (row: Row<TData>) => void;
 };
 export interface DataTableProps<TData, TValue> {
 	columns: LibColumnDef<TData, TValue>[];
@@ -167,6 +169,7 @@ export default function DataTable<TData, TValue>({
 	const handlePageSelect = (pageIndex: string) => {
 		table.setPageIndex(Number(pageIndex) - 1);
 	};
+
 	return (
 		<div className="w-[100%] mx-auto">
 			{/* filter/searchbar*/}
@@ -225,8 +228,31 @@ export default function DataTable<TData, TValue>({
 					<TableBody>
 						{table.getRowModel().rows?.length ? (
 							table.getRowModel().rows.map((row) => {
+								const hasRowOnClick = row.getVisibleCells().find((cell) => {
+									const columnDef = cell.column.columnDef as LibColumnDef<TData, TValue>;
+									return typeof columnDef.onRowClick === 'function';
+								});
+
+								const handleRowClick = (e: React.MouseEvent<HTMLTableRowElement>) => {
+									if (!hasRowOnClick) return;
+
+									const columnDef = hasRowOnClick.column.columnDef as LibColumnDef<TData, TValue>;
+
+									const clickedElement = e.target as HTMLElement;
+									const parent = clickedElement.closest('[data-slot="table-cell"]');
+
+									if (!parent?.firstElementChild?.contains(clickedElement)) {
+										columnDef.onRowClick?.(row);
+									}
+								};
+
 								return (
-									<TableRow className="py-6" key={row.id} data-state={row.getIsSelected() && 'selected'}>
+									<TableRow
+										onClick={handleRowClick}
+										className="py-6"
+										key={row.id}
+										data-state={row.getIsSelected() && 'selected'}
+									>
 										{row.getVisibleCells().map((visibleCell) => {
 											const isSorted = visibleCell.column.id === sortedColumnId;
 											const tdInitialWidth = visibleCell.column.getSize();

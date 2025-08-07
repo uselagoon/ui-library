@@ -125,6 +125,9 @@ const tableColumns = [
 	{
 		accessorKey: 'status',
 		width: '20%',
+		onRowClick: (row) => {
+			console.warn(row.original);
+		},
 		header: ({ column }) => {
 			const sortDirection = column.getIsSorted();
 			return (
@@ -218,7 +221,7 @@ export const Default: Story = {
 		// searchPlaceholder: 'Enter something to search',
 		// initialSearch: ''
 		// loading: true,
-		loading: true,
+		// loading: true,
 		renderFilters: (table) => {
 			return (
 				<>
