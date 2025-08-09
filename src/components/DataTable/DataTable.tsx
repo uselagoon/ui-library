@@ -27,7 +27,6 @@ import SelectWithOptions from '../Select';
 
 type LibColumnDef<TData, TValue = unknown> = ColumnDef<TData, TValue> & {
 	width?: string;
-	onRowClick?: (row: Row<TData>) => void;
 };
 export interface DataTableProps<TData, TValue> {
 	columns: LibColumnDef<TData, TValue>[];
@@ -43,6 +42,8 @@ export interface DataTableProps<TData, TValue> {
 	onSearch?: (searchString: string) => void;
 	initialSearch?: string;
 	initialPageSize?: number;
+	/** Called on each row (empty space) click - ignored if cell item is clicked */
+	onRowClick?: (row: Row<TData>) => void;
 }
 
 export default function DataTable<TData, TValue>({
@@ -56,6 +57,7 @@ export default function DataTable<TData, TValue>({
 	disableExtra,
 	initialSearch,
 	initialPageSize,
+	onRowClick,
 }: DataTableProps<TData, TValue>) {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
 
@@ -170,6 +172,17 @@ export default function DataTable<TData, TValue>({
 		table.setPageIndex(Number(pageIndex) - 1);
 	};
 
+	const handleRowClick = (e: React.MouseEvent<HTMLTableRowElement>, row: Row<TData>) => {
+		if (typeof onRowClick !== 'function') return;
+
+		const clickedElement = e.target as HTMLElement;
+		const parent = clickedElement.closest('[data-slot="table-cell"]');
+
+		if (!parent?.firstElementChild?.contains(clickedElement)) {
+			onRowClick(row);
+		}
+	};
+
 	return (
 		<div className="w-[100%] mx-auto">
 			{/* filter/searchbar*/}
@@ -228,27 +241,9 @@ export default function DataTable<TData, TValue>({
 					<TableBody>
 						{table.getRowModel().rows?.length ? (
 							table.getRowModel().rows.map((row) => {
-								const hasRowOnClick = row.getVisibleCells().find((cell) => {
-									const columnDef = cell.column.columnDef as LibColumnDef<TData, TValue>;
-									return typeof columnDef.onRowClick === 'function';
-								});
-
-								const handleRowClick = (e: React.MouseEvent<HTMLTableRowElement>) => {
-									if (!hasRowOnClick) return;
-
-									const columnDef = hasRowOnClick.column.columnDef as LibColumnDef<TData, TValue>;
-
-									const clickedElement = e.target as HTMLElement;
-									const parent = clickedElement.closest('[data-slot="table-cell"]');
-
-									if (!parent?.firstElementChild?.contains(clickedElement)) {
-										columnDef.onRowClick?.(row);
-									}
-								};
-
 								return (
 									<TableRow
-										onClick={handleRowClick}
+										onClick={(e) => handleRowClick(e, row)}
 										className="py-6"
 										key={row.id}
 										data-state={row.getIsSelected() && 'selected'}
