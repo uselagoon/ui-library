@@ -11,7 +11,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from '../ui/sidebar';
-import { BriefcaseBusiness, KeyRound, ServerCog, FolderGit2, UserRoundCog } from 'lucide-react';
+import { BriefcaseBusiness, KeyRound, ServerCog, FolderGit2, UserRoundCog, ListChecks } from 'lucide-react';
 import SidenavDropdown from './SidenavDropdown';
 import { genAvatarBackground, getCurrentPath } from '@/_util/helpers';
 
@@ -77,6 +77,11 @@ const getSidenavItems = (kcUrl: string, signOutFn: () => Promise<void>) => [
 				title: 'SSH Keys',
 				url: '/settings',
 				icon: KeyRound,
+			},
+			{
+				title: 'Preferences',
+				url: '/settings/preferences',
+				icon: ListChecks,
 			},
 			{
 				title: 'My Account',
