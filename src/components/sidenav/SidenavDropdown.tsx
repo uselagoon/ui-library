@@ -15,15 +15,20 @@ export default function SidenavDropdown({ name, version, logo, signOutFn }: Drop
 
 	const Link = useLinkComponent();
 
+	const handleToggleTheme = (theme: 'light' | 'dark') => {
+		setTheme(theme);
+		window.dispatchEvent(new Event('storage'));
+	};
+
 	const darkSwitcher = (
-		<DropdownMenuItem onClick={() => setTheme('light')}>
+		<DropdownMenuItem onClick={() => handleToggleTheme('light')}>
 			<Sun className="mr-2 h-4 w-4" />
 			Light
 		</DropdownMenuItem>
 	);
 
 	const lightSwitcher = (
-		<DropdownMenuItem onClick={() => setTheme('dark')}>
+		<DropdownMenuItem onClick={() => handleToggleTheme('dark')}>
 			<Moon className="mr-2 h-4 w-4" />
 			Dark
 		</DropdownMenuItem>
