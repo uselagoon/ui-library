@@ -177,9 +177,12 @@ export default function DataTable<TData, TValue>({
 
 		const clickedElement = e.target as HTMLElement;
 		const parent = clickedElement.closest('[data-slot="table-cell"]');
+		const tableRow = e.currentTarget;
 
-		if (!parent?.firstElementChild?.contains(clickedElement)) {
-			onRowClick(row);
+		if (tableRow.contains(clickedElement)) {
+			if (!parent?.firstElementChild?.contains(clickedElement)) {
+				onRowClick(row);
+			}
 		}
 	};
 

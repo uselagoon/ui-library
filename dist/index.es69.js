@@ -1,18 +1,18 @@
-import { jsx as o, jsxs as s } from "react/jsx-runtime";
-import r, { useRef as q, useEffect as x, useMemo as J } from "react";
+import { jsx as o, jsxs as r } from "react/jsx-runtime";
+import c, { useRef as q, useEffect as x, useMemo as J } from "react";
 import { Button as h } from "./index.es13.js";
 import { useReactTable as K, getSortedRowModel as Q, getFilteredRowModel as U, getPaginationRowModel as X, getCoreRowModel as Y, flexRender as v } from "@tanstack/react-table";
 import { Table as Z, TableHeader as ee, TableRow as P, TableHead as te, TableBody as ne, TableCell as k } from "./index.es46.js";
 import { DebouncedInput as oe } from "./index.es63.js";
-import { highlightTextInElement as le } from "./index.es97.js";
+import { highlightTextInElement as le } from "./index.es98.js";
 import { cn as I } from "./index.es70.js";
 import { Skeleton as ie } from "./index.es42.js";
 import ae from "./index.es62.js";
 function be({
   columns: g,
   data: f,
-  searchableColumns: c,
-  searchPlaceholder: V,
+  searchableColumns: d,
+  searchPlaceholder: T,
   onSearch: y,
   loading: a,
   renderFilters: S,
@@ -21,21 +21,21 @@ function be({
   initialPageSize: p,
   onRowClick: R
 }) {
-  const [b, D] = r.useState([]), [F, T] = r.useState([]), [z, H] = r.useState({}), [m, W] = r.useState(N ?? ""), w = q(null);
+  const [b, V] = c.useState([]), [D, F] = c.useState([]), [z, H] = c.useState({}), [m, W] = c.useState(N ?? ""), w = q(null);
   x(() => {
     N && w.current && w.current.focus();
   }, []);
-  const j = (e, t, l) => c?.length === 0 ? String(e.getValue(t)).toLowerCase().includes(l.toLowerCase()) : c?.some((i) => {
-    const d = e.getValue(i);
-    return String(d).toLowerCase().includes(l.toLowerCase());
+  const j = (e, t, l) => d?.length === 0 ? String(e.getValue(t)).toLowerCase().includes(l.toLowerCase()) : d?.some((i) => {
+    const s = e.getValue(i);
+    return String(s).toLowerCase().includes(l.toLowerCase());
   }), L = (e) => {
     const t = e.getValue(), l = v(e.column.columnDef.cell, e.getContext());
-    return t && m && (!c?.length || c?.includes(e.column.id)) && typeof e.column.columnDef.cell == "function" ? le(
+    return t && m && (!d?.length || d?.includes(e.column.id)) && typeof e.column.columnDef.cell == "function" ? le(
       e?.column?.columnDef?.cell(e.getContext()),
       m,
       t
     ) : l;
-  }, C = r.useMemo(() => a ? Array(10).fill({}) : f, [a, f]), G = r.useMemo(
+  }, C = c.useMemo(() => a ? Array(10).fill({}) : f, [a, f]), G = c.useMemo(
     () => a ? g.map((e) => ({
       ...e,
       cell: () => /* @__PURE__ */ o(ie, { className: "h-6 w-50 rounded-sm" })
@@ -48,14 +48,14 @@ function be({
     getPaginationRowModel: X(),
     getFilteredRowModel: U(),
     getSortedRowModel: Q(),
-    onColumnFiltersChange: T,
-    onSortingChange: D,
+    onColumnFiltersChange: F,
+    onSortingChange: V,
     onColumnVisibilityChange: H,
     autoResetPageIndex: !1,
-    ...c ? { globalFilterFn: j } : {},
+    ...d ? { globalFilterFn: j } : {},
     state: {
       sorting: b,
-      columnFilters: F,
+      columnFilters: D,
       columnVisibility: z,
       globalFilter: m
     }
@@ -72,18 +72,18 @@ function be({
     n.setPageIndex(Number(e) - 1);
   }, $ = (e, t) => {
     if (typeof R != "function") return;
-    const l = e.target;
-    l.closest('[data-slot="table-cell"]')?.firstElementChild?.contains(l) || R(t);
+    const l = e.target, i = l.closest('[data-slot="table-cell"]');
+    e.currentTarget.contains(l) && (i?.firstElementChild?.contains(l) || R(t));
   };
-  return /* @__PURE__ */ s("div", { className: "w-[100%] mx-auto", children: [
-    u ? null : /* @__PURE__ */ s("div", { className: "flex items-end justify-between py-4", children: [
+  return /* @__PURE__ */ r("div", { className: "w-[100%] mx-auto", children: [
+    u ? null : /* @__PURE__ */ r("div", { className: "flex items-end justify-between py-4", children: [
       /* @__PURE__ */ o(
         oe,
         {
           ref: w,
           debounce: _,
           label: "",
-          placeholder: V ?? "Start typing to search",
+          placeholder: T ?? "Start typing to search",
           value: m ?? "",
           onChange: (e) => {
             y && y(e), !a && W(e);
@@ -93,14 +93,14 @@ function be({
       ),
       S && S(n)
     ] }),
-    /* @__PURE__ */ o("div", { className: "rounded-md border", children: /* @__PURE__ */ s(Z, { className: "table-fixed", children: [
+    /* @__PURE__ */ o("div", { className: "rounded-md border", children: /* @__PURE__ */ r(Z, { className: "table-fixed", children: [
       /* @__PURE__ */ o(ee, { children: n.getHeaderGroups().map((e) => /* @__PURE__ */ o(P, { className: "py-6", children: e.headers.map((t) => {
-        const l = t.column.id === M, i = t.column.getSize(), d = t.column.columnDef?.width || i;
+        const l = t.column.id === M, i = t.column.getSize(), s = t.column.columnDef?.width || i;
         return /* @__PURE__ */ o(
           te,
           {
             className: I("transition-colors py-1", l && "bg-gray-100 dark:bg-gray-700"),
-            style: { width: d },
+            style: { width: s },
             children: /* @__PURE__ */ o("div", { className: "line-clamp-2 break-all leading-snug", children: t.isPlaceholder ? null : v(t.column.columnDef.header, t.getContext()) })
           },
           t.id
@@ -113,11 +113,11 @@ function be({
           className: "py-6",
           "data-state": e.getIsSelected() && "selected",
           children: e.getVisibleCells().map((t) => {
-            const l = t.column.id === M, i = t.column.getSize(), d = t.column.columnDef?.width || i;
+            const l = t.column.id === M, i = t.column.getSize(), s = t.column.columnDef?.width || i;
             return /* @__PURE__ */ o(
               k,
               {
-                style: { width: d },
+                style: { width: s },
                 className: I(
                   "transition-colors py-6 text-ellipsis",
                   l && "bg-gray-100 dark:bg-gray-700"
@@ -131,15 +131,15 @@ function be({
         e.id
       )) : /* @__PURE__ */ o(P, { children: /* @__PURE__ */ o(k, { colSpan: g.length, className: "h-48 text-center", children: "No entries" }) }) })
     ] }) }),
-    u ? null : /* @__PURE__ */ s("div", { className: "flex items-center justify-end space-x-2 py-6", children: [
-      /* @__PURE__ */ s("div", { className: "text-muted-foreground flex-1 text-sm", children: [
+    u ? null : /* @__PURE__ */ r("div", { className: "flex items-center justify-end space-x-2 py-6", children: [
+      /* @__PURE__ */ r("div", { className: "text-muted-foreground flex-1 text-sm", children: [
         "Showing ",
         n.getRowModel().rows.length,
         " of ",
         n.getPrePaginationRowModel().rows.length,
         " entries"
       ] }),
-      /* @__PURE__ */ s("div", { className: "flex w-[100px] items-center justify-center text-sm font-medium", children: [
+      /* @__PURE__ */ r("div", { className: "flex w-[100px] items-center justify-center text-sm font-medium", children: [
         "Page ",
         n.getState().pagination.pageIndex + 1,
         " of ",
