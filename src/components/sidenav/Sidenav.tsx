@@ -52,6 +52,11 @@ const getSidenavItems = (kcUrl: string, signOutFn: () => Promise<void>) => [
 				url: '/projects',
 				icon: SquareTerminal,
 			},
+			{
+				title: 'All Deployments',
+				url: '/alldeployments',
+				icon: ServerCog,
+			},
 		],
 	},
 	{
@@ -61,12 +66,6 @@ const getSidenavItems = (kcUrl: string, signOutFn: () => Promise<void>) => [
 				title: 'All Organizations',
 				url: '/organizations',
 				icon: BriefcaseBusiness,
-			},
-
-			{
-				title: 'All Deployments',
-				url: '/alldeployments',
-				icon: ServerCog,
 			},
 		],
 	},
