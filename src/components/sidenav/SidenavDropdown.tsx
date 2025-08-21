@@ -40,22 +40,24 @@ export default function SidenavDropdown({ name, version, logo, signOutFn }: Drop
 	};
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger className="w-full">
-				<SidebarMenuButton
-					size="lg"
-					className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-				>
-					<div className="flex aspect-square size-8 items-center justify-center rounded-lg  text-sidebar-primary-foreground">
-						<Link href="/projects">{logo ? logo : <img src={LagoonIcon} className="size-8" />}</Link>
-					</div>
-					<div className="grid flex-1 text-left text-sm leading-tight">
-						<span className="truncate font-semibold">{name}</span>
-						<span className="truncate text-xs">{version}</span>
-					</div>
+			<section className="flex items-center gap-1 pl-2">
+				<div className="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground">
+					<Link href="/projects">{logo ? logo : <img src={LagoonIcon} className="size-8" />}</Link>
+				</div>
+				<DropdownMenuTrigger className="w-full">
+					<SidebarMenuButton
+						size="lg"
+						className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+					>
+						<div className="grid flex-1 text-left text-sm leading-tight">
+							<span className="truncate font-semibold">{name}</span>
+							<span className="truncate text-xs">{version}</span>
+						</div>
 
-					<ChevronsUpDown className="ml-auto h-4 w-4" />
-				</SidebarMenuButton>
-			</DropdownMenuTrigger>
+						<ChevronsUpDown className="ml-auto h-4 w-4" />
+					</SidebarMenuButton>
+				</DropdownMenuTrigger>
+			</section>
 			<DropdownMenuContent className="w-56" align="start" side="right" sideOffset={4} style={{ zIndex: 9999 }}>
 				{renderThemeSwitcher()}
 				<DropdownMenuItem onClick={() => signOutFn()}>
