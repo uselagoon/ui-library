@@ -70,4 +70,11 @@ export const Disabled: Story = {
 	},
 };
 
+export const NoOptions: Story = {
+	args: {
+		options: [],
+		placeholder: 'Empty',
+	},
+};
+
 export default meta;

@@ -56,6 +56,12 @@ function getLuminance(r: number, g: number, b: number) {
 export const getCurrentPath = (navLinks: NavItems, pathname: string): string => {
 	const allItems = navLinks.flatMap((section) => section.sectionItems);
 
-	const match = allItems.find((item) => pathname.startsWith(item.url));
+	// try an exact match
+	let match = allItems.find((item) => pathname === item.url);
+
+	if (!match) {
+		match = allItems.find((item) => pathname.startsWith(item.url));
+	}
+
 	return match?.url || '';
 };

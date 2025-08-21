@@ -153,73 +153,75 @@ export default function UISheet({
 	return (
 		<Sheet open={sheetOpen} onOpenChange={setSheetOpen} {...rest}>
 			<SheetTrigger asChild>
-				<Button variant="outline">{sheetTrigger}</Button>
+				<Button>{sheetTrigger}</Button>
 			</SheetTrigger>
-			<SheetContent>
+			<SheetContent className="flex flex-col h-full">
 				<SheetHeader>
 					<SheetTitle>{sheetTitle}</SheetTitle>
 					<SheetDescription>{sheetDescription}</SheetDescription>
 				</SheetHeader>
-				{sheetFields.map((field) => (
-					<div className="grid auto-rows-min gap-6 px-4" key={field.id}>
-						<div className="grid gap-3">
-							{field.type !== 'checkbox' && (
-								<Label htmlFor={field.id}>
-									{field.label}
-									{field.required && <span className="text-red-500 ml-1">*</span>}
-								</Label>
-							)}
+				<div className="flex flex-col gap-4 overflow-y-auto">
+					{sheetFields.map((field) => (
+						<div className="grid auto-rows-min gap-6 px-4" key={field.id}>
+							<div className="grid gap-3">
+								{field.type !== 'checkbox' && (
+									<Label htmlFor={field.id}>
+										{field.label}
+										{field.required && <span className="text-red-500 ml-1">*</span>}
+									</Label>
+								)}
 
-							{(() => {
-								switch (field.type) {
-									case 'checkbox':
-										return (
-											<div className="flex items-center space-x-2">
-												<Checkbox
-													label={field.label}
+								{(() => {
+									switch (field.type) {
+										case 'checkbox':
+											return (
+												<div className="flex items-center space-x-2">
+													<Checkbox
+														label={field.label}
+														id={field.id}
+														checked={fieldValues[field.id] === true || fieldValues[field.id] === 'true'}
+														onCheckedChange={(checked) => handleInputChange(field.id, checked)}
+													/>
+												</div>
+											);
+										case 'textarea':
+											return (
+												<textarea
 													id={field.id}
-													checked={fieldValues[field.id] === true || fieldValues[field.id] === 'true'}
-													onCheckedChange={(checked) => handleInputChange(field.id, checked)}
+													className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+													value={(fieldValues[field.id] as string) || ''}
+													onChange={(e) => handleInputChange(field.id, e.target.value)}
+													placeholder={field?.placeholder}
+													readOnly={field.readOnly}
 												/>
-											</div>
-										);
-									case 'textarea':
-										return (
-											<textarea
-												id={field.id}
-												className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-												value={(fieldValues[field.id] as string) || ''}
-												onChange={(e) => handleInputChange(field.id, e.target.value)}
-												placeholder={field?.placeholder}
-												readOnly={field.readOnly}
-											/>
-										);
-									case 'select':
-										return (
-											<SelectWithOptions
-												placeholder={field?.placeholder || ''}
-												options={field?.options || []}
-												value={(fieldValues[field.id] as string) || ''}
-												onValueChange={(val: any) => handleInputChange(field.id, val)}
-											/>
-										);
-									default:
-										return (
-											<Input
-												type={field?.type || 'text'}
-												id={field.id}
-												value={(fieldValues[field.id] as string) || ''}
-												onChange={(e) => handleInputChange(field.id, e.target.value)}
-												placeholder={field?.placeholder}
-												readOnly={field.readOnly}
-											/>
-										);
-								}
-							})()}
+											);
+										case 'select':
+											return (
+												<SelectWithOptions
+													placeholder={field?.placeholder || ''}
+													options={field?.options || []}
+													value={(fieldValues[field.id] as string) || ''}
+													onValueChange={(val: any) => handleInputChange(field.id, val)}
+												/>
+											);
+										default:
+											return (
+												<Input
+													type={field?.type || 'text'}
+													id={field.id}
+													value={(fieldValues[field.id] as string) || ''}
+													onChange={(e) => handleInputChange(field.id, e.target.value)}
+													placeholder={field?.placeholder}
+													readOnly={field.readOnly}
+												/>
+											);
+									}
+								})()}
+							</div>
 						</div>
-					</div>
-				))}
-				<section className="px-4">{additionalContent}</section>
+					))}
+					<section className="px-4">{additionalContent}</section>
+				</div>
 				<SheetFooter>
 					<Button onClick={handleSubmit} disabled={buttonDisabled}>
 						{loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}

@@ -218,6 +218,10 @@ export const Default: Story = {
 		// searchPlaceholder: 'Enter something to search',
 		// initialSearch: ''
 		// loading: true,
+		// loading: true,
+		onRowClick: (row) => {
+			console.warn(row.original);
+		},
 		renderFilters: (table) => {
 			return (
 				<>

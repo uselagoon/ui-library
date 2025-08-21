@@ -1,5 +1,5 @@
 'use client';
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useMemo, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import {
 	ColumnDef,
@@ -15,6 +15,7 @@ import {
 	FilterFnOption,
 	Cell,
 	Table as TableType,
+	Row,
 } from '@tanstack/react-table';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
 import { DebouncedInput } from '../Input';
@@ -22,6 +23,7 @@ import { DebouncedInput } from '../Input';
 import { highlightTextInElement } from './HighlightText';
 import { cn } from '@/lib/utils';
 import { Skeleton } from '../ui/skeleton';
+import SelectWithOptions from '../Select';
 
 type LibColumnDef<TData, TValue = unknown> = ColumnDef<TData, TValue> & {
 	width?: string;
@@ -40,6 +42,8 @@ export interface DataTableProps<TData, TValue> {
 	onSearch?: (searchString: string) => void;
 	initialSearch?: string;
 	initialPageSize?: number;
+	/** Called on each row (empty space) click - ignored if cell item is clicked */
+	onRowClick?: (row: Row<TData>) => void;
 }
 
 export default function DataTable<TData, TValue>({
@@ -53,6 +57,7 @@ export default function DataTable<TData, TValue>({
 	disableExtra,
 	initialSearch,
 	initialPageSize,
+	onRowClick,
 }: DataTableProps<TData, TValue>) {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
 
@@ -61,6 +66,15 @@ export default function DataTable<TData, TValue>({
 	const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
 
 	const [globalFilter, setGlobalFilter] = React.useState<string>(initialSearch ?? '');
+
+	// auto-focus if search was filled during loading state
+	const searchInputRef = useRef<HTMLInputElement>(null);
+
+	useEffect(() => {
+		if (initialSearch && searchInputRef.current) {
+			searchInputRef.current.focus();
+		}
+	}, []);
 
 	const customGlobalFilter = (row: any, columnId: string, value: string) => {
 		// globally search everything if searchableCols isnt provided
@@ -141,6 +155,37 @@ export default function DataTable<TData, TValue>({
 		}
 	}, [initialPageSize]);
 
+	// 7.26% of data, never higher than a second, nor lower than 40ms
+	const timerLengthPercentage = useMemo(
+		() => Math.min(1000, Math.max(40, Math.floor(tableData.length * 0.0725))),
+		[tableData.length],
+	);
+
+	const pageCount = table.getPageCount();
+	const currentPage = table.getState().pagination.pageIndex + 1;
+
+	const pageSelectOptions = Array.from({ length: pageCount || 1 }, (_, idx) => idx + 1).map((pageIndex) => {
+		return { label: `Page ${String(pageIndex)}`, value: pageIndex };
+	});
+
+	const handlePageSelect = (pageIndex: string) => {
+		table.setPageIndex(Number(pageIndex) - 1);
+	};
+
+	const handleRowClick = (e: React.MouseEvent<HTMLTableRowElement>, row: Row<TData>) => {
+		if (typeof onRowClick !== 'function') return;
+
+		const clickedElement = e.target as HTMLElement;
+		const parent = clickedElement.closest('[data-slot="table-cell"]');
+		const tableRow = e.currentTarget;
+
+		if (tableRow.contains(clickedElement)) {
+			if (!parent?.firstElementChild?.contains(clickedElement)) {
+				onRowClick(row);
+			}
+		}
+	};
+
 	return (
 		<div className="w-[100%] mx-auto">
 			{/* filter/searchbar*/}
@@ -148,12 +193,16 @@ export default function DataTable<TData, TValue>({
 			{disableExtra ? null : (
 				<div className="flex items-end justify-between py-4">
 					<DebouncedInput
+						ref={searchInputRef}
+						debounce={timerLengthPercentage}
 						label=""
 						placeholder={searchPlaceholder ?? 'Start typing to search'}
 						value={globalFilter ?? ''}
 						onChange={(value) => {
-							setGlobalFilter(value);
 							onSearch && onSearch(value);
+							// don't trigger filtering with empty data
+							if (loading) return;
+							setGlobalFilter(value);
 						}}
 						className="max-w-sm"
 					/>
@@ -196,7 +245,12 @@ export default function DataTable<TData, TValue>({
 						{table.getRowModel().rows?.length ? (
 							table.getRowModel().rows.map((row) => {
 								return (
-									<TableRow className="py-6" key={row.id} data-state={row.getIsSelected() && 'selected'}>
+									<TableRow
+										onClick={(e) => handleRowClick(e, row)}
+										className="py-6"
+										key={row.id}
+										data-state={row.getIsSelected() && 'selected'}
+									>
 										{row.getVisibleCells().map((visibleCell) => {
 											const isSorted = visibleCell.column.id === sortedColumnId;
 											const tdInitialWidth = visibleCell.column.getSize();
@@ -242,6 +296,10 @@ export default function DataTable<TData, TValue>({
 						Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount() || 1}
 					</div>
 
+					<Button variant="outline" size="sm" onClick={() => table.firstPage()} disabled={!table.getCanPreviousPage()}>
+						{'<<'}
+					</Button>
+
 					<Button
 						variant="outline"
 						size="sm"
@@ -253,6 +311,17 @@ export default function DataTable<TData, TValue>({
 					<Button variant="outline" size="sm" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
 						Next
 					</Button>
+
+					<Button variant="outline" size="sm" onClick={() => table.lastPage()} disabled={!table.getCanNextPage()}>
+						{'>>'}
+					</Button>
+					<SelectWithOptions
+						value={String(currentPage) || undefined}
+						placeholder="Go to page"
+						options={pageSelectOptions}
+						onValueChange={handlePageSelect}
+						disabled={loading}
+					/>
 				</div>
 			)}
 		</div>
