@@ -1,7 +1,7 @@
 import { jsxs as t, jsx as e } from "react/jsx-runtime";
 import { useMemo as f } from "react";
 import { Sidebar as M, SidebarHeader as z, SidebarMenu as A, SidebarMenuItem as u, SidebarContent as G, SidebarGroup as $, SidebarGroupLabel as D, SidebarGroupContent as F, SidebarMenuButton as C, SidebarFooter as _ } from "./index.es41.js";
-import { FolderGit2 as H, BriefcaseBusiness as K, ServerCog as O, KeyRound as R, ListChecks as T, UserRoundCog as E } from "lucide-react";
+import { FolderGit2 as H, ServerCog as K, BriefcaseBusiness as O, KeyRound as R, ListChecks as T, UserRoundCog as E } from "lucide-react";
 import q from "./index.es94.js";
 import { genAvatarBackground as S, getCurrentPath as J } from "./index.es95.js";
 import { Avatar as Q, AvatarImage as V } from "./index.es10.js";
@@ -16,6 +16,11 @@ const Z = (o, a) => [
         title: "All Projects",
         url: "/projects",
         icon: H
+      },
+      {
+        title: "All Deployments",
+        url: "/alldeployments",
+        icon: K
       }
     ]
   },
@@ -25,11 +30,6 @@ const Z = (o, a) => [
       {
         title: "All Organizations",
         url: "/organizations",
-        icon: K
-      },
-      {
-        title: "All Deployments",
-        url: "/alldeployments",
         icon: O
       }
     ]
