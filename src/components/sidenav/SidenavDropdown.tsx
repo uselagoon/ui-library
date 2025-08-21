@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { ChevronsUpDown, LogOut, Sun, Moon, House } from 'lucide-react';
+import { ChevronsUpDown, LogOut, Sun, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '../ui/dropdown-menu';
 import { SidebarMenuButton } from '../ui/sidebar';
@@ -59,12 +59,6 @@ export default function SidenavDropdown({ name, version, logo, signOutFn }: Drop
 				</DropdownMenuTrigger>
 			</section>
 			<DropdownMenuContent className="w-56" align="start" side="right" sideOffset={4} style={{ zIndex: 9999 }}>
-				<DropdownMenuItem className="p-0">
-					<Link href="/projects">
-						<House className="mr-2 h-4 w-4" />
-						Home
-					</Link>
-				</DropdownMenuItem>
 				{renderThemeSwitcher()}
 				<DropdownMenuItem onClick={() => signOutFn()}>
 					<LogOut className="mr-2 h-4 w-4" />
