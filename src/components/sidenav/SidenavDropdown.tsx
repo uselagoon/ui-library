@@ -7,11 +7,14 @@ import { SidebarMenuButton } from '../ui/sidebar';
 import LagoonIcon from '../../icons/lagoon.svg';
 import { useLinkComponent } from '@/providers/NextLinkProvider';
 import { AppInfo } from './Sidenav';
+import { useSyncTheme } from '@/hooks/useSyncTheme';
 
 type DropdownProps = AppInfo & { signOutFn: () => Promise<void> };
 
 export default function SidenavDropdown({ name, version, logo, signOutFn }: DropdownProps) {
 	const { setTheme, theme, systemTheme } = useTheme();
+
+	useSyncTheme();
 
 	const Link = useLinkComponent();
 
