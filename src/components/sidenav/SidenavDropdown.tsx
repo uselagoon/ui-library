@@ -4,7 +4,8 @@ import { ChevronsUpDown, LogOut, Sun, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '../ui/dropdown-menu';
 import { SidebarMenuButton } from '../ui/sidebar';
-import LagoonIcon from '../../icons/lagoon.svg';
+import AmazeeIconLight from '../../icons/amazee_light.svg';
+import AmazeeIconDark from '../../icons/amazee_dark.svg';
 import { useLinkComponent } from '@/providers/NextLinkProvider';
 import { AppInfo } from './Sidenav';
 import { useSyncTheme } from '@/hooks/useSyncTheme';
@@ -44,8 +45,10 @@ export default function SidenavDropdown({ name, version, logo, signOutFn }: Drop
 	return (
 		<DropdownMenu>
 			<section className="flex items-center gap-1 pl-2">
-				<div className="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground">
-					<Link href="/projects">{logo ? logo : <img src={LagoonIcon} className="size-8" />}</Link>
+				<div className="flex aspect-square size-12 items-center justify-center rounded-lg text-sidebar-primary-foreground">
+					<Link href="/projects">
+						{logo ? logo : <img src={theme === 'light' ? AmazeeIconLight : AmazeeIconDark} className="size8" />}
+					</Link>
 				</div>
 				<DropdownMenuTrigger className="w-full">
 					<SidebarMenuButton
