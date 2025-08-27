@@ -45,9 +45,9 @@ export default function SidenavDropdown({ name, version, logo, signOutFn }: Drop
 	return (
 		<DropdownMenu>
 			<section className="flex items-center gap-1 pl-2">
-				<div className="flex aspect-square size-12 items-center justify-center rounded-lg text-sidebar-primary-foreground">
+				<div className="flex aspect-square size-20 items-center justify-center rounded-lg text-sidebar-primary-foreground">
 					<Link href="/projects">
-						{logo ? logo : <img src={theme === 'light' ? AmazeeIconLight : AmazeeIconDark} className="size8" />}
+						{logo ? logo : <img src={theme === 'light' ? AmazeeIconLight : AmazeeIconDark} className="size-8" />}
 					</Link>
 				</div>
 				<DropdownMenuTrigger className="w-full">

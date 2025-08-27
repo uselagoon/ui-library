@@ -21,7 +21,7 @@ function U({ name: a, version: o, logo: s, signOutFn: c }) {
   ] });
   return /* @__PURE__ */ r(k, { children: [
     /* @__PURE__ */ r("section", { className: "flex items-center gap-1 pl-2", children: [
-      /* @__PURE__ */ e("div", { className: "flex aspect-square size-12 items-center justify-center rounded-lg text-sidebar-primary-foreground", children: /* @__PURE__ */ e(d, { href: "/projects", children: s || /* @__PURE__ */ e("img", { src: t === "light" ? b : v, className: "size8" }) }) }),
+      /* @__PURE__ */ e("div", { className: "flex aspect-square size-20 items-center justify-center rounded-lg text-sidebar-primary-foreground", children: /* @__PURE__ */ e(d, { href: "/projects", children: s || /* @__PURE__ */ e("img", { src: t === "light" ? b : v, className: "size-8" }) }) }),
       /* @__PURE__ */ e(S, { className: "w-full", children: /* @__PURE__ */ r(
         D,
         {
