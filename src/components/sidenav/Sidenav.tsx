@@ -10,6 +10,7 @@ import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
+	useSidebar,
 } from '../ui/sidebar';
 import { BriefcaseBusiness, KeyRound, ServerCog, FolderGit2, UserRoundCog, ListChecks } from 'lucide-react';
 import SidenavDropdown from './SidenavDropdown';
@@ -141,9 +142,16 @@ export default function Sidenav({ userInfo, appInfo, currentPath, signOutFn, ...
 
 	const activePath = useMemo(() => getCurrentPath(sidenavItems, currentPath || ''), [sidenavItems, currentPath]);
 
-	const sidenavProps = { ...appInfo, signOutFn };
+	const { state } = useSidebar();
+	const isCollapsed = state === 'collapsed';
+	const sidenavProps = { ...appInfo, signOutFn, isCollapsed };
 	return (
-		<Sidebar variant="sidebar" collapsible="icon" {...props} className="w-[clamp(0px,20vw,256px)] transition-all">
+		<Sidebar
+			variant="sidebar"
+			collapsible="icon"
+			{...props}
+			className="w-[clamp(0px,20vw,256px)] transition-all overflow-hidden"
+		>
 			<SidebarHeader>
 				<SidebarMenu>
 					<SidebarMenuItem>
