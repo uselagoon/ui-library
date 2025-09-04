@@ -20,7 +20,7 @@ type SheetProps = React.ComponentProps<typeof Sheet> & {
         options?: SelectProps['options'];
         readOnly?: boolean;
         triggerFieldUpdate?: boolean;
-        validate?: (value: string | boolean, allValues: Record<string, string | boolean>) => string | null;
+        validate?: (value: string | boolean) => string | null;
     }[];
     onFieldChange?: (fieldId: string, value: string | boolean, currentValues: Record<string, string | boolean>) => void;
 };

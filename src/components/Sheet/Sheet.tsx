@@ -23,7 +23,10 @@ type SheetProps = React.ComponentProps<typeof Sheet> & {
 	sheetDescription?: string;
 	sheetFooterButton?: string;
 	loading?: boolean;
-	buttonAction?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, values: any) => Promise<boolean | void> | boolean | void;
+	buttonAction?: (
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+		values: any,
+	) => Promise<boolean | void> | boolean | void;
 	additionalContent: ReactNode;
 	error: boolean;
 	sheetFields: {
@@ -36,7 +39,7 @@ type SheetProps = React.ComponentProps<typeof Sheet> & {
 		options?: SelectProps['options'];
 		readOnly?: boolean;
 		triggerFieldUpdate?: boolean;
-		validate?: (value: string | boolean, allValues: Record<string, string | boolean>) => string | null;
+		validate?: (value: string | boolean) => string | null;
 	}[];
 	onFieldChange?: (fieldId: string, value: string | boolean, currentValues: Record<string, string | boolean>) => void;
 };
@@ -78,7 +81,7 @@ export default function UISheet({
 
 		sheetFields.forEach((field) => {
 			if (field.validate) {
-				const error = field.validate(values[field.id], values);
+				const error = field.validate(values[field.id]);
 				if (error) errors[field.id] = error;
 			}
 		});
@@ -117,7 +120,6 @@ export default function UISheet({
 		};
 
 		setFieldValues(newValues);
-		// setFieldErrors(validateAllFields(newValues));
 
 		const changedField = sheetFields.find((field) => field.id === id);
 

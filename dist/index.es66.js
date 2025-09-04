@@ -30,7 +30,7 @@ function ne({
     const t = {};
     return s.forEach((a) => {
       if (a.validate) {
-        const n = a.validate(e[a.id], e);
+        const n = a.validate(e[a.id]);
         n && (t[a.id] = n);
       }
     }), t;
