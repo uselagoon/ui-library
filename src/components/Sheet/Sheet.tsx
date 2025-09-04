@@ -23,7 +23,7 @@ type SheetProps = React.ComponentProps<typeof Sheet> & {
 	sheetDescription?: string;
 	sheetFooterButton?: string;
 	loading?: boolean;
-	buttonAction?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, values: any) => void;
+	buttonAction?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, values: any) => Promise<boolean | void> | boolean | void;
 	additionalContent: ReactNode;
 	error: boolean;
 	sheetFields: {
@@ -36,6 +36,7 @@ type SheetProps = React.ComponentProps<typeof Sheet> & {
 		options?: SelectProps['options'];
 		readOnly?: boolean;
 		triggerFieldUpdate?: boolean;
+		validate?: (value: string | boolean, allValues: Record<string, string | boolean>) => string | null;
 	}[];
 	onFieldChange?: (fieldId: string, value: string | boolean, currentValues: Record<string, string | boolean>) => void;
 };
@@ -54,6 +55,7 @@ export default function UISheet({
 	...rest
 }: SheetProps) {
 	const [sheetOpen, setSheetOpen] = useState(false);
+	const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
 	const prevLoadingRef = useRef(loading);
 
@@ -70,6 +72,19 @@ export default function UISheet({
 	}, [sheetFields]);
 
 	const [fieldValues, setFieldValues] = useState<Record<string, string | boolean>>(getInitialFieldValues);
+
+	const validateAllFields = (values: Record<string, string | boolean>) => {
+		const errors: Record<string, string> = {};
+
+		sheetFields.forEach((field) => {
+			if (field.validate) {
+				const error = field.validate(values[field.id], values);
+				if (error) errors[field.id] = error;
+			}
+		});
+
+		return errors;
+	};
 
 	const buttonDisabled = useMemo(() => {
 		const requiredFieldsNotFilled = sheetFields.some((field) => {
@@ -91,6 +106,7 @@ export default function UISheet({
 			}
 			return false;
 		});
+
 		return requiredFieldsNotFilled || loading;
 	}, [sheetFields, fieldValues, loading]);
 
@@ -101,6 +117,8 @@ export default function UISheet({
 		};
 
 		setFieldValues(newValues);
+		// setFieldErrors(validateAllFields(newValues));
+
 		const changedField = sheetFields.find((field) => field.id === id);
 
 		if (changedField?.triggerFieldUpdate && onFieldChange) {
@@ -110,16 +128,26 @@ export default function UISheet({
 
 	const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		if (buttonDisabled) return;
-		buttonAction && (await buttonAction(e, fieldValues));
-		// if loading was never passed/default false, then close
-		if (!loading && !error) {
-			setTimeout(() => setSheetOpen(false));
+
+		const allErrors = validateAllFields(fieldValues);
+		setFieldErrors(allErrors);
+		if (Object.keys(allErrors).length > 0) return;
+
+		try {
+			const result = await buttonAction(e, fieldValues);
+			// if loading was never passed/default false, then close
+			if (result !== false && !loading && !error) {
+				setTimeout(() => setSheetOpen(false));
+			}
+		} catch (err) {
+			console.error('Error in button action:', err);
 		}
 	};
 
 	useEffect(() => {
 		if (sheetOpen) {
 			setFieldValues(getInitialFieldValues());
+			setFieldErrors({});
 		}
 	}, [sheetOpen, getInitialFieldValues]);
 
@@ -148,6 +176,15 @@ export default function UISheet({
 		});
 
 		setFieldValues(updatedValues);
+		setFieldErrors((prev) => {
+			const newErrors = { ...prev };
+			Object.keys(newErrors).forEach((id) => {
+				if (!currentFieldIds.includes(id)) {
+					delete newErrors[id];
+				}
+			});
+			return newErrors;
+		});
 	}, [sheetFields]);
 
 	return (
@@ -217,6 +254,7 @@ export default function UISheet({
 											);
 									}
 								})()}
+								{fieldErrors[field.id] && <p className="text-sm text-red-500">{fieldErrors[field.id]}</p>}
 							</div>
 						</div>
 					))}
