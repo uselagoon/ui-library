@@ -1,23 +1,62 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChevronsUpDown, LogOut, Sun, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '../ui/dropdown-menu';
 import { SidebarMenuButton } from '../ui/sidebar';
-import AmazeeIconLight from '../../icons/amazee_light.svg';
-import AmazeeIconDark from '../../icons/amazee_dark.svg';
+import LagoonIcon from '../../icons/sidebar/lagoon.svg';
 import { useLinkComponent } from '@/providers/NextLinkProvider';
 import { AppInfo } from './Sidenav';
 import { useSyncTheme } from '@/hooks/useSyncTheme';
 
-type DropdownProps = AppInfo & { signOutFn: () => Promise<void> };
+type DropdownProps = AppInfo & { signOutFn: () => Promise<void>; isCollapsed?: boolean };
 
-export default function SidenavDropdown({ name, version, logo, signOutFn }: DropdownProps) {
+export default function SidenavDropdown({ name, version, signOutFn, isCollapsed = false }: DropdownProps) {
 	const { setTheme, theme, systemTheme } = useTheme();
+	const [fallback, setFallback] = useState(false);
 
 	useSyncTheme();
 
 	const Link = useLinkComponent();
+
+	useEffect(() => {
+		setFallback(false);
+	}, [isCollapsed, theme]);
+
+	const getLogos = () => {
+		const iconFolder = '/sidebar-icons';
+
+		if (isCollapsed) {
+			return `${iconFolder}/logo-${theme}-collapsed.svg`;
+		} else {
+			return `${iconFolder}/logo-${theme}.svg`;
+		}
+	};
+
+	const renderLogo = () => {
+		const logoPath = getLogos();
+
+		if (!logoPath.includes('undefined'))
+			return (
+				<img
+					src={logoPath}
+					className={`object-contain ${isCollapsed ? 'w-100' : 'h-18'}`}
+					onLoad={(e) => {
+						const targetLogo = e.currentTarget;
+						if (!fallback && targetLogo.src !== LagoonIcon) {
+							targetLogo.className = `object-contain ${isCollapsed ? 'w-100' : 'h-18'}`;
+						}
+					}}
+					onError={(e) => {
+						// Sets the lagoon logo as a fallback if no sidebar-icons defined
+						setFallback(true);
+						const targetLogo = e.currentTarget;
+						targetLogo.src = LagoonIcon;
+						targetLogo.className = 'size-10';
+					}}
+				/>
+			);
+	};
 
 	const handleToggleTheme = (theme: 'light' | 'dark') => {
 		setTheme(theme);
@@ -44,11 +83,11 @@ export default function SidenavDropdown({ name, version, logo, signOutFn }: Drop
 	};
 	return (
 		<DropdownMenu>
-			<section className="flex items-center gap-1 pl-2">
-				<div className="flex aspect-square size-20 items-center justify-center rounded-lg text-sidebar-primary-foreground">
-					<Link href="/projects">
-						{logo ? logo : <img src={theme === 'light' ? AmazeeIconLight : AmazeeIconDark} />}
-					</Link>
+			<section className="flex items-center gap-1 pl-1">
+				<div
+					className={`flex aspect-square items-center justify-center rounded-lg text-sidebar-primary-foreground ${isCollapsed ? 'size-8' : fallback ? 'size-10' : 'size-18'}`}
+				>
+					<Link href="/projects">{renderLogo()}</Link>
 				</div>
 				<DropdownMenuTrigger className="w-full">
 					<SidebarMenuButton

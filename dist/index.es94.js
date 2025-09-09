@@ -1,51 +1,83 @@
-import { jsxs as r, jsx as e } from "react/jsx-runtime";
-import { ChevronsUpDown as f, LogOut as g, Sun as w, Moon as x } from "lucide-react";
-import { useTheme as N } from "next-themes";
-import { DropdownMenu as k, DropdownMenuTrigger as S, DropdownMenuContent as T, DropdownMenuItem as n } from "./index.es24.js";
-import { SidebarMenuButton as D } from "./index.es41.js";
-import b from "./index.es99.js";
-import v from "./index.es100.js";
-import { useLinkComponent as y } from "./index.es5.js";
-import { useSyncTheme as C } from "./index.es101.js";
-function U({ name: o, version: a, logo: s, signOutFn: c }) {
-  const { setTheme: m, theme: t, systemTheme: d } = N();
+import { jsxs as t, jsx as e } from "react/jsx-runtime";
+import { useState as T, useEffect as S } from "react";
+import { ChevronsUpDown as v, LogOut as D, Sun as $, Moon as j } from "lucide-react";
+import { useTheme as y } from "next-themes";
+import { DropdownMenu as z, DropdownMenuTrigger as M, DropdownMenuContent as E, DropdownMenuItem as c } from "./index.es24.js";
+import { SidebarMenuButton as I } from "./index.es41.js";
+import d from "./index.es99.js";
+import { useLinkComponent as O } from "./index.es5.js";
+import { useSyncTheme as C } from "./index.es100.js";
+function K({ name: h, version: g, signOutFn: u, isCollapsed: n = !1 }) {
+  const { setTheme: f, theme: o, systemTheme: p } = y(), [i, l] = T(!1);
   C();
-  const l = y(), i = (u) => {
-    m(u), window.dispatchEvent(new Event("storage"));
-  }, h = /* @__PURE__ */ r(n, { onClick: () => i("light"), children: [
-    /* @__PURE__ */ e(w, { className: "mr-2 h-4 w-4" }),
+  const w = O();
+  S(() => {
+    l(!1);
+  }, [n, o]);
+  const N = () => {
+    const r = "/sidebar-icons";
+    return n ? `${r}/logo-${o}-collapsed.svg` : `${r}/logo-${o}.svg`;
+  }, x = () => {
+    const r = N();
+    if (!r.includes("undefined"))
+      return /* @__PURE__ */ e(
+        "img",
+        {
+          src: r,
+          className: `object-contain ${n ? "w-100" : "h-18"}`,
+          onLoad: (a) => {
+            const s = a.currentTarget;
+            !i && s.src !== d && (s.className = `object-contain ${n ? "w-100" : "h-18"}`);
+          },
+          onError: (a) => {
+            l(!0);
+            const s = a.currentTarget;
+            s.src = d, s.className = "size-10";
+          }
+        }
+      );
+  }, m = (r) => {
+    f(r), window.dispatchEvent(new Event("storage"));
+  }, k = /* @__PURE__ */ t(c, { onClick: () => m("light"), children: [
+    /* @__PURE__ */ e($, { className: "mr-2 h-4 w-4" }),
     "Light"
-  ] }), p = /* @__PURE__ */ r(n, { onClick: () => i("dark"), children: [
-    /* @__PURE__ */ e(x, { className: "mr-2 h-4 w-4" }),
+  ] }), b = /* @__PURE__ */ t(c, { onClick: () => m("dark"), children: [
+    /* @__PURE__ */ e(j, { className: "mr-2 h-4 w-4" }),
     "Dark"
-  ] });
-  return /* @__PURE__ */ r(k, { children: [
-    /* @__PURE__ */ r("section", { className: "flex items-center gap-1 pl-2", children: [
-      /* @__PURE__ */ e("div", { className: "flex aspect-square size-20 items-center justify-center rounded-lg text-sidebar-primary-foreground", children: /* @__PURE__ */ e(l, { href: "/projects", children: s || /* @__PURE__ */ e("img", { src: t === "light" ? b : v }) }) }),
-      /* @__PURE__ */ e(S, { className: "w-full", children: /* @__PURE__ */ r(
-        D,
+  ] }), L = () => o === "dark" || o === "system" && p === "dark" ? k : b;
+  return /* @__PURE__ */ t(z, { children: [
+    /* @__PURE__ */ t("section", { className: "flex items-center gap-1 pl-1", children: [
+      /* @__PURE__ */ e(
+        "div",
+        {
+          className: `flex aspect-square items-center justify-center rounded-lg text-sidebar-primary-foreground ${n ? "size-8" : i ? "size-10" : "size-18"}`,
+          children: /* @__PURE__ */ e(w, { href: "/projects", children: x() })
+        }
+      ),
+      /* @__PURE__ */ e(M, { className: "w-full", children: /* @__PURE__ */ t(
+        I,
         {
           size: "lg",
           className: "data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground",
           children: [
-            /* @__PURE__ */ r("div", { className: "grid flex-1 text-left text-sm leading-tight", children: [
-              /* @__PURE__ */ e("span", { className: "truncate font-semibold", children: o }),
-              /* @__PURE__ */ e("span", { className: "truncate text-xs", children: a })
+            /* @__PURE__ */ t("div", { className: "grid flex-1 text-left text-sm leading-tight", children: [
+              /* @__PURE__ */ e("span", { className: "truncate font-semibold", children: h }),
+              /* @__PURE__ */ e("span", { className: "truncate text-xs", children: g })
             ] }),
-            /* @__PURE__ */ e(f, { className: "ml-auto h-4 w-4" })
+            /* @__PURE__ */ e(v, { className: "ml-auto h-4 w-4" })
           ]
         }
       ) })
     ] }),
-    /* @__PURE__ */ r(T, { className: "w-56", align: "start", side: "right", sideOffset: 4, style: { zIndex: 9999 }, children: [
-      t === "dark" || t === "system" && d === "dark" ? h : p,
-      /* @__PURE__ */ r(n, { onClick: () => c(), children: [
-        /* @__PURE__ */ e(g, { className: "mr-2 h-4 w-4" }),
+    /* @__PURE__ */ t(E, { className: "w-56", align: "start", side: "right", sideOffset: 4, style: { zIndex: 9999 }, children: [
+      L(),
+      /* @__PURE__ */ t(c, { onClick: () => u(), children: [
+        /* @__PURE__ */ e(D, { className: "mr-2 h-4 w-4" }),
         "Sign Out"
       ] })
     ] })
   ] });
 }
 export {
-  U as default
+  K as default
 };
