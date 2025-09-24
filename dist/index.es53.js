@@ -1,26 +1,26 @@
-import { jsxs as t, jsx as e } from "react/jsx-runtime";
+import { jsxs as r, jsx as e } from "react/jsx-runtime";
 import { useMemo as f } from "react";
-import { Sidebar as M, SidebarHeader as z, SidebarMenu as A, SidebarMenuItem as u, SidebarContent as G, SidebarGroup as $, SidebarGroupLabel as D, SidebarGroupContent as F, SidebarMenuButton as C, SidebarFooter as _ } from "./index.es41.js";
-import { FolderGit2 as H, ServerCog as K, BriefcaseBusiness as O, KeyRound as R, ListChecks as T, UserRoundCog as E } from "lucide-react";
-import q from "./index.es94.js";
-import { genAvatarBackground as S, getCurrentPath as J } from "./index.es95.js";
-import { Avatar as Q, AvatarImage as V } from "./index.es10.js";
-import { AvatarFallback as W } from "@radix-ui/react-avatar";
-import X from "./index.es96.js";
-import { useLinkComponent as Y } from "./index.es5.js";
-const Z = (o, a) => [
+import { useSidebar as z, Sidebar as G, SidebarHeader as $, SidebarMenu as C, SidebarMenuItem as u, SidebarContent as D, SidebarGroup as F, SidebarGroupLabel as _, SidebarGroupContent as H, SidebarMenuButton as A, SidebarFooter as K } from "./index.es41.js";
+import { FolderGit2 as O, ServerCog as R, BriefcaseBusiness as T, KeyRound as E, ListChecks as q, UserRoundCog as J } from "lucide-react";
+import Q from "./index.es94.js";
+import { genAvatarBackground as S, getCurrentPath as V } from "./index.es95.js";
+import { Avatar as W, AvatarImage as X } from "./index.es10.js";
+import { AvatarFallback as Y } from "@radix-ui/react-avatar";
+import Z from "./index.es96.js";
+import { useLinkComponent as I } from "./index.es5.js";
+const ee = (o, a) => [
   {
     section: "Projects",
     sectionItems: [
       {
         title: "All Projects",
         url: "/projects",
-        icon: H
+        icon: O
       },
       {
         title: "All Deployments",
         url: "/alldeployments",
-        icon: K
+        icon: R
       }
     ]
   },
@@ -30,7 +30,7 @@ const Z = (o, a) => [
       {
         title: "All Organizations",
         url: "/organizations",
-        icon: O
+        icon: T
       }
     ]
   },
@@ -40,12 +40,12 @@ const Z = (o, a) => [
       {
         title: "SSH Keys",
         url: "/settings",
-        icon: R
+        icon: E
       },
       {
         title: "Preferences",
         url: "/settings/preferences",
-        icon: T
+        icon: q
       },
       {
         title: "My Account",
@@ -53,45 +53,54 @@ const Z = (o, a) => [
         target: "blank",
         onClick: () => {
         },
-        icon: E
+        icon: J
       }
     ]
   }
 ];
-function ce({ userInfo: o, appInfo: a, currentPath: h, signOutFn: p, ...k }) {
-  const x = Y(), { name: N, image: g, email: n } = o, y = !!g, l = N?.split(" ") ?? [], i = l[0] ?? void 0, s = l.length > 1 ? l.slice(1).join(" ") : " ", c = !!(i && s), b = c ? S(i.charAt(0), s.charAt(0)) : S(n.charAt(0), n.charAt(1)), P = c ? i.charAt(0).toUpperCase() + s.charAt(0).toUpperCase() : n.charAt(0).toUpperCase(), U = y ? /* @__PURE__ */ t(Q, { children: [
-    /* @__PURE__ */ e(V, { src: g, alt: "user_avatar" }),
-    /* @__PURE__ */ e(W, { children: "Avatar" })
-  ] }) : /* @__PURE__ */ e(X, { bgColor: b.bgColor, textColor: b.textColor, children: P }), j = c ? /* @__PURE__ */ e("span", { className: "user-name", children: `${i} ${s}` }) : /* @__PURE__ */ e("span", { className: "user-name", children: n }), d = f(() => Z(a.kcUrl), [a.kcUrl, p]), B = f(() => J(d, h || ""), [d, h]), w = { ...a, signOutFn: p };
-  return /* @__PURE__ */ t(M, { variant: "sidebar", collapsible: "icon", ...k, className: "w-[clamp(0px,20vw,256px)] transition-all", children: [
-    /* @__PURE__ */ e(z, { children: /* @__PURE__ */ e(A, { children: /* @__PURE__ */ e(u, { children: /* @__PURE__ */ e(q, { ...w }) }) }) }),
-    /* @__PURE__ */ e(G, { children: d.map((m) => /* @__PURE__ */ t($, { children: [
-      /* @__PURE__ */ e(D, { children: m.section }),
-      /* @__PURE__ */ e(F, { className: "list-none", children: m.sectionItems.map((r) => {
-        const L = r.target === "blank", v = r?.onClick;
-        return /* @__PURE__ */ e(u, { children: /* @__PURE__ */ e(C, { asChild: !0, isActive: B === r.url, children: /* @__PURE__ */ t(
-          x,
-          {
-            "data-cy": `nav-${r.url.slice(1)}`,
-            onClick: async () => {
-              v && await v();
-            },
-            href: r.url,
-            target: L ? "_blank" : "_self",
-            children: [
-              /* @__PURE__ */ e(r.icon, {}),
-              /* @__PURE__ */ e("span", { children: r.title })
-            ]
-          }
-        ) }) }, r.title);
-      }) })
-    ] }, m.section)) }),
-    /* @__PURE__ */ e(_, { children: /* @__PURE__ */ e(A, { children: /* @__PURE__ */ e(u, { children: /* @__PURE__ */ t(C, { size: "lg", children: [
-      U,
-      /* @__PURE__ */ e("div", { className: "grid flex-1 text-left text-sm leading-tight", children: /* @__PURE__ */ e("span", { className: "truncate font-light", children: j }) })
-    ] }) }) }) })
-  ] });
+function ue({ userInfo: o, appInfo: a, currentPath: h, signOutFn: p, ...k }) {
+  const x = I(), { name: N, image: g, email: n } = o, y = !!g, l = N?.split(" ") ?? [], i = l[0] ?? void 0, s = l.length > 1 ? l.slice(1).join(" ") : " ", c = !!(i && s), b = c ? S(i.charAt(0), s.charAt(0)) : S(n.charAt(0), n.charAt(1)), P = c ? i.charAt(0).toUpperCase() + s.charAt(0).toUpperCase() : n.charAt(0).toUpperCase(), U = y ? /* @__PURE__ */ r(W, { children: [
+    /* @__PURE__ */ e(X, { src: g, alt: "user_avatar" }),
+    /* @__PURE__ */ e(Y, { children: "Avatar" })
+  ] }) : /* @__PURE__ */ e(Z, { bgColor: b.bgColor, textColor: b.textColor, children: P }), j = c ? /* @__PURE__ */ e("span", { className: "user-name", children: `${i} ${s}` }) : /* @__PURE__ */ e("span", { className: "user-name", children: n }), d = f(() => ee(a.kcUrl), [a.kcUrl, p]), w = f(() => V(d, h || ""), [d, h]), { state: B } = z(), L = { ...a, signOutFn: p, isCollapsed: B === "collapsed" };
+  return /* @__PURE__ */ r(
+    G,
+    {
+      variant: "sidebar",
+      collapsible: "icon",
+      ...k,
+      className: "w-[clamp(0px,20vw,256px)] transition-all overflow-hidden",
+      children: [
+        /* @__PURE__ */ e($, { children: /* @__PURE__ */ e(C, { children: /* @__PURE__ */ e(u, { children: /* @__PURE__ */ e(Q, { ...L }) }) }) }),
+        /* @__PURE__ */ e(D, { children: d.map((m) => /* @__PURE__ */ r(F, { children: [
+          /* @__PURE__ */ e(_, { children: m.section }),
+          /* @__PURE__ */ e(H, { className: "list-none", children: m.sectionItems.map((t) => {
+            const M = t.target === "blank", v = t?.onClick;
+            return /* @__PURE__ */ e(u, { children: /* @__PURE__ */ e(A, { asChild: !0, isActive: w === t.url, children: /* @__PURE__ */ r(
+              x,
+              {
+                "data-cy": `nav-${t.url.slice(1)}`,
+                onClick: async () => {
+                  v && await v();
+                },
+                href: t.url,
+                target: M ? "_blank" : "_self",
+                children: [
+                  /* @__PURE__ */ e(t.icon, {}),
+                  /* @__PURE__ */ e("span", { children: t.title })
+                ]
+              }
+            ) }) }, t.title);
+          }) })
+        ] }, m.section)) }),
+        /* @__PURE__ */ e(K, { children: /* @__PURE__ */ e(C, { children: /* @__PURE__ */ e(u, { children: /* @__PURE__ */ r(A, { size: "lg", children: [
+          U,
+          /* @__PURE__ */ e("div", { className: "grid flex-1 text-left text-sm leading-tight", children: /* @__PURE__ */ e("span", { className: "truncate font-light", children: j }) })
+        ] }) }) }) })
+      ]
+    }
+  );
 }
 export {
-  ce as default
+  ue as default
 };
