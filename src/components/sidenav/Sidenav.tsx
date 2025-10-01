@@ -62,7 +62,7 @@ export type NavItems = ReturnType<typeof getSidenavItems>;
 export type SidebarItem = {
 	title: string;
 	url: string;
-	icon: React.ComponentType<any>;
+	icon?: React.ComponentType<any>;
 	target?: string;
 	onClick?: () => void;
 	children?: SidebarItem[];
@@ -238,7 +238,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, dynamicNav, si
 														href={sectionItem.url}
 														target={newTab ? '_blank' : '_self'}
 													>
-														<sectionItem.icon />
+														{sectionItem.icon && <sectionItem.icon />}
 														<span>{sectionItem.title}</span>
 													</Link>
 												</SidebarMenuButton>

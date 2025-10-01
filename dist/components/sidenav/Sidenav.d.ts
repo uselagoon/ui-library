@@ -30,7 +30,7 @@ export type NavItems = ReturnType<typeof getSidenavItems>;
 export type SidebarItem = {
     title: string;
     url: string;
-    icon: React.ComponentType<any>;
+    icon?: React.ComponentType<any>;
     target?: string;
     onClick?: () => void;
     children?: SidebarItem[];
