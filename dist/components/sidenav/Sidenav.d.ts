@@ -12,29 +12,38 @@ export type AppInfo = {
     kcUrl: string;
     logo?: React.ReactNode;
 };
+export type EnvNavFn = (projectSlug: string, environmentSlug: string) => SidebarItem[];
+export type ProjectNavFn = (projectSlug: string, environmentSlug?: string, getEnvironmentNav?: EnvNavFn) => SidebarItem[];
+export type OrgNavFn = (orgSlug: string) => SidebarItem[];
 export type SidenavProps = SidebarProps & {
     userInfo: UserInfo;
     appInfo: AppInfo;
+    dynamicNav?: {
+        getProjectNav?: ProjectNavFn;
+        getOrgNav?: OrgNavFn;
+        getEnvironmentNav?: EnvNavFn;
+    };
     signOutFn: () => Promise<void>;
-    currentPath?: string;
+    currentPath: string;
 };
 export type NavItems = ReturnType<typeof getSidenavItems>;
-declare const getSidenavItems: (kcUrl: string, signOutFn: () => Promise<void>) => {
+export type SidebarItem = {
+    title: string;
+    url: string;
+    icon: React.ComponentType<any>;
+    target?: string;
+    onClick?: () => void;
+    children?: SidebarItem[];
+};
+export type SidebarSection = {
     section: string;
-    sectionItems: ({
-        title: string;
-        url: string;
-        icon: React.ForwardRefExoticComponent<Omit<import('lucide-react').LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
-        target?: undefined;
-        onClick?: undefined;
-    } | {
-        title: string;
-        url: string;
-        target: string;
-        onClick: () => void;
-        icon: React.ForwardRefExoticComponent<Omit<import('lucide-react').LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
-    })[];
-}[];
-export default function Sidenav({ userInfo, appInfo, currentPath, signOutFn, ...props }: SidenavProps): import("react/jsx-dev-runtime").JSX.Element;
+    sectionItems: SidebarItem[];
+};
+export declare const getSidenavItems: (kcUrl: string, pathname: string, dynamicNav?: {
+    getProjectNav?: ProjectNavFn;
+    getOrgNav?: OrgNavFn;
+    getEnvironmentNav?: EnvNavFn;
+}) => SidebarSection[];
+export default function Sidenav({ userInfo, appInfo, currentPath, dynamicNav, signOutFn, ...props }: SidenavProps): import("react/jsx-dev-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=Sidenav.d.ts.map

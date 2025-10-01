@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import {
 	Sidebar,
 	SidebarContent,
@@ -36,65 +36,122 @@ export type AppInfo = {
 	logo?: React.ReactNode;
 };
 
+export type EnvNavFn = (projectSlug: string, environmentSlug: string) => SidebarItem[];
+
+export type ProjectNavFn = (
+	projectSlug: string,
+	environmentSlug?: string,
+	getEnvironmentNav?: EnvNavFn,
+) => SidebarItem[];
+
+export type OrgNavFn = (orgSlug: string) => SidebarItem[];
+
 export type SidenavProps = SidebarProps & {
 	userInfo: UserInfo;
 	appInfo: AppInfo;
+	dynamicNav?: {
+		getProjectNav?: ProjectNavFn;
+		getOrgNav?: OrgNavFn;
+		getEnvironmentNav?: EnvNavFn;
+	};
 	signOutFn: () => Promise<void>;
-	currentPath?: string;
+	currentPath: string;
 };
 export type NavItems = ReturnType<typeof getSidenavItems>;
 
-const getSidenavItems = (kcUrl: string, signOutFn: () => Promise<void>) => [
-	{
-		section: 'Projects',
-		sectionItems: [
-			{
-				title: 'All Projects',
-				url: '/projects',
-				icon: FolderGit2,
-			},
-			{
-				title: 'All Deployments',
-				url: '/alldeployments',
-				icon: ServerCog,
-			},
-		],
-	},
-	{
-		section: 'Organizations',
-		sectionItems: [
-			{
-				title: 'All Organizations',
-				url: '/organizations',
-				icon: BriefcaseBusiness,
-			},
-		],
-	},
-	{
-		section: 'Settings',
-		sectionItems: [
-			{
-				title: 'SSH Keys',
-				url: '/settings',
-				icon: KeyRound,
-			},
-			{
-				title: 'Preferences',
-				url: '/settings/preferences',
-				icon: ListChecks,
-			},
-			{
-				title: 'My Account',
-				url: `${kcUrl}/account`,
-				target: 'blank',
-				onClick: () => {},
-				icon: UserRoundCog,
-			},
-		],
-	},
-];
+export type SidebarItem = {
+	title: string;
+	url: string;
+	icon: React.ComponentType<any>;
+	target?: string;
+	onClick?: () => void;
+	children?: SidebarItem[];
+};
 
-export default function Sidenav({ userInfo, appInfo, currentPath, signOutFn, ...props }: SidenavProps) {
+export type SidebarSection = {
+	section: string;
+	sectionItems: SidebarItem[];
+};
+
+export const getSidenavItems = (
+	kcUrl: string,
+	pathname: string,
+	dynamicNav?: {
+		getProjectNav?: ProjectNavFn;
+		getOrgNav?: OrgNavFn;
+		getEnvironmentNav?: EnvNavFn;
+	},
+): SidebarSection[] => {
+	const projectMatch = pathname.match(/^\/projects\/([^/]+)/);
+	const envMatch = pathname.match(/^\/projects\/([^/]+)\/([^/]+)/);
+	const orgMatch = pathname.match(/^\/organizations\/([^/]+)/);
+
+	const projectSlug = projectMatch?.[1];
+	const environmentSlug = envMatch?.[2];
+	const orgSlug = orgMatch?.[1];
+
+	return [
+		{
+			section: 'Projects',
+			sectionItems: [
+				{
+					title: 'Projects',
+					url: '/projects',
+					icon: FolderGit2,
+					children:
+						projectSlug && dynamicNav?.getProjectNav
+							? dynamicNav.getProjectNav(projectSlug, environmentSlug, dynamicNav.getEnvironmentNav)
+							: undefined,
+				},
+			],
+		},
+		{
+			section: 'Deployments',
+			sectionItems: [
+				{
+					title: 'Active Deployments',
+					url: '/alldeployments',
+					icon: ServerCog,
+				},
+			],
+		},
+		{
+			section: 'Organizations',
+			sectionItems: [
+				{
+					title: 'Organizations',
+					url: '/organizations',
+					icon: BriefcaseBusiness,
+					children: orgSlug && dynamicNav?.getOrgNav ? dynamicNav.getOrgNav(orgSlug) : undefined,
+				},
+			],
+		},
+		{
+			section: 'Settings',
+			sectionItems: [
+				{
+					title: 'SSH Keys',
+					url: '/settings',
+					icon: KeyRound,
+				},
+				{
+					title: 'Preferences',
+					url: '/settings/preferences',
+					icon: ListChecks,
+				},
+				{
+					title: 'My Account',
+					url: `${kcUrl}/account`,
+					target: 'blank',
+					onClick: () => {},
+					icon: UserRoundCog,
+				},
+			],
+		},
+	];
+};
+
+export default function Sidenav({ userInfo, appInfo, currentPath, dynamicNav, signOutFn, ...props }: SidenavProps) {
 	const Link = useLinkComponent();
 
 	const { name, image, email } = userInfo;
@@ -137,8 +194,8 @@ export default function Sidenav({ userInfo, appInfo, currentPath, signOutFn, ...
 	);
 
 	const sidenavItems = useMemo(() => {
-		return getSidenavItems(appInfo.kcUrl, signOutFn);
-	}, [appInfo.kcUrl, signOutFn]);
+		return getSidenavItems(appInfo.kcUrl, currentPath, dynamicNav);
+	}, [appInfo.kcUrl, currentPath, dynamicNav]);
 
 	const activePath = useMemo(() => getCurrentPath(sidenavItems, currentPath || ''), [sidenavItems, currentPath]);
 
@@ -170,21 +227,36 @@ export default function Sidenav({ userInfo, appInfo, currentPath, signOutFn, ...
 									const newTab = sectionItem.target === 'blank';
 									const action = sectionItem?.onClick;
 									return (
-										<SidebarMenuItem key={sectionItem.title}>
-											<SidebarMenuButton asChild isActive={activePath === sectionItem.url}>
-												<Link
-													data-cy={`nav-${sectionItem.url.slice(1)}`}
-													onClick={async () => {
-														action && (await action());
-													}}
-													href={sectionItem.url}
-													target={newTab ? '_blank' : '_self'}
-												>
-													<sectionItem.icon />
-													<span>{sectionItem.title}</span>
-												</Link>
-											</SidebarMenuButton>
-										</SidebarMenuItem>
+										<Fragment>
+											<SidebarMenuItem key={sectionItem.title}>
+												<SidebarMenuButton asChild isActive={activePath === sectionItem.url}>
+													<Link
+														data-cy={`nav-${sectionItem.url.slice(1)}`}
+														onClick={async () => {
+															action && (await action());
+														}}
+														href={sectionItem.url}
+														target={newTab ? '_blank' : '_self'}
+													>
+														<sectionItem.icon />
+														<span>{sectionItem.title}</span>
+													</Link>
+												</SidebarMenuButton>
+											</SidebarMenuItem>
+											{sectionItem.children && (
+												<ul className="ml-4">
+													{sectionItem.children.map((child) => (
+														<SidebarMenuItem key={child.title}>
+															<SidebarMenuButton asChild isActive={activePath === child.url}>
+																<Link href={child.url}>
+																	<span>{child.title}</span>
+																</Link>
+															</SidebarMenuButton>
+														</SidebarMenuItem>
+													))}
+												</ul>
+											)}
+										</Fragment>
 									);
 								})}
 							</SidebarGroupContent>
