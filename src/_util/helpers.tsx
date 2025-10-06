@@ -1,4 +1,3 @@
-import { NavItems } from '@/components/sidenav/Sidenav';
 import React, { ReactNode } from 'react';
 import Highlighter from 'react-highlight-words';
 
@@ -52,16 +51,3 @@ function getLuminance(r: number, g: number, b: number) {
 	// calculate the luminance. reference: https://www.w3.org/WAI/GL/wiki/Relative_luminance
 	return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
 }
-
-export const getCurrentPath = (navLinks: NavItems, pathname: string): string => {
-	const allItems = navLinks.flatMap((section) => section.sectionItems);
-
-	// try an exact match
-	let match = allItems.find((item) => pathname === item.url);
-
-	if (!match) {
-		match = allItems.find((item) => pathname.startsWith(item.url));
-	}
-
-	return match?.url || '';
-};

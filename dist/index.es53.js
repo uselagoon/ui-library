@@ -1,120 +1,69 @@
-import { jsxs as i, jsx as e } from "react/jsx-runtime";
-import { useMemo as N, Fragment as F } from "react";
-import { useSidebar as G, Sidebar as O, SidebarHeader as $, SidebarMenu as M, SidebarMenuItem as u, SidebarContent as _, SidebarGroup as E, SidebarGroupLabel as H, SidebarGroupContent as K, SidebarMenuButton as A, SidebarFooter as R } from "./index.es41.js";
-import { FolderGit2 as T, ServerCog as q, BriefcaseBusiness as J, KeyRound as Q, ListChecks as V, UserRoundCog as W } from "lucide-react";
-import X from "./index.es94.js";
-import { genAvatarBackground as P, getCurrentPath as Y } from "./index.es95.js";
-import { Avatar as Z, AvatarImage as I } from "./index.es10.js";
-import { AvatarFallback as ee } from "@radix-ui/react-avatar";
-import te from "./index.es96.js";
-import { useLinkComponent as re } from "./index.es5.js";
-const ne = (m, n, r) => {
-  const s = n.match(/^\/projects\/([^/]+)/), p = n.match(/^\/projects\/([^/]+)\/([^/]+)/), g = n.match(/^\/organizations\/([^/]+)/), a = s?.[1], v = p?.[2], o = g?.[1];
-  return [
-    {
-      section: "Projects",
-      sectionItems: [
-        {
-          title: "Projects",
-          url: "/projects",
-          icon: T,
-          children: a && r?.getProjectNav ? r.getProjectNav(a, v, r.getEnvironmentNav) : void 0
-        }
-      ]
-    },
-    {
-      section: "Deployments",
-      sectionItems: [
-        {
-          title: "Active Deployments",
-          url: "/alldeployments",
-          icon: q
-        }
-      ]
-    },
-    {
-      section: "Organizations",
-      sectionItems: [
-        {
-          title: "Organizations",
-          url: "/organizations",
-          icon: J,
-          children: o && r?.getOrgNav ? r.getOrgNav(o) : void 0
-        }
-      ]
-    },
-    {
-      section: "Settings",
-      sectionItems: [
-        {
-          title: "SSH Keys",
-          url: "/settings",
-          icon: Q
-        },
-        {
-          title: "Preferences",
-          url: "/settings/preferences",
-          icon: V
-        },
-        {
-          title: "My Account",
-          url: `${m}/account`,
-          target: "blank",
-          onClick: () => {
-          },
-          icon: W
-        }
-      ]
-    }
-  ];
-};
-function ge({ userInfo: m, appInfo: n, currentPath: r, dynamicNav: s, signOutFn: p, ...g }) {
-  const a = re(), { name: v, image: o, email: l } = m, U = !!o, b = v?.split(" ") ?? [], c = b[0] ?? void 0, d = b.length > 1 ? b.slice(1).join(" ") : " ", f = !!(c && d), k = f ? P(c.charAt(0), d.charAt(0)) : P(l.charAt(0), l.charAt(1)), w = f ? c.charAt(0).toUpperCase() + d.charAt(0).toUpperCase() : l.charAt(0).toUpperCase(), B = U ? /* @__PURE__ */ i(Z, { children: [
-    /* @__PURE__ */ e(I, { src: o, alt: "user_avatar" }),
-    /* @__PURE__ */ e(ee, { children: "Avatar" })
-  ] }) : /* @__PURE__ */ e(te, { bgColor: k.bgColor, textColor: k.textColor, children: w }), z = f ? /* @__PURE__ */ e("span", { className: "user-name", children: `${c} ${d}` }) : /* @__PURE__ */ e("span", { className: "user-name", children: l }), C = N(() => ne(n.kcUrl, r, s), [n.kcUrl, r, s]), j = N(() => Y(C, r || ""), [C, r]), { state: L } = G(), y = { ...n, signOutFn: p, isCollapsed: L === "collapsed" };
+import { jsxs as i, jsx as r } from "react/jsx-runtime";
+import { useMemo as G, Fragment as $ } from "react";
+import { useSidebar as D, Sidebar as T, SidebarHeader as W, SidebarMenu as S, SidebarMenuItem as h, SidebarContent as z, SidebarGroup as H, SidebarGroupLabel as P, SidebarGroupContent as q, SidebarMenuButton as f, SidebarFooter as J } from "./index.es41.js";
+import K from "./index.es94.js";
+import { genAvatarBackground as N } from "./index.es95.js";
+import { Avatar as O, AvatarImage as Q } from "./index.es10.js";
+import { AvatarFallback as R } from "@radix-ui/react-avatar";
+import V from "./index.es96.js";
+import { useLinkComponent as X } from "./index.es5.js";
+import { useSidenavItems as Y } from "./index.es97.js";
+import { Skeleton as Z } from "./index.es42.js";
+function hr({ userInfo: x, appInfo: v, currentPath: s, dynamicNav: k, signOutFn: w, ...y }) {
+  const b = X(), m = Y(v, s, k), { name: B, image: g, email: o } = x, E = !!g, p = B?.split(" ") ?? [], c = p[0] ?? void 0, d = p.length > 1 ? p.slice(1).join(" ") : " ", u = !!(c && d), A = u ? N(c.charAt(0), d.charAt(0)) : N(o.charAt(0), o.charAt(1)), L = u ? c.charAt(0).toUpperCase() + d.charAt(0).toUpperCase() : o.charAt(0).toUpperCase(), M = E ? /* @__PURE__ */ i(O, { children: [
+    /* @__PURE__ */ r(Q, { src: g, alt: "user_avatar" }),
+    /* @__PURE__ */ r(R, { children: "Avatar" })
+  ] }) : /* @__PURE__ */ r(V, { bgColor: A.bgColor, textColor: A.textColor, children: L }), U = u ? /* @__PURE__ */ r("span", { className: "user-name", children: `${c} ${d}` }) : /* @__PURE__ */ r("span", { className: "user-name", children: o }), C = G(() => {
+    const e = /* @__PURE__ */ new Set();
+    return m.forEach((a) => {
+      a.sectionItems.forEach((t) => {
+        s.startsWith(t.url) && (e.add(t.url), t.children && t.children.forEach((n) => {
+          s.startsWith(n.url) && e.add(n.url);
+        }));
+      });
+    }), e;
+  }, [m, s]), { state: _ } = D(), j = { ...v, signOutFn: w, isCollapsed: _ === "collapsed" };
   return /* @__PURE__ */ i(
-    O,
+    T,
     {
       variant: "sidebar",
       collapsible: "icon",
-      ...g,
+      ...y,
       className: "w-[clamp(0px,20vw,256px)] transition-all overflow-hidden",
       children: [
-        /* @__PURE__ */ e($, { children: /* @__PURE__ */ e(M, { children: /* @__PURE__ */ e(u, { children: /* @__PURE__ */ e(X, { ...y }) }) }) }),
-        /* @__PURE__ */ e(_, { children: C.map((S) => /* @__PURE__ */ i(E, { children: [
-          /* @__PURE__ */ e(H, { children: S.section }),
-          /* @__PURE__ */ e(K, { className: "list-none", children: S.sectionItems.map((t) => {
-            const D = t.target === "blank", x = t?.onClick;
-            return /* @__PURE__ */ i(F, { children: [
-              /* @__PURE__ */ e(u, { children: /* @__PURE__ */ e(A, { asChild: !0, isActive: j === t.url, children: /* @__PURE__ */ i(
-                a,
+        /* @__PURE__ */ r(W, { children: /* @__PURE__ */ r(S, { children: /* @__PURE__ */ r(h, { children: /* @__PURE__ */ r(K, { ...j }) }) }) }),
+        /* @__PURE__ */ r(z, { children: m.map((e) => /* @__PURE__ */ i(H, { children: [
+          /* @__PURE__ */ r(P, { children: e.section }),
+          /* @__PURE__ */ r(q, { className: "list-none", children: e.sectionItems.map((a) => {
+            const t = a.target === "blank", n = a?.onClick;
+            return /* @__PURE__ */ i($, { children: [
+              /* @__PURE__ */ r(h, { children: /* @__PURE__ */ r(f, { asChild: !0, isActive: C.has(a.url), children: /* @__PURE__ */ i(
+                b,
                 {
-                  "data-cy": `nav-${t.url.slice(1)}`,
+                  "data-cy": `nav-${a.url.slice(1)}`,
                   onClick: async () => {
-                    x && await x();
+                    n && await n();
                   },
-                  href: t.url,
-                  target: D ? "_blank" : "_self",
+                  href: a.url,
+                  target: t ? "_blank" : "_self",
                   children: [
-                    t.icon && /* @__PURE__ */ e(t.icon, {}),
-                    /* @__PURE__ */ e("span", { children: t.title })
+                    a.icon && /* @__PURE__ */ r(a.icon, {}),
+                    /* @__PURE__ */ r("span", { children: a.title })
                   ]
                 }
-              ) }) }, t.title),
-              t.children && /* @__PURE__ */ e("ul", { className: "ml-4", children: t.children.map((h) => /* @__PURE__ */ e(u, { children: /* @__PURE__ */ e(A, { asChild: !0, isActive: j === h.url, children: /* @__PURE__ */ e(a, { href: h.url, children: /* @__PURE__ */ e("span", { children: h.title }) }) }) }, h.title)) })
-            ] });
+              ) }) }),
+              a.children ? /* @__PURE__ */ r("ul", { className: "ml-4", children: a.children.map((l) => /* @__PURE__ */ r(h, { children: /* @__PURE__ */ r(f, { asChild: !0, isActive: C.has(l.url), children: /* @__PURE__ */ r(b, { href: l.url, children: /* @__PURE__ */ r("span", { children: l.title }) }) }) }, l.title)) }) : /* @__PURE__ */ r("ul", { className: "ml-4 space-y-1", children: Array.from({ length: 3 }).map((l, F) => /* @__PURE__ */ r("li", { children: /* @__PURE__ */ r(Z, { className: "h-6 w-100 rounded-sm" }) }, F)) })
+            ] }, a.title);
           }) })
-        ] }, S.section)) }),
-        /* @__PURE__ */ e(R, { children: /* @__PURE__ */ e(M, { children: /* @__PURE__ */ e(u, { children: /* @__PURE__ */ i(A, { size: "lg", children: [
-          B,
-          /* @__PURE__ */ e("div", { className: "grid flex-1 text-left text-sm leading-tight", children: /* @__PURE__ */ e("span", { className: "truncate font-light", children: z }) })
+        ] }, e.section)) }),
+        /* @__PURE__ */ r(J, { children: /* @__PURE__ */ r(S, { children: /* @__PURE__ */ r(h, { children: /* @__PURE__ */ i(f, { size: "lg", children: [
+          M,
+          /* @__PURE__ */ r("div", { className: "grid flex-1 text-left text-sm leading-tight", children: /* @__PURE__ */ r("span", { className: "truncate font-light", children: U }) })
         ] }) }) }) })
       ]
     }
   );
 }
 export {
-  ge as default,
-  ne as getSidenavItems
+  hr as default
 };

@@ -12,14 +12,17 @@ import {
 	SidebarMenuItem,
 	useSidebar,
 } from '../ui/sidebar';
-import { BriefcaseBusiness, KeyRound, ServerCog, FolderGit2, UserRoundCog, ListChecks } from 'lucide-react';
+
 import SidenavDropdown from './SidenavDropdown';
-import { genAvatarBackground, getCurrentPath } from '@/_util/helpers';
+import { genAvatarBackground } from '@/_util/helpers';
 
 import { Avatar, AvatarImage } from '../ui/avatar';
 import { AvatarFallback } from '@radix-ui/react-avatar';
 import AvatarBubble from '../AvatarBubble/AvatarBubble';
 import { useLinkComponent } from '@/providers/NextLinkProvider';
+import { EnvNavFn, OrgNavFn, ProjectNavFn } from '../RootLayout/RootLayout';
+import { useSidenavItems } from './useSidenavItems';
+import { Skeleton } from '../ui/skeleton';
 
 type SidebarProps = React.ComponentProps<typeof Sidebar>;
 
@@ -36,16 +39,6 @@ export type AppInfo = {
 	logo?: React.ReactNode;
 };
 
-export type EnvNavFn = (projectSlug: string, environmentSlug: string) => SidebarItem[];
-
-export type ProjectNavFn = (
-	projectSlug: string,
-	environmentSlug?: string,
-	getEnvironmentNav?: EnvNavFn,
-) => SidebarItem[];
-
-export type OrgNavFn = (orgSlug: string) => SidebarItem[];
-
 export type SidenavProps = SidebarProps & {
 	userInfo: UserInfo;
 	appInfo: AppInfo;
@@ -57,7 +50,6 @@ export type SidenavProps = SidebarProps & {
 	signOutFn: () => Promise<void>;
 	currentPath: string;
 };
-export type NavItems = ReturnType<typeof getSidenavItems>;
 
 export type SidebarItem = {
 	title: string;
@@ -73,86 +65,10 @@ export type SidebarSection = {
 	sectionItems: SidebarItem[];
 };
 
-export const getSidenavItems = (
-	kcUrl: string,
-	pathname: string,
-	dynamicNav?: {
-		getProjectNav?: ProjectNavFn;
-		getOrgNav?: OrgNavFn;
-		getEnvironmentNav?: EnvNavFn;
-	},
-): SidebarSection[] => {
-	const projectMatch = pathname.match(/^\/projects\/([^/]+)/);
-	const envMatch = pathname.match(/^\/projects\/([^/]+)\/([^/]+)/);
-	const orgMatch = pathname.match(/^\/organizations\/([^/]+)/);
-
-	const projectSlug = projectMatch?.[1];
-	const environmentSlug = envMatch?.[2];
-	const orgSlug = orgMatch?.[1];
-
-	return [
-		{
-			section: 'Projects',
-			sectionItems: [
-				{
-					title: 'Projects',
-					url: '/projects',
-					icon: FolderGit2,
-					children:
-						projectSlug && dynamicNav?.getProjectNav
-							? dynamicNav.getProjectNav(projectSlug, environmentSlug, dynamicNav.getEnvironmentNav)
-							: undefined,
-				},
-			],
-		},
-		{
-			section: 'Deployments',
-			sectionItems: [
-				{
-					title: 'Active Deployments',
-					url: '/alldeployments',
-					icon: ServerCog,
-				},
-			],
-		},
-		{
-			section: 'Organizations',
-			sectionItems: [
-				{
-					title: 'Organizations',
-					url: '/organizations',
-					icon: BriefcaseBusiness,
-					children: orgSlug && dynamicNav?.getOrgNav ? dynamicNav.getOrgNav(orgSlug) : undefined,
-				},
-			],
-		},
-		{
-			section: 'Settings',
-			sectionItems: [
-				{
-					title: 'SSH Keys',
-					url: '/settings',
-					icon: KeyRound,
-				},
-				{
-					title: 'Preferences',
-					url: '/settings/preferences',
-					icon: ListChecks,
-				},
-				{
-					title: 'My Account',
-					url: `${kcUrl}/account`,
-					target: 'blank',
-					onClick: () => {},
-					icon: UserRoundCog,
-				},
-			],
-		},
-	];
-};
-
 export default function Sidenav({ userInfo, appInfo, currentPath, dynamicNav, signOutFn, ...props }: SidenavProps) {
 	const Link = useLinkComponent();
+
+	const sidenavItems = useSidenavItems(appInfo, currentPath, dynamicNav);
 
 	const { name, image, email } = userInfo;
 
@@ -193,11 +109,24 @@ export default function Sidenav({ userInfo, appInfo, currentPath, dynamicNav, si
 		<span className="user-name">{email}</span>
 	);
 
-	const sidenavItems = useMemo(() => {
-		return getSidenavItems(appInfo.kcUrl, currentPath, dynamicNav);
-	}, [appInfo.kcUrl, currentPath, dynamicNav]);
-
-	const activePath = useMemo(() => getCurrentPath(sidenavItems, currentPath || ''), [sidenavItems, currentPath]);
+	const activePaths = useMemo(() => {
+		const paths = new Set<string>();
+		sidenavItems.forEach((section) => {
+			section.sectionItems.forEach((item) => {
+				if (currentPath.startsWith(item.url)) {
+					paths.add(item.url);
+					if (item.children) {
+						item.children.forEach((child) => {
+							if (currentPath.startsWith(child.url)) {
+								paths.add(child.url);
+							}
+						});
+					}
+				}
+			});
+		});
+		return paths;
+	}, [sidenavItems, currentPath]);
 
 	const { state } = useSidebar();
 	const isCollapsed = state === 'collapsed';
@@ -227,9 +156,9 @@ export default function Sidenav({ userInfo, appInfo, currentPath, dynamicNav, si
 									const newTab = sectionItem.target === 'blank';
 									const action = sectionItem?.onClick;
 									return (
-										<Fragment>
-											<SidebarMenuItem key={sectionItem.title}>
-												<SidebarMenuButton asChild isActive={activePath === sectionItem.url}>
+										<Fragment key={sectionItem.title}>
+											<SidebarMenuItem>
+												<SidebarMenuButton asChild isActive={activePaths.has(sectionItem.url)}>
 													<Link
 														data-cy={`nav-${sectionItem.url.slice(1)}`}
 														onClick={async () => {
@@ -243,16 +172,24 @@ export default function Sidenav({ userInfo, appInfo, currentPath, dynamicNav, si
 													</Link>
 												</SidebarMenuButton>
 											</SidebarMenuItem>
-											{sectionItem.children && (
+											{sectionItem.children ? (
 												<ul className="ml-4">
 													{sectionItem.children.map((child) => (
 														<SidebarMenuItem key={child.title}>
-															<SidebarMenuButton asChild isActive={activePath === child.url}>
+															<SidebarMenuButton asChild isActive={activePaths.has(child.url)}>
 																<Link href={child.url}>
 																	<span>{child.title}</span>
 																</Link>
 															</SidebarMenuButton>
 														</SidebarMenuItem>
+													))}
+												</ul>
+											) : (
+												<ul className="ml-4 space-y-1">
+													{Array.from({ length: 3 }).map((_, i) => (
+														<li key={i}>
+															<Skeleton className="h-6 w-100 rounded-sm" />
+														</li>
 													))}
 												</ul>
 											)}
