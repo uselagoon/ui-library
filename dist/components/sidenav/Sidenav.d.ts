@@ -1,6 +1,5 @@
 import { default as React } from 'react';
 import { Sidebar } from '../ui/sidebar';
-import { EnvNavFn, OrgNavFn, ProjectNavFn } from '../RootLayout/RootLayout';
 type SidebarProps = React.ComponentProps<typeof Sidebar>;
 export type UserInfo = {
     email: string;
@@ -16,11 +15,7 @@ export type AppInfo = {
 export type SidenavProps = SidebarProps & {
     userInfo: UserInfo;
     appInfo: AppInfo;
-    dynamicNav?: {
-        getProjectNav?: ProjectNavFn;
-        getOrgNav?: OrgNavFn;
-        getEnvironmentNav?: EnvNavFn;
-    };
+    sidenavItems: SidebarSection[];
     signOutFn: () => Promise<void>;
     currentPath: string;
 };
@@ -36,6 +31,6 @@ export type SidebarSection = {
     section: string;
     sectionItems: SidebarItem[];
 };
-export default function Sidenav({ userInfo, appInfo, currentPath, dynamicNav, signOutFn, ...props }: SidenavProps): import("react/jsx-dev-runtime").JSX.Element;
+export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, ...props }: SidenavProps): import("react/jsx-dev-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=Sidenav.d.ts.map

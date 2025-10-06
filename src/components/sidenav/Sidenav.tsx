@@ -20,8 +20,6 @@ import { Avatar, AvatarImage } from '../ui/avatar';
 import { AvatarFallback } from '@radix-ui/react-avatar';
 import AvatarBubble from '../AvatarBubble/AvatarBubble';
 import { useLinkComponent } from '@/providers/NextLinkProvider';
-import { EnvNavFn, OrgNavFn, ProjectNavFn } from '../RootLayout/RootLayout';
-import { useSidenavItems } from './useSidenavItems';
 import { Skeleton } from '../ui/skeleton';
 
 type SidebarProps = React.ComponentProps<typeof Sidebar>;
@@ -42,11 +40,7 @@ export type AppInfo = {
 export type SidenavProps = SidebarProps & {
 	userInfo: UserInfo;
 	appInfo: AppInfo;
-	dynamicNav?: {
-		getProjectNav?: ProjectNavFn;
-		getOrgNav?: OrgNavFn;
-		getEnvironmentNav?: EnvNavFn;
-	};
+	sidenavItems: SidebarSection[];
 	signOutFn: () => Promise<void>;
 	currentPath: string;
 };
@@ -65,10 +59,8 @@ export type SidebarSection = {
 	sectionItems: SidebarItem[];
 };
 
-export default function Sidenav({ userInfo, appInfo, currentPath, dynamicNav, signOutFn, ...props }: SidenavProps) {
+export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, ...props }: SidenavProps) {
 	const Link = useLinkComponent();
-
-	const sidenavItems = useSidenavItems(appInfo, currentPath, dynamicNav);
 
 	const { name, image, email } = userInfo;
 

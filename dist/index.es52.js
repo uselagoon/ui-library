@@ -8,10 +8,10 @@ function x({
   signOutFn: a,
   currentPath: o,
   children: m,
-  dynamicNav: n
+  sidenavItems: n
 }) {
   return /* @__PURE__ */ e(u, { attribute: "class", defaultTheme: "system", enableSystem: !0, disableTransitionOnChange: !0, children: /* @__PURE__ */ r(s, { defaultOpen: !0, children: [
-    /* @__PURE__ */ e(l, { userInfo: t, appInfo: i, signOutFn: a, currentPath: o, dynamicNav: n }),
+    /* @__PURE__ */ e(l, { userInfo: t, appInfo: i, signOutFn: a, currentPath: o, sidenavItems: n }),
     /* @__PURE__ */ r("main", { className: "flex-1 mx-[16px]", children: [
       /* @__PURE__ */ e(d, {}),
       m

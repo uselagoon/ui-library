@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { SidebarProvider, SidebarTrigger } from '../ui/sidebar';
 import Sidenav from '../sidenav';
 import ThemeProvider from '@/providers/ThemeProvider';
-import { AppInfo, SidebarItem, UserInfo } from '../sidenav/Sidenav';
+import { AppInfo, SidebarItem, SidebarSection, UserInfo } from '../sidenav/Sidenav';
 
 export type EnvNavFn = (projectSlug: string, environmentSlug: string) => Promise<SidebarItem[]>;
 
@@ -17,11 +17,7 @@ export type ProjectNavFn = (
 interface RootLayoutProps {
 	userInfo: UserInfo;
 	appInfo: AppInfo;
-	dynamicNav?: {
-		getProjectNav?: ProjectNavFn;
-		getOrgNav?: OrgNavFn;
-		getEnvironmentNav?: EnvNavFn;
-	};
+	sidenavItems: SidebarSection[];
 	children: ReactNode;
 	signOutFn: () => Promise<void>;
 	currentPath: string;
@@ -37,12 +33,12 @@ export default function RootLayout({
 	signOutFn,
 	currentPath,
 	children,
-	dynamicNav,
+	sidenavItems,
 }: RootLayoutProps) {
 	return (
 		<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 			<SidebarProvider defaultOpen>
-				<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath, dynamicNav }} />
+				<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath, sidenavItems }} />
 
 				<main className="flex-1 mx-[16px]">
 					<SidebarTrigger />
