@@ -239,7 +239,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 
 																	{renderCollapseIcon ? (
 																		<ChevronUp
-																			className={`ml-auto h-4 w-4 transition-transform ${collapsibleOpen ? 'rotate-180' : ''}`}
+																			className={`ml-auto h-4 w-4 transition-transform ${collapsibleOpen ? 'rotate-180' : 'rotate-90'}`}
 																		/>
 																	) : null}
 																</Link>

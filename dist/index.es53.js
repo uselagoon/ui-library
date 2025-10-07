@@ -76,7 +76,7 @@ function we({ userInfo: d, appInfo: h, currentPath: i, sidenavItems: a, signOutF
                       W ? /* @__PURE__ */ e(
                         de,
                         {
-                          className: `ml-auto h-4 w-4 transition-transform ${o ? "rotate-180" : ""}`
+                          className: `ml-auto h-4 w-4 transition-transform ${o ? "rotate-180" : "rotate-90"}`
                         }
                       ) : null
                     ]
