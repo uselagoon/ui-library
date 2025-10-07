@@ -16,10 +16,10 @@ const y = (d, h, i) => h.children?.length ? /* @__PURE__ */ e("ul", { className:
   y(d, l, i)
 ] }, l.title)) }) : null;
 function Se({ userInfo: d, appInfo: h, currentPath: i, sidenavItems: l, signOutFn: B, ...F }) {
-  const v = ae(), { name: U, image: S, email: p } = d, $ = !!S, C = U?.split(" ") ?? [], m = C[0] ?? void 0, u = C.length > 1 ? C.slice(1).join(" ") : " ", A = !!(m && u), k = A ? M(m.charAt(0), u.charAt(0)) : M(p.charAt(0), p.charAt(1)), E = A ? m.charAt(0).toUpperCase() + u.charAt(0).toUpperCase() : p.charAt(0).toUpperCase(), O = $ ? /* @__PURE__ */ a(Z, { children: [
+  const v = ae(), { name: U, image: S, email: p } = d, $ = !!S, C = U?.split(" ") ?? [], u = C[0] ?? void 0, m = C.length > 1 ? C.slice(1).join(" ") : " ", A = !!(u && m), k = A ? M(u.charAt(0), m.charAt(0)) : M(p.charAt(0), p.charAt(1)), E = A ? u.charAt(0).toUpperCase() + m.charAt(0).toUpperCase() : p.charAt(0).toUpperCase(), O = $ ? /* @__PURE__ */ a(Z, { children: [
     /* @__PURE__ */ e(I, { src: S, alt: "user_avatar" }),
     /* @__PURE__ */ e(ee, { children: "Avatar" })
-  ] }) : /* @__PURE__ */ e(re, { bgColor: k.bgColor, textColor: k.textColor, children: E }), j = A ? /* @__PURE__ */ e("span", { className: "user-name", children: `${m} ${u}` }) : /* @__PURE__ */ e("span", { className: "user-name", children: p }), f = W(() => {
+  ] }) : /* @__PURE__ */ e(re, { bgColor: k.bgColor, textColor: k.textColor, children: E }), j = A ? /* @__PURE__ */ e("span", { className: "user-name", children: `${u} ${m}` }) : /* @__PURE__ */ e("span", { className: "user-name", children: p }), f = W(() => {
     const n = /* @__PURE__ */ new Set();
     return l.forEach((r) => {
       r.sectionItems.forEach((s) => {
@@ -42,9 +42,9 @@ function Se({ userInfo: d, appInfo: h, currentPath: i, sidenavItems: l, signOutF
         collapsible: "none",
         ...F,
         className: ce(
-          "fixed top-0 left-0 z-40 h-full bg-background transition-transform duration-300",
+          "fixed lg:static top-0 left-0 z-40 h-full lg:h-[unset] bg-background transition-transform duration-300",
           "w-[min(20vw,100%)] min-w-[290px] overflow-hidden pr-4 lg:pr-0",
-          "lg:translate-x-0 lg:block",
+          "lg:translate-x-0",
           b ? "translate-x-0" : "-translate-x-full"
         ),
         children: [

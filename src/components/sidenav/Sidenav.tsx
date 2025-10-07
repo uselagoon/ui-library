@@ -179,9 +179,9 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 				collapsible="none"
 				{...props}
 				className={cn(
-					'fixed top-0 left-0 z-40 h-full bg-background transition-transform duration-300',
+					'fixed lg:static top-0 left-0 z-40 h-full lg:h-[unset] bg-background transition-transform duration-300',
 					'w-[min(20vw,100%)] min-w-[290px] overflow-hidden pr-4 lg:pr-0',
-					'lg:translate-x-0 lg:block',
+					'lg:translate-x-0',
 					mobileOpen ? 'translate-x-0' : '-translate-x-full',
 				)}
 			>
