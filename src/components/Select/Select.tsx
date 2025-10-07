@@ -1,8 +1,8 @@
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '../ui/select';
 import { ReactNode } from 'react';
 
-type Option = { label: string; value: string | number; icon?: ReactNode; };
-type OptionGroup = { label: string; options: Option[]; icon?: ReactNode; };
+type Option = { label: string; value: string | number; icon?: ReactNode };
+type OptionGroup = { label: string; options: Option[]; icon?: ReactNode };
 
 export type SelectProps = Omit<React.ComponentProps<typeof Select>, 'disabled'> & {
 	placeholder: string;
@@ -28,25 +28,25 @@ export default function SelectWithOptions({ placeholder, options, disabled, widt
 					<SelectContent>
 						{isOptionGroupArray(options)
 							? options.map((group) => (
-								<SelectGroup key={group.label}>
-									<SelectLabel>{group.label}</SelectLabel>
-									{group.options.map((option) => (
-										<SelectItem key={option.value} value={String(option.value)}>
-											<div className="flex items-center gap-2">
-												{option.icon && <span className="flex-shrink-0">{option.icon}</span>}
-												<span>{option.label}</span>
-											</div>
-										</SelectItem>
-									))}
-								</SelectGroup>
+									<SelectGroup key={group.label}>
+										<SelectLabel>{group.label}</SelectLabel>
+										{group.options.map((option) => (
+											<SelectItem key={option.value} value={String(option.value)}>
+												<div className="flex items-center gap-2">
+													{option.icon && <span className="flex-shrink-0">{option.icon}</span>}
+													<span>{option.label}</span>
+												</div>
+											</SelectItem>
+										))}
+									</SelectGroup>
 								))
 							: options.map((option) => (
-								<SelectItem key={option.value} value={String(option.value)}>
-									<div className="flex items-center gap-2">
-										{option.icon && <span className="flex-shrink-0">{option.icon}</span>}
-										<span>{option.label}</span>
-									</div>
-								</SelectItem>
+									<SelectItem key={option.value} value={String(option.value)}>
+										<div className="flex items-center gap-2">
+											{option.icon && <span className="flex-shrink-0">{option.icon}</span>}
+											<span>{option.label}</span>
+										</div>
+									</SelectItem>
 								))}
 					</SelectContent>
 				) : (

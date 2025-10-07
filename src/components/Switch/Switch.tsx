@@ -13,7 +13,7 @@ type SwitchProps = React.ComponentProps<typeof Switch> & {
 export default function SwitchWithDescription({ id, label, description, disabled, loading, ...rest }: SwitchProps) {
 	return (
 		<div className="flex space-x-2">
-				<Switch id={id} disabled={disabled || loading} {...rest} />
+			<Switch id={id} disabled={disabled || loading} {...rest} />
 			<div className="space-y-2">
 				<Label className={`pt-[3px] ${loading ? 'opacity-60' : ''}`} htmlFor={id}>
 					{loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : label}

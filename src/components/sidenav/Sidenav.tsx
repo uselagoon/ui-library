@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { Fragment, useState } from 'react';
 import {
 	Sidebar,
 	SidebarContent,
@@ -10,16 +10,24 @@ import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
+	SidebarMenuSub,
 	useSidebar,
 } from '../ui/sidebar';
-import { BriefcaseBusiness, KeyRound, ServerCog, FolderGit2, UserRoundCog, ListChecks } from 'lucide-react';
+
 import SidenavDropdown from './SidenavDropdown';
-import { genAvatarBackground, getCurrentPath } from '@/_util/helpers';
+import { genAvatarBackground } from '@/_util/helpers';
 
 import { Avatar, AvatarImage } from '../ui/avatar';
 import { AvatarFallback } from '@radix-ui/react-avatar';
 import AvatarBubble from '../AvatarBubble/AvatarBubble';
 import { useLinkComponent } from '@/providers/NextLinkProvider';
+import { NextLinkType } from '@/typings/nextLink';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/collapsible';
+
+import { ChevronUp, Menu, X } from 'lucide-react';
+import { Button } from '../ui/button';
+import { cn } from '@/lib/utils';
+import useActivePaths from './useActivePaths';
 
 type SidebarProps = React.ComponentProps<typeof Sidebar>;
 
@@ -39,62 +47,59 @@ export type AppInfo = {
 export type SidenavProps = SidebarProps & {
 	userInfo: UserInfo;
 	appInfo: AppInfo;
+	sidenavItems: SidebarSection[];
 	signOutFn: () => Promise<void>;
-	currentPath?: string;
+	currentPath: string;
 };
-export type NavItems = ReturnType<typeof getSidenavItems>;
 
-const getSidenavItems = (kcUrl: string, signOutFn: () => Promise<void>) => [
-	{
-		section: 'Projects',
-		sectionItems: [
-			{
-				title: 'All Projects',
-				url: '/projects',
-				icon: FolderGit2,
-			},
-			{
-				title: 'All Deployments',
-				url: '/alldeployments',
-				icon: ServerCog,
-			},
-		],
-	},
-	{
-		section: 'Organizations',
-		sectionItems: [
-			{
-				title: 'All Organizations',
-				url: '/organizations',
-				icon: BriefcaseBusiness,
-			},
-		],
-	},
-	{
-		section: 'Settings',
-		sectionItems: [
-			{
-				title: 'SSH Keys',
-				url: '/settings',
-				icon: KeyRound,
-			},
-			{
-				title: 'Preferences',
-				url: '/settings/preferences',
-				icon: ListChecks,
-			},
-			{
-				title: 'My Account',
-				url: `${kcUrl}/account`,
-				target: 'blank',
-				onClick: () => {},
-				icon: UserRoundCog,
-			},
-		],
-	},
-];
+export type SidebarItem = {
+	title: string;
+	url: string;
+	icon?: React.ComponentType<any>;
+	target?: string;
+	onClick?: () => void;
+	children?: SidebarItem[];
+};
 
-export default function Sidenav({ userInfo, appInfo, currentPath, signOutFn, ...props }: SidenavProps) {
+export type SidebarSection = {
+	section: string;
+	sectionItems: SidebarItem[];
+};
+
+const renderSidenavChildren = (
+	Link: NextLinkType,
+	sectionItem: SidebarItem,
+	activePaths: Set<string>,
+): JSX.Element | null => {
+	if (!sectionItem.children?.length) return null;
+
+	return (
+		<ul className="ml-4 mt-2 space-y-1">
+			{sectionItem.children.map((child: any) => {
+				const hasChildren = child.children && child.children.length > 0;
+				const isActive = hasChildren
+					? activePaths.has(child.url) || activePaths.has(`${child.url}:parent`)
+					: activePaths.has(child.url);
+
+				return (
+					<SidebarMenuItem key={child.title}>
+						<SidebarMenuButton asChild isActive={isActive}>
+							<Link href={child.url} className={`${!child.icon ? 'ml-4' : ''}`}>
+								<div className="flex items-center gap-2">
+									{child.icon && <child.icon />}
+									<span>{child.title}</span>
+								</div>
+							</Link>
+						</SidebarMenuButton>
+						{renderSidenavChildren(Link, child, activePaths)}
+					</SidebarMenuItem>
+				);
+			})}
+		</ul>
+	);
+};
+
+export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, ...props }: SidenavProps) {
 	const Link = useLinkComponent();
 
 	const { name, image, email } = userInfo;
@@ -136,75 +141,146 @@ export default function Sidenav({ userInfo, appInfo, currentPath, signOutFn, ...
 		<span className="user-name">{email}</span>
 	);
 
-	const sidenavItems = useMemo(() => {
-		return getSidenavItems(appInfo.kcUrl, signOutFn);
-	}, [appInfo.kcUrl, signOutFn]);
-
-	const activePath = useMemo(() => getCurrentPath(sidenavItems, currentPath || ''), [sidenavItems, currentPath]);
+	const activePaths = useActivePaths(sidenavItems, currentPath);
 
 	const { state } = useSidebar();
-	const isCollapsed = state === 'collapsed';
-	const sidenavProps = { ...appInfo, signOutFn, isCollapsed };
+
+	const [mobileOpen, setMobileOpen] = useState(false);
+
+	const sidenavProps = {
+		...appInfo,
+		signOutFn,
+		isCollapsed: state === 'collapsed',
+	};
+
 	return (
-		<Sidebar
-			variant="sidebar"
-			collapsible="icon"
-			{...props}
-			className="w-[clamp(0px,20vw,256px)] transition-all overflow-hidden"
-		>
-			<SidebarHeader>
-				<SidebarMenu>
-					<SidebarMenuItem>
-						<SidenavDropdown {...sidenavProps} />
-					</SidebarMenuItem>
-				</SidebarMenu>
-			</SidebarHeader>
+		<>
+			{!mobileOpen && (
+				<div className="lg:hidden fixed top-2 left-4 z-40">
+					<Button variant="ghost" size="icon" onClick={() => setMobileOpen(true)} aria-label="Open sidebar">
+						<Menu className="h-5 w-5" />
+					</Button>
+				</div>
+			)}
+			<Sidebar
+				variant="sidebar"
+				collapsible="none"
+				{...props}
+				className={cn(
+					'fixed lg:static top-0 left-0 z-40 h-full lg:h-[unset] bg-background transition-transform duration-300',
+					'w-[min(20vw,100%)] min-w-[290px] overflow-hidden pr-4 lg:pr-0',
+					'lg:translate-x-0',
+					mobileOpen ? 'translate-x-0' : '-translate-x-full',
+				)}
+			>
+				{mobileOpen && (
+					<div className="lg:hidden absolute top-4 right-0">
+						<Button variant="ghost" size="icon" onClick={() => setMobileOpen(false)} aria-label="Close sidebar">
+							<X className="h-5 w-5" />
+						</Button>
+					</div>
+				)}
+				<SidebarHeader>
+					<SidebarMenu>
+						<SidebarMenuItem>
+							<SidenavDropdown {...sidenavProps} />
+						</SidebarMenuItem>
+					</SidebarMenu>
+				</SidebarHeader>
 
-			<SidebarContent>
-				{sidenavItems.map((navItem) => {
-					return (
-						<SidebarGroup key={navItem.section}>
-							<SidebarGroupLabel>{navItem.section}</SidebarGroupLabel>
-							<SidebarGroupContent className="list-none">
-								{navItem.sectionItems.map((sectionItem) => {
-									const newTab = sectionItem.target === 'blank';
-									const action = sectionItem?.onClick;
-									return (
-										<SidebarMenuItem key={sectionItem.title}>
-											<SidebarMenuButton asChild isActive={activePath === sectionItem.url}>
-												<Link
-													data-cy={`nav-${sectionItem.url.slice(1)}`}
-													onClick={async () => {
-														action && (await action());
-													}}
-													href={sectionItem.url}
-													target={newTab ? '_blank' : '_self'}
-												>
-													<sectionItem.icon />
-													<span>{sectionItem.title}</span>
-												</Link>
-											</SidebarMenuButton>
-										</SidebarMenuItem>
-									);
-								})}
-							</SidebarGroupContent>
-						</SidebarGroup>
-					);
-				})}
-			</SidebarContent>
+				<SidebarContent>
+					{sidenavItems.map((navItem) => {
+						return (
+							<SidebarGroup key={navItem.section}>
+								<SidebarGroupLabel>{navItem.section}</SidebarGroupLabel>
+								<SidebarGroupContent className="list-none">
+									{navItem.sectionItems.map((sectionItem) => {
+										const newTab = sectionItem.target === 'blank';
+										const action = sectionItem?.onClick;
 
-			<SidebarFooter>
-				<SidebarMenu>
-					<SidebarMenuItem>
-						<SidebarMenuButton size="lg">
-							{avatarToUse}
-							<div className="grid flex-1 text-left text-sm leading-tight">
-								<span className="truncate font-light">{userDisplayName}</span>
-							</div>
-						</SidebarMenuButton>
-					</SidebarMenuItem>
-				</SidebarMenu>
-			</SidebarFooter>
-		</Sidebar>
+										const collapsibleOpen = Array.from(activePaths).some((p) => p.startsWith(sectionItem.url));
+										const collapsibleSections = ['Projects', 'Organizations'];
+										const renderCollapseIcon = collapsibleSections.includes(sectionItem.title);
+
+										return (
+											<Fragment key={sectionItem.title}>
+												<Collapsible open={collapsibleOpen}>
+													<SidebarMenuItem>
+														<CollapsibleTrigger asChild>
+															<SidebarMenuButton
+																asChild
+																isActive={
+																	activePaths.has(sectionItem.url) || activePaths.has(`${sectionItem.url}:parent`)
+																}
+															>
+																<Link
+																	data-cy={`nav-${sectionItem.url.slice(1)}`}
+																	onClick={async () => {
+																		action && (await action());
+																	}}
+																	href={sectionItem.url}
+																	target={newTab ? '_blank' : '_self'}
+																	className="flex w-full gap-2"
+																>
+																	<div className="flex items-center gap-2">
+																		{sectionItem.icon && <sectionItem.icon />}
+																		<span>{sectionItem.title}</span>
+																	</div>
+
+																	{renderCollapseIcon ? (
+																		<ChevronUp
+																			className={`ml-auto h-4 w-4 transition-transform ${collapsibleOpen ? 'rotate-180' : 'rotate-90'}`}
+																		/>
+																	) : null}
+																</Link>
+															</SidebarMenuButton>
+														</CollapsibleTrigger>
+													</SidebarMenuItem>
+
+													<CollapsibleContent>
+														<SidebarMenuSub>
+															{sectionItem.children?.map((child) => (
+																<SidebarMenuItem key={child.title}>
+																	<SidebarMenuButton
+																		asChild
+																		isActive={activePaths.has(child.url) || activePaths.has(`${child.url}:parent`)}
+																	>
+																		<Link href={child.url} className="mt-2">
+																			<div className="flex items-center gap-2">
+																				{child.icon && <child.icon />}
+																				<span>{child.title}</span>
+																			</div>
+																		</Link>
+																	</SidebarMenuButton>
+																	{renderSidenavChildren(Link, child, activePaths)}
+																</SidebarMenuItem>
+															))}
+														</SidebarMenuSub>
+													</CollapsibleContent>
+												</Collapsible>
+											</Fragment>
+										);
+									})}
+								</SidebarGroupContent>
+							</SidebarGroup>
+						);
+					})}
+				</SidebarContent>
+
+				<SidebarFooter>
+					<SidebarMenu>
+						<SidebarMenuItem>
+							<SidebarMenuButton size="lg">
+								{avatarToUse}
+								<div className="grid flex-1 text-left text-sm leading-tight">
+									<span className="truncate font-light">{userDisplayName}</span>
+								</div>
+							</SidebarMenuButton>
+						</SidebarMenuItem>
+					</SidebarMenu>
+				</SidebarFooter>
+			</Sidebar>
+			{mobileOpen && <div className="fixed inset-0 bg-black/40 z-30 lg:hidden" onClick={() => setMobileOpen(false)} />}
+		</>
 	);
 }
