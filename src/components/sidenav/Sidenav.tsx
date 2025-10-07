@@ -75,23 +75,30 @@ const renderSidenavChildren = (
 
 	return (
 		<ul className="ml-4 mt-2 space-y-1">
-			{sectionItem.children.map((child) => (
-				<SidebarMenuItem key={child.title}>
-					<SidebarMenuButton asChild isActive={activePaths.has(child.url)}>
-						<Link href={child.url} className={`${!child.icon ? 'ml-4' : ''}`}>
-							<div className="flex items-center gap-2">
-								{child.icon && <child.icon />}
-								<span>{child.title}</span>
-							</div>
-						</Link>
-					</SidebarMenuButton>
+			{sectionItem.children.map((child: any) => {
+				const hasChildren = child.children && child.children.length > 0;
+				const isActive = hasChildren
+					? activePaths.has(child.url) || activePaths.has(`${child.url}:parent`)
+					: activePaths.has(child.url);
 
-					{renderSidenavChildren(Link, child, activePaths)}
-				</SidebarMenuItem>
-			))}
+				return (
+					<SidebarMenuItem key={child.title}>
+						<SidebarMenuButton asChild isActive={isActive}>
+							<Link href={child.url} className={`${!child.icon ? 'ml-4' : ''}`}>
+								<div className="flex items-center gap-2">
+									{child.icon && <child.icon />}
+									<span>{child.title}</span>
+								</div>
+							</Link>
+						</SidebarMenuButton>
+						{renderSidenavChildren(Link, child, activePaths)}
+					</SidebarMenuItem>
+				);
+			})}
 		</ul>
 	);
 };
+
 export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, ...props }: SidenavProps) {
 	const Link = useLinkComponent();
 
