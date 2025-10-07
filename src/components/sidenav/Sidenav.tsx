@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import {
 	Sidebar,
 	SidebarContent,
@@ -27,6 +27,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/colla
 import { ChevronUp, Menu, X } from 'lucide-react';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
+import useActivePaths from './useActivePaths';
 
 type SidebarProps = React.ComponentProps<typeof Sidebar>;
 
@@ -133,40 +134,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 		<span className="user-name">{email}</span>
 	);
 
-	const activePaths = useMemo(() => {
-		const paths = new Set<string>();
-
-		const markActive = (item: SidebarItem, isParentDuplicate = false): boolean => {
-			const hasChildren = Array.isArray(item.children) && item.children.length > 0;
-
-			const exactMatch = currentPath === item.url;
-
-			let childActive = false;
-			if (hasChildren) {
-				childActive = item.children!.some((child) => {
-					// if child url === parent url (parent must be marked active)
-					const duplicateOverview = child.url === item.url;
-					return markActive(child, duplicateOverview);
-				});
-			}
-
-			let shouldBeActive = exactMatch || childActive;
-
-			if (!isParentDuplicate && hasChildren && currentPath.startsWith(item.url + '/')) {
-				shouldBeActive = true;
-			}
-
-			if (shouldBeActive) paths.add(item.url);
-
-			return exactMatch || childActive;
-		};
-
-		sidenavItems.forEach((section) => {
-			section.sectionItems.forEach((item) => markActive(item));
-		});
-
-		return paths;
-	}, [sidenavItems, currentPath]);
+	const activePaths = useActivePaths(sidenavItems, currentPath);
 
 	const { state } = useSidebar();
 

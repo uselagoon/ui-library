@@ -4,9 +4,9 @@ import { ChevronsUpDown as v, LogOut as D, Sun as $, Moon as j } from "lucide-re
 import { useTheme as y } from "next-themes";
 import { DropdownMenu as z, DropdownMenuTrigger as M, DropdownMenuContent as E, DropdownMenuItem as c } from "./index.es24.js";
 import { SidebarMenuButton as I } from "./index.es41.js";
-import d from "./index.es99.js";
+import d from "./index.es100.js";
 import { useLinkComponent as O } from "./index.es5.js";
-import { useSyncTheme as C } from "./index.es100.js";
+import { useSyncTheme as C } from "./index.es101.js";
 function K({ name: h, version: g, signOutFn: u, isCollapsed: n = !1 }) {
   const { setTheme: f, theme: o, systemTheme: p } = y(), [i, l] = T(!1);
   C();
