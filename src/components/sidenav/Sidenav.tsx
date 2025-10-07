@@ -77,7 +77,7 @@ const renderSidenavChildren = (
 			{sectionItem.children.map((child) => (
 				<SidebarMenuItem key={child.title}>
 					<SidebarMenuButton asChild isActive={activePaths.has(child.url)}>
-						<Link href={child.url}>
+						<Link href={child.url} className={`${!child.icon ? 'ml-4' : ''}`}>
 							<div className="flex items-center gap-2">
 								{child.icon && <child.icon />}
 								<span>{child.title}</span>
@@ -250,6 +250,14 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 														<SidebarMenuSub>
 															{sectionItem.children?.map((child) => (
 																<SidebarMenuItem key={child.title}>
+																	<SidebarMenuButton asChild isActive={activePaths.has(child.url)}>
+																		<Link href={child.url} className="mt-2">
+																			<div className="flex items-center gap-2">
+																				{child.icon && <child.icon />}
+																				<span>{child.title}</span>
+																			</div>
+																		</Link>
+																	</SidebarMenuButton>
 																	{renderSidenavChildren(Link, child, activePaths)}
 																</SidebarMenuItem>
 															))}
