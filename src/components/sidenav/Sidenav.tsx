@@ -73,7 +73,7 @@ const renderSidenavChildren = (
 	if (!sectionItem.children?.length) return null;
 
 	return (
-		<ul className="ml-4 mt-2 space-y-2">
+		<ul className="ml-4 mt-2 space-y-1">
 			{sectionItem.children.map((child) => (
 				<SidebarMenuItem key={child.title}>
 					<SidebarMenuButton asChild isActive={activePaths.has(child.url)}>
@@ -136,23 +136,20 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 	const activePaths = useMemo(() => {
 		const paths = new Set<string>();
 
+		const markActive = (item: any): boolean => {
+			const selfActive = currentPath === item.url || currentPath.startsWith(item.url + '/');
+
+			const childActive = item.children?.some(markActive) ?? false;
+
+			if (selfActive || childActive) {
+				paths.add(item.url);
+			}
+
+			return selfActive || childActive;
+		};
+
 		sidenavItems.forEach((section) => {
-			section.sectionItems.forEach((item) => {
-				const isParentActive = currentPath === item.url || currentPath.startsWith(item.url + '/');
-
-				if (isParentActive) {
-					paths.add(item.url);
-				}
-
-				item.children?.forEach((child) => {
-					const isChildActive = currentPath === child.url || currentPath.startsWith(child.url + '/');
-
-					if (isChildActive) {
-						paths.add(child.url);
-						paths.add(item.url);
-					}
-				});
-			});
+			section.sectionItems.forEach(markActive);
 		});
 
 		return paths;
