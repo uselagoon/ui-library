@@ -171,7 +171,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 	return (
 		<>
 			{!mobileOpen && (
-				<div className="lg:hidden fixed top-4 left-4 z-40">
+				<div className="lg:hidden fixed top-2 left-4 z-40">
 					<Button variant="ghost" size="icon" onClick={() => setMobileOpen(true)} aria-label="Open sidebar">
 						<Menu className="h-5 w-5" />
 					</Button>
@@ -214,8 +214,9 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 										const action = sectionItem?.onClick;
 
 										const collapsibleOpen = Array.from(activePaths).some((p) => p.startsWith(sectionItem.url));
+										const collapsibleSections = ['Projects', 'Organizations'];
+										const renderCollapseIcon = collapsibleSections.includes(sectionItem.title);
 
-										const renderCollapseIcon = !!sectionItem.children;
 										return (
 											<Fragment key={sectionItem.title}>
 												<Collapsible open={collapsibleOpen}>
