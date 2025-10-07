@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
-import { SidebarItem, SidebarSection } from './Sidenav';
+import type { SidebarItem, SidebarSection } from './Sidenav';
 
 const useActivePaths = (sidenavItems: SidebarSection[], currentPath: string) => {
 	const activePaths = useMemo(() => {
@@ -54,7 +54,7 @@ const useActivePaths = (sidenavItems: SidebarSection[], currentPath: string) => 
 				paths.add(item.url);
 			}
 
-			return exactMatch || childActive;
+			return shouldBeActive || childActive;
 		};
 
 		sidenavItems.forEach((section) => {
