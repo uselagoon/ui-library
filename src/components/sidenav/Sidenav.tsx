@@ -24,7 +24,7 @@ import { useLinkComponent } from '@/providers/NextLinkProvider';
 import { NextLinkType } from '@/typings/nextLink';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/collapsible';
 
-import { Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 
@@ -167,25 +167,28 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 
 	return (
 		<>
-			<Button
-				variant="ghost"
-				size="icon"
-				className="fixed top-4 left-4 z-50 lg:hidden"
-				onClick={() => setMobileOpen(!mobileOpen)}
-			>
-				{mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-			</Button>
 			<Sidebar
 				variant="sidebar"
 				collapsible="none"
 				{...props}
 				className={cn(
-					'fixed z-40 h-full bg-background transition-transform duration-300',
+					'relative z-40 h-full bg-background transition-transform duration-300',
 					'w-[min(20vw,100%)] min-w-[290px] overflow-hidden',
 					'lg:translate-x-0 lg:static lg:block',
 					mobileOpen ? 'translate-x-0' : '-translate-x-full',
 				)}
 			>
+				<div className="lg:hidden absolute top-4 right-4">
+					<Button
+						variant="ghost"
+						size="icon"
+						className="fixed top-4 left-4 z-50 lg:hidden"
+						onClick={() => setMobileOpen(!mobileOpen)}
+					>
+						{mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+					</Button>
+				</div>
+
 				<SidebarHeader>
 					<SidebarMenu>
 						<SidebarMenuItem>
@@ -205,7 +208,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 										const action = sectionItem?.onClick;
 										return (
 											<Fragment key={sectionItem.title}>
-												<Collapsible>
+												<Collapsible open={Array.from(activePaths).some((p) => p.startsWith(sectionItem.url))}>
 													<SidebarMenuItem>
 														<CollapsibleTrigger asChild>
 															<SidebarMenuButton asChild isActive={activePaths.has(sectionItem.url)}>
@@ -217,8 +220,14 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 																	href={sectionItem.url}
 																	target={newTab ? '_blank' : '_self'}
 																>
-																	{sectionItem.icon && <sectionItem.icon />}
-																	<span>{sectionItem.title}</span>
+																	<div className="flex items-center gap-2">
+																		{sectionItem.icon && <sectionItem.icon />}
+																		<span>{sectionItem.title}</span>
+																	</div>
+
+																	<ChevronDown
+																		className={`h-4 w-4 transition-transform ${Array.from(activePaths).some((p) => p.startsWith(sectionItem.url)) ? 'rotate-180' : ''}`}
+																	/>
 																</Link>
 															</SidebarMenuButton>
 														</CollapsibleTrigger>

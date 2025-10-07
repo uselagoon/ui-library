@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { SidebarProvider, SidebarTrigger } from '../ui/sidebar';
+import { SidebarProvider } from '../ui/sidebar';
 import Sidenav from '../sidenav';
 import ThemeProvider from '@/providers/ThemeProvider';
 import { AppInfo, SidebarItem, SidebarSection, UserInfo } from '../sidenav/Sidenav';
@@ -40,10 +40,7 @@ export default function RootLayout({
 			<SidebarProvider defaultOpen>
 				<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath, sidenavItems }} />
 
-				<main className="flex-1 mx-[16px]">
-					<SidebarTrigger />
-					{children}
-				</main>
+				<main className="flex-1 mx-[16px]">{children}</main>
 			</SidebarProvider>
 		</ThemeProvider>
 	);
