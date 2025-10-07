@@ -164,27 +164,17 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 													</Link>
 												</SidebarMenuButton>
 											</SidebarMenuItem>
-											{sectionItem.children ? (
-												<ul className="ml-4">
-													{sectionItem.children.map((child) => (
-														<SidebarMenuItem key={child.title}>
-															<SidebarMenuButton asChild isActive={activePaths.has(child.url)}>
-																<Link href={child.url}>
-																	<span>{child.title}</span>
-																</Link>
-															</SidebarMenuButton>
-														</SidebarMenuItem>
-													))}
-												</ul>
-											) : (
-												<ul className="ml-4 space-y-1">
-													{Array.from({ length: 3 }).map((_, i) => (
-														<li key={i}>
-															<Skeleton className="h-6 w-100 rounded-sm" />
-														</li>
-													))}
-												</ul>
-											)}
+											<ul className="ml-4">
+												{sectionItem.children?.map((child) => (
+													<SidebarMenuItem key={child.title}>
+														<SidebarMenuButton asChild isActive={activePaths.has(child.url)}>
+															<Link href={child.url}>
+																<span>{child.title}</span>
+															</Link>
+														</SidebarMenuButton>
+													</SidebarMenuItem>
+												))}
+											</ul>
 										</Fragment>
 									);
 								})}
