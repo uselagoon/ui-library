@@ -24,7 +24,7 @@ import { useLinkComponent } from '@/providers/NextLinkProvider';
 import { NextLinkType } from '@/typings/nextLink';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/collapsible';
 
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { ChevronUp, Menu, X } from 'lucide-react';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 
@@ -178,13 +178,8 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 					mobileOpen ? 'translate-x-0' : '-translate-x-full',
 				)}
 			>
-				<div className="lg:hidden absolute top-4 right-4">
-					<Button
-						variant="ghost"
-						size="icon"
-						className="fixed top-4 left-4 z-50 lg:hidden"
-						onClick={() => setMobileOpen(!mobileOpen)}
-					>
+				<div className="lg:hidden absolute top-4 left-4">
+					<Button variant="ghost" size="icon" onClick={() => setMobileOpen(!mobileOpen)}>
 						{mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
 					</Button>
 				</div>
@@ -206,9 +201,11 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 									{navItem.sectionItems.map((sectionItem) => {
 										const newTab = sectionItem.target === 'blank';
 										const action = sectionItem?.onClick;
+
+										const collapsibleOpen = Array.from(activePaths).some((p) => p.startsWith(sectionItem.url));
 										return (
 											<Fragment key={sectionItem.title}>
-												<Collapsible open={Array.from(activePaths).some((p) => p.startsWith(sectionItem.url))}>
+												<Collapsible open={collapsibleOpen}>
 													<SidebarMenuItem>
 														<CollapsibleTrigger asChild>
 															<SidebarMenuButton asChild isActive={activePaths.has(sectionItem.url)}>
@@ -219,15 +216,18 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 																	}}
 																	href={sectionItem.url}
 																	target={newTab ? '_blank' : '_self'}
+																	className="flex w-full gap-2"
 																>
 																	<div className="flex items-center gap-2">
 																		{sectionItem.icon && <sectionItem.icon />}
 																		<span>{sectionItem.title}</span>
 																	</div>
 
-																	<ChevronDown
-																		className={`h-4 w-4 transition-transform ${Array.from(activePaths).some((p) => p.startsWith(sectionItem.url)) ? 'rotate-180' : ''}`}
-																	/>
+																	{collapsibleOpen ? (
+																		<ChevronUp
+																			className={`ml-auto h-4 w-4 transition-transform ${collapsibleOpen ? 'rotate-180' : ''}`}
+																		/>
+																	) : null}
 																</Link>
 															</SidebarMenuButton>
 														</CollapsibleTrigger>
