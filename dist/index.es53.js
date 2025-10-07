@@ -56,7 +56,7 @@ function ke({ userInfo: d, appInfo: h, currentPath: i, sidenavItems: a, signOutF
           /* @__PURE__ */ e(J, { children: a.map((t) => /* @__PURE__ */ l(K, { children: [
             /* @__PURE__ */ e(Q, { children: t.section }),
             /* @__PURE__ */ e(R, { className: "list-none", children: t.sectionItems.map((r) => {
-              const s = r.target === "blank", x = r?.onClick, o = Array.from(f).some((n) => n.startsWith(r.url)), w = o && r.children;
+              const s = r.target === "blank", x = r?.onClick, o = Array.from(f).some((n) => n.startsWith(r.url)), w = !!r.children;
               return /* @__PURE__ */ e(H, { children: /* @__PURE__ */ l(ne, { open: o, children: [
                 /* @__PURE__ */ e(c, { children: /* @__PURE__ */ e(ie, { asChild: !0, children: /* @__PURE__ */ e(g, { asChild: !0, isActive: f.has(r.url), children: /* @__PURE__ */ l(
                   v,

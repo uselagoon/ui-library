@@ -215,7 +215,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 
 										const collapsibleOpen = Array.from(activePaths).some((p) => p.startsWith(sectionItem.url));
 
-										const renderCollapseIcon = collapsibleOpen && sectionItem.children;
+										const renderCollapseIcon = !!sectionItem.children;
 										return (
 											<Fragment key={sectionItem.title}>
 												<Collapsible open={collapsibleOpen}>
