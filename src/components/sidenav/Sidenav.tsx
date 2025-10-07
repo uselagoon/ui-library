@@ -136,15 +136,18 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 	const activePaths = useMemo(() => {
 		const paths = new Set<string>();
 
-		const markActive = (item: SidebarItem): boolean => {
+		const markActive = (item: SidebarItem, parentUrl?: string): boolean => {
 			const exactMatch = currentPath === item.url;
+
+			// check if its url === parent url
+			const isSameAsParent = parentUrl && item.url === parentUrl;
 
 			let childActive = false;
 			if (item.children) {
-				childActive = item.children.some(markActive);
+				childActive = item.children.some((child) => markActive(child, item.url));
 			}
 
-			if (exactMatch || childActive || currentPath.startsWith(item.url + '/')) {
+			if (exactMatch || childActive || (!isSameAsParent && currentPath.startsWith(item.url + '/'))) {
 				paths.add(item.url);
 			}
 
@@ -152,7 +155,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 		};
 
 		sidenavItems.forEach((section) => {
-			section.sectionItems.forEach(markActive);
+			section.sectionItems.forEach((item) => markActive(item));
 		});
 
 		return paths;
