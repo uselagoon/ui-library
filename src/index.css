@@ -59,9 +59,9 @@
 	--badge-teal-bg: #0f766e;
 	--badge-teal-fg: #ffffff;
 	--badge-teal-hover: #115e59;
-	--badge-lagoon-bg: #3A8CFF;
+	--badge-lagoon-bg: #3a8cff;
 	--badge-lagoon-fg: #ffffff;
-	--badge-lagoon-hover: #1F6DE0;
+	--badge-lagoon-hover: #1f6de0;
 
 	--env-production-bg: #047857;
 	--env-production-fg: #ffffff;
@@ -81,14 +81,14 @@
 	--env-testing-bg: #0f766e;
 	--env-testing-fg: #ffffff;
 	--env-testing-hover: #115e59;
-	--env-sandbox-bg: #3A8CFF;
+	--env-sandbox-bg: #3a8cff;
 	--env-sandbox-fg: #ffffff;
-	--env-sandbox-hover: #1F6DE0;
+	--env-sandbox-hover: #1f6de0;
 	--env-deprecated-bg: #6b7280;
 	--env-deprecated-fg: #ffffff;
 	--env-deprecated-hover: #4b5563;
 
-	--badge-ring: 0 0 0 1px rgba(0,0,0,.05);
+	--badge-ring: 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 .dark {
