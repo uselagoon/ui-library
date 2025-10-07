@@ -78,7 +78,10 @@ const renderSidenavChildren = (
 				<SidebarMenuItem key={child.title}>
 					<SidebarMenuButton asChild isActive={activePaths.has(child.url)}>
 						<Link href={child.url}>
-							<span>{child.title}</span>
+							<div className="flex items-center gap-2">
+								{child.icon && <child.icon />}
+								<span>{child.title}</span>
+							</div>
 						</Link>
 					</SidebarMenuButton>
 
@@ -211,6 +214,8 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 										const action = sectionItem?.onClick;
 
 										const collapsibleOpen = Array.from(activePaths).some((p) => p.startsWith(sectionItem.url));
+
+										const renderCollapseIcon = collapsibleOpen && sectionItem.children;
 										return (
 											<Fragment key={sectionItem.title}>
 												<Collapsible open={collapsibleOpen}>
@@ -231,7 +236,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 																		<span>{sectionItem.title}</span>
 																	</div>
 
-																	{collapsibleOpen ? (
+																	{renderCollapseIcon ? (
 																		<ChevronUp
 																			className={`ml-auto h-4 w-4 transition-transform ${collapsibleOpen ? 'rotate-180' : ''}`}
 																		/>
@@ -245,11 +250,6 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 														<SidebarMenuSub>
 															{sectionItem.children?.map((child) => (
 																<SidebarMenuItem key={child.title}>
-																	<SidebarMenuButton asChild isActive={activePaths.has(child.url)}>
-																		<Link href={child.url}>
-																			<span>{child.title}</span>
-																		</Link>
-																	</SidebarMenuButton>
 																	{renderSidenavChildren(Link, child, activePaths)}
 																</SidebarMenuItem>
 															))}
