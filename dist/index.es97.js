@@ -1,18 +1,18 @@
-import { useMemo as d } from "react";
-const x = (u, r) => d(() => {
-  const t = /* @__PURE__ */ new Set(), h = (e, s) => {
-    const c = Array.isArray(e.children) && e.children.length > 0, i = r === e.url, f = s !== void 0 && e.url === s, n = c && e.children.some((o) => o.url === e.url);
-    let a = !1;
-    if (c)
-      for (const o of e.children)
-        h(o, e.url) && (a = !0);
-    let l = !1;
-    return i ? l = !0 : f ? l = !1 : c && a ? n ? (t.add(`${e.url}:parent`), l = !1) : l = !0 : e.url !== "/" && r.startsWith(`${e.url}/`) && (l = !0), l && t.add(e.url), i || a;
+import { useMemo as v } from "react";
+const C = (f, s) => v(() => {
+  const c = /* @__PURE__ */ new Set(), i = (l, r) => {
+    const a = Array.isArray(l.children) && l.children.length > 0, o = s === l.url, d = r !== void 0 && l.url === r, n = a && l.children.some((t) => t.url === l.url);
+    let u = !1, h = !1;
+    if (a)
+      for (const t of l.children)
+        i(t, l.url) && (u = !0), s === t.url && (h = !0);
+    let e = !1;
+    return o ? e = !0 : d ? e = !1 : a && u ? n ? h && s === l.url ? e = !0 : (c.add(`${l.url}:parent`), e = !1) : e = !0 : l.url !== "/" && s.startsWith(`${l.url}/`) && (e = !0), e && c.add(l.url), o || u;
   };
-  return u.forEach((e) => {
-    e.sectionItems.forEach((s) => h(s));
-  }), t;
-}, [u, r]);
+  return f.forEach((l) => {
+    l.sectionItems.forEach((r) => i(r));
+  }), c;
+}, [f, s]);
 export {
-  x as default
+  C as default
 };

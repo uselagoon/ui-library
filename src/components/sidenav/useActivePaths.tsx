@@ -15,12 +15,16 @@ const useActivePaths = (sidenavItems: SidebarSection[], currentPath: string) => 
 			const hasDuplicateChild = hasChildren && item.children!.some((child) => child.url === item.url);
 
 			let childActive = false;
+			let exactChildMatch = false;
 
 			if (hasChildren) {
 				for (const child of item.children!) {
 					const childResult = markActive(child, item.url);
 					if (childResult) {
 						childActive = true;
+					}
+					if (currentPath === child.url) {
+						exactChildMatch = true;
 					}
 				}
 			}
@@ -33,8 +37,12 @@ const useActivePaths = (sidenavItems: SidebarSection[], currentPath: string) => 
 				shouldBeActive = false;
 			} else if (hasChildren && childActive) {
 				if (hasDuplicateChild) {
-					paths.add(`${item.url}:parent`);
-					shouldBeActive = false;
+					if (exactChildMatch && currentPath === item.url) {
+						shouldBeActive = true;
+					} else {
+						paths.add(`${item.url}:parent`);
+						shouldBeActive = false;
+					}
 				} else {
 					shouldBeActive = true;
 				}

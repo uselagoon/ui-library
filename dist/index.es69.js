@@ -4,7 +4,7 @@ import { Button as h } from "./index.es13.js";
 import { useReactTable as K, getSortedRowModel as Q, getFilteredRowModel as U, getPaginationRowModel as X, getCoreRowModel as Y, flexRender as v } from "@tanstack/react-table";
 import { Table as Z, TableHeader as ee, TableRow as P, TableHead as te, TableBody as ne, TableCell as k } from "./index.es46.js";
 import { DebouncedInput as oe } from "./index.es63.js";
-import { highlightTextInElement as le } from "./index.es98.js";
+import { highlightTextInElement as le } from "./index.es99.js";
 import { cn as I } from "./index.es70.js";
 import { Skeleton as ie } from "./index.es42.js";
 import ae from "./index.es62.js";
