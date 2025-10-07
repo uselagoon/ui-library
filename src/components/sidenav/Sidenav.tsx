@@ -207,7 +207,12 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 												<Collapsible open={collapsibleOpen}>
 													<SidebarMenuItem>
 														<CollapsibleTrigger asChild>
-															<SidebarMenuButton asChild isActive={activePaths.has(sectionItem.url)}>
+															<SidebarMenuButton
+																asChild
+																isActive={
+																	activePaths.has(sectionItem.url) || activePaths.has(`${sectionItem.url}:parent`)
+																}
+															>
 																<Link
 																	data-cy={`nav-${sectionItem.url.slice(1)}`}
 																	onClick={async () => {
@@ -236,7 +241,10 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 														<SidebarMenuSub>
 															{sectionItem.children?.map((child) => (
 																<SidebarMenuItem key={child.title}>
-																	<SidebarMenuButton asChild isActive={activePaths.has(child.url)}>
+																	<SidebarMenuButton
+																		asChild
+																		isActive={activePaths.has(child.url) || activePaths.has(`${child.url}:parent`)}
+																	>
 																		<Link href={child.url} className="mt-2">
 																			<div className="flex items-center gap-2">
 																				{child.icon && <child.icon />}
