@@ -179,14 +179,14 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 				collapsible="none"
 				{...props}
 				className={cn(
-					'fixed top-0 left-0 lg:static z-40 h-full bg-background transition-transform duration-300',
-					'w-[min(20vw,100%)] min-w-[290px] overflow-hidden',
-					'lg:translate-x-0 lg:static lg:block',
+					'fixed top-0 left-0 z-40 h-full bg-background transition-transform duration-300',
+					'w-[min(20vw,100%)] min-w-[290px] overflow-hidden pr-4 lg:pr-0',
+					'lg:translate-x-0 lg:block',
 					mobileOpen ? 'translate-x-0' : '-translate-x-full',
 				)}
 			>
 				{mobileOpen && (
-					<div className="lg:hidden absolute top-4 left-4">
+					<div className="lg:hidden absolute top-4 right-0">
 						<Button variant="ghost" size="icon" onClick={() => setMobileOpen(false)} aria-label="Close sidebar">
 							<X className="h-5 w-5" />
 						</Button>

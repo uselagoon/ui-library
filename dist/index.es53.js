@@ -42,13 +42,13 @@ function Se({ userInfo: d, appInfo: h, currentPath: i, sidenavItems: l, signOutF
         collapsible: "none",
         ...F,
         className: ce(
-          "fixed top-0 left-0 lg:static z-40 h-full bg-background transition-transform duration-300",
-          "w-[min(20vw,100%)] min-w-[290px] overflow-hidden",
-          "lg:translate-x-0 lg:static lg:block",
+          "fixed top-0 left-0 z-40 h-full bg-background transition-transform duration-300",
+          "w-[min(20vw,100%)] min-w-[290px] overflow-hidden pr-4 lg:pr-0",
+          "lg:translate-x-0 lg:block",
           b ? "translate-x-0" : "-translate-x-full"
         ),
         children: [
-          b && /* @__PURE__ */ e("div", { className: "lg:hidden absolute top-4 left-4", children: /* @__PURE__ */ e(z, { variant: "ghost", size: "icon", onClick: () => x(!1), "aria-label": "Close sidebar", children: /* @__PURE__ */ e(se, { className: "h-5 w-5" }) }) }),
+          b && /* @__PURE__ */ e("div", { className: "lg:hidden absolute top-4 right-0", children: /* @__PURE__ */ e(z, { variant: "ghost", size: "icon", onClick: () => x(!1), "aria-label": "Close sidebar", children: /* @__PURE__ */ e(se, { className: "h-5 w-5" }) }) }),
           /* @__PURE__ */ e(X, { children: /* @__PURE__ */ e(w, { children: /* @__PURE__ */ e(c, { children: /* @__PURE__ */ e(Y, { ...L }) }) }) }),
           /* @__PURE__ */ e(q, { children: l.map((n) => /* @__PURE__ */ a(J, { children: [
             /* @__PURE__ */ e(K, { children: n.section }),
