@@ -167,23 +167,31 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 
 	return (
 		<>
+			{!mobileOpen && (
+				<div className="lg:hidden fixed top-4 left-4 z-40">
+					<Button variant="ghost" size="icon" onClick={() => setMobileOpen(true)} aria-label="Open sidebar">
+						<Menu className="h-5 w-5" />
+					</Button>
+				</div>
+			)}
 			<Sidebar
 				variant="sidebar"
 				collapsible="none"
 				{...props}
 				className={cn(
-					'relative z-40 h-full bg-background transition-transform duration-300',
+					'fixed top-0 left-0 lg:static z-40 h-full bg-background transition-transform duration-300',
 					'w-[min(20vw,100%)] min-w-[290px] overflow-hidden',
 					'lg:translate-x-0 lg:static lg:block',
 					mobileOpen ? 'translate-x-0' : '-translate-x-full',
 				)}
 			>
-				<div className="lg:hidden absolute top-4 left-4">
-					<Button variant="ghost" size="icon" onClick={() => setMobileOpen(!mobileOpen)}>
-						{mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-					</Button>
-				</div>
-
+				{mobileOpen && (
+					<div className="lg:hidden absolute top-4 left-4">
+						<Button variant="ghost" size="icon" onClick={() => setMobileOpen(false)} aria-label="Close sidebar">
+							<X className="h-5 w-5" />
+						</Button>
+					</div>
+				)}
 				<SidebarHeader>
 					<SidebarMenu>
 						<SidebarMenuItem>
