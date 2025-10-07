@@ -3,11 +3,12 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { default as CopyToClipboard } from '../components/CopyToClipboard';
-import { Controls, Primary, Stories, Title } from '@storybook/blocks';
+import { Controls, Primary, Stories, Story, Title } from '@storybook/addon-docs/blocks';
 
 const meta: Meta<typeof CopyToClipboard> = {
 	component: CopyToClipboard,
 	title: 'Components/CopyToClipboard',
+	tags: ['autodocs'],
 	parameters: {
 		docs: {
 			page: () => (
@@ -49,6 +50,14 @@ export const Default: Story = {
 	},
 };
 
+export const WithToolTip: Story = {
+	args: {
+		width: 250,
+		withToolTip: true,
+		text: 'github.com/amazeeio-demos/as-demo',
+	},
+};
+
 export const HiddenEllipsis: Story = {
 	args: {
 		width: 150,
@@ -70,6 +79,13 @@ export const HiddenWithIcon: Story = {
 		width: 250,
 		type: 'hiddenWithIcon',
 		text: 'https://github.com/uselagoon/lagoon-ui',
+	},
+};
+
+export const IconOnly: Story = {
+	args: {
+		text: 'https://github.com/uselagoon/lagoon-ui',
+		iconOnly: true,
 	},
 };
 export default meta;

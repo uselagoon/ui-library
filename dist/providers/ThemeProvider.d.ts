@@ -1,9 +1,3 @@
-import React from 'react';
-import { ThemeObject } from '../typings/styled';
-interface Props {
-    children: React.ReactNode;
-    darkThemeProp: ThemeObject | undefined;
-    lightThemeProp: ThemeObject | undefined;
-}
-declare const InternalThemeProvider: ({ children, darkThemeProp, lightThemeProp }: Props) => import("react/jsx-runtime").JSX.Element | null;
-export default InternalThemeProvider;
+import { ThemeProviderProps } from 'next-themes';
+export default function ThemeProvider({ children, ...props }: ThemeProviderProps): import("react/jsx-dev-runtime").JSX.Element;
+//# sourceMappingURL=ThemeProvider.d.ts.map

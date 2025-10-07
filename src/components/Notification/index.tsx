@@ -1,5 +1,3 @@
-import { default as useNotification, NotificationType } from './Notification';
+import { default as Notification } from './Notification';
 
-export type { NotificationType };
-
-export default useNotification;
+export default Notification;

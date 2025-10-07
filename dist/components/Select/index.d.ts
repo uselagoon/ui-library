@@ -1,3 +1,3 @@
-import { default as Select, UISelectProps as SelectProps } from './Select';
-export type { SelectProps };
-export default Select;
+import { default as SelectWithOptions } from './Select';
+export default SelectWithOptions;
+//# sourceMappingURL=index.d.ts.map

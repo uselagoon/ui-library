@@ -1,3 +1,4 @@
-import { default as Input, UIInputProps as InputProps } from './Input';
-export type { InputProps };
+import { default as Input, DebouncedInput } from './Input';
+export { DebouncedInput };
 export default Input;
+//# sourceMappingURL=index.d.ts.map

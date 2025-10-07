@@ -1,123 +1,112 @@
-import React, { FC } from 'react';
+import React, { useState } from 'react';
+import {
+	Pagination,
+	PaginationEllipsis,
+	PaginationContent,
+	PaginationLink,
+	PaginationNext,
+	PaginationPrevious,
+	PaginationItem,
+} from '../ui/pagination';
 
-import { PaginationProps, Pagination as AntPagination } from 'antd';
-import styled, { css } from 'styled-components';
-import colors from '../../_util/colors';
-
-const UIPagination: FC<
-	Omit<
-		PaginationProps,
-		'defaultCurrent' | 'size' | 'simple' | 'showLessItems' | 'responsive' | 'pageSizeOptions' | 'showSizeChanger'
-	> & {
-		showSizeSelector?: boolean;
-	}
-> = ({ showSizeSelector = false, ...props }) => {
-	return (
-		<StyledPagination
-			showSizeChanger={showSizeSelector}
-			defaultCurrent={1}
-			locale={{ items_per_page: 'results / page' }}
-			{...props}
-		/>
-	);
+type PaginationProps = React.ComponentProps<typeof Pagination> & {
+	allItems: number;
+	itemsPerPage: number;
+	initialPage?: number;
+	onClickPrevious?: () => void;
+	onClickNext?: () => void;
+	onClickPageNumber?: React.Dispatch<
+		React.SetStateAction<{
+			pageIndex: number;
+			pageSize: number;
+		}>
+	>;
 };
 
-const StyledPagination = styled(AntPagination)`
-	&.ant-pagination {
-		max-width: 99%;
-		display: flex;
-		background-color: transparent;
-		.ant-pagination-item {
-			background-color: transparent;
-			&.ant-pagination-item-active {
-				background-color: transparent;
-				border-radius: initial;
-				transform: translateY(1px);
-				font-weight: initial;
-			}
+export default function UIPagination({
+	allItems,
+	itemsPerPage,
+	initialPage = 1,
+	onClickPrevious,
+	onClickNext,
+	onClickPageNumber,
+	...rest
+}: PaginationProps) {
+	const totalPages = Math.ceil(allItems / itemsPerPage);
+	const [currentPage, setCurrentPage] = useState(initialPage);
+
+	const handlePrevious = () => {
+		onClickPrevious && onClickPrevious();
+		setCurrentPage((prev) => Math.max(1, prev - 1));
+	};
+
+	const handleNext = () => {
+		onClickNext && onClickNext();
+		setCurrentPage((prev) => Math.min(totalPages, prev + 1));
+	};
+
+	const renderPageNumbers = () => {
+		const pageNumbers = [];
+
+		let startPage = Math.max(1, currentPage - 1);
+		let endPage = startPage + 2;
+
+		if (endPage > totalPages) {
+			endPage = totalPages;
+			startPage = Math.max(1, endPage - 2);
 		}
 
-		li[tabIndex]:not(.ant-pagination-item-active) > a:not(.ant-pagination-item-link),
-		.ant-pagination-item-link a,
-		.ant-pagination-prev,
-		.ant-pagination-next {
-			${(props) =>
-				props.theme.colorScheme === 'dark' &&
-				css`
-					border: 1px solid ${colors.gray};
-				`}
+		if (startPage > 1) {
+			pageNumbers.push(
+				<PaginationItem key="start-ellipsis">
+					<PaginationEllipsis />
+				</PaginationItem>,
+			);
 		}
 
-		li[tabIndex]:not(.ant-pagination-item-active) a,
-		.ant-pagination-item-link,
-		.ant-pagination-item-link .ant-pagination-item-container .ant-pagination-item-ellipsis {
-			${(props) =>
-				props.theme.colorScheme === 'dark' &&
-				css`
-					color: ${colors.white};
-				`}
+		for (let i = startPage; i <= endPage; i++) {
+			pageNumbers.push(
+				<PaginationItem key={i}>
+					<PaginationLink
+						href="#"
+						onClick={(e) => {
+							e.preventDefault();
+							setCurrentPage(i);
+
+							onClickPageNumber && onClickPageNumber((p) => ({ ...p, pageIndex: i - 1 }));
+						}}
+						isActive={i === currentPage}
+					>
+						{i}
+					</PaginationLink>
+				</PaginationItem>,
+			);
 		}
-		.ant-pagination-prev,
-		.ant-pagination-next {
-			${(props) =>
-				props.theme.colorScheme === 'dark' &&
-				css`
-					button[disabled] {
-						color: ${colors.gray};
-					}
-				`}
+
+		if (endPage < totalPages) {
+			pageNumbers.push(
+				<PaginationItem key="end-ellipsis">
+					<PaginationEllipsis />
+				</PaginationItem>,
+			);
 		}
 
-		.ant-pagination-prev {
-			margin-left: auto;
-		}
-		.ant-pagination-options {
-			order: -1;
+		return pageNumbers;
+	};
 
-			.ant-select {
-				.ant-select-dropdown {
-					${(props) =>
-						props.theme.colorScheme === 'dark' &&
-						css`
-							background-color: ${colors.cellGray};
+	return (
+		<Pagination {...rest}>
+			<PaginationContent>
+				<PaginationItem>
+					<PaginationPrevious href="#" onClick={handlePrevious} />
+				</PaginationItem>
 
-							.ant-select-item.ant-select-item-option {
-								color: #fff;
-							}
-							.ant-select-item.ant-select-item-option.ant-select-item-option-active {
-								background-color: ${colors.gray};
-							}
-							.ant-select-item.ant-select-item-option.ant-select-item-option-selected {
-								background-color: ${colors.gray};
-							}
-						`}
-				}
-				.ant-select-selector {
-					&,
-					& > * {
-						${(props) =>
-							props.theme.colorScheme === 'dark' &&
-							css`
-								background-color: ${colors.darkGray};
-								color: ${colors.white};
-							`}
-					}
+				{renderPageNumbers()}
 
-					input[type='search'] {
-					}
-					.ant-select-selection-item {
-						&::before {
-							content: '';
-						}
-					}
-				}
-			}
-		}
-	}
-`;
-
-UIPagination.displayName = 'Pagination';
-
-export type { PaginationProps as UIPaginationProps };
-
-export default UIPagination;
+				<PaginationItem>
+					<PaginationNext href="#" onClick={handleNext} />
+				</PaginationItem>
+			</PaginationContent>
+		</Pagination>
+	);
+}

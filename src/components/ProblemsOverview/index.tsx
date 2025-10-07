@@ -1,5 +1,3 @@
-import { default as LagoonProblemsOverview, LagoonProblemsOverviewProps } from './ProblemsOverview';
+import { default as ProblemsOverview } from './ProblemsOverview';
 
-export type { LagoonProblemsOverviewProps };
-
-export default LagoonProblemsOverview;
+export default ProblemsOverview;

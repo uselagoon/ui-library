@@ -1,31 +1,9 @@
-import { ThemeProvider } from 'styled-components';
-import useTheme from '../hooks/useTheme';
-import React, { useMemo } from 'react';
-import { ThemeObject } from '../typings/styled';
-import { darkTheme, lightTheme } from '../styles/theme';
+'use client';
 
-interface Props {
-	children: React.ReactNode;
-	darkThemeProp: ThemeObject | undefined;
-	lightThemeProp: ThemeObject | undefined;
+import React from 'react';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
+import type { ThemeProviderProps } from 'next-themes';
+
+export default function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+	return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }
-
-const InternalThemeProvider = ({ children, darkThemeProp, lightThemeProp }: Props) => {
-	const { theme } = useTheme();
-
-	const CombinedWithUITheme = useMemo(
-		() =>
-			theme === 'light' ? Object.assign({}, lightTheme, lightThemeProp) : Object.assign({}, darkTheme, darkThemeProp),
-		[theme],
-	);
-
-	if (!theme) return null;
-
-	return (
-		<ThemeProvider key={theme} theme={CombinedWithUITheme}>
-			{children}
-		</ThemeProvider>
-	);
-};
-
-export default InternalThemeProvider;

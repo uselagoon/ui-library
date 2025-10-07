@@ -1,21 +1,25 @@
-import React, { forwardRef } from 'react';
-import { Switch, SwitchProps } from 'antd';
+import React from 'react';
+import { Label } from '../ui/label';
+import { Switch } from '../ui/switch';
+import { Loader2 } from 'lucide-react';
 
-export interface UISwitchProps extends SwitchProps {
-	showLabel?: boolean;
+type SwitchProps = React.ComponentProps<typeof Switch> & {
+	label: string;
+	description: string;
+	id: string;
+	loading?: boolean;
+};
+
+export default function SwitchWithDescription({ id, label, description, disabled, loading, ...rest }: SwitchProps) {
+	return (
+		<div className="flex space-x-2">
+			<Switch id={id} disabled={disabled || loading} {...rest} />
+			<div className="space-y-2">
+				<Label className={`pt-[3px] ${loading ? 'opacity-60' : ''}`} htmlFor={id}>
+					{loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : label}
+				</Label>
+				<span className={`text-[#737373] ${loading ? 'opacity-60' : ''}`}>{description}</span>
+			</div>
+		</div>
+	);
 }
-
-const UISwitch = forwardRef<HTMLButtonElement, UISwitchProps>((props, ref) => {
-	const { showLabel = true, className, style, ...rest } = props;
-
-	const labels = {
-		checkedChildren: 'ON',
-		unCheckedChildren: 'OFF',
-	};
-	const labelProps = showLabel ? labels : {};
-	return <Switch ref={ref} style={style} {...labelProps} {...rest} />;
-});
-
-UISwitch.displayName = 'Switch';
-
-export default UISwitch;

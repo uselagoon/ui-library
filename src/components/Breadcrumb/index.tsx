@@ -1,5 +1,3 @@
-import { default as Breadcrumb, UIBreadcrumbProps as BreadCrumbProps } from './Breadcrumb';
-
-export type { BreadCrumbProps };
+import { default as Breadcrumb } from './Breadcrumb';
 
 export default Breadcrumb;

@@ -2,16 +2,14 @@ import React from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import { default as FormItem } from '../components/FormItem';
-
 import { default as Input } from '../components/Input';
 
-import { Form } from 'antd';
-import { Controls, Primary, Stories, Title } from '@storybook/blocks';
+import { Controls, Primary, Stories, Story, Title } from '@storybook/addon-docs/blocks';
 
 const meta: Meta<typeof Input> = {
 	component: Input,
-	title: 'Components/FormItem + Input',
+	title: 'Components/ Input',
+	tags: ['autodocs'],
 	argTypes: {
 		name: { control: 'text' },
 		placeholder: { control: 'text' },
@@ -21,7 +19,7 @@ const meta: Meta<typeof Input> = {
 			page: () => (
 				<>
 					<Title />
-					<p>When Input is used with FormItem wrapper we get powerful validation</p>
+					<p>Input component</p>
 					<Primary />
 					<Controls />
 					<Stories />
@@ -37,45 +35,24 @@ type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
 	args: {
-		size: 'large',
 		placeholder: 'Some placeholder',
-		name: 'test',
+		label: 'Enter something',
 	},
 };
 
-export const WithFormItemWrapper = ({ label, inputPlaceholder }) => (
-	<FormItem label={label}>
-		<Input placeholder={inputPlaceholder} />
-	</FormItem>
-);
-
-WithFormItemWrapper.args = {
-	label: 'Enter your value',
-	inputPlaceholder: "Wrapped in 'UIFormItem' parent",
+export const WithIcon: Story = {
+	args: {
+		placeholder: 'Some placeholder',
+		label: 'Enter something',
+		icon: <>🔎</>,
+	},
 };
 
-export const CustomizedLabelAndPlaceholder = () => (
-	<WithFormItemWrapper label="Custom Label" inputPlaceholder="Custom Placeholder" />
-);
-
-export const WithRequiredLabel: Story = {
-	render: () => (
-		<Form style={{ maxWidth: '500px' }}>
-			<FormItem required label="Enter your value">
-				<Input placeholder="Wrapped in 'FormItem' with required rule" />
-			</FormItem>
-		</Form>
-	),
+export const WithDesc: Story = {
+	args: {
+		placeholder: 'Some placeholder',
+		label: 'Enter something',
+		description: 'This is a description',
+	},
 };
-
-export const WithValidation: Story = {
-	render: () => (
-		<Form style={{ maxWidth: '500px' }}>
-			<FormItem label="Enter something" name="value" rules={[{ required: true, message: 'Please input something' }]}>
-				<Input placeholder="Wrapped in 'FormItem' with required rule" />
-			</FormItem>
-		</Form>
-	),
-};
-
 export default meta;

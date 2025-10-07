@@ -1,3 +1,3 @@
-import { default as Table, BaseTableProps } from './Base';
-export type { BaseTableProps };
+import { default as Table } from './Table';
 export default Table;
+//# sourceMappingURL=index.d.ts.map

@@ -3,11 +3,12 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import LagoonProblemsOverview from '../components/ProblemsOverview';
-import { Controls, Primary, Stories, Title } from '@storybook/blocks';
+import { Controls, Primary, Stories, Story, Title } from '@storybook/addon-docs/blocks';
 
 const meta: Meta<typeof LagoonProblemsOverview> = {
 	component: LagoonProblemsOverview,
 	title: 'Lagoon specific/LagoonProblemsOverview',
+	tags: ['autodocs'],
 	parameters: {
 		docs: {
 			page: () => (

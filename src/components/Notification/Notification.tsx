@@ -1,57 +1,74 @@
-import React, { ReactNode } from 'react';
-import { NotificationArgsProps, notification } from 'antd';
-import { NotificationPlacement } from 'antd/es/notification/interface';
-import UIButton from '../Button';
+import {
+	AlertDialog,
+	AlertDialogAction,
+	AlertDialogCancel,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+	AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+import { ReactNode } from 'react';
 
-export type NotificationType = {
-	type?: 'error' | 'warning' | 'info' | 'success';
-	requiresManualClose?: boolean;
+type NotificationProps = {
 	title: string;
-	content: ReactNode;
-	placement?: NotificationPlacement;
-} & Omit<NotificationArgsProps, 'placement' | 'message' | 'description' | 'btn'> & {
-		showBtn?: boolean;
-		btnLabel?: string;
-		showIcon?: boolean;
-	};
+	message: ReactNode;
+	cancelText?: string;
+	onCancel?: () => void;
+	confirmText?: string;
+	confirmDisabled?: boolean;
+	onConfirm?: () => void;
+} & (
+	| { children?: ReactNode }
+	| {
+			open?: boolean;
+			onOpenChange?: (open: boolean) => void;
+	  }
+);
 
-const useUINotification = ({
-	type = 'info',
+export default function Notification({
 	title,
-	content,
-	placement = 'top',
-	requiresManualClose = false,
-	showBtn = false,
-	showIcon = true,
-	btnLabel,
-	...props
-}: NotificationType) => {
-	// basic config
-	const [api, contextHolder] = notification.useNotification({
-		top: 24,
-		maxCount: 1,
-	});
+	message,
+	cancelText,
+	onCancel,
+	confirmText,
+	confirmDisabled = false,
+	onConfirm,
+	...rest
+}: NotificationProps) {
+	const alertDialogProps =
+		'rest' in arguments && 'open' in rest && 'onOpenChange' in rest
+			? { open: rest.open, onOpenChange: rest.onOpenChange }
+			: {};
 
-	const trigger = (args?: { title?: string; content?: string }) => {
-		const notifConfig: NotificationArgsProps = {
-			message: args?.title || title,
-			description: args?.content || content,
-			placement,
-			duration: requiresManualClose ? 0 : 3,
-			btn: showBtn ? (
-				<UIButton type="primary" size="small" onClick={() => api.destroy()}>
-					{btnLabel ?? 'Confirm'}
-				</UIButton>
-			) : null,
-			style: { fontFamily: 'Roboto' },
-			className: `ui-notification ${!showIcon && 'no-icon'}`,
-			...(showIcon ? {} : { icon: <></> }),
-			...props,
-		};
-		api[type](notifConfig);
-	};
+	return (
+		<AlertDialog {...alertDialogProps}>
+			<AlertDialogTrigger asChild>{'children' in rest ? rest.children : null}</AlertDialogTrigger>
 
-	return { trigger, contextHolder };
-};
-
-export default useUINotification;
+			<AlertDialogContent>
+				<AlertDialogHeader>
+					<AlertDialogTitle>{title}</AlertDialogTitle>
+					<AlertDialogDescription>{message}</AlertDialogDescription>
+				</AlertDialogHeader>
+				<AlertDialogFooter>
+					<AlertDialogCancel
+						onClick={() => {
+							onCancel && onCancel();
+						}}
+					>
+						{cancelText ?? 'Cancel'}
+					</AlertDialogCancel>
+					<AlertDialogAction
+						disabled={confirmDisabled}
+						onClick={() => {
+							onConfirm && onConfirm();
+						}}
+					>
+						{confirmText ?? 'Continue'}
+					</AlertDialogAction>
+				</AlertDialogFooter>
+			</AlertDialogContent>
+		</AlertDialog>
+	);
+}

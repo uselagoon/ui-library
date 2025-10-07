@@ -1,22 +1,18 @@
-import React, { ReactNode } from 'react';
-import { NotificationArgsProps } from 'antd';
-import { NotificationPlacement } from 'antd/es/notification/interface';
-export type NotificationType = {
-    type?: 'error' | 'warning' | 'info' | 'success';
-    requiresManualClose?: boolean;
+import { ReactNode } from 'react';
+type NotificationProps = {
     title: string;
-    content: ReactNode;
-    placement?: NotificationPlacement;
-} & Omit<NotificationArgsProps, 'placement' | 'message' | 'description' | 'btn'> & {
-    showBtn?: boolean;
-    btnLabel?: string;
-    showIcon?: boolean;
-};
-declare const useUINotification: ({ type, title, content, placement, requiresManualClose, showBtn, showIcon, btnLabel, ...props }: NotificationType) => {
-    trigger: (args?: {
-        title?: string | undefined;
-        content?: string | undefined;
-    } | undefined) => void;
-    contextHolder: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
-};
-export default useUINotification;
+    message: ReactNode;
+    cancelText?: string;
+    onCancel?: () => void;
+    confirmText?: string;
+    confirmDisabled?: boolean;
+    onConfirm?: () => void;
+} & ({
+    children?: ReactNode;
+} | {
+    open?: boolean;
+    onOpenChange?: (open: boolean) => void;
+});
+export default function Notification({ title, message, cancelText, onCancel, confirmText, confirmDisabled, onConfirm, ...rest }: NotificationProps): import("react/jsx-dev-runtime").JSX.Element;
+export {};
+//# sourceMappingURL=Notification.d.ts.map

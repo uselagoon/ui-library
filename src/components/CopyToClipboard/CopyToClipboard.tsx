@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { CheckOutlined, CopyOutlined, EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
-import { FC } from 'react';
-import styled, { css } from 'styled-components';
-import colors from '../../_util/colors';
-import { Tooltip } from 'antd';
+import { Copy, Check, Eye, EyeOff } from 'lucide-react';
+import { cva } from 'class-variance-authority';
+import { Tooltip, TooltipTrigger, TooltipContent } from '../ui/tooltip';
 
 export interface ClipboardProps {
 	text: string | number;
@@ -11,149 +9,137 @@ export interface ClipboardProps {
 	width?: number | string;
 	fontSize?: string;
 	withToolTip?: boolean;
+	iconOnly?: boolean;
 }
-const CopyToClipboard: FC<ClipboardProps> = ({
+
+const textVariants = cva('truncate transition-all duration-300', {
+	variants: {
+		type: {
+			visible: '',
+			hidden: 'blur-sm select-none hover:blur-0 hover:select-text',
+			hiddenWithIcon: '',
+			alwaysHidden: 'blur-sm select-none',
+		},
+		unblur: {
+			true: '!blur-0 !select-text',
+			false: '',
+		},
+	},
+	compoundVariants: [
+		{
+			type: 'hiddenWithIcon',
+			unblur: false,
+			className: 'blur-sm select-none',
+		},
+		{
+			type: 'hiddenWithIcon',
+			unblur: true,
+			className: '!blur-0 !select-text',
+		},
+	],
+	defaultVariants: {
+		type: 'visible',
+		unblur: false,
+	},
+});
+
+const CopyToClipboard: React.FC<ClipboardProps> = ({
 	text,
 	width,
 	fontSize = '14px',
 	type = 'visible',
 	withToolTip = false,
+	iconOnly = false,
 }) => {
-	const copyFn = () => navigator.clipboard.writeText(text as string);
-
 	const [copied, setCopied] = useState(false);
 	const [manualUnblur, setManualUnblur] = useState(false);
+
+	const copyFn = () => {
+		navigator.clipboard.writeText(text.toString());
+	};
 
 	const handleCopy = () => {
 		copyFn();
 		setCopied(true);
-
-		setTimeout(() => {
-			setCopied(false);
-		}, 3500);
+		setTimeout(() => setCopied(false), 3500);
 	};
 
-	const computedStyles = width ? { maxWidth: `${width}px` } : {};
+	const handleBlurToggle = () => setManualUnblur(!manualUnblur);
 
-	const handleBlurToggle = () => void setManualUnblur(!manualUnblur);
+	const containerStyle: React.CSSProperties = {
+		maxWidth: width ? (typeof width === 'number' ? `${width}px` : width) : undefined,
+		fontSize,
+		width: iconOnly ? 'max-content' : undefined,
+	};
 
-	const unblurIcon = !manualUnblur ? (
-		<EyeOutlined className="eye-icon" onClick={handleBlurToggle} />
-	) : (
-		<EyeInvisibleOutlined className="eye-icon" onClick={handleBlurToggle} />
-	);
 	return (
-		<StyledText $fontSize={fontSize} style={{ ...computedStyles }}>
-			<CopyableText className="copyable" $maxWidth={width} $type={type} $manualUnblur={manualUnblur}>
-				{!withToolTip ? (
-					text
-				) : (
-					<Tooltip overlayInnerStyle={{ width: '300px' }} title={text} placement="bottom">
-						<TooltipTextLabel>{text}</TooltipTextLabel>
-					</Tooltip>
-				)}
-			</CopyableText>
+		<div className="flex items-center justify-between w-full gap-2" style={containerStyle}>
+			{!iconOnly && (
+				<span className={textVariants({ type, unblur: manualUnblur })} style={{ maxWidth: containerStyle.maxWidth }}>
+					{withToolTip ? (
+						<Tooltip>
+							<TooltipTrigger asChild>
+								<span className="truncate">{text}</span>
+							</TooltipTrigger>
+							<TooltipContent side="bottom">
+								<p>{text}</p>
+							</TooltipContent>
+						</Tooltip>
+					) : (
+						text
+					)}
+				</span>
+			)}
 
-			<div className="icons">
+			<div className="flex items-center gap-3">
 				{!copied ? (
 					<>
-						<CopyOutlined onClick={handleCopy} className="copy-icon" />
-						{type === 'hiddenWithIcon' && unblurIcon}
+						<Copy
+							className="w-4 h-4 text-muted-foreground dark:hover:text-gray-100 hover:text-black transition-colors active:text-gray-300 cursor-pointer"
+							data-cy="copy-button"
+							onClick={handleCopy}
+						/>
+						{type === 'hiddenWithIcon' &&
+							(manualUnblur ? (
+								<EyeOff
+									className="w-4 h-4 ml-3 cursor-pointer text-muted-foreground dark:hover:text-gray-100 hover:text-black transition-colors active:text-gray-300"
+									onClick={handleBlurToggle}
+								/>
+							) : (
+								<Eye
+									className="w-4 h-4 ml-3 cursor-pointer text-muted-foreground dark:hover:text-gray-100 hover:text-black transition-colors active:text-gray-300"
+									onClick={handleBlurToggle}
+								/>
+							))}
 					</>
 				) : (
-					<Tooltip placement="right" title="Copied!">
-						<CheckOutlined className="check-icon" />
-						{type === 'hiddenWithIcon' && unblurIcon}
-					</Tooltip>
+					<div className="flex items-center gap-3">
+						<Tooltip>
+							<TooltipTrigger asChild>
+								<Check className="w-4 h-4 text-green-500" />
+							</TooltipTrigger>
+							<TooltipContent>
+								<span className="truncate">Copied!</span>
+							</TooltipContent>
+						</Tooltip>
+
+						{type === 'hiddenWithIcon' &&
+							(manualUnblur ? (
+								<EyeOff
+									className="w-4 h-4 ml-3 cursor-pointer text-muted-foreground hover:bg-gray-200 active:bg-gray-300"
+									onClick={handleBlurToggle}
+								/>
+							) : (
+								<Eye
+									className="w-4 h-4 ml-3 cursor-pointer text-muted-foreground hover:bg-gray-200 active:bg-gray-300"
+									onClick={handleBlurToggle}
+								/>
+							))}
+					</div>
 				)}
 			</div>
-		</StyledText>
+		</div>
 	);
 };
-
-const TooltipTextLabel = styled.div`
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-`;
-
-const CopyableText = styled.span<{
-	$type: ClipboardProps['type'];
-	$manualUnblur: boolean;
-	$maxWidth?: number | string;
-}>`
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	color: ${(props) => props.theme.UI.texts.primary};
-	max-width: ${(props) =>
-		props.$maxWidth ? `${typeof props.$maxWidth === 'number' ? `${props.$maxWidth}px` : props.$maxWidth}` : '18.75rem'};
-	${(props) =>
-		(props.$type === 'hidden' ||
-			props.$type === 'alwaysHidden' ||
-			(props.$type === 'hiddenWithIcon' && !props.$manualUnblur)) &&
-		css`
-			filter: blur(0.3rem);
-			user-select: none;
-			transition: all 0.3s ease;
-		`};
-
-	${(props) =>
-		props.$type === 'hidden' &&
-		css`
-			&:hover {
-				filter: none;
-				user-select: initial;
-			}
-		`};
-`;
-
-const StyledText = styled.div<{
-	$fontSize: string;
-}>`
-	font-family: 'ArabicPro-Regular', sans-serif;
-	font-size: ${(props) => props.$fontSize};
-	line-height: 1.5rem;
-	min-width: max-content;
-	display: flex;
-	justify-content: space-between;
-	align-content: baseline;
-	gap: 1rem;
-
-	span:not(.copyable) {
-		color: ${(props) => props.theme.UI.texts.primary};
-		display: flex;
-		align-items: center;
-	}
-	.check-icon {
-		font-size: 16px;
-		position: relative;
-		z-index: 1;
-		transition: all 0.25s ease;
-		color: ${colors.green} !important;
-	}
-	.icons {
-		display: flex;
-	}
-	.copy-icon,
-	.eye-icon {
-		font-size: 16px;
-		position: relative;
-		z-index: 1;
-		transition: all 0.25s ease;
-
-		&:hover {
-			background-color: #a4a3a32c;
-		}
-
-		&:active {
-			background-color: #1616162c;
-		}
-	}
-	.eye-icon {
-		margin-left: 12px;
-		cursor: pointer;
-	}
-`;
 
 export default CopyToClipboard;

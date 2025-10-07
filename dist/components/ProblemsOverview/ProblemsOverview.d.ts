@@ -1,4 +1,4 @@
-import React from 'react';
+import { default as React } from 'react';
 type LagoonProblemsOverviewProps = {
     problems: number;
     critical: number;
@@ -13,3 +13,4 @@ type Props = LagoonProblemsOverviewProps | {
 declare const LagoonProblemsOverview: React.FC<Props>;
 export default LagoonProblemsOverview;
 export type { LagoonProblemsOverviewProps };
+//# sourceMappingURL=ProblemsOverview.d.ts.map

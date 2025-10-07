@@ -1,3 +1,3 @@
-import { default as CopyToClipboard, ClipboardProps } from './CopyToClipboard';
-export type { ClipboardProps };
+import { default as CopyToClipboard } from './CopyToClipboard';
 export default CopyToClipboard;
+//# sourceMappingURL=index.d.ts.map

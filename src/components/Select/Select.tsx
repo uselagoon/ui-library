@@ -1,94 +1,57 @@
-import React, { forwardRef, useState } from 'react';
-import { RefSelectProps, Select, SelectProps } from 'antd';
-import { DownOutlined, UpOutlined } from '@ant-design/icons';
-import styled, { css } from 'styled-components';
-import colors from '../../_util/colors';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '../ui/select';
+import { ReactNode } from 'react';
 
-type SelectedState = any;
+type Option = { label: string; value: string | number; icon?: ReactNode };
+type OptionGroup = { label: string; options: Option[]; icon?: ReactNode };
 
-type UISelectProps = SelectProps & {
-	selectedState?: SelectedState;
-	setSelectedState?: React.Dispatch<React.SetStateAction<SelectedState>>;
+export type SelectProps = Omit<React.ComponentProps<typeof Select>, 'disabled'> & {
+	placeholder: string;
+	options?: Option[] | OptionGroup[];
+	disabled?: boolean;
+	width?: number;
 };
 
-const UISelect = forwardRef<RefSelectProps, UISelectProps>((props, ref) => {
-	const { className, style, onChange, value, selectedState, setSelectedState, size, ...rest } = props;
+function isOptionGroupArray(options: Option[] | OptionGroup[] | undefined): options is OptionGroup[] {
+	return Array.isArray(options) && options.length > 0 && 'options' in options[0]!;
+}
 
-	const [isOpen, setIsOpen] = useState(false);
-
-	const deferredChangeHandler = (value: any) => {
-		setSelectedState && setSelectedState(value);
-	};
+export default function SelectWithOptions({ placeholder, options, disabled, width, ...rest }: SelectProps) {
 	return (
-		<StyledSelect
-			ref={ref}
-			onChange={onChange ?? deferredChangeHandler}
-			value={value || selectedState || undefined}
-			defaultOpen={props.defaultOpen || true}
-			style={style}
-			dropdownRender={(menu) => {
-				return <StyledDropDown>{menu}</StyledDropDown>;
-			}}
-			onDropdownVisibleChange={(open) => setIsOpen(open)}
-			{...rest}
-			suffixIcon={isOpen ? <UpOutlined /> : <DownOutlined />}
-			size={size ?? 'middle'}
-		/>
+		<Select disabled={disabled} {...rest}>
+			<SelectTrigger className={`w-[${width ?? '266px'}]`}>
+				<SelectValue placeholder={placeholder || 'Make a selection'} />
+			</SelectTrigger>
+			{!disabled &&
+				options &&
+				Array.isArray(options) &&
+				(options.length > 0 ? (
+					<SelectContent>
+						{isOptionGroupArray(options)
+							? options.map((group) => (
+									<SelectGroup key={group.label}>
+										<SelectLabel>{group.label}</SelectLabel>
+										{group.options.map((option) => (
+											<SelectItem key={option.value} value={String(option.value)}>
+												<div className="flex items-center gap-2">
+													{option.icon && <span className="flex-shrink-0">{option.icon}</span>}
+													<span>{option.label}</span>
+												</div>
+											</SelectItem>
+										))}
+									</SelectGroup>
+								))
+							: options.map((option) => (
+									<SelectItem key={option.value} value={String(option.value)}>
+										<div className="flex items-center gap-2">
+											{option.icon && <span className="flex-shrink-0">{option.icon}</span>}
+											<span>{option.label}</span>
+										</div>
+									</SelectItem>
+								))}
+					</SelectContent>
+				) : (
+					<SelectContent className="text-center text-muted-foreground">No options</SelectContent>
+				))}
+		</Select>
 	);
-});
-
-const StyledSelect = styled(Select)<SelectProps>`
-	&.ant-select {
-		min-width: 13.125rem;
-
-		& .ant-select-selector {
-			span {
-				color: #333;
-			}
-			.ant-select-selection-placeholder {
-				color: ${(props) => (props.theme.colorScheme === 'dark' ? colors.white : '#00000099')};
-			}
-			border-radius: 2px;
-		}
-
-		${(props) =>
-			props.theme.colorScheme === 'dark' &&
-			css`
-				& .ant-select-selector {
-					background-color: ${colors.darkGray};
-					span {
-						color: #fff;
-					}
-				}
-				& .ant-select-arrow {
-					color: #fff;
-				}
-			`}
-	}
-`;
-
-const StyledDropDown = styled.section`
-	background-color: #fff;
-
-	${(props) =>
-		props.theme.colorScheme === 'dark' &&
-		css`
-			background-color: ${colors.cellGray};
-
-			.ant-select-item.ant-select-item-option {
-				color: #fff;
-			}
-			.ant-select-item.ant-select-item-option.ant-select-item-option-active {
-				background-color: ${colors.gray};
-			}
-			.ant-select-item.ant-select-item-option.ant-select-item-option-selected {
-				background-color: ${colors.gray};
-			}
-		`}
-`;
-
-UISelect.displayName = 'Select';
-
-export type { SelectProps as UISelectProps };
-
-export default UISelect;
+}
