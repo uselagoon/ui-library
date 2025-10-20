@@ -58,7 +58,7 @@ export default function AnnouncementCard({
 					href={ctaUrl}
 					target={openInNewTab ? '_blank' : undefined}
 					rel={openInNewTab ? 'noopener noreferrer' : undefined}
-					className="text-sm font-normal underline hover:no-underline"
+					className="text-sm font-normal underline hover:no-underline promo-link__ai"
 				>
 					{ctaText}
 				</a>
