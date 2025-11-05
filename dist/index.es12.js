@@ -1,7 +1,7 @@
 import { jsx as a, jsxs as o } from "react/jsx-runtime";
 import { Slot as s } from "@radix-ui/react-slot";
 import { ChevronRight as i, MoreHorizontal as l } from "lucide-react";
-import { cn as t } from "./index.es70.js";
+import { cn as t } from "./index.es71.js";
 function p({ ...r }) {
   return /* @__PURE__ */ a("nav", { "aria-label": "breadcrumb", "data-slot": "breadcrumb", ...r });
 }

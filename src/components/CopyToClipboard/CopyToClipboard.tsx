@@ -76,7 +76,7 @@ const CopyToClipboard: React.FC<ClipboardProps> = ({
 		<div className="flex items-center justify-between w-full gap-2" style={containerStyle}>
 			{!iconOnly && (
 				<span className={textVariants({ type, unblur: manualUnblur })} style={{ maxWidth: containerStyle.maxWidth }}>
-					{withToolTip ? (
+					{withToolTip && manualUnblur ? (
 						<Tooltip>
 							<TooltipTrigger asChild>
 								<span className="truncate">{text}</span>

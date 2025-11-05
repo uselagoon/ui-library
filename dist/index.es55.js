@@ -1,7 +1,7 @@
 import { jsxs as e, jsx as a, Fragment as l } from "react/jsx-runtime";
 import { Card as d, CardHeader as o, CardTitle as s, CardContent as i } from "./index.es15.js";
 import { cva as m } from "class-variance-authority";
-import { cn as c } from "./index.es70.js";
+import { cn as c } from "./index.es71.js";
 const f = m("max-w-[160px] border rounded-lg flex flex-col justify-center", {
   variants: {
     type: {
