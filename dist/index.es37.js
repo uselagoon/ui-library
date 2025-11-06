@@ -1,6 +1,6 @@
 import { jsxs as s, jsx as l } from "react/jsx-runtime";
 import * as o from "@radix-ui/react-scroll-area";
-import { cn as t } from "./index.es70.js";
+import { cn as t } from "./index.es71.js";
 function u({ className: e, children: r, ...a }) {
   return /* @__PURE__ */ s(o.Root, { "data-slot": "scroll-area", className: t("relative", e), ...a, children: [
     /* @__PURE__ */ l(

@@ -60,6 +60,7 @@ export { default as ProblemsOverview } from './components/ProblemsOverview';
 export { default as SelectWithOptions } from './components/Select';
 export { default as Input, DebouncedInput } from './components/Input';
 export { default as Accordion } from './components/Accordion';
+export { default as AnnouncementCard } from './components/AnnouncementCard';
 export { default as Pagination } from './components/Pagination';
 export { default as Sheet } from './components/Sheet';
 export { default as Switch } from './components/Switch';

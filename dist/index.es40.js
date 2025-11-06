@@ -1,7 +1,7 @@
 import { jsx as e, jsxs as r } from "react/jsx-runtime";
 import * as a from "@radix-ui/react-dialog";
 import { XIcon as l } from "lucide-react";
-import { cn as s } from "./index.es70.js";
+import { cn as s } from "./index.es71.js";
 function h({ ...t }) {
   return /* @__PURE__ */ e(a.Root, { "data-slot": "sheet", ...t });
 }

@@ -1,7 +1,7 @@
 import { jsxs as h, jsx as e } from "react/jsx-runtime";
 import * as m from "react";
 import * as a from "@radix-ui/react-slider";
-import { cn as n } from "./index.es70.js";
+import { cn as n } from "./index.es71.js";
 function g({
   className: l,
   defaultValue: r,

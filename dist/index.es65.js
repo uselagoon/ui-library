@@ -1,49 +1,56 @@
-import { jsx as e, jsxs as I } from "react/jsx-runtime";
-import { useState as N } from "react";
-import { Pagination as b, PaginationContent as j, PaginationItem as a, PaginationPrevious as C, PaginationNext as k, PaginationEllipsis as g, PaginationLink as A } from "./index.es32.js";
-function U({
-  allItems: P,
-  itemsPerPage: u,
-  initialPage: f = 1,
-  onClickPrevious: l,
-  onClickNext: h,
-  onClickPageNumber: c,
-  ...m
+import { jsxs as e, jsx as n } from "react/jsx-runtime";
+import { useState as u } from "react";
+import { Card as p, CardHeader as h, CardContent as g } from "./index.es15.js";
+import { BotMessageSquare as b, X as x } from "lucide-react";
+import { cn as N } from "./index.es71.js";
+function _({
+  brand: r,
+  title: a,
+  description: s,
+  ctaText: t,
+  ctaUrl: i,
+  openInNewTab: o = !0,
+  onClose: l,
+  className: c
 }) {
-  const r = Math.ceil(P / u), [d, o] = N(f), p = () => {
-    l && l(), o((n) => Math.max(1, n - 1));
-  }, x = () => {
-    h && h(), o((n) => Math.min(r, n + 1));
+  const [m, d] = u(!0), f = () => {
+    d(!1), l?.();
   };
-  return /* @__PURE__ */ e(b, { ...m, children: /* @__PURE__ */ I(j, { children: [
-    /* @__PURE__ */ e(a, { children: /* @__PURE__ */ e(C, { href: "#", onClick: p }) }),
-    (() => {
-      const n = [];
-      let s = Math.max(1, d - 1), i = s + 2;
-      i > r && (i = r, s = Math.max(1, i - 2)), s > 1 && n.push(
-        /* @__PURE__ */ e(a, { children: /* @__PURE__ */ e(g, {}) }, "start-ellipsis")
-      );
-      for (let t = s; t <= i; t++)
-        n.push(
-          /* @__PURE__ */ e(a, { children: /* @__PURE__ */ e(
-            A,
-            {
-              href: "#",
-              onClick: (M) => {
-                M.preventDefault(), o(t), c && c((v) => ({ ...v, pageIndex: t - 1 }));
-              },
-              isActive: t === d,
-              children: t
-            }
-          ) }, t)
-        );
-      return i < r && n.push(
-        /* @__PURE__ */ e(a, { children: /* @__PURE__ */ e(g, {}) }, "end-ellipsis")
-      ), n;
-    })(),
-    /* @__PURE__ */ e(a, { children: /* @__PURE__ */ e(k, { href: "#", onClick: x }) })
-  ] }) });
+  return m ? /* @__PURE__ */ e(p, { className: N("m-2 w-auto bg-[#737373]/20 gap-0", c), children: [
+    /* @__PURE__ */ e(h, { className: "relative pb-0", children: [
+      /* @__PURE__ */ e("div", { className: "flex flex-row items-center gap-2", children: [
+        /* @__PURE__ */ n(b, { className: "h-5 w-5 flex-shrink-0" }),
+        r && /* @__PURE__ */ n("p", { className: "text-sm font-bold leading-[1.4]", children: r })
+      ] }),
+      /* @__PURE__ */ n(
+        "button",
+        {
+          onClick: f,
+          className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none",
+          "aria-label": "Close announcement",
+          children: /* @__PURE__ */ n(x, { className: "h-4 w-4" })
+        }
+      )
+    ] }),
+    /* @__PURE__ */ e(g, { className: "space-y-2 pt-2", children: [
+      /* @__PURE__ */ e("p", { className: "text-sm font-normal leading-[1.4]", children: [
+        a,
+        " ",
+        s
+      ] }),
+      /* @__PURE__ */ n(
+        "a",
+        {
+          href: i,
+          target: o ? "_blank" : void 0,
+          rel: o ? "noopener noreferrer" : void 0,
+          className: "text-sm font-normal underline hover:no-underline promo-link__ai",
+          children: t
+        }
+      )
+    ] })
+  ] }) : null;
 }
 export {
-  U as default
+  _ as default
 };

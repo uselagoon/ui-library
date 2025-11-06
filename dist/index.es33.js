@@ -1,6 +1,6 @@
 import { jsx as t } from "react/jsx-runtime";
 import * as e from "@radix-ui/react-popover";
-import { cn as i } from "./index.es70.js";
+import { cn as i } from "./index.es71.js";
 function s({ ...o }) {
   return /* @__PURE__ */ t(e.Root, { "data-slot": "popover", ...o });
 }

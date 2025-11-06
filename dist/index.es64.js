@@ -1,6 +1,6 @@
 import { jsx as n, jsxs as l } from "react/jsx-runtime";
 import { Accordion as a, AccordionItem as s, AccordionTrigger as m, AccordionContent as f } from "./index.es6.js";
-import { cn as o } from "./index.es70.js";
+import { cn as o } from "./index.es71.js";
 function p({
   items: c,
   showArrows: i = !0,

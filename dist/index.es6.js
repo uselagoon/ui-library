@@ -1,7 +1,7 @@
 import { jsx as e, jsxs as a } from "react/jsx-runtime";
 import * as n from "@radix-ui/react-accordion";
 import { ChevronDownIcon as s } from "lucide-react";
-import { cn as i } from "./index.es70.js";
+import { cn as i } from "./index.es71.js";
 function m({ ...t }) {
   return /* @__PURE__ */ e(n.Root, { "data-slot": "accordion", ...t });
 }

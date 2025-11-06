@@ -1,6 +1,6 @@
 import { jsx as o } from "react/jsx-runtime";
 import * as r from "@radix-ui/react-hover-card";
-import { cn as i } from "./index.es70.js";
+import { cn as i } from "./index.es71.js";
 function m({ ...t }) {
   return /* @__PURE__ */ o(r.Root, { "data-slot": "hover-card", ...t });
 }

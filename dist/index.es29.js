@@ -1,6 +1,6 @@
 import { jsx as o } from "react/jsx-runtime";
 import * as a from "@radix-ui/react-label";
-import { cn as r } from "./index.es70.js";
+import { cn as r } from "./index.es71.js";
 function l({ className: e, ...t }) {
   return /* @__PURE__ */ o(
     a.Root,

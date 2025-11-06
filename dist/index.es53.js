@@ -1,17 +1,17 @@
 import { jsxs as n, Fragment as _, jsx as e } from "react/jsx-runtime";
 import { useState as D, Fragment as E } from "react";
 import { useSidebar as H, Sidebar as W, SidebarHeader as X, SidebarMenu as $, SidebarMenuItem as s, SidebarContent as q, SidebarGroup as J, SidebarGroupLabel as K, SidebarGroupContent as Q, SidebarMenuButton as u, SidebarMenuSub as R, SidebarFooter as V } from "./index.es41.js";
-import Y from "./index.es94.js";
-import { genAvatarBackground as z } from "./index.es95.js";
+import Y from "./index.es95.js";
+import { genAvatarBackground as z } from "./index.es96.js";
 import { Avatar as Z, AvatarImage as I } from "./index.es10.js";
 import { AvatarFallback as ee } from "@radix-ui/react-avatar";
-import re from "./index.es96.js";
+import re from "./index.es97.js";
 import { useLinkComponent as ae } from "./index.es5.js";
 import { Collapsible as ne, CollapsibleTrigger as le, CollapsibleContent as te } from "./index.es19.js";
 import { Menu as ie, X as se, ChevronUp as oe } from "lucide-react";
 import { Button as M } from "./index.es13.js";
-import { cn as ce } from "./index.es70.js";
-import de from "./index.es97.js";
+import { cn as ce } from "./index.es71.js";
+import de from "./index.es98.js";
 const y = (o, c, t) => c.children?.length ? /* @__PURE__ */ e("ul", { className: "ml-4 mt-2 space-y-1", children: c.children.map((r) => {
   const f = r.children && r.children.length > 0 ? t.has(r.url) || t.has(`${r.url}:parent`) : t.has(r.url);
   return /* @__PURE__ */ n(s, { children: [
