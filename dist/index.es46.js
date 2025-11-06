@@ -1,5 +1,5 @@
 import { jsx as a } from "react/jsx-runtime";
-import { cn as o } from "./index.es70.js";
+import { cn as o } from "./index.es71.js";
 function n({ className: t, ...e }) {
   return /* @__PURE__ */ a("div", { "data-slot": "table-container", className: "relative w-full overflow-x-auto", children: /* @__PURE__ */ a("table", { "data-slot": "table", className: o("w-full caption-bottom text-sm", t), ...e }) });
 }

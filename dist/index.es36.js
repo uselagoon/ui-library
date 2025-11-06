@@ -1,7 +1,7 @@
 import { jsx as a } from "react/jsx-runtime";
 import { GripVerticalIcon as n } from "lucide-react";
 import * as t from "react-resizable-panels";
-import { cn as i } from "./index.es70.js";
+import { cn as i } from "./index.es71.js";
 function d({ className: e, ...r }) {
   return /* @__PURE__ */ a(
     t.PanelGroup,
