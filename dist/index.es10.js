@@ -1,6 +1,6 @@
 import { jsx as e } from "react/jsx-runtime";
 import * as r from "@radix-ui/react-avatar";
-import { cn as l } from "./index.es70.js";
+import { cn as l } from "./index.es71.js";
 function i({ className: a, ...t }) {
   return /* @__PURE__ */ e(
     r.Root,

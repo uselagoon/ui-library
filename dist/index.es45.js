@@ -1,6 +1,6 @@
 import { jsx as e } from "react/jsx-runtime";
 import * as t from "@radix-ui/react-switch";
-import { cn as a } from "./index.es70.js";
+import { cn as a } from "./index.es71.js";
 function s({ className: r, ...n }) {
   return /* @__PURE__ */ e(
     t.Root,

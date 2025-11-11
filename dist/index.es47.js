@@ -1,6 +1,6 @@
 import { jsx as a } from "react/jsx-runtime";
 import * as s from "@radix-ui/react-tabs";
-import { cn as i } from "./index.es70.js";
+import { cn as i } from "./index.es71.js";
 function o({ className: t, ...e }) {
   return /* @__PURE__ */ a(s.Root, { "data-slot": "tabs", className: i("flex flex-col gap-2", t), ...e });
 }

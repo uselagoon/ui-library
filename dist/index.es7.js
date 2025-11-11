@@ -1,6 +1,6 @@
 import { jsx as e, jsxs as n } from "react/jsx-runtime";
 import * as o from "@radix-ui/react-alert-dialog";
-import { cn as l } from "./index.es70.js";
+import { cn as l } from "./index.es71.js";
 import { buttonVariants as r } from "./index.es13.js";
 function u({ ...t }) {
   return /* @__PURE__ */ e(o.Root, { "data-slot": "alert-dialog", ...t });
