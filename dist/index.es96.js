@@ -1,10 +1,18 @@
-import { jsx as l } from "react/jsx-runtime";
-import { cva as m } from "class-variance-authority";
-import { cn as n } from "./index.es70.js";
-const c = m("rounded-full h-6 w-6 min-w-[24px] flex justify-center items-center mr-2 text-xs");
-function i({ bgColor: r, textColor: t, className: e, children: o, ...a }) {
-  return /* @__PURE__ */ l("div", { ...a, className: n(c(), e), style: { backgroundColor: r, color: t }, children: o });
+import "react/jsx-runtime";
+import "react";
+import "react-highlight-words";
+const F = (n, e) => {
+  const r = (a) => a.charCodeAt(0) - 64, t = (a) => Math.round(r(a) * 11);
+  let o = t(n) % 256, u = t(e) % 256, l = Math.round((r(n) + r(e)) / 2 * 11) % 256;
+  return {
+    bgColor: `rgb(${o}, ${u}, ${l})`,
+    textColor: c(o, u, l) > 0.5 ? "#000000" : "#FFFFFF"
+  };
+};
+function c(n, e, r) {
+  const t = [n, e, r].map((o) => (o /= 255, o <= 0.03928 ? o / 12.92 : Math.pow((o + 0.055) / 1.055, 2.4)));
+  return 0.2126 * t[0] + 0.7152 * t[1] + 0.0722 * t[2];
 }
 export {
-  i as default
+  F as genAvatarBackground
 };

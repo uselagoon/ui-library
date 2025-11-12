@@ -13,7 +13,7 @@ type SheetProps = React.ComponentProps<typeof Sheet> & {
     sheetFields: {
         id: string;
         label: string;
-        inputDefault?: string;
+        inputDefault?: string | boolean;
         type?: string;
         placeholder?: string;
         required?: boolean;

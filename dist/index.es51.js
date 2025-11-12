@@ -1,6 +1,6 @@
 import { jsx as i, jsxs as n } from "react/jsx-runtime";
 import * as o from "@radix-ui/react-tooltip";
-import { cn as d } from "./index.es70.js";
+import { cn as d } from "./index.es71.js";
 function l({ delayDuration: t = 0, ...r }) {
   return /* @__PURE__ */ i(o.Provider, { "data-slot": "tooltip-provider", delayDuration: t, ...r });
 }
