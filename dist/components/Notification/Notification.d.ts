@@ -4,7 +4,7 @@ type NotificationProps = {
     message: ReactNode;
     cancelText?: string;
     onCancel?: () => void;
-    confirmText?: string;
+    confirmText?: ReactNode;
     confirmDisabled?: boolean;
     onConfirm?: () => void;
 } & ({

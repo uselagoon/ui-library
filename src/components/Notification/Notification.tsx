@@ -16,7 +16,7 @@ type NotificationProps = {
 	message: ReactNode;
 	cancelText?: string;
 	onCancel?: () => void;
-	confirmText?: string;
+	confirmText?: ReactNode;
 	confirmDisabled?: boolean;
 	onConfirm?: () => void;
 } & (
@@ -24,7 +24,7 @@ type NotificationProps = {
 	| {
 			open?: boolean;
 			onOpenChange?: (open: boolean) => void;
-	  }
+		}
 );
 
 export default function Notification({
@@ -38,7 +38,7 @@ export default function Notification({
 	...rest
 }: NotificationProps) {
 	const alertDialogProps =
-		'rest' in arguments && 'open' in rest && 'onOpenChange' in rest
+		'open' in rest && 'onOpenChange' in rest
 			? { open: rest.open, onOpenChange: rest.onOpenChange }
 			: {};
 
@@ -61,7 +61,10 @@ export default function Notification({
 					</AlertDialogCancel>
 					<AlertDialogAction
 						disabled={confirmDisabled}
-						onClick={() => {
+						onClick={(e) => {
+							if ('onOpenChange' in rest) {
+								e.preventDefault();
+							}
 							onConfirm && onConfirm();
 						}}
 					>
