@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import { SidebarProvider } from '../ui/sidebar';
-import Sidenav from '../sidenav';
+import Sidenav from '../Sidenav';
 import ThemeProvider from '@/providers/ThemeProvider';
-import { AppInfo, SidebarItem, SidebarSection, UserInfo } from '../sidenav/Sidenav';
+import { AppInfo, SidebarItem, SidebarSection, UserInfo } from '@/components/Sidenav/Sidenav';
 
 export type EnvNavFn = (projectSlug: string, environmentSlug: string) => Promise<SidebarItem[]>;
 

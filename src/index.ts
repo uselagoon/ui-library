@@ -311,7 +311,7 @@ export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/comp
 // custom components
 export { default as RootLayout } from '@/components/RootLayout';
 
-export { default as Sidenav } from '@/components/sidenav';
+export { default as Sidenav } from '@/components/Sidenav';
 
 export { default as Checkbox } from '@/components/Checkbox';
 

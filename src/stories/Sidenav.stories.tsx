@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Controls, Primary, Stories, Story, Title } from '@storybook/addon-docs/blocks';
+import { Home, FolderOpen, Building2, Settings, HelpCircle } from 'lucide-react';
 
-import Sidenav from '../components/sidenav';
+import Sidenav from '../components/Sidenav';
 import { SidebarProvider } from '../components/ui/sidebar';
 
 const meta: Meta<typeof Sidenav> = {
@@ -48,14 +49,76 @@ const mockSignOutFn = async () => {
 	console.log('Sign out clicked');
 };
 
+const mockSidenavItems = [
+	{
+		section: 'Main',
+		sectionItems: [
+			{
+				title: 'Dashboard',
+				url: '/dashboard',
+				icon: Home,
+			},
+			{
+				title: 'Projects',
+				url: '/projects',
+				icon: FolderOpen,
+				children: [
+					{
+						title: 'Project Alpha',
+						url: '/projects/alpha',
+					},
+					{
+						title: 'Project Beta',
+						url: '/projects/beta',
+					},
+				],
+			},
+			{
+				title: 'Organizations',
+				url: '/organizations',
+				icon: Building2,
+				children: [
+					{
+						title: 'Org 1',
+						url: '/organizations/org-1',
+					},
+					{
+						title: 'Org 2',
+						url: '/organizations/org-2',
+					},
+				],
+			},
+		],
+	},
+	{
+		section: 'Settings',
+		sectionItems: [
+			{
+				title: 'Settings',
+				url: '/settings',
+				icon: Settings,
+			},
+			{
+				title: 'Help',
+				url: '/help',
+				icon: HelpCircle,
+			},
+		],
+	},
+];
+
 export const Default: Story = {
 	args: {
-		userInfo: mockUserInfo,
+		userInfo: {
+			email: mockUserInfo.email,
+			name: mockUserInfo.name,
+		},
 		appInfo: {
 			name: 'Lagoon',
 			version: 'v1.0.0',
 			kcUrl: 'https://keycloak.example.com',
 		},
+		sidenavItems: mockSidenavItems,
 		signOutFn: mockSignOutFn,
 		currentPath: '/projects',
 	},
