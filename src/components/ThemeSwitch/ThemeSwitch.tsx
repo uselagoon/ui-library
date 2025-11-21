@@ -1,7 +1,6 @@
 import { useTheme } from 'next-themes';
 import React from 'react';
 import { useSyncTheme } from '@/hooks/useSyncTheme';
-import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { Moon, Sun } from 'lucide-react';
 
 export default function ThemeSwitch() {
@@ -15,17 +14,15 @@ export default function ThemeSwitch() {
 	};
 
 	const darkSwitcher = (
-		<DropdownMenuItem onClick={() => handleToggleTheme('light')}>
-			<Sun className="mr-2 h-4 w-4" />
-			Light
-		</DropdownMenuItem>
+		<button onClick={() => handleToggleTheme('light')}>
+			<Sun className="mr-2 h-4.5 w-4.5"/>
+		</button>
 	);
 
 	const lightSwitcher = (
-		<DropdownMenuItem onClick={() => handleToggleTheme('dark')}>
-			<Moon className="mr-2 h-4 w-4" />
-			Dark
-		</DropdownMenuItem>
+		<button onClick={() => handleToggleTheme('dark')}>
+			<Moon className="mr-2 h-4.5 w-4.5"/>
+		</button>
 	);
 	const renderThemeSwitcher = () => {
 		if (theme === 'dark' || (theme === 'system' && systemTheme === 'dark')) return darkSwitcher;

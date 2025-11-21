@@ -141,8 +141,6 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 
 	const activePaths = useActivePaths(sidenavItems, currentPath);
 
-	// const { state } = useSidebar();
-
 	const [mobileOpen, setMobileOpen] = useState(false);
 
 	const sidenavProps = {
@@ -179,14 +177,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 						</Button>
 					</div>
 				)}
-				<SidenavLogo avatar={avatarToUse} />
-				{/*<SidebarHeader>*/}
-				{/*	<SidebarMenu>*/}
-				{/*		<SidebarMenuItem>*/}
-				{/*			<SidenavFooterMenu {...sidenavProps} />*/}
-				{/*		</SidebarMenuItem>*/}
-				{/*	</SidebarMenu>*/}
-				{/*</SidebarHeader>*/}
+				<SidenavLogo />
 
 				<SidebarContent>
 					{sidenavItems.map((navItem) => {

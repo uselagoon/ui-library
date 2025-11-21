@@ -10,7 +10,6 @@ export type AppInfo = {
     name: string;
     version: string;
     kcUrl: string;
-    logo?: React.ReactNode;
 };
 export type SidenavProps = SidebarProps & {
     userInfo: UserInfo;
