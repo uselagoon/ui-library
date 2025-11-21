@@ -37,7 +37,7 @@ export default function SidenavLogo() {
 	return (
 		<>
 			<section className="flex items-center gap-1 pl-1">
-				<div className={`aspect-square min-w-[280px] max-h-[50px] rounded-lg text-sidebar-primary-foreground size-16`}>
+				<div className={`aspect-square min-w-[280px] max-h-[50px] rounded-lg text-sidebar-primary-foreground size-16 p-2 mb-2`}>
 					<Link href="/projects" className="w-auto h-auto">{renderLogo()}</Link>
 				</div>
 			</section>

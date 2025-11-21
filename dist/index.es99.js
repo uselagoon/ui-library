@@ -1,27 +1,10 @@
-import { jsx as o, Fragment as a } from "react/jsx-runtime";
-import { useTheme as m } from "next-themes";
-import r from "./index.es102.js";
-import { useLinkComponent as d } from "./index.es5.js";
-import { useSyncTheme as g } from "./index.es103.js";
-function x() {
-  const { theme: n } = m();
-  g();
-  const t = d(), s = () => `/sidebar-icons/logo-${n}.svg`;
-  return /* @__PURE__ */ o(a, { children: /* @__PURE__ */ o("section", { className: "flex items-center gap-1 pl-1", children: /* @__PURE__ */ o("div", { className: "aspect-square min-w-[280px] max-h-[50px] rounded-lg text-sidebar-primary-foreground size-16", children: /* @__PURE__ */ o(t, { href: "/projects", className: "w-auto h-auto", children: (() => {
-    const e = s();
-    return /* @__PURE__ */ o(
-      "img",
-      {
-        src: e.includes("undefined") ? r : e,
-        alt: "Logo",
-        onError: (c) => {
-          const i = c.currentTarget;
-          i.src = r;
-        }
-      }
-    );
-  })() }) }) }) });
+import { jsx as l } from "react/jsx-runtime";
+import { cva as m } from "class-variance-authority";
+import { cn as n } from "./index.es71.js";
+const c = m("rounded-full h-6 w-6 min-w-[24px] flex justify-center items-center mr-2 text-xs");
+function i({ bgColor: r, textColor: t, className: e, children: o, ...a }) {
+  return /* @__PURE__ */ l("div", { ...a, className: n(c(), e), style: { backgroundColor: r, color: t }, children: o });
 }
 export {
-  x as default
+  i as default
 };

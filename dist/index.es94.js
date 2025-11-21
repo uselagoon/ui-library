@@ -1,4 +1,4 @@
-import { DateRangePicker as a } from "./index.es73.js";
+import o from "./index.es72.js";
 export {
-  a as default
+  o as default
 };

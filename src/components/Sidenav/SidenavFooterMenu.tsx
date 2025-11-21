@@ -34,7 +34,7 @@ export default function SidenavFooterMenu({ version, kcUrl, signOutFn, avatar, u
 	};
 
 	return (
-		<DropdownMenu>
+		<DropdownMenu modal={false}>
 			<section className="flex items-center gap-1 pl-1">
 				<DropdownMenuTrigger className="w-full">
 					<SidebarMenuButton size="lg" className="w-full">
