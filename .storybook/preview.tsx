@@ -4,6 +4,8 @@ import '../src/index.css';
 
 import React from 'react';
 import withNextLink from './decorators/withNextLink';
+import ThemeProvider from '../src/providers/ThemeProvider';
+
 const preview: Preview = {
 	parameters: {
 		controls: {
@@ -31,7 +33,14 @@ const preview: Preview = {
 			},
 		},
 	},
-	decorators: [withNextLink],
+	decorators: [
+		withNextLink,
+		(Story) => (
+			<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+		<Story />
+		</ThemeProvider>
+),
+],
 };
 
 export default preview;

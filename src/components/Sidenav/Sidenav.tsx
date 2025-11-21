@@ -6,15 +6,13 @@ import {
 	SidebarGroup,
 	SidebarGroupContent,
 	SidebarGroupLabel,
-	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
 	SidebarMenuSub,
-	useSidebar,
 } from '../ui/sidebar';
 
-import SidenavDropdown from './SidenavDropdown';
+import SidenavFooterMenu from './SidenavFooterMenu';
 import { genAvatarBackground } from '@/_util/helpers';
 
 import { Avatar, AvatarImage } from '../ui/avatar';
@@ -28,6 +26,7 @@ import { ChevronUp, Menu, X } from 'lucide-react';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import useActivePaths from './useActivePaths';
+import SidenavLogo from '@/components/Sidenav/SidenavLogo';
 
 type SidebarProps = React.ComponentProps<typeof Sidebar>;
 
@@ -41,7 +40,6 @@ export type AppInfo = {
 	name: string;
 	version: string;
 	kcUrl: string;
-	logo?: React.ReactNode;
 };
 
 export type SidenavProps = SidebarProps & {
@@ -143,14 +141,13 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 
 	const activePaths = useActivePaths(sidenavItems, currentPath);
 
-	const { state } = useSidebar();
-
 	const [mobileOpen, setMobileOpen] = useState(false);
 
 	const sidenavProps = {
 		...appInfo,
 		signOutFn,
-		isCollapsed: state === 'collapsed',
+		avatar: avatarToUse,
+		userDisplayName,
 	};
 
 	return (
@@ -180,13 +177,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 						</Button>
 					</div>
 				)}
-				<SidebarHeader>
-					<SidebarMenu>
-						<SidebarMenuItem>
-							<SidenavDropdown {...sidenavProps} />
-						</SidebarMenuItem>
-					</SidebarMenu>
-				</SidebarHeader>
+				<SidenavLogo />
 
 				<SidebarContent>
 					{sidenavItems.map((navItem) => {
@@ -270,12 +261,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 				<SidebarFooter>
 					<SidebarMenu>
 						<SidebarMenuItem>
-							<SidebarMenuButton size="lg">
-								{avatarToUse}
-								<div className="grid flex-1 text-left text-sm leading-tight">
-									<span className="truncate font-light">{userDisplayName}</span>
-								</div>
-							</SidebarMenuButton>
+							<SidenavFooterMenu {...sidenavProps} />
 						</SidebarMenuItem>
 					</SidebarMenu>
 				</SidebarFooter>
