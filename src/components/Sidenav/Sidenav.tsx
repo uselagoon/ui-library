@@ -148,6 +148,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 		signOutFn,
 		avatar: avatarToUse,
 		userDisplayName,
+		email,
 	};
 
 	return (

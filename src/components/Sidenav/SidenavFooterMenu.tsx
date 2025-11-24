@@ -7,9 +7,9 @@ import { useLinkComponent } from '@/providers/NextLinkProvider';
 import { AppInfo } from './Sidenav';
 import * as process from 'node:process';
 
-type DropdownProps = AppInfo & { signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode };
+type DropdownProps = AppInfo & { signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode, email: string; };
 
-export default function SidenavFooterMenu({ kcUrl, signOutFn, avatar, userDisplayName }: DropdownProps) {
+export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName }: DropdownProps) {
 
 	const Link = useLinkComponent();
 	let documentationUrl = 'https://docs.lagoon.sh/';
@@ -26,7 +26,7 @@ export default function SidenavFooterMenu({ kcUrl, signOutFn, avatar, userDispla
 					{avatar}
 					<div className="grid flex-1 text-left text-sm leading-tight">
 						<span className="truncate font-medium">{userDisplayName}</span>
-						<span className="truncate font-light text-xs">email@example.com</span>
+						<span className="truncate font-light text-xs">{email}</span>
 					</div>
 				</>
 			)

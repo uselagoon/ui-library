@@ -13,25 +13,26 @@ import { Button as M } from "./index.es13.js";
 import { cn as ie } from "./index.es71.js";
 import se from "./index.es100.js";
 import oe from "./index.es101.js";
-const y = (s, o, t) => o.children?.length ? /* @__PURE__ */ e("ul", { className: "ml-4 mt-2 space-y-1", children: o.children.map((r) => {
+const y = (o, c, t) => c.children?.length ? /* @__PURE__ */ e("ul", { className: "ml-4 mt-2 space-y-1", children: c.children.map((r) => {
   const u = r.children && r.children.length > 0 ? t.has(r.url) || t.has(`${r.url}:parent`) : t.has(r.url);
   return /* @__PURE__ */ n(p, { children: [
-    /* @__PURE__ */ e(N, { asChild: !0, isActive: u, children: /* @__PURE__ */ e(s, { href: r.url, className: `${r.icon ? "" : "ml-4"}`, children: /* @__PURE__ */ n("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ e(N, { asChild: !0, isActive: u, children: /* @__PURE__ */ e(o, { href: r.url, className: `${r.icon ? "" : "ml-4"}`, children: /* @__PURE__ */ n("div", { className: "flex items-center gap-2", children: [
       r.icon && /* @__PURE__ */ e(r.icon, {}),
       /* @__PURE__ */ e("span", { children: r.title })
     ] }) }) }),
-    y(s, r, t)
+    y(o, r, t)
   ] }, r.title);
 }) }) : null;
-function we({ userInfo: s, appInfo: o, currentPath: t, sidenavItems: r, signOutFn: x, ...u }) {
-  const f = I(), { name: z, image: A, email: c } = s, F = !!A, b = z?.split(" ") ?? [], d = b[0] ?? void 0, h = b.length > 1 ? b.slice(1).join(" ") : " ", g = !!(d && h), S = g ? $(d.charAt(0), h.charAt(0)) : $(c.charAt(0), c.charAt(1)), B = g ? d.charAt(0).toUpperCase() + h.charAt(0).toUpperCase() : c.charAt(0).toUpperCase(), O = F ? /* @__PURE__ */ n(R, { children: [
+function we({ userInfo: o, appInfo: c, currentPath: t, sidenavItems: r, signOutFn: x, ...u }) {
+  const f = I(), { name: z, image: A, email: s } = o, F = !!A, b = z?.split(" ") ?? [], d = b[0] ?? void 0, h = b.length > 1 ? b.slice(1).join(" ") : " ", g = !!(d && h), S = g ? $(d.charAt(0), h.charAt(0)) : $(s.charAt(0), s.charAt(1)), B = g ? d.charAt(0).toUpperCase() + h.charAt(0).toUpperCase() : s.charAt(0).toUpperCase(), O = F ? /* @__PURE__ */ n(R, { children: [
     /* @__PURE__ */ e(V, { src: A, alt: "user_avatar" }),
     /* @__PURE__ */ e(Y, { children: "Avatar" })
-  ] }) : /* @__PURE__ */ e(Z, { bgColor: S.bgColor, textColor: S.textColor, children: B }), U = g ? /* @__PURE__ */ e("span", { className: "user-name", children: `${d} ${h}` }) : /* @__PURE__ */ e("span", { className: "user-name", children: c }), i = se(r, t), [m, v] = T(!1), j = {
-    ...o,
+  ] }) : /* @__PURE__ */ e(Z, { bgColor: S.bgColor, textColor: S.textColor, children: B }), U = g ? /* @__PURE__ */ e("span", { className: "user-name", children: `${d} ${h}` }) : /* @__PURE__ */ e("span", { className: "user-name", children: s }), i = se(r, t), [m, v] = T(!1), j = {
+    ...c,
     signOutFn: x,
     avatar: O,
-    userDisplayName: U
+    userDisplayName: U,
+    email: s
   };
   return /* @__PURE__ */ n(P, { children: [
     !m && /* @__PURE__ */ e("div", { className: "lg:hidden fixed top-2 left-4 z-40", children: /* @__PURE__ */ e(M, { variant: "ghost", size: "icon", onClick: () => v(!0), "aria-label": "Open sidebar", children: /* @__PURE__ */ e(ne, { className: "h-5 w-5" }) }) }),
