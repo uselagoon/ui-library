@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { AppInfo, SidebarItem, SidebarSection, UserInfo } from '../sidenav/Sidenav';
+import { AppInfo, SidebarItem, SidebarSection, UserInfo } from '../Sidenav/Sidenav';
 export type EnvNavFn = (projectSlug: string, environmentSlug: string) => Promise<SidebarItem[]>;
 export type OrgNavFn = (orgSlug: string) => Promise<SidebarItem[]>;
 export type ProjectNavFn = (projectSlug: string, environmentSlug?: string, getEnvironmentNav?: EnvNavFn) => Promise<SidebarItem[]>;

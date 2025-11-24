@@ -1,18 +1,18 @@
-import { useMemo as v } from "react";
-const C = (f, s) => v(() => {
-  const c = /* @__PURE__ */ new Set(), i = (l, r) => {
-    const a = Array.isArray(l.children) && l.children.length > 0, h = s === l.url, d = r !== void 0 && l.url === r, n = a && l.children.some((t) => t.url === l.url);
-    let u = !1, o = !1;
-    if (a)
-      for (const t of l.children)
-        i(t, l.url) && (u = !0), s === t.url && (o = !0);
-    let e = !1;
-    return h ? e = !0 : d ? e = !1 : a && u ? n ? o && s === l.url ? e = !0 : (c.add(`${l.url}:parent`), e = !1) : e = !0 : l.url !== "/" && s.startsWith(`${l.url}/`) && (e = !0), e && c.add(l.url), e || u;
+import "react/jsx-runtime";
+import "react";
+import "react-highlight-words";
+const F = (n, e) => {
+  const r = (a) => a.charCodeAt(0) - 64, t = (a) => Math.round(r(a) * 11);
+  let o = t(n) % 256, u = t(e) % 256, l = Math.round((r(n) + r(e)) / 2 * 11) % 256;
+  return {
+    bgColor: `rgb(${o}, ${u}, ${l})`,
+    textColor: c(o, u, l) > 0.5 ? "#000000" : "#FFFFFF"
   };
-  return f.forEach((l) => {
-    l.sectionItems.forEach((r) => i(r));
-  }), c;
-}, [f, s]);
+};
+function c(n, e, r) {
+  const t = [n, e, r].map((o) => (o /= 255, o <= 0.03928 ? o / 12.92 : Math.pow((o + 0.055) / 1.055, 2.4)));
+  return 0.2126 * t[0] + 0.7152 * t[1] + 0.0722 * t[2];
+}
 export {
-  C as default
+  F as genAvatarBackground
 };
