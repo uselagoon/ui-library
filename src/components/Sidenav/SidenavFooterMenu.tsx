@@ -9,7 +9,7 @@ import * as process from 'node:process';
 
 type DropdownProps = AppInfo & { signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode };
 
-export default function SidenavFooterMenu({ version, kcUrl, signOutFn, avatar, userDisplayName }: DropdownProps) {
+export default function SidenavFooterMenu({ kcUrl, signOutFn, avatar, userDisplayName }: DropdownProps) {
 
 	const Link = useLinkComponent();
 	let documentationUrl = 'https://docs.lagoon.sh/';
@@ -43,7 +43,6 @@ export default function SidenavFooterMenu({ version, kcUrl, signOutFn, avatar, u
 					</SidebarMenuButton>
 				</DropdownMenuTrigger>
 			</section>
-			<span className="truncate font-light text-xs ml-2">{version}</span>
 			<DropdownMenuContent className="w-56" align="start" side="top" sideOffset={4}>
 				<DropdownMenuItem asChild>
 					<Link href={documentationUrl} target="_blank">

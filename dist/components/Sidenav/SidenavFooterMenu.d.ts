@@ -5,6 +5,6 @@ type DropdownProps = AppInfo & {
     avatar: ReactNode;
     userDisplayName: ReactNode;
 };
-export default function SidenavFooterMenu({ version, kcUrl, signOutFn, avatar, userDisplayName }: DropdownProps): import("react/jsx-dev-runtime").JSX.Element;
+export default function SidenavFooterMenu({ kcUrl, signOutFn, avatar, userDisplayName }: DropdownProps): import("react/jsx-dev-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=SidenavFooterMenu.d.ts.map

@@ -38,9 +38,14 @@ export default function RootLayout({
 	return (
 		<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 			<SidebarProvider defaultOpen>
-				<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath, sidenavItems }} />
-
-				<main className="flex-1 mx-[16px]">{children}</main>
+				<div className="flex h-screen overflow-hidden">
+					<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath, sidenavItems }} />
+					<main className="flex-1 overflow-y-auto ml-0 lg:ml-[290px]">
+						<div className="mx-[16px]">
+							{children}
+						</div>
+					</main>
+				</div>
 			</SidebarProvider>
 		</ThemeProvider>
 	);

@@ -164,10 +164,10 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 				collapsible="none"
 				{...props}
 				className={cn(
-					'fixed lg:static top-0 left-0 z-40 h-full lg:h-[unset] bg-background transition-transform duration-300',
-					'w-[min(20vw,100%)] min-w-[290px] overflow-hidden pr-4 lg:pr-0',
-					'lg:translate-x-0',
-					mobileOpen ? 'translate-x-0' : '-translate-x-full',
+					'fixed top-0 left-0 z-40 h-screen bg-background transition-transform duration-300',
+					'min-w-[290px] overflow-hidden',
+					'flex flex-col',
+					mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0',
 				)}
 			>
 				{mobileOpen && (
@@ -177,9 +177,11 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 						</Button>
 					</div>
 				)}
-				<SidenavLogo />
+				<div className="flex-shrink-0">
+					<SidenavLogo />
+				</div>
 
-				<SidebarContent>
+				<SidebarContent className="flex-1 overflow-y-auto min-h-0">
 					{sidenavItems.map((navItem) => {
 						return (
 							<SidebarGroup key={navItem.section}>
@@ -258,7 +260,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 					})}
 				</SidebarContent>
 
-				<SidebarFooter>
+				<SidebarFooter className="flex-shrink-0">
 					<SidebarMenu>
 						<SidebarMenuItem>
 							<SidenavFooterMenu {...sidenavProps} />
