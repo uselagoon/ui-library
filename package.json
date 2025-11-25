@@ -20,12 +20,15 @@
 		"url": "https://github.com/uselagoon/ui-library/issues"
 	},
 	"homepage": "https://github.com/uselagoon/ui-library#readme",
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	},
 	"scripts": {
-		"build": "npm run bundle && npm run copy",
+		"build": "npm run bundle && npm run prepare-package",
 		"bundle": "rm -rf ./dist && tsc -b && vite build",
+		"prepare-package": "node scripts/prepare-package.js",
 		"lint": "eslint .",
 		"preview": "vite preview",
-		"copy": "cp package.json dist/",
 		"postinstall": "node postinstall.cjs",
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
