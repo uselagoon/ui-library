@@ -38,7 +38,7 @@ export default function RootLayout({
 	return (
 		<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 			<SidebarProvider defaultOpen>
-				<div className="flex h-screen overflow-hidden">
+				<div className="flex h-screen w-full overflow-hidden">
 					<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath, sidenavItems }} />
 					<main className="flex-1 overflow-y-auto ml-0 lg:ml-[290px]">
 						<div className="mx-[16px]">
