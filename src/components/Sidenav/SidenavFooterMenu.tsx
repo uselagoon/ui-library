@@ -5,18 +5,12 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import { SidebarMenuButton } from '../ui/sidebar';
 import { useLinkComponent } from '@/providers/NextLinkProvider';
 import { AppInfo } from './Sidenav';
-import * as process from 'node:process';
 
-type DropdownProps = AppInfo & { signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode, email: string; };
+type DropdownProps = AppInfo & { signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode, email: string, documentationUrl?: string; };
 
-export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName }: DropdownProps) {
+export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName, documentationUrl = 'https://docs.lagoon.sh/' }: DropdownProps) {
 
 	const Link = useLinkComponent();
-	let documentationUrl = 'https://docs.lagoon.sh/';
-
-	if (process?.env?.SPARTEZ_SUPPORT_KEY) {
-		documentationUrl = 'https://docs.amazee.io/';
-	}
 
 	const renderAvatar = () => {
 

@@ -10,7 +10,8 @@ interface RootLayoutProps {
     children: ReactNode;
     signOutFn: () => Promise<void>;
     currentPath: string;
+    documentationUrl?: string;
 }
-export default function RootLayout({ userInfo, appInfo, signOutFn, currentPath, children, sidenavItems, }: RootLayoutProps): import("react/jsx-dev-runtime").JSX.Element;
+export default function RootLayout({ userInfo, appInfo, signOutFn, currentPath, children, sidenavItems, documentationUrl, }: RootLayoutProps): import("react/jsx-dev-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=RootLayout.d.ts.map

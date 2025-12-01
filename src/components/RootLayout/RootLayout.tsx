@@ -21,6 +21,7 @@ interface RootLayoutProps {
 	children: ReactNode;
 	signOutFn: () => Promise<void>;
 	currentPath: string;
+	documentationUrl?: string;
 }
 
 //**
@@ -34,12 +35,13 @@ export default function RootLayout({
 	currentPath,
 	children,
 	sidenavItems,
+  documentationUrl,
 }: RootLayoutProps) {
 	return (
 		<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 			<SidebarProvider defaultOpen>
 				<div className="flex h-screen w-full overflow-hidden">
-					<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath, sidenavItems }} />
+					<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath, sidenavItems, documentationUrl }} />
 					<main className="flex-1 overflow-y-auto ml-0 lg:ml-[290px]">
 						<div className="mx-[16px]">
 							{children}

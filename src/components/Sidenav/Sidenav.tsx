@@ -48,6 +48,7 @@ export type SidenavProps = SidebarProps & {
 	sidenavItems: SidebarSection[];
 	signOutFn: () => Promise<void>;
 	currentPath: string;
+	documentationUrl?: string;
 };
 
 export type SidebarItem = {
@@ -97,7 +98,7 @@ const renderSidenavChildren = (
 	);
 };
 
-export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, ...props }: SidenavProps) {
+export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, ...props }: SidenavProps) {
 	const Link = useLinkComponent();
 
 	const { name, image, email } = userInfo;
@@ -149,6 +150,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 		avatar: avatarToUse,
 		userDisplayName,
 		email,
+		documentationUrl: documentationUrl,
 	};
 
 	return (
