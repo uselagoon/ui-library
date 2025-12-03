@@ -14,12 +14,13 @@ export interface DataTableProps<TData, TValue> {
     renderFilters?: (table: TableType<TData>) => ReactNode;
     /** Do not render the top filter section, nor the bottom pagination section */
     disableExtra?: boolean;
+    disablePagination?: boolean;
     onSearch?: (searchString: string) => void;
     initialSearch?: string;
     initialPageSize?: number;
     /** Called on each row (empty space) click - ignored if cell item is clicked */
     onRowClick?: (row: Row<TData>) => void;
 }
-export default function DataTable<TData, TValue>({ columns, data, searchableColumns, searchPlaceholder, onSearch, loading, renderFilters, disableExtra, initialSearch, initialPageSize, onRowClick, }: DataTableProps<TData, TValue>): import("react/jsx-dev-runtime").JSX.Element;
+export default function DataTable<TData, TValue>({ columns, data, searchableColumns, searchPlaceholder, onSearch, loading, renderFilters, disableExtra, disablePagination, initialSearch, initialPageSize, onRowClick, }: DataTableProps<TData, TValue>): import("react/jsx-dev-runtime").JSX.Element;
 export type { LibColumnDef as DataTableColumnDef };
 //# sourceMappingURL=DataTable.d.ts.map
