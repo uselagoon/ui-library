@@ -44,7 +44,7 @@ import { Button, SwitchWithDescription } from '@uselagoon/ui-library';
 
 export default () => (
   <>
-    <Button variant="ghost">A spooky disabled button</Button>
+    <Button variant="ghost" disabled>A spooky disabled button</Button>
     <SwitchWithDescription
       description="This is a switch description."
       id="first"
