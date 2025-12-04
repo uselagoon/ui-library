@@ -39,6 +39,7 @@ export interface DataTableProps<TData, TValue> {
 	renderFilters?: (table: TableType<TData>) => ReactNode;
 	/** Do not render the top filter section, nor the bottom pagination section */
 	disableExtra?: boolean;
+	disablePagination?: boolean;
 	onSearch?: (searchString: string) => void;
 	initialSearch?: string;
 	initialPageSize?: number;
@@ -47,17 +48,18 @@ export interface DataTableProps<TData, TValue> {
 }
 
 export default function DataTable<TData, TValue>({
-	columns,
-	data,
-	searchableColumns,
-	searchPlaceholder,
-	onSearch,
-	loading,
-	renderFilters,
-	disableExtra,
-	initialSearch,
-	initialPageSize,
-	onRowClick,
+  columns,
+  data,
+  searchableColumns,
+  searchPlaceholder,
+  onSearch,
+  loading,
+  renderFilters,
+  disableExtra,
+  disablePagination,
+  initialSearch,
+  initialPageSize,
+  onRowClick,
 }: DataTableProps<TData, TValue>) {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
 
@@ -113,9 +115,9 @@ export default function DataTable<TData, TValue>({
 		() =>
 			loading
 				? columns.map((column) => ({
-						...column,
-						cell: () => <Skeleton className="h-6 w-50 rounded-sm" />,
-					}))
+					...column,
+					cell: () => <Skeleton className="h-6 w-50 rounded-sm" />,
+				}))
 				: columns,
 		[loading, columns],
 	);
@@ -144,16 +146,16 @@ export default function DataTable<TData, TValue>({
 
 	// show every row if controls are disabled
 	useEffect(() => {
-		if (disableExtra) {
+		if (disableExtra || disablePagination) {
 			table.setPageSize(data.length);
 		}
-	}, [disableExtra]);
+	}, [disableExtra, disablePagination, data.length]);
 
 	useEffect(() => {
-		if (initialPageSize) {
+		if (initialPageSize && !disablePagination) {
 			table.setPageSize(initialPageSize);
 		}
-	}, [initialPageSize]);
+	}, [initialPageSize, disablePagination]);
 
 	// 7.26% of data, never higher than a second, nor lower than 40ms
 	const timerLengthPercentage = useMemo(
@@ -291,37 +293,40 @@ export default function DataTable<TData, TValue>({
 					<div className="text-muted-foreground flex-1 text-sm">
 						Showing {table.getRowModel().rows.length} of {table.getPrePaginationRowModel().rows.length} entries
 					</div>
+					{!disablePagination && (
+						<>
+							<div className="flex w-[100px] items-center justify-center text-sm font-medium">
+								Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount() || 1}
+							</div>
 
-					<div className="flex w-[100px] items-center justify-center text-sm font-medium">
-						Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount() || 1}
-					</div>
+							<Button variant="outline" size="sm" onClick={() => table.firstPage()} disabled={!table.getCanPreviousPage()}>
+								{'<<'}
+							</Button>
 
-					<Button variant="outline" size="sm" onClick={() => table.firstPage()} disabled={!table.getCanPreviousPage()}>
-						{'<<'}
-					</Button>
+							<Button
+								variant="outline"
+								size="sm"
+								onClick={() => table.previousPage()}
+								disabled={!table.getCanPreviousPage()}
+							>
+								Previous
+							</Button>
+							<Button variant="outline" size="sm" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
+								Next
+							</Button>
 
-					<Button
-						variant="outline"
-						size="sm"
-						onClick={() => table.previousPage()}
-						disabled={!table.getCanPreviousPage()}
-					>
-						Previous
-					</Button>
-					<Button variant="outline" size="sm" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
-						Next
-					</Button>
-
-					<Button variant="outline" size="sm" onClick={() => table.lastPage()} disabled={!table.getCanNextPage()}>
-						{'>>'}
-					</Button>
-					<SelectWithOptions
-						value={String(currentPage) || undefined}
-						placeholder="Go to page"
-						options={pageSelectOptions}
-						onValueChange={handlePageSelect}
-						disabled={loading}
-					/>
+							<Button variant="outline" size="sm" onClick={() => table.lastPage()} disabled={!table.getCanNextPage()}>
+								{'>>'}
+							</Button>
+							<SelectWithOptions
+								value={String(currentPage) || undefined}
+								placeholder="Go to page"
+								options={pageSelectOptions}
+								onValueChange={handlePageSelect}
+								disabled={loading}
+							/>
+					</>
+				)}
 				</div>
 			)}
 		</div>
