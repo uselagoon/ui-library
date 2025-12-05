@@ -1,5 +1,5 @@
 'use client';
-import React, { ReactNode, useState } from 'react';
+import React from 'react';
 import { useTheme } from 'next-themes';
 import LagoonIcon from '../../icons/sidebar/logo-dark.svg';
 import { useLinkComponent } from '@/providers/NextLinkProvider';

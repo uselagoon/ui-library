@@ -39,13 +39,13 @@ export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, use
 			</section>
 			<DropdownMenuContent className="w-56" align="start" side="top" sideOffset={4}>
 				<DropdownMenuItem asChild>
-					<Link href={documentationUrl} target="_blank">
+					<Link href={documentationUrl} target="_blank" className="cursor-pointer">
 						<LifeBuoy className="mr-2 h-4 w-4" />
 						Documentation
 					</Link>
 				</DropdownMenuItem>
 				<DropdownMenuItem asChild>
-					<Link href={`${kcUrl}/account`} target="_blank">
+					<Link href={`${kcUrl}/account`} target="_blank" className="cursor-pointer">
 					<UserRoundCog className="mr-2 h-4 w-4" />
 					My Account
 					</Link>
