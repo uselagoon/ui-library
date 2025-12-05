@@ -1,20 +1,21 @@
-import { jsx as e, jsxs as n } from "react/jsx-runtime";
-import { SidebarProvider as s } from "./index.es41.js";
+import { jsx as e, jsxs as s } from "react/jsx-runtime";
+import { SidebarProvider as n } from "./index.es41.js";
 import d from "./index.es53.js";
-import l from "./index.es4.js";
-function c({
+import f from "./index.es4.js";
+function x({
   userInfo: r,
-  appInfo: t,
-  signOutFn: a,
-  currentPath: i,
-  children: o,
-  sidenavItems: m
+  appInfo: l,
+  signOutFn: t,
+  currentPath: a,
+  children: i,
+  sidenavItems: o,
+  documentationUrl: m
 }) {
-  return /* @__PURE__ */ e(l, { attribute: "class", defaultTheme: "system", enableSystem: !0, disableTransitionOnChange: !0, children: /* @__PURE__ */ n(s, { defaultOpen: !0, children: [
-    /* @__PURE__ */ e(d, { userInfo: r, appInfo: t, signOutFn: a, currentPath: i, sidenavItems: m }),
-    /* @__PURE__ */ e("main", { className: "flex-1 mx-[16px]", children: o })
-  ] }) });
+  return /* @__PURE__ */ e(f, { attribute: "class", defaultTheme: "system", enableSystem: !0, disableTransitionOnChange: !0, children: /* @__PURE__ */ e(n, { defaultOpen: !0, children: /* @__PURE__ */ s("div", { className: "flex h-screen w-full overflow-hidden", children: [
+    /* @__PURE__ */ e(d, { userInfo: r, appInfo: l, signOutFn: t, currentPath: a, sidenavItems: o, documentationUrl: m }),
+    /* @__PURE__ */ e("main", { className: "flex-1 overflow-y-auto ml-0 lg:ml-[290px]", children: /* @__PURE__ */ e("div", { className: "mx-[16px]", children: i }) })
+  ] }) }) });
 }
 export {
-  c as default
+  x as default
 };

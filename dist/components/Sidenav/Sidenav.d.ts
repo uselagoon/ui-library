@@ -10,7 +10,6 @@ export type AppInfo = {
     name: string;
     version: string;
     kcUrl: string;
-    logo?: React.ReactNode;
 };
 export type SidenavProps = SidebarProps & {
     userInfo: UserInfo;
@@ -18,6 +17,7 @@ export type SidenavProps = SidebarProps & {
     sidenavItems: SidebarSection[];
     signOutFn: () => Promise<void>;
     currentPath: string;
+    documentationUrl?: string;
 };
 export type SidebarItem = {
     title: string;
@@ -31,6 +31,6 @@ export type SidebarSection = {
     section: string;
     sectionItems: SidebarItem[];
 };
-export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, ...props }: SidenavProps): import("react/jsx-dev-runtime").JSX.Element;
+export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, ...props }: SidenavProps): import("react/jsx-dev-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=Sidenav.d.ts.map

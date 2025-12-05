@@ -48,7 +48,7 @@ export { ToggleGroup, ToggleGroupItem } from './components/ui/toggle-group';
 export { Toggle, toggleVariants } from './components/ui/toggle';
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from './components/ui/tooltip';
 export { default as RootLayout } from './components/RootLayout';
-export { default as Sidenav } from './components/sidenav';
+export { default as Sidenav } from './components/Sidenav';
 export { default as Checkbox } from './components/Checkbox';
 export { default as StatCard } from './components/StatCard';
 export { default as DetailStat } from './components/DetailStat';
@@ -69,4 +69,5 @@ export { default as DataTable, type DataTableColumnDef } from './components/Data
 export { cn } from './lib/utils';
 export { default as TabNavigation } from './components/TabNavigation';
 export { default as DateRangePicker } from './components/DateRangePicker';
+export { default as ThemeSwitch } from './components/ThemeSwitch';
 //# sourceMappingURL=index.d.ts.map

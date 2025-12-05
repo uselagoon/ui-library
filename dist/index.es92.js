@@ -1,4 +1,4 @@
-import t from "./index.es70.js";
+import e from "./index.es69.js";
 export {
-  t as default
+  e as default
 };
