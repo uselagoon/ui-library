@@ -3,6 +3,7 @@ import { SidebarProvider } from '../ui/sidebar';
 import Sidenav from '../Sidenav';
 import ThemeProvider from '@/providers/ThemeProvider';
 import { AppInfo, SidebarItem, SidebarSection, UserInfo } from '@/components/Sidenav/Sidenav';
+import { AnnouncementCardProps } from '@/components/AnnouncementCard/AnnouncementCard';
 
 export type EnvNavFn = (projectSlug: string, environmentSlug: string) => Promise<SidebarItem[]>;
 
@@ -22,6 +23,7 @@ interface RootLayoutProps {
 	signOutFn: () => Promise<void>;
 	currentPath: string;
 	documentationUrl?: string;
+	cardProps?: AnnouncementCardProps;
 }
 
 //**
@@ -36,12 +38,13 @@ export default function RootLayout({
 	children,
 	sidenavItems,
   documentationUrl,
+  cardProps,
 }: RootLayoutProps) {
 	return (
 		<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 			<SidebarProvider defaultOpen>
 				<div className="flex h-screen w-full overflow-hidden">
-					<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath, sidenavItems, documentationUrl }} />
+					<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath, sidenavItems, documentationUrl, cardProps, }} />
 					<main className="flex-1 overflow-y-auto ml-0 lg:ml-[290px]">
 						<div className="mx-[16px]">
 							{children}

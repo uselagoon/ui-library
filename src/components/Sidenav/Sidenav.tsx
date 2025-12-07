@@ -27,6 +27,8 @@ import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import useActivePaths from './useActivePaths';
 import SidenavLogo from '@/components/Sidenav/SidenavLogo';
+import AnnouncementCard from '@/components/AnnouncementCard';
+import { AnnouncementCardProps } from '@/components/AnnouncementCard/AnnouncementCard';
 
 type SidebarProps = React.ComponentProps<typeof Sidebar>;
 
@@ -49,6 +51,7 @@ export type SidenavProps = SidebarProps & {
 	signOutFn: () => Promise<void>;
 	currentPath: string;
 	documentationUrl?: string;
+	cardProps?: AnnouncementCardProps;
 };
 
 export type SidebarItem = {
@@ -98,7 +101,7 @@ const renderSidenavChildren = (
 	);
 };
 
-export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, ...props }: SidenavProps) {
+export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, cardProps, ...props }: SidenavProps) {
 	const Link = useLinkComponent();
 
 	const { name, image, email } = userInfo;
@@ -264,6 +267,11 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 				</SidebarContent>
 
 				<SidebarFooter className="flex-shrink-0">
+					<SidebarGroup>
+						<SidebarGroupContent>
+							<AnnouncementCard {...(cardProps || {})}></AnnouncementCard>
+						</SidebarGroupContent >
+					</SidebarGroup>
 					<SidebarMenu>
 						<SidebarMenuItem>
 							<SidenavFooterMenu {...sidenavProps} />

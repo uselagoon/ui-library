@@ -49,6 +49,15 @@ const mockSignOutFn = async () => {
 	console.log('Sign out clicked');
 };
 
+const cardProps = {
+	brand: 'Lagoon',
+	title: 'Welcome to Lagoon!',
+	description: 'Check out the new features in this release.',
+	buttonText: 'Learn More',
+	buttonUrl: 'https://docs.lagoon.sh/',
+	defaultLogo: true,
+};
+
 const mockSidenavItems = [
 	{
 		section: 'Main',
@@ -121,6 +130,7 @@ export const Default: Story = {
 		sidenavItems: mockSidenavItems,
 		signOutFn: mockSignOutFn,
 		currentPath: '/projects',
+		cardProps: cardProps,
 	},
 	parameters: {
 		design: {
