@@ -2,7 +2,7 @@ import { jsx as o, Fragment as a } from "react/jsx-runtime";
 import { useTheme as m } from "next-themes";
 import r from "./index.es105.js";
 import { useLinkComponent as d } from "./index.es5.js";
-import { useSyncTheme as g } from "./index.es103.js";
+import { useSyncTheme as g } from "./index.es102.js";
 function x() {
   const { theme: n } = m();
   g();
