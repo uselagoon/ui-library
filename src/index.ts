@@ -354,3 +354,5 @@ export { default as TabNavigation } from '@/components/TabNavigation';
 export { default as DateRangePicker } from '@/components/DateRangePicker';
 
 export { default as ThemeSwitch } from '@/components/ThemeSwitch';
+
+export { OverridesSchema, type Overrides } from '@/schemas';

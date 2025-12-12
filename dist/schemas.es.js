@@ -1,5 +1,5 @@
 import { z as o } from "zod";
-const n = o.object({
+const t = o.object({
   title: o.string().optional(),
   description: o.string().optional(),
   ctaText: o.string().optional(),
@@ -7,12 +7,12 @@ const n = o.object({
   openInNewTab: o.boolean().optional(),
   className: o.string().optional(),
   defaultLogo: o.boolean().optional()
-}), a = o.object({
+}).strict(), a = o.object({
   global: o.record(o.string(), o.any()).optional(),
   components: o.object({
-    announcementCard: n.optional()
-  }).optional()
-});
+    announcementCard: t.optional()
+  }).strict().optional()
+}).strict();
 export {
   a as OverridesSchema
 };

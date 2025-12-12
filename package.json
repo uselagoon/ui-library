@@ -7,6 +7,26 @@
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.es.js",
 	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.es.js",
+			"require": "./dist/index.cjs.js"
+		},
+		"./schemas": {
+			"types": "./dist/schemas.d.ts",
+			"import": "./dist/schemas.es.js",
+			"require": "./dist/schemas.cjs.js"
+		},
+		"./dist/*": "./dist/*"
+	},
+	"typesVersions": {
+		"*": {
+			"schemas": [
+				"./dist/schemas.d.ts"
+			]
+		}
+	},
 	"type": "module",
 	"files": [
 		"dist",
@@ -81,7 +101,7 @@
 		"tailwind-merge": "^3.3.0",
 		"tailwindcss": "^4.1.10",
 		"vaul": "^1.1.2",
-		"zod": "^3.25.67"
+		"zod": "^4.1.13"
 	},
 	"peerDependencies": {
 		"react": ">=18.2.0",
