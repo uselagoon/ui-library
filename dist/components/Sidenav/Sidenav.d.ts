@@ -1,5 +1,6 @@
 import { default as React } from 'react';
 import { Sidebar } from '../ui/sidebar';
+import { AnnouncementCardProps } from '../AnnouncementCard/AnnouncementCard';
 type SidebarProps = React.ComponentProps<typeof Sidebar>;
 export type UserInfo = {
     email: string;
@@ -18,6 +19,7 @@ export type SidenavProps = SidebarProps & {
     signOutFn: () => Promise<void>;
     currentPath: string;
     documentationUrl?: string;
+    cardProps?: AnnouncementCardProps;
 };
 export type SidebarItem = {
     title: string;
@@ -31,6 +33,6 @@ export type SidebarSection = {
     section: string;
     sectionItems: SidebarItem[];
 };
-export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, ...props }: SidenavProps): import("react/jsx-dev-runtime").JSX.Element;
+export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, cardProps, ...props }: SidenavProps): import("react/jsx-dev-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=Sidenav.d.ts.map

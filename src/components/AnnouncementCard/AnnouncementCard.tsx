@@ -3,26 +3,26 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { BotMessageSquare, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-type AnnouncementCardProps = {
-	brand?: string;
-	title: string;
-	description: string;
-	ctaText: string;
-	ctaUrl: string;
+export type AnnouncementCardProps = {
+	title?: string;
+	description?: string;
+	ctaText?: string;
+	ctaUrl?: string;
 	openInNewTab?: boolean;
 	onClose?: () => void;
 	className?: string;
+	defaultLogo?: boolean;
 };
 
 export default function AnnouncementCard({
-	brand,
-	title,
-	description,
-	ctaText,
-	ctaUrl,
-	openInNewTab = true,
-	onClose,
-	className,
+ title = "Latest Changes",
+ description,
+ ctaText = "See What's New",
+ ctaUrl = 'https://docs.lagoon.sh/releases/2.29.2/', // hardcoded for now, need a way to make this dynamic in the future
+ openInNewTab = true,
+ onClose,
+ className = '[background:#dae8fd] ![color:#387eda] [box-shadow:var(--badge-ring)]',
+ defaultLogo = false
 }: AnnouncementCardProps) {
 	const [isVisible, setIsVisible] = useState(true);
 
@@ -36,23 +36,23 @@ export default function AnnouncementCard({
 	}
 
 	return (
-		<Card className={cn('m-2 w-auto bg-[#737373]/20 gap-0', className)}>
-			<CardHeader className="relative pb-0">
+		<Card className={cn('m-2 w-auto bg-[#737373]/20 gap-0  !p-4', className)}>
+			<button
+				onClick={handleClose}
+				className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none"
+				aria-label="Close announcement"
+			>
+				<X className="h-4 w-4" />
+			</button>
+			<CardHeader className="relative pb-0 !px-3">
 				<div className="flex flex-row items-center gap-2">
-					<BotMessageSquare className="h-5 w-5 flex-shrink-0" />
-					{brand && <p className="text-sm font-bold leading-[1.4]">{brand}</p>}
+					{defaultLogo && <BotMessageSquare className="h-5 w-5 flex-shrink-0" />}
+					{title && <p className="text-sm font-bold leading-[1.4]">{title}</p>}
 				</div>
-				<button
-					onClick={handleClose}
-					className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none"
-					aria-label="Close announcement"
-				>
-					<X className="h-4 w-4" />
-				</button>
 			</CardHeader>
-			<CardContent className="space-y-2 pt-2">
+			<CardContent className={`!px-3 ${description ? 'pt-2 space-y-2' : ''}`}>
 				<p className="text-sm font-normal leading-[1.4]">
-					{title} {description}
+					{description}
 				</p>
 				<a
 					href={ctaUrl}
