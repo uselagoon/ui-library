@@ -25,9 +25,12 @@ export default defineConfig({
 	},
 	build: {
 		lib: {
-			entry: resolve(__dirname, 'src', 'index.ts'),
+			entry: {
+				index: resolve(__dirname, 'src', 'index.ts'),
+				schemas: resolve(__dirname, 'src', 'schemas.ts'),
+			},
 			formats: ['es', 'cjs'],
-			fileName: (ext) => `index.${ext}.js`,
+			fileName: (format, entryName) => `${entryName}.${format}.js`,
 		},
 
 		rollupOptions: {
@@ -39,6 +42,7 @@ export default defineConfig({
 					/react-dom\/.*/,
 					...Object.keys(peerDependencies),
 					...Object.keys(dependencies),
+					'zod',
 				]),
 			),
 			output: { preserveModules: true, exports: 'named' },
