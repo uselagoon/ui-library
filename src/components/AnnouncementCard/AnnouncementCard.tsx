@@ -15,14 +15,14 @@ export type AnnouncementCardProps = {
 };
 
 export default function AnnouncementCard({
- title = "Latest Changes",
- description,
- ctaText = "See What's New",
- ctaUrl = 'https://docs.lagoon.sh/releases/2.29.2/', // hardcoded for now, need a way to make this dynamic in the future
- openInNewTab = true,
- onClose,
- className = '[background:#dae8fd] ![color:#387eda] [box-shadow:var(--badge-ring)]',
- defaultLogo = false
+	title = 'Latest Changes',
+	description,
+	ctaText = "See What's New",
+	ctaUrl = 'https://docs.lagoon.sh/releases/2.29.2/', // hardcoded for now, need a way to make this dynamic in the future
+	openInNewTab = true,
+	onClose,
+	className = '[background:#dae8fd] ![color:#387eda] [box-shadow:var(--badge-ring)]',
+	defaultLogo = false,
 }: AnnouncementCardProps) {
 	const [isVisible, setIsVisible] = useState(true);
 
@@ -51,9 +51,7 @@ export default function AnnouncementCard({
 				</div>
 			</CardHeader>
 			<CardContent className={`!px-3 ${description ? 'pt-2 space-y-2' : ''}`}>
-				<p className="text-sm font-normal leading-[1.4]">
-					{description}
-				</p>
+				<p className="text-sm font-normal leading-[1.4]">{description}</p>
 				<a
 					href={ctaUrl}
 					target={openInNewTab ? '_blank' : undefined}

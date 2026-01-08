@@ -23,7 +23,17 @@ export default tseslint.config(
 		rules: {
 			...reactHooks.configs.recommended.rules,
 			'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+			'@typescript-eslint/ban-ts-comment': 'off',
+			'@typescript-eslint/no-empty-object-type': 'off',
+			'@typescript-eslint/no-unused-expressions': 'off',
+			'@typescript-eslint/no-explicit-any': 'off',
 		},
 	},
-	storybook.configs['flat/recommended'],
+	...storybook.configs['flat/recommended'],
+	{
+		files: ['**/*.stories.@(ts|tsx|js|jsx|mjs|cjs)'],
+		rules: {
+			'storybook/no-renderer-packages': 'off',
+		},
+	},
 );

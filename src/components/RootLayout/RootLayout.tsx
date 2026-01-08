@@ -37,18 +37,16 @@ export default function RootLayout({
 	currentPath,
 	children,
 	sidenavItems,
-  documentationUrl,
-  cardProps,
+	documentationUrl,
+	cardProps,
 }: RootLayoutProps) {
 	return (
 		<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 			<SidebarProvider defaultOpen>
 				<div className="flex h-screen w-full overflow-hidden">
-					<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath, sidenavItems, documentationUrl, cardProps, }} />
+					<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath, sidenavItems, documentationUrl, cardProps }} />
 					<main className="flex-1 overflow-y-auto ml-0 lg:ml-[290px]">
-						<div className="mx-[16px]">
-							{children}
-						</div>
+						<div className="mx-[16px]">{children}</div>
 					</main>
 				</div>
 			</SidebarProvider>

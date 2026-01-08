@@ -48,18 +48,18 @@ export interface DataTableProps<TData, TValue> {
 }
 
 export default function DataTable<TData, TValue>({
-  columns,
-  data,
-  searchableColumns,
-  searchPlaceholder,
-  onSearch,
-  loading,
-  renderFilters,
-  disableExtra,
-  disablePagination,
-  initialSearch,
-  initialPageSize,
-  onRowClick,
+	columns,
+	data,
+	searchableColumns,
+	searchPlaceholder,
+	onSearch,
+	loading,
+	renderFilters,
+	disableExtra,
+	disablePagination,
+	initialSearch,
+	initialPageSize,
+	onRowClick,
 }: DataTableProps<TData, TValue>) {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
 
@@ -115,9 +115,9 @@ export default function DataTable<TData, TValue>({
 		() =>
 			loading
 				? columns.map((column) => ({
-					...column,
-					cell: () => <Skeleton className="h-6 w-50 rounded-sm" />,
-				}))
+						...column,
+						cell: () => <Skeleton className="h-6 w-50 rounded-sm" />,
+					}))
 				: columns,
 		[loading, columns],
 	);
@@ -299,7 +299,12 @@ export default function DataTable<TData, TValue>({
 								Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount() || 1}
 							</div>
 
-							<Button variant="outline" size="sm" onClick={() => table.firstPage()} disabled={!table.getCanPreviousPage()}>
+							<Button
+								variant="outline"
+								size="sm"
+								onClick={() => table.firstPage()}
+								disabled={!table.getCanPreviousPage()}
+							>
 								{'<<'}
 							</Button>
 
@@ -325,8 +330,8 @@ export default function DataTable<TData, TValue>({
 								onValueChange={handlePageSelect}
 								disabled={loading}
 							/>
-					</>
-				)}
+						</>
+					)}
 				</div>
 			)}
 		</div>

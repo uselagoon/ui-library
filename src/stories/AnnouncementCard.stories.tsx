@@ -13,8 +13,8 @@ const meta: Meta<typeof AnnouncementCard> = {
 				<>
 					<Title />
 					<p>
-						Announcement card with close functionality. Displays promotional content with an icon, description,
-						and call-to-action link.
+						Announcement card with close functionality. Displays promotional content with an icon, description, and
+						call-to-action link.
 					</p>
 					<Primary />
 					<Controls />

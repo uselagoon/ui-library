@@ -24,7 +24,7 @@ type NotificationProps = {
 	| {
 			open?: boolean;
 			onOpenChange?: (open: boolean) => void;
-		}
+	  }
 );
 
 export default function Notification({
@@ -38,9 +38,7 @@ export default function Notification({
 	...rest
 }: NotificationProps) {
 	const alertDialogProps =
-		'open' in rest && 'onOpenChange' in rest
-			? { open: rest.open, onOpenChange: rest.onOpenChange }
-			: {};
+		'open' in rest && 'onOpenChange' in rest ? { open: rest.open, onOpenChange: rest.onOpenChange } : {};
 
 	return (
 		<AlertDialog {...alertDialogProps}>

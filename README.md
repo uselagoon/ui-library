@@ -42,16 +42,13 @@ Using a component from the library:
 import '@uselagoon/ui-library/dist/ui-library.css';
 import { Button, SwitchWithDescription } from '@uselagoon/ui-library';
 
-
 export default () => (
-  <>
-    <Button variant="ghost" disabled>A spooky disabled button</Button>
-    <SwitchWithDescription
-      description="This is a switch description."
-      id="first"
-      label="Switch Text"
-    />
-  </>
+	<>
+		<Button variant="ghost" disabled>
+			A spooky disabled button
+		</Button>
+		<SwitchWithDescription description="This is a switch description." id="first" label="Switch Text" />
+	</>
 );
 ```
 
@@ -67,13 +64,13 @@ To include UI library stories in your project's Storybook, add to your `.storybo
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  // ... your existing config
-  refs: {
-    'ui-library': {
-      title: 'Lagoon UI Library',
-      url: 'https://<branch>--<app-id>.chromatic.com/', // Get URL from Chromatic dashboard
-    },
-  },
+	// ... your existing config
+	refs: {
+		'ui-library': {
+			title: 'Lagoon UI Library',
+			url: 'https://<branch>--<app-id>.chromatic.com/', // Get URL from Chromatic dashboard
+		},
+	},
 };
 
 export default config;
@@ -83,11 +80,11 @@ export default config;
 
 ### Automated Workflows
 
-| Workflow | Trigger | Actions |
-|----------|---------|---------|
-| **CI** | Push to main, PRs | Type check, lint, format check, build, build Storybook |
-| **Publish** | GitHub Release published | All CI checks + publish to GitHub Packages |
-| **Chromatic** | Push to main, PRs | Deploy Storybook to Chromatic (when token configured) |
+| Workflow      | Trigger                  | Actions                                                |
+| ------------- | ------------------------ | ------------------------------------------------------ |
+| **CI**        | Push to main, PRs        | Type check, lint, format check, build, build Storybook |
+| **Publish**   | GitHub Release published | All CI checks + publish to GitHub Packages             |
+| **Chromatic** | Push to main, PRs        | Deploy Storybook to Chromatic (when token configured)  |
 
 ### Publishing a New Version
 
