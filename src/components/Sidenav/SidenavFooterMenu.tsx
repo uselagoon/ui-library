@@ -6,14 +6,25 @@ import { SidebarMenuButton } from '../ui/sidebar';
 import { useLinkComponent } from '@/providers/NextLinkProvider';
 import { AppInfo } from './Sidenav';
 
-type DropdownProps = AppInfo & { signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode, email: string, documentationUrl?: string; };
+type DropdownProps = AppInfo & {
+	signOutFn: () => Promise<void>;
+	avatar: ReactNode;
+	userDisplayName: ReactNode;
+	email: string;
+	documentationUrl?: string;
+};
 
-export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName, documentationUrl = 'https://docs.lagoon.sh/' }: DropdownProps) {
-
+export default function SidenavFooterMenu({
+	email,
+	kcUrl,
+	signOutFn,
+	avatar,
+	userDisplayName,
+	documentationUrl = 'https://docs.lagoon.sh/',
+}: DropdownProps) {
 	const Link = useLinkComponent();
 
 	const renderAvatar = () => {
-
 		if (avatar) {
 			return (
 				<>
@@ -23,7 +34,7 @@ export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, use
 						<span className="truncate font-light text-xs">{email}</span>
 					</div>
 				</>
-			)
+			);
 		}
 	};
 
@@ -32,7 +43,7 @@ export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, use
 			<section className="flex items-center gap-1 pl-1">
 				<DropdownMenuTrigger className="w-full">
 					<SidebarMenuButton size="lg" className="w-full">
-							{renderAvatar()}
+						{renderAvatar()}
 						<ChevronsUpDown className="ml-auto h-4 w-4" />
 					</SidebarMenuButton>
 				</DropdownMenuTrigger>
@@ -46,8 +57,8 @@ export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, use
 				</DropdownMenuItem>
 				<DropdownMenuItem asChild>
 					<Link href={`${kcUrl}/account`} target="_blank" className="cursor-pointer">
-					<UserRoundCog className="mr-2 h-4 w-4" />
-					My Account
+						<UserRoundCog className="mr-2 h-4 w-4" />
+						My Account
 					</Link>
 				</DropdownMenuItem>
 				<DropdownMenuItem asChild onClick={() => signOutFn()}>

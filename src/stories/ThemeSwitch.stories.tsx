@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Story } from '@storybook/addon-docs/blocks';
 
-import ThemeSwitch from "../components/ThemeSwitch"
+import ThemeSwitch from '../components/ThemeSwitch';
 
 const meta: Meta<typeof ThemeSwitch> = {
 	component: ThemeSwitch,

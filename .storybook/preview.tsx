@@ -37,10 +37,10 @@ const preview: Preview = {
 		withNextLink,
 		(Story) => (
 			<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-		<Story />
-		</ThemeProvider>
-),
-],
+				<Story />
+			</ThemeProvider>
+		),
+	],
 };
 
 export default preview;

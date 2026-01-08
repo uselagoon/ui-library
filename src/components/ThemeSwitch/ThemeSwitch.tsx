@@ -15,13 +15,13 @@ export default function ThemeSwitch() {
 
 	const darkSwitcher = (
 		<button onClick={() => handleToggleTheme('light')}>
-			<Sun className="mr-2 h-5 w-5"/>
+			<Sun className="mr-2 h-5 w-5" />
 		</button>
 	);
 
 	const lightSwitcher = (
 		<button onClick={() => handleToggleTheme('dark')}>
-			<Moon className="mr-2 h-5 w-5"/>
+			<Moon className="mr-2 h-5 w-5" />
 		</button>
 	);
 	const renderThemeSwitcher = () => {

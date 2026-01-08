@@ -101,7 +101,16 @@ const renderSidenavChildren = (
 	);
 };
 
-export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, cardProps, ...props }: SidenavProps) {
+export default function Sidenav({
+	userInfo,
+	appInfo,
+	currentPath,
+	sidenavItems,
+	signOutFn,
+	documentationUrl,
+	cardProps,
+	...props
+}: SidenavProps) {
 	const Link = useLinkComponent();
 
 	const { name, image, email } = userInfo;
@@ -270,7 +279,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 					<SidebarGroup>
 						<SidebarGroupContent>
 							<AnnouncementCard {...(cardProps || {})}></AnnouncementCard>
-						</SidebarGroupContent >
+						</SidebarGroupContent>
 					</SidebarGroup>
 					<SidebarMenu>
 						<SidebarMenuItem>
