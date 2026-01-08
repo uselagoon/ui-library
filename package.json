@@ -40,9 +40,13 @@
 		"url": "https://github.com/uselagoon/ui-library/issues"
 	},
 	"homepage": "https://github.com/uselagoon/ui-library#readme",
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	},
 	"scripts": {
 		"build": "npm run bundle && npm run copy",
-		"bundle": "rm -rf ./dist && tsc -b && vite build",
+		"bundle": "npm run typecheck && rm -rf ./dist && vite build",
+		"typecheck": "tsc --project tsconfig.app.json --noEmit",
 		"lint": "eslint .",
 		"preview": "vite preview",
 		"copy": "cp package.json dist/",
