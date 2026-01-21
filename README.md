@@ -2,6 +2,34 @@
 
 A component library based on [Shadcn](https://ui.shadcn.com/) and [tailwind](https://tailwindcss.com/) for all things lagoon related:
 
+## ChangeLog Component
+
+The ChangeLog component supports dynamic content updates via a GitHub action workflow. This allows for updates via Pull Requests without needing a full release of the ui-library.
+
+### Component Usage
+
+Use `ChangeLogContainer` to fetch data at runtime:
+
+```tsx
+import { ChangeLogContainer } from '@uselagoon/ui-library';
+
+export default function ChangeLog() {
+  return (
+    <ChangeLogContainer 
+      sourceData="https://raw.githubusercontent.com/your-org/main-app/main/public/data/changelog.json"
+      refetchInterval={600000}
+    />
+  );
+}
+```
+
+### Content Update Workflow
+
+1. **Edit Data**: Update the `src/data/changelog.json` file on a new branch starting with `changelog/` (e.g., `changelog/xxxxx-update`).
+2. **Auto-PR**: On branch push, a GitHub Action (`.github/workflows/changelog-auto-pr.yml`) will automatically validate the JSON and create a PR.
+3. **Review**: The PR runs validation checks (`.github/workflows/validate-changelog.yml`) to ensure the data & types are valid.
+4. **Merge**: Once merged, the data is available via the raw GitHub URL.
+
 ## Installation 💾
 
 Install it in a React project with a single npm/yarn command:

@@ -1,0 +1,1 @@
+{"version":3,"file":"ChangeLog.d.ts","sourceRoot":"","sources":["../../../src/components/ChangeLog/ChangeLog.tsx"],"names":[],"mappings":"AAAA,OAAO,EAAE,kBAAkB,EAA4B,MAAM,iBAAiB,CAAC;AAI/E,KAAK,cAAc,GAAG;IACrB,cAAc,CAAC,EAAE,kBAAkB,EAAE,CAAC;CACtC,CAAA;AAED,iBAAS,SAAS,CAAC,EAAE,cAAmB,EAAE,EAAE,cAAc,+CAgGzD;AAED,eAAe,SAAS,CAAC"}

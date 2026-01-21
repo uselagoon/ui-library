@@ -1,14 +1,5 @@
 import { z } from 'zod';
-
-const AnnouncementCardPropsSchema = z.object({
-	title: z.string().optional(),
-	description: z.string().optional(),
-	ctaText: z.string().optional(),
-	ctaUrl: z.string().optional(),
-	openInNewTab: z.boolean().optional(),
-	className: z.string().optional(),
-	defaultLogo: z.boolean().optional(),
-}).strict();
+import { AnnouncementCardPropsSchema } from './schemas/announcementCard';
 
 const DocumentationURLSchema = z.url().optional();
 
@@ -35,7 +26,7 @@ export function validateOverrides(data: unknown): {
 	valid: Overrides;
 	errors: Array<{ key: string; message: string }>;
 } {
-	const result: Overrides = {global: {}, components: {}};
+	const result: Overrides = { global: {}, components: {} };
 	const errors: Array<{ key: string; message: string }> = [];
 
 	if (typeof data !== 'object' || data === null) {
@@ -49,7 +40,7 @@ export function validateOverrides(data: unknown): {
 		for (const [name, data] of Object.entries(rawData.global)) {
 			const schema = globalSchema[name as keyof typeof globalSchema];
 			if (!schema) {
-				errors.push({key: `Global.${name}`, message: 'Unknown global key not compatible with overrides'});
+				errors.push({ key: `Global.${name}`, message: 'Unknown global key not compatible with overrides' });
 				continue;
 			}
 
@@ -58,7 +49,7 @@ export function validateOverrides(data: unknown): {
 			} catch (error) {
 				if (error instanceof z.ZodError) {
 					error.issues.forEach(err => {
-						errors.push({key: `Global.${name}`, message: err.message});
+						errors.push({ key: `Global.${name}`, message: err.message });
 					});
 				}
 			}
@@ -80,12 +71,12 @@ export function validateOverrides(data: unknown): {
 			} catch (error) {
 				if (error instanceof z.ZodError) {
 					error.issues.forEach(issue => {
-						errors.push({ key: `Components.${name}`, message: issue.message});
+						errors.push({ key: `Components.${name}`, message: issue.message });
 					});
 				}
 			}
 		}
-		}
+	}
 
 	return { valid: result, errors };
 }
