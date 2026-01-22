@@ -1,6 +1,6 @@
 'use client';
 import React, { ReactNode } from 'react';
-import { ChevronsUpDown, LifeBuoy, LogOut, UserRoundCog } from 'lucide-react';
+import { ChevronsUpDown, LifeBuoy, LogOut, ScrollText, UserRoundCog } from 'lucide-react';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '../ui/dropdown-menu';
 import { SidebarMenuButton } from '../ui/sidebar';
 import { useLinkComponent } from '@/providers/NextLinkProvider';
@@ -32,7 +32,7 @@ export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, use
 			<section className="flex items-center gap-1 pl-1">
 				<DropdownMenuTrigger className="w-full">
 					<SidebarMenuButton size="lg" className="w-full">
-							{renderAvatar()}
+						{renderAvatar()}
 						<ChevronsUpDown className="ml-auto h-4 w-4" />
 					</SidebarMenuButton>
 				</DropdownMenuTrigger>
@@ -45,9 +45,15 @@ export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, use
 					</Link>
 				</DropdownMenuItem>
 				<DropdownMenuItem asChild>
+					<Link href="/changelog" className="cursor-pointer">
+						<ScrollText className="mr-2 h-4 w-4" />
+						Changelog
+					</Link>
+				</DropdownMenuItem>
+				<DropdownMenuItem asChild>
 					<Link href={`${kcUrl}/account`} target="_blank" className="cursor-pointer">
-					<UserRoundCog className="mr-2 h-4 w-4" />
-					My Account
+						<UserRoundCog className="mr-2 h-4 w-4" />
+						My Account
 					</Link>
 				</DropdownMenuItem>
 				<DropdownMenuItem asChild onClick={() => signOutFn()}>
