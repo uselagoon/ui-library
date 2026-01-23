@@ -51,3 +51,27 @@ function getLuminance(r: number, g: number, b: number) {
 	// calculate the luminance. reference: https://www.w3.org/WAI/GL/wiki/Relative_luminance
 	return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
 }
+
+const daysToMilliseconds = (days: number) => days * 24 * 60 * 60 * 1000;
+
+export const setLocalStorage = (key: string, value: string | boolean, expiryDays: number) => {
+	const now = new Date();
+	const lsItem = {
+		value: value,
+		expiry: now.getTime() + daysToMilliseconds(expiryDays),
+	};
+	localStorage.setItem(key, JSON.stringify(lsItem));
+};
+
+export const getLocalStorage = (key: string) => {
+	const lsItem = localStorage.getItem(key);
+	if (!lsItem) {
+		return null;
+	}
+	const result = JSON.parse(lsItem);
+	if (result.expiry < Date.now()) {
+		localStorage.removeItem(key);
+		return null;
+	}
+	return result.value;
+};

@@ -4,4 +4,6 @@ export declare const genAvatarBackground: (firstLetter: string, secondLetter: st
     bgColor: string;
     textColor: string;
 };
+export declare const setLocalStorage: (key: string, value: string | boolean, expiryDays: number) => void;
+export declare const getLocalStorage: (key: string) => any;
 //# sourceMappingURL=helpers.d.ts.map
