@@ -3,7 +3,7 @@ import { ChangeLogItemProps } from "@/components/ChangeLog/ChangeLogItem";
 export const sampleActivityData: ChangeLogItemProps[] = [
     {
         "id": "1",
-        "date": "OCTOBER 15",
+        "date": "JANUARY 23 2026",
         "title": "New Autoscaling Features for Production Workloads",
         "description": "We've enhanced our autoscaling capabilities with predictive scaling based on historical traffic patterns. This allows your applications to scale proactively before traffic spikes occur, ensuring consistent performance during high-demand periods.",
         "tags": [
