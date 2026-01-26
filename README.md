@@ -9,10 +9,8 @@ A component library based on [Shadcn](https://ui.shadcn.com/) and [Tailwind](htt
 Create or update `.npmrc` in your project root:
 
 ```
-@uselagoon:registry=https://npm.pkg.github.com
+@uselagoon:registry=https://registry.npmjs.org
 ```
-
-You may need to authenticate with GitHub Packages. See [GitHub Packages authentication](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages).
 
 ### 2. Install the package
 
@@ -86,7 +84,7 @@ export default config;
 | Workflow | Trigger | Actions |
 |----------|---------|---------|
 | **CI** | Push to main, PRs | Type check, lint, format check, build, build Storybook |
-| **Publish** | GitHub Release published | All CI checks + publish to GitHub Packages |
+| **Publish** | GitHub Release published | All CI checks + publish to NPM |
 | **Chromatic** | Push to main, PRs | Deploy Storybook to Chromatic (when token configured) |
 
 ### Publishing a New Version
@@ -94,7 +92,7 @@ export default config;
 1. Update version in `package.json`
 2. Commit and push to main
 3. Create a GitHub Release with a new tag (e.g., `v2.1.0`)
-4. The publish workflow automatically builds and publishes to GitHub Packages
+4. The publish workflow automatically builds and publishes to NPM
 
 ## Development guide 🏗️
 

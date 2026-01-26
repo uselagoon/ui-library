@@ -41,7 +41,7 @@
 	},
 	"homepage": "https://github.com/uselagoon/ui-library#readme",
 	"publishConfig": {
-		"registry": "https://npm.pkg.github.com"
+		"registry": "https://registry.npmjs.org"
 	},
 	"scripts": {
 		"build": "npm run bundle && npm run copy",
