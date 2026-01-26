@@ -2,6 +2,27 @@
 
 A component library based on [Shadcn](https://ui.shadcn.com/) and [tailwind](https://tailwindcss.com/) for all things lagoon related:
 
+## ChangeLog Component
+
+The ChangeLog component supports dynamic content updates via a GitHub action workflow. This allows for updates via Pull Requests without needing a full release of the ui-library.
+
+### Component Usage
+
+Use `ChangeLogContainer` to fetch data at runtime:
+
+```tsx
+import { ChangeLogContainer } from '@uselagoon/ui-library';
+
+export default function ChangeLog() {
+  return (
+    <ChangeLogContainer 
+      sourceData="https://raw.githubusercontent.com/your-org/main-app/main/public/data/changelog.json"
+      refetchInterval={600000}
+    />
+  );
+}
+```
+
 ## Installation 💾
 
 Install it in a React project with a single npm/yarn command:
