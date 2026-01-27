@@ -29,8 +29,7 @@
 	},
 	"type": "module",
 	"files": [
-		"dist",
-		"postinstall.cjs"
+		"dist"
 	],
 	"repository": {
 		"type": "git",
@@ -50,7 +49,6 @@
 		"lint": "eslint .",
 		"preview": "vite preview",
 		"copy": "cp package.json dist/",
-		"postinstall": "node postinstall.cjs",
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
 		"storybook": "storybook dev -p 6006",
