@@ -12,6 +12,7 @@ export declare const OverridesSchema: z.ZodObject<{
             openInNewTab: z.ZodOptional<z.ZodBoolean>;
             className: z.ZodOptional<z.ZodString>;
             defaultLogo: z.ZodOptional<z.ZodBoolean>;
+            disabled: z.ZodOptional<z.ZodBoolean>;
         }, z.core.$strict>>;
     }, z.core.$strict>>;
 }, z.core.$strict>;

@@ -2,21 +2,21 @@
 
 A component library based on [Shadcn](https://ui.shadcn.com/) and [Tailwind](https://tailwindcss.com/) for all things Lagoon related.
 
-## ChangeLog Component
+## ChangeFeed Component
 
-The ChangeLog component supports dynamic content updates via a GitHub action workflow. This allows for updates via Pull Requests without needing a full release of the ui-library.
+The ChangeFeed component supports dynamic content updates via a GitHub action workflow. This allows for updates via Pull Requests without needing a full release of the ui-library.
 
 ### Component Usage
 
-Use `ChangeLogContainer` to fetch data at runtime:
+Use `ChangeFeedContainer` to fetch data at runtime:
 
 ```tsx
-import { ChangeLogContainer } from '@uselagoon/ui-library';
+import { ChangeFeedContainer } from '@uselagoon/ui-library';
 
-export default function ChangeLog() {
+export default function ChangeFeed() {
   return (
-    <ChangeLogContainer 
-      sourceData="https://raw.githubusercontent.com/your-org/main-app/main/public/data/changelog.json"
+    <ChangeFeedContainer 
+      sourceData="https://raw.githubusercontent.com/your-org/main-app/main/public/data/changefeed.json"
       refetchInterval={600000}
     />
   );

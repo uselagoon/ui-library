@@ -8,4 +8,5 @@ export const AnnouncementCardPropsSchema = z.object({
     openInNewTab: z.boolean().optional(),
     className: z.string().optional(),
     defaultLogo: z.boolean().optional(),
+    disabled: z.boolean().optional(),
 }).strict();

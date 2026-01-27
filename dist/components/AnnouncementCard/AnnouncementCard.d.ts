@@ -7,7 +7,8 @@ export type AnnouncementCardProps = {
     onClose?: () => void;
     className?: string;
     defaultLogo?: boolean;
+    disabled?: boolean;
 };
 export default function AnnouncementCard({ title, description, ctaText, ctaUrl, // hardcoded for now, need a way to make this dynamic in the future
-openInNewTab, onClose, className, defaultLogo }: AnnouncementCardProps): import("react/jsx-dev-runtime").JSX.Element | null;
+openInNewTab, onClose, className, defaultLogo, disabled }: AnnouncementCardProps): import("react/jsx-dev-runtime").JSX.Element | null;
 //# sourceMappingURL=AnnouncementCard.d.ts.map

@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import ChangeLogContainer from '../components/ChangeLog';
-import { sampleActivityData } from '../components/ChangeLog/sampleData';
+import ChangeFeedContainer from '../components/ChangeFeed';
+import { sampleActivityData } from '../components/ChangeFeed/sampleData';
 
-const meta: Meta<typeof ChangeLogContainer> = {
-    component: ChangeLogContainer,
-    title: 'Components/ChangeLog',
+const meta: Meta<typeof ChangeFeedContainer> = {
+    component: ChangeFeedContainer,
+    title: 'Components/ChangeFeed',
     tags: ['autodocs'],
 };
 
-type Story = StoryObj<typeof ChangeLogContainer>;
+type Story = StoryObj<typeof ChangeFeedContainer>;
 
 export const Default: Story = {
     args: {

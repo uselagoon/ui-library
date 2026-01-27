@@ -1,12 +1,12 @@
 import { z } from 'zod';
-export declare const ChangeLogItemSchema: z.ZodObject<{
+export declare const ChangeFeedItemSchema: z.ZodObject<{
     id: z.ZodString;
     date: z.ZodString;
     title: z.ZodString;
     description: z.ZodString;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
 }, z.core.$strip>;
-export declare const ChangeLogDataSchema: z.ZodObject<{
+export declare const ChangeFeedDataSchema: z.ZodObject<{
     changes: z.ZodArray<z.ZodObject<{
         id: z.ZodString;
         date: z.ZodString;
@@ -15,6 +15,6 @@ export declare const ChangeLogDataSchema: z.ZodObject<{
         tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type ChangeLogItemType = z.infer<typeof ChangeLogItemSchema>;
-export type ChangeLogDataType = z.infer<typeof ChangeLogDataSchema>;
-//# sourceMappingURL=changeLog.d.ts.map
+export type ChangeFeedItemType = z.infer<typeof ChangeFeedItemSchema>;
+export type ChangeFeedDataType = z.infer<typeof ChangeFeedDataSchema>;
+//# sourceMappingURL=changeFeed.d.ts.map
