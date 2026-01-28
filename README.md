@@ -1,33 +1,53 @@
-# ui-library
+# @uselagoon/ui-library
 
-A component library based on [Shadcn](https://ui.shadcn.com/) and [tailwind](https://tailwindcss.com/) for all things lagoon related:
+A component library based on [Shadcn](https://ui.shadcn.com/) and [Tailwind](https://tailwindcss.com/) for all things Lagoon related.
+
+## ChangeLog Component
+
+The ChangeLog component supports dynamic content updates via a GitHub action workflow. This allows for updates via Pull Requests without needing a full release of the ui-library.
+
+### Component Usage
+
+Use `ChangeLogContainer` to fetch data at runtime:
+
+```tsx
+import { ChangeLogContainer } from '@uselagoon/ui-library';
+
+export default function ChangeLog() {
+  return (
+    <ChangeLogContainer 
+      sourceData="https://raw.githubusercontent.com/your-org/main-app/main/public/data/changelog.json"
+      refetchInterval={600000}
+    />
+  );
+}
+```
 
 ## Installation 💾
 
-Install it in a React project with a single npm/yarn command:
+### 1. Configure npm registry
+
+Create or update `.npmrc` in your project root:
+
+```
+@uselagoon:registry=https://registry.npmjs.org
+```
+
+### 2. Install the package
 
 ```bash
-npm install github:uselagoon/ui-library#main tailwindcss @tailwindcss/postcss postcss
+npm install @uselagoon/ui-library tailwindcss @tailwindcss/postcss postcss
 ```
+
+Or with yarn:
 
 ```bash
-yarn add github:uselagoon/ui-library#main tailwindcss @tailwindcss/postcss postcss
+yarn add @uselagoon/ui-library tailwindcss @tailwindcss/postcss postcss
 ```
 
-Alternatively, add the following to your `package.json` and run `npm i` / `yarn` command:
+### 3. Import styles
 
-```json
-   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "@tailwindcss/postcss": "^4.1.8",
-    "tailwindcss": "^4.1.10",
-    "ui-library": "github:uselagoon/ui-library#main",
-  }
-
-```
-
-Make sure to add generated dist styles from the ui-library like so, preferably in the root layout of your project:
+Add the UI library styles to your root layout:
 
 ```tsx
 import '@uselagoon/ui-library/dist/ui-library.css';
@@ -51,40 +71,59 @@ export default () => (
       label="Switch Text"
     />
   </>
+);
 ```
 
-## Vite config ⚙︎
+## Storybook 🎨
 
-The ui-library is bootstrapped with Vite and TS. To modify the configuration, edit `vite.config.ts` in the root directory; To modify TypeScript rules, refer to `tsconfig.app.json`
+View the component documentation on Chromatic (URL available after setup).
 
-## Linting and bundling
+### Storybook Composition
 
-### Linting 🧶
+To include UI library stories in your project's Storybook, add to your `.storybook/main.ts`:
 
-The linter is configured for both JS and TypeScript files. It runs during the build step but can also be ran during development by `npm run lint`.
+```typescript
+import type { StorybookConfig } from '@storybook/react-vite';
 
-To adhere to formatting rules, run `npm run format`.
+const config: StorybookConfig = {
+  // ... your existing config
+  refs: {
+    'ui-library': {
+      title: 'Lagoon UI Library',
+      url: 'https://<branch>--<app-id>.chromatic.com/', // Get URL from Chromatic dashboard
+    },
+  },
+};
 
-To configure the linter config, refer to eslint.config.js at the root of the project.
+export default config;
+```
 
-### Bundling 📦
+## CI/CD
 
-After making changes to the source files, make sure to run `npm run bundle` command which empties the dist folder and generates updated code for components.
+### Automated Workflows
 
-## Viewing storybook 👀
+| Workflow | Trigger | Actions |
+|----------|---------|---------|
+| **CI** | Push to main, PRs | Type check, lint, format check, build, build Storybook |
+| **Publish** | GitHub Release published | All CI checks + publish to NPM |
+| **Chromatic** | Push to main, PRs | Deploy Storybook to Chromatic (when token configured) |
 
-- Clone this repo
-- Run `npm i && npm run storybook`
-- Visit `http://localhost:6006/`
+### Publishing a New Version
+
+1. Update version in `package.json`
+2. Commit and push to main
+3. Create a GitHub Release with a new tag (e.g., `v2.1.0`)
+4. The publish workflow automatically builds and publishes to NPM
 
 ## Development guide 🏗️
 
 Clone the repo locally:
 
 ```bash
-  git clone https://github.com/uselagoon/ui-library .
-  npm install
-  npm run storybook
+git clone https://github.com/uselagoon/ui-library.git
+cd ui-library
+npm install
+npm run storybook
 ```
 
 It is recommended to build components in isolation with the help of storybook (currently V 9.0).
@@ -106,17 +145,19 @@ The project structure is as follows:
 
 Given that there's a storybook instance running, navigate to the `src` directory and modify/create new components with their respective `stories.tsx` files.
 
-To add a new component from Shadcn, refer to this [guide](https://ui.shadcn.com/docs/cli)
-
 Modify and customize anything with Tailwind and/or custom css files if needed.
 
-Then run the lint and format scripts, then ultimately, the bundle script and you're ready to go!
+Then run the lint and format scripts, and you're ready to go!
 
 ```bash
-npm run lint
-npm run format
-npm run bundle
+npm run typecheck    # TypeScript check
+npm run lint         # ESLint
+npm run format       # Prettier formatting
 ```
+
+### Adding Shadcn Components
+
+To add a new component from Shadcn, refer to the [Shadcn CLI guide](https://ui.shadcn.com/docs/cli).
 
 ## Contributing 🤝
 

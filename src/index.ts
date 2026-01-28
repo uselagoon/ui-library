@@ -356,3 +356,7 @@ export { default as DateRangePicker } from '@/components/DateRangePicker';
 export { default as ThemeSwitch } from '@/components/ThemeSwitch';
 
 export { OverridesSchema, type Overrides } from '@/schemas';
+
+export { default as ChangeLogContainer } from '@/components/ChangeLog';
+
+export { ChangeLogDataSchema, ChangeLogItemSchema, type ChangeLogItemType, type ChangeLogDataType } from '@/schemas/changeLog';
