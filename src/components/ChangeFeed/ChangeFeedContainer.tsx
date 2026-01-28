@@ -14,7 +14,7 @@ export type ChangeFeedContainerProps = {
 };
 
 export default function ChangeFeedContainer({
-    sourceData,
+    sourceData = 'https://raw.githubusercontent.com/amazeeio/lagoon-changefeed-data/refs/heads/main/changefeed.json',
     refetchInterval = 600000,
     fallbackData = [],
     onError,
