@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { AnnouncementCardPropsSchema } from './schemas/announcementCard';
+import { SidenavFooterMenuSchema } from './schemas/sidenavFooterMenu';
 
 const DocumentationURLSchema = z.url().optional();
 
@@ -9,6 +10,7 @@ const globalSchema = {
 
 const componentSchemas = {
 	announcementCard: AnnouncementCardPropsSchema,
+	sidenavFooterMenu: SidenavFooterMenuSchema,
 };
 
 export const OverridesSchema = z.object({
@@ -17,6 +19,7 @@ export const OverridesSchema = z.object({
 	}).strict().optional(),
 	components: z.object({
 		announcementCard: AnnouncementCardPropsSchema.optional(),
+		sidenavFooterMenu: SidenavFooterMenuSchema.optional(),
 	}).strict().optional(),
 }).strict();
 

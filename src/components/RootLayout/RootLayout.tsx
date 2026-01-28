@@ -24,6 +24,7 @@ interface RootLayoutProps {
 	currentPath: string;
 	documentationUrl?: string;
 	cardProps?: AnnouncementCardProps;
+	disableAccountLink?: boolean;
 }
 
 //**
@@ -37,14 +38,15 @@ export default function RootLayout({
 	currentPath,
 	children,
 	sidenavItems,
-  documentationUrl,
-  cardProps,
+  	documentationUrl,
+  	cardProps,
+	disableAccountLink,
 }: RootLayoutProps) {
 	return (
 		<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 			<SidebarProvider defaultOpen>
 				<div className="flex h-screen w-full overflow-hidden">
-					<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath, sidenavItems, documentationUrl, cardProps, }} />
+					<Sidenav {...{ userInfo, appInfo, signOutFn, currentPath, sidenavItems, documentationUrl, cardProps, disableAccountLink }} />
 					<main className="flex-1 overflow-y-auto ml-0 lg:ml-[290px]">
 						<div className="mx-[16px]">
 							{children}

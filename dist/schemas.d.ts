@@ -13,6 +13,11 @@ export declare const OverridesSchema: z.ZodObject<{
             className: z.ZodOptional<z.ZodString>;
             defaultLogo: z.ZodOptional<z.ZodBoolean>;
         }, z.core.$strict>>;
+        sidenavFooterMenu: z.ZodOptional<z.ZodObject<{
+            email: z.ZodOptional<z.ZodEmail>;
+            documentationUrl: z.ZodOptional<z.ZodURL>;
+            disableAccountLink: z.ZodOptional<z.ZodBoolean>;
+        }, z.core.$strict>>;
     }, z.core.$strict>>;
 }, z.core.$strict>;
 export type Overrides = z.infer<typeof OverridesSchema>;
