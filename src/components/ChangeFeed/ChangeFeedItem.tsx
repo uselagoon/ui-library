@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import Accordion from "@/components/Accordion";
 import { useMemo } from "react";
 
-export type ChangeLogItemProps = {
+export type ChangeFeedItemProps = {
 	id: string;
 	date: string;
 	title: string;
@@ -10,7 +10,7 @@ export type ChangeLogItemProps = {
 	tags?: string[];
 }
 
-export default function ChangeLogItem({ date, id, tags, description, title }: ChangeLogItemProps) {
+export default function ChangeFeedItem({ date, id, tags, description, title }: ChangeFeedItemProps) {
 
 	const renderTags = useMemo(() => {
 		if (!tags || tags.length === 0) {

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { AnnouncementCardPropsSchema } from './schemas/announcementCard';
+import { ChangeFeedContainerSchema } from './schemas/changeFeed';
 
 const DocumentationURLSchema = z.url().optional();
 
@@ -9,7 +10,9 @@ const globalSchema = {
 
 const componentSchemas = {
 	announcementCard: AnnouncementCardPropsSchema,
+	changeFeed: ChangeFeedContainerSchema,
 };
+
 
 export const OverridesSchema = z.object({
 	global: z.object({
@@ -17,6 +20,7 @@ export const OverridesSchema = z.object({
 	}).strict().optional(),
 	components: z.object({
 		announcementCard: AnnouncementCardPropsSchema.optional(),
+		changeFeed: ChangeFeedContainerSchema.optional(),
 	}).strict().optional(),
 }).strict();
 

@@ -45,9 +45,9 @@ export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, use
 					</Link>
 				</DropdownMenuItem>
 				<DropdownMenuItem asChild>
-					<Link href="/changelog" className="cursor-pointer">
+					<Link href="/changefeed" className="cursor-pointer">
 						<ScrollText className="mr-2 h-4 w-4" />
-						Changelog
+						Change Feed
 					</Link>
 				</DropdownMenuItem>
 				<DropdownMenuItem asChild>

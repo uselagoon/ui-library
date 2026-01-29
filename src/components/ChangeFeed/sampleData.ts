@@ -1,6 +1,6 @@
-import { ChangeLogItemProps } from "@/components/ChangeLog/ChangeLogItem";
+import { ChangeFeedItemProps } from "@/components/ChangeFeed/ChangeFeedItem";
 
-export const sampleActivityData: ChangeLogItemProps[] = [
+export const sampleActivityData: ChangeFeedItemProps[] = [
     {
         "id": "1",
         "date": "JANUARY 23 2026",

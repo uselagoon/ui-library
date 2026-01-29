@@ -1,31 +1,38 @@
-import { ChangeLogItemProps, default as ChangeLogItem } from './ChangeLogItem';
+import { ChangeFeedItemProps, default as ChangeFeedItem } from './ChangeFeedItem';
 import Checkbox from "@/components/Checkbox";
 import { useState, useMemo, useRef, useEffect } from "react";
 
-type ChangeLogProps = {
-	changeLogItems?: ChangeLogItemProps[];
+type ChangeFeedProps = {
+	changeFeedItems?: ChangeFeedItemProps[];
 }
 
-function ChangeLog({ changeLogItems = [] }: ChangeLogProps) {
-	const [filteredItems, setFilteredItems] = useState(changeLogItems);
+function ChangeFeed({ changeFeedItems = [] }: ChangeFeedProps) {
+	const [filteredItems, setFilteredItems] = useState(changeFeedItems);
 	const [activeFilters, setActiveFilters] = useState<Set<string>>(new Set(['All']));
 	const [visibleCount, setVisibleCount] = useState(10);
 	const observerTarget = useRef<HTMLDivElement>(null);
 
 	if (!filteredItems || filteredItems.length === 0) {
-		return <div>No activity to display.</div>;
+		return (
+			<div className="flex items-center justify-center min-h-[400px]">
+				<div className="border rounded-lg p-8 max-w-md text-center">
+					<p className="text-lg font-medium mb-2">No activity to display</p>
+					<p className="text-sm">Check back later for updates and new features.</p>
+				</div>
+			</div>
+		);
 	}
 
 	const filters = useMemo(() => {
 		const filterSet = new Set<string>(['All']);
-		changeLogItems?.forEach(activityData => {
+		changeFeedItems?.forEach(activityData => {
 			activityData.tags?.forEach(tag => {
 				filterSet.add(tag);
 			});
 		});
 
 		return Array.from(filterSet);
-	}, [changeLogItems]);
+	}, [changeFeedItems]);
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
@@ -61,7 +68,7 @@ function ChangeLog({ changeLogItems = [] }: ChangeLogProps) {
 		if (filter === 'All') {
 			if (checked) {
 				setActiveFilters(new Set(['All']));
-				setFilteredItems(changeLogItems);
+				setFilteredItems(changeFeedItems);
 			}
 			return;
 		}
@@ -75,12 +82,12 @@ function ChangeLog({ changeLogItems = [] }: ChangeLogProps) {
 
 		if (newActiveFilters.size === 0) {
 			setActiveFilters(new Set(['All']));
-			setFilteredItems(changeLogItems);
+			setFilteredItems(changeFeedItems);
 			return;
 		}
 
 		setActiveFilters(newActiveFilters);
-		const newFilteredItems = changeLogItems?.filter(item => item.tags?.some(tag => newActiveFilters.has(tag)));
+		const newFilteredItems = changeFeedItems?.filter(item => item.tags?.some(tag => newActiveFilters.has(tag)));
 		setFilteredItems(newFilteredItems);
 	}
 
@@ -90,7 +97,7 @@ function ChangeLog({ changeLogItems = [] }: ChangeLogProps) {
 		<div className="flex gap-8 justify-between">
 			<div className="flex-1">
 				{visibleItems.map(activityData => (
-					<ChangeLogItem key={activityData.id} {...activityData} />
+					<ChangeFeedItem key={activityData.id} {...activityData} />
 				))}
 				{visibleCount < filteredItems.length && (
 					<div ref={observerTarget} className="h-4 w-full" />
@@ -104,4 +111,4 @@ function ChangeLog({ changeLogItems = [] }: ChangeLogProps) {
 	)
 }
 
-export default ChangeLog;
+export default ChangeFeed;

@@ -1,26 +1,26 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import ChangeLog from './ChangeLog';
-import { ChangeLogItemProps } from './ChangeLogItem';
-import { ChangeLogDataSchema } from '@/schemas/changeLog';
+import ChangeFeed from './ChangeFeed';
+import { ChangeFeedItemProps } from './ChangeFeedItem';
+import { ChangeFeedDataSchema } from '@/schemas/changeFeed';
 
-export type ChangeLogContainerProps = {
+export type ChangeFeedContainerProps = {
     sourceData?: string;
     refetchInterval?: number;
-    fallbackData?: ChangeLogItemProps[];
+    fallbackData?: ChangeFeedItemProps[];
     onError?: (error: Error) => void;
     showLoading?: boolean;
 };
 
-export default function ChangeLogContainer({
-    sourceData,
+export default function ChangeFeedContainer({
+    sourceData = 'https://raw.githubusercontent.com/amazeeio/lagoon-changefeed-data/refs/heads/main/changefeed.json',
     refetchInterval = 600000,
     fallbackData = [],
     onError,
     showLoading = true,
-}: ChangeLogContainerProps) {
-    const [data, setData] = useState<ChangeLogItemProps[]>(fallbackData);
+}: ChangeFeedContainerProps) {
+    const [data, setData] = useState<ChangeFeedItemProps[]>(fallbackData);
     const [isLoading, setIsLoading] = useState(!!sourceData);
     const [error, setError] = useState<Error | null>(null);
 
@@ -40,16 +40,16 @@ export default function ChangeLogContainer({
                 });
 
                 if (!response.ok) {
-                    throw new Error(`Failed to fetch changelog data: ${response.statusText}`);
+                    throw new Error(`Failed to fetch change feed data: ${response.statusText}`);
                 }
 
                 const json = await response.json();
 
-                const validated = ChangeLogDataSchema.safeParse(json);
+                const validated = ChangeFeedDataSchema.safeParse(json);
 
                 if (!validated.success) {
-                    console.error('Changelog validation failed:', validated.error.format());
-                    throw new Error('Invalid changelog data format');
+                    console.error('Changefeed validation failed:', validated.error.format());
+                    throw new Error('Invalid changefeed data format');
                 }
 
                 setData(validated.data.changes);
@@ -74,7 +74,7 @@ export default function ChangeLogContainer({
     if (isLoading && showLoading) {
         return (
             <div className="flex items-center justify-center p-8">
-                <div className="text-gray-500">Loading changelog...</div>
+                <div className="text-gray-500">Loading changefeed...</div>
             </div>
         );
     }
@@ -83,11 +83,11 @@ export default function ChangeLogContainer({
         return (
             <div className="flex items-center justify-center p-8">
                 <div className="text-red-500">
-                    Failed to load changelog. {error.message}
+                    Failed to load changefeed. {error.message}
                 </div>
             </div>
         );
     }
 
-    return <ChangeLog changeLogItems={data} />;
+    return <ChangeFeed changeFeedItems={data} />;
 }
