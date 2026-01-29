@@ -6,9 +6,9 @@ import { SidebarMenuButton } from '../ui/sidebar';
 import { useLinkComponent } from '@/providers/NextLinkProvider';
 import { AppInfo } from './Sidenav';
 
-type DropdownProps = AppInfo & { signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode, email: string, documentationUrl?: string; };
+type DropdownProps = AppInfo & { signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode, email: string, documentationUrl?: string; disableAccountLink?: boolean };
 
-export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName, documentationUrl = 'https://docs.lagoon.sh/' }: DropdownProps) {
+export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName, documentationUrl = 'https://docs.lagoon.sh/', disableAccountLink = false }: DropdownProps) {
 
 	const Link = useLinkComponent();
 
@@ -50,12 +50,14 @@ export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, use
 						Change Feed
 					</Link>
 				</DropdownMenuItem>
-				<DropdownMenuItem asChild>
-					<Link href={`${kcUrl}/account`} target="_blank" className="cursor-pointer">
-						<UserRoundCog className="mr-2 h-4 w-4" />
-						My Account
-					</Link>
-				</DropdownMenuItem>
+				{!disableAccountLink && (
+					<DropdownMenuItem asChild>
+						<Link href={`${kcUrl}/account`} target="_blank" className="cursor-pointer">
+							<UserRoundCog className="mr-2 h-4 w-4" />
+							My Account
+						</Link>
+					</DropdownMenuItem>
+				)}
 				<DropdownMenuItem asChild onClick={() => signOutFn()}>
 					<div onClick={() => signOutFn()} className="flex items-center w-full cursor-pointer">
 						<LogOut className="mr-2 h-4 w-4" />
