@@ -1,0 +1,1 @@
+{"version":3,"file":"ChangeFeed.d.ts","sourceRoot":"","sources":["../../../src/components/ChangeFeed/ChangeFeed.tsx"],"names":[],"mappings":"AAAA,OAAO,EAAE,mBAAmB,EAA6B,MAAM,kBAAkB,CAAC;AAIlF,KAAK,eAAe,GAAG;IACtB,eAAe,CAAC,EAAE,mBAAmB,EAAE,CAAC;CACxC,CAAA;AAED,iBAAS,UAAU,CAAC,EAAE,eAAoB,EAAE,EAAE,eAAe,+CAuG5D;AAED,eAAe,UAAU,CAAC"}

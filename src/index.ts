@@ -357,6 +357,6 @@ export { default as ThemeSwitch } from '@/components/ThemeSwitch';
 
 export { OverridesSchema, type Overrides } from '@/schemas';
 
-export { default as ChangeLogContainer } from '@/components/ChangeLog';
+export { default as ChangeFeedContainer } from '@/components/ChangeFeed';
 
-export { ChangeLogDataSchema, ChangeLogItemSchema, type ChangeLogItemType, type ChangeLogDataType } from '@/schemas/changeLog';
+export { ChangeFeedDataSchema, ChangeFeedItemSchema, type ChangeFeedItemType, type ChangeFeedDataType } from '@/schemas/changeFeed';

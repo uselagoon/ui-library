@@ -44,13 +44,12 @@ export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, use
 						Documentation
 					</Link>
 				</DropdownMenuItem>
-				{/* Removing changelog temporarily pending beta-ui implementation */}
-				{/* <DropdownMenuItem asChild>
-					<Link href="/changelog" className="cursor-pointer">
+				<DropdownMenuItem asChild>
+					<Link href="/changefeed" className="cursor-pointer">
 						<ScrollText className="mr-2 h-4 w-4" />
-						Changelog
+						Change Feed
 					</Link>
-				</DropdownMenuItem> */}
+				</DropdownMenuItem>
 				{!disableAccountLink && (
 					<DropdownMenuItem asChild>
 						<Link href={`${kcUrl}/account`} target="_blank" className="cursor-pointer">
