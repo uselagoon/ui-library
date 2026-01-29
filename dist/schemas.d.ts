@@ -14,6 +14,11 @@ export declare const OverridesSchema: z.ZodObject<{
             defaultLogo: z.ZodOptional<z.ZodBoolean>;
             disabled: z.ZodOptional<z.ZodBoolean>;
         }, z.core.$strict>>;
+        sidenavFooterMenu: z.ZodOptional<z.ZodObject<{
+            email: z.ZodOptional<z.ZodEmail>;
+            documentationUrl: z.ZodOptional<z.ZodURL>;
+            disableAccountLink: z.ZodOptional<z.ZodBoolean>;
+        }, z.core.$strict>>;
         changeFeed: z.ZodOptional<z.ZodObject<{
             sourceData: z.ZodURL;
             refetchInterval: z.ZodOptional<z.ZodNumber>;
