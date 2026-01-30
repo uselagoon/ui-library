@@ -18,6 +18,7 @@ export declare const OverridesSchema: z.ZodObject<{
             email: z.ZodOptional<z.ZodEmail>;
             documentationUrl: z.ZodOptional<z.ZodURL>;
             disableAccountLink: z.ZodOptional<z.ZodBoolean>;
+            disableChangeFeedLink: z.ZodOptional<z.ZodBoolean>;
         }, z.core.$strict>>;
         changeFeed: z.ZodOptional<z.ZodObject<{
             sourceData: z.ZodURL;

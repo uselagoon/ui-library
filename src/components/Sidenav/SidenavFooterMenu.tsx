@@ -6,9 +6,9 @@ import { SidebarMenuButton } from '../ui/sidebar';
 import { useLinkComponent } from '@/providers/NextLinkProvider';
 import { AppInfo } from './Sidenav';
 
-type DropdownProps = AppInfo & { signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode, email: string, documentationUrl?: string; disableAccountLink?: boolean };
+type DropdownProps = AppInfo & { signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode, email: string, documentationUrl?: string; disableAccountLink?: boolean, disableChangeFeedLink?: boolean };
 
-export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName, documentationUrl = 'https://docs.lagoon.sh/', disableAccountLink = false }: DropdownProps) {
+export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName, documentationUrl = 'https://docs.lagoon.sh/', disableAccountLink = false, disableChangeFeedLink = false }: DropdownProps) {
 
 	const Link = useLinkComponent();
 
@@ -44,12 +44,14 @@ export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, use
 						Documentation
 					</Link>
 				</DropdownMenuItem>
-				<DropdownMenuItem asChild>
-					<Link href="/changefeed" className="cursor-pointer">
-						<ScrollText className="mr-2 h-4 w-4" />
-						Change Feed
-					</Link>
-				</DropdownMenuItem>
+				{!disableChangeFeedLink && (
+					<DropdownMenuItem asChild>
+						<Link href="/changefeed" className="cursor-pointer">
+							<ScrollText className="mr-2 h-4 w-4" />
+							Change Feed
+						</Link>
+					</DropdownMenuItem>
+				)}
 				{!disableAccountLink && (
 					<DropdownMenuItem asChild>
 						<Link href={`${kcUrl}/account`} target="_blank" className="cursor-pointer">
