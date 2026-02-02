@@ -5,14 +5,19 @@ export declare const OverridesSchema: z.ZodObject<{
     }, z.core.$strict>>;
     components: z.ZodOptional<z.ZodObject<{
         announcementCard: z.ZodOptional<z.ZodObject<{
+            id: z.ZodOptional<z.ZodString>;
+            variant: z.ZodOptional<z.ZodEnum<{
+                marketing: "marketing";
+                changelog: "changelog";
+            }>>;
             title: z.ZodOptional<z.ZodString>;
             description: z.ZodOptional<z.ZodString>;
             ctaText: z.ZodOptional<z.ZodString>;
             ctaUrl: z.ZodOptional<z.ZodString>;
             openInNewTab: z.ZodOptional<z.ZodBoolean>;
             className: z.ZodOptional<z.ZodString>;
-            defaultLogo: z.ZodOptional<z.ZodBoolean>;
             disabled: z.ZodOptional<z.ZodBoolean>;
+            defaultLogo: z.ZodOptional<z.ZodBoolean>;
         }, z.core.$strict>>;
         sidenavFooterMenu: z.ZodOptional<z.ZodObject<{
             email: z.ZodOptional<z.ZodEmail>;

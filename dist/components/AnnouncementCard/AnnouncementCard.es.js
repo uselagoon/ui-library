@@ -1,53 +1,83 @@
-import { jsxs as a, jsx as e } from "react/jsx-runtime";
-import { useState as u } from "react";
-import { Card as g, CardHeader as h, CardContent as b } from "../ui/card.es.js";
-import { X as x, BotMessageSquare as N } from "lucide-react";
-import { cn as C } from "../../lib/utils.es.js";
-import { getLocalStorage as v, setLocalStorage as k } from "../../_util/helpers.es.js";
-function V({
-  title: o = "Latest Changes",
-  description: r,
-  ctaText: n = "See What's New",
-  ctaUrl: t = "https://docs.lagoon.sh/releases/2.30.0/",
-  // hardcoded for now, need a way to make this dynamic in the future
-  openInNewTab: s = !0,
-  onClose: l,
-  className: i = "[background:#dae8fd] ![color:#387eda] [box-shadow:var(--badge-ring)]",
-  defaultLogo: c = !1,
-  disabled: d = !1
-}) {
-  const [m, f] = u(v("promo-card-dismissed") !== !0), p = () => {
-    f(!1), l?.(), k("promo-card-dismissed", !0, 30);
-  };
-  return !m || d ? null : /* @__PURE__ */ a(g, { className: C("m-2 w-auto bg-[#737373]/20 gap-0  !p-4", i), children: [
-    /* @__PURE__ */ e(
-      "button",
-      {
-        onClick: p,
-        className: "absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none",
-        "aria-label": "Close announcement",
-        children: /* @__PURE__ */ e(x, { className: "h-4 w-4" })
+import { jsxs as n, jsx as a } from "react/jsx-runtime";
+import { useState as y, useEffect as _ } from "react";
+import { Card as L, CardHeader as V, CardContent as E } from "../ui/card.es.js";
+import { BotMessageSquare as K, X as j } from "lucide-react";
+import { cn as A } from "../../lib/utils.es.js";
+import { getLocalStorage as f, setLocalStorage as d } from "../../_util/helpers.es.js";
+import { cva as D } from "class-variance-authority";
+const I = D(
+  "m-2 w-auto gap-0 !p-4",
+  {
+    variants: {
+      variant: {
+        marketing: "bg-[#737373]/20",
+        changelog: "[background:#dae8fd] ![color:#387eda] [box-shadow:var(--badge-ring)]"
       }
-    ),
-    /* @__PURE__ */ e(h, { className: "relative pb-0 !px-3", children: /* @__PURE__ */ a("div", { className: "flex flex-row items-center gap-2", children: [
-      c && /* @__PURE__ */ e(N, { className: "h-5 w-5 flex-shrink-0" }),
-      o && /* @__PURE__ */ e("p", { className: "text-sm font-bold leading-[1.4]", children: o })
+    },
+    defaultVariants: {
+      variant: "changelog"
+    }
+  }
+), o = "promo-card-dismissed";
+function u(e) {
+  return e ? `announcement-dismissed-${e}` : o;
+}
+function M({
+  id: e,
+  variant: r,
+  icon: s,
+  title: t = "Latest Changes",
+  description: l,
+  ctaText: g = "See What's New",
+  ctaUrl: h = "https://docs.lagoon.sh/releases/2.30.0/",
+  openInNewTab: c = !0,
+  onClose: p,
+  className: x,
+  defaultLogo: v = !1,
+  disabled: b = !1
+}) {
+  const [N, i] = y(!1);
+  _(() => {
+    const m = u(e);
+    e && f(o) === !0 && e === "whats-new" && (d(m, !0, 30), localStorage.removeItem(o));
+    const k = f(m) === !0;
+    i(!k);
+  }, [e]);
+  const C = () => {
+    i(!1), p?.(e), d(u(e), !0, 30);
+  };
+  if (!N || b)
+    return null;
+  const w = s || v || r === "changelog", S = s || K;
+  return /* @__PURE__ */ n(L, { className: A(I({ variant: r }), x), children: [
+    /* @__PURE__ */ a(V, { className: "relative pb-0 !px-3", children: /* @__PURE__ */ n("div", { className: "flex flex-row items-center gap-2", children: [
+      w && /* @__PURE__ */ a(S, { className: "h-5 w-5 flex-shrink-0" }),
+      t && /* @__PURE__ */ a("p", { className: "text-sm font-bold leading-[1.4] flex-1", children: t }),
+      /* @__PURE__ */ a(
+        "button",
+        {
+          onClick: C,
+          className: "rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-current focus:ring-offset-2 disabled:pointer-events-none flex-shrink-0 -mr-1 -mt-1",
+          "aria-label": "Close announcement",
+          children: /* @__PURE__ */ a(j, { className: "h-4 w-4" })
+        }
+      )
     ] }) }),
-    /* @__PURE__ */ a(b, { className: `!px-3 ${r ? "pt-2 space-y-2" : ""}`, children: [
-      /* @__PURE__ */ e("p", { className: "text-sm font-normal leading-[1.4]", children: r }),
-      /* @__PURE__ */ e(
+    /* @__PURE__ */ n(E, { className: `!px-3 ${l ? "pt-2 space-y-2" : ""}`, children: [
+      /* @__PURE__ */ a("p", { className: "text-sm font-normal leading-[1.4]", children: l }),
+      /* @__PURE__ */ a(
         "a",
         {
-          href: t,
-          target: s ? "_blank" : void 0,
-          rel: s ? "noopener noreferrer" : void 0,
+          href: h,
+          target: c ? "_blank" : void 0,
+          rel: c ? "noopener noreferrer" : void 0,
           className: "text-sm font-normal underline hover:no-underline promo-link__ai",
-          children: n
+          children: g
         }
       )
     ] })
   ] });
 }
 export {
-  V as default
+  M as default
 };
