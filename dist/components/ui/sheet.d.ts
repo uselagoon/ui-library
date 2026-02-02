@@ -3,7 +3,7 @@ import * as SheetPrimitive from '@radix-ui/react-dialog';
 declare function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>): import("react/jsx-dev-runtime").JSX.Element;
 declare function SheetTrigger({ ...props }: React.ComponentProps<typeof SheetPrimitive.Trigger>): import("react/jsx-dev-runtime").JSX.Element;
 declare function SheetClose({ ...props }: React.ComponentProps<typeof SheetPrimitive.Close>): import("react/jsx-dev-runtime").JSX.Element;
-declare function SheetContent({ className, children, side, ...props }: React.ComponentProps<typeof SheetPrimitive.Content> & {
+declare function SheetContent({ className, children, side, onPointerDownOutside, ...props }: React.ComponentProps<typeof SheetPrimitive.Content> & {
     side?: 'top' | 'right' | 'bottom' | 'left';
 }): import("react/jsx-dev-runtime").JSX.Element;
 declare function SheetHeader({ className, ...props }: React.ComponentProps<'div'>): import("react/jsx-dev-runtime").JSX.Element;
