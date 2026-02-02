@@ -1,20 +1,20 @@
-import { jsx as e, jsxs as r } from "react/jsx-runtime";
+import { jsx as e, jsxs as i } from "react/jsx-runtime";
 import * as a from "@radix-ui/react-dialog";
-import { XIcon as l } from "lucide-react";
+import { XIcon as u } from "lucide-react";
 import { cn as s } from "../../lib/utils.es.js";
-function h({ ...t }) {
+function x({ ...t }) {
   return /* @__PURE__ */ e(a.Root, { "data-slot": "sheet", ...t });
 }
-function p({ ...t }) {
+function b({ ...t }) {
   return /* @__PURE__ */ e(a.Trigger, { "data-slot": "sheet-trigger", ...t });
 }
-function g({ ...t }) {
+function y({ ...t }) {
   return /* @__PURE__ */ e(a.Close, { "data-slot": "sheet-close", ...t });
 }
-function d({ ...t }) {
+function f({ ...t }) {
   return /* @__PURE__ */ e(a.Portal, { "data-slot": "sheet-portal", ...t });
 }
-function c({ className: t, ...o }) {
+function m({ className: t, ...o }) {
   return /* @__PURE__ */ e(
     a.Overlay,
     {
@@ -27,15 +27,16 @@ function c({ className: t, ...o }) {
     }
   );
 }
-function x({
+function S({
   className: t,
   children: o,
   side: n = "right",
-  ...i
+  onPointerDownOutside: d,
+  ...c
 }) {
-  return /* @__PURE__ */ r(d, { children: [
-    /* @__PURE__ */ e(c, {}),
-    /* @__PURE__ */ r(
+  return /* @__PURE__ */ i(f, { children: [
+    /* @__PURE__ */ e(m, {}),
+    /* @__PURE__ */ i(
       a.Content,
       {
         "data-slot": "sheet-content",
@@ -47,11 +48,19 @@ function x({
           n === "bottom" && "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 bottom-0 h-auto border-t",
           t
         ),
-        ...i,
+        onPointerDownOutside: (r) => {
+          const l = r.target;
+          if (l.closest("[data-sonner-toast]") || l.closest("[data-sonner-toaster]")) {
+            r.preventDefault();
+            return;
+          }
+          d?.(r);
+        },
+        ...c,
         children: [
           o,
-          /* @__PURE__ */ r(a.Close, { className: "ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none", children: [
-            /* @__PURE__ */ e(l, { className: "size-4" }),
+          /* @__PURE__ */ i(a.Close, { className: "ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none", children: [
+            /* @__PURE__ */ e(u, { className: "size-4" }),
             /* @__PURE__ */ e("span", { className: "sr-only", children: "Close" })
           ] })
         ]
@@ -59,13 +68,13 @@ function x({
     )
   ] });
 }
-function b({ className: t, ...o }) {
+function v({ className: t, ...o }) {
   return /* @__PURE__ */ e("div", { "data-slot": "sheet-header", className: s("flex flex-col gap-1.5 p-4", t), ...o });
 }
-function y({ className: t, ...o }) {
+function N({ className: t, ...o }) {
   return /* @__PURE__ */ e("div", { "data-slot": "sheet-footer", className: s("mt-auto flex flex-col gap-2 p-4", t), ...o });
 }
-function S({ className: t, ...o }) {
+function w({ className: t, ...o }) {
   return /* @__PURE__ */ e(
     a.Title,
     {
@@ -75,7 +84,7 @@ function S({ className: t, ...o }) {
     }
   );
 }
-function N({ className: t, ...o }) {
+function C({ className: t, ...o }) {
   return /* @__PURE__ */ e(
     a.Description,
     {
@@ -86,12 +95,12 @@ function N({ className: t, ...o }) {
   );
 }
 export {
-  h as Sheet,
-  g as SheetClose,
-  x as SheetContent,
-  N as SheetDescription,
-  y as SheetFooter,
-  b as SheetHeader,
-  S as SheetTitle,
-  p as SheetTrigger
+  x as Sheet,
+  y as SheetClose,
+  S as SheetContent,
+  C as SheetDescription,
+  N as SheetFooter,
+  v as SheetHeader,
+  w as SheetTitle,
+  b as SheetTrigger
 };
