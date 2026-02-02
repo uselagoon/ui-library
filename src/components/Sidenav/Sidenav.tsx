@@ -29,6 +29,7 @@ import useActivePaths from './useActivePaths';
 import SidenavLogo from '@/components/Sidenav/SidenavLogo';
 import AnnouncementCard from '@/components/AnnouncementCard';
 import { AnnouncementCardProps } from '@/components/AnnouncementCard/AnnouncementCard';
+import AnnouncementCarousel, { AnnouncementCarouselProps } from '@/components/AnnouncementCarousel';
 
 type SidebarProps = React.ComponentProps<typeof Sidebar>;
 
@@ -52,6 +53,7 @@ export type SidenavProps = SidebarProps & {
 	currentPath: string;
 	documentationUrl?: string;
 	cardProps?: AnnouncementCardProps;
+	carouselProps?: AnnouncementCarouselProps;
 	disableAccountLink?: boolean;
 	disableChangeFeedLink?: boolean;
 };
@@ -103,7 +105,7 @@ const renderSidenavChildren = (
 	);
 };
 
-export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, cardProps, disableAccountLink, disableChangeFeedLink, ...props }: SidenavProps) {
+export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, cardProps, carouselProps, disableAccountLink, disableChangeFeedLink, ...props }: SidenavProps) {
 	const Link = useLinkComponent();
 
 	const { name, image, email } = userInfo;
@@ -273,7 +275,11 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 				<SidebarFooter className="flex-shrink-0">
 					<SidebarGroup>
 						<SidebarGroupContent>
-							<AnnouncementCard {...(cardProps || {})}></AnnouncementCard>
+							{carouselProps ? (
+								<AnnouncementCarousel {...carouselProps} />
+							) : (
+								<AnnouncementCard {...(cardProps || {})} />
+							)}
 						</SidebarGroupContent >
 					</SidebarGroup>
 					<SidebarMenu>
