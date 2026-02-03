@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Controls, Primary, Stories, Story, Title } from '@storybook/addon-docs/blocks';
-import { Home, FolderOpen, Building2, Settings, HelpCircle, Layers } from 'lucide-react';
+import { Home, FolderOpen, Building2, Settings, HelpCircle, Layers, Code } from 'lucide-react';
 
 import Sidenav from '../components/Sidenav';
 import { SidebarProvider } from '../components/ui/sidebar';
@@ -9,6 +9,7 @@ const meta: Meta<typeof Sidenav> = {
 	component: Sidenav,
 	title: 'Components/Sidenav',
 	tags: ['autodocs'],
+	excludeStories: /^mock.*/,
 	parameters: {
 		docs: {
 			page: () => (
@@ -158,9 +159,9 @@ export const mockFooterItems = [
 		target: 'blank',
 	},
 	{
-		title: 'Changelog',
+		title: 'Test',
 		url: '/changelog',
-		icon: Layers,
+		icon: Code,
 	},
 	{
 		title: 'My Account',

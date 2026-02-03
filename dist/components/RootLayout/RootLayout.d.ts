@@ -17,6 +17,6 @@ interface RootLayoutProps {
     disableAccountLink?: boolean;
     disableChangeFeedLink?: boolean;
 }
-export default function RootLayout({ userInfo, appInfo, signOutFn, currentPath, children, sidenavItems, documentationUrl, cardProps, disableAccountLink, disableChangeFeedLink, }: RootLayoutProps): import("react/jsx-dev-runtime").JSX.Element;
+export default function RootLayout({ userInfo, appInfo, signOutFn, currentPath, children, sidenavItems, documentationUrl, footerItems, cardProps, disableAccountLink, disableChangeFeedLink, }: RootLayoutProps): import("react/jsx-dev-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=RootLayout.d.ts.map
