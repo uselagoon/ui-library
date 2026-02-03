@@ -91,9 +91,7 @@ const SidenavItem = ({
 }) => {
 	const Link = useLinkComponent();
 	const hasChildren = item.children && item.children.length > 0;
-	// Only highlight the exact current item, not parents
 	const isActive = currentPath === item.url;
-	// Parents should be open if they or their children are active
 	const isOpen = activePaths.has(item.url) || activePaths.has(`${item.url}:parent`);
 
 	const [internalOpen, setInternalOpen] = useState(isOpen);
