@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
-import { AppInfo } from './Sidenav';
-type DropdownProps = AppInfo & {
+import { AppInfo, FooterItem } from './Sidenav';
+type SidenavFooterMenuProps = AppInfo & {
+    footerItems: FooterItem[];
     signOutFn: () => Promise<void>;
     avatar: ReactNode;
     userDisplayName: ReactNode;
     email: string;
-    documentationUrl?: string;
 };
-export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName, documentationUrl }: DropdownProps): import("react/jsx-dev-runtime").JSX.Element;
+export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName, footerItems }: SidenavFooterMenuProps): import("react/jsx-dev-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=SidenavFooterMenu.d.ts.map

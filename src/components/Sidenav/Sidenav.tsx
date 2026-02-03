@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import {
 	Sidebar,
 	SidebarContent,
@@ -7,6 +7,7 @@ import {
 	SidebarGroupContent,
 	SidebarGroupLabel,
 	SidebarMenu,
+	SidebarMenuAction,
 	SidebarMenuButton,
 	SidebarMenuItem,
 	SidebarMenuSub,
@@ -19,10 +20,9 @@ import { Avatar, AvatarImage } from '../ui/avatar';
 import { AvatarFallback } from '@radix-ui/react-avatar';
 import AvatarBubble from '../AvatarBubble/AvatarBubble';
 import { useLinkComponent } from '@/providers/NextLinkProvider';
-import { NextLinkType } from '@/typings/nextLink';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/collapsible';
 
-import { ChevronUp, Menu, X } from 'lucide-react';
+import { ChevronRight, Menu, X } from 'lucide-react';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import useActivePaths from './useActivePaths';
@@ -52,6 +52,7 @@ export type SidenavProps = SidebarProps & {
 	currentPath: string;
 	documentationUrl?: string;
 	cardProps?: AnnouncementCardProps;
+	footerItems?: FooterItem[];
 };
 
 export type SidebarItem = {
@@ -61,6 +62,15 @@ export type SidebarItem = {
 	target?: string;
 	onClick?: () => void;
 	children?: SidebarItem[];
+	collapsible?: boolean;
+};
+
+export type FooterItem = {
+	title: string;
+	url: string;
+	icon?: React.ComponentType<any>;
+	target?: string;
+	onClick?: () => void;
 };
 
 export type SidebarSection = {
@@ -68,42 +78,125 @@ export type SidebarSection = {
 	sectionItems: SidebarItem[];
 };
 
-const renderSidenavChildren = (
-	Link: NextLinkType,
-	sectionItem: SidebarItem,
-	activePaths: Set<string>,
-): JSX.Element | null => {
-	if (!sectionItem.children?.length) return null;
+const SidenavItem = ({
+	item,
+	activePaths,
+	currentPath,
+}: {
+	item: SidebarItem;
+	activePaths: Set<string>;
+	currentPath: string;
+}) => {
+	const Link = useLinkComponent();
+	const hasChildren = item.children && item.children.length > 0;
+	// Only highlight the exact current item, not parents
+	const isActive = currentPath === item.url;
+	// Parents should be open if they or their children are active
+	const isOpen = activePaths.has(item.url) || activePaths.has(`${item.url}:parent`);
 
-	return (
-		<ul className="ml-4 mt-2 space-y-1">
-			{sectionItem.children.map((child: any) => {
-				const hasChildren = child.children && child.children.length > 0;
-				const isActive = hasChildren
-					? activePaths.has(child.url) || activePaths.has(`${child.url}:parent`)
-					: activePaths.has(child.url);
+	const [internalOpen, setInternalOpen] = useState(isOpen);
 
-				return (
-					<SidebarMenuItem key={child.title}>
-						<SidebarMenuButton asChild isActive={isActive}>
-							<Link href={child.url} className={`${!child.icon ? 'ml-4' : ''}`}>
-								<div className="flex items-center gap-2">
-									{child.icon && <child.icon />}
-									<span>{child.title}</span>
-								</div>
+	useEffect(() => {
+		setInternalOpen(isOpen);
+	}, [isOpen]);
+
+	const newTab = item.target === 'blank';
+	const action = item.onClick;
+
+	if (hasChildren) {
+		const isCollapsible = item.collapsible !== false;
+
+		if (isCollapsible) {
+			return (
+				<Collapsible open={internalOpen} onOpenChange={setInternalOpen} className="group/collapsible">
+					<SidebarMenuItem>
+						<SidebarMenuButton asChild isActive={isActive} tooltip={item.title}>
+							<Link
+								href={item.url}
+								data-cy={`nav-${item.url.slice(1)}`}
+								onClick={async (e: React.MouseEvent) => {
+									if (action) await action();
+								}}
+								target={newTab ? '_blank' : '_self'}
+								className="flex w-full items-center gap-2"
+							>
+								{item.icon && <item.icon className="!size-6" />}
+								<span>{item.title}</span>
 							</Link>
 						</SidebarMenuButton>
-						{renderSidenavChildren(Link, child, activePaths)}
+						<CollapsibleTrigger asChild>
+							<SidebarMenuAction className="data-[state=open]:rotate-90 transition-transform duration-200">
+								<ChevronRight />
+								<span className="sr-only">Toggle</span>
+							</SidebarMenuAction>
+						</CollapsibleTrigger>
+						<CollapsibleContent>
+							<SidebarMenuSub>
+								{item.children!.map((child) => (
+									<SidenavItem
+										key={child.title}
+										item={child}
+										activePaths={activePaths}
+										currentPath={currentPath}
+									/>
+								))}
+							</SidebarMenuSub>
+						</CollapsibleContent>
 					</SidebarMenuItem>
-				);
-			})}
-		</ul>
+				</Collapsible>
+			);
+		}
+
+		return (
+			<SidebarMenuItem>
+				<SidebarMenuButton asChild isActive={isActive} tooltip={item.title}>
+					<Link
+						href={item.url}
+						data-cy={`nav-${item.url.slice(1)}`}
+						onClick={async () => {
+							action && (await action());
+						}}
+						target={newTab ? '_blank' : '_self'}
+						className="flex w-full items-center gap-2"
+					>
+						{item.icon && <item.icon className="!size-6" />}
+						<span>{item.title}</span>
+					</Link>
+				</SidebarMenuButton>
+				<SidebarMenuSub>
+					{item.children!.map((child) => (
+						<SidenavItem
+							key={child.title}
+							item={child}
+							activePaths={activePaths}
+							currentPath={currentPath}
+						/>
+					))}
+				</SidebarMenuSub>
+			</SidebarMenuItem>
+		);
+	}
+
+	return (
+		<SidebarMenuItem>
+			<SidebarMenuButton asChild isActive={isActive} tooltip={item.title}>
+				<Link
+					href={item.url}
+					data-cy={`nav-${item.url.slice(1)}`}
+					onClick={async () => {
+						action && (await action());
+					}}
+					target={newTab ? '_blank' : '_self'}
+				>
+					{item.icon && <item.icon className="!size-6" />}
+					<span>{item.title}</span>
+				</Link>
+			</SidebarMenuButton>
+		</SidebarMenuItem>
 	);
 };
 
-export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, cardProps, ...props }: SidenavProps) {
-	const Link = useLinkComponent();
-
+export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, cardProps, footerItems, ...props }: SidenavProps) {
 	const { name, image, email } = userInfo;
 
 	const userImageExists = !!image;
@@ -121,10 +214,6 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 	const avatarInitials = firstLastProvided
 		? firstName.charAt(0).toUpperCase() + lastName.charAt(0).toUpperCase()
 		: email.charAt(0).toUpperCase();
-
-	// show img + firstname lastnamea
-	// or avatarbg + firstname lastname
-	// or genericImage + user email
 
 	const avatarToUse = userImageExists ? (
 		<Avatar>
@@ -153,7 +242,7 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 		avatar: avatarToUse,
 		userDisplayName,
 		email,
-		documentationUrl: documentationUrl,
+		footerItems: footerItems || [],
 	};
 
 	return (
@@ -193,73 +282,14 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 							<SidebarGroup key={navItem.section}>
 								<SidebarGroupLabel>{navItem.section}</SidebarGroupLabel>
 								<SidebarGroupContent className="list-none">
-									{navItem.sectionItems.map((sectionItem) => {
-										const newTab = sectionItem.target === 'blank';
-										const action = sectionItem?.onClick;
-
-										const collapsibleOpen = Array.from(activePaths).some((p) => p.startsWith(sectionItem.url));
-										const collapsibleSections = ['Projects', 'Organizations'];
-										const renderCollapseIcon = collapsibleSections.includes(sectionItem.title);
-
-										return (
-											<Fragment key={sectionItem.title}>
-												<Collapsible open={collapsibleOpen}>
-													<SidebarMenuItem>
-														<CollapsibleTrigger asChild>
-															<SidebarMenuButton
-																asChild
-																isActive={
-																	activePaths.has(sectionItem.url) || activePaths.has(`${sectionItem.url}:parent`)
-																}
-															>
-																<Link
-																	data-cy={`nav-${sectionItem.url.slice(1)}`}
-																	onClick={async () => {
-																		action && (await action());
-																	}}
-																	href={sectionItem.url}
-																	target={newTab ? '_blank' : '_self'}
-																	className="flex w-full gap-2"
-																>
-																	<div className="flex items-center gap-2">
-																		{sectionItem.icon && <sectionItem.icon />}
-																		<span>{sectionItem.title}</span>
-																	</div>
-
-																	{renderCollapseIcon ? (
-																		<ChevronUp
-																			className={`ml-auto h-4 w-4 transition-transform ${collapsibleOpen ? 'rotate-180' : 'rotate-90'}`}
-																		/>
-																	) : null}
-																</Link>
-															</SidebarMenuButton>
-														</CollapsibleTrigger>
-													</SidebarMenuItem>
-
-													<CollapsibleContent>
-														<SidebarMenuSub>
-															{sectionItem.children?.map((child) => (
-																<SidebarMenuItem key={child.title}>
-																	<SidebarMenuButton
-																		asChild
-																		isActive={activePaths.has(child.url) || activePaths.has(`${child.url}:parent`)}
-																	>
-																		<Link href={child.url} className="mt-2">
-																			<div className="flex items-center gap-2">
-																				{child.icon && <child.icon />}
-																				<span>{child.title}</span>
-																			</div>
-																		</Link>
-																	</SidebarMenuButton>
-																	{renderSidenavChildren(Link, child, activePaths)}
-																</SidebarMenuItem>
-															))}
-														</SidebarMenuSub>
-													</CollapsibleContent>
-												</Collapsible>
-											</Fragment>
-										);
-									})}
+									{navItem.sectionItems.map((sectionItem) => (
+										<SidenavItem
+											key={sectionItem.title}
+											item={sectionItem}
+											activePaths={activePaths}
+											currentPath={currentPath}
+										/>
+									))}
 								</SidebarGroupContent>
 							</SidebarGroup>
 						);

@@ -4,6 +4,7 @@ import { Controls, Primary, Stories, Story, Title } from '@storybook/addon-docs/
 
 import RootLayout from '../components/RootLayout';
 import { Building2, FolderOpen, HelpCircle, Home, Settings } from 'lucide-react';
+import { mockFooterItems } from './Sidenav.stories';
 
 const meta = {
 	component: RootLayout,
@@ -105,6 +106,7 @@ export const Default: Story = {
 			kcUrl: 'https://keycloak.example.com',
 		},
 		sidenavItems: mockSidenavItems,
+		footerItems: mockFooterItems,
 		signOutFn: mockSignOutFn,
 		currentPath: '/projects',
 	},

@@ -48,7 +48,7 @@ export { ToggleGroup, ToggleGroupItem } from './components/ui/toggle-group';
 export { Toggle, toggleVariants } from './components/ui/toggle';
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from './components/ui/tooltip';
 export { default as RootLayout } from './components/RootLayout';
-export { default as Sidenav } from './components/Sidenav';
+export { default as Sidenav, type SidebarSection, type SidebarItem, type FooterItem } from './components/Sidenav';
 export { default as Checkbox } from './components/Checkbox';
 export { default as StatCard } from './components/StatCard';
 export { default as DetailStat } from './components/DetailStat';

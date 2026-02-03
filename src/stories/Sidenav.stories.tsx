@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Controls, Primary, Stories, Story, Title } from '@storybook/addon-docs/blocks';
-import { Home, FolderOpen, Building2, Settings, HelpCircle } from 'lucide-react';
+import { Home, FolderOpen, Building2, Settings, HelpCircle, Layers } from 'lucide-react';
 
 import Sidenav from '../components/Sidenav';
 import { SidebarProvider } from '../components/ui/sidebar';
@@ -56,6 +56,7 @@ const cardProps = {
 	buttonText: 'Learn More',
 	buttonUrl: 'https://docs.lagoon.sh/',
 	defaultLogo: true,
+	className: 'hidden md:flex'
 };
 
 const mockSidenavItems = [
@@ -75,10 +76,43 @@ const mockSidenavItems = [
 					{
 						title: 'Project Alpha',
 						url: '/projects/alpha',
-					},
-					{
-						title: 'Project Beta',
-						url: '/projects/beta',
+						collapsible: false,
+						children: [
+							{
+								title: 'Environments',
+								url: '/projects/alpha/envs',
+								icon: Layers,
+								children: [
+									{
+										title: 'Production',
+										url: '/projects/alpha/envs/production',
+									},
+									{
+										title: 'Staging',
+										url: '/projects/alpha/envs/staging',
+									},
+									{
+										title: 'Development',
+										url: '/projects/alpha/envs/develop',
+									},
+								],
+							},
+							{
+								title: 'Details',
+								url: '/projects/alpha/details',
+								icon: Layers,
+							},
+							{
+								title: 'Variables',
+								url: '/projects/alpha/variables',
+								icon: Layers,
+							},
+							{
+								title: 'Routes',
+								url: '/projects/alpha/routes',
+								icon: Layers,
+							},
+						],
 					},
 				],
 			},
@@ -116,6 +150,26 @@ const mockSidenavItems = [
 	},
 ];
 
+export const mockFooterItems = [
+	{
+		title: 'Documentation',
+		url: 'https://docs.lagoon.sh/',
+		icon: HelpCircle,
+		target: 'blank',
+	},
+	{
+		title: 'Changelog',
+		url: '/changelog',
+		icon: Layers,
+	},
+	{
+		title: 'My Account',
+		url: 'https://keycloak.example.com/account',
+		icon: Settings,
+		target: 'blank',
+	},
+];
+
 export const Default: Story = {
 	args: {
 		userInfo: {
@@ -128,6 +182,7 @@ export const Default: Story = {
 			kcUrl: 'https://keycloak.example.com',
 		},
 		sidenavItems: mockSidenavItems,
+		footerItems: mockFooterItems,
 		signOutFn: mockSignOutFn,
 		currentPath: '/projects',
 		cardProps: cardProps,
@@ -137,6 +192,13 @@ export const Default: Story = {
 			type: 'figspec',
 			url: 'https://www.figma.com/file/iRRQQSnRmqdcoiysogtjO7/Dashboard?type=design&node-id=66-6597&mode=design&t=P00gx6yjJRZgHUuj-4',
 		},
+	},
+};
+
+export const DeepNesting: Story = {
+	args: {
+		...Default.args,
+		currentPath: '/projects/alpha/envs/production',
 	},
 };
 

@@ -4,11 +4,13 @@ import { ChevronsUpDown, LifeBuoy, LogOut, ScrollText, UserRoundCog } from 'luci
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '../ui/dropdown-menu';
 import { SidebarMenuButton } from '../ui/sidebar';
 import { useLinkComponent } from '@/providers/NextLinkProvider';
-import { AppInfo } from './Sidenav';
+import { AppInfo, FooterItem } from './Sidenav';
 
-type DropdownProps = AppInfo & { signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode, email: string, documentationUrl?: string; };
+// type DropdownProps = AppInfo & { signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode, email: string };
 
-export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName, documentationUrl = 'https://docs.lagoon.sh/' }: DropdownProps) {
+type SidenavFooterMenuProps = AppInfo & { footerItems: FooterItem[]; signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode, email: string };
+
+export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName, footerItems }: SidenavFooterMenuProps) {
 
 	const Link = useLinkComponent();
 
@@ -38,7 +40,23 @@ export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, use
 				</DropdownMenuTrigger>
 			</section>
 			<DropdownMenuContent className="w-56" align="start" side="top" sideOffset={4}>
-				<DropdownMenuItem asChild>
+				{footerItems.map((item, index) => {
+					const newTab = item.target === 'blank';
+
+					return (
+						<DropdownMenuItem asChild key={index}>
+							<Link
+								href={item.url}
+								target={newTab ? '_blank' : '_self'}
+								className="cursor-pointer"
+							>
+								{item.icon && <item.icon className="mr-2 h-4 w-4" />}
+								{item.title}
+							</Link>
+						</DropdownMenuItem>
+					);
+				})}
+				{/* <DropdownMenuItem asChild>
 					<Link href={documentationUrl} target="_blank" className="cursor-pointer">
 						<LifeBuoy className="mr-2 h-4 w-4" />
 						Documentation
@@ -55,7 +73,7 @@ export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, use
 						<UserRoundCog className="mr-2 h-4 w-4" />
 						My Account
 					</Link>
-				</DropdownMenuItem>
+				</DropdownMenuItem> */}
 				<DropdownMenuItem asChild onClick={() => signOutFn()}>
 					<div onClick={() => signOutFn()} className="flex items-center w-full cursor-pointer">
 						<LogOut className="mr-2 h-4 w-4" />
