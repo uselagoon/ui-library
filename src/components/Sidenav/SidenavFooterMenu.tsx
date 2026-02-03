@@ -6,11 +6,9 @@ import { SidebarMenuButton } from '../ui/sidebar';
 import { useLinkComponent } from '@/providers/NextLinkProvider';
 import { AppInfo, FooterItem } from './Sidenav';
 
-// type DropdownProps = AppInfo & { signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode, email: string };
+type SidenavFooterMenuProps = AppInfo & { footerItems: FooterItem[]; signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode, email: string; disableAccountLink?: boolean, disableChangeFeedLink?: boolean };
 
-type SidenavFooterMenuProps = AppInfo & { footerItems: FooterItem[]; signOutFn: () => Promise<void>; avatar: ReactNode, userDisplayName: ReactNode, email: string };
-
-export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName, footerItems }: SidenavFooterMenuProps) {
+export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName, footerItems, disableAccountLink = false, disableChangeFeedLink = false }: SidenavFooterMenuProps) {
 
 	const Link = useLinkComponent();
 
@@ -56,24 +54,6 @@ export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, use
 						</DropdownMenuItem>
 					);
 				})}
-				{/* <DropdownMenuItem asChild>
-					<Link href={documentationUrl} target="_blank" className="cursor-pointer">
-						<LifeBuoy className="mr-2 h-4 w-4" />
-						Documentation
-					</Link>
-				</DropdownMenuItem>
-				<DropdownMenuItem asChild>
-					<Link href="/changelog" className="cursor-pointer">
-						<ScrollText className="mr-2 h-4 w-4" />
-						Changelog
-					</Link>
-				</DropdownMenuItem>
-				<DropdownMenuItem asChild>
-					<Link href={`${kcUrl}/account`} target="_blank" className="cursor-pointer">
-						<UserRoundCog className="mr-2 h-4 w-4" />
-						My Account
-					</Link>
-				</DropdownMenuItem> */}
 				<DropdownMenuItem asChild onClick={() => signOutFn()}>
 					<div onClick={() => signOutFn()} className="flex items-center w-full cursor-pointer">
 						<LogOut className="mr-2 h-4 w-4" />

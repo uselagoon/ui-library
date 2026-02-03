@@ -7,5 +7,6 @@ export declare const AnnouncementCardPropsSchema: z.ZodObject<{
     openInNewTab: z.ZodOptional<z.ZodBoolean>;
     className: z.ZodOptional<z.ZodString>;
     defaultLogo: z.ZodOptional<z.ZodBoolean>;
+    disabled: z.ZodOptional<z.ZodBoolean>;
 }, z.core.$strict>;
 //# sourceMappingURL=announcementCard.d.ts.map

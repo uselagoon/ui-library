@@ -53,6 +53,8 @@ export type SidenavProps = SidebarProps & {
 	documentationUrl?: string;
 	cardProps?: AnnouncementCardProps;
 	footerItems?: FooterItem[];
+	disableAccountLink?: boolean;
+	disableChangeFeedLink?: boolean;
 };
 
 export type SidebarItem = {
@@ -196,7 +198,9 @@ const SidenavItem = ({
 	);
 };
 
-export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, cardProps, footerItems, ...props }: SidenavProps) {
+export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, cardProps, footerItems, disableAccountLink, disableChangeFeedLink, ...props }: SidenavProps) {
+	const Link = useLinkComponent();
+
 	const { name, image, email } = userInfo;
 
 	const userImageExists = !!image;
@@ -243,6 +247,9 @@ export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, 
 		userDisplayName,
 		email,
 		footerItems: footerItems || [],
+		documentationUrl: documentationUrl,
+		disableAccountLink,
+		disableChangeFeedLink,
 	};
 
 	return (

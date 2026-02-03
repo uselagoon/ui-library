@@ -20,7 +20,8 @@ export type SidenavProps = SidebarProps & {
     currentPath: string;
     documentationUrl?: string;
     cardProps?: AnnouncementCardProps;
-    footerItems?: FooterItem[];
+    disableAccountLink?: boolean;
+    disableChangeFeedLink?: boolean;
 };
 export type SidebarItem = {
     title: string;
@@ -42,6 +43,6 @@ export type SidebarSection = {
     section: string;
     sectionItems: SidebarItem[];
 };
-export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, cardProps, footerItems, ...props }: SidenavProps): import("react/jsx-dev-runtime").JSX.Element;
+export default function Sidenav({ userInfo, appInfo, currentPath, sidenavItems, signOutFn, documentationUrl, cardProps, disableAccountLink, disableChangeFeedLink, ...props }: SidenavProps): import("react/jsx-dev-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=Sidenav.d.ts.map

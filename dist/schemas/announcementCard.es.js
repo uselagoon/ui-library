@@ -6,7 +6,8 @@ const n = o.object({
   ctaUrl: o.string().optional(),
   openInNewTab: o.boolean().optional(),
   className: o.string().optional(),
-  defaultLogo: o.boolean().optional()
+  defaultLogo: o.boolean().optional(),
+  disabled: o.boolean().optional()
 }).strict();
 export {
   n as AnnouncementCardPropsSchema
