@@ -70,4 +70,7 @@ export { cn } from './lib/utils';
 export { default as TabNavigation } from './components/TabNavigation';
 export { default as DateRangePicker } from './components/DateRangePicker';
 export { default as ThemeSwitch } from './components/ThemeSwitch';
+export { OverridesSchema, type Overrides } from './schemas';
+export { default as ChangeFeedContainer } from './components/ChangeFeed';
+export { ChangeFeedDataSchema, ChangeFeedItemSchema, type ChangeFeedItemType, type ChangeFeedDataType } from './schemas/changeFeed';
 //# sourceMappingURL=index.d.ts.map

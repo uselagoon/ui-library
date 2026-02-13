@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { BotMessageSquare, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { getLocalStorage, setLocalStorage } from '@/_util/helpers';
 
 export type AnnouncementCardProps = {
 	title?: string;
@@ -12,26 +13,29 @@ export type AnnouncementCardProps = {
 	onClose?: () => void;
 	className?: string;
 	defaultLogo?: boolean;
+	disabled?: boolean;
 };
 
 export default function AnnouncementCard({
- title = "Latest Changes",
- description,
- ctaText = "See What's New",
- ctaUrl = 'https://docs.lagoon.sh/releases/2.29.2/', // hardcoded for now, need a way to make this dynamic in the future
- openInNewTab = true,
- onClose,
- className = '[background:#dae8fd] ![color:#387eda] [box-shadow:var(--badge-ring)]',
- defaultLogo = false
+	title = "Latest Changes",
+	description,
+	ctaText = "See What's New",
+	ctaUrl = 'https://docs.lagoon.sh/releases/2.30.0/', // hardcoded for now, need a way to make this dynamic in the future
+	openInNewTab = true,
+	onClose,
+	className = '[background:#dae8fd] ![color:#387eda] [box-shadow:var(--badge-ring)]',
+	defaultLogo = false,
+	disabled = false
 }: AnnouncementCardProps) {
-	const [isVisible, setIsVisible] = useState(true);
+	const [isVisible, setIsVisible] = useState(getLocalStorage('promo-card-dismissed') !== true);
 
 	const handleClose = () => {
 		setIsVisible(false);
 		onClose?.();
+		setLocalStorage('promo-card-dismissed', true, 30);
 	};
 
-	if (!isVisible) {
+	if (!isVisible || disabled) {
 		return null;
 	}
 

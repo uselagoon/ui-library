@@ -6,7 +6,9 @@ type DropdownProps = AppInfo & {
     userDisplayName: ReactNode;
     email: string;
     documentationUrl?: string;
+    disableAccountLink?: boolean;
+    disableChangeFeedLink?: boolean;
 };
-export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName, documentationUrl }: DropdownProps): import("react/jsx-dev-runtime").JSX.Element;
+export default function SidenavFooterMenu({ email, kcUrl, signOutFn, avatar, userDisplayName, documentationUrl, disableAccountLink, disableChangeFeedLink }: DropdownProps): import("react/jsx-dev-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=SidenavFooterMenu.d.ts.map
