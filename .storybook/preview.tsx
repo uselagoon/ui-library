@@ -5,6 +5,7 @@ import '../src/index.css';
 import React from 'react';
 import withNextLink from './decorators/withNextLink';
 import ThemeProvider from '../src/providers/ThemeProvider';
+import ThemeSwitch from '../src/components/ThemeSwitch';
 
 const preview: Preview = {
 	parameters: {
@@ -37,10 +38,13 @@ const preview: Preview = {
 		withNextLink,
 		(Story) => (
 			<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-		<Story />
-		</ThemeProvider>
-),
-],
+				<div style={{ position: 'fixed', top: '1rem', right: '1rem', zIndex: 9999 }}>
+					<ThemeSwitch />
+				</div>
+				<Story />
+			</ThemeProvider>
+		),
+	],
 };
 
 export default preview;

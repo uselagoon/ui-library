@@ -3,7 +3,7 @@ import { AnnouncementCardPropsSchema } from './schemas/announcementCard';
 import { SidenavFooterMenuSchema } from './schemas/sidenavFooterMenu';
 import { ChangeFeedContainerSchema } from './schemas/changeFeed';
 
-const DocumentationURLSchema = z.url().optional();
+const DocumentationURLSchema = z.string().url().optional();
 
 const globalSchema = {
 	documentationUrl: DocumentationURLSchema

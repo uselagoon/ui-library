@@ -9,7 +9,7 @@ export const ChangeFeedItemSchema = z.object({
 });
 
 export const ChangeFeedContainerSchema = z.object({
-    sourceData: z.url(),
+    sourceData: z.string().url(),
     refetchInterval: z.number().optional(),
     fallbackData: z.array(ChangeFeedItemSchema).optional(),
     onError: z.function().optional(),

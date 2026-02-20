@@ -73,4 +73,5 @@ export { default as ThemeSwitch } from './components/ThemeSwitch';
 export { OverridesSchema, type Overrides } from './schemas';
 export { default as ChangeFeedContainer } from './components/ChangeFeed';
 export { ChangeFeedDataSchema, ChangeFeedItemSchema, type ChangeFeedItemType, type ChangeFeedDataType } from './schemas/changeFeed';
+export { default as MaintenanceBanner } from './components/Banner';
 //# sourceMappingURL=index.d.ts.map

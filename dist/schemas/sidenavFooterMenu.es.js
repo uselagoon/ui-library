@@ -1,10 +1,10 @@
 import { z as o } from "zod";
-const n = o.object({
-  email: o.email().optional(),
-  documentationUrl: o.url().optional(),
+const e = o.object({
+  email: o.string().email().optional(),
+  documentationUrl: o.string().url().optional(),
   disableAccountLink: o.boolean().optional(),
   disableChangeFeedLink: o.boolean().optional()
 }).strict();
 export {
-  n as SidenavFooterMenuSchema
+  e as SidenavFooterMenuSchema
 };
