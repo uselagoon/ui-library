@@ -8,5 +8,23 @@ export declare const AnnouncementCardPropsSchema: z.ZodObject<{
     className: z.ZodOptional<z.ZodString>;
     defaultLogo: z.ZodOptional<z.ZodBoolean>;
     disabled: z.ZodOptional<z.ZodBoolean>;
-}, z.core.$strict>;
+}, "strict", z.ZodTypeAny, {
+    className?: string | undefined;
+    title?: string | undefined;
+    disabled?: boolean | undefined;
+    description?: string | undefined;
+    ctaText?: string | undefined;
+    ctaUrl?: string | undefined;
+    openInNewTab?: boolean | undefined;
+    defaultLogo?: boolean | undefined;
+}, {
+    className?: string | undefined;
+    title?: string | undefined;
+    disabled?: boolean | undefined;
+    description?: string | undefined;
+    ctaText?: string | undefined;
+    ctaUrl?: string | undefined;
+    openInNewTab?: boolean | undefined;
+    defaultLogo?: boolean | undefined;
+}>;
 //# sourceMappingURL=announcementCard.d.ts.map

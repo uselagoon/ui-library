@@ -1,0 +1,1 @@
+{"version":3,"file":"BannerCard.d.ts","sourceRoot":"","sources":["../../../src/components/Banner/BannerCard.tsx"],"names":[],"mappings":"AAEA,OAAO,EAAE,QAAQ,EAAE,WAAW,EAAE,MAAM,UAAU,CAAA;AAEhD,MAAM,CAAC,OAAO,UAAU,UAAU,CAAC,EAAE,UAAU,EAAE,EAAE;IAAE,UAAU,EAAE,QAAQ,GAAG,WAAW,CAAA;CAAE,+CAqGxF"}

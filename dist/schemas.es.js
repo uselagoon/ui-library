@@ -2,7 +2,7 @@ import { z as t } from "zod";
 import { AnnouncementCardPropsSchema as l } from "./schemas/announcementCard.es.js";
 import { SidenavFooterMenuSchema as p } from "./schemas/sidenavFooterMenu.es.js";
 import { ChangeFeedContainerSchema as u } from "./schemas/changeFeed.es.js";
-const b = t.url().optional(), d = {
+const b = t.string().url().optional(), d = {
   documentationUrl: b
 }, f = {
   announcementCard: l,
